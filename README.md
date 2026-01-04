@@ -4,16 +4,25 @@ This gem mirrors the public interface of [elevenlabs-python](https://github.com/
 
 ## Installation
 
-Add the gem to your project:
-
-```ruby
-gem "elevenlabs"
-```
-
-or via Bundler:
+Since this gem isn’t published on RubyGems yet, install it from the local source or Git:
 
 ```bash
-bundle add elevenlabs
+git clone https://github.com/architecture/elevenlabs-ruby
+cd elevenlabs-ruby
+gem build elevenlabs-ruby.gemspec
+gem install ./elevenlabs-0.1.0.gem
+```
+
+Or reference the GitHub repo/path directly from your `Gemfile`:
+
+```ruby
+# Latest main branch
+gem "elevenlabs", git: "https://github.com/architecture/elevenlabs-ruby", branch: "main"
+
+# Specific tag/commit
+gem "elevenlabs", git: "https://github.com/architecture/elevenlabs-ruby", tag: "v0.1.0"
+# or
+gem "elevenlabs", path: "/path/to/elevenlabs-ruby"
 ```
 
 ## Quick start
