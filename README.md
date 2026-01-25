@@ -288,17 +288,37 @@ This keeps every endpoint, request shape, and child resource in sync without han
 
 ## Development & testing
 
-Run the test suite with the Ruby version configured in this repo:
+Run the full test suite using Rake:
 
 ```bash
-$HOME/.rvm/rubies/ruby-3.3.6/bin/ruby -Itest -Ilib test/operation_serialization_test.rb
-$HOME/.rvm/rubies/ruby-3.3.6/bin/ruby -Itest -Ilib test/http_client_test.rb
+rake test
 ```
+
+Or run individual test files:
+
+```bash
+ruby -Ilib:test test/operation_serialization_test.rb
+ruby -Ilib:test test/http_client_test.rb
+ruby -Ilib:test test/utils_test.rb
+ruby -Ilib:test test/upload_test.rb
+ruby -Ilib:test test/errors_test.rb
+ruby -Ilib:test test/client_test.rb
+ruby -Ilib:test test/environment_test.rb
+```
+
+**Test Coverage:**
+- `operation_serialization_test.rb` - Tests request serialization for various operations
+- `http_client_test.rb` - Tests HTTP client behavior and file upload handling
+- `utils_test.rb` - Tests utility functions (deep_dup, assign_path, deep_compact, etc.)
+- `upload_test.rb` - Tests Upload helper methods for files, bytes, strings, and IO
+- `errors_test.rb` - Tests error classes and their attributes
+- `client_test.rb` - Tests client initialization and resource caching
+- `environment_test.rb` - Tests environment URL resolution
 
 Launch IRB with the project on the load path:
 
 ```bash
-$HOME/.rvm/rubies/ruby-3.3.6/bin/irb -Ilib -Itest
+irb -Ilib -Itest
 ```
 
 From there you can `require "elevenlabs"` or `load` specific test files to iterate interactively.
@@ -319,6 +339,18 @@ gem "elevenlabs", path: "/path/to/elevenlabs-ruby"
 ```
 
 ## Recent Updates
+
+### 2026-01-24: Expanded Test Coverage
+
+Added comprehensive test suite with 45 tests and 100 assertions covering:
+- Utils module (deep_dup, assign_path, deep_compact, symbolize_keys, encode_path_segment)
+- Upload helpers (from_bytes, from_string, from_io, from_path)
+- Error classes (HTTPError attributes and inheritance)
+- Client initialization and resource caching
+- Environment URL resolution for all regions
+- Created Rakefile for easy test execution (`rake test`)
+
+All tests passing with 0 failures.
 
 ### 2026-01-24: GitHub Actions Workflow Updated to Ruby 3.3
 
