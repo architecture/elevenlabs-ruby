@@ -320,6 +320,10 @@ gem "elevenlabs", path: "/path/to/elevenlabs-ruby"
 
 ## Recent Updates
 
+### 2026-01-24: GitHub Actions Workflow Updated to Ruby 3.3
+
+Updated `.github/workflows/gem-push.yml` to use Ruby 3.3 (from 2.6.x) to match the project's Ruby version requirements. Also enabled bundler caching for faster CI builds.
+
 ### 2026-01-24: Updated API Spec from elevenlabs-python
 
 Updated `lib/elevenlabs/spec.json` by running the extraction script against the latest elevenlabs-python SDK (commit 23cb5ff). This update includes:
