@@ -317,3 +317,36 @@ You can then require the gem from any project (or IRB) and point `Gemfile` entri
 ```ruby
 gem "elevenlabs", path: "/path/to/elevenlabs-ruby"
 ```
+
+## Recent Updates
+
+### 2026-01-24: Updated API Spec from elevenlabs-python
+
+Updated `lib/elevenlabs/spec.json` by running the extraction script against the latest elevenlabs-python SDK (commit 23cb5ff). This update includes:
+
+**New Features:**
+- Agent summaries endpoint (`client.conversational_ai.agents.summaries`)
+- WhatsApp integration (`client.conversational_ai.whatsapp` and `client.conversational_ai.whatsapp_accounts`)
+- Batch calls functionality for conversational AI
+- Workspace resources management (`client.workspace.resources`)
+- Knowledge base improvements (dependent type filtering, source file URL retrieval)
+- Dubbing transcripts management (`client.dubbing.transcripts`)
+
+**Enhanced Parameters:**
+- `show_only_owned_agents` filter for agent listing
+- `branch_id` support for conversation workflows
+- `main_languages` and `conversation_initiation_source` for conversations
+- `entity_detection` capability for speech-to-text
+- Custom SIP headers for phone number workflows
+- Widget configuration and language presets
+
+**API Changes:**
+- Removed deprecated `use_typesense` parameter from knowledge base operations
+- Updated output format enums to use consolidated `allowed_output_formats`
+- Enhanced phone number transfer configuration with custom headers
+- Improved permission types for workspace API keys
+
+To update your local spec.json in the future, run:
+```bash
+cd tmp-elevenlabs-python && git pull origin main && cd .. && python3 scripts/extract_spec.py
+```
