@@ -10,7 +10,7 @@ Since this gem isn’t published on RubyGems yet, install it from the local sour
 git clone https://github.com/architecture/elevenlabs-ruby
 cd elevenlabs-ruby
 gem build elevenlabs-ruby.gemspec
-gem install ./elevenlabs-0.1.0.gem
+gem install ./elevenlabs-0.2.0.gem
 ```
 
 Or reference the GitHub repo/path directly from your `Gemfile`:
@@ -20,7 +20,7 @@ Or reference the GitHub repo/path directly from your `Gemfile`:
 gem "elevenlabs", git: "https://github.com/architecture/elevenlabs-ruby", branch: "main"
 
 # Specific tag/commit
-gem "elevenlabs", git: "https://github.com/architecture/elevenlabs-ruby", tag: "v0.1.0"
+gem "elevenlabs", git: "https://github.com/architecture/elevenlabs-ruby", tag: "v0.2.0"
 # or
 gem "elevenlabs", path: "/path/to/elevenlabs-ruby"
 ```
@@ -339,6 +339,33 @@ gem "elevenlabs", path: "/path/to/elevenlabs-ruby"
 ```
 
 ## Recent Updates
+
+### 2026-02-17: Updated API Spec from elevenlabs-python (v0.2.0)
+
+Updated `lib/elevenlabs/spec.json` by running the extraction script against the latest elevenlabs-python SDK (commit 0b87e77, SDK regeneration #730 — February 16, 2026). This is a major update with many new endpoints.
+
+**New Namespaces:**
+- MCP server management (`client.conversational_ai.mcp_servers` + tool approvals, tool configs, tools listing)
+- Agent branches (`client.conversational_ai.agents.branches`) — list, create, get, update, merge
+- Agent deployments (`client.conversational_ai.agents.deployments`)
+- Agent drafts (`client.conversational_ai.agents.drafts`)
+- Conversational AI tests (`client.conversational_ai.tests`) with invocations sub-resource
+- Conversational AI tools (`client.conversational_ai.tools`)
+- Twilio integration (`client.conversational_ai.twilio`) — outbound calls and call registration
+- SIP trunk (`client.conversational_ai.sip_trunk`) — outbound calls
+- Analytics (`client.conversational_ai.analytics.live_count`)
+- Dashboard settings (`client.conversational_ai.dashboard.settings`)
+- LLM usage (`client.conversational_ai.llm_usage`, `client.conversational_ai.agents.llm_usage`)
+- Users listing (`client.conversational_ai.users`)
+- Agent simulation (`client.conversational_ai.agents.simulate_conversation`, `simulate_conversation_stream`, `run_tests`)
+- Professional voice cloning expanded (`client.voices.pvc`) — samples, speakers, verification, captcha, waveform
+
+**Enhanced Features:**
+- Music: added `compose_detailed`, `stream`, `separate_stems` operations
+- Text-to-dialogue: added `stream_with_timestamps` and `convert_with_timestamps`
+- Dubbing: expanded resource operations (transcribe, translate, dub, render, segment/speaker management)
+- Studio: added `get_muted_tracks` for projects
+- Knowledge base: added `rag_index_overview`, per-document RAG index compute, chunk and summary retrieval
 
 ### 2026-01-24: Expanded Test Coverage
 
