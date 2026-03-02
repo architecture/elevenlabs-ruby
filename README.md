@@ -23,6 +23,20 @@ Then run `bundle install`.
 
 > **Note:** The `gem install elevenlabs` command shown on the GitHub Packages page points to RubyGems.org and will not work — this gem is only available via GitHub Packages.
 
+### Alternative: install directly from GitHub (no registry auth required)
+
+Bundler can pull the gem straight from the git repository. This works for public repos without any token setup:
+
+```ruby
+# Pin to a release tag (recommended for production)
+gem "elevenlabs", git: "https://github.com/architecture/elevenlabs-ruby", tag: "v0.3.0"
+
+# Or track the latest main branch
+gem "elevenlabs", git: "https://github.com/architecture/elevenlabs-ruby", branch: "main"
+```
+
+Then run `bundle install`.
+
 ## Quick start
 
 ```ruby
