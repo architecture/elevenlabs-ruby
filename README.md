@@ -4,26 +4,24 @@ This gem mirrors the public interface of [elevenlabs-python](https://github.com/
 
 ## Installation
 
-Since this gem isn’t published on RubyGems yet, install it from the local source or Git:
-
-```bash
-git clone https://github.com/architecture/elevenlabs-ruby
-cd elevenlabs-ruby
-gem build elevenlabs-ruby.gemspec
-gem install ./elevenlabs-0.3.0.gem
-```
-
-Or reference the GitHub repo/path directly from your `Gemfile`:
+This gem is published to **GitHub Packages** (not RubyGems.org). Add the GitHub Packages source to your `Gemfile`:
 
 ```ruby
-# Latest main branch
-gem "elevenlabs", git: "https://github.com/architecture/elevenlabs-ruby", branch: "main"
-
-# Specific tag/commit
-gem "elevenlabs", git: "https://github.com/architecture/elevenlabs-ruby", tag: "v0.3.0"
-# or
-gem "elevenlabs", path: "/path/to/elevenlabs-ruby"
+source "https://rubygems.pkg.github.com/architecture" do
+  gem "elevenlabs", "0.3.0"
+end
 ```
+
+GitHub Packages requires authentication. Create a [personal access token](https://github.com/settings/tokens) with `read:packages` scope and add it to `~/.gem/credentials`:
+
+```
+---
+:github: Bearer <YOUR_TOKEN>
+```
+
+Then run `bundle install`.
+
+> **Note:** The `gem install elevenlabs` command shown on the GitHub Packages page points to RubyGems.org and will not work — this gem is only available via GitHub Packages.
 
 ## Quick start
 
