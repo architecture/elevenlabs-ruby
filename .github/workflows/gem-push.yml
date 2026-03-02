@@ -29,7 +29,7 @@ jobs:
         chmod 0600 $HOME/.gem/credentials
         printf -- "---\n:github: ${GEM_HOST_API_KEY}\n" > $HOME/.gem/credentials
         gem build *.gemspec
-        gem push --KEY github --host https://rubygems.pkg.github.com/${OWNER} *.gem
+        gem push --KEY github --host https://rubygems.pkg.github.com/${OWNER} elevenlabs-*.gem
       env:
         GEM_HOST_API_KEY: "Bearer ${{secrets.GITHUB_TOKEN}}"
         OWNER: ${{ github.repository_owner }}
@@ -41,6 +41,6 @@ jobs:
         chmod 0600 $HOME/.gem/credentials
         printf -- "---\n:rubygems_api_key: ${GEM_HOST_API_KEY}\n" > $HOME/.gem/credentials
         gem build *.gemspec
-        gem push *.gem
+        gem push elevenlabs-*.gem
       env:
         GEM_HOST_API_KEY: "${{secrets.RUBYGEMS_AUTH_TOKEN}}"
