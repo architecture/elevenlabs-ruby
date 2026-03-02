@@ -10,7 +10,7 @@ Since this gem isn’t published on RubyGems yet, install it from the local sour
 git clone https://github.com/architecture/elevenlabs-ruby
 cd elevenlabs-ruby
 gem build elevenlabs-ruby.gemspec
-gem install ./elevenlabs-0.2.0.gem
+gem install ./elevenlabs-0.3.0.gem
 ```
 
 Or reference the GitHub repo/path directly from your `Gemfile`:
@@ -20,7 +20,7 @@ Or reference the GitHub repo/path directly from your `Gemfile`:
 gem "elevenlabs", git: "https://github.com/architecture/elevenlabs-ruby", branch: "main"
 
 # Specific tag/commit
-gem "elevenlabs", git: "https://github.com/architecture/elevenlabs-ruby", tag: "v0.2.0"
+gem "elevenlabs", git: "https://github.com/architecture/elevenlabs-ruby", tag: "v0.3.0"
 # or
 gem "elevenlabs", path: "/path/to/elevenlabs-ruby"
 ```
