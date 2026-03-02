@@ -340,6 +340,33 @@ gem "elevenlabs", path: "/path/to/elevenlabs-ruby"
 
 ## Recent Updates
 
+### 2026-03-01: Updated API Spec from elevenlabs-python (v0.2.0)
+
+Updated `lib/elevenlabs/spec.json` by running the extraction script against the latest elevenlabs-python SDK (commit f71bcd8, SDK regeneration #736 — March 2026). 6 new operations added.
+
+**New Operations:**
+- `audio_native.update_content_from_url` — update audio native content from a URL
+- `conversational_ai.conversations.files.create` — upload files within a conversation context
+- `conversational_ai.conversations.files.delete` — delete files from a conversation
+- `conversational_ai.conversations.messages.search` — search conversation messages
+- `conversational_ai.conversations.messages.text_search` — text search across conversation messages
+- `conversational_ai.llm.list` — list available LLMs for conversational AI
+
+**New Ruby access patterns:**
+```ruby
+client.audio_native.update_content_from_url(project_id: "proj_123", url: "https://example.com/audio.mp3")
+client.conversational_ai.conversations.files.create(conversation_id: "conv_123", file: upload)
+client.conversational_ai.conversations.files.delete(conversation_id: "conv_123", file_id: "file_456")
+client.conversational_ai.conversations.messages.search(conversation_id: "conv_123", query: "hello")
+client.conversational_ai.conversations.messages.text_search(conversation_id: "conv_123", query: "hello")
+client.conversational_ai.llm.list
+```
+
+**Upstream changes also included:**
+- Coaching settings for agent create/patch operations
+- New types: `ClipAnimation`, `CoachingAgentSettings`, `FocusGuardrail`, `PromptInjectionGuardrail`, `ReferenceVideo`, `LlmInfoModel`, `ConstantSchemaOverride`, `DynamicVariableSchemaOverride`, `MessagesSearchResponse`, `ConversationHistoryTranscriptResponseModel`, `PrivacyConfigOutput`, `ProcedureRefResponseModel`, `WidgetConfig`, `GenerationSourceContext`
+- Renamed: `AlignmentGuardrail` → `FocusGuardrail`, `PrivacyConfig` → `PrivacyConfigInput`
+
 ### 2026-02-17: Updated API Spec from elevenlabs-python (v0.2.0)
 
 Updated `lib/elevenlabs/spec.json` by running the extraction script against the latest elevenlabs-python SDK (commit 0b87e77, SDK regeneration #730 — February 16, 2026). This is a major update with many new endpoints.

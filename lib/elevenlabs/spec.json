@@ -486,6 +486,49 @@
             "force_multipart": true,
             "streaming": false
           }
+        },
+        {
+          "name": "update_content_from_url",
+          "doc": "Finds an AudioNative project matching the provided URL, extracts content from the URL, updates the project content, and queues it for conversion and auto-publishing.\n\nParameters\n----------\nurl : str\n    URL of the page to extract content from.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[AudioNativeEditContentResponseModel]\n    Successful Response",
+          "positional_params": [],
+          "keyword_params": [
+            {
+              "name": "url",
+              "kind": "keyword",
+              "default": null
+            },
+            {
+              "name": "request_options",
+              "kind": "keyword",
+              "default": null
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "path": {
+              "template": "v1/audio-native/content",
+              "params": []
+            },
+            "query": [],
+            "json": {
+              "literal": null,
+              "assignments": [
+                {
+                  "path": [
+                    "url"
+                  ],
+                  "param": "url"
+                }
+              ]
+            },
+            "form": null,
+            "files": [],
+            "headers": {
+              "content-type": "application/json"
+            },
+            "force_multipart": false,
+            "streaming": false
+          }
         }
       ],
       "children": {}
@@ -673,7 +716,7 @@
           "operations": [
             {
               "name": "create",
-              "doc": "Create an agent from a config object\n\nParameters\n----------\nconversation_config : ConversationalConfig\n    Conversation configuration for an agent\n\nplatform_settings : typing.Optional[AgentPlatformSettingsRequestModel]\n    Platform settings for the agent are all settings that aren't related to the conversation orchestration and content.\n\nworkflow : typing.Optional[AgentWorkflowRequestModel]\n    Workflow for the agent. This is used to define the flow of the conversation and how the agent interacts with tools.\n\nname : typing.Optional[str]\n    A name to make the agent easier to find\n\ntags : typing.Optional[typing.Sequence[str]]\n    Tags to help classify and filter the agent\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[CreateAgentResponseModel]\n    Successful Response",
+              "doc": "Create an agent from a config object\n\nParameters\n----------\nconversation_config : ConversationalConfig\n    Conversation configuration for an agent\n\nplatform_settings : typing.Optional[AgentPlatformSettingsRequestModel]\n    Platform settings for the agent are all settings that aren't related to the conversation orchestration and content.\n\nworkflow : typing.Optional[AgentWorkflowRequestModel]\n    Workflow for the agent. This is used to define the flow of the conversation and how the agent interacts with tools.\n\nname : typing.Optional[str]\n    A name to make the agent easier to find\n\ntags : typing.Optional[typing.Sequence[str]]\n    Tags to help classify and filter the agent\n\ncoaching_settings : typing.Optional[BodyCreateAgentV1ConvaiAgentsCreatePostCoachingSettings]\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[CreateAgentResponseModel]\n    Successful Response",
               "positional_params": [],
               "keyword_params": [
                 {
@@ -698,6 +741,11 @@
                 },
                 {
                   "name": "tags",
+                  "kind": "keyword",
+                  "default": "__OMIT__"
+                },
+                {
+                  "name": "coaching_settings",
                   "kind": "keyword",
                   "default": "__OMIT__"
                 },
@@ -746,6 +794,12 @@
                         "tags"
                       ],
                       "param": "tags"
+                    },
+                    {
+                      "path": [
+                        "coaching_settings"
+                      ],
+                      "param": "coaching_settings"
                     }
                   ]
                 },
@@ -847,7 +901,7 @@
             },
             {
               "name": "update",
-              "doc": "Patches an Agent settings\n\nParameters\n----------\nagent_id : str\n    The id of an agent. This is returned on agent creation.\n\nbranch_id : typing.Optional[str]\n    The ID of the branch to use\n\nconversation_config : typing.Optional[ConversationalConfig]\n    Conversation configuration for an agent\n\nplatform_settings : typing.Optional[AgentPlatformSettingsRequestModel]\n    Platform settings for the agent are all settings that aren't related to the conversation orchestration and content.\n\nworkflow : typing.Optional[AgentWorkflowRequestModel]\n    Workflow for the agent. This is used to define the flow of the conversation and how the agent interacts with tools.\n\nname : typing.Optional[str]\n    A name to make the agent easier to find\n\ntags : typing.Optional[typing.Sequence[str]]\n    Tags to help classify and filter the agent\n\nversion_description : typing.Optional[str]\n    Description for this version when publishing changes (only applicable for versioned agents)\n\nprocedure_refs : typing.Optional[typing.Sequence[BodyPatchesAnAgentSettingsV1ConvaiAgentsAgentIdPatchProcedureRefsItem]]\n    List of procedure refs used for this agent version.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[GetAgentResponseModel]\n    Successful Response",
+              "doc": "Patches an Agent settings\n\nParameters\n----------\nagent_id : str\n    The id of an agent. This is returned on agent creation.\n\nbranch_id : typing.Optional[str]\n    The ID of the branch to use\n\nconversation_config : typing.Optional[ConversationalConfig]\n    Conversation configuration for an agent\n\nplatform_settings : typing.Optional[AgentPlatformSettingsRequestModel]\n    Platform settings for the agent are all settings that aren't related to the conversation orchestration and content.\n\nworkflow : typing.Optional[AgentWorkflowRequestModel]\n    Workflow for the agent. This is used to define the flow of the conversation and how the agent interacts with tools.\n\nname : typing.Optional[str]\n    A name to make the agent easier to find\n\ntags : typing.Optional[typing.Sequence[str]]\n    Tags to help classify and filter the agent\n\ncoaching_settings : typing.Optional[BodyPatchesAnAgentSettingsV1ConvaiAgentsAgentIdPatchCoachingSettings]\n\nversion_description : typing.Optional[str]\n    Description for this version when publishing changes (only applicable for versioned agents)\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[GetAgentResponseModel]\n    Successful Response",
               "positional_params": [
                 {
                   "name": "agent_id",
@@ -887,12 +941,12 @@
                   "default": "__OMIT__"
                 },
                 {
-                  "name": "version_description",
+                  "name": "coaching_settings",
                   "kind": "keyword",
                   "default": "__OMIT__"
                 },
                 {
-                  "name": "procedure_refs",
+                  "name": "version_description",
                   "kind": "keyword",
                   "default": "__OMIT__"
                 },
@@ -951,15 +1005,15 @@
                     },
                     {
                       "path": [
-                        "version_description"
+                        "coaching_settings"
                       ],
-                      "param": "version_description"
+                      "param": "coaching_settings"
                     },
                     {
                       "path": [
-                        "procedure_refs"
+                        "version_description"
                       ],
-                      "param": "procedure_refs"
+                      "param": "version_description"
                     }
                   ]
                 },
@@ -3020,6 +3074,376 @@
                 }
               ],
               "children": {}
+            },
+            "files": {
+              "operations": [
+                {
+                  "name": "create",
+                  "doc": "Upload an image or PDF file for a conversation. Returns a unique file ID that can be used to reference the file in the conversation.\n\nParameters\n----------\nconversation_id : str\n\nfile : core.File\n    See core.File for more documentation\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[ConvAiFileUploadResponseModel]\n    Successful Response",
+                  "positional_params": [
+                    {
+                      "name": "conversation_id",
+                      "kind": "positional",
+                      "default": null
+                    }
+                  ],
+                  "keyword_params": [
+                    {
+                      "name": "file",
+                      "kind": "keyword",
+                      "default": null
+                    },
+                    {
+                      "name": "request_options",
+                      "kind": "keyword",
+                      "default": null
+                    }
+                  ],
+                  "request": {
+                    "method": "POST",
+                    "path": {
+                      "template": "v1/convai/conversations/{conversation_id}/files",
+                      "params": [
+                        "conversation_id"
+                      ]
+                    },
+                    "query": [],
+                    "json": null,
+                    "form": {
+                      "literal": null,
+                      "assignments": []
+                    },
+                    "files": [
+                      {
+                        "name": "file",
+                        "value": {
+                          "type": "param",
+                          "name": "file"
+                        }
+                      }
+                    ],
+                    "headers": {},
+                    "force_multipart": true,
+                    "streaming": false
+                  }
+                },
+                {
+                  "name": "delete",
+                  "doc": "Remove a file upload from a conversation. Only possible if the file hasn't already been used in the conversation.\n\nParameters\n----------\nconversation_id : str\n\nfile_id : str\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[ConvAiFileUploadResponseModel]\n    Successful Response",
+                  "positional_params": [
+                    {
+                      "name": "conversation_id",
+                      "kind": "positional",
+                      "default": null
+                    },
+                    {
+                      "name": "file_id",
+                      "kind": "positional",
+                      "default": null
+                    }
+                  ],
+                  "keyword_params": [
+                    {
+                      "name": "request_options",
+                      "kind": "keyword",
+                      "default": null
+                    }
+                  ],
+                  "request": {
+                    "method": "DELETE",
+                    "path": {
+                      "template": "v1/convai/conversations/{conversation_id}/files/{file_id}",
+                      "params": [
+                        "conversation_id",
+                        "file_id"
+                      ]
+                    },
+                    "query": [],
+                    "json": null,
+                    "form": null,
+                    "files": [],
+                    "headers": {},
+                    "force_multipart": false,
+                    "streaming": false
+                  }
+                }
+              ],
+              "children": {}
+            },
+            "messages": {
+              "operations": [
+                {
+                  "name": "text_search",
+                  "doc": "Search through conversation transcript messages by full-text and fuzzy search\n\nParameters\n----------\ntext_query : str\n    The search query text for full-text and fuzzy matching\n\nagent_id : typing.Optional[str]\n    The id of the agent you're taking the action on.\n\ncall_successful : typing.Optional[EvaluationSuccessResult]\n    The result of the success evaluation\n\ncall_start_before_unix : typing.Optional[int]\n    Unix timestamp (in seconds) to filter conversations up to this start date.\n\ncall_start_after_unix : typing.Optional[int]\n    Unix timestamp (in seconds) to filter conversations after to this start date.\n\ncall_duration_min_secs : typing.Optional[int]\n    Minimum call duration in seconds.\n\ncall_duration_max_secs : typing.Optional[int]\n    Maximum call duration in seconds.\n\nrating_max : typing.Optional[int]\n    Maximum overall rating (1-5).\n\nrating_min : typing.Optional[int]\n    Minimum overall rating (1-5).\n\nhas_feedback_comment : typing.Optional[bool]\n    Filter conversations with user feedback comments.\n\nuser_id : typing.Optional[str]\n    Filter conversations by the user ID who initiated them.\n\nevaluation_params : typing.Optional[typing.Union[str, typing.Sequence[str]]]\n    Evaluation filters. Repeat param. Format: criteria_id:result. Example: eval=value_framing:success\n\ndata_collection_params : typing.Optional[typing.Union[str, typing.Sequence[str]]]\n    Data collection filters. Repeat param. Format: id:op:value where op is one of eq|neq|gt|gte|lt|lte|in|exists|missing. For in, pipe-delimit values.\n\ntool_names : typing.Optional[typing.Union[str, typing.Sequence[str]]]\n    Filter conversations by tool names used during the call.\n\nmain_languages : typing.Optional[typing.Union[str, typing.Sequence[str]]]\n    Filter conversations by detected main language (language code).\n\npage_size : typing.Optional[int]\n    Number of results per page. Max 50.\n\nsummary_mode : typing.Optional[MessagesTextSearchRequestSummaryMode]\n    Whether to include transcript summaries in the response.\n\nconversation_initiation_source : typing.Optional[ConversationInitiationSource]\n\nbranch_id : typing.Optional[str]\n    Filter conversations by branch ID.\n\ncursor : typing.Optional[str]\n    Used for fetching next page. Cursor is returned in the response.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[MessagesSearchResponse]\n    Successful Response",
+                  "positional_params": [],
+                  "keyword_params": [
+                    {
+                      "name": "text_query",
+                      "kind": "keyword",
+                      "default": null
+                    },
+                    {
+                      "name": "agent_id",
+                      "kind": "keyword",
+                      "default": null
+                    },
+                    {
+                      "name": "call_successful",
+                      "kind": "keyword",
+                      "default": null
+                    },
+                    {
+                      "name": "call_start_before_unix",
+                      "kind": "keyword",
+                      "default": null
+                    },
+                    {
+                      "name": "call_start_after_unix",
+                      "kind": "keyword",
+                      "default": null
+                    },
+                    {
+                      "name": "call_duration_min_secs",
+                      "kind": "keyword",
+                      "default": null
+                    },
+                    {
+                      "name": "call_duration_max_secs",
+                      "kind": "keyword",
+                      "default": null
+                    },
+                    {
+                      "name": "rating_max",
+                      "kind": "keyword",
+                      "default": null
+                    },
+                    {
+                      "name": "rating_min",
+                      "kind": "keyword",
+                      "default": null
+                    },
+                    {
+                      "name": "has_feedback_comment",
+                      "kind": "keyword",
+                      "default": null
+                    },
+                    {
+                      "name": "user_id",
+                      "kind": "keyword",
+                      "default": null
+                    },
+                    {
+                      "name": "evaluation_params",
+                      "kind": "keyword",
+                      "default": null
+                    },
+                    {
+                      "name": "data_collection_params",
+                      "kind": "keyword",
+                      "default": null
+                    },
+                    {
+                      "name": "tool_names",
+                      "kind": "keyword",
+                      "default": null
+                    },
+                    {
+                      "name": "main_languages",
+                      "kind": "keyword",
+                      "default": null
+                    },
+                    {
+                      "name": "page_size",
+                      "kind": "keyword",
+                      "default": null
+                    },
+                    {
+                      "name": "summary_mode",
+                      "kind": "keyword",
+                      "default": null
+                    },
+                    {
+                      "name": "conversation_initiation_source",
+                      "kind": "keyword",
+                      "default": null
+                    },
+                    {
+                      "name": "branch_id",
+                      "kind": "keyword",
+                      "default": null
+                    },
+                    {
+                      "name": "cursor",
+                      "kind": "keyword",
+                      "default": null
+                    },
+                    {
+                      "name": "request_options",
+                      "kind": "keyword",
+                      "default": null
+                    }
+                  ],
+                  "request": {
+                    "method": "GET",
+                    "path": {
+                      "template": "v1/convai/conversations/messages/text-search",
+                      "params": []
+                    },
+                    "query": [
+                      {
+                        "name": "text_query",
+                        "param": "text_query"
+                      },
+                      {
+                        "name": "agent_id",
+                        "param": "agent_id"
+                      },
+                      {
+                        "name": "call_successful",
+                        "param": "call_successful"
+                      },
+                      {
+                        "name": "call_start_before_unix",
+                        "param": "call_start_before_unix"
+                      },
+                      {
+                        "name": "call_start_after_unix",
+                        "param": "call_start_after_unix"
+                      },
+                      {
+                        "name": "call_duration_min_secs",
+                        "param": "call_duration_min_secs"
+                      },
+                      {
+                        "name": "call_duration_max_secs",
+                        "param": "call_duration_max_secs"
+                      },
+                      {
+                        "name": "rating_max",
+                        "param": "rating_max"
+                      },
+                      {
+                        "name": "rating_min",
+                        "param": "rating_min"
+                      },
+                      {
+                        "name": "has_feedback_comment",
+                        "param": "has_feedback_comment"
+                      },
+                      {
+                        "name": "user_id",
+                        "param": "user_id"
+                      },
+                      {
+                        "name": "evaluation_params",
+                        "param": "evaluation_params"
+                      },
+                      {
+                        "name": "data_collection_params",
+                        "param": "data_collection_params"
+                      },
+                      {
+                        "name": "tool_names",
+                        "param": "tool_names"
+                      },
+                      {
+                        "name": "main_languages",
+                        "param": "main_languages"
+                      },
+                      {
+                        "name": "page_size",
+                        "param": "page_size"
+                      },
+                      {
+                        "name": "summary_mode",
+                        "param": "summary_mode"
+                      },
+                      {
+                        "name": "conversation_initiation_source",
+                        "param": "conversation_initiation_source"
+                      },
+                      {
+                        "name": "branch_id",
+                        "param": "branch_id"
+                      },
+                      {
+                        "name": "cursor",
+                        "param": "cursor"
+                      }
+                    ],
+                    "json": null,
+                    "form": null,
+                    "files": [],
+                    "headers": {},
+                    "force_multipart": false,
+                    "streaming": false
+                  }
+                },
+                {
+                  "name": "search",
+                  "doc": "Search conversation transcripts by semantic similarity to surface relevant messages based on meaning and intent, rather than exact keyword matches\n\nParameters\n----------\ntext_query : str\n    The search query text for semantic similarity matching\n\nagent_id : typing.Optional[str]\n    The id of the agent you're taking the action on.\n\npage_size : typing.Optional[int]\n    Number of results per page. Max 50.\n\ncursor : typing.Optional[str]\n    Used for fetching next page. Cursor is returned in the response.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[MessagesSearchResponse]\n    Successful Response",
+                  "positional_params": [],
+                  "keyword_params": [
+                    {
+                      "name": "text_query",
+                      "kind": "keyword",
+                      "default": null
+                    },
+                    {
+                      "name": "agent_id",
+                      "kind": "keyword",
+                      "default": null
+                    },
+                    {
+                      "name": "page_size",
+                      "kind": "keyword",
+                      "default": null
+                    },
+                    {
+                      "name": "cursor",
+                      "kind": "keyword",
+                      "default": null
+                    },
+                    {
+                      "name": "request_options",
+                      "kind": "keyword",
+                      "default": null
+                    }
+                  ],
+                  "request": {
+                    "method": "GET",
+                    "path": {
+                      "template": "v1/convai/conversations/messages/smart-search",
+                      "params": []
+                    },
+                    "query": [
+                      {
+                        "name": "text_query",
+                        "param": "text_query"
+                      },
+                      {
+                        "name": "agent_id",
+                        "param": "agent_id"
+                      },
+                      {
+                        "name": "page_size",
+                        "param": "page_size"
+                      },
+                      {
+                        "name": "cursor",
+                        "param": "cursor"
+                      }
+                    ],
+                    "json": null,
+                    "form": null,
+                    "files": [],
+                    "headers": {},
+                    "force_multipart": false,
+                    "streaming": false
+                  }
+                }
+              ],
+              "children": {}
             }
           }
         },
@@ -3223,7 +3647,7 @@
             },
             {
               "name": "get_or_create_rag_indexes",
-              "doc": "Retrieves and/or creates RAG indexes for multiple knowledge base documents in a single request.\n\nParameters\n----------\nitems : typing.Sequence[GetOrCreateRagIndexRequestModel]\n    List of requested RAG indexes.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[typing.Dict[str, KnowledgeBaseGetOrCreateRagIndexesResponseValue]]\n    Successful Response",
+              "doc": "Retrieves and/or creates RAG indexes for multiple knowledge base documents in a single request. Maximum 100 items per request.\n\nParameters\n----------\nitems : typing.Sequence[GetOrCreateRagIndexRequestModel]\n    List of requested RAG indexes. Minimum 1, maximum 100 items.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[typing.Dict[str, KnowledgeBaseGetOrCreateRagIndexesResponseValue]]\n    Successful Response",
               "positional_params": [],
               "keyword_params": [
                 {
@@ -4039,6 +4463,37 @@
             }
           }
         },
+        "llm": {
+          "operations": [
+            {
+              "name": "list",
+              "doc": "Returns a list of available LLM models that can be used with agents, including their capabilities and any deprecation status. The response is filtered based on the data residency of the deployment and any compliance requirements (e.g. HIPAA) of the workspace subscription.\n\nParameters\n----------\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[LlmListResponseModelInput]\n    Successful Response",
+              "positional_params": [],
+              "keyword_params": [
+                {
+                  "name": "request_options",
+                  "kind": "keyword",
+                  "default": null
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "path": {
+                  "template": "v1/convai/llm/list",
+                  "params": []
+                },
+                "query": [],
+                "json": null,
+                "form": null,
+                "files": [],
+                "headers": {},
+                "force_multipart": false,
+                "streaming": false
+              }
+            }
+          ],
+          "children": {}
+        },
         "llm_usage": {
           "operations": [
             {
@@ -4250,7 +4705,7 @@
             },
             {
               "name": "update",
-              "doc": "Update the configuration settings for an MCP server.\n\nParameters\n----------\nmcp_server_id : str\n    ID of the MCP Server.\n\napproval_policy : typing.Optional[McpApprovalPolicy]\n    The approval mode to set for the MCP server\n\nforce_pre_tool_speech : typing.Optional[bool]\n    If set, overrides the server's force_pre_tool_speech setting for this tool\n\ndisable_interruptions : typing.Optional[bool]\n    If set, overrides the server's disable_interruptions setting for this tool\n\ntool_call_sound : typing.Optional[ToolCallSoundType]\n    Predefined tool call sound type to play during tool execution for all tools from this MCP server\n\ntool_call_sound_behavior : typing.Optional[ToolCallSoundBehavior]\n    Determines when the tool call sound should play for all tools from this MCP server\n\nexecution_mode : typing.Optional[ToolExecutionMode]\n    If set, overrides the server's execution_mode setting for this tool\n\nrequest_headers : typing.Optional[typing.Dict[str, typing.Optional[McpServerConfigUpdateRequestModelRequestHeadersValue]]]\n    The headers to include in requests to the MCP server\n\ndisable_compression : typing.Optional[bool]\n    Whether to disable HTTP compression for this MCP server\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[McpServerResponseModel]\n    Successful Response",
+              "doc": "Update the configuration settings for an MCP server.\n\nParameters\n----------\nmcp_server_id : str\n    ID of the MCP Server.\n\napproval_policy : typing.Optional[McpApprovalPolicy]\n    The approval mode to set for the MCP server\n\nforce_pre_tool_speech : typing.Optional[bool]\n    If set, overrides the server's force_pre_tool_speech setting for this tool\n\ndisable_interruptions : typing.Optional[bool]\n    If set, overrides the server's disable_interruptions setting for this tool\n\ntool_call_sound : typing.Optional[ToolCallSoundType]\n    Predefined tool call sound type to play during tool execution for all tools from this MCP server\n\ntool_call_sound_behavior : typing.Optional[ToolCallSoundBehavior]\n    Determines when the tool call sound should play for all tools from this MCP server\n\nexecution_mode : typing.Optional[ToolExecutionMode]\n    If set, overrides the server's execution_mode setting for this tool\n\nrequest_headers : typing.Optional[typing.Dict[str, typing.Optional[McpServerConfigUpdateRequestModelRequestHeadersValue]]]\n    The headers to include in requests to the MCP server\n\ndisable_compression : typing.Optional[bool]\n    Whether to disable HTTP compression for this MCP server\n\nsecret_token : typing.Optional[ConvAiSecretLocator]\n    Optional secret token for authentication with this MCP server\n\nauth_connection : typing.Optional[AuthConnectionLocator]\n    Optional auth connection to use for authentication with this MCP server\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[McpServerResponseModel]\n    Successful Response",
               "positional_params": [
                 {
                   "name": "mcp_server_id",
@@ -4296,6 +4751,16 @@
                 },
                 {
                   "name": "disable_compression",
+                  "kind": "keyword",
+                  "default": "__OMIT__"
+                },
+                {
+                  "name": "secret_token",
+                  "kind": "keyword",
+                  "default": "__OMIT__"
+                },
+                {
+                  "name": "auth_connection",
                   "kind": "keyword",
                   "default": "__OMIT__"
                 },
@@ -4364,6 +4829,18 @@
                         "disable_compression"
                       ],
                       "param": "disable_compression"
+                    },
+                    {
+                      "path": [
+                        "secret_token"
+                      ],
+                      "param": "secret_token"
+                    },
+                    {
+                      "path": [
+                        "auth_connection"
+                      ],
+                      "param": "auth_connection"
                     }
                   ]
                 },
@@ -4567,7 +5044,7 @@
               "operations": [
                 {
                   "name": "create",
-                  "doc": "Create configuration overrides for a specific MCP tool.\n\nParameters\n----------\nmcp_server_id : str\n    ID of the MCP Server.\n\ntool_name : str\n    The name of the MCP tool\n\nforce_pre_tool_speech : typing.Optional[bool]\n    If set, overrides the server's force_pre_tool_speech setting for this tool\n\ndisable_interruptions : typing.Optional[bool]\n    If set, overrides the server's disable_interruptions setting for this tool\n\ntool_call_sound : typing.Optional[ToolCallSoundType]\n    If set, overrides the server's tool_call_sound setting for this tool\n\ntool_call_sound_behavior : typing.Optional[ToolCallSoundBehavior]\n    If set, overrides the server's tool_call_sound_behavior setting for this tool\n\nexecution_mode : typing.Optional[ToolExecutionMode]\n    If set, overrides the server's execution_mode setting for this tool\n\nassignments : typing.Optional[typing.Sequence[DynamicVariableAssignment]]\n    Dynamic variable assignments for this MCP tool\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[McpServerResponseModel]\n    Successful Response",
+                  "doc": "Create configuration overrides for a specific MCP tool.\n\nParameters\n----------\nmcp_server_id : str\n    ID of the MCP Server.\n\ntool_name : str\n    The name of the MCP tool\n\nforce_pre_tool_speech : typing.Optional[bool]\n    If set, overrides the server's force_pre_tool_speech setting for this tool\n\ndisable_interruptions : typing.Optional[bool]\n    If set, overrides the server's disable_interruptions setting for this tool\n\ntool_call_sound : typing.Optional[ToolCallSoundType]\n    If set, overrides the server's tool_call_sound setting for this tool\n\ntool_call_sound_behavior : typing.Optional[ToolCallSoundBehavior]\n    If set, overrides the server's tool_call_sound_behavior setting for this tool\n\nexecution_mode : typing.Optional[ToolExecutionMode]\n    If set, overrides the server's execution_mode setting for this tool\n\nassignments : typing.Optional[typing.Sequence[DynamicVariableAssignment]]\n    Dynamic variable assignments for this MCP tool\n\ninput_overrides : typing.Optional[typing.Dict[str, typing.Optional[McpToolConfigOverrideCreateRequestModelInputOverridesValue]]]\n    Mapping of json path to input override configuration\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[McpServerResponseModel]\n    Successful Response",
                   "positional_params": [
                     {
                       "name": "mcp_server_id",
@@ -4608,6 +5085,11 @@
                     },
                     {
                       "name": "assignments",
+                      "kind": "keyword",
+                      "default": "__OMIT__"
+                    },
+                    {
+                      "name": "input_overrides",
                       "kind": "keyword",
                       "default": "__OMIT__"
                     },
@@ -4664,6 +5146,12 @@
                             "assignments"
                           ],
                           "param": "assignments"
+                        },
+                        {
+                          "path": [
+                            "input_overrides"
+                          ],
+                          "param": "input_overrides"
                         },
                         {
                           "path": [
@@ -4764,7 +5252,7 @@
                 },
                 {
                   "name": "update",
-                  "doc": "Update configuration overrides for a specific MCP tool.\n\nParameters\n----------\nmcp_server_id : str\n    ID of the MCP Server.\n\ntool_name : str\n    Name of the MCP tool to update config overrides for.\n\nforce_pre_tool_speech : typing.Optional[bool]\n    If set, overrides the server's force_pre_tool_speech setting for this tool\n\ndisable_interruptions : typing.Optional[bool]\n    If set, overrides the server's disable_interruptions setting for this tool\n\ntool_call_sound : typing.Optional[ToolCallSoundType]\n    If set, overrides the server's tool_call_sound setting for this tool\n\ntool_call_sound_behavior : typing.Optional[ToolCallSoundBehavior]\n    If set, overrides the server's tool_call_sound_behavior setting for this tool\n\nexecution_mode : typing.Optional[ToolExecutionMode]\n    If set, overrides the server's execution_mode setting for this tool\n\nassignments : typing.Optional[typing.Sequence[DynamicVariableAssignment]]\n    Dynamic variable assignments for this MCP tool\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[McpServerResponseModel]\n    Successful Response",
+                  "doc": "Update configuration overrides for a specific MCP tool.\n\nParameters\n----------\nmcp_server_id : str\n    ID of the MCP Server.\n\ntool_name : str\n    Name of the MCP tool to update config overrides for.\n\nforce_pre_tool_speech : typing.Optional[bool]\n    If set, overrides the server's force_pre_tool_speech setting for this tool\n\ndisable_interruptions : typing.Optional[bool]\n    If set, overrides the server's disable_interruptions setting for this tool\n\ntool_call_sound : typing.Optional[ToolCallSoundType]\n    If set, overrides the server's tool_call_sound setting for this tool\n\ntool_call_sound_behavior : typing.Optional[ToolCallSoundBehavior]\n    If set, overrides the server's tool_call_sound_behavior setting for this tool\n\nexecution_mode : typing.Optional[ToolExecutionMode]\n    If set, overrides the server's execution_mode setting for this tool\n\nassignments : typing.Optional[typing.Sequence[DynamicVariableAssignment]]\n    Dynamic variable assignments for this MCP tool\n\ninput_overrides : typing.Optional[typing.Dict[str, typing.Optional[McpToolConfigOverrideUpdateRequestModelInputOverridesValue]]]\n    Mapping of json path to input override configuration\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[McpServerResponseModel]\n    Successful Response",
                   "positional_params": [
                     {
                       "name": "mcp_server_id",
@@ -4805,6 +5293,11 @@
                     },
                     {
                       "name": "assignments",
+                      "kind": "keyword",
+                      "default": "__OMIT__"
+                    },
+                    {
+                      "name": "input_overrides",
                       "kind": "keyword",
                       "default": "__OMIT__"
                     },
@@ -4862,6 +5355,12 @@
                             "assignments"
                           ],
                           "param": "assignments"
+                        },
+                        {
+                          "path": [
+                            "input_overrides"
+                          ],
+                          "param": "input_overrides"
                         }
                       ]
                     },
@@ -5761,7 +6260,7 @@
             },
             {
               "name": "list",
-              "doc": "Lists all agent response tests with pagination support and optional search filtering.\n\nParameters\n----------\ncursor : typing.Optional[str]\n    Used for fetching next page. Cursor is returned in the response.\n\npage_size : typing.Optional[int]\n    How many Tests to return at maximum. Can not exceed 100, defaults to 30.\n\nsearch : typing.Optional[str]\n    Search query to filter tests by name.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[GetTestsPageResponseModel]\n    Successful Response",
+              "doc": "Lists all agent response tests with pagination support and optional search filtering.\n\nParameters\n----------\ncursor : typing.Optional[str]\n    Used for fetching next page. Cursor is returned in the response.\n\npage_size : typing.Optional[int]\n    How many Tests to return at maximum. Can not exceed 100, defaults to 30.\n\nsearch : typing.Optional[str]\n    Search query to filter tests by name.\n\nparent_folder_id : typing.Optional[str]\n    Filter by parent folder ID. Use 'root' to get items in the root folder.\n\ninclude_folders : typing.Optional[bool]\n    Whether to include folders in the response. Defaults to false.\n\nsort_mode : typing.Optional[TestsListRequestSortMode]\n    Sort mode for listing tests. Use 'folders_first' to place folders before tests.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[GetTestsPageResponseModel]\n    Successful Response",
               "positional_params": [],
               "keyword_params": [
                 {
@@ -5776,6 +6275,21 @@
                 },
                 {
                   "name": "search",
+                  "kind": "keyword",
+                  "default": null
+                },
+                {
+                  "name": "parent_folder_id",
+                  "kind": "keyword",
+                  "default": null
+                },
+                {
+                  "name": "include_folders",
+                  "kind": "keyword",
+                  "default": null
+                },
+                {
+                  "name": "sort_mode",
                   "kind": "keyword",
                   "default": null
                 },
@@ -5803,6 +6317,18 @@
                   {
                     "name": "search",
                     "param": "search"
+                  },
+                  {
+                    "name": "parent_folder_id",
+                    "param": "parent_folder_id"
+                  },
+                  {
+                    "name": "include_folders",
+                    "param": "include_folders"
+                  },
+                  {
+                    "name": "sort_mode",
+                    "param": "sort_mode"
                   }
                 ],
                 "json": null,
@@ -6304,7 +6830,7 @@
           "operations": [
             {
               "name": "outbound_call",
-              "doc": "Handle an outbound call via Twilio\n\nParameters\n----------\nagent_id : str\n\nagent_phone_number_id : str\n\nto_number : str\n\nconversation_initiation_client_data : typing.Optional[ConversationInitiationClientDataRequestInput]\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[TwilioOutboundCallResponse]\n    Successful Response",
+              "doc": "Handle an outbound call via Twilio\n\nParameters\n----------\nagent_id : str\n\nagent_phone_number_id : str\n\nto_number : str\n\nconversation_initiation_client_data : typing.Optional[ConversationInitiationClientDataRequestInput]\n\ncall_recording_enabled : typing.Optional[bool]\n    Whether let Twilio record the call.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[TwilioOutboundCallResponse]\n    Successful Response",
               "positional_params": [],
               "keyword_params": [
                 {
@@ -6324,6 +6850,11 @@
                 },
                 {
                   "name": "conversation_initiation_client_data",
+                  "kind": "keyword",
+                  "default": "__OMIT__"
+                },
+                {
+                  "name": "call_recording_enabled",
                   "kind": "keyword",
                   "default": "__OMIT__"
                 },
@@ -6366,6 +6897,12 @@
                         "conversation_initiation_client_data"
                       ],
                       "param": "conversation_initiation_client_data"
+                    },
+                    {
+                      "path": [
+                        "call_recording_enabled"
+                      ],
+                      "param": "call_recording_enabled"
                     }
                   ]
                 },
@@ -8732,7 +9269,7 @@
       "operations": [
         {
           "name": "compose",
-          "doc": "Compose a song from a prompt or a composition plan.\n\nParameters\n----------\noutput_format : typing.Optional[AllowedOutputFormats]\n    Output format of the generated audio. Formatted as codec_sample_rate_bitrate. So an mp3 with 22.05kHz sample rate at 32kbs is represented as mp3_22050_32. MP3 with 192kbps bitrate requires you to be subscribed to Creator tier or above. PCM with 44.1kHz sample rate requires you to be subscribed to Pro tier or above. Note that the \u03bc-law format (sometimes written mu-law, often approximated as u-law) is commonly used for Twilio audio inputs.\n\nprompt : typing.Optional[str]\n    A simple text prompt to generate a song from. Cannot be used in conjunction with `composition_plan`.\n\ncomposition_plan : typing.Optional[MusicPrompt]\n    A detailed composition plan to guide music generation. Cannot be used in conjunction with `prompt`.\n\nmusic_length_ms : typing.Optional[int]\n    The length of the song to generate in milliseconds. Used only in conjunction with `prompt`. Must be between 3000ms and 600000ms. Optional - if not provided, the model will choose a length based on the prompt.\n\nmodel_id : typing.Optional[typing.Literal[\"music_v1\"]]\n    The model to use for the generation.\n\nforce_instrumental : typing.Optional[bool]\n    If true, guarantees that the generated song will be instrumental. If false, the song may or may not be instrumental depending on the `prompt`. Can only be used with `prompt`.\n\nrespect_sections_durations : typing.Optional[bool]\n    Controls how strictly section durations in the `composition_plan` are enforced. Only used with `composition_plan`. When set to true, the model will precisely respect each section's `duration_ms` from the plan. When set to false, the model may adjust individual section durations which will generally lead to better generation quality and improved latency, while always preserving the total song duration from the plan.\n\nstore_for_inpainting : typing.Optional[bool]\n    Whether to store the generated song for inpainting. Only available to enterprise clients with access to the inpainting API.\n\nsign_with_c_2_pa : typing.Optional[bool]\n    Whether to sign the generated song with C2PA. Applicable only for mp3 files.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration. You can pass in configuration such as `chunk_size`, and more to customize the request and response.\n\nReturns\n-------\ntyping.Iterator[HttpResponse[typing.Iterator[bytes]]]\n    The generated audio file in the format specified",
+          "doc": "Compose a song from a prompt or a composition plan.\n\nParameters\n----------\noutput_format : typing.Optional[AllowedOutputFormats]\n    Output format of the generated audio. Formatted as codec_sample_rate_bitrate. So an mp3 with 22.05kHz sample rate at 32kbs is represented as mp3_22050_32. MP3 with 192kbps bitrate requires you to be subscribed to Creator tier or above. PCM with 44.1kHz sample rate requires you to be subscribed to Pro tier or above. Note that the \u03bc-law format (sometimes written mu-law, often approximated as u-law) is commonly used for Twilio audio inputs.\n\nprompt : typing.Optional[str]\n    A simple text prompt to generate a song from. Cannot be used in conjunction with `composition_plan`.\n\ncomposition_plan : typing.Optional[MusicPrompt]\n    A detailed composition plan to guide music generation. Cannot be used in conjunction with `prompt`.\n\nmusic_length_ms : typing.Optional[int]\n    The length of the song to generate in milliseconds. Used only in conjunction with `prompt`. Must be between 3000ms and 600000ms. Optional - if not provided, the model will choose a length based on the prompt.\n\nmodel_id : typing.Optional[typing.Literal[\"music_v1\"]]\n    The model to use for the generation.\n\nseed : typing.Optional[int]\n    Random seed to initialize the music generation process. Providing the same seed with the same parameters can help achieve more consistent results, but exact reproducibility is not guaranteed and outputs may change across system updates. Cannot be used in conjunction with prompt.\n\nforce_instrumental : typing.Optional[bool]\n    If true, guarantees that the generated song will be instrumental. If false, the song may or may not be instrumental depending on the `prompt`. Can only be used with `prompt`.\n\nrespect_sections_durations : typing.Optional[bool]\n    Controls how strictly section durations in the `composition_plan` are enforced. Only used with `composition_plan`. When set to true, the model will precisely respect each section's `duration_ms` from the plan. When set to false, the model may adjust individual section durations which will generally lead to better generation quality and improved latency, while always preserving the total song duration from the plan.\n\nstore_for_inpainting : typing.Optional[bool]\n    Whether to store the generated song for inpainting. Only available to enterprise clients with access to the inpainting API.\n\nsign_with_c_2_pa : typing.Optional[bool]\n    Whether to sign the generated song with C2PA. Applicable only for mp3 files.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration. You can pass in configuration such as `chunk_size`, and more to customize the request and response.\n\nReturns\n-------\ntyping.Iterator[HttpResponse[typing.Iterator[bytes]]]\n    The generated audio file in the format specified",
           "positional_params": [],
           "keyword_params": [
             {
@@ -8757,6 +9294,11 @@
             },
             {
               "name": "model_id",
+              "kind": "keyword",
+              "default": "__OMIT__"
+            },
+            {
+              "name": "seed",
               "kind": "keyword",
               "default": "__OMIT__"
             },
@@ -8827,6 +9369,12 @@
                 },
                 {
                   "path": [
+                    "seed"
+                  ],
+                  "param": "seed"
+                },
+                {
+                  "path": [
                     "force_instrumental"
                   ],
                   "param": "force_instrumental"
@@ -8862,7 +9410,7 @@
         },
         {
           "name": "compose_detailed",
-          "doc": "Compose a song from a prompt or a composition plan.\n\nParameters\n----------\noutput_format : typing.Optional[AllowedOutputFormats]\n    Output format of the generated audio. Formatted as codec_sample_rate_bitrate. So an mp3 with 22.05kHz sample rate at 32kbs is represented as mp3_22050_32. MP3 with 192kbps bitrate requires you to be subscribed to Creator tier or above. PCM with 44.1kHz sample rate requires you to be subscribed to Pro tier or above. Note that the \u03bc-law format (sometimes written mu-law, often approximated as u-law) is commonly used for Twilio audio inputs.\n\nprompt : typing.Optional[str]\n    A simple text prompt to generate a song from. Cannot be used in conjunction with `composition_plan`.\n\ncomposition_plan : typing.Optional[MusicPrompt]\n    A detailed composition plan to guide music generation. Cannot be used in conjunction with `prompt`.\n\nmusic_length_ms : typing.Optional[int]\n    The length of the song to generate in milliseconds. Used only in conjunction with `prompt`. Must be between 3000ms and 600000ms. Optional - if not provided, the model will choose a length based on the prompt.\n\nmodel_id : typing.Optional[typing.Literal[\"music_v1\"]]\n    The model to use for the generation.\n\nforce_instrumental : typing.Optional[bool]\n    If true, guarantees that the generated song will be instrumental. If false, the song may or may not be instrumental depending on the `prompt`. Can only be used with `prompt`.\n\nstore_for_inpainting : typing.Optional[bool]\n    Whether to store the generated song for inpainting. Only available to enterprise clients with access to the inpainting API.\n\nwith_timestamps : typing.Optional[bool]\n    Whether to return the timestamps of the words in the generated song.\n\nsign_with_c_2_pa : typing.Optional[bool]\n    Whether to sign the generated song with C2PA. Applicable only for mp3 files.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration. You can pass in configuration such as `chunk_size`, and more to customize the request and response.\n\nReturns\n-------\ntyping.Iterator[HttpResponse[typing.Iterator[bytes]]]\n    Multipart/mixed response with JSON metadata and binary audio file",
+          "doc": "Compose a song from a prompt or a composition plan.\n\nParameters\n----------\noutput_format : typing.Optional[AllowedOutputFormats]\n    Output format of the generated audio. Formatted as codec_sample_rate_bitrate. So an mp3 with 22.05kHz sample rate at 32kbs is represented as mp3_22050_32. MP3 with 192kbps bitrate requires you to be subscribed to Creator tier or above. PCM with 44.1kHz sample rate requires you to be subscribed to Pro tier or above. Note that the \u03bc-law format (sometimes written mu-law, often approximated as u-law) is commonly used for Twilio audio inputs.\n\nprompt : typing.Optional[str]\n    A simple text prompt to generate a song from. Cannot be used in conjunction with `composition_plan`.\n\ncomposition_plan : typing.Optional[MusicPrompt]\n    A detailed composition plan to guide music generation. Cannot be used in conjunction with `prompt`.\n\nmusic_length_ms : typing.Optional[int]\n    The length of the song to generate in milliseconds. Used only in conjunction with `prompt`. Must be between 3000ms and 600000ms. Optional - if not provided, the model will choose a length based on the prompt.\n\nmodel_id : typing.Optional[typing.Literal[\"music_v1\"]]\n    The model to use for the generation.\n\nseed : typing.Optional[int]\n    Random seed to initialize the music generation process. Providing the same seed with the same parameters can help achieve more consistent results, but exact reproducibility is not guaranteed and outputs may change across system updates. Cannot be used in conjunction with prompt.\n\nforce_instrumental : typing.Optional[bool]\n    If true, guarantees that the generated song will be instrumental. If false, the song may or may not be instrumental depending on the `prompt`. Can only be used with `prompt`.\n\nstore_for_inpainting : typing.Optional[bool]\n    Whether to store the generated song for inpainting. Only available to enterprise clients with access to the inpainting API.\n\nwith_timestamps : typing.Optional[bool]\n    Whether to return the timestamps of the words in the generated song.\n\nsign_with_c_2_pa : typing.Optional[bool]\n    Whether to sign the generated song with C2PA. Applicable only for mp3 files.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration. You can pass in configuration such as `chunk_size`, and more to customize the request and response.\n\nReturns\n-------\ntyping.Iterator[HttpResponse[typing.Iterator[bytes]]]\n    Multipart/mixed response with JSON metadata and binary audio file",
           "positional_params": [],
           "keyword_params": [
             {
@@ -8887,6 +9435,11 @@
             },
             {
               "name": "model_id",
+              "kind": "keyword",
+              "default": "__OMIT__"
+            },
+            {
+              "name": "seed",
               "kind": "keyword",
               "default": "__OMIT__"
             },
@@ -8957,6 +9510,12 @@
                 },
                 {
                   "path": [
+                    "seed"
+                  ],
+                  "param": "seed"
+                },
+                {
+                  "path": [
                     "force_instrumental"
                   ],
                   "param": "force_instrumental"
@@ -8992,7 +9551,7 @@
         },
         {
           "name": "stream",
-          "doc": "Stream a composed song from a prompt or a composition plan.\n\nParameters\n----------\noutput_format : typing.Optional[AllowedOutputFormats]\n    Output format of the generated audio. Formatted as codec_sample_rate_bitrate. So an mp3 with 22.05kHz sample rate at 32kbs is represented as mp3_22050_32. MP3 with 192kbps bitrate requires you to be subscribed to Creator tier or above. PCM with 44.1kHz sample rate requires you to be subscribed to Pro tier or above. Note that the \u03bc-law format (sometimes written mu-law, often approximated as u-law) is commonly used for Twilio audio inputs.\n\nprompt : typing.Optional[str]\n    A simple text prompt to generate a song from. Cannot be used in conjunction with `composition_plan`.\n\ncomposition_plan : typing.Optional[MusicPrompt]\n    A detailed composition plan to guide music generation. Cannot be used in conjunction with `prompt`.\n\nmusic_length_ms : typing.Optional[int]\n    The length of the song to generate in milliseconds. Used only in conjunction with `prompt`. Must be between 3000ms and 600000ms. Optional - if not provided, the model will choose a length based on the prompt.\n\nmodel_id : typing.Optional[typing.Literal[\"music_v1\"]]\n    The model to use for the generation.\n\nforce_instrumental : typing.Optional[bool]\n    If true, guarantees that the generated song will be instrumental. If false, the song may or may not be instrumental depending on the `prompt`. Can only be used with `prompt`.\n\nstore_for_inpainting : typing.Optional[bool]\n    Whether to store the generated song for inpainting. Only available to enterprise clients with access to the inpainting API.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration. You can pass in configuration such as `chunk_size`, and more to customize the request and response.\n\nReturns\n-------\ntyping.Iterator[HttpResponse[typing.Iterator[bytes]]]\n    Streaming audio data in the format specified",
+          "doc": "Stream a composed song from a prompt or a composition plan.\n\nParameters\n----------\noutput_format : typing.Optional[AllowedOutputFormats]\n    Output format of the generated audio. Formatted as codec_sample_rate_bitrate. So an mp3 with 22.05kHz sample rate at 32kbs is represented as mp3_22050_32. MP3 with 192kbps bitrate requires you to be subscribed to Creator tier or above. PCM with 44.1kHz sample rate requires you to be subscribed to Pro tier or above. Note that the \u03bc-law format (sometimes written mu-law, often approximated as u-law) is commonly used for Twilio audio inputs.\n\nprompt : typing.Optional[str]\n    A simple text prompt to generate a song from. Cannot be used in conjunction with `composition_plan`.\n\ncomposition_plan : typing.Optional[MusicPrompt]\n    A detailed composition plan to guide music generation. Cannot be used in conjunction with `prompt`.\n\nmusic_length_ms : typing.Optional[int]\n    The length of the song to generate in milliseconds. Used only in conjunction with `prompt`. Must be between 3000ms and 600000ms. Optional - if not provided, the model will choose a length based on the prompt.\n\nmodel_id : typing.Optional[typing.Literal[\"music_v1\"]]\n    The model to use for the generation.\n\nseed : typing.Optional[int]\n    Random seed to initialize the music generation process. Providing the same seed with the same parameters can help achieve more consistent results, but exact reproducibility is not guaranteed and outputs may change across system updates. Cannot be used in conjunction with prompt.\n\nforce_instrumental : typing.Optional[bool]\n    If true, guarantees that the generated song will be instrumental. If false, the song may or may not be instrumental depending on the `prompt`. Can only be used with `prompt`.\n\nstore_for_inpainting : typing.Optional[bool]\n    Whether to store the generated song for inpainting. Only available to enterprise clients with access to the inpainting API.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration. You can pass in configuration such as `chunk_size`, and more to customize the request and response.\n\nReturns\n-------\ntyping.Iterator[HttpResponse[typing.Iterator[bytes]]]\n    Streaming audio data in the format specified",
           "positional_params": [],
           "keyword_params": [
             {
@@ -9017,6 +9576,11 @@
             },
             {
               "name": "model_id",
+              "kind": "keyword",
+              "default": "__OMIT__"
+            },
+            {
+              "name": "seed",
               "kind": "keyword",
               "default": "__OMIT__"
             },
@@ -9074,6 +9638,12 @@
                     "model_id"
                   ],
                   "param": "model_id"
+                },
+                {
+                  "path": [
+                    "seed"
+                  ],
+                  "param": "seed"
                 },
                 {
                   "path": [
@@ -14839,7 +15409,7 @@
         },
         {
           "name": "share",
-          "doc": "Add a shared voice to your collection of Voices\n\nParameters\n----------\npublic_user_id : str\n    Public user ID used to publicly identify ElevenLabs users.\n\nvoice_id : str\n    ID of the voice to be used. You can use the [Get voices](/docs/api-reference/voices/search) endpoint list all the available voices.\n\nnew_name : str\n    The name that identifies this voice. This will be displayed in the dropdown of the website.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[AddVoiceResponseModel]\n    Successful Response",
+          "doc": "Add a shared voice to your collection of Voices\n\nParameters\n----------\npublic_user_id : str\n    Public user ID used to publicly identify ElevenLabs users.\n\nvoice_id : str\n    ID of the voice to be used. You can use the [Get voices](/docs/api-reference/voices/search) endpoint list all the available voices.\n\nnew_name : str\n    The name that identifies this voice. This will be displayed in the dropdown of the website.\n\nbookmarked : typing.Optional[bool]\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[AddVoiceResponseModel]\n    Successful Response",
           "positional_params": [
             {
               "name": "public_user_id",
@@ -14857,6 +15427,11 @@
               "name": "new_name",
               "kind": "keyword",
               "default": null
+            },
+            {
+              "name": "bookmarked",
+              "kind": "keyword",
+              "default": "__OMIT__"
             },
             {
               "name": "request_options",
@@ -14882,6 +15457,12 @@
                     "new_name"
                   ],
                   "param": "new_name"
+                },
+                {
+                  "path": [
+                    "bookmarked"
+                  ],
+                  "param": "bookmarked"
                 }
               ]
             },
@@ -16345,7 +16926,7 @@
         },
         {
           "name": "update",
-          "doc": "Update the specified workspace webhook\n\nParameters\n----------\nwebhook_id : str\n    The unique ID for the webhook\n\nis_disabled : bool\n    Whether to disable or enable the webhook\n\nname : str\n    The display name of the webhook (used for display purposes only).\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[PatchWorkspaceWebhookResponseModel]\n    Successful Response",
+          "doc": "Update the specified workspace webhook\n\nParameters\n----------\nwebhook_id : str\n    The unique ID for the webhook\n\nis_disabled : bool\n    Whether to disable or enable the webhook\n\nname : str\n    The display name of the webhook (used for display purposes only).\n\nretry_enabled : typing.Optional[bool]\n    Whether to enable automatic retries for transient failures (5xx, 429, timeout)\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[PatchWorkspaceWebhookResponseModel]\n    Successful Response",
           "positional_params": [
             {
               "name": "webhook_id",
@@ -16363,6 +16944,11 @@
               "name": "name",
               "kind": "keyword",
               "default": null
+            },
+            {
+              "name": "retry_enabled",
+              "kind": "keyword",
+              "default": "__OMIT__"
             },
             {
               "name": "request_options",
@@ -16393,6 +16979,12 @@
                     "name"
                   ],
                   "param": "name"
+                },
+                {
+                  "path": [
+                    "retry_enabled"
+                  ],
+                  "param": "retry_enabled"
                 }
               ]
             },
