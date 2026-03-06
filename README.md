@@ -46,7 +46,7 @@ client = ElevenLabs::Client.new(api_key: ENV.fetch("ELEVENLABS_API_KEY"))
 
 # Mirrors client.history.list(...) from Python
 history = client.history.list(page_size: 5)
-history["items"].each do |item|
+history["history"].each do |item|
   puts "#{item["voice_name"]}: #{item["text"]}"
 end
 ```
@@ -214,12 +214,12 @@ puts transcript["text"]
 
 ```ruby
 agents = client.conversational_ai.agents.list(page_size: 10)
-agents["items"].each do |agent|
-  puts "#{agent["id"]} => #{agent["name"]}"
+agents["agents"].each do |agent|
+  puts "#{agent["agent_id"]} => #{agent["name"]}"
 end
 
 client.conversational_ai.agents.link.create(
-  agent_id: agents["items"].first["id"],
+  agent_id: agents["agents"].first["agent_id"],
   workspace_group_id: "group_123"
 )
 ```
