@@ -54,7 +54,7 @@ end
 Every namespace from the Python SDK shows up at the same path:
 
 ```ruby
-client.voices.list
+client.voices.get_all
 client.text_to_speech.convert("voice_id", text: "Hello!")
 client.conversational_ai.agents.list
 client.workspace.invites.create(email: "teammate@example.com")
@@ -155,7 +155,7 @@ client.usage.get
 client.user.get
 
 # voices
-client.voices.list
+client.voices.get_all
 
 # webhooks
 client.webhooks.list
