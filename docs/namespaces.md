@@ -35,7 +35,7 @@ Manage agents, knowledge bases, phone numbers, conversations, and analytics for 
 agents = client.conversational_ai.agents.list(page_size: 20)
 
 client.conversational_ai.knowledge_base.documents.create(
-  agent_id: agents["items"].first["id"],
+  agent_id: agents["agents"].first["agent_id"],
   title: "FAQ",
   content: "Frequently asked questions..."
 )
@@ -71,7 +71,7 @@ List, inspect, delete, or download audio generations.
 ```ruby
 items = client.history.list(page_size: 10)
 client.history.download(
-  history_item_ids: items["items"].map { |item| item["history_item_id"] }
+  history_item_ids: items["history"].map { |item| item["history_item_id"] }
 )
 ```
 
@@ -225,7 +225,7 @@ client.user.subscription.get
 Search, create, edit, or delete voices, including instant voice cloning (IVC) and professional voice cloning (PVC).
 
 ```ruby
-client.voices.list
+client.voices.get_all
 client.voices.pvc.samples.create(
   "voice_123",
   files: [ElevenLabs::Upload.from_path("sample.wav")],
