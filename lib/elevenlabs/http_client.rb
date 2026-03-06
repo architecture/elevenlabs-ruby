@@ -18,22 +18,46 @@ module ElevenLabs
         end
     end
 
+    MAX_REDIRECTS = 5
+    REDIRECT_STATUSES = [301, 302, 307, 308].freeze
+
     def request(method:, path:, query: {}, json: nil, form: nil, files: [], headers: {}, request_options: {}, force_multipart: false)
       request_options ||= {}
       body, prepared_headers, cleanups =
         prepare_body(json: json, form: form, files: files, headers: headers, force_multipart: force_multipart)
       final_headers = build_headers(prepared_headers, request_options)
       begin
-        response =
-          perform_request(
-            method: method,
-            path: path,
-            query: query,
-            body: body,
-            headers: final_headers,
-            request_options: request_options
-          )
-        handle_response(response)
+        current_path = path
+        MAX_REDIRECTS.times do
+          response =
+            perform_request(
+              method: method,
+              path: current_path,
+              query: query,
+              body: body,
+              headers: final_headers,
+              request_options: request_options
+            )
+          return handle_response(response) unless REDIRECT_STATUSES.include?(response.status)
+
+          location = response.headers["location"]
+          raise ElevenLabs::HTTPError.new(
+            "Redirect with no Location header (HTTP #{response.status})",
+            status: response.status,
+            body: response.body,
+            headers: response.headers
+          ) if location.nil? || location.empty?
+
+          # Redirects return an absolute URL; update path for next iteration.
+          # 307/308 preserve method + body; 301/302 are followed as-is.
+          current_path = location
+        end
+        raise ElevenLabs::HTTPError.new(
+          "Too many redirects (> #{MAX_REDIRECTS})",
+          status: 0,
+          body: nil,
+          headers: {}
+        )
       ensure
         run_cleanups(cleanups)
       end

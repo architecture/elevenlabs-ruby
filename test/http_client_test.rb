@@ -22,8 +22,8 @@ class HttpClientTest < Minitest::Test
   class FakeConnection
     attr_reader :requests
 
-    def initialize(response)
-      @response = response
+    def initialize(*responses)
+      @responses = responses
       @requests = []
     end
 
@@ -31,7 +31,7 @@ class HttpClientTest < Minitest::Test
       request = FakeRequest.new
       yield request if block_given?
       @requests << { method: method, path: path, body: body, headers: headers }
-      @response
+      @responses.length > 1 ? @responses.shift : @responses.first
     end
   end
 
@@ -40,6 +40,13 @@ class HttpClientTest < Minitest::Test
     response = FakeResponse.new(200, "{}", {})
     @connection = FakeConnection.new(response)
     @client.instance_variable_set(:@connection, @connection)
+  end
+
+  def make_client_with_connection(*responses)
+    client = ElevenLabs::HTTPClient.new(base_url: "https://api.example.com", api_key: "key", headers: {}, timeout: 5)
+    connection = FakeConnection.new(*responses)
+    client.instance_variable_set(:@connection, connection)
+    [client, connection]
   end
 
   def test_upload_from_io_auto_closes_when_requested
@@ -102,5 +109,46 @@ class HttpClientTest < Minitest::Test
     assert_kind_of Enumerator, enumerator
     enumerator.each { break } # trigger execution
     assert io.closed?, "expected IO to be closed after streaming request completes"
+  end
+
+  def test_request_follows_307_redirect
+    redirect = FakeResponse.new(307, "", { "location" => "https://api.example.com/v2/agents/abc" })
+    success  = FakeResponse.new(200, '{"agent_id":"abc"}', {})
+    client, connection = make_client_with_connection(redirect, success)
+
+    result = client.request(method: "PATCH", path: "/v1/agents/abc", json: { name: "test" }, headers: {})
+
+    assert_equal({ "agent_id" => "abc" }, result)
+    assert_equal 2, connection.requests.length
+    assert_equal "https://api.example.com/v2/agents/abc", connection.requests.last[:path]
+  end
+
+  def test_request_follows_301_redirect
+    redirect = FakeResponse.new(301, "", { "location" => "https://api.example.com/new/path" })
+    success  = FakeResponse.new(200, '{"ok":true}', {})
+    client, connection = make_client_with_connection(redirect, success)
+
+    result = client.request(method: "GET", path: "/old/path", headers: {})
+
+    assert_equal({ "ok" => true }, result)
+    assert_equal 2, connection.requests.length
+  end
+
+  def test_request_raises_after_too_many_redirects
+    redirect = FakeResponse.new(307, "", { "location" => "https://api.example.com/loop" })
+    client, = make_client_with_connection(*([redirect] * 6))
+
+    assert_raises(ElevenLabs::HTTPError) do
+      client.request(method: "PATCH", path: "/agents/abc", json: {}, headers: {})
+    end
+  end
+
+  def test_request_raises_on_redirect_with_no_location
+    redirect = FakeResponse.new(307, "", {})
+    client, = make_client_with_connection(redirect)
+
+    assert_raises(ElevenLabs::HTTPError) do
+      client.request(method: "PATCH", path: "/agents/abc", json: {}, headers: {})
+    end
   end
 end
