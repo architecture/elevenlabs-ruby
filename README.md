@@ -8,7 +8,7 @@ This gem is published to **GitHub Packages** (not RubyGems.org). Add the GitHub 
 
 ```ruby
 source "https://rubygems.pkg.github.com/architecture" do
-  gem "elevenlabs", "0.3.2"
+  gem "elevenlabs", "0.3.3"
 end
 ```
 
@@ -29,7 +29,7 @@ Bundler can pull the gem straight from the git repository. This works for public
 
 ```ruby
 # Pin to a release tag (recommended for production)
-gem "elevenlabs", git: "https://github.com/architecture/elevenlabs-ruby", tag: "v0.3.2"
+gem "elevenlabs", git: "https://github.com/architecture/elevenlabs-ruby", tag: "v0.3.3"
 
 # Or track the latest main branch
 gem "elevenlabs", git: "https://github.com/architecture/elevenlabs-ruby", branch: "main"
@@ -98,9 +98,14 @@ client.models.list
 
 # music
 client.music.composition_plan.create(prompt: "lofi chill beats")
+client.music.upload(file: ElevenLabs::Upload.from_path("track.mp3"))
 
 # pronunciation_dictionaries
 client.pronunciation_dictionaries.list
+client.pronunciation_dictionaries.rules.set(
+  pronunciation_dictionary_id: "dict_123",
+  rules: [{ "type" => "phoneme", "string_to_replace" => "ElevenLabs", "phoneme" => "ɛlɛvənlæbz", "alphabet" => "ipa" }]
+)
 
 # samples
 client.samples.list
@@ -352,24 +357,29 @@ gem "elevenlabs", path: "/path/to/elevenlabs-ruby"
 
 ## Recent Updates
 
+### 2026-03-05: v0.3.3 — Tests and docs for SDK #740 new operations
+
+Added serialization tests and README examples for the two new operations introduced in SDK #740:
+- `music.upload` — multipart file upload test covering path, form field, and file entry
+- `pronunciation_dictionaries.rules.set` — JSON body test covering path and rules payload
+
+Test suite now at 57 runs, 144 assertions, 0 failures.
+
 ### 2026-03-05: v0.3.2 — Updated API Spec from elevenlabs-python (SDK #740)
 
 Updated `lib/elevenlabs/spec.json` by running the extraction script against the latest elevenlabs-python SDK (commit 78ed67e, SDK regeneration #740 — March 2026).
 
 **New Operations:**
-- `conversational_ai.agents.enable_versioning` — enable versioning on a conversational AI agent
-- `conversational_ai.agents.enable_versioning_if_not_enabled` — conditionally enable versioning if not already enabled
-- `music.upload` — upload audio files for use in music workflows
-- `music.extract_composition_plan` — extract a composition plan from an audio file
+- `music.upload` — upload an audio file for use in music workflows
 - `pronunciation_dictionaries.rules.set` — replace the full rules set on a pronunciation dictionary
 
 **New Ruby access patterns:**
 ```ruby
-client.conversational_ai.agents.enable_versioning(agent_id: "agent_123")
-client.conversational_ai.agents.enable_versioning_if_not_enabled(agent_id: "agent_123")
 client.music.upload(file: ElevenLabs::Upload.from_path("track.mp3"))
-client.music.extract_composition_plan(file: ElevenLabs::Upload.from_path("track.mp3"))
-client.pronunciation_dictionaries.rules.set(pronunciation_dictionary_id: "dict_123", rules: [...])
+client.pronunciation_dictionaries.rules.set(
+  pronunciation_dictionary_id: "dict_123",
+  rules: [{ "type" => "phoneme", "string_to_replace" => "ElevenLabs", "phoneme" => "ɛlɛvənlæbz", "alphabet" => "ipa" }]
+)
 ```
 
 **New Types:**

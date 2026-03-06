@@ -145,4 +145,33 @@ class OperationSerializationTest < Minitest::Test
     assert_equal "v1/convai/llm/list", request[:path]
     assert_nil request[:json]
   end
+
+  def test_music_upload_multipart
+    file = ElevenLabs::Upload.from_io(StringIO.new("audio-bytes"), filename: "track.mp3", content_type: "audio/mpeg")
+
+    @client.music.upload(file: file, extract_composition_plan: true)
+
+    request = @http.requests.last
+    assert_equal "POST", request[:method]
+    assert_equal "v1/music/upload", request[:path]
+    assert_equal({ "extract_composition_plan" => true }, request[:form])
+    assert_equal 1, request[:files].length
+    entry = request[:files].first
+    assert_equal "file", entry[:name]
+    assert_equal file, entry[:value]
+  end
+
+  def test_pronunciation_dictionaries_rules_set
+    rules = [
+      { "type" => "phoneme", "string_to_replace" => "ElevenLabs", "phoneme" => "ɛlɛvənlæbz", "alphabet" => "ipa" }
+    ]
+
+    @client.pronunciation_dictionaries.rules.set("dict_123", rules: rules)
+
+    request = @http.requests.last
+    assert_equal "POST", request[:method]
+    assert_equal "v1/pronunciation-dictionaries/dict_123/set-rules", request[:path]
+    assert_equal({ "rules" => rules }, request[:json])
+    assert_nil request[:form]
+  end
 end
