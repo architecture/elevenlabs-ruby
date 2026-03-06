@@ -716,11 +716,16 @@
           "operations": [
             {
               "name": "create",
-              "doc": "Create an agent from a config object\n\nParameters\n----------\nconversation_config : ConversationalConfig\n    Conversation configuration for an agent\n\nplatform_settings : typing.Optional[AgentPlatformSettingsRequestModel]\n    Platform settings for the agent are all settings that aren't related to the conversation orchestration and content.\n\nworkflow : typing.Optional[AgentWorkflowRequestModel]\n    Workflow for the agent. This is used to define the flow of the conversation and how the agent interacts with tools.\n\nname : typing.Optional[str]\n    A name to make the agent easier to find\n\ntags : typing.Optional[typing.Sequence[str]]\n    Tags to help classify and filter the agent\n\ncoaching_settings : typing.Optional[BodyCreateAgentV1ConvaiAgentsCreatePostCoachingSettings]\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[CreateAgentResponseModel]\n    Successful Response",
+              "doc": "Create an agent from a config object\n\nParameters\n----------\nconversation_config : ConversationalConfig\n    Conversation configuration for an agent\n\nenable_versioning : typing.Optional[bool]\n    Enable versioning for the agent\n\nplatform_settings : typing.Optional[AgentPlatformSettingsRequestModel]\n    Platform settings for the agent are all settings that aren't related to the conversation orchestration and content.\n\nworkflow : typing.Optional[AgentWorkflowRequestModel]\n    Workflow for the agent. This is used to define the flow of the conversation and how the agent interacts with tools.\n\nname : typing.Optional[str]\n    A name to make the agent easier to find\n\ntags : typing.Optional[typing.Sequence[str]]\n    Tags to help classify and filter the agent\n\ncoaching_settings : typing.Optional[BodyCreateAgentV1ConvaiAgentsCreatePostCoachingSettings]\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[CreateAgentResponseModel]\n    Successful Response",
               "positional_params": [],
               "keyword_params": [
                 {
                   "name": "conversation_config",
+                  "kind": "keyword",
+                  "default": null
+                },
+                {
+                  "name": "enable_versioning",
                   "kind": "keyword",
                   "default": null
                 },
@@ -761,7 +766,12 @@
                   "template": "v1/convai/agents/create",
                   "params": []
                 },
-                "query": [],
+                "query": [
+                  {
+                    "name": "enable_versioning",
+                    "param": "enable_versioning"
+                  }
+                ],
                 "json": {
                   "literal": null,
                   "assignments": [
@@ -901,7 +911,7 @@
             },
             {
               "name": "update",
-              "doc": "Patches an Agent settings\n\nParameters\n----------\nagent_id : str\n    The id of an agent. This is returned on agent creation.\n\nbranch_id : typing.Optional[str]\n    The ID of the branch to use\n\nconversation_config : typing.Optional[ConversationalConfig]\n    Conversation configuration for an agent\n\nplatform_settings : typing.Optional[AgentPlatformSettingsRequestModel]\n    Platform settings for the agent are all settings that aren't related to the conversation orchestration and content.\n\nworkflow : typing.Optional[AgentWorkflowRequestModel]\n    Workflow for the agent. This is used to define the flow of the conversation and how the agent interacts with tools.\n\nname : typing.Optional[str]\n    A name to make the agent easier to find\n\ntags : typing.Optional[typing.Sequence[str]]\n    Tags to help classify and filter the agent\n\ncoaching_settings : typing.Optional[BodyPatchesAnAgentSettingsV1ConvaiAgentsAgentIdPatchCoachingSettings]\n\nversion_description : typing.Optional[str]\n    Description for this version when publishing changes (only applicable for versioned agents)\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[GetAgentResponseModel]\n    Successful Response",
+              "doc": "Patches an Agent settings\n\nParameters\n----------\nagent_id : str\n    The id of an agent. This is returned on agent creation.\n\nenable_versioning_if_not_enabled : typing.Optional[bool]\n    Enable versioning for the agent, if not already enabled\n\nbranch_id : typing.Optional[str]\n    The ID of the branch to use\n\nconversation_config : typing.Optional[ConversationalConfig]\n    Conversation configuration for an agent\n\nplatform_settings : typing.Optional[AgentPlatformSettingsRequestModel]\n    Platform settings for the agent are all settings that aren't related to the conversation orchestration and content.\n\nworkflow : typing.Optional[AgentWorkflowRequestModel]\n    Workflow for the agent. This is used to define the flow of the conversation and how the agent interacts with tools.\n\nname : typing.Optional[str]\n    A name to make the agent easier to find\n\ntags : typing.Optional[typing.Sequence[str]]\n    Tags to help classify and filter the agent\n\ncoaching_settings : typing.Optional[BodyPatchesAnAgentSettingsV1ConvaiAgentsAgentIdPatchCoachingSettings]\n\nversion_description : typing.Optional[str]\n    Description for this version when publishing changes (only applicable for versioned agents)\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[GetAgentResponseModel]\n    Successful Response",
               "positional_params": [
                 {
                   "name": "agent_id",
@@ -910,6 +920,11 @@
                 }
               ],
               "keyword_params": [
+                {
+                  "name": "enable_versioning_if_not_enabled",
+                  "kind": "keyword",
+                  "default": null
+                },
                 {
                   "name": "branch_id",
                   "kind": "keyword",
@@ -965,6 +980,10 @@
                   ]
                 },
                 "query": [
+                  {
+                    "name": "enable_versioning_if_not_enabled",
+                    "param": "enable_versioning_if_not_enabled"
+                  },
                   {
                     "name": "branch_id",
                     "param": "branch_id"
@@ -2302,7 +2321,7 @@
           "operations": [
             {
               "name": "create",
-              "doc": "Submit a batch call request to schedule calls for multiple recipients.\n\nParameters\n----------\ncall_name : str\n\nagent_id : str\n\nrecipients : typing.Sequence[OutboundCallRecipient]\n\nscheduled_time_unix : typing.Optional[int]\n\nagent_phone_number_id : typing.Optional[str]\n\nwhatsapp_params : typing.Optional[BatchCallWhatsAppParams]\n\ntimezone : typing.Optional[str]\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[BatchCallResponse]\n    Successful Response",
+              "doc": "Submit a batch call request to schedule calls for multiple recipients.\n\nParameters\n----------\ncall_name : str\n\nagent_id : str\n\nrecipients : typing.Sequence[OutboundCallRecipient]\n\nscheduled_time_unix : typing.Optional[int]\n\nagent_phone_number_id : typing.Optional[str]\n\nwhatsapp_params : typing.Optional[BatchCallWhatsAppParams]\n\ntimezone : typing.Optional[str]\n\ntelephony_call_config : typing.Optional[TelephonyCallConfig]\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[BatchCallResponse]\n    Successful Response",
               "positional_params": [],
               "keyword_params": [
                 {
@@ -2337,6 +2356,11 @@
                 },
                 {
                   "name": "timezone",
+                  "kind": "keyword",
+                  "default": "__OMIT__"
+                },
+                {
+                  "name": "telephony_call_config",
                   "kind": "keyword",
                   "default": "__OMIT__"
                 },
@@ -2397,6 +2421,12 @@
                         "timezone"
                       ],
                       "param": "timezone"
+                    },
+                    {
+                      "path": [
+                        "telephony_call_config"
+                      ],
+                      "param": "telephony_call_config"
                     }
                   ]
                 },
@@ -5978,7 +6008,7 @@
           "operations": [
             {
               "name": "outbound_call",
-              "doc": "Handle an outbound call via SIP trunk\n\nParameters\n----------\nagent_id : str\n\nagent_phone_number_id : str\n\nto_number : str\n\nconversation_initiation_client_data : typing.Optional[ConversationInitiationClientDataRequestInput]\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[SipTrunkOutboundCallResponse]\n    Successful Response",
+              "doc": "Handle an outbound call via SIP trunk\n\nParameters\n----------\nagent_id : str\n\nagent_phone_number_id : str\n\nto_number : str\n\nconversation_initiation_client_data : typing.Optional[ConversationInitiationClientDataRequestInput]\n\ntelephony_call_config : typing.Optional[TelephonyCallConfig]\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[SipTrunkOutboundCallResponse]\n    Successful Response",
               "positional_params": [],
               "keyword_params": [
                 {
@@ -5998,6 +6028,11 @@
                 },
                 {
                   "name": "conversation_initiation_client_data",
+                  "kind": "keyword",
+                  "default": "__OMIT__"
+                },
+                {
+                  "name": "telephony_call_config",
                   "kind": "keyword",
                   "default": "__OMIT__"
                 },
@@ -6040,6 +6075,12 @@
                         "conversation_initiation_client_data"
                       ],
                       "param": "conversation_initiation_client_data"
+                    },
+                    {
+                      "path": [
+                        "telephony_call_config"
+                      ],
+                      "param": "telephony_call_config"
                     }
                   ]
                 },
@@ -6260,7 +6301,7 @@
             },
             {
               "name": "list",
-              "doc": "Lists all agent response tests with pagination support and optional search filtering.\n\nParameters\n----------\ncursor : typing.Optional[str]\n    Used for fetching next page. Cursor is returned in the response.\n\npage_size : typing.Optional[int]\n    How many Tests to return at maximum. Can not exceed 100, defaults to 30.\n\nsearch : typing.Optional[str]\n    Search query to filter tests by name.\n\nparent_folder_id : typing.Optional[str]\n    Filter by parent folder ID. Use 'root' to get items in the root folder.\n\ninclude_folders : typing.Optional[bool]\n    Whether to include folders in the response. Defaults to false.\n\nsort_mode : typing.Optional[TestsListRequestSortMode]\n    Sort mode for listing tests. Use 'folders_first' to place folders before tests.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[GetTestsPageResponseModel]\n    Successful Response",
+              "doc": "Lists all agent response tests with pagination support and optional search filtering.\n\nParameters\n----------\ncursor : typing.Optional[str]\n    Used for fetching next page. Cursor is returned in the response.\n\npage_size : typing.Optional[int]\n    How many Tests to return at maximum. Can not exceed 100, defaults to 30.\n\nsearch : typing.Optional[str]\n    Search query to filter tests by name.\n\nparent_folder_id : typing.Optional[str]\n    Filter by parent folder ID. Use 'root' to get items in the root folder.\n\ntypes : typing.Optional[typing.Union[TestType, typing.Sequence[TestType]]]\n    If present, the endpoint will return only tests/folders of the given types.\n\ninclude_folders : typing.Optional[bool]\n    Deprecated. Use the `types` query param and include `folder` instead.\n\nsort_mode : typing.Optional[TestsListRequestSortMode]\n    Sort mode for listing tests. Use 'folders_first' to place folders before tests.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[GetTestsPageResponseModel]\n    Successful Response",
               "positional_params": [],
               "keyword_params": [
                 {
@@ -6280,6 +6321,11 @@
                 },
                 {
                   "name": "parent_folder_id",
+                  "kind": "keyword",
+                  "default": null
+                },
+                {
+                  "name": "types",
                   "kind": "keyword",
                   "default": null
                 },
@@ -6321,6 +6367,10 @@
                   {
                     "name": "parent_folder_id",
                     "param": "parent_folder_id"
+                  },
+                  {
+                    "name": "types",
+                    "param": "types"
                   },
                   {
                     "name": "include_folders",
@@ -6830,7 +6880,7 @@
           "operations": [
             {
               "name": "outbound_call",
-              "doc": "Handle an outbound call via Twilio\n\nParameters\n----------\nagent_id : str\n\nagent_phone_number_id : str\n\nto_number : str\n\nconversation_initiation_client_data : typing.Optional[ConversationInitiationClientDataRequestInput]\n\ncall_recording_enabled : typing.Optional[bool]\n    Whether let Twilio record the call.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[TwilioOutboundCallResponse]\n    Successful Response",
+              "doc": "Handle an outbound call via Twilio\n\nParameters\n----------\nagent_id : str\n\nagent_phone_number_id : str\n\nto_number : str\n\nconversation_initiation_client_data : typing.Optional[ConversationInitiationClientDataRequestInput]\n\ncall_recording_enabled : typing.Optional[bool]\n    Whether let Twilio record the call.\n\ntelephony_call_config : typing.Optional[TelephonyCallConfig]\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[TwilioOutboundCallResponse]\n    Successful Response",
               "positional_params": [],
               "keyword_params": [
                 {
@@ -6855,6 +6905,11 @@
                 },
                 {
                   "name": "call_recording_enabled",
+                  "kind": "keyword",
+                  "default": "__OMIT__"
+                },
+                {
+                  "name": "telephony_call_config",
                   "kind": "keyword",
                   "default": "__OMIT__"
                 },
@@ -6903,6 +6958,12 @@
                         "call_recording_enabled"
                       ],
                       "param": "call_recording_enabled"
+                    },
+                    {
+                      "path": [
+                        "telephony_call_config"
+                      ],
+                      "param": "telephony_call_config"
                     }
                   ]
                 },
@@ -7375,7 +7436,7 @@
             },
             {
               "name": "update",
-              "doc": "Update a WhatsApp account\n\nParameters\n----------\nphone_number_id : str\n\nassigned_agent_id : typing.Optional[str]\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[typing.Any]\n    Successful Response",
+              "doc": "Update a WhatsApp account\n\nParameters\n----------\nphone_number_id : str\n\nassigned_agent_id : typing.Optional[str]\n\nenable_messaging : typing.Optional[bool]\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[typing.Any]\n    Successful Response",
               "positional_params": [
                 {
                   "name": "phone_number_id",
@@ -7386,6 +7447,11 @@
               "keyword_params": [
                 {
                   "name": "assigned_agent_id",
+                  "kind": "keyword",
+                  "default": "__OMIT__"
+                },
+                {
+                  "name": "enable_messaging",
                   "kind": "keyword",
                   "default": "__OMIT__"
                 },
@@ -7412,6 +7478,12 @@
                         "assigned_agent_id"
                       ],
                       "param": "assigned_agent_id"
+                    },
+                    {
+                      "path": [
+                        "enable_messaging"
+                      ],
+                      "param": "enable_messaging"
                     }
                   ]
                 },
@@ -9269,7 +9341,7 @@
       "operations": [
         {
           "name": "compose",
-          "doc": "Compose a song from a prompt or a composition plan.\n\nParameters\n----------\noutput_format : typing.Optional[AllowedOutputFormats]\n    Output format of the generated audio. Formatted as codec_sample_rate_bitrate. So an mp3 with 22.05kHz sample rate at 32kbs is represented as mp3_22050_32. MP3 with 192kbps bitrate requires you to be subscribed to Creator tier or above. PCM with 44.1kHz sample rate requires you to be subscribed to Pro tier or above. Note that the \u03bc-law format (sometimes written mu-law, often approximated as u-law) is commonly used for Twilio audio inputs.\n\nprompt : typing.Optional[str]\n    A simple text prompt to generate a song from. Cannot be used in conjunction with `composition_plan`.\n\ncomposition_plan : typing.Optional[MusicPrompt]\n    A detailed composition plan to guide music generation. Cannot be used in conjunction with `prompt`.\n\nmusic_length_ms : typing.Optional[int]\n    The length of the song to generate in milliseconds. Used only in conjunction with `prompt`. Must be between 3000ms and 600000ms. Optional - if not provided, the model will choose a length based on the prompt.\n\nmodel_id : typing.Optional[typing.Literal[\"music_v1\"]]\n    The model to use for the generation.\n\nseed : typing.Optional[int]\n    Random seed to initialize the music generation process. Providing the same seed with the same parameters can help achieve more consistent results, but exact reproducibility is not guaranteed and outputs may change across system updates. Cannot be used in conjunction with prompt.\n\nforce_instrumental : typing.Optional[bool]\n    If true, guarantees that the generated song will be instrumental. If false, the song may or may not be instrumental depending on the `prompt`. Can only be used with `prompt`.\n\nrespect_sections_durations : typing.Optional[bool]\n    Controls how strictly section durations in the `composition_plan` are enforced. Only used with `composition_plan`. When set to true, the model will precisely respect each section's `duration_ms` from the plan. When set to false, the model may adjust individual section durations which will generally lead to better generation quality and improved latency, while always preserving the total song duration from the plan.\n\nstore_for_inpainting : typing.Optional[bool]\n    Whether to store the generated song for inpainting. Only available to enterprise clients with access to the inpainting API.\n\nsign_with_c_2_pa : typing.Optional[bool]\n    Whether to sign the generated song with C2PA. Applicable only for mp3 files.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration. You can pass in configuration such as `chunk_size`, and more to customize the request and response.\n\nReturns\n-------\ntyping.Iterator[HttpResponse[typing.Iterator[bytes]]]\n    The generated audio file in the format specified",
+          "doc": "Compose a song from a prompt or a composition plan.\n\nParameters\n----------\noutput_format : typing.Optional[AllowedOutputFormats]\n    Output format of the generated audio. Formatted as codec_sample_rate_bitrate. So an mp3 with 22.05kHz sample rate at 32kbs is represented as mp3_22050_32. MP3 with 192kbps bitrate requires you to be subscribed to Creator tier or above. PCM with 44.1kHz sample rate requires you to be subscribed to Pro tier or above. Note that the \u03bc-law format (sometimes written mu-law, often approximated as u-law) is commonly used for Twilio audio inputs.\n\nprompt : typing.Optional[str]\n    A simple text prompt to generate a song from. Cannot be used in conjunction with `composition_plan`.\n\ncomposition_plan : typing.Optional[MusicPrompt]\n    A detailed composition plan to guide music generation. Cannot be used in conjunction with `prompt`.\n\nmusic_length_ms : typing.Optional[int]\n    The length of the song to generate in milliseconds. Used only in conjunction with `prompt`. Must be between 3000ms and 600000ms. Optional - if not provided, the model will choose a length based on the prompt.\n\nmodel_id : typing.Optional[typing.Literal[\"music_v1\"]]\n    The model to use for the generation.\n\nseed : typing.Optional[int]\n    Random seed to initialize the music generation process. Providing the same seed with the same parameters can help achieve more consistent results, but exact reproducibility is not guaranteed and outputs may change across system updates. Cannot be used in conjunction with prompt.\n\nforce_instrumental : typing.Optional[bool]\n    If true, guarantees that the generated song will be instrumental. If false, the song may or may not be instrumental depending on the `prompt`. Can only be used with `prompt`.\n\nrespect_sections_durations : typing.Optional[bool]\n    Controls how strictly section durations in the `composition_plan` are enforced. Only used with `composition_plan`. When set to true, the model will precisely respect each section's `duration_ms` from the plan. When set to false, the model may adjust individual section durations which will generally lead to better generation quality and improved latency, while always preserving the total song duration from the plan.\n\nstore_for_inpainting : typing.Optional[bool]\n    Whether to store the generated song for inpainting. Only available to enterprise clients with access to the inpainting feature.\n\nsign_with_c_2_pa : typing.Optional[bool]\n    Whether to sign the generated song with C2PA. Applicable only for mp3 files.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration. You can pass in configuration such as `chunk_size`, and more to customize the request and response.\n\nReturns\n-------\ntyping.Iterator[HttpResponse[typing.Iterator[bytes]]]\n    The generated audio file in the format specified",
           "positional_params": [],
           "keyword_params": [
             {
@@ -9410,7 +9482,7 @@
         },
         {
           "name": "compose_detailed",
-          "doc": "Compose a song from a prompt or a composition plan.\n\nParameters\n----------\noutput_format : typing.Optional[AllowedOutputFormats]\n    Output format of the generated audio. Formatted as codec_sample_rate_bitrate. So an mp3 with 22.05kHz sample rate at 32kbs is represented as mp3_22050_32. MP3 with 192kbps bitrate requires you to be subscribed to Creator tier or above. PCM with 44.1kHz sample rate requires you to be subscribed to Pro tier or above. Note that the \u03bc-law format (sometimes written mu-law, often approximated as u-law) is commonly used for Twilio audio inputs.\n\nprompt : typing.Optional[str]\n    A simple text prompt to generate a song from. Cannot be used in conjunction with `composition_plan`.\n\ncomposition_plan : typing.Optional[MusicPrompt]\n    A detailed composition plan to guide music generation. Cannot be used in conjunction with `prompt`.\n\nmusic_length_ms : typing.Optional[int]\n    The length of the song to generate in milliseconds. Used only in conjunction with `prompt`. Must be between 3000ms and 600000ms. Optional - if not provided, the model will choose a length based on the prompt.\n\nmodel_id : typing.Optional[typing.Literal[\"music_v1\"]]\n    The model to use for the generation.\n\nseed : typing.Optional[int]\n    Random seed to initialize the music generation process. Providing the same seed with the same parameters can help achieve more consistent results, but exact reproducibility is not guaranteed and outputs may change across system updates. Cannot be used in conjunction with prompt.\n\nforce_instrumental : typing.Optional[bool]\n    If true, guarantees that the generated song will be instrumental. If false, the song may or may not be instrumental depending on the `prompt`. Can only be used with `prompt`.\n\nstore_for_inpainting : typing.Optional[bool]\n    Whether to store the generated song for inpainting. Only available to enterprise clients with access to the inpainting API.\n\nwith_timestamps : typing.Optional[bool]\n    Whether to return the timestamps of the words in the generated song.\n\nsign_with_c_2_pa : typing.Optional[bool]\n    Whether to sign the generated song with C2PA. Applicable only for mp3 files.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration. You can pass in configuration such as `chunk_size`, and more to customize the request and response.\n\nReturns\n-------\ntyping.Iterator[HttpResponse[typing.Iterator[bytes]]]\n    Multipart/mixed response with JSON metadata and binary audio file",
+          "doc": "Compose a song from a prompt or a composition plan.\n\nParameters\n----------\noutput_format : typing.Optional[AllowedOutputFormats]\n    Output format of the generated audio. Formatted as codec_sample_rate_bitrate. So an mp3 with 22.05kHz sample rate at 32kbs is represented as mp3_22050_32. MP3 with 192kbps bitrate requires you to be subscribed to Creator tier or above. PCM with 44.1kHz sample rate requires you to be subscribed to Pro tier or above. Note that the \u03bc-law format (sometimes written mu-law, often approximated as u-law) is commonly used for Twilio audio inputs.\n\nprompt : typing.Optional[str]\n    A simple text prompt to generate a song from. Cannot be used in conjunction with `composition_plan`.\n\ncomposition_plan : typing.Optional[MusicPrompt]\n    A detailed composition plan to guide music generation. Cannot be used in conjunction with `prompt`.\n\nmusic_length_ms : typing.Optional[int]\n    The length of the song to generate in milliseconds. Used only in conjunction with `prompt`. Must be between 3000ms and 600000ms. Optional - if not provided, the model will choose a length based on the prompt.\n\nmodel_id : typing.Optional[typing.Literal[\"music_v1\"]]\n    The model to use for the generation.\n\nseed : typing.Optional[int]\n    Random seed to initialize the music generation process. Providing the same seed with the same parameters can help achieve more consistent results, but exact reproducibility is not guaranteed and outputs may change across system updates. Cannot be used in conjunction with prompt.\n\nforce_instrumental : typing.Optional[bool]\n    If true, guarantees that the generated song will be instrumental. If false, the song may or may not be instrumental depending on the `prompt`. Can only be used with `prompt`.\n\nstore_for_inpainting : typing.Optional[bool]\n    Whether to store the generated song for inpainting. Only available to enterprise clients with access to the inpainting feature.\n\nwith_timestamps : typing.Optional[bool]\n    Whether to return the timestamps of the words in the generated song.\n\nsign_with_c_2_pa : typing.Optional[bool]\n    Whether to sign the generated song with C2PA. Applicable only for mp3 files.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration. You can pass in configuration such as `chunk_size`, and more to customize the request and response.\n\nReturns\n-------\ntyping.Iterator[HttpResponse[typing.Iterator[bytes]]]\n    Multipart/mixed response with JSON metadata and binary audio file",
           "positional_params": [],
           "keyword_params": [
             {
@@ -9551,7 +9623,7 @@
         },
         {
           "name": "stream",
-          "doc": "Stream a composed song from a prompt or a composition plan.\n\nParameters\n----------\noutput_format : typing.Optional[AllowedOutputFormats]\n    Output format of the generated audio. Formatted as codec_sample_rate_bitrate. So an mp3 with 22.05kHz sample rate at 32kbs is represented as mp3_22050_32. MP3 with 192kbps bitrate requires you to be subscribed to Creator tier or above. PCM with 44.1kHz sample rate requires you to be subscribed to Pro tier or above. Note that the \u03bc-law format (sometimes written mu-law, often approximated as u-law) is commonly used for Twilio audio inputs.\n\nprompt : typing.Optional[str]\n    A simple text prompt to generate a song from. Cannot be used in conjunction with `composition_plan`.\n\ncomposition_plan : typing.Optional[MusicPrompt]\n    A detailed composition plan to guide music generation. Cannot be used in conjunction with `prompt`.\n\nmusic_length_ms : typing.Optional[int]\n    The length of the song to generate in milliseconds. Used only in conjunction with `prompt`. Must be between 3000ms and 600000ms. Optional - if not provided, the model will choose a length based on the prompt.\n\nmodel_id : typing.Optional[typing.Literal[\"music_v1\"]]\n    The model to use for the generation.\n\nseed : typing.Optional[int]\n    Random seed to initialize the music generation process. Providing the same seed with the same parameters can help achieve more consistent results, but exact reproducibility is not guaranteed and outputs may change across system updates. Cannot be used in conjunction with prompt.\n\nforce_instrumental : typing.Optional[bool]\n    If true, guarantees that the generated song will be instrumental. If false, the song may or may not be instrumental depending on the `prompt`. Can only be used with `prompt`.\n\nstore_for_inpainting : typing.Optional[bool]\n    Whether to store the generated song for inpainting. Only available to enterprise clients with access to the inpainting API.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration. You can pass in configuration such as `chunk_size`, and more to customize the request and response.\n\nReturns\n-------\ntyping.Iterator[HttpResponse[typing.Iterator[bytes]]]\n    Streaming audio data in the format specified",
+          "doc": "Stream a composed song from a prompt or a composition plan.\n\nParameters\n----------\noutput_format : typing.Optional[AllowedOutputFormats]\n    Output format of the generated audio. Formatted as codec_sample_rate_bitrate. So an mp3 with 22.05kHz sample rate at 32kbs is represented as mp3_22050_32. MP3 with 192kbps bitrate requires you to be subscribed to Creator tier or above. PCM with 44.1kHz sample rate requires you to be subscribed to Pro tier or above. Note that the \u03bc-law format (sometimes written mu-law, often approximated as u-law) is commonly used for Twilio audio inputs.\n\nprompt : typing.Optional[str]\n    A simple text prompt to generate a song from. Cannot be used in conjunction with `composition_plan`.\n\ncomposition_plan : typing.Optional[MusicPrompt]\n    A detailed composition plan to guide music generation. Cannot be used in conjunction with `prompt`.\n\nmusic_length_ms : typing.Optional[int]\n    The length of the song to generate in milliseconds. Used only in conjunction with `prompt`. Must be between 3000ms and 600000ms. Optional - if not provided, the model will choose a length based on the prompt.\n\nmodel_id : typing.Optional[typing.Literal[\"music_v1\"]]\n    The model to use for the generation.\n\nseed : typing.Optional[int]\n    Random seed to initialize the music generation process. Providing the same seed with the same parameters can help achieve more consistent results, but exact reproducibility is not guaranteed and outputs may change across system updates. Cannot be used in conjunction with prompt.\n\nforce_instrumental : typing.Optional[bool]\n    If true, guarantees that the generated song will be instrumental. If false, the song may or may not be instrumental depending on the `prompt`. Can only be used with `prompt`.\n\nstore_for_inpainting : typing.Optional[bool]\n    Whether to store the generated song for inpainting. Only available to enterprise clients with access to the inpainting feature.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration. You can pass in configuration such as `chunk_size`, and more to customize the request and response.\n\nReturns\n-------\ntyping.Iterator[HttpResponse[typing.Iterator[bytes]]]\n    Streaming audio data in the format specified",
           "positional_params": [],
           "keyword_params": [
             {
@@ -9666,6 +9738,60 @@
             },
             "force_multipart": false,
             "streaming": true
+          }
+        },
+        {
+          "name": "upload",
+          "doc": "Upload a music file to be later used for inpainting. Only available to enterprise clients with access to the inpainting feature.\n\nParameters\n----------\nfile : core.File\n    See core.File for more documentation\n\nextract_composition_plan : typing.Optional[bool]\n    Whether to generate and return the composition plan for the uploaded song. If True, the response will include the composition_plan but will increase the latency.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[MusicUploadResponse]\n    Successfully uploaded music file with optional composition plan",
+          "positional_params": [],
+          "keyword_params": [
+            {
+              "name": "file",
+              "kind": "keyword",
+              "default": null
+            },
+            {
+              "name": "extract_composition_plan",
+              "kind": "keyword",
+              "default": "__OMIT__"
+            },
+            {
+              "name": "request_options",
+              "kind": "keyword",
+              "default": null
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "path": {
+              "template": "v1/music/upload",
+              "params": []
+            },
+            "query": [],
+            "json": null,
+            "form": {
+              "literal": null,
+              "assignments": [
+                {
+                  "path": [
+                    "extract_composition_plan"
+                  ],
+                  "param": "extract_composition_plan"
+                }
+              ]
+            },
+            "files": [
+              {
+                "name": "file",
+                "value": {
+                  "type": "param",
+                  "name": "file"
+                }
+              }
+            ],
+            "headers": {},
+            "force_multipart": true,
+            "streaming": false
           }
         },
         {
@@ -10185,6 +10311,57 @@
       "children": {
         "rules": {
           "operations": [
+            {
+              "name": "set",
+              "doc": "Replaces all existing rules on the pronunciation dictionary with the provided ones.\n\nParameters\n----------\npronunciation_dictionary_id : str\n    The id of the pronunciation dictionary\n\nrules : typing.Sequence[BodySetRulesOnThePronunciationDictionaryV1PronunciationDictionariesPronunciationDictionaryIdSetRulesPostRulesItem]\n    List of pronunciation rules. Rule can be either:\n        an alias rule: {'string_to_replace': 'a', 'type': 'alias', 'alias': 'b', }\n        or a phoneme rule: {'string_to_replace': 'a', 'type': 'phoneme', 'phoneme': 'b', 'alphabet': 'ipa' }\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[PronunciationDictionaryRulesResponseModel]\n    Successfully set rules on the pronunciation dictionary",
+              "positional_params": [
+                {
+                  "name": "pronunciation_dictionary_id",
+                  "kind": "positional",
+                  "default": null
+                }
+              ],
+              "keyword_params": [
+                {
+                  "name": "rules",
+                  "kind": "keyword",
+                  "default": null
+                },
+                {
+                  "name": "request_options",
+                  "kind": "keyword",
+                  "default": null
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "path": {
+                  "template": "v1/pronunciation-dictionaries/{pronunciation_dictionary_id}/set-rules",
+                  "params": [
+                    "pronunciation_dictionary_id"
+                  ]
+                },
+                "query": [],
+                "json": {
+                  "literal": null,
+                  "assignments": [
+                    {
+                      "path": [
+                        "rules"
+                      ],
+                      "param": "rules"
+                    }
+                  ]
+                },
+                "form": null,
+                "files": [],
+                "headers": {
+                  "content-type": "application/json"
+                },
+                "force_multipart": false,
+                "streaming": false
+              }
+            },
             {
               "name": "add",
               "doc": "Add rules to the pronunciation dictionary. If a rule with the same string_to_replace already exists, it will be replaced.\n\nParameters\n----------\npronunciation_dictionary_id : str\n    The id of the pronunciation dictionary\n\nrules : typing.Sequence[PronunciationDictionaryRule]\n    List of pronunciation rules. Rule can be either:\n        an alias rule: {'string_to_replace': 'a', 'type': 'alias', 'alias': 'b', }\n        or a phoneme rule: {'string_to_replace': 'a', 'type': 'phoneme', 'phoneme': 'b', 'alphabet': 'ipa' }\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[PronunciationDictionaryRulesResponseModel]\n    Successful Response",

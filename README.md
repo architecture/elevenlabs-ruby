@@ -8,7 +8,7 @@ This gem is published to **GitHub Packages** (not RubyGems.org). Add the GitHub 
 
 ```ruby
 source "https://rubygems.pkg.github.com/architecture" do
-  gem "elevenlabs", "0.3.1"
+  gem "elevenlabs", "0.3.2"
 end
 ```
 
@@ -29,7 +29,7 @@ Bundler can pull the gem straight from the git repository. This works for public
 
 ```ruby
 # Pin to a release tag (recommended for production)
-gem "elevenlabs", git: "https://github.com/architecture/elevenlabs-ruby", tag: "v0.3.1"
+gem "elevenlabs", git: "https://github.com/architecture/elevenlabs-ruby", tag: "v0.3.2"
 
 # Or track the latest main branch
 gem "elevenlabs", git: "https://github.com/architecture/elevenlabs-ruby", branch: "main"
@@ -351,6 +351,29 @@ gem "elevenlabs", path: "/path/to/elevenlabs-ruby"
 ```
 
 ## Recent Updates
+
+### 2026-03-05: v0.3.2 — Updated API Spec from elevenlabs-python (SDK #740)
+
+Updated `lib/elevenlabs/spec.json` by running the extraction script against the latest elevenlabs-python SDK (commit 78ed67e, SDK regeneration #740 — March 2026).
+
+**New Operations:**
+- `conversational_ai.agents.enable_versioning` — enable versioning on a conversational AI agent
+- `conversational_ai.agents.enable_versioning_if_not_enabled` — conditionally enable versioning if not already enabled
+- `music.upload` — upload audio files for use in music workflows
+- `music.extract_composition_plan` — extract a composition plan from an audio file
+- `pronunciation_dictionaries.rules.set` — replace the full rules set on a pronunciation dictionary
+
+**New Ruby access patterns:**
+```ruby
+client.conversational_ai.agents.enable_versioning(agent_id: "agent_123")
+client.conversational_ai.agents.enable_versioning_if_not_enabled(agent_id: "agent_123")
+client.music.upload(file: ElevenLabs::Upload.from_path("track.mp3"))
+client.music.extract_composition_plan(file: ElevenLabs::Upload.from_path("track.mp3"))
+client.pronunciation_dictionaries.rules.set(pronunciation_dictionary_id: "dict_123", rules: [...])
+```
+
+**New Types:**
+`CheckServiceAvailabilityParams`, `CreateAssetParams`, `CreateClientAppointmentParams`, `CustomGuardrailsConfigInput`, `CustomGuardrailsConfigOutput`, `DeleteAssetParams`, `DeleteCalendarEventParams`, `GetClientAppointmentsParams`, `GuardrailExecutionMode`, `ListCalendarEventsParams`, `MusicUploadResponse`, `RequiredConstraint`, `RequiredConstraints`, `StudioAgentSettingsModel`, `StudioAgentToolSettingsModel`, `TelephonyCallConfig`, `UpdateAssetParams`, `UpdateCalendarEventParams`, `VoiceStatisticsResponseModel`
 
 ### 2026-03-05: v0.3.1 — HTTP Redirect Following
 
