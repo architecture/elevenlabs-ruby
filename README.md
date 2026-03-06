@@ -8,7 +8,7 @@ This gem is published to **GitHub Packages** (not RubyGems.org). Add the GitHub 
 
 ```ruby
 source "https://rubygems.pkg.github.com/architecture" do
-  gem "elevenlabs", "0.3.0"
+  gem "elevenlabs", "0.3.1"
 end
 ```
 
@@ -29,7 +29,7 @@ Bundler can pull the gem straight from the git repository. This works for public
 
 ```ruby
 # Pin to a release tag (recommended for production)
-gem "elevenlabs", git: "https://github.com/architecture/elevenlabs-ruby", tag: "v0.3.0"
+gem "elevenlabs", git: "https://github.com/architecture/elevenlabs-ruby", tag: "v0.3.1"
 
 # Or track the latest main branch
 gem "elevenlabs", git: "https://github.com/architecture/elevenlabs-ruby", branch: "main"
@@ -351,6 +351,10 @@ gem "elevenlabs", path: "/path/to/elevenlabs-ruby"
 ```
 
 ## Recent Updates
+
+### 2026-03-05: v0.3.1 — HTTP Redirect Following
+
+The HTTP client now automatically follows `3xx` redirects when the server returns a redirect response. This means requests that hit moved or redirected endpoints will transparently re-issue to the new location without any change to your calling code.
 
 ### 2026-03-01: Updated API Spec from elevenlabs-python (v0.2.0)
 
