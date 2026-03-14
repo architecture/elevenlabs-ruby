@@ -20,7 +20,7 @@ jobs:
         bundler-cache: true
 
     - name: Run tests
-      run: ruby -Ilib -Itest -e "Dir.glob('test/*_test.rb').each{|f| require File.expand_path(f)}"
+      run: bundle exec ruby -Ilib -Itest -e "Dir.glob('test/*_test.rb').each{|f| require File.expand_path(f)}"
 
   publish:
     name: Publish
