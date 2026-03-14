@@ -8,7 +8,7 @@ This gem is published to **GitHub Packages** (not RubyGems.org). Add the GitHub 
 
 ```ruby
 source "https://rubygems.pkg.github.com/architecture" do
-  gem "elevenlabs", "0.3.3"
+  gem "elevenlabs", "0.3.4"
 end
 ```
 
@@ -29,7 +29,7 @@ Bundler can pull the gem straight from the git repository. This works for public
 
 ```ruby
 # Pin to a release tag (recommended for production)
-gem "elevenlabs", git: "https://github.com/architecture/elevenlabs-ruby", tag: "v0.3.3"
+gem "elevenlabs", git: "https://github.com/architecture/elevenlabs-ruby", tag: "v0.3.4"
 
 # Or track the latest main branch
 gem "elevenlabs", git: "https://github.com/architecture/elevenlabs-ruby", branch: "main"
@@ -356,6 +356,27 @@ gem "elevenlabs", path: "/path/to/elevenlabs-ruby"
 ```
 
 ## Recent Updates
+
+### 2026-03-14: v0.3.4 — Updated API Spec from elevenlabs-python v2.39.1
+
+Updated `lib/elevenlabs/spec.json` by running the extraction script against elevenlabs-python v2.39.1 (commit 8303d37, SDK regeneration #744 — March 2026).
+
+**New Operations:**
+- `workspace.groups.list` — list all groups in the workspace
+
+**New/Updated Parameters:**
+- `audio_native.update_content_from_url` — added `author` and `title` optional params
+- `conversational_ai.batch_calls.create` — added `target_concurrency_limit` for controlling simultaneous call dispatch
+- `conversational_ai.users.list` — added `branch_id` filter and `sort_by` ordering
+- `conversational_ai.whatsapp_accounts.update` — added `enable_audio_message_response`
+- `music.compose` — added `respect_sections_durations` for stricter section timing
+- `speech_to_text.convert` — added `no_verbatim` to strip filler words (scribe_v2)
+- `workspace.invites.create` — added `seat_type` param
+
+**Removed Parameters:**
+- `conversational_ai.agents.create` / `update` — removed `coaching_settings`
+
+Test suite now at 65 runs, 182 assertions, 0 failures.
 
 ### 2026-03-05: v0.3.3 — Tests and docs for SDK #740 new operations
 

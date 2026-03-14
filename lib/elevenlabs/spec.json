@@ -489,13 +489,23 @@
         },
         {
           "name": "update_content_from_url",
-          "doc": "Finds an AudioNative project matching the provided URL, extracts content from the URL, updates the project content, and queues it for conversion and auto-publishing.\n\nParameters\n----------\nurl : str\n    URL of the page to extract content from.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[AudioNativeEditContentResponseModel]\n    Successful Response",
+          "doc": "Finds an AudioNative project matching the provided URL, extracts content from the URL, updates the project content, and queues it for conversion and auto-publishing.\n\nParameters\n----------\nurl : str\n    URL of the page to extract content from.\n\nauthor : typing.Optional[str]\n    Author used in the player and inserted at the start of the uploaded article. If not provided, the default author set in the Player settings is used.\n\ntitle : typing.Optional[str]\n    Title used in the player and inserted at the top of the uploaded article. If not provided, the default title set in the Player settings is used.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[AudioNativeEditContentResponseModel]\n    Successful Response",
           "positional_params": [],
           "keyword_params": [
             {
               "name": "url",
               "kind": "keyword",
               "default": null
+            },
+            {
+              "name": "author",
+              "kind": "keyword",
+              "default": "__OMIT__"
+            },
+            {
+              "name": "title",
+              "kind": "keyword",
+              "default": "__OMIT__"
             },
             {
               "name": "request_options",
@@ -518,6 +528,18 @@
                     "url"
                   ],
                   "param": "url"
+                },
+                {
+                  "path": [
+                    "author"
+                  ],
+                  "param": "author"
+                },
+                {
+                  "path": [
+                    "title"
+                  ],
+                  "param": "title"
                 }
               ]
             },
@@ -716,7 +738,7 @@
           "operations": [
             {
               "name": "create",
-              "doc": "Create an agent from a config object\n\nParameters\n----------\nconversation_config : ConversationalConfig\n    Conversation configuration for an agent\n\nenable_versioning : typing.Optional[bool]\n    Enable versioning for the agent\n\nplatform_settings : typing.Optional[AgentPlatformSettingsRequestModel]\n    Platform settings for the agent are all settings that aren't related to the conversation orchestration and content.\n\nworkflow : typing.Optional[AgentWorkflowRequestModel]\n    Workflow for the agent. This is used to define the flow of the conversation and how the agent interacts with tools.\n\nname : typing.Optional[str]\n    A name to make the agent easier to find\n\ntags : typing.Optional[typing.Sequence[str]]\n    Tags to help classify and filter the agent\n\ncoaching_settings : typing.Optional[BodyCreateAgentV1ConvaiAgentsCreatePostCoachingSettings]\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[CreateAgentResponseModel]\n    Successful Response",
+              "doc": "Create an agent from a config object\n\nParameters\n----------\nconversation_config : ConversationalConfig\n    Conversation configuration for an agent\n\nenable_versioning : typing.Optional[bool]\n    Enable versioning for the agent\n\nplatform_settings : typing.Optional[AgentPlatformSettingsRequestModel]\n    Platform settings for the agent are all settings that aren't related to the conversation orchestration and content.\n\nworkflow : typing.Optional[AgentWorkflowRequestModel]\n    Workflow for the agent. This is used to define the flow of the conversation and how the agent interacts with tools.\n\nname : typing.Optional[str]\n    A name to make the agent easier to find\n\ntags : typing.Optional[typing.Sequence[str]]\n    Tags to help classify and filter the agent\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[CreateAgentResponseModel]\n    Successful Response",
               "positional_params": [],
               "keyword_params": [
                 {
@@ -746,11 +768,6 @@
                 },
                 {
                   "name": "tags",
-                  "kind": "keyword",
-                  "default": "__OMIT__"
-                },
-                {
-                  "name": "coaching_settings",
                   "kind": "keyword",
                   "default": "__OMIT__"
                 },
@@ -804,12 +821,6 @@
                         "tags"
                       ],
                       "param": "tags"
-                    },
-                    {
-                      "path": [
-                        "coaching_settings"
-                      ],
-                      "param": "coaching_settings"
                     }
                   ]
                 },
@@ -911,7 +922,7 @@
             },
             {
               "name": "update",
-              "doc": "Patches an Agent settings\n\nParameters\n----------\nagent_id : str\n    The id of an agent. This is returned on agent creation.\n\nenable_versioning_if_not_enabled : typing.Optional[bool]\n    Enable versioning for the agent, if not already enabled\n\nbranch_id : typing.Optional[str]\n    The ID of the branch to use\n\nconversation_config : typing.Optional[ConversationalConfig]\n    Conversation configuration for an agent\n\nplatform_settings : typing.Optional[AgentPlatformSettingsRequestModel]\n    Platform settings for the agent are all settings that aren't related to the conversation orchestration and content.\n\nworkflow : typing.Optional[AgentWorkflowRequestModel]\n    Workflow for the agent. This is used to define the flow of the conversation and how the agent interacts with tools.\n\nname : typing.Optional[str]\n    A name to make the agent easier to find\n\ntags : typing.Optional[typing.Sequence[str]]\n    Tags to help classify and filter the agent\n\ncoaching_settings : typing.Optional[BodyPatchesAnAgentSettingsV1ConvaiAgentsAgentIdPatchCoachingSettings]\n\nversion_description : typing.Optional[str]\n    Description for this version when publishing changes (only applicable for versioned agents)\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[GetAgentResponseModel]\n    Successful Response",
+              "doc": "Patches an Agent settings\n\nParameters\n----------\nagent_id : str\n    The id of an agent. This is returned on agent creation.\n\nenable_versioning_if_not_enabled : typing.Optional[bool]\n    Enable versioning for the agent, if not already enabled\n\nbranch_id : typing.Optional[str]\n    The ID of the branch to use\n\nconversation_config : typing.Optional[ConversationalConfig]\n    Conversation configuration for an agent\n\nplatform_settings : typing.Optional[AgentPlatformSettingsRequestModel]\n    Platform settings for the agent are all settings that aren't related to the conversation orchestration and content.\n\nworkflow : typing.Optional[AgentWorkflowRequestModel]\n    Workflow for the agent. This is used to define the flow of the conversation and how the agent interacts with tools.\n\nname : typing.Optional[str]\n    A name to make the agent easier to find\n\ntags : typing.Optional[typing.Sequence[str]]\n    Tags to help classify and filter the agent\n\nversion_description : typing.Optional[str]\n    Description for this version when publishing changes (only applicable for versioned agents)\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[GetAgentResponseModel]\n    Successful Response",
               "positional_params": [
                 {
                   "name": "agent_id",
@@ -952,11 +963,6 @@
                 },
                 {
                   "name": "tags",
-                  "kind": "keyword",
-                  "default": "__OMIT__"
-                },
-                {
-                  "name": "coaching_settings",
                   "kind": "keyword",
                   "default": "__OMIT__"
                 },
@@ -1021,12 +1027,6 @@
                         "tags"
                       ],
                       "param": "tags"
-                    },
-                    {
-                      "path": [
-                        "coaching_settings"
-                      ],
-                      "param": "coaching_settings"
                     },
                     {
                       "path": [
@@ -2321,7 +2321,7 @@
           "operations": [
             {
               "name": "create",
-              "doc": "Submit a batch call request to schedule calls for multiple recipients.\n\nParameters\n----------\ncall_name : str\n\nagent_id : str\n\nrecipients : typing.Sequence[OutboundCallRecipient]\n\nscheduled_time_unix : typing.Optional[int]\n\nagent_phone_number_id : typing.Optional[str]\n\nwhatsapp_params : typing.Optional[BatchCallWhatsAppParams]\n\ntimezone : typing.Optional[str]\n\ntelephony_call_config : typing.Optional[TelephonyCallConfig]\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[BatchCallResponse]\n    Successful Response",
+              "doc": "Submit a batch call request to schedule calls for multiple recipients.\n\nParameters\n----------\ncall_name : str\n\nagent_id : str\n\nrecipients : typing.Sequence[OutboundCallRecipient]\n\nscheduled_time_unix : typing.Optional[int]\n\nagent_phone_number_id : typing.Optional[str]\n\nwhatsapp_params : typing.Optional[BatchCallWhatsAppParams]\n\ntimezone : typing.Optional[str]\n\ntelephony_call_config : typing.Optional[TelephonyCallConfig]\n\ntarget_concurrency_limit : typing.Optional[int]\n    Maximum number of simultaneous calls for this batch. When set, dispatch is governed by this limit rather than workspace/agent capacity percentages.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[BatchCallResponse]\n    Successful Response",
               "positional_params": [],
               "keyword_params": [
                 {
@@ -2361,6 +2361,11 @@
                 },
                 {
                   "name": "telephony_call_config",
+                  "kind": "keyword",
+                  "default": "__OMIT__"
+                },
+                {
+                  "name": "target_concurrency_limit",
                   "kind": "keyword",
                   "default": "__OMIT__"
                 },
@@ -2427,6 +2432,12 @@
                         "telephony_call_config"
                       ],
                       "param": "telephony_call_config"
+                    },
+                    {
+                      "path": [
+                        "target_concurrency_limit"
+                      ],
+                      "param": "target_concurrency_limit"
                     }
                   ]
                 },
@@ -7070,11 +7081,16 @@
           "operations": [
             {
               "name": "list",
-              "doc": "Get distinct users from conversations with pagination.\n\nParameters\n----------\nagent_id : typing.Optional[str]\n    The id of the agent you're taking the action on.\n\ncall_start_before_unix : typing.Optional[int]\n    Unix timestamp (in seconds) to filter conversations up to this start date.\n\ncall_start_after_unix : typing.Optional[int]\n    Unix timestamp (in seconds) to filter conversations after to this start date.\n\nsearch : typing.Optional[str]\n    Search/filter by user ID (exact match).\n\npage_size : typing.Optional[int]\n    How many users to return at maximum. Defaults to 30.\n\ncursor : typing.Optional[str]\n    Used for fetching next page. Cursor is returned in the response.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[GetConversationUsersPageResponseModel]\n    Successful Response",
+              "doc": "Get distinct users from conversations with pagination.\n\nParameters\n----------\nagent_id : typing.Optional[str]\n    The id of the agent you're taking the action on.\n\nbranch_id : typing.Optional[str]\n    Filter conversations by branch ID.\n\ncall_start_before_unix : typing.Optional[int]\n    Unix timestamp (in seconds) to filter conversations up to this start date.\n\ncall_start_after_unix : typing.Optional[int]\n    Unix timestamp (in seconds) to filter conversations after to this start date.\n\nsearch : typing.Optional[str]\n    Search/filter by user ID (exact match).\n\npage_size : typing.Optional[int]\n    How many users to return at maximum. Defaults to 30.\n\nsort_by : typing.Optional[UsersSortBy]\n    The field to sort the results by. Defaults to last_contact_unix_secs.\n\ncursor : typing.Optional[str]\n    Used for fetching next page. Cursor is returned in the response.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[GetConversationUsersPageResponseModel]\n    Successful Response",
               "positional_params": [],
               "keyword_params": [
                 {
                   "name": "agent_id",
+                  "kind": "keyword",
+                  "default": null
+                },
+                {
+                  "name": "branch_id",
                   "kind": "keyword",
                   "default": null
                 },
@@ -7095,6 +7111,11 @@
                 },
                 {
                   "name": "page_size",
+                  "kind": "keyword",
+                  "default": null
+                },
+                {
+                  "name": "sort_by",
                   "kind": "keyword",
                   "default": null
                 },
@@ -7121,6 +7142,10 @@
                     "param": "agent_id"
                   },
                   {
+                    "name": "branch_id",
+                    "param": "branch_id"
+                  },
+                  {
                     "name": "call_start_before_unix",
                     "param": "call_start_before_unix"
                   },
@@ -7135,6 +7160,10 @@
                   {
                     "name": "page_size",
                     "param": "page_size"
+                  },
+                  {
+                    "name": "sort_by",
+                    "param": "sort_by"
                   },
                   {
                     "name": "cursor",
@@ -7436,7 +7465,7 @@
             },
             {
               "name": "update",
-              "doc": "Update a WhatsApp account\n\nParameters\n----------\nphone_number_id : str\n\nassigned_agent_id : typing.Optional[str]\n\nenable_messaging : typing.Optional[bool]\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[typing.Any]\n    Successful Response",
+              "doc": "Update a WhatsApp account\n\nParameters\n----------\nphone_number_id : str\n\nassigned_agent_id : typing.Optional[str]\n\nenable_messaging : typing.Optional[bool]\n\nenable_audio_message_response : typing.Optional[bool]\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[typing.Any]\n    Successful Response",
               "positional_params": [
                 {
                   "name": "phone_number_id",
@@ -7452,6 +7481,11 @@
                 },
                 {
                   "name": "enable_messaging",
+                  "kind": "keyword",
+                  "default": "__OMIT__"
+                },
+                {
+                  "name": "enable_audio_message_response",
                   "kind": "keyword",
                   "default": "__OMIT__"
                 },
@@ -7484,6 +7518,12 @@
                         "enable_messaging"
                       ],
                       "param": "enable_messaging"
+                    },
+                    {
+                      "path": [
+                        "enable_audio_message_response"
+                      ],
+                      "param": "enable_audio_message_response"
                     }
                   ]
                 },
@@ -9482,7 +9522,7 @@
         },
         {
           "name": "compose_detailed",
-          "doc": "Compose a song from a prompt or a composition plan.\n\nParameters\n----------\noutput_format : typing.Optional[AllowedOutputFormats]\n    Output format of the generated audio. Formatted as codec_sample_rate_bitrate. So an mp3 with 22.05kHz sample rate at 32kbs is represented as mp3_22050_32. MP3 with 192kbps bitrate requires you to be subscribed to Creator tier or above. PCM with 44.1kHz sample rate requires you to be subscribed to Pro tier or above. Note that the \u03bc-law format (sometimes written mu-law, often approximated as u-law) is commonly used for Twilio audio inputs.\n\nprompt : typing.Optional[str]\n    A simple text prompt to generate a song from. Cannot be used in conjunction with `composition_plan`.\n\ncomposition_plan : typing.Optional[MusicPrompt]\n    A detailed composition plan to guide music generation. Cannot be used in conjunction with `prompt`.\n\nmusic_length_ms : typing.Optional[int]\n    The length of the song to generate in milliseconds. Used only in conjunction with `prompt`. Must be between 3000ms and 600000ms. Optional - if not provided, the model will choose a length based on the prompt.\n\nmodel_id : typing.Optional[typing.Literal[\"music_v1\"]]\n    The model to use for the generation.\n\nseed : typing.Optional[int]\n    Random seed to initialize the music generation process. Providing the same seed with the same parameters can help achieve more consistent results, but exact reproducibility is not guaranteed and outputs may change across system updates. Cannot be used in conjunction with prompt.\n\nforce_instrumental : typing.Optional[bool]\n    If true, guarantees that the generated song will be instrumental. If false, the song may or may not be instrumental depending on the `prompt`. Can only be used with `prompt`.\n\nstore_for_inpainting : typing.Optional[bool]\n    Whether to store the generated song for inpainting. Only available to enterprise clients with access to the inpainting feature.\n\nwith_timestamps : typing.Optional[bool]\n    Whether to return the timestamps of the words in the generated song.\n\nsign_with_c_2_pa : typing.Optional[bool]\n    Whether to sign the generated song with C2PA. Applicable only for mp3 files.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration. You can pass in configuration such as `chunk_size`, and more to customize the request and response.\n\nReturns\n-------\ntyping.Iterator[HttpResponse[typing.Iterator[bytes]]]\n    Multipart/mixed response with JSON metadata and binary audio file",
+          "doc": "Compose a song from a prompt or a composition plan.\n\nParameters\n----------\noutput_format : typing.Optional[AllowedOutputFormats]\n    Output format of the generated audio. Formatted as codec_sample_rate_bitrate. So an mp3 with 22.05kHz sample rate at 32kbs is represented as mp3_22050_32. MP3 with 192kbps bitrate requires you to be subscribed to Creator tier or above. PCM with 44.1kHz sample rate requires you to be subscribed to Pro tier or above. Note that the \u03bc-law format (sometimes written mu-law, often approximated as u-law) is commonly used for Twilio audio inputs.\n\nprompt : typing.Optional[str]\n    A simple text prompt to generate a song from. Cannot be used in conjunction with `composition_plan`.\n\ncomposition_plan : typing.Optional[MusicPrompt]\n    A detailed composition plan to guide music generation. Cannot be used in conjunction with `prompt`.\n\nmusic_length_ms : typing.Optional[int]\n    The length of the song to generate in milliseconds. Used only in conjunction with `prompt`. Must be between 3000ms and 600000ms. Optional - if not provided, the model will choose a length based on the prompt.\n\nmodel_id : typing.Optional[typing.Literal[\"music_v1\"]]\n    The model to use for the generation.\n\nseed : typing.Optional[int]\n    Random seed to initialize the music generation process. Providing the same seed with the same parameters can help achieve more consistent results, but exact reproducibility is not guaranteed and outputs may change across system updates. Cannot be used in conjunction with prompt.\n\nforce_instrumental : typing.Optional[bool]\n    If true, guarantees that the generated song will be instrumental. If false, the song may or may not be instrumental depending on the `prompt`. Can only be used with `prompt`.\n\nrespect_sections_durations : typing.Optional[bool]\n    Controls how strictly section durations in the `composition_plan` are enforced. Only used with `composition_plan`. When set to true, the model will precisely respect each section's `duration_ms` from the plan. When set to false, the model may adjust individual section durations which will generally lead to better generation quality and improved latency, while always preserving the total song duration from the plan.\n\nstore_for_inpainting : typing.Optional[bool]\n    Whether to store the generated song for inpainting. Only available to enterprise clients with access to the inpainting feature.\n\nwith_timestamps : typing.Optional[bool]\n    Whether to return the timestamps of the words in the generated song.\n\nsign_with_c_2_pa : typing.Optional[bool]\n    Whether to sign the generated song with C2PA. Applicable only for mp3 files.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration. You can pass in configuration such as `chunk_size`, and more to customize the request and response.\n\nReturns\n-------\ntyping.Iterator[HttpResponse[typing.Iterator[bytes]]]\n    Multipart/mixed response with JSON metadata and binary audio file",
           "positional_params": [],
           "keyword_params": [
             {
@@ -9517,6 +9557,11 @@
             },
             {
               "name": "force_instrumental",
+              "kind": "keyword",
+              "default": "__OMIT__"
+            },
+            {
+              "name": "respect_sections_durations",
               "kind": "keyword",
               "default": "__OMIT__"
             },
@@ -9591,6 +9636,12 @@
                     "force_instrumental"
                   ],
                   "param": "force_instrumental"
+                },
+                {
+                  "path": [
+                    "respect_sections_durations"
+                  ],
+                  "param": "respect_sections_durations"
                 },
                 {
                   "path": [
@@ -11065,7 +11116,7 @@
       "operations": [
         {
           "name": "convert",
-          "doc": "Transcribe an audio or video file. If webhook is set to true, the request will be processed asynchronously and results sent to configured webhooks. When use_multi_channel is true and the provided audio has multiple channels, a 'transcripts' object with separate transcripts for each channel is returned. Otherwise, returns a single transcript. The optional webhook_metadata parameter allows you to attach custom data that will be included in webhook responses for request correlation and tracking.\n\nParameters\n----------\nmodel_id : SpeechToTextConvertRequestModelId\n    The ID of the model to use for transcription.\n\nenable_logging : typing.Optional[bool]\n    When enable_logging is set to false zero retention mode will be used for the request. This will mean log and transcript storage features are unavailable for this request. Zero retention mode may only be used by enterprise customers.\n\nfile : typing.Optional[core.File]\n    See core.File for more documentation\n\nlanguage_code : typing.Optional[str]\n    An ISO-639-1 or ISO-639-3 language_code corresponding to the language of the audio file. Can sometimes improve transcription performance if known beforehand. Defaults to null, in this case the language is predicted automatically.\n\ntag_audio_events : typing.Optional[bool]\n    Whether to tag audio events like (laughter), (footsteps), etc. in the transcription.\n\nnum_speakers : typing.Optional[int]\n    The maximum amount of speakers talking in the uploaded file. Can help with predicting who speaks when. The maximum amount of speakers that can be predicted is 32. Defaults to null, in this case the amount of speakers is set to the maximum value the model supports.\n\ntimestamps_granularity : typing.Optional[SpeechToTextConvertRequestTimestampsGranularity]\n    The granularity of the timestamps in the transcription. 'word' provides word-level timestamps and 'character' provides character-level timestamps per word.\n\ndiarize : typing.Optional[bool]\n    Whether to annotate which speaker is currently talking in the uploaded file.\n\ndiarization_threshold : typing.Optional[float]\n    Diarization threshold to apply during speaker diarization. A higher value means there will be a lower chance of one speaker being diarized as two different speakers but also a higher chance of two different speakers being diarized as one speaker (less total speakers predicted). A low value means there will be a higher chance of one speaker being diarized as two different speakers but also a lower chance of two different speakers being diarized as one speaker (more total speakers predicted). Can only be set when diarize=True and num_speakers=None. Defaults to None, in which case we will choose a threshold based on the model_id (0.22 usually).\n\nadditional_formats : typing.Optional[AdditionalFormats]\n    A list of additional formats to export the transcript to.\n\nfile_format : typing.Optional[SpeechToTextConvertRequestFileFormat]\n    The format of input audio. Options are 'pcm_s16le_16' or 'other' For `pcm_s16le_16`, the input audio must be 16-bit PCM at a 16kHz sample rate, single channel (mono), and little-endian byte order. Latency will be lower than with passing an encoded waveform.\n\ncloud_storage_url : typing.Optional[str]\n    The HTTPS URL of the file to transcribe. Exactly one of the file or cloud_storage_url parameters must be provided. The file must be accessible via HTTPS and the file size must be less than 2GB. Any valid HTTPS URL is accepted, including URLs from cloud storage providers (AWS S3, Google Cloud Storage, Cloudflare R2, etc.), CDNs, or any other HTTPS source. URLs can be pre-signed or include authentication tokens in query parameters.\n\nwebhook : typing.Optional[bool]\n    Whether to send the transcription result to configured speech-to-text webhooks.  If set the request will return early without the transcription, which will be delivered later via webhook.\n\nwebhook_id : typing.Optional[str]\n    Optional specific webhook ID to send the transcription result to. Only valid when webhook is set to true. If not provided, transcription will be sent to all configured speech-to-text webhooks.\n\ntemperature : typing.Optional[float]\n    Controls the randomness of the transcription output. Accepts values between 0.0 and 2.0, where higher values result in more diverse and less deterministic results. If omitted, we will use a temperature based on the model you selected which is usually 0.\n\nseed : typing.Optional[int]\n    If specified, our system will make a best effort to sample deterministically, such that repeated requests with the same seed and parameters should return the same result. Determinism is not guaranteed. Must be an integer between 0 and 2147483647.\n\nuse_multi_channel : typing.Optional[bool]\n    Whether the audio file contains multiple channels where each channel contains a single speaker. When enabled, each channel will be transcribed independently and the results will be combined. Each word in the response will include a 'channel_index' field indicating which channel it was spoken on. A maximum of 5 channels is supported.\n\nwebhook_metadata : typing.Optional[SpeechToTextConvertRequestWebhookMetadata]\n    Optional metadata to be included in the webhook response. This should be a JSON string representing an object with a maximum depth of 2 levels and maximum size of 16KB. Useful for tracking internal IDs, job references, or other contextual information.\n\nentity_detection : typing.Optional[SpeechToTextConvertRequestEntityDetection]\n    Detect entities in the transcript. Can be 'all' to detect all entities, a single entity type or category string, or a list of entity types/categories. Categories include 'pii', 'phi', 'pci', 'other', 'offensive_language'. When enabled, detected entities will be returned in the 'entities' field with their text, type, and character positions. Usage of this parameter will incur additional costs.\n\nkeyterms : typing.Optional[typing.List[str]]\n    A list of keyterms to bias the transcription towards.           The keyterms are words or phrases you want the model to recognise more accurately.           The number of keyterms cannot exceed 100.           The length of each keyterm must be less than 50 characters.           Keyterms can contain at most 5 words (after normalisation).           For example [\"hello\", \"world\", \"technical term\"].           Usage of this parameter will incur additional costs.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[SpeechToTextConvertResponse]\n    Synchronous transcription result",
+          "doc": "Transcribe an audio or video file. If webhook is set to true, the request will be processed asynchronously and results sent to configured webhooks. When use_multi_channel is true and the provided audio has multiple channels, a 'transcripts' object with separate transcripts for each channel is returned. Otherwise, returns a single transcript. The optional webhook_metadata parameter allows you to attach custom data that will be included in webhook responses for request correlation and tracking.\n\nParameters\n----------\nmodel_id : SpeechToTextConvertRequestModelId\n    The ID of the model to use for transcription.\n\nenable_logging : typing.Optional[bool]\n    When enable_logging is set to false zero retention mode will be used for the request. This will mean log and transcript storage features are unavailable for this request. Zero retention mode may only be used by enterprise customers.\n\nfile : typing.Optional[core.File]\n    See core.File for more documentation\n\nlanguage_code : typing.Optional[str]\n    An ISO-639-1 or ISO-639-3 language_code corresponding to the language of the audio file. Can sometimes improve transcription performance if known beforehand. Defaults to null, in this case the language is predicted automatically.\n\ntag_audio_events : typing.Optional[bool]\n    Whether to tag audio events like (laughter), (footsteps), etc. in the transcription.\n\nnum_speakers : typing.Optional[int]\n    The maximum amount of speakers talking in the uploaded file. Can help with predicting who speaks when. The maximum amount of speakers that can be predicted is 32. Defaults to null, in this case the amount of speakers is set to the maximum value the model supports.\n\ntimestamps_granularity : typing.Optional[SpeechToTextConvertRequestTimestampsGranularity]\n    The granularity of the timestamps in the transcription. 'word' provides word-level timestamps and 'character' provides character-level timestamps per word.\n\ndiarize : typing.Optional[bool]\n    Whether to annotate which speaker is currently talking in the uploaded file.\n\ndiarization_threshold : typing.Optional[float]\n    Diarization threshold to apply during speaker diarization. A higher value means there will be a lower chance of one speaker being diarized as two different speakers but also a higher chance of two different speakers being diarized as one speaker (less total speakers predicted). A low value means there will be a higher chance of one speaker being diarized as two different speakers but also a lower chance of two different speakers being diarized as one speaker (more total speakers predicted). Can only be set when diarize=True and num_speakers=None. Defaults to None, in which case we will choose a threshold based on the model_id (0.22 usually).\n\nadditional_formats : typing.Optional[AdditionalFormats]\n    A list of additional formats to export the transcript to.\n\nfile_format : typing.Optional[SpeechToTextConvertRequestFileFormat]\n    The format of input audio. Options are 'pcm_s16le_16' or 'other' For `pcm_s16le_16`, the input audio must be 16-bit PCM at a 16kHz sample rate, single channel (mono), and little-endian byte order. Latency will be lower than with passing an encoded waveform.\n\ncloud_storage_url : typing.Optional[str]\n    The HTTPS URL of the file to transcribe. Exactly one of the file or cloud_storage_url parameters must be provided. The file must be accessible via HTTPS and the file size must be less than 2GB. Any valid HTTPS URL is accepted, including URLs from cloud storage providers (AWS S3, Google Cloud Storage, Cloudflare R2, etc.), CDNs, or any other HTTPS source. URLs can be pre-signed or include authentication tokens in query parameters.\n\nwebhook : typing.Optional[bool]\n    Whether to send the transcription result to configured speech-to-text webhooks.  If set the request will return early without the transcription, which will be delivered later via webhook.\n\nwebhook_id : typing.Optional[str]\n    Optional specific webhook ID to send the transcription result to. Only valid when webhook is set to true. If not provided, transcription will be sent to all configured speech-to-text webhooks.\n\ntemperature : typing.Optional[float]\n    Controls the randomness of the transcription output. Accepts values between 0.0 and 2.0, where higher values result in more diverse and less deterministic results. If omitted, we will use a temperature based on the model you selected which is usually 0.\n\nseed : typing.Optional[int]\n    If specified, our system will make a best effort to sample deterministically, such that repeated requests with the same seed and parameters should return the same result. Determinism is not guaranteed. Must be an integer between 0 and 2147483647.\n\nuse_multi_channel : typing.Optional[bool]\n    Whether the audio file contains multiple channels where each channel contains a single speaker. When enabled, each channel will be transcribed independently and the results will be combined. Each word in the response will include a 'channel_index' field indicating which channel it was spoken on. A maximum of 5 channels is supported.\n\nwebhook_metadata : typing.Optional[SpeechToTextConvertRequestWebhookMetadata]\n    Optional metadata to be included in the webhook response. This should be a JSON string representing an object with a maximum depth of 2 levels and maximum size of 16KB. Useful for tracking internal IDs, job references, or other contextual information.\n\nentity_detection : typing.Optional[SpeechToTextConvertRequestEntityDetection]\n    Detect entities in the transcript. Can be 'all' to detect all entities, a single entity type or category string, or a list of entity types/categories. Categories include 'pii', 'phi', 'pci', 'other', 'offensive_language'. When enabled, detected entities will be returned in the 'entities' field with their text, type, and character positions. Usage of this parameter will incur additional costs.\n\nno_verbatim : typing.Optional[bool]\n    If true, the transcription will not have any filler words, false starts and non-speech sounds. Only supported with scribe_v2 model.\n\nkeyterms : typing.Optional[typing.List[str]]\n    A list of keyterms to bias the transcription towards.           The keyterms are words or phrases you want the model to recognise more accurately.           The number of keyterms cannot exceed 100.           The length of each keyterm must be less than 50 characters.           Keyterms can contain at most 5 words (after normalisation).           For example [\"hello\", \"world\", \"technical term\"].           Usage of this parameter will incur additional costs.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[SpeechToTextConvertResponse]\n    Synchronous transcription result",
           "positional_params": [],
           "keyword_params": [
             {
@@ -11160,6 +11211,11 @@
             },
             {
               "name": "entity_detection",
+              "kind": "keyword",
+              "default": "__OMIT__"
+            },
+            {
+              "name": "no_verbatim",
               "kind": "keyword",
               "default": "__OMIT__"
             },
@@ -11285,6 +11341,12 @@
                     "entity_detection"
                   ],
                   "param": "entity_detection"
+                },
+                {
+                  "path": [
+                    "no_verbatim"
+                  ],
+                  "param": "no_verbatim"
                 },
                 {
                   "path": [
@@ -17183,6 +17245,32 @@
         "groups": {
           "operations": [
             {
+              "name": "list",
+              "doc": "Get all groups in the workspace\n\nParameters\n----------\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[typing.Dict[str, WorkspaceGroupResponseModel]]\n    Successful Response",
+              "positional_params": [],
+              "keyword_params": [
+                {
+                  "name": "request_options",
+                  "kind": "keyword",
+                  "default": null
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "path": {
+                  "template": "v1/workspace/groups",
+                  "params": []
+                },
+                "query": [],
+                "json": null,
+                "form": null,
+                "files": [],
+                "headers": {},
+                "force_multipart": false,
+                "streaming": false
+              }
+            },
+            {
               "name": "search",
               "doc": "Searches for user groups in the workspace. Multiple or no groups may be returned.\n\nParameters\n----------\nname : str\n    Name of the target group.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[typing.List[WorkspaceGroupByNameResponseModel]]\n    Successful Response",
               "positional_params": [],
@@ -17409,13 +17497,18 @@
             },
             {
               "name": "create_batch",
-              "doc": "Sends email invitations to join your workspace to the provided emails. Requires all email addresses to be part of a verified domain. If the users don't have an account they will be prompted to create one. If the users accept these invites they will be added as users to your workspace and your subscription using one of your seats. This endpoint may only be called by workspace members with the WORKSPACE_MEMBERS_INVITE permission.\n\nParameters\n----------\nemails : typing.Sequence[str]\n    The email of the customer\n\ngroup_ids : typing.Optional[typing.Sequence[str]]\n    The group ids of the user\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[AddWorkspaceInviteResponseModel]\n    Successful Response",
+              "doc": "Sends email invitations to join your workspace to the provided emails. Requires all email addresses to be part of a verified domain. If the users don't have an account they will be prompted to create one. If the users accept these invites they will be added as users to your workspace and your subscription using one of your seats. This endpoint may only be called by workspace members with the WORKSPACE_MEMBERS_INVITE permission.\n\nParameters\n----------\nemails : typing.Sequence[str]\n    The email of the customer\n\nseat_type : typing.Optional[SeatType]\n    The seat type of the user\n\ngroup_ids : typing.Optional[typing.Sequence[str]]\n    The group ids of the user\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[AddWorkspaceInviteResponseModel]\n    Successful Response",
               "positional_params": [],
               "keyword_params": [
                 {
                   "name": "emails",
                   "kind": "keyword",
                   "default": null
+                },
+                {
+                  "name": "seat_type",
+                  "kind": "keyword",
+                  "default": "__OMIT__"
                 },
                 {
                   "name": "group_ids",
@@ -17443,6 +17536,12 @@
                         "emails"
                       ],
                       "param": "emails"
+                    },
+                    {
+                      "path": [
+                        "seat_type"
+                      ],
+                      "param": "seat_type"
                     },
                     {
                       "path": [
