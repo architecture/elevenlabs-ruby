@@ -323,13 +323,16 @@ ruby -Ilib:test test/client_test.rb
 ruby -Ilib:test test/environment_test.rb
 ```
 
-**Test Coverage:**
+**Test Coverage (134 tests, 347 assertions):**
 - `operation_serialization_test.rb` - Tests request serialization for various operations
-- `http_client_test.rb` - Tests HTTP client behavior and file upload handling
+- `operation_executor_test.rb` - Tests path building, query/body/file resolution, streaming dispatch, request_options forwarding
+- `http_client_test.rb` - Tests file upload handling, redirect following, streaming cleanup
+- `http_client_headers_test.rb` - Tests default headers, API key injection, JSON/form body prep, timeouts, response parsing, error handling
+- `resources_test.rb` - Tests spec loading, class generation, operation methods, child resource accessors, caching, deep nesting
 - `utils_test.rb` - Tests utility functions (deep_dup, assign_path, deep_compact, etc.)
 - `upload_test.rb` - Tests Upload helper methods for files, bytes, strings, and IO
 - `errors_test.rb` - Tests error classes and their attributes
-- `client_test.rb` - Tests client initialization and resource caching
+- `client_test.rb` - Tests client initialization, resource caching, all namespace accessors, custom environments
 - `environment_test.rb` - Tests environment URL resolution
 
 Launch IRB with the project on the load path:
