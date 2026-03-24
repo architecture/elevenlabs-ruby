@@ -276,6 +276,109 @@ class OperationSerializationTest < Minitest::Test
     assert_equal "creator", request[:json]["seat_type"]
   end
 
+  # --- v0.4.0 tests: new namespaces/operations from Python SDK v2.40.0 ---
+
+  def test_environment_variables_list
+    @client.environment_variables.list(page_size: 10, label: "production")
+
+    request = @http.requests.last
+    assert_equal "GET", request[:method]
+    assert_equal "v1/convai/environment-variables", request[:path]
+    assert_equal 10, request[:query]["page_size"]
+    assert_equal "production", request[:query]["label"]
+    assert_nil request[:json]
+  end
+
+  def test_environment_variables_create
+    @client.environment_variables.create(
+      request: { "label" => "API_KEY", "type" => "secret", "values" => { "production" => "sk-123" } }
+    )
+
+    request = @http.requests.last
+    assert_equal "POST", request[:method]
+    assert_equal "v1/convai/environment-variables", request[:path]
+    assert_equal "API_KEY", request[:json]["label"]
+    assert_equal "secret", request[:json]["type"]
+  end
+
+  def test_environment_variables_get
+    @client.environment_variables.get("envvar_abc")
+
+    request = @http.requests.last
+    assert_equal "GET", request[:method]
+    assert_equal "v1/convai/environment-variables/envvar_abc", request[:path]
+    assert_nil request[:json]
+  end
+
+  def test_environment_variables_update
+    @client.environment_variables.update(
+      "envvar_abc",
+      values: { "production" => "sk-456" }
+    )
+
+    request = @http.requests.last
+    assert_equal "PATCH", request[:method]
+    assert_equal "v1/convai/environment-variables/envvar_abc", request[:path]
+    assert_equal({ "production" => "sk-456" }, request[:json]["values"])
+  end
+
+  def test_workspace_auth_connections_list
+    @client.workspace.auth_connections.list
+
+    request = @http.requests.last
+    assert_equal "GET", request[:method]
+    assert_equal "v1/workspace/auth-connections", request[:path]
+    assert_nil request[:json]
+  end
+
+  def test_workspace_auth_connections_create
+    @client.workspace.auth_connections.create(
+      request: { "type" => "oauth2", "label" => "My OAuth" }
+    )
+
+    request = @http.requests.last
+    assert_equal "POST", request[:method]
+    assert_equal "v1/workspace/auth-connections", request[:path]
+    assert_equal "oauth2", request[:json]["type"]
+    assert_equal "My OAuth", request[:json]["label"]
+  end
+
+  def test_workspace_auth_connections_delete
+    @client.workspace.auth_connections.delete("auth_conn_123")
+
+    request = @http.requests.last
+    assert_equal "DELETE", request[:method]
+    assert_equal "v1/workspace/auth-connections/auth_conn_123", request[:path]
+    assert_nil request[:json]
+  end
+
+  def test_knowledge_base_document_refresh
+    @client.conversational_ai.knowledge_base.document.refresh("doc_123")
+
+    request = @http.requests.last
+    assert_equal "POST", request[:method]
+    assert_equal "v1/convai/knowledge-base/doc_123/refresh", request[:path]
+    assert_nil request[:json]
+  end
+
+  def test_speech_to_text_convert_with_entity_redaction
+    file = ElevenLabs::Upload.from_io(StringIO.new("audio-bytes"), filename: "call.mp3", content_type: "audio/mpeg")
+
+    @client.speech_to_text.convert(
+      model_id: "scribe_v2",
+      file: file,
+      entity_redaction: "pii",
+      entity_redaction_mode: "redact"
+    )
+
+    request = @http.requests.last
+    assert_equal "POST", request[:method]
+    assert_equal "v1/speech-to-text", request[:path]
+    assert_equal "scribe_v2", request[:form]["model_id"]
+    assert_equal "pii", request[:form]["entity_redaction"]
+    assert_equal "redact", request[:form]["entity_redaction_mode"]
+  end
+
   def test_pronunciation_dictionaries_rules_set
     rules = [
       { "type" => "phoneme", "string_to_replace" => "ElevenLabs", "phoneme" => "ɛlɛvənlæbz", "alphabet" => "ipa" }

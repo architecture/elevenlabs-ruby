@@ -79,6 +79,29 @@ class ResourcesTest < Minitest::Test
     assert_respond_to instance, :members
     assert_respond_to instance, :invites
     assert_respond_to instance, :groups
+    assert_respond_to instance, :auth_connections
+  end
+
+  def test_environment_variables_class_has_operations
+    klass = ElevenLabs::Resources.class_for(["environment_variables"])
+    assert klass, "expected class_for(['environment_variables']) to return a class"
+    %i[list create get update].each do |method|
+      assert klass.method_defined?(method), "expected environment_variables to have #{method} method"
+    end
+  end
+
+  def test_workspace_auth_connections_class_has_operations
+    klass = ElevenLabs::Resources.class_for(["workspace", "auth_connections"])
+    assert klass, "expected class_for(['workspace', 'auth_connections']) to return a class"
+    %i[list create delete].each do |method|
+      assert klass.method_defined?(method), "expected workspace.auth_connections to have #{method} method"
+    end
+  end
+
+  def test_knowledge_base_document_class_has_refresh
+    klass = ElevenLabs::Resources.class_for(["conversational_ai", "knowledge_base", "document"])
+    assert klass, "expected class_for(['conversational_ai', 'knowledge_base', 'document']) to return a class"
+    assert klass.method_defined?(:refresh), "expected knowledge_base.document to have refresh method"
   end
 
   def test_child_resource_caching
@@ -132,10 +155,11 @@ class ClientIntegrationTest < Minitest::Test
   def test_all_top_level_namespaces_accessible
     expected = %w[
       audio_isolation audio_native conversational_ai dubbing
-      forced_alignment history models music pronunciation_dictionaries
-      samples service_accounts speech_to_speech speech_to_text
-      studio text_to_dialogue text_to_sound_effects text_to_speech
-      text_to_voice tokens usage user voices webhooks workspace
+      environment_variables forced_alignment history models music
+      pronunciation_dictionaries samples service_accounts speech_to_speech
+      speech_to_text studio text_to_dialogue text_to_sound_effects
+      text_to_speech text_to_voice tokens usage user voices webhooks
+      workspace
     ]
 
     expected.each do |name|

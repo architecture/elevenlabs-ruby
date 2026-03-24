@@ -1047,7 +1047,7 @@
             },
             {
               "name": "list",
-              "doc": "Returns a list of your agents and their metadata.\n\nParameters\n----------\npage_size : typing.Optional[int]\n    How many Agents to return at maximum. Can not exceed 100, defaults to 30.\n\nsearch : typing.Optional[str]\n    Search by agents name.\n\narchived : typing.Optional[bool]\n    Filter agents by archived status\n\nshow_only_owned_agents : typing.Optional[bool]\n    If set to true, the endpoint will omit any agents that were shared with you by someone else and include only the ones you own\n\nsort_direction : typing.Optional[SortDirection]\n    The direction to sort the results\n\nsort_by : typing.Optional[AgentSortBy]\n    The field to sort the results by\n\ncursor : typing.Optional[str]\n    Used for fetching next page. Cursor is returned in the response.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[GetAgentsPageResponseModel]\n    Successful Response",
+              "doc": "Returns a list of your agents and their metadata.\n\nParameters\n----------\npage_size : typing.Optional[int]\n    How many Agents to return at maximum. Can not exceed 100, defaults to 30.\n\nsearch : typing.Optional[str]\n    Search by agents name.\n\narchived : typing.Optional[bool]\n    Filter agents by archived status\n\nshow_only_owned_agents : typing.Optional[bool]\n    If set to true, the endpoint will omit any agents that were shared with you by someone else and include only the ones you own. Deprecated: use created_by_user_id instead.\n\ncreated_by_user_id : typing.Optional[str]\n    Filter agents by creator user ID. When set, only agents created by this user are returned. Takes precedence over show_only_owned_agents. Use '@me' to refer to the authenticated user.\n\nsort_direction : typing.Optional[SortDirection]\n    The direction to sort the results\n\nsort_by : typing.Optional[AgentSortBy]\n    The field to sort the results by\n\ncursor : typing.Optional[str]\n    Used for fetching next page. Cursor is returned in the response.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[GetAgentsPageResponseModel]\n    Successful Response",
               "positional_params": [],
               "keyword_params": [
                 {
@@ -1067,6 +1067,11 @@
                 },
                 {
                   "name": "show_only_owned_agents",
+                  "kind": "keyword",
+                  "default": null
+                },
+                {
+                  "name": "created_by_user_id",
                   "kind": "keyword",
                   "default": null
                 },
@@ -1113,6 +1118,10 @@
                   {
                     "name": "show_only_owned_agents",
                     "param": "show_only_owned_agents"
+                  },
+                  {
+                    "name": "created_by_user_id",
+                    "param": "created_by_user_id"
                   },
                   {
                     "name": "sort_direction",
@@ -2638,7 +2647,7 @@
           "operations": [
             {
               "name": "get_signed_url",
-              "doc": "Get a signed url to start a conversation with an agent with an agent that requires authorization\n\nParameters\n----------\nagent_id : str\n    The id of the agent you're taking the action on.\n\ninclude_conversation_id : typing.Optional[bool]\n    Whether to include a conversation_id with the response. If included, the conversation_signature cannot be used again.\n\nbranch_id : typing.Optional[str]\n    The ID of the branch to use\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[ConversationSignedUrlResponseModel]\n    Successful Response",
+              "doc": "Get a signed url to start a conversation with an agent with an agent that requires authorization\n\nParameters\n----------\nagent_id : str\n    The id of the agent you're taking the action on.\n\ninclude_conversation_id : typing.Optional[bool]\n    Whether to include a conversation_id with the response. If included, the conversation_signature cannot be used again.\n\nbranch_id : typing.Optional[str]\n    The ID of the branch to use\n\nenvironment : typing.Optional[str]\n    The environment to use for resolving environment variables (e.g. 'production', 'staging'). Defaults to 'production'.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[ConversationSignedUrlResponseModel]\n    Successful Response",
               "positional_params": [],
               "keyword_params": [
                 {
@@ -2653,6 +2662,11 @@
                 },
                 {
                   "name": "branch_id",
+                  "kind": "keyword",
+                  "default": null
+                },
+                {
+                  "name": "environment",
                   "kind": "keyword",
                   "default": null
                 },
@@ -2680,6 +2694,10 @@
                   {
                     "name": "branch_id",
                     "param": "branch_id"
+                  },
+                  {
+                    "name": "environment",
+                    "param": "environment"
                   }
                 ],
                 "json": null,
@@ -2692,7 +2710,7 @@
             },
             {
               "name": "get_webrtc_token",
-              "doc": "Get a WebRTC session token for real-time communication.\n\nParameters\n----------\nagent_id : str\n    The id of the agent you're taking the action on.\n\nparticipant_name : typing.Optional[str]\n    Optional custom participant name. If not provided, user ID will be used\n\nbranch_id : typing.Optional[str]\n    The ID of the branch to use\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[TokenResponseModel]\n    Successful Response",
+              "doc": "Get a WebRTC session token for real-time communication.\n\nParameters\n----------\nagent_id : str\n    The id of the agent you're taking the action on.\n\nparticipant_name : typing.Optional[str]\n    Optional custom participant name. If not provided, user ID will be used\n\nbranch_id : typing.Optional[str]\n    The ID of the branch to use\n\nenvironment : typing.Optional[str]\n    The environment to use for resolving environment variables (e.g. 'production', 'staging'). Defaults to 'production'.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[TokenResponseModel]\n    Successful Response",
               "positional_params": [],
               "keyword_params": [
                 {
@@ -2707,6 +2725,11 @@
                 },
                 {
                   "name": "branch_id",
+                  "kind": "keyword",
+                  "default": null
+                },
+                {
+                  "name": "environment",
                   "kind": "keyword",
                   "default": null
                 },
@@ -2734,6 +2757,10 @@
                   {
                     "name": "branch_id",
                     "param": "branch_id"
+                  },
+                  {
+                    "name": "environment",
+                    "param": "environment"
                   }
                 ],
                 "json": null,
@@ -2746,7 +2773,7 @@
             },
             {
               "name": "list",
-              "doc": "Get all conversations of agents that user owns. With option to restrict to a specific agent.\n\nParameters\n----------\ncursor : typing.Optional[str]\n    Used for fetching next page. Cursor is returned in the response.\n\nagent_id : typing.Optional[str]\n    The id of the agent you're taking the action on.\n\ncall_successful : typing.Optional[EvaluationSuccessResult]\n    The result of the success evaluation\n\ncall_start_before_unix : typing.Optional[int]\n    Unix timestamp (in seconds) to filter conversations up to this start date.\n\ncall_start_after_unix : typing.Optional[int]\n    Unix timestamp (in seconds) to filter conversations after to this start date.\n\ncall_duration_min_secs : typing.Optional[int]\n    Minimum call duration in seconds.\n\ncall_duration_max_secs : typing.Optional[int]\n    Maximum call duration in seconds.\n\nrating_max : typing.Optional[int]\n    Maximum overall rating (1-5).\n\nrating_min : typing.Optional[int]\n    Minimum overall rating (1-5).\n\nhas_feedback_comment : typing.Optional[bool]\n    Filter conversations with user feedback comments.\n\nuser_id : typing.Optional[str]\n    Filter conversations by the user ID who initiated them.\n\nevaluation_params : typing.Optional[typing.Union[str, typing.Sequence[str]]]\n    Evaluation filters. Repeat param. Format: criteria_id:result. Example: eval=value_framing:success\n\ndata_collection_params : typing.Optional[typing.Union[str, typing.Sequence[str]]]\n    Data collection filters. Repeat param. Format: id:op:value where op is one of eq|neq|gt|gte|lt|lte|in|exists|missing. For in, pipe-delimit values.\n\ntool_names : typing.Optional[typing.Union[str, typing.Sequence[str]]]\n    Filter conversations by tool names used during the call.\n\nmain_languages : typing.Optional[typing.Union[str, typing.Sequence[str]]]\n    Filter conversations by detected main language (language code).\n\npage_size : typing.Optional[int]\n    How many conversations to return at maximum. Can not exceed 100, defaults to 30.\n\nsummary_mode : typing.Optional[ConversationsListRequestSummaryMode]\n    Whether to include transcript summaries in the response.\n\nsearch : typing.Optional[str]\n    Full-text or fuzzy search over transcript messages\n\nconversation_initiation_source : typing.Optional[ConversationInitiationSource]\n\nbranch_id : typing.Optional[str]\n    Filter conversations by branch ID.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[GetConversationsPageResponseModel]\n    Successful Response",
+              "doc": "Get all conversations of agents that user owns. With option to restrict to a specific agent.\n\nParameters\n----------\ncursor : typing.Optional[str]\n    Used for fetching next page. Cursor is returned in the response.\n\nagent_id : typing.Optional[str]\n    The id of the agent you're taking the action on.\n\ncall_successful : typing.Optional[EvaluationSuccessResult]\n    The result of the success evaluation\n\ncall_start_before_unix : typing.Optional[int]\n    Unix timestamp (in seconds) to filter conversations up to this start date.\n\ncall_start_after_unix : typing.Optional[int]\n    Unix timestamp (in seconds) to filter conversations after to this start date.\n\ncall_duration_min_secs : typing.Optional[int]\n    Minimum call duration in seconds.\n\ncall_duration_max_secs : typing.Optional[int]\n    Maximum call duration in seconds.\n\nrating_max : typing.Optional[int]\n    Maximum overall rating (1-5).\n\nrating_min : typing.Optional[int]\n    Minimum overall rating (1-5).\n\nhas_feedback_comment : typing.Optional[bool]\n    Filter conversations with user feedback comments.\n\nuser_id : typing.Optional[str]\n    Filter conversations by the user ID who initiated them.\n\nevaluation_params : typing.Optional[typing.Union[str, typing.Sequence[str]]]\n    Evaluation filters. Repeat param. Format: criteria_id:result. Example: eval=value_framing:success\n\ndata_collection_params : typing.Optional[typing.Union[str, typing.Sequence[str]]]\n    Data collection filters. Repeat param. Format: id:op:value where op is one of eq|neq|gt|gte|lt|lte|in|exists|missing. For in, pipe-delimit values.\n\ntool_names : typing.Optional[typing.Union[str, typing.Sequence[str]]]\n    Filter conversations by tool names used during the call.\n\ntool_names_successful : typing.Optional[typing.Union[str, typing.Sequence[str]]]\n    Filter conversations by tool names that had successful calls.\n\ntool_names_errored : typing.Optional[typing.Union[str, typing.Sequence[str]]]\n    Filter conversations by tool names that had errored calls.\n\nmain_languages : typing.Optional[typing.Union[str, typing.Sequence[str]]]\n    Filter conversations by detected main language (language code).\n\npage_size : typing.Optional[int]\n    How many conversations to return at maximum. Can not exceed 100, defaults to 30.\n\nsummary_mode : typing.Optional[ConversationsListRequestSummaryMode]\n    Whether to include transcript summaries in the response.\n\nsearch : typing.Optional[str]\n    Full-text or fuzzy search over transcript messages\n\nconversation_initiation_source : typing.Optional[ConversationInitiationSource]\n\nbranch_id : typing.Optional[str]\n    Filter conversations by branch ID.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[GetConversationsPageResponseModel]\n    Successful Response",
               "positional_params": [],
               "keyword_params": [
                 {
@@ -2816,6 +2843,16 @@
                 },
                 {
                   "name": "tool_names",
+                  "kind": "keyword",
+                  "default": null
+                },
+                {
+                  "name": "tool_names_successful",
+                  "kind": "keyword",
+                  "default": null
+                },
+                {
+                  "name": "tool_names_errored",
                   "kind": "keyword",
                   "default": null
                 },
@@ -2917,6 +2954,14 @@
                   {
                     "name": "tool_names",
                     "param": "tool_names"
+                  },
+                  {
+                    "name": "tool_names_successful",
+                    "param": "tool_names_successful"
+                  },
+                  {
+                    "name": "tool_names_errored",
+                    "param": "tool_names_errored"
                   },
                   {
                     "name": "main_languages",
@@ -3215,7 +3260,7 @@
               "operations": [
                 {
                   "name": "text_search",
-                  "doc": "Search through conversation transcript messages by full-text and fuzzy search\n\nParameters\n----------\ntext_query : str\n    The search query text for full-text and fuzzy matching\n\nagent_id : typing.Optional[str]\n    The id of the agent you're taking the action on.\n\ncall_successful : typing.Optional[EvaluationSuccessResult]\n    The result of the success evaluation\n\ncall_start_before_unix : typing.Optional[int]\n    Unix timestamp (in seconds) to filter conversations up to this start date.\n\ncall_start_after_unix : typing.Optional[int]\n    Unix timestamp (in seconds) to filter conversations after to this start date.\n\ncall_duration_min_secs : typing.Optional[int]\n    Minimum call duration in seconds.\n\ncall_duration_max_secs : typing.Optional[int]\n    Maximum call duration in seconds.\n\nrating_max : typing.Optional[int]\n    Maximum overall rating (1-5).\n\nrating_min : typing.Optional[int]\n    Minimum overall rating (1-5).\n\nhas_feedback_comment : typing.Optional[bool]\n    Filter conversations with user feedback comments.\n\nuser_id : typing.Optional[str]\n    Filter conversations by the user ID who initiated them.\n\nevaluation_params : typing.Optional[typing.Union[str, typing.Sequence[str]]]\n    Evaluation filters. Repeat param. Format: criteria_id:result. Example: eval=value_framing:success\n\ndata_collection_params : typing.Optional[typing.Union[str, typing.Sequence[str]]]\n    Data collection filters. Repeat param. Format: id:op:value where op is one of eq|neq|gt|gte|lt|lte|in|exists|missing. For in, pipe-delimit values.\n\ntool_names : typing.Optional[typing.Union[str, typing.Sequence[str]]]\n    Filter conversations by tool names used during the call.\n\nmain_languages : typing.Optional[typing.Union[str, typing.Sequence[str]]]\n    Filter conversations by detected main language (language code).\n\npage_size : typing.Optional[int]\n    Number of results per page. Max 50.\n\nsummary_mode : typing.Optional[MessagesTextSearchRequestSummaryMode]\n    Whether to include transcript summaries in the response.\n\nconversation_initiation_source : typing.Optional[ConversationInitiationSource]\n\nbranch_id : typing.Optional[str]\n    Filter conversations by branch ID.\n\ncursor : typing.Optional[str]\n    Used for fetching next page. Cursor is returned in the response.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[MessagesSearchResponse]\n    Successful Response",
+                  "doc": "Search through conversation transcript messages by full-text and fuzzy search\n\nParameters\n----------\ntext_query : str\n    The search query text for full-text and fuzzy matching\n\nagent_id : typing.Optional[str]\n    The id of the agent you're taking the action on.\n\ncall_successful : typing.Optional[EvaluationSuccessResult]\n    The result of the success evaluation\n\ncall_start_before_unix : typing.Optional[int]\n    Unix timestamp (in seconds) to filter conversations up to this start date.\n\ncall_start_after_unix : typing.Optional[int]\n    Unix timestamp (in seconds) to filter conversations after to this start date.\n\ncall_duration_min_secs : typing.Optional[int]\n    Minimum call duration in seconds.\n\ncall_duration_max_secs : typing.Optional[int]\n    Maximum call duration in seconds.\n\nrating_max : typing.Optional[int]\n    Maximum overall rating (1-5).\n\nrating_min : typing.Optional[int]\n    Minimum overall rating (1-5).\n\nhas_feedback_comment : typing.Optional[bool]\n    Filter conversations with user feedback comments.\n\nuser_id : typing.Optional[str]\n    Filter conversations by the user ID who initiated them.\n\nevaluation_params : typing.Optional[typing.Union[str, typing.Sequence[str]]]\n    Evaluation filters. Repeat param. Format: criteria_id:result. Example: eval=value_framing:success\n\ndata_collection_params : typing.Optional[typing.Union[str, typing.Sequence[str]]]\n    Data collection filters. Repeat param. Format: id:op:value where op is one of eq|neq|gt|gte|lt|lte|in|exists|missing. For in, pipe-delimit values.\n\ntool_names : typing.Optional[typing.Union[str, typing.Sequence[str]]]\n    Filter conversations by tool names used during the call.\n\ntool_names_successful : typing.Optional[typing.Union[str, typing.Sequence[str]]]\n    Filter conversations by tool names that had successful calls.\n\ntool_names_errored : typing.Optional[typing.Union[str, typing.Sequence[str]]]\n    Filter conversations by tool names that had errored calls.\n\nmain_languages : typing.Optional[typing.Union[str, typing.Sequence[str]]]\n    Filter conversations by detected main language (language code).\n\npage_size : typing.Optional[int]\n    Number of results per page. Max 50.\n\nsummary_mode : typing.Optional[MessagesTextSearchRequestSummaryMode]\n    Whether to include transcript summaries in the response.\n\nconversation_initiation_source : typing.Optional[ConversationInitiationSource]\n\nbranch_id : typing.Optional[str]\n    Filter conversations by branch ID.\n\ncursor : typing.Optional[str]\n    Used for fetching next page. Cursor is returned in the response.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[MessagesSearchResponse]\n    Successful Response",
                   "positional_params": [],
                   "keyword_params": [
                     {
@@ -3285,6 +3330,16 @@
                     },
                     {
                       "name": "tool_names",
+                      "kind": "keyword",
+                      "default": null
+                    },
+                    {
+                      "name": "tool_names_successful",
+                      "kind": "keyword",
+                      "default": null
+                    },
+                    {
+                      "name": "tool_names_errored",
                       "kind": "keyword",
                       "default": null
                     },
@@ -3386,6 +3441,14 @@
                       {
                         "name": "tool_names",
                         "param": "tool_names"
+                      },
+                      {
+                        "name": "tool_names_successful",
+                        "param": "tool_names_successful"
+                      },
+                      {
+                        "name": "tool_names_errored",
+                        "param": "tool_names_errored"
                       },
                       {
                         "name": "main_languages",
@@ -3571,7 +3634,7 @@
           "operations": [
             {
               "name": "list",
-              "doc": "Get a list of available knowledge base documents\n\nParameters\n----------\npage_size : typing.Optional[int]\n    How many documents to return at maximum. Can not exceed 100, defaults to 30.\n\nsearch : typing.Optional[str]\n    If specified, the endpoint returns only such knowledge base documents whose names start with this string.\n\nshow_only_owned_documents : typing.Optional[bool]\n    If set to true, the endpoint will return only documents owned by you (and not shared from somebody else).\n\ntypes : typing.Optional[typing.Union[KnowledgeBaseDocumentType, typing.Sequence[KnowledgeBaseDocumentType]]]\n    If present, the endpoint will return only documents of the given types.\n\nparent_folder_id : typing.Optional[str]\n    If set, the endpoint will return only documents that are direct children of the given folder.\n\nancestor_folder_id : typing.Optional[str]\n    If set, the endpoint will return only documents that are descendants of the given folder.\n\nfolders_first : typing.Optional[bool]\n    Whether folders should be returned first in the list of documents.\n\nsort_direction : typing.Optional[SortDirection]\n    The direction to sort the results\n\nsort_by : typing.Optional[KnowledgeBaseSortBy]\n    The field to sort the results by\n\ncursor : typing.Optional[str]\n    Used for fetching next page. Cursor is returned in the response.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[GetKnowledgeBaseListResponseModel]\n    Successful Response",
+              "doc": "Get a list of available knowledge base documents\n\nParameters\n----------\npage_size : typing.Optional[int]\n    How many documents to return at maximum. Can not exceed 100, defaults to 30.\n\nsearch : typing.Optional[str]\n    If specified, the endpoint returns only such knowledge base documents whose names start with this string.\n\nshow_only_owned_documents : typing.Optional[bool]\n    If set to true, the endpoint will return only documents owned by you (and not shared from somebody else). Deprecated: use created_by_user_id instead.\n\ncreated_by_user_id : typing.Optional[str]\n    Filter documents by creator user ID. When set, only documents created by this user are returned. Takes precedence over show_only_owned_documents. Use '@me' to refer to the authenticated user.\n\ntypes : typing.Optional[typing.Union[KnowledgeBaseDocumentType, typing.Sequence[KnowledgeBaseDocumentType]]]\n    If present, the endpoint will return only documents of the given types.\n\nparent_folder_id : typing.Optional[str]\n    If set, the endpoint will return only documents that are direct children of the given folder.\n\nancestor_folder_id : typing.Optional[str]\n    If set, the endpoint will return only documents that are descendants of the given folder.\n\nfolders_first : typing.Optional[bool]\n    Whether folders should be returned first in the list of documents.\n\nsort_direction : typing.Optional[SortDirection]\n    The direction to sort the results\n\nsort_by : typing.Optional[KnowledgeBaseSortBy]\n    The field to sort the results by\n\ncursor : typing.Optional[str]\n    Used for fetching next page. Cursor is returned in the response.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[GetKnowledgeBaseListResponseModel]\n    Successful Response",
               "positional_params": [],
               "keyword_params": [
                 {
@@ -3586,6 +3649,11 @@
                 },
                 {
                   "name": "show_only_owned_documents",
+                  "kind": "keyword",
+                  "default": null
+                },
+                {
+                  "name": "created_by_user_id",
                   "kind": "keyword",
                   "default": null
                 },
@@ -3648,6 +3716,10 @@
                   {
                     "name": "show_only_owned_documents",
                     "param": "show_only_owned_documents"
+                  },
+                  {
+                    "name": "created_by_user_id",
+                    "param": "created_by_user_id"
                   },
                   {
                     "name": "types",
@@ -3734,6 +3806,40 @@
             "document": {
               "operations": [
                 {
+                  "name": "refresh",
+                  "doc": "Manually refresh a URL document by re-fetching its content from the source URL.\n\nParameters\n----------\ndocumentation_id : str\n    The id of a document from the knowledge base. This is returned on document addition.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[DocumentRefreshResponse]\n    Successful Response",
+                  "positional_params": [
+                    {
+                      "name": "documentation_id",
+                      "kind": "positional",
+                      "default": null
+                    }
+                  ],
+                  "keyword_params": [
+                    {
+                      "name": "request_options",
+                      "kind": "keyword",
+                      "default": null
+                    }
+                  ],
+                  "request": {
+                    "method": "POST",
+                    "path": {
+                      "template": "v1/convai/knowledge-base/{documentation_id}/refresh",
+                      "params": [
+                        "documentation_id"
+                      ]
+                    },
+                    "query": [],
+                    "json": null,
+                    "form": null,
+                    "files": [],
+                    "headers": {},
+                    "force_multipart": false,
+                    "streaming": false
+                  }
+                },
+                {
                   "name": "compute_rag_index",
                   "doc": "In case the document is not RAG indexed, it triggers rag indexing task, otherwise it just returns the current status.\n\nParameters\n----------\ndocumentation_id : str\n    The id of a document from the knowledge base. This is returned on document addition.\n\nmodel : EmbeddingModelEnum\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[RagDocumentIndexResponseModel]\n    Successful Response",
                   "positional_params": [
@@ -3791,7 +3897,7 @@
               "operations": [
                 {
                   "name": "create_from_url",
-                  "doc": "Create a knowledge base document generated by scraping the given webpage.\n\nParameters\n----------\nurl : str\n    URL to a page of documentation that the agent will have access to in order to interact with users.\n\nname : typing.Optional[str]\n    A custom, human-readable name for the document.\n\nparent_folder_id : typing.Optional[str]\n    If set, the created document or folder will be placed inside the given folder.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[AddKnowledgeBaseResponseModel]\n    Successful Response",
+                  "doc": "Create a knowledge base document generated by scraping the given webpage.\n\nParameters\n----------\nurl : str\n    URL to a page of documentation that the agent will have access to in order to interact with users.\n\nname : typing.Optional[str]\n    A custom, human-readable name for the document.\n\nparent_folder_id : typing.Optional[str]\n    If set, the created document or folder will be placed inside the given folder.\n\nenable_auto_sync : typing.Optional[bool]\n    Whether to enable auto-sync for this URL document.\n\nauto_remove : typing.Optional[bool]\n    Whether to automatically remove the document if the URL becomes unavailable. Only applicable when auto-sync is enabled.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[AddKnowledgeBaseResponseModel]\n    Successful Response",
                   "positional_params": [],
                   "keyword_params": [
                     {
@@ -3806,6 +3912,16 @@
                     },
                     {
                       "name": "parent_folder_id",
+                      "kind": "keyword",
+                      "default": "__OMIT__"
+                    },
+                    {
+                      "name": "enable_auto_sync",
+                      "kind": "keyword",
+                      "default": "__OMIT__"
+                    },
+                    {
+                      "name": "auto_remove",
                       "kind": "keyword",
                       "default": "__OMIT__"
                     },
@@ -3842,6 +3958,18 @@
                             "parent_folder_id"
                           ],
                           "param": "parent_folder_id"
+                        },
+                        {
+                          "path": [
+                            "enable_auto_sync"
+                          ],
+                          "param": "enable_auto_sync"
+                        },
+                        {
+                          "path": [
+                            "auto_remove"
+                          ],
+                          "param": "auto_remove"
                         }
                       ]
                     },
@@ -3986,7 +4114,7 @@
                 },
                 {
                   "name": "create_folder",
-                  "doc": "Create a folder used for grouping documents together.\n\nParameters\n----------\nname : str\n    A custom, human-readable name for the document.\n\nparent_folder_id : typing.Optional[str]\n    If set, the created document or folder will be placed inside the given folder.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[AddKnowledgeBaseResponseModel]\n    Successful Response",
+                  "doc": "Create a folder used for grouping documents together.\n\nParameters\n----------\nname : str\n    A custom, human-readable name for the document.\n\nparent_folder_id : typing.Optional[str]\n    If set, the created document or folder will be placed inside the given folder.\n\nenable_auto_sync : typing.Optional[bool]\n    Whether to enable auto-sync for this URL document.\n\nauto_remove : typing.Optional[bool]\n    Whether to automatically remove the document if the URL becomes unavailable. Only applicable when auto-sync is enabled.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[AddKnowledgeBaseResponseModel]\n    Successful Response",
                   "positional_params": [],
                   "keyword_params": [
                     {
@@ -3996,6 +4124,16 @@
                     },
                     {
                       "name": "parent_folder_id",
+                      "kind": "keyword",
+                      "default": "__OMIT__"
+                    },
+                    {
+                      "name": "enable_auto_sync",
+                      "kind": "keyword",
+                      "default": "__OMIT__"
+                    },
+                    {
+                      "name": "auto_remove",
                       "kind": "keyword",
                       "default": "__OMIT__"
                     },
@@ -4026,6 +4164,18 @@
                             "parent_folder_id"
                           ],
                           "param": "parent_folder_id"
+                        },
+                        {
+                          "path": [
+                            "enable_auto_sync"
+                          ],
+                          "param": "enable_auto_sync"
+                        },
+                        {
+                          "path": [
+                            "auto_remove"
+                          ],
+                          "param": "auto_remove"
                         }
                       ]
                     },
@@ -4418,7 +4568,7 @@
                   "operations": [
                     {
                       "name": "get",
-                      "doc": "Get details about a specific documentation part used by RAG.\n\nParameters\n----------\ndocumentation_id : str\n    The id of a document from the knowledge base. This is returned on document addition.\n\nchunk_id : str\n    The id of a document RAG chunk from the knowledge base.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[KnowledgeBaseDocumentChunkResponseModel]\n    Successful Response",
+                      "doc": "Get details about a specific documentation part used by RAG.\n\nParameters\n----------\ndocumentation_id : str\n    The id of a document from the knowledge base. This is returned on document addition.\n\nchunk_id : str\n    The id of a document RAG chunk from the knowledge base.\n\nembedding_model : typing.Optional[EmbeddingModelEnum]\n    The embedding model used to retrieve the chunk.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[KnowledgeBaseDocumentChunkResponseModel]\n    Successful Response",
                       "positional_params": [
                         {
                           "name": "documentation_id",
@@ -4432,6 +4582,11 @@
                         }
                       ],
                       "keyword_params": [
+                        {
+                          "name": "embedding_model",
+                          "kind": "keyword",
+                          "default": null
+                        },
                         {
                           "name": "request_options",
                           "kind": "keyword",
@@ -4447,7 +4602,12 @@
                             "chunk_id"
                           ]
                         },
-                        "query": [],
+                        "query": [
+                          {
+                            "name": "embedding_model",
+                            "param": "embedding_model"
+                          }
+                        ],
                         "json": null,
                         "form": null,
                         "files": [],
@@ -4746,7 +4906,7 @@
             },
             {
               "name": "update",
-              "doc": "Update the configuration settings for an MCP server.\n\nParameters\n----------\nmcp_server_id : str\n    ID of the MCP Server.\n\napproval_policy : typing.Optional[McpApprovalPolicy]\n    The approval mode to set for the MCP server\n\nforce_pre_tool_speech : typing.Optional[bool]\n    If set, overrides the server's force_pre_tool_speech setting for this tool\n\ndisable_interruptions : typing.Optional[bool]\n    If set, overrides the server's disable_interruptions setting for this tool\n\ntool_call_sound : typing.Optional[ToolCallSoundType]\n    Predefined tool call sound type to play during tool execution for all tools from this MCP server\n\ntool_call_sound_behavior : typing.Optional[ToolCallSoundBehavior]\n    Determines when the tool call sound should play for all tools from this MCP server\n\nexecution_mode : typing.Optional[ToolExecutionMode]\n    If set, overrides the server's execution_mode setting for this tool\n\nrequest_headers : typing.Optional[typing.Dict[str, typing.Optional[McpServerConfigUpdateRequestModelRequestHeadersValue]]]\n    The headers to include in requests to the MCP server\n\ndisable_compression : typing.Optional[bool]\n    Whether to disable HTTP compression for this MCP server\n\nsecret_token : typing.Optional[ConvAiSecretLocator]\n    Optional secret token for authentication with this MCP server\n\nauth_connection : typing.Optional[AuthConnectionLocator]\n    Optional auth connection to use for authentication with this MCP server\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[McpServerResponseModel]\n    Successful Response",
+              "doc": "Update the configuration settings for an MCP server.\n\nParameters\n----------\nmcp_server_id : str\n    ID of the MCP Server.\n\napproval_policy : typing.Optional[McpApprovalPolicy]\n    The approval mode to set for the MCP server\n\nforce_pre_tool_speech : typing.Optional[bool]\n    If set, overrides the server's force_pre_tool_speech setting for this tool\n\ndisable_interruptions : typing.Optional[bool]\n    If set, overrides the server's disable_interruptions setting for this tool\n\ntool_call_sound : typing.Optional[ToolCallSoundType]\n    Predefined tool call sound type to play during tool execution for all tools from this MCP server\n\ntool_call_sound_behavior : typing.Optional[ToolCallSoundBehavior]\n    Determines when the tool call sound should play for all tools from this MCP server\n\nexecution_mode : typing.Optional[ToolExecutionMode]\n    If set, overrides the server's execution_mode setting for this tool\n\nrequest_headers : typing.Optional[typing.Dict[str, typing.Optional[McpServerConfigUpdateRequestModelRequestHeadersValue]]]\n    The headers to include in requests to the MCP server\n\ndisable_compression : typing.Optional[bool]\n    Whether to disable HTTP compression for this MCP server\n\nsecret_token : typing.Optional[ConvAiSecretLocator]\n    Optional secret token for authentication with this MCP server\n\nauth_connection : typing.Optional[McpServerConfigUpdateRequestModelAuthConnection]\n    Optional auth connection to use for authentication with this MCP server\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[McpServerResponseModel]\n    Successful Response",
               "positional_params": [
                 {
                   "name": "mcp_server_id",
@@ -5927,7 +6087,7 @@
             },
             {
               "name": "update",
-              "doc": "Update Convai settings for the workspace\n\nParameters\n----------\nconversation_initiation_client_data_webhook : typing.Optional[ConversationInitiationClientDataWebhook]\n\nwebhooks : typing.Optional[ConvAiWebhooks]\n\ncan_use_mcp_servers : typing.Optional[bool]\n    Whether the workspace can use MCP servers\n\nrag_retention_period_days : typing.Optional[int]\n\ndefault_livekit_stack : typing.Optional[LivekitStackType]\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[GetConvAiSettingsResponseModel]\n    Successful Response",
+              "doc": "Update Convai settings for the workspace\n\nParameters\n----------\nconversation_initiation_client_data_webhook : typing.Optional[ConversationInitiationClientDataWebhook]\n\nwebhooks : typing.Optional[ConvAiWebhooks]\n\ncan_use_mcp_servers : typing.Optional[bool]\n    Whether the workspace can use MCP servers\n\nrag_retention_period_days : typing.Optional[int]\n\nconversation_embedding_retention_days : typing.Optional[int]\n    Days to retain conversation embeddings. None means use the system default (30 days).\n\ndefault_livekit_stack : typing.Optional[LivekitStackType]\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[GetConvAiSettingsResponseModel]\n    Successful Response",
               "positional_params": [],
               "keyword_params": [
                 {
@@ -5947,6 +6107,11 @@
                 },
                 {
                   "name": "rag_retention_period_days",
+                  "kind": "keyword",
+                  "default": "__OMIT__"
+                },
+                {
+                  "name": "conversation_embedding_retention_days",
                   "kind": "keyword",
                   "default": "__OMIT__"
                 },
@@ -5994,6 +6159,12 @@
                         "rag_retention_period_days"
                       ],
                       "param": "rag_retention_period_days"
+                    },
+                    {
+                      "path": [
+                        "conversation_embedding_retention_days"
+                      ],
+                      "param": "conversation_embedding_retention_days"
                     },
                     {
                       "path": [
@@ -6585,7 +6756,7 @@
           "operations": [
             {
               "name": "list",
-              "doc": "Get all available tools in the workspace.\n\nParameters\n----------\nsearch : typing.Optional[str]\n    If specified, the endpoint returns only tools whose names start with this string.\n\npage_size : typing.Optional[int]\n    How many documents to return at maximum. Can not exceed 100, defaults to 30.\n\nshow_only_owned_documents : typing.Optional[bool]\n    If set to true, the endpoint will return only tools owned by you (and not shared from somebody else).\n\ntypes : typing.Optional[typing.Union[ToolTypeFilter, typing.Sequence[ToolTypeFilter]]]\n    If present, the endpoint will return only tools of the given types.\n\nsort_direction : typing.Optional[SortDirection]\n    The direction to sort the results\n\nsort_by : typing.Optional[ToolSortBy]\n    The field to sort the results by\n\ncursor : typing.Optional[str]\n    Used for fetching next page. Cursor is returned in the response.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[ToolsResponseModel]\n    Successful Response",
+              "doc": "Get all available tools in the workspace.\n\nParameters\n----------\nsearch : typing.Optional[str]\n    If specified, the endpoint returns only tools whose names start with this string.\n\npage_size : typing.Optional[int]\n    How many documents to return at maximum. Can not exceed 100, defaults to 30.\n\nshow_only_owned_documents : typing.Optional[bool]\n    If set to true, the endpoint will return only tools owned by you (and not shared from somebody else). Deprecated: use created_by_user_id instead.\n\ncreated_by_user_id : typing.Optional[str]\n    Filter tools by creator user ID. When set, only tools created by this user are returned. Takes precedence over show_only_owned_documents. Use '@me' to refer to the authenticated user.\n\ntypes : typing.Optional[typing.Union[ToolTypeFilter, typing.Sequence[ToolTypeFilter]]]\n    If present, the endpoint will return only tools of the given types.\n\nsort_direction : typing.Optional[SortDirection]\n    The direction to sort the results\n\nsort_by : typing.Optional[ToolSortBy]\n    The field to sort the results by\n\ncursor : typing.Optional[str]\n    Used for fetching next page. Cursor is returned in the response.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[ToolsResponseModel]\n    Successful Response",
               "positional_params": [],
               "keyword_params": [
                 {
@@ -6600,6 +6771,11 @@
                 },
                 {
                   "name": "show_only_owned_documents",
+                  "kind": "keyword",
+                  "default": null
+                },
+                {
+                  "name": "created_by_user_id",
                   "kind": "keyword",
                   "default": null
                 },
@@ -6647,6 +6823,10 @@
                   {
                     "name": "show_only_owned_documents",
                     "param": "show_only_owned_documents"
+                  },
+                  {
+                    "name": "created_by_user_id",
+                    "param": "created_by_user_id"
                   },
                   {
                     "name": "types",
@@ -6750,7 +6930,7 @@
             },
             {
               "name": "delete",
-              "doc": "Delete tool from the workspace.\n\nParameters\n----------\ntool_id : str\n    ID of the requested tool.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[typing.Any]\n    Successful Response",
+              "doc": "Delete tool from the workspace.\n\nParameters\n----------\ntool_id : str\n    ID of the requested tool.\n\nforce : typing.Optional[bool]\n    If set to true, the tool will be deleted regardless of whether it is used by any agents and it will be removed from the dependent agents and branches.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[typing.Any]\n    Successful Response",
               "positional_params": [
                 {
                   "name": "tool_id",
@@ -6759,6 +6939,11 @@
                 }
               ],
               "keyword_params": [
+                {
+                  "name": "force",
+                  "kind": "keyword",
+                  "default": null
+                },
                 {
                   "name": "request_options",
                   "kind": "keyword",
@@ -6773,7 +6958,12 @@
                     "tool_id"
                   ]
                 },
-                "query": [],
+                "query": [
+                  {
+                    "name": "force",
+                    "param": "force"
+                  }
+                ],
                 "json": null,
                 "form": null,
                 "files": [],
@@ -6989,7 +7179,7 @@
             },
             {
               "name": "register_call",
-              "doc": "Register a Twilio call and return TwiML to connect the call\n\nParameters\n----------\nagent_id : str\n\nfrom_number : str\n\nto_number : str\n\ndirection : typing.Optional[BodyRegisterATwilioCallAndReturnTwiMlV1ConvaiTwilioRegisterCallPostDirection]\n\nconversation_initiation_client_data : typing.Optional[ConversationInitiationClientDataRequestInput]\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[None]",
+              "doc": "Register a Twilio call and return TwiML to connect the call\n\nParameters\n----------\nagent_id : str\n\nfrom_number : str\n\nto_number : str\n\ndirection : typing.Optional[TelephonyDirection]\n\nconversation_initiation_client_data : typing.Optional[ConversationInitiationClientDataRequestInput]\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[None]",
               "positional_params": [],
               "keyword_params": [
                 {
@@ -9006,6 +9196,209 @@
           "children": {}
         }
       }
+    },
+    "environment_variables": {
+      "operations": [
+        {
+          "name": "list",
+          "doc": "List all environment variables for the workspace with optional filtering\n\nParameters\n----------\ncursor : typing.Optional[str]\n    Pagination cursor from previous response\n\npage_size : typing.Optional[int]\n    Number of items to return (1-100)\n\nlabel : typing.Optional[str]\n    Filter by exact label match\n\nenvironment : typing.Optional[str]\n    Filter to only return variables that have this environment. When specified, the values dict in the response will only contain this environment.\n\ntype : typing.Optional[EnvironmentVariablesListRequestType]\n    Filter by variable type\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[EnvironmentVariablesListResponse]\n    Successful Response",
+          "positional_params": [],
+          "keyword_params": [
+            {
+              "name": "cursor",
+              "kind": "keyword",
+              "default": null
+            },
+            {
+              "name": "page_size",
+              "kind": "keyword",
+              "default": null
+            },
+            {
+              "name": "label",
+              "kind": "keyword",
+              "default": null
+            },
+            {
+              "name": "environment",
+              "kind": "keyword",
+              "default": null
+            },
+            {
+              "name": "type",
+              "kind": "keyword",
+              "default": null
+            },
+            {
+              "name": "request_options",
+              "kind": "keyword",
+              "default": null
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "path": {
+              "template": "v1/convai/environment-variables",
+              "params": []
+            },
+            "query": [
+              {
+                "name": "cursor",
+                "param": "cursor"
+              },
+              {
+                "name": "page_size",
+                "param": "page_size"
+              },
+              {
+                "name": "label",
+                "param": "label"
+              },
+              {
+                "name": "environment",
+                "param": "environment"
+              },
+              {
+                "name": "type",
+                "param": "type"
+              }
+            ],
+            "json": null,
+            "form": null,
+            "files": [],
+            "headers": {},
+            "force_multipart": false,
+            "streaming": false
+          }
+        },
+        {
+          "name": "create",
+          "doc": "Create a new environment variable for the workspace\n\nParameters\n----------\nrequest : EnvironmentVariablesCreateRequestBody\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[EnvironmentVariableResponse]\n    Successful Response",
+          "positional_params": [],
+          "keyword_params": [
+            {
+              "name": "request",
+              "kind": "keyword",
+              "default": null
+            },
+            {
+              "name": "request_options",
+              "kind": "keyword",
+              "default": null
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "path": {
+              "template": "v1/convai/environment-variables",
+              "params": []
+            },
+            "query": [],
+            "json": {
+              "literal": null,
+              "assignments": [
+                {
+                  "path": [],
+                  "param": "request"
+                }
+              ]
+            },
+            "form": null,
+            "files": [],
+            "headers": {
+              "content-type": "application/json"
+            },
+            "force_multipart": false,
+            "streaming": false
+          }
+        },
+        {
+          "name": "get",
+          "doc": "Get a specific environment variable by ID\n\nParameters\n----------\nenv_var_id : str\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[EnvironmentVariableResponse]\n    Successful Response",
+          "positional_params": [
+            {
+              "name": "env_var_id",
+              "kind": "positional",
+              "default": null
+            }
+          ],
+          "keyword_params": [
+            {
+              "name": "request_options",
+              "kind": "keyword",
+              "default": null
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "path": {
+              "template": "v1/convai/environment-variables/{env_var_id}",
+              "params": [
+                "env_var_id"
+              ]
+            },
+            "query": [],
+            "json": null,
+            "form": null,
+            "files": [],
+            "headers": {},
+            "force_multipart": false,
+            "streaming": false
+          }
+        },
+        {
+          "name": "update",
+          "doc": "Replace an environment variable's values. Use null to remove an environment (except production).\n\nParameters\n----------\nenv_var_id : str\n\nvalues : typing.Dict[str, typing.Optional[UpdateEnvironmentVariableRequestValuesValue]]\n    Values to replace. Set to null to remove an environment (except 'production').\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[EnvironmentVariableResponse]\n    Successful Response",
+          "positional_params": [
+            {
+              "name": "env_var_id",
+              "kind": "positional",
+              "default": null
+            }
+          ],
+          "keyword_params": [
+            {
+              "name": "values",
+              "kind": "keyword",
+              "default": null
+            },
+            {
+              "name": "request_options",
+              "kind": "keyword",
+              "default": null
+            }
+          ],
+          "request": {
+            "method": "PATCH",
+            "path": {
+              "template": "v1/convai/environment-variables/{env_var_id}",
+              "params": [
+                "env_var_id"
+              ]
+            },
+            "query": [],
+            "json": {
+              "literal": null,
+              "assignments": [
+                {
+                  "path": [
+                    "values"
+                  ],
+                  "param": "values"
+                }
+              ]
+            },
+            "form": null,
+            "files": [],
+            "headers": {
+              "content-type": "application/json"
+            },
+            "force_multipart": false,
+            "streaming": false
+          }
+        }
+      ],
+      "children": {}
     },
     "forced_alignment": {
       "operations": [
@@ -11116,7 +11509,7 @@
       "operations": [
         {
           "name": "convert",
-          "doc": "Transcribe an audio or video file. If webhook is set to true, the request will be processed asynchronously and results sent to configured webhooks. When use_multi_channel is true and the provided audio has multiple channels, a 'transcripts' object with separate transcripts for each channel is returned. Otherwise, returns a single transcript. The optional webhook_metadata parameter allows you to attach custom data that will be included in webhook responses for request correlation and tracking.\n\nParameters\n----------\nmodel_id : SpeechToTextConvertRequestModelId\n    The ID of the model to use for transcription.\n\nenable_logging : typing.Optional[bool]\n    When enable_logging is set to false zero retention mode will be used for the request. This will mean log and transcript storage features are unavailable for this request. Zero retention mode may only be used by enterprise customers.\n\nfile : typing.Optional[core.File]\n    See core.File for more documentation\n\nlanguage_code : typing.Optional[str]\n    An ISO-639-1 or ISO-639-3 language_code corresponding to the language of the audio file. Can sometimes improve transcription performance if known beforehand. Defaults to null, in this case the language is predicted automatically.\n\ntag_audio_events : typing.Optional[bool]\n    Whether to tag audio events like (laughter), (footsteps), etc. in the transcription.\n\nnum_speakers : typing.Optional[int]\n    The maximum amount of speakers talking in the uploaded file. Can help with predicting who speaks when. The maximum amount of speakers that can be predicted is 32. Defaults to null, in this case the amount of speakers is set to the maximum value the model supports.\n\ntimestamps_granularity : typing.Optional[SpeechToTextConvertRequestTimestampsGranularity]\n    The granularity of the timestamps in the transcription. 'word' provides word-level timestamps and 'character' provides character-level timestamps per word.\n\ndiarize : typing.Optional[bool]\n    Whether to annotate which speaker is currently talking in the uploaded file.\n\ndiarization_threshold : typing.Optional[float]\n    Diarization threshold to apply during speaker diarization. A higher value means there will be a lower chance of one speaker being diarized as two different speakers but also a higher chance of two different speakers being diarized as one speaker (less total speakers predicted). A low value means there will be a higher chance of one speaker being diarized as two different speakers but also a lower chance of two different speakers being diarized as one speaker (more total speakers predicted). Can only be set when diarize=True and num_speakers=None. Defaults to None, in which case we will choose a threshold based on the model_id (0.22 usually).\n\nadditional_formats : typing.Optional[AdditionalFormats]\n    A list of additional formats to export the transcript to.\n\nfile_format : typing.Optional[SpeechToTextConvertRequestFileFormat]\n    The format of input audio. Options are 'pcm_s16le_16' or 'other' For `pcm_s16le_16`, the input audio must be 16-bit PCM at a 16kHz sample rate, single channel (mono), and little-endian byte order. Latency will be lower than with passing an encoded waveform.\n\ncloud_storage_url : typing.Optional[str]\n    The HTTPS URL of the file to transcribe. Exactly one of the file or cloud_storage_url parameters must be provided. The file must be accessible via HTTPS and the file size must be less than 2GB. Any valid HTTPS URL is accepted, including URLs from cloud storage providers (AWS S3, Google Cloud Storage, Cloudflare R2, etc.), CDNs, or any other HTTPS source. URLs can be pre-signed or include authentication tokens in query parameters.\n\nwebhook : typing.Optional[bool]\n    Whether to send the transcription result to configured speech-to-text webhooks.  If set the request will return early without the transcription, which will be delivered later via webhook.\n\nwebhook_id : typing.Optional[str]\n    Optional specific webhook ID to send the transcription result to. Only valid when webhook is set to true. If not provided, transcription will be sent to all configured speech-to-text webhooks.\n\ntemperature : typing.Optional[float]\n    Controls the randomness of the transcription output. Accepts values between 0.0 and 2.0, where higher values result in more diverse and less deterministic results. If omitted, we will use a temperature based on the model you selected which is usually 0.\n\nseed : typing.Optional[int]\n    If specified, our system will make a best effort to sample deterministically, such that repeated requests with the same seed and parameters should return the same result. Determinism is not guaranteed. Must be an integer between 0 and 2147483647.\n\nuse_multi_channel : typing.Optional[bool]\n    Whether the audio file contains multiple channels where each channel contains a single speaker. When enabled, each channel will be transcribed independently and the results will be combined. Each word in the response will include a 'channel_index' field indicating which channel it was spoken on. A maximum of 5 channels is supported.\n\nwebhook_metadata : typing.Optional[SpeechToTextConvertRequestWebhookMetadata]\n    Optional metadata to be included in the webhook response. This should be a JSON string representing an object with a maximum depth of 2 levels and maximum size of 16KB. Useful for tracking internal IDs, job references, or other contextual information.\n\nentity_detection : typing.Optional[SpeechToTextConvertRequestEntityDetection]\n    Detect entities in the transcript. Can be 'all' to detect all entities, a single entity type or category string, or a list of entity types/categories. Categories include 'pii', 'phi', 'pci', 'other', 'offensive_language'. When enabled, detected entities will be returned in the 'entities' field with their text, type, and character positions. Usage of this parameter will incur additional costs.\n\nno_verbatim : typing.Optional[bool]\n    If true, the transcription will not have any filler words, false starts and non-speech sounds. Only supported with scribe_v2 model.\n\nkeyterms : typing.Optional[typing.List[str]]\n    A list of keyterms to bias the transcription towards.           The keyterms are words or phrases you want the model to recognise more accurately.           The number of keyterms cannot exceed 100.           The length of each keyterm must be less than 50 characters.           Keyterms can contain at most 5 words (after normalisation).           For example [\"hello\", \"world\", \"technical term\"].           Usage of this parameter will incur additional costs.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[SpeechToTextConvertResponse]\n    Synchronous transcription result",
+          "doc": "Transcribe an audio or video file. If webhook is set to true, the request will be processed asynchronously and results sent to configured webhooks. When use_multi_channel is true and the provided audio has multiple channels, a 'transcripts' object with separate transcripts for each channel is returned. Otherwise, returns a single transcript. The optional webhook_metadata parameter allows you to attach custom data that will be included in webhook responses for request correlation and tracking.\n\nParameters\n----------\nmodel_id : SpeechToTextConvertRequestModelId\n    The ID of the model to use for transcription.\n\nenable_logging : typing.Optional[bool]\n    When enable_logging is set to false zero retention mode will be used for the request. This will mean log and transcript storage features are unavailable for this request. Zero retention mode may only be used by enterprise customers.\n\nfile : typing.Optional[core.File]\n    See core.File for more documentation\n\nlanguage_code : typing.Optional[str]\n    An ISO-639-1 or ISO-639-3 language_code corresponding to the language of the audio file. Can sometimes improve transcription performance if known beforehand. Defaults to null, in this case the language is predicted automatically.\n\ntag_audio_events : typing.Optional[bool]\n    Whether to tag audio events like (laughter), (footsteps), etc. in the transcription.\n\nnum_speakers : typing.Optional[int]\n    The maximum amount of speakers talking in the uploaded file. Can help with predicting who speaks when. The maximum amount of speakers that can be predicted is 32. Defaults to null, in this case the amount of speakers is set to the maximum value the model supports.\n\ntimestamps_granularity : typing.Optional[SpeechToTextConvertRequestTimestampsGranularity]\n    The granularity of the timestamps in the transcription. 'word' provides word-level timestamps and 'character' provides character-level timestamps per word.\n\ndiarize : typing.Optional[bool]\n    Whether to annotate which speaker is currently talking in the uploaded file.\n\ndiarization_threshold : typing.Optional[float]\n    Diarization threshold to apply during speaker diarization. A higher value means there will be a lower chance of one speaker being diarized as two different speakers but also a higher chance of two different speakers being diarized as one speaker (less total speakers predicted). A low value means there will be a higher chance of one speaker being diarized as two different speakers but also a lower chance of two different speakers being diarized as one speaker (more total speakers predicted). Can only be set when diarize=True and num_speakers=None. Defaults to None, in which case we will choose a threshold based on the model_id (0.22 usually).\n\nadditional_formats : typing.Optional[AdditionalFormats]\n    A list of additional formats to export the transcript to.\n\nfile_format : typing.Optional[SpeechToTextConvertRequestFileFormat]\n    The format of input audio. Options are 'pcm_s16le_16' or 'other' For `pcm_s16le_16`, the input audio must be 16-bit PCM at a 16kHz sample rate, single channel (mono), and little-endian byte order. Latency will be lower than with passing an encoded waveform.\n\ncloud_storage_url : typing.Optional[str]\n    The HTTPS URL of the file to transcribe. Exactly one of the file or cloud_storage_url parameters must be provided. The file must be accessible via HTTPS and the file size must be less than 2GB. Any valid HTTPS URL is accepted, including URLs from cloud storage providers (AWS S3, Google Cloud Storage, Cloudflare R2, etc.), CDNs, or any other HTTPS source. URLs can be pre-signed or include authentication tokens in query parameters.\n\nwebhook : typing.Optional[bool]\n    Whether to send the transcription result to configured speech-to-text webhooks.  If set the request will return early without the transcription, which will be delivered later via webhook.\n\nwebhook_id : typing.Optional[str]\n    Optional specific webhook ID to send the transcription result to. Only valid when webhook is set to true. If not provided, transcription will be sent to all configured speech-to-text webhooks.\n\ntemperature : typing.Optional[float]\n    Controls the randomness of the transcription output. Accepts values between 0.0 and 2.0, where higher values result in more diverse and less deterministic results. If omitted, we will use a temperature based on the model you selected which is usually 0.\n\nseed : typing.Optional[int]\n    If specified, our system will make a best effort to sample deterministically, such that repeated requests with the same seed and parameters should return the same result. Determinism is not guaranteed. Must be an integer between 0 and 2147483647.\n\nuse_multi_channel : typing.Optional[bool]\n    Whether the audio file contains multiple channels where each channel contains a single speaker. When enabled, each channel will be transcribed independently and the results will be combined. Each word in the response will include a 'channel_index' field indicating which channel it was spoken on. A maximum of 5 channels is supported.\n\nwebhook_metadata : typing.Optional[SpeechToTextConvertRequestWebhookMetadata]\n    Optional metadata to be included in the webhook response. This should be a JSON string representing an object with a maximum depth of 2 levels and maximum size of 16KB. Useful for tracking internal IDs, job references, or other contextual information.\n\nentity_detection : typing.Optional[SpeechToTextConvertRequestEntityDetection]\n    Detect entities in the transcript. Can be 'all' to detect all entities, a single entity type or category string, or a list of entity types/categories. Categories include 'pii', 'phi', 'pci', 'other', 'offensive_language'. When enabled, detected entities will be returned in the 'entities' field with their text, type, and character positions. Usage of this parameter will incur additional costs.\n\nno_verbatim : typing.Optional[bool]\n    If true, the transcription will not have any filler words, false starts and non-speech sounds. Only supported with scribe_v2 model.\n\nentity_redaction : typing.Optional[SpeechToTextConvertRequestEntityRedaction]\n    Redact entities from the transcript text. Accepts the same format as entity_detection: 'all', a category ('pii', 'phi'), or specific entity types. Must be a subset of entity_detection. When redaction is enabled, the entities field will not be returned.\n\nentity_redaction_mode : typing.Optional[str]\n    How to format redacted entities. 'redacted' replaces with {REDACTED}, 'entity_type' replaces with {ENTITY_TYPE}, 'enumerated_entity_type' replaces with {ENTITY_TYPE_N} where N enumerates each occurrence. Only used when entity_redaction is set.\n\nkeyterms : typing.Optional[typing.List[str]]\n    A list of keyterms to bias the transcription towards.           The keyterms are words or phrases you want the model to recognise more accurately.           The number of keyterms cannot exceed 1000.           The length of each keyterm must be less than 50 characters.           Keyterms can contain at most 5 words (after normalisation).           For example [\"hello\", \"world\", \"technical term\"].           Usage of this parameter will incur additional costs.           When more than 100 keyterms are provided, a minimum billable duration of 20 seconds applies per request.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[SpeechToTextConvertResponse]\n    Synchronous transcription result",
           "positional_params": [],
           "keyword_params": [
             {
@@ -11216,6 +11609,16 @@
             },
             {
               "name": "no_verbatim",
+              "kind": "keyword",
+              "default": "__OMIT__"
+            },
+            {
+              "name": "entity_redaction",
+              "kind": "keyword",
+              "default": "__OMIT__"
+            },
+            {
+              "name": "entity_redaction_mode",
               "kind": "keyword",
               "default": "__OMIT__"
             },
@@ -11347,6 +11750,18 @@
                     "no_verbatim"
                   ],
                   "param": "no_verbatim"
+                },
+                {
+                  "path": [
+                    "entity_redaction"
+                  ],
+                  "param": "entity_redaction"
+                },
+                {
+                  "path": [
+                    "entity_redaction_mode"
+                  ],
+                  "param": "entity_redaction_mode"
                 },
                 {
                   "path": [
@@ -17242,6 +17657,112 @@
     "workspace": {
       "operations": [],
       "children": {
+        "auth_connections": {
+          "operations": [
+            {
+              "name": "list",
+              "doc": "Get all auth connections for the workspace\n\nParameters\n----------\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[ListAuthConnectionsResponse]\n    Successful Response",
+              "positional_params": [],
+              "keyword_params": [
+                {
+                  "name": "request_options",
+                  "kind": "keyword",
+                  "default": null
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "path": {
+                  "template": "v1/workspace/auth-connections",
+                  "params": []
+                },
+                "query": [],
+                "json": null,
+                "form": null,
+                "files": [],
+                "headers": {},
+                "force_multipart": false,
+                "streaming": false
+              }
+            },
+            {
+              "name": "create",
+              "doc": "Create a new OAuth2 auth connection for the workspace\n\nParameters\n----------\nrequest : AuthConnectionsCreateRequestBody\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[AuthConnectionsCreateResponse]\n    Successful Response",
+              "positional_params": [],
+              "keyword_params": [
+                {
+                  "name": "request",
+                  "kind": "keyword",
+                  "default": null
+                },
+                {
+                  "name": "request_options",
+                  "kind": "keyword",
+                  "default": null
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "path": {
+                  "template": "v1/workspace/auth-connections",
+                  "params": []
+                },
+                "query": [],
+                "json": {
+                  "literal": null,
+                  "assignments": [
+                    {
+                      "path": [],
+                      "param": "request"
+                    }
+                  ]
+                },
+                "form": null,
+                "files": [],
+                "headers": {
+                  "content-type": "application/json"
+                },
+                "force_multipart": false,
+                "streaming": false
+              }
+            },
+            {
+              "name": "delete",
+              "doc": "Delete an auth connection\n\nParameters\n----------\nauth_connection_id : str\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[typing.Any]\n    Successful Response",
+              "positional_params": [
+                {
+                  "name": "auth_connection_id",
+                  "kind": "positional",
+                  "default": null
+                }
+              ],
+              "keyword_params": [
+                {
+                  "name": "request_options",
+                  "kind": "keyword",
+                  "default": null
+                }
+              ],
+              "request": {
+                "method": "DELETE",
+                "path": {
+                  "template": "v1/workspace/auth-connections/{auth_connection_id}",
+                  "params": [
+                    "auth_connection_id"
+                  ]
+                },
+                "query": [],
+                "json": null,
+                "form": null,
+                "files": [],
+                "headers": {},
+                "force_multipart": false,
+                "streaming": false
+              }
+            }
+          ],
+          "children": {}
+        },
         "groups": {
           "operations": [
             {

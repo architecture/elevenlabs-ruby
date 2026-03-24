@@ -8,7 +8,7 @@ This gem is published to **GitHub Packages** (not RubyGems.org). Add the GitHub 
 
 ```ruby
 source "https://rubygems.pkg.github.com/architecture" do
-  gem "elevenlabs", "0.3.4"
+  gem "elevenlabs", "0.4.0"
 end
 ```
 
@@ -29,7 +29,7 @@ Bundler can pull the gem straight from the git repository. This works for public
 
 ```ruby
 # Pin to a release tag (recommended for production)
-gem "elevenlabs", git: "https://github.com/architecture/elevenlabs-ruby", tag: "v0.3.4"
+gem "elevenlabs", git: "https://github.com/architecture/elevenlabs-ruby", tag: "v0.4.0"
 
 # Or track the latest main branch
 gem "elevenlabs", git: "https://github.com/architecture/elevenlabs-ruby", branch: "main"
@@ -66,7 +66,7 @@ Optional parameters default to the `ElevenLabs::OMIT` sentinel. Pass `nil` to se
 
 Every top-level namespace described in `lib/elevenlabs/spec.json` is available under `client`. That includes:
 
-`audio_isolation`, `audio_native`, `conversational_ai`, `dubbing`, `forced_alignment`, `history`, `models`, `music`, `pronunciation_dictionaries`, `samples`, `service_accounts`, `speech_to_speech`, `speech_to_text`, `studio`, `text_to_dialogue`, `text_to_sound_effects`, `text_to_speech`, `text_to_voice`, `tokens`, `usage`, `user`, `voices`, `webhooks`, `workspace`.
+`audio_isolation`, `audio_native`, `conversational_ai`, `dubbing`, `environment_variables`, `forced_alignment`, `history`, `models`, `music`, `pronunciation_dictionaries`, `samples`, `service_accounts`, `speech_to_speech`, `speech_to_text`, `studio`, `text_to_dialogue`, `text_to_sound_effects`, `text_to_speech`, `text_to_voice`, `tokens`, `usage`, `user`, `voices`, `webhooks`, `workspace`.
 
 Below are example snippets that demonstrate each namespace. Substitute IDs and payloads with real values from your account.
 
@@ -79,6 +79,10 @@ client.audio_native.projects.list
 
 # conversational_ai
 client.conversational_ai.agents.list(page_size: 10)
+
+# environment_variables
+client.environment_variables.list(page_size: 10)
+client.environment_variables.create(request: { "label" => "API_KEY", "type" => "secret", "values" => { "production" => "sk-123" } })
 
 # dubbing
 client.dubbing.transcript.create(
@@ -162,6 +166,8 @@ client.webhooks.list
 
 # workspace
 client.workspace.members.list
+client.workspace.auth_connections.list
+client.workspace.auth_connections.create(request: { "type" => "oauth2", "label" => "My OAuth" })
 ```
 
 Each namespace exposes the full set of nested resources (for example `client.conversational_ai.knowledge_base.documents.create`) exactly as defined in the Python SDK.
@@ -323,7 +329,7 @@ ruby -Ilib:test test/client_test.rb
 ruby -Ilib:test test/environment_test.rb
 ```
 
-**Test Coverage (134 tests, 347 assertions):**
+**Test Coverage (146 tests, 394 assertions):**
 - `operation_serialization_test.rb` - Tests request serialization for various operations
 - `operation_executor_test.rb` - Tests path building, query/body/file resolution, streaming dispatch, request_options forwarding
 - `http_client_test.rb` - Tests file upload handling, redirect following, streaming cleanup
@@ -359,6 +365,27 @@ gem "elevenlabs", path: "/path/to/elevenlabs-ruby"
 ```
 
 ## Recent Updates
+
+### 2026-03-24: v0.4.0 — Updated API Spec from elevenlabs-python v2.40.0
+
+Updated `lib/elevenlabs/spec.json` by running the extraction script against elevenlabs-python v2.40.0 (commits #745 and #750 — March 2026).
+
+**New Namespaces:**
+- `environment_variables` — manage ConvAI environment variables (list, create, get, update)
+- `workspace.auth_connections` — manage workspace auth connections (list, create, delete)
+- `conversational_ai.knowledge_base.document` — individual document operations (refresh, compute_rag_index)
+
+**New/Updated Parameters:**
+- `speech_to_text.convert` — added `entity_redaction` and `entity_redaction_mode` for PII redaction
+- `speech_to_text.convert` — added `keyterms` for keyword boosting
+
+**Bug Fixes:**
+- Fixed `build_body` to handle empty-path assignments (operations where the `request` param IS the body, such as `environment_variables.create` and `workspace.auth_connections.create`)
+
+**New Types:**
+Auth connections (OAuth2, JWT, basic, bearer, custom header, WhatsApp), environment variables, conditional AST operators, telephony direction, guardrail trigger actions, content threshold guardrails, LLM literal JSON schema properties, and more.
+
+Test suite now at 146 runs, 394 assertions, 0 failures.
 
 ### 2026-03-14: v0.3.4 — Updated API Spec from elevenlabs-python v2.39.1
 

@@ -81,7 +81,16 @@ module ElevenLabs
         body ||= {}
         spec[:assignments].each do |assignment|
           param_value = params[assignment[:param].to_sym]
-          body = ElevenLabs::Utils.assign_path(body, assignment[:path], param_value)
+          if assignment[:path].nil? || assignment[:path].empty?
+            # Empty path means the param value IS the body (spread onto it if hash)
+            if param_value.is_a?(Hash)
+              body.merge!(param_value)
+            else
+              body = param_value
+            end
+          else
+            body = ElevenLabs::Utils.assign_path(body, assignment[:path], param_value)
+          end
         end
       end
       body = ElevenLabs::Utils.deep_compact(body)
