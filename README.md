@@ -1,5 +1,7 @@
 # ElevenLabs Ruby SDK
 
+> **Disclaimer:** This is an **unofficial community SDK** and is not affiliated with, endorsed by, or maintained by ElevenLabs. For the official SDK, see [elevenlabs-python](https://github.com/elevenlabs/elevenlabs-python).
+
 This gem mirrors the public interface of [elevenlabs-python](https://github.com/elevenlabs/elevenlabs-python) and provides a Ruby-native client with the same resource tree, streaming helpers, and request semantics. The client is generated directly from the upstream SDK, so keeping pace with new endpoints only requires re-running the included extraction script.
 
 ## Installation
