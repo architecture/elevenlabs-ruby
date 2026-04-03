@@ -379,6 +379,123 @@ class OperationSerializationTest < Minitest::Test
     assert_equal "redact", request[:form]["entity_redaction_mode"]
   end
 
+  # --- New in v2.41.0 ---
+
+  def test_conversations_analysis_run
+    @client.conversational_ai.conversations.analysis.run("conv_123")
+
+    request = @http.requests.last
+    assert_equal "POST", request[:method]
+    assert_equal "v1/convai/conversations/conv_123/analysis/run", request[:path]
+    assert_nil request[:json]
+    assert_nil request[:form]
+  end
+
+  def test_music_video_to_music
+    video = ElevenLabs::Upload.from_io(StringIO.new("video-bytes"), filename: "clip.mp4", content_type: "video/mp4")
+
+    stream = @client.music.video_to_music(
+      videos: [video],
+      output_format: "mp3_44100_128",
+      description: "upbeat background music",
+      tags: "pop,energetic",
+      sign_with_c_2_pa: true
+    )
+
+    assert_kind_of Enumerator, stream
+    request = @http.requests.last
+    assert_equal :stream, request[:kind]
+    assert_equal "POST", request[:method]
+    assert_equal "v1/music/video-to-music", request[:path]
+    assert_equal({ "output_format" => "mp3_44100_128" }, request[:query])
+    assert_equal({
+      "description" => "upbeat background music",
+      "tags" => "pop,energetic",
+      "sign_with_c2pa" => true
+    }, request[:form])
+    assert_equal 1, request[:files].length
+    assert_equal "videos", request[:files].first[:name]
+  end
+
+  def test_batch_calls_create_with_branch_and_environment
+    @client.conversational_ai.batch_calls.create(
+      call_name: "test-batch",
+      agent_id: "agent_123",
+      recipients: [{ "phone_number" => "+1234567890" }],
+      branch_id: "branch_abc",
+      environment: "staging"
+    )
+
+    request = @http.requests.last
+    assert_equal "POST", request[:method]
+    assert_equal "v1/convai/batch-calling/submit", request[:path]
+    json = request[:json]
+    assert_equal "test-batch", json["call_name"]
+    assert_equal "agent_123", json["agent_id"]
+    assert_equal "branch_abc", json["branch_id"]
+    assert_equal "staging", json["environment"]
+  end
+
+  def test_conversations_messages_text_search_with_sort_by
+    @client.conversational_ai.conversations.messages.text_search(
+      text_query: "hello",
+      agent_id: "agent_123",
+      sort_by: "created_at"
+    )
+
+    request = @http.requests.last
+    assert_equal "GET", request[:method]
+    assert_equal "v1/convai/conversations/messages/text-search", request[:path]
+    assert_equal "hello", request[:query]["text_query"]
+    assert_equal "created_at", request[:query]["sort_by"]
+  end
+
+  def test_speech_to_text_convert_with_source_url
+    @client.speech_to_text.convert(source_url: "https://example.com/audio.mp3")
+
+    request = @http.requests.last
+    assert_equal "POST", request[:method]
+    assert_equal "v1/speech-to-text", request[:path]
+    assert_equal "https://example.com/audio.mp3", request[:form]["source_url"]
+  end
+
+  def test_text_to_speech_convert_with_avatar_context
+    ctx = { "type" => "url", "url" => "https://example.com/avatar.png" }
+    stream = @client.text_to_speech.convert("voice_123", text: "Hello", avatar_context: ctx)
+
+    assert_kind_of Enumerator, stream
+    request = @http.requests.last
+    assert_equal "POST", request[:method]
+    assert_equal "v1/text-to-speech/voice_123", request[:path]
+    assert_equal "Hello", request[:json]["text"]
+    assert_equal ctx, request[:json]["avatar_context"]
+  end
+
+  def test_text_to_dialogue_convert_with_avatar_context
+    ctx = { "type" => "url", "url" => "https://example.com/avatar.png" }
+    inputs = [{ "text" => "Hello", "voice_id" => "voice_123" }]
+    stream = @client.text_to_dialogue.convert(inputs: inputs, output_format: "mp3_44100_128", avatar_context: ctx)
+
+    assert_kind_of Enumerator, stream
+    request = @http.requests.last
+    assert_equal "POST", request[:method]
+    assert_equal "v1/text-to-dialogue", request[:path]
+    assert_equal inputs, request[:json]["inputs"]
+    assert_equal ctx, request[:json]["avatar_context"]
+  end
+
+  def test_forced_alignment_create_no_longer_has_enabled_spooled_file
+    audio = ElevenLabs::Upload.from_io(StringIO.new("audio-bytes"), filename: "audio.wav", content_type: "audio/wav")
+
+    @client.forced_alignment.create(file: audio, text: "hello world")
+
+    request = @http.requests.last
+    assert_equal "POST", request[:method]
+    assert_equal "v1/forced-alignment", request[:path]
+    assert_equal "hello world", request[:form]["text"]
+    refute request[:form].key?("enabled_spooled_file"), "enabled_spooled_file should have been removed"
+  end
+
   def test_pronunciation_dictionaries_rules_set
     rules = [
       { "type" => "phoneme", "string_to_replace" => "ElevenLabs", "phoneme" => "ɛlɛvənlæbz", "alphabet" => "ipa" }

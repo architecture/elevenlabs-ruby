@@ -177,6 +177,27 @@ class ClientIntegrationTest < Minitest::Test
     end
   end
 
+  # --- New in v2.41.0 ---
+
+  def test_conversations_analysis_child_accessible
+    klass = ElevenLabs::Resources.class_for(["conversational_ai", "conversations"])
+    fake_http = Object.new
+    instance = klass.new(fake_http)
+
+    assert_respond_to instance, :analysis
+  end
+
+  def test_conversations_analysis_has_run_method
+    klass = ElevenLabs::Resources.class_for(["conversational_ai", "conversations", "analysis"])
+    assert klass, "expected analysis resource class to exist"
+    assert klass.method_defined?(:run), "expected Analysis resource to have run method"
+  end
+
+  def test_music_has_video_to_music_method
+    klass = ElevenLabs::Resources.class_for(["music"])
+    assert klass.method_defined?(:video_to_music), "expected Music resource to have video_to_music method"
+  end
+
   def test_client_with_custom_environment
     client = ElevenLabs::Client.new(api_key: "test", environment: :production_eu)
     assert_kind_of ElevenLabs::HTTPClient, client.http_client

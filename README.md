@@ -10,7 +10,7 @@ This gem is published to **GitHub Packages** (not RubyGems.org). Add the GitHub 
 
 ```ruby
 source "https://rubygems.pkg.github.com/architecture" do
-  gem "elevenlabs", "0.4.0"
+  gem "elevenlabs", "0.5.0"
 end
 ```
 
@@ -31,7 +31,7 @@ Bundler can pull the gem straight from the git repository. This works for public
 
 ```ruby
 # Pin to a release tag (recommended for production)
-gem "elevenlabs", git: "https://github.com/architecture/elevenlabs-ruby", tag: "v0.4.0"
+gem "elevenlabs", git: "https://github.com/architecture/elevenlabs-ruby", tag: "v0.5.0"
 
 # Or track the latest main branch
 gem "elevenlabs", git: "https://github.com/architecture/elevenlabs-ruby", branch: "main"
@@ -105,6 +105,7 @@ client.models.list
 # music
 client.music.composition_plan.create(prompt: "lofi chill beats")
 client.music.upload(file: ElevenLabs::Upload.from_path("track.mp3"))
+client.music.video_to_music(videos: [ElevenLabs::Upload.from_path("clip.mp4")], description: "upbeat")
 
 # pronunciation_dictionaries
 client.pronunciation_dictionaries.list
@@ -331,7 +332,7 @@ ruby -Ilib:test test/client_test.rb
 ruby -Ilib:test test/environment_test.rb
 ```
 
-**Test Coverage (146 tests, 394 assertions):**
+**Test Coverage (157 tests, 437 assertions):**
 - `operation_serialization_test.rb` - Tests request serialization for various operations
 - `operation_executor_test.rb` - Tests path building, query/body/file resolution, streaming dispatch, request_options forwarding
 - `http_client_test.rb` - Tests file upload handling, redirect following, streaming cleanup
@@ -367,6 +368,45 @@ gem "elevenlabs", path: "/path/to/elevenlabs-ruby"
 ```
 
 ## Recent Updates
+
+### 2026-04-03: v0.5.0 — Updated API Spec from elevenlabs-python v2.41.0
+
+Updated `lib/elevenlabs/spec.json` by running the extraction script against elevenlabs-python v2.41.0 (commits #749 and #756 — April 2026).
+
+**New Operations:**
+- `music.video_to_music` — generate music from video files (multipart upload, streaming response)
+- `conversational_ai.conversations.analysis.run` — re-run analysis for a conversation using agent's current evaluation criteria
+
+**New/Updated Parameters:**
+- `conversational_ai.batch_calls.create` — added `branch_id` and `environment`
+- `conversational_ai.conversations.messages.text_search` — added `sort_by` for ordering results
+- `speech_to_text.convert` — added `source_url` for URL-based transcription
+- `text_to_speech.convert` / `stream` — added `avatar_context` for avatar generation
+- `text_to_dialogue.convert` / `stream` — added `avatar_context` for avatar generation
+
+**Removed Parameters:**
+- `forced_alignment.create` — removed `enabled_spooled_file`
+
+**Removed Operations:**
+- Top-level `delete_v_1_convai_agents_agent_id_branches_branch_id` (consolidated into namespace)
+
+**New Ruby access patterns:**
+```ruby
+# Generate music from video
+stream = client.music.video_to_music(
+  videos: [ElevenLabs::Upload.from_path("clip.mp4")],
+  description: "upbeat background music"
+)
+File.open("music.mp3", "wb") { |f| stream.each { |chunk| f.write(chunk) } }
+
+# Run conversation analysis
+client.conversational_ai.conversations.analysis.run("conv_123")
+
+# Transcribe from URL
+client.speech_to_text.convert(source_url: "https://example.com/audio.mp3")
+```
+
+Test suite now at 157 runs, 437 assertions, 0 failures.
 
 ### 2026-03-24: v0.4.0 — Updated API Spec from elevenlabs-python v2.40.0
 
