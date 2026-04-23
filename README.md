@@ -312,6 +312,24 @@ python3 scripts/extract_spec.py
 
 This keeps every endpoint, request shape, and child resource in sync without hand editing Ruby code.
 
+## Type reference for nested request bodies
+
+`spec.json` only captures method-level signatures — parameter names, HTTP verbs, URL paths, and how params map onto body/query/path/files. It does **not** carry the internal shape of complex request bodies. Parameters like `workflow`, `conversation_config`, or `platform_settings` are typed in the upstream Python SDK as Pydantic models (`AgentWorkflowRequestModel`, etc.); the gem stores just the type *name* and treats the value as a Hash the caller is trusted to shape correctly.
+
+To close that gap, a second extraction pass parses every Pydantic model in `tmp-elevenlabs-python/src/elevenlabs/types/` and emits a machine-readable schema plus a rendered reference:
+
+- **`lib/elevenlabs/types.json`** — every model, discriminated union, and enum. Each model entry lists its fields (name, annotation, optional, default, docstring, literal discriminator value). Each union lists its variants and the discriminant key. Each enum lists its allowed string values.
+- **`docs/types.md`** — human-readable rendering of the same data, grouped by kind (unions, models, variant classes, enums). Cross-references between types are Markdown links.
+
+Regenerate both after updating the vendored Python SDK:
+
+```bash
+python3 scripts/extract_types.py        # writes lib/elevenlabs/types.json
+python3 scripts/render_types_doc.py     # writes docs/types.md
+```
+
+**When you need this:** any time you're calling an operation that takes a structured Hash and the API returns a `422 Input should be a valid dictionary` (or similar shape error). For example, `client.conversational_ai.agents.create(workflow: {...})` passes the Hash straight through; consult `docs/types.md#agentworkflowrequestmodel` for the expected `nodes` / `edges` dict layout, the discriminated-union variants of each node `type`, and the required `label` on `override_agent` nodes.
+
 ## Development & testing
 
 Run the full test suite using Rake:
@@ -368,6 +386,20 @@ gem "elevenlabs", path: "/path/to/elevenlabs-ruby"
 ```
 
 ## Recent Updates
+
+### 2026-04-23: Type reference for nested request bodies
+
+Added a second extraction pass that resolves the Pydantic models the gem previously treated as opaque Hashes. Prompted by a downstream session where `client.conversational_ai.agents.create(workflow: {...})` returned `422 Input should be a valid dictionary` — the caller had no machine-readable description of `AgentWorkflowRequestModel`'s nested `nodes` / `edges` dicts or its discriminated-union node variants.
+
+**New artifacts:**
+- `lib/elevenlabs/types.json` — 1,458 types (1,180 models, 73 discriminated unions, 205 enums) with per-field annotation, optional/required flag, default, docstring, and literal discriminator values
+- `docs/types.md` — rendered Markdown reference, grouped by kind with cross-referenced type links
+
+**New scripts:**
+- `scripts/extract_types.py` — AST-walks `tmp-elevenlabs-python/src/elevenlabs/types/*.py`
+- `scripts/render_types_doc.py` — renders `types.json` → `docs/types.md`
+
+No runtime behavior change; no change to existing operation surface. All 176 tests still pass.
 
 ### 2026-04-23: v0.6.0 — Updated API Spec from elevenlabs-python v2.44.0
 
