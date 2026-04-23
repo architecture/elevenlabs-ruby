@@ -459,31 +459,6 @@ class OperationSerializationTest < Minitest::Test
     assert_equal "https://example.com/audio.mp3", request[:form]["source_url"]
   end
 
-  def test_text_to_speech_convert_with_avatar_context
-    ctx = { "type" => "url", "url" => "https://example.com/avatar.png" }
-    stream = @client.text_to_speech.convert("voice_123", text: "Hello", avatar_context: ctx)
-
-    assert_kind_of Enumerator, stream
-    request = @http.requests.last
-    assert_equal "POST", request[:method]
-    assert_equal "v1/text-to-speech/voice_123", request[:path]
-    assert_equal "Hello", request[:json]["text"]
-    assert_equal ctx, request[:json]["avatar_context"]
-  end
-
-  def test_text_to_dialogue_convert_with_avatar_context
-    ctx = { "type" => "url", "url" => "https://example.com/avatar.png" }
-    inputs = [{ "text" => "Hello", "voice_id" => "voice_123" }]
-    stream = @client.text_to_dialogue.convert(inputs: inputs, output_format: "mp3_44100_128", avatar_context: ctx)
-
-    assert_kind_of Enumerator, stream
-    request = @http.requests.last
-    assert_equal "POST", request[:method]
-    assert_equal "v1/text-to-dialogue", request[:path]
-    assert_equal inputs, request[:json]["inputs"]
-    assert_equal ctx, request[:json]["avatar_context"]
-  end
-
   def test_forced_alignment_create_no_longer_has_enabled_spooled_file
     audio = ElevenLabs::Upload.from_io(StringIO.new("audio-bytes"), filename: "audio.wav", content_type: "audio/wav")
 
@@ -508,5 +483,141 @@ class OperationSerializationTest < Minitest::Test
     assert_equal "v1/pronunciation-dictionaries/dict_123/set-rules", request[:path]
     assert_equal({ "rules" => rules }, request[:json])
     assert_nil request[:form]
+  end
+
+  def test_conversations_topics_get
+    @client.conversational_ai.conversations.topics.get("agent_123")
+
+    request = @http.requests.last
+    assert_equal "GET", request[:method]
+    assert_equal "v1/convai/agents/agent_123/topics", request[:path]
+  end
+
+  def test_knowledge_base_search
+    @client.conversational_ai.knowledge_base.search(query: "pricing", page_size: 20)
+
+    request = @http.requests.last
+    assert_equal "GET", request[:method]
+    assert_equal "v1/convai/knowledge-base/search", request[:path]
+    assert_equal({ "query" => "pricing", "page_size" => 20 }, request[:query])
+  end
+
+  def test_secrets_get
+    @client.conversational_ai.secrets.get("secret_123")
+
+    request = @http.requests.last
+    assert_equal "GET", request[:method]
+    assert_equal "v1/convai/secrets/secret_123", request[:path]
+  end
+
+  def test_secrets_get_dependencies
+    @client.conversational_ai.secrets.get_dependencies("secret_123", "agents", page_size: 10, cursor: "abc")
+
+    request = @http.requests.last
+    assert_equal "GET", request[:method]
+    assert_equal "v1/convai/secrets/secret_123/dependencies/agents", request[:path]
+    assert_equal({ "page_size" => 10, "cursor" => "abc" }, request[:query])
+  end
+
+  def test_tests_move_bulk
+    @client.conversational_ai.tests.move(entity_ids: ["t1", "t2"], move_to: "folder_abc")
+
+    request = @http.requests.last
+    assert_equal "POST", request[:method]
+    assert_equal "v1/convai/agent-testing/bulk-move", request[:path]
+    assert_equal({ "entity_ids" => ["t1", "t2"], "move_to" => "folder_abc" }, request[:json])
+  end
+
+  def test_tests_folders_create
+    @client.conversational_ai.tests.folders.create(name: "My Folder", parent_folder_id: "parent_abc")
+
+    request = @http.requests.last
+    assert_equal "POST", request[:method]
+    assert_equal "v1/convai/agent-testing/folders", request[:path]
+    assert_equal({ "name" => "My Folder", "parent_folder_id" => "parent_abc" }, request[:json])
+  end
+
+  def test_tests_folders_get
+    @client.conversational_ai.tests.folders.get("folder_123")
+
+    request = @http.requests.last
+    assert_equal "GET", request[:method]
+    assert_equal "v1/convai/agent-testing/folders/folder_123", request[:path]
+  end
+
+  def test_tests_folders_delete_with_force
+    @client.conversational_ai.tests.folders.delete("folder_123", force: true)
+
+    request = @http.requests.last
+    assert_equal "DELETE", request[:method]
+    assert_equal "v1/convai/agent-testing/folders/folder_123", request[:path]
+    assert_equal({ "force" => true }, request[:query])
+  end
+
+  def test_tests_folders_update
+    @client.conversational_ai.tests.folders.update("folder_123", name: "Renamed")
+
+    request = @http.requests.last
+    assert_equal "PATCH", request[:method]
+    assert_equal "v1/convai/agent-testing/folders/folder_123", request[:path]
+    assert_equal({ "name" => "Renamed" }, request[:json])
+  end
+
+  def test_tools_executions_get
+    @client.conversational_ai.tools.executions.get("tool_123", page_size: 50, is_error: false)
+
+    request = @http.requests.last
+    assert_equal "GET", request[:method]
+    assert_equal "v1/convai/tools/tool_123/executions", request[:path]
+    assert_equal({ "page_size" => 50, "is_error" => false }, request[:query])
+  end
+
+  def test_workspace_usage_by_product_over_time
+    @client.workspace.usage.get_usage_by_product_over_time(
+      start_time: 1700000000,
+      end_time: 1700100000,
+      interval_seconds: 3600,
+      group_by: ["product"],
+      filters: { "product" => "tts" }
+    )
+
+    request = @http.requests.last
+    assert_equal "POST", request[:method]
+    assert_equal "v1/workspace/analytics/query/usage-by-product-over-time", request[:path]
+    assert_equal(
+      {
+        "start_time" => 1700000000,
+        "end_time" => 1700100000,
+        "interval_seconds" => 3600,
+        "group_by" => ["product"],
+        "filters" => { "product" => "tts" }
+      },
+      request[:json]
+    )
+  end
+
+  def test_agents_branches_merge_accepts_force
+    @client.conversational_ai.agents.branches.merge(
+      "agent_123",
+      "src_branch",
+      target_branch_id: "dst_branch",
+      archive_source_branch: true,
+      force: true
+    )
+
+    request = @http.requests.last
+    assert_equal "POST", request[:method]
+    assert_equal "v1/convai/agents/agent_123/branches/src_branch/merge", request[:path]
+    assert_equal({ "target_branch_id" => "dst_branch" }, request[:query])
+    assert_equal({ "archive_source_branch" => true, "force" => true }, request[:json])
+  end
+
+  def test_conversations_list_accepts_topic_ids
+    @client.conversational_ai.conversations.list(topic_ids: ["t1", "t2"])
+
+    request = @http.requests.last
+    assert_equal "GET", request[:method]
+    assert_equal "v1/convai/conversations", request[:path]
+    assert_equal ["t1", "t2"], request[:query]["topic_ids"]
   end
 end

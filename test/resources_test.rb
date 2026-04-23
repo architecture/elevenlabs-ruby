@@ -214,4 +214,70 @@ class ClientIntegrationTest < Minitest::Test
     client = ElevenLabs::Client.new(http_client: fake_http, executor: fake_executor)
     assert_equal fake_http, client.http_client
   end
+
+  # --- New in v2.44.0 ---
+
+  def test_conversations_topics_child_accessible
+    klass = ElevenLabs::Resources.class_for(["conversational_ai", "conversations"])
+    fake_http = Object.new
+    instance = klass.new(fake_http)
+
+    assert_respond_to instance, :topics
+  end
+
+  def test_conversations_topics_has_get_method
+    klass = ElevenLabs::Resources.class_for(["conversational_ai", "conversations", "topics"])
+    assert klass, "expected topics resource class to exist"
+    assert klass.method_defined?(:get), "expected topics resource to have get method"
+  end
+
+  def test_knowledge_base_has_search_method
+    klass = ElevenLabs::Resources.class_for(["conversational_ai", "knowledge_base"])
+    assert klass.method_defined?(:search), "expected knowledge_base to have search method"
+  end
+
+  def test_secrets_has_get_and_get_dependencies_methods
+    klass = ElevenLabs::Resources.class_for(["conversational_ai", "secrets"])
+    %i[get get_dependencies].each do |m|
+      assert klass.method_defined?(m), "expected secrets to have #{m} method"
+    end
+  end
+
+  def test_tests_has_move_method
+    klass = ElevenLabs::Resources.class_for(["conversational_ai", "tests"])
+    assert klass.method_defined?(:move), "expected tests resource to have move method"
+  end
+
+  def test_tests_folders_child_accessible_with_crud
+    klass = ElevenLabs::Resources.class_for(["conversational_ai", "tests"])
+    fake_http = Object.new
+    instance = klass.new(fake_http)
+    assert_respond_to instance, :folders
+
+    folders_klass = ElevenLabs::Resources.class_for(["conversational_ai", "tests", "folders"])
+    %i[create get update delete].each do |m|
+      assert folders_klass.method_defined?(m), "expected tests.folders to have #{m} method"
+    end
+  end
+
+  def test_tools_executions_child_accessible
+    klass = ElevenLabs::Resources.class_for(["conversational_ai", "tools"])
+    fake_http = Object.new
+    instance = klass.new(fake_http)
+    assert_respond_to instance, :executions
+
+    exec_klass = ElevenLabs::Resources.class_for(["conversational_ai", "tools", "executions"])
+    assert exec_klass.method_defined?(:get), "expected tools.executions to have get method"
+  end
+
+  def test_workspace_usage_child_accessible
+    klass = ElevenLabs::Resources.class_for(["workspace"])
+    fake_http = Object.new
+    instance = klass.new(fake_http)
+    assert_respond_to instance, :usage
+
+    usage_klass = ElevenLabs::Resources.class_for(["workspace", "usage"])
+    assert usage_klass.method_defined?(:get_usage_by_product_over_time),
+           "expected workspace.usage to have get_usage_by_product_over_time method"
+  end
 end

@@ -1433,7 +1433,7 @@
                 },
                 {
                   "name": "create",
-                  "doc": "Create a new branch from a given version of main branch\n\nParameters\n----------\nagent_id : str\n    The id of an agent. This is returned on agent creation.\n\nparent_version_id : str\n    ID of the version to branch from\n\nname : str\n    Name of the branch. It is unique within the agent.\n\ndescription : str\n    Description for the branch\n\nconversation_config : typing.Optional[typing.Dict[str, typing.Any]]\n    Changes to apply to conversation config\n\nplatform_settings : typing.Optional[typing.Dict[str, typing.Any]]\n    Changes to apply to platform settings\n\nworkflow : typing.Optional[AgentWorkflowRequestModel]\n    Updated workflow definition\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[CreateAgentBranchResponseModel]\n    Successful Response",
+                  "doc": "Create a new branch from a given version of any branch\n\nParameters\n----------\nagent_id : str\n    The id of an agent. This is returned on agent creation.\n\nparent_version_id : str\n    ID of the version to branch from\n\nname : str\n    Name of the branch. It is unique within the agent.\n\ndescription : str\n    Description for the branch\n\nconversation_config : typing.Optional[typing.Dict[str, typing.Any]]\n    Changes to apply to conversation config\n\nplatform_settings : typing.Optional[typing.Dict[str, typing.Any]]\n    Changes to apply to platform settings\n\nworkflow : typing.Optional[AgentWorkflowRequestModel]\n    Updated workflow definition\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[CreateAgentBranchResponseModel]\n    Successful Response",
                   "positional_params": [
                     {
                       "name": "agent_id",
@@ -1658,7 +1658,7 @@
                 },
                 {
                   "name": "merge",
-                  "doc": "Merge a branch into a target branch\n\nParameters\n----------\nagent_id : str\n    The id of an agent. This is returned on agent creation.\n\nsource_branch_id : str\n    Unique identifier for the source branch to merge from.\n\ntarget_branch_id : str\n    The ID of the target branch to merge into (must be the main branch).\n\narchive_source_branch : typing.Optional[bool]\n    Whether to archive the source branch after merging\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[typing.Any]\n    Successful Response",
+                  "doc": "Merge a branch into a target branch\n\nParameters\n----------\nagent_id : str\n    The id of an agent. This is returned on agent creation.\n\nsource_branch_id : str\n    Unique identifier for the source branch to merge from.\n\ntarget_branch_id : str\n    The ID of the target branch to merge into.\n\narchive_source_branch : typing.Optional[bool]\n    Whether to archive the source branch after merging\n\nforce : typing.Optional[bool]\n    Force source branch changes onto the target, overriding timestamp-based conflict resolution\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[typing.Any]\n    Successful Response",
                   "positional_params": [
                     {
                       "name": "agent_id",
@@ -1679,6 +1679,11 @@
                     },
                     {
                       "name": "archive_source_branch",
+                      "kind": "keyword",
+                      "default": "__OMIT__"
+                    },
+                    {
+                      "name": "force",
                       "kind": "keyword",
                       "default": "__OMIT__"
                     },
@@ -1711,6 +1716,12 @@
                             "archive_source_branch"
                           ],
                           "param": "archive_source_branch"
+                        },
+                        {
+                          "path": [
+                            "force"
+                          ],
+                          "param": "force"
                         }
                       ]
                     },
@@ -2755,7 +2766,7 @@
             },
             {
               "name": "list",
-              "doc": "Get all conversations of agents that user owns. With option to restrict to a specific agent.\n\nParameters\n----------\ncursor : typing.Optional[str]\n    Used for fetching next page. Cursor is returned in the response.\n\nagent_id : typing.Optional[str]\n    The id of the agent you're taking the action on.\n\ncall_successful : typing.Optional[EvaluationSuccessResult]\n    The result of the success evaluation\n\ncall_start_before_unix : typing.Optional[int]\n    Unix timestamp (in seconds) to filter conversations up to this start date.\n\ncall_start_after_unix : typing.Optional[int]\n    Unix timestamp (in seconds) to filter conversations after to this start date.\n\ncall_duration_min_secs : typing.Optional[int]\n    Minimum call duration in seconds.\n\ncall_duration_max_secs : typing.Optional[int]\n    Maximum call duration in seconds.\n\nrating_max : typing.Optional[int]\n    Maximum overall rating (1-5).\n\nrating_min : typing.Optional[int]\n    Minimum overall rating (1-5).\n\nhas_feedback_comment : typing.Optional[bool]\n    Filter conversations with user feedback comments.\n\nuser_id : typing.Optional[str]\n    Filter conversations by the user ID who initiated them.\n\nevaluation_params : typing.Optional[typing.Union[str, typing.Sequence[str]]]\n    Evaluation filters. Repeat param. Format: criteria_id:result. Example: eval=value_framing:success\n\ndata_collection_params : typing.Optional[typing.Union[str, typing.Sequence[str]]]\n    Data collection filters. Repeat param. Format: id:op:value where op is one of eq|neq|gt|gte|lt|lte|in|exists|missing. For in, pipe-delimit values.\n\ntool_names : typing.Optional[typing.Union[str, typing.Sequence[str]]]\n    Filter conversations by tool names used during the call.\n\ntool_names_successful : typing.Optional[typing.Union[str, typing.Sequence[str]]]\n    Filter conversations by tool names that had successful calls.\n\ntool_names_errored : typing.Optional[typing.Union[str, typing.Sequence[str]]]\n    Filter conversations by tool names that had errored calls.\n\nmain_languages : typing.Optional[typing.Union[str, typing.Sequence[str]]]\n    Filter conversations by detected main language (language code).\n\npage_size : typing.Optional[int]\n    How many conversations to return at maximum. Can not exceed 100, defaults to 30.\n\nsummary_mode : typing.Optional[ConversationsListRequestSummaryMode]\n    Whether to include transcript summaries in the response.\n\nsearch : typing.Optional[str]\n    Full-text or fuzzy search over transcript messages\n\nconversation_initiation_source : typing.Optional[ConversationInitiationSource]\n\nbranch_id : typing.Optional[str]\n    Filter conversations by branch ID.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[GetConversationsPageResponseModel]\n    Successful Response",
+              "doc": "Get all conversations of agents that user owns. With option to restrict to a specific agent.\n\nParameters\n----------\ncursor : typing.Optional[str]\n    Used for fetching next page. Cursor is returned in the response.\n\nagent_id : typing.Optional[str]\n    The id of the agent you're taking the action on.\n\ncall_successful : typing.Optional[EvaluationSuccessResult]\n    The result of the success evaluation\n\ncall_start_before_unix : typing.Optional[int]\n    Unix timestamp (in seconds) to filter conversations up to this start date.\n\ncall_start_after_unix : typing.Optional[int]\n    Unix timestamp (in seconds) to filter conversations after to this start date.\n\ncall_duration_min_secs : typing.Optional[int]\n    Minimum call duration in seconds.\n\ncall_duration_max_secs : typing.Optional[int]\n    Maximum call duration in seconds.\n\nrating_max : typing.Optional[int]\n    Maximum overall rating (1-5).\n\nrating_min : typing.Optional[int]\n    Minimum overall rating (1-5).\n\nhas_feedback_comment : typing.Optional[bool]\n    Filter conversations with user feedback comments.\n\nuser_id : typing.Optional[str]\n    Filter conversations by the user ID who initiated them.\n\nevaluation_params : typing.Optional[typing.Union[str, typing.Sequence[str]]]\n    Evaluation filters. Repeat param. Format: criteria_id:result. Example: eval=value_framing:success\n\ndata_collection_params : typing.Optional[typing.Union[str, typing.Sequence[str]]]\n    Data collection filters. Repeat param. Format: id:op:value where op is one of eq|neq|gt|gte|lt|lte|in|exists|missing. For in, pipe-delimit values.\n\ntool_names : typing.Optional[typing.Union[str, typing.Sequence[str]]]\n    Filter conversations by tool names used during the call.\n\ntool_names_successful : typing.Optional[typing.Union[str, typing.Sequence[str]]]\n    Filter conversations by tool names that had successful calls.\n\ntool_names_errored : typing.Optional[typing.Union[str, typing.Sequence[str]]]\n    Filter conversations by tool names that had errored calls.\n\nmain_languages : typing.Optional[typing.Union[str, typing.Sequence[str]]]\n    Filter conversations by detected main language (language code).\n\npage_size : typing.Optional[int]\n    How many conversations to return at maximum. Can not exceed 100, defaults to 30.\n\nsummary_mode : typing.Optional[ConversationsListRequestSummaryMode]\n    Whether to include transcript summaries in the response.\n\nsearch : typing.Optional[str]\n    Full-text or fuzzy search over transcript messages\n\nconversation_initiation_source : typing.Optional[ConversationInitiationSource]\n\nbranch_id : typing.Optional[str]\n    Filter conversations by branch ID.\n\ntopic_ids : typing.Optional[typing.Union[str, typing.Sequence[str]]]\n    Filter conversations by topic IDs assigned during topic discovery.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[GetConversationsPageResponseModel]\n    Successful Response",
               "positional_params": [],
               "keyword_params": [
                 {
@@ -2869,6 +2880,11 @@
                   "default": null
                 },
                 {
+                  "name": "topic_ids",
+                  "kind": "keyword",
+                  "default": null
+                },
+                {
                   "name": "request_options",
                   "kind": "keyword",
                   "default": null
@@ -2968,6 +2984,10 @@
                   {
                     "name": "branch_id",
                     "param": "branch_id"
+                  },
+                  {
+                    "name": "topic_ids",
+                    "param": "topic_ids"
                   }
                 ],
                 "json": null,
@@ -3578,6 +3598,45 @@
                 }
               ],
               "children": {}
+            },
+            "topics": {
+              "operations": [
+                {
+                  "name": "get",
+                  "doc": "Returns the latest topic discovery run results for a given agent.\n\nParameters\n----------\nagent_id : str\n    ID of the agent\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[GetAgentTopicsResponseModel]\n    Successful Response",
+                  "positional_params": [
+                    {
+                      "name": "agent_id",
+                      "kind": "positional",
+                      "default": null
+                    }
+                  ],
+                  "keyword_params": [
+                    {
+                      "name": "request_options",
+                      "kind": "keyword",
+                      "default": null
+                    }
+                  ],
+                  "request": {
+                    "method": "GET",
+                    "path": {
+                      "template": "v1/convai/agents/{agent_id}/topics",
+                      "params": [
+                        "agent_id"
+                      ]
+                    },
+                    "query": [],
+                    "json": null,
+                    "form": null,
+                    "files": [],
+                    "headers": {},
+                    "force_multipart": false,
+                    "streaming": false
+                  }
+                }
+              ],
+              "children": {}
             }
           }
         },
@@ -3827,6 +3886,69 @@
                 "headers": {
                   "content-type": "application/json"
                 },
+                "force_multipart": false,
+                "streaming": false
+              }
+            },
+            {
+              "name": "search",
+              "doc": "Fuzzy text search over knowledge base document content\n\nParameters\n----------\nquery : str\n    The search query text\n\npage_size : typing.Optional[int]\n    How many documents to return at maximum. Can not exceed 100, defaults to 30.\n\ntypes : typing.Optional[typing.Union[KnowledgeBaseDocumentType, typing.Sequence[KnowledgeBaseDocumentType]]]\n    If present, the endpoint will return only documents of the given types.\n\ncursor : typing.Optional[str]\n    Used for fetching next page. Cursor is returned in the response.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[KnowledgeBaseContentSearchResponseModel]\n    Successful Response",
+              "positional_params": [],
+              "keyword_params": [
+                {
+                  "name": "query",
+                  "kind": "keyword",
+                  "default": null
+                },
+                {
+                  "name": "page_size",
+                  "kind": "keyword",
+                  "default": null
+                },
+                {
+                  "name": "types",
+                  "kind": "keyword",
+                  "default": null
+                },
+                {
+                  "name": "cursor",
+                  "kind": "keyword",
+                  "default": null
+                },
+                {
+                  "name": "request_options",
+                  "kind": "keyword",
+                  "default": null
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "path": {
+                  "template": "v1/convai/knowledge-base/search",
+                  "params": []
+                },
+                "query": [
+                  {
+                    "name": "query",
+                    "param": "query"
+                  },
+                  {
+                    "name": "page_size",
+                    "param": "page_size"
+                  },
+                  {
+                    "name": "types",
+                    "param": "types"
+                  },
+                  {
+                    "name": "cursor",
+                    "param": "cursor"
+                  }
+                ],
+                "json": null,
+                "form": null,
+                "files": [],
+                "headers": {},
                 "force_multipart": false,
                 "streaming": false
               }
@@ -4421,7 +4543,7 @@
                 },
                 {
                   "name": "get_content",
-                  "doc": "Get the entire content of a document from the knowledge base\n\nParameters\n----------\ndocumentation_id : str\n    The id of a document from the knowledge base. This is returned on document addition.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[None]",
+                  "doc": "Get the entire content of a document from the knowledge base\n\nParameters\n----------\ndocumentation_id : str\n    The id of a document from the knowledge base. This is returned on document addition.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[str]\n    Streaming document content",
                   "positional_params": [
                     {
                       "name": "documentation_id",
@@ -5275,7 +5397,7 @@
               "operations": [
                 {
                   "name": "create",
-                  "doc": "Create configuration overrides for a specific MCP tool.\n\nParameters\n----------\nmcp_server_id : str\n    ID of the MCP Server.\n\ntool_name : str\n    The name of the MCP tool\n\nforce_pre_tool_speech : typing.Optional[bool]\n    If set, overrides the server's force_pre_tool_speech setting for this tool\n\ndisable_interruptions : typing.Optional[bool]\n    If set, overrides the server's disable_interruptions setting for this tool\n\ntool_call_sound : typing.Optional[ToolCallSoundType]\n    If set, overrides the server's tool_call_sound setting for this tool\n\ntool_call_sound_behavior : typing.Optional[ToolCallSoundBehavior]\n    If set, overrides the server's tool_call_sound_behavior setting for this tool\n\nexecution_mode : typing.Optional[ToolExecutionMode]\n    If set, overrides the server's execution_mode setting for this tool\n\nassignments : typing.Optional[typing.Sequence[DynamicVariableAssignment]]\n    Dynamic variable assignments for this MCP tool\n\ninput_overrides : typing.Optional[typing.Dict[str, typing.Optional[McpToolConfigOverrideCreateRequestModelInputOverridesValue]]]\n    Mapping of json path to input override configuration\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[McpServerResponseModel]\n    Successful Response",
+                  "doc": "Create configuration overrides for a specific MCP tool.\n\nParameters\n----------\nmcp_server_id : str\n    ID of the MCP Server.\n\ntool_name : str\n    The name of the MCP tool\n\nforce_pre_tool_speech : typing.Optional[bool]\n    If set, overrides the server's force_pre_tool_speech setting for this tool\n\ndisable_interruptions : typing.Optional[bool]\n    If set, overrides the server's disable_interruptions setting for this tool\n\ntool_call_sound : typing.Optional[ToolCallSoundType]\n    If set, overrides the server's tool_call_sound setting for this tool\n\ntool_call_sound_behavior : typing.Optional[ToolCallSoundBehavior]\n    If set, overrides the server's tool_call_sound_behavior setting for this tool\n\nexecution_mode : typing.Optional[ToolExecutionMode]\n    If set, overrides the server's execution_mode setting for this tool\n\nassignments : typing.Optional[typing.Sequence[DynamicVariableAssignment]]\n    Dynamic variable assignments for this MCP tool\n\ninput_overrides : typing.Optional[typing.Dict[str, typing.Optional[McpToolConfigOverrideCreateRequestModelInputOverridesValue]]]\n    Mapping of json path to input override configuration\n\nresponse_mocks : typing.Optional[typing.Sequence[ToolResponseMockConfigInput]]\n    Mock responses with optional parameter conditions. Evaluated top-to-bottom; first match wins.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[McpServerResponseModel]\n    Successful Response",
                   "positional_params": [
                     {
                       "name": "mcp_server_id",
@@ -5321,6 +5443,11 @@
                     },
                     {
                       "name": "input_overrides",
+                      "kind": "keyword",
+                      "default": "__OMIT__"
+                    },
+                    {
+                      "name": "response_mocks",
                       "kind": "keyword",
                       "default": "__OMIT__"
                     },
@@ -5386,6 +5513,12 @@
                         },
                         {
                           "path": [
+                            "response_mocks"
+                          ],
+                          "param": "response_mocks"
+                        },
+                        {
+                          "path": [
                             "tool_name"
                           ],
                           "param": "tool_name"
@@ -5403,7 +5536,7 @@
                 },
                 {
                   "name": "get",
-                  "doc": "Retrieve configuration overrides for a specific MCP tool.\n\nParameters\n----------\nmcp_server_id : str\n    ID of the MCP Server.\n\ntool_name : str\n    Name of the MCP tool to retrieve config overrides for.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[McpToolConfigOverride]\n    Successful Response",
+                  "doc": "Retrieve configuration overrides for a specific MCP tool.\n\nParameters\n----------\nmcp_server_id : str\n    ID of the MCP Server.\n\ntool_name : str\n    Name of the MCP tool to retrieve config overrides for.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[McpToolConfigOverrideOutput]\n    Successful Response",
                   "positional_params": [
                     {
                       "name": "mcp_server_id",
@@ -5483,7 +5616,7 @@
                 },
                 {
                   "name": "update",
-                  "doc": "Update configuration overrides for a specific MCP tool.\n\nParameters\n----------\nmcp_server_id : str\n    ID of the MCP Server.\n\ntool_name : str\n    Name of the MCP tool to update config overrides for.\n\nforce_pre_tool_speech : typing.Optional[bool]\n    If set, overrides the server's force_pre_tool_speech setting for this tool\n\ndisable_interruptions : typing.Optional[bool]\n    If set, overrides the server's disable_interruptions setting for this tool\n\ntool_call_sound : typing.Optional[ToolCallSoundType]\n    If set, overrides the server's tool_call_sound setting for this tool\n\ntool_call_sound_behavior : typing.Optional[ToolCallSoundBehavior]\n    If set, overrides the server's tool_call_sound_behavior setting for this tool\n\nexecution_mode : typing.Optional[ToolExecutionMode]\n    If set, overrides the server's execution_mode setting for this tool\n\nassignments : typing.Optional[typing.Sequence[DynamicVariableAssignment]]\n    Dynamic variable assignments for this MCP tool\n\ninput_overrides : typing.Optional[typing.Dict[str, typing.Optional[McpToolConfigOverrideUpdateRequestModelInputOverridesValue]]]\n    Mapping of json path to input override configuration\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[McpServerResponseModel]\n    Successful Response",
+                  "doc": "Update configuration overrides for a specific MCP tool.\n\nParameters\n----------\nmcp_server_id : str\n    ID of the MCP Server.\n\ntool_name : str\n    Name of the MCP tool to update config overrides for.\n\nforce_pre_tool_speech : typing.Optional[bool]\n    If set, overrides the server's force_pre_tool_speech setting for this tool\n\ndisable_interruptions : typing.Optional[bool]\n    If set, overrides the server's disable_interruptions setting for this tool\n\ntool_call_sound : typing.Optional[ToolCallSoundType]\n    If set, overrides the server's tool_call_sound setting for this tool\n\ntool_call_sound_behavior : typing.Optional[ToolCallSoundBehavior]\n    If set, overrides the server's tool_call_sound_behavior setting for this tool\n\nexecution_mode : typing.Optional[ToolExecutionMode]\n    If set, overrides the server's execution_mode setting for this tool\n\nassignments : typing.Optional[typing.Sequence[DynamicVariableAssignment]]\n    Dynamic variable assignments for this MCP tool\n\ninput_overrides : typing.Optional[typing.Dict[str, typing.Optional[McpToolConfigOverrideUpdateRequestModelInputOverridesValue]]]\n    Mapping of json path to input override configuration\n\nresponse_mocks : typing.Optional[typing.Sequence[ToolResponseMockConfigInput]]\n    Mock responses with optional parameter conditions. Evaluated top-to-bottom; first match wins.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[McpServerResponseModel]\n    Successful Response",
                   "positional_params": [
                     {
                       "name": "mcp_server_id",
@@ -5529,6 +5662,11 @@
                     },
                     {
                       "name": "input_overrides",
+                      "kind": "keyword",
+                      "default": "__OMIT__"
+                    },
+                    {
+                      "name": "response_mocks",
                       "kind": "keyword",
                       "default": "__OMIT__"
                     },
@@ -5592,6 +5730,12 @@
                             "input_overrides"
                           ],
                           "param": "input_overrides"
+                        },
+                        {
+                          "path": [
+                            "response_mocks"
+                          ],
+                          "param": "response_mocks"
                         }
                       ]
                     },
@@ -5887,11 +6031,21 @@
           "operations": [
             {
               "name": "list",
-              "doc": "Get all workspace secrets for the user\n\nParameters\n----------\npage_size : typing.Optional[int]\n    How many documents to return at maximum. Can not exceed 100. If not provided, returns all secrets.\n\ncursor : typing.Optional[str]\n    Used for fetching next page. Cursor is returned in the response.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[GetWorkspaceSecretsResponseModel]\n    Successful Response",
+              "doc": "Get all workspace secrets for the user\n\nParameters\n----------\npage_size : typing.Optional[int]\n    How many documents to return at maximum. Can not exceed 100. If not provided, returns all secrets.\n\ndependency_limit : typing.Optional[int]\n    Maximum number of dependent resources (tools, agents, phone numbers) to return per secret. Can not exceed 100.\n\nsearch : typing.Optional[str]\n    If specified, returns only secrets whose names start with this string.\n\ncursor : typing.Optional[str]\n    Used for fetching next page. Cursor is returned in the response.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[GetWorkspaceSecretsResponseModel]\n    Successful Response",
               "positional_params": [],
               "keyword_params": [
                 {
                   "name": "page_size",
+                  "kind": "keyword",
+                  "default": null
+                },
+                {
+                  "name": "dependency_limit",
+                  "kind": "keyword",
+                  "default": null
+                },
+                {
+                  "name": "search",
                   "kind": "keyword",
                   "default": null
                 },
@@ -5916,6 +6070,14 @@
                   {
                     "name": "page_size",
                     "param": "page_size"
+                  },
+                  {
+                    "name": "dependency_limit",
+                    "param": "dependency_limit"
+                  },
+                  {
+                    "name": "search",
+                    "param": "search"
                   },
                   {
                     "name": "cursor",
@@ -5982,6 +6144,40 @@
                 "headers": {
                   "content-type": "application/json"
                 },
+                "force_multipart": false,
+                "streaming": false
+              }
+            },
+            {
+              "name": "get",
+              "doc": "Get a workspace secret by ID\n\nParameters\n----------\nsecret_id : str\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[ConvAiWorkspaceStoredSecretConfig]\n    Successful Response",
+              "positional_params": [
+                {
+                  "name": "secret_id",
+                  "kind": "positional",
+                  "default": null
+                }
+              ],
+              "keyword_params": [
+                {
+                  "name": "request_options",
+                  "kind": "keyword",
+                  "default": null
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "path": {
+                  "template": "v1/convai/secrets/{secret_id}",
+                  "params": [
+                    "secret_id"
+                  ]
+                },
+                "query": [],
+                "json": null,
+                "form": null,
+                "files": [],
+                "headers": {},
                 "force_multipart": false,
                 "streaming": false
               }
@@ -6080,6 +6276,65 @@
                 "headers": {
                   "content-type": "application/json"
                 },
+                "force_multipart": false,
+                "streaming": false
+              }
+            },
+            {
+              "name": "get_dependencies",
+              "doc": "Get paginated list of resources that depend on a specific secret, filtered by resource type.\n\nParameters\n----------\nsecret_id : str\n\nresource_type : SecretDependencyResourceType\n\npage_size : typing.Optional[int]\n    How many dependency items to return per page.\n\ncursor : typing.Optional[str]\n    Used for fetching next page. Cursor is returned in the response.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[GetSecretDependenciesResponseModel]\n    Successful Response",
+              "positional_params": [
+                {
+                  "name": "secret_id",
+                  "kind": "positional",
+                  "default": null
+                },
+                {
+                  "name": "resource_type",
+                  "kind": "positional",
+                  "default": null
+                }
+              ],
+              "keyword_params": [
+                {
+                  "name": "page_size",
+                  "kind": "keyword",
+                  "default": null
+                },
+                {
+                  "name": "cursor",
+                  "kind": "keyword",
+                  "default": null
+                },
+                {
+                  "name": "request_options",
+                  "kind": "keyword",
+                  "default": null
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "path": {
+                  "template": "v1/convai/secrets/{secret_id}/dependencies/{resource_type}",
+                  "params": [
+                    "secret_id",
+                    "resource_type"
+                  ]
+                },
+                "query": [
+                  {
+                    "name": "page_size",
+                    "param": "page_size"
+                  },
+                  {
+                    "name": "cursor",
+                    "param": "cursor"
+                  }
+                ],
+                "json": null,
+                "form": null,
+                "files": [],
+                "headers": {},
                 "force_multipart": false,
                 "streaming": false
               }
@@ -6352,6 +6607,60 @@
               }
             },
             {
+              "name": "move",
+              "doc": "Moves multiple tests or folders from one folder to another.\n\nParameters\n----------\nentity_ids : typing.Sequence[str]\n    The IDs of tests or folders to move.\n\nmove_to : typing.Optional[str]\n    The folder to move the entities to. If not set, the entities will be moved to the root folder.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[typing.Any]\n    Tests or folders successfully moved to another folder",
+              "positional_params": [],
+              "keyword_params": [
+                {
+                  "name": "entity_ids",
+                  "kind": "keyword",
+                  "default": null
+                },
+                {
+                  "name": "move_to",
+                  "kind": "keyword",
+                  "default": "__OMIT__"
+                },
+                {
+                  "name": "request_options",
+                  "kind": "keyword",
+                  "default": null
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "path": {
+                  "template": "v1/convai/agent-testing/bulk-move",
+                  "params": []
+                },
+                "query": [],
+                "json": {
+                  "literal": null,
+                  "assignments": [
+                    {
+                      "path": [
+                        "entity_ids"
+                      ],
+                      "param": "entity_ids"
+                    },
+                    {
+                      "path": [
+                        "move_to"
+                      ],
+                      "param": "move_to"
+                    }
+                  ]
+                },
+                "form": null,
+                "files": [],
+                "headers": {
+                  "content-type": "application/json"
+                },
+                "force_multipart": false,
+                "streaming": false
+              }
+            },
+            {
               "name": "get",
               "doc": "Gets an agent response test by ID.\n\nParameters\n----------\ntest_id : str\n    The id of a chat response test. This is returned on test creation.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[TestsGetResponse]\n    Successful Response",
               "positional_params": [
@@ -6513,7 +6822,7 @@
             },
             {
               "name": "list",
-              "doc": "Lists all agent response tests with pagination support and optional search filtering.\n\nParameters\n----------\ncursor : typing.Optional[str]\n    Used for fetching next page. Cursor is returned in the response.\n\npage_size : typing.Optional[int]\n    How many Tests to return at maximum. Can not exceed 100, defaults to 30.\n\nsearch : typing.Optional[str]\n    Search query to filter tests by name.\n\nparent_folder_id : typing.Optional[str]\n    Filter by parent folder ID. Use 'root' to get items in the root folder.\n\ntypes : typing.Optional[typing.Union[TestType, typing.Sequence[TestType]]]\n    If present, the endpoint will return only tests/folders of the given types.\n\ninclude_folders : typing.Optional[bool]\n    Deprecated. Use the `types` query param and include `folder` instead.\n\nsort_mode : typing.Optional[TestsListRequestSortMode]\n    Sort mode for listing tests. Use 'folders_first' to place folders before tests.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[GetTestsPageResponseModel]\n    Successful Response",
+              "doc": "Lists all agent response tests with pagination support and optional search filtering.\n\nParameters\n----------\ncursor : typing.Optional[str]\n    Used for fetching next page. Cursor is returned in the response.\n\npage_size : typing.Optional[int]\n    How many Tests to return at maximum. Can not exceed 100, defaults to 30.\n\nsearch : typing.Optional[str]\n    Search query to filter tests by name.\n\nparent_folder_id : typing.Optional[str]\n    Filter by parent folder ID. Use 'root' to get items in the root folder.\n\ntypes : typing.Optional[typing.Union[TestType, typing.Sequence[TestType]]]\n    If present, the endpoint will return only tests/folders of the given types.\n\ninclude_folders : typing.Optional[bool]\n    Deprecated. Use the `types` query param and include `folder` instead.\n\nsort_mode : typing.Optional[TestsListRequestSortMode]\n    Sort mode for listing tests. Use 'folders_first' to place folders before tests.\n\nsharing_mode : typing.Optional[TestSharingMode]\n    Filter test visibility. Use `shared_with_me` to return only tests/folders shared with the current user that they did not create.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[GetTestsPageResponseModel]\n    Successful Response",
               "positional_params": [],
               "keyword_params": [
                 {
@@ -6548,6 +6857,11 @@
                 },
                 {
                   "name": "sort_mode",
+                  "kind": "keyword",
+                  "default": null
+                },
+                {
+                  "name": "sharing_mode",
                   "kind": "keyword",
                   "default": null
                 },
@@ -6591,6 +6905,10 @@
                   {
                     "name": "sort_mode",
                     "param": "sort_mode"
+                  },
+                  {
+                    "name": "sharing_mode",
+                    "param": "sharing_mode"
                   }
                 ],
                 "json": null,
@@ -6603,6 +6921,194 @@
             }
           ],
           "children": {
+            "folders": {
+              "operations": [
+                {
+                  "name": "create",
+                  "doc": "Creates a folder for organizing agent tests.\n\nParameters\n----------\nname : str\n    The name of the folder to create\n\nparent_folder_id : typing.Optional[str]\n    The ID of the parent folder. If not provided, the folder will be created at the root level.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[CreateAgentTestFolderResponseModel]\n    Folder successfully created",
+                  "positional_params": [],
+                  "keyword_params": [
+                    {
+                      "name": "name",
+                      "kind": "keyword",
+                      "default": null
+                    },
+                    {
+                      "name": "parent_folder_id",
+                      "kind": "keyword",
+                      "default": "__OMIT__"
+                    },
+                    {
+                      "name": "request_options",
+                      "kind": "keyword",
+                      "default": null
+                    }
+                  ],
+                  "request": {
+                    "method": "POST",
+                    "path": {
+                      "template": "v1/convai/agent-testing/folders",
+                      "params": []
+                    },
+                    "query": [],
+                    "json": {
+                      "literal": null,
+                      "assignments": [
+                        {
+                          "path": [
+                            "name"
+                          ],
+                          "param": "name"
+                        },
+                        {
+                          "path": [
+                            "parent_folder_id"
+                          ],
+                          "param": "parent_folder_id"
+                        }
+                      ]
+                    },
+                    "form": null,
+                    "files": [],
+                    "headers": {
+                      "content-type": "application/json"
+                    },
+                    "force_multipart": false,
+                    "streaming": false
+                  }
+                },
+                {
+                  "name": "get",
+                  "doc": "Gets an agent test folder by ID, including its folder path.\n\nParameters\n----------\nfolder_id : str\n    The folder ID.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[GetAgentTestFolderResponseModel]\n    Folder details retrieved successfully",
+                  "positional_params": [
+                    {
+                      "name": "folder_id",
+                      "kind": "positional",
+                      "default": null
+                    }
+                  ],
+                  "keyword_params": [
+                    {
+                      "name": "request_options",
+                      "kind": "keyword",
+                      "default": null
+                    }
+                  ],
+                  "request": {
+                    "method": "GET",
+                    "path": {
+                      "template": "v1/convai/agent-testing/folders/{folder_id}",
+                      "params": [
+                        "folder_id"
+                      ]
+                    },
+                    "query": [],
+                    "json": null,
+                    "form": null,
+                    "files": [],
+                    "headers": {},
+                    "force_multipart": false,
+                    "streaming": false
+                  }
+                },
+                {
+                  "name": "delete",
+                  "doc": "Deletes an agent test folder by ID. Use force=true to delete a non-empty folder and all its contents.\n\nParameters\n----------\nfolder_id : str\n    The folder ID.\n\nforce : typing.Optional[bool]\n    Force delete. Required for deleting non-empty folders.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[None]",
+                  "positional_params": [
+                    {
+                      "name": "folder_id",
+                      "kind": "positional",
+                      "default": null
+                    }
+                  ],
+                  "keyword_params": [
+                    {
+                      "name": "force",
+                      "kind": "keyword",
+                      "default": null
+                    },
+                    {
+                      "name": "request_options",
+                      "kind": "keyword",
+                      "default": null
+                    }
+                  ],
+                  "request": {
+                    "method": "DELETE",
+                    "path": {
+                      "template": "v1/convai/agent-testing/folders/{folder_id}",
+                      "params": [
+                        "folder_id"
+                      ]
+                    },
+                    "query": [
+                      {
+                        "name": "force",
+                        "param": "force"
+                      }
+                    ],
+                    "json": null,
+                    "form": null,
+                    "files": [],
+                    "headers": {},
+                    "force_multipart": false,
+                    "streaming": false
+                  }
+                },
+                {
+                  "name": "update",
+                  "doc": "Updates an agent test folder. Currently only supports updating the folder name.\n\nParameters\n----------\nfolder_id : str\n    The folder ID.\n\nname : str\n    The new name for the folder\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[GetAgentTestFolderResponseModel]\n    Folder successfully updated",
+                  "positional_params": [
+                    {
+                      "name": "folder_id",
+                      "kind": "positional",
+                      "default": null
+                    }
+                  ],
+                  "keyword_params": [
+                    {
+                      "name": "name",
+                      "kind": "keyword",
+                      "default": null
+                    },
+                    {
+                      "name": "request_options",
+                      "kind": "keyword",
+                      "default": null
+                    }
+                  ],
+                  "request": {
+                    "method": "PATCH",
+                    "path": {
+                      "template": "v1/convai/agent-testing/folders/{folder_id}",
+                      "params": [
+                        "folder_id"
+                      ]
+                    },
+                    "query": [],
+                    "json": {
+                      "literal": null,
+                      "assignments": [
+                        {
+                          "path": [
+                            "name"
+                          ],
+                          "param": "name"
+                        }
+                      ]
+                    },
+                    "form": null,
+                    "files": [],
+                    "headers": {
+                      "content-type": "application/json"
+                    },
+                    "force_multipart": false,
+                    "streaming": false
+                  }
+                }
+              ],
+              "children": {}
+            },
             "invocations": {
               "operations": [
                 {
@@ -7105,7 +7611,111 @@
               }
             }
           ],
-          "children": {}
+          "children": {
+            "executions": {
+              "operations": [
+                {
+                  "name": "get",
+                  "doc": "Get paginated list of tool executions for a specific tool.\n\nParameters\n----------\ntool_id : str\n    ID of the requested tool.\n\ncursor : typing.Optional[str]\n    Used for fetching next page. Cursor is returned in the response.\n\npage_size : typing.Optional[int]\n    How many documents to return at maximum. Can not exceed 100, defaults to 30.\n\nis_error : typing.Optional[bool]\n    Filter by error status. If not provided, returns all executions.\n\nagent_id : typing.Optional[str]\n    Filter by agent ID.\n\nbranch_id : typing.Optional[str]\n    Filter by agent branch ID.\n\nstart_time : typing.Optional[float]\n    Filter executions from this Unix timestamp (inclusive).\n\nend_time : typing.Optional[float]\n    Filter executions until this Unix timestamp (inclusive).\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[GetToolExecutionsPageResponseModel]\n    Successful Response",
+                  "positional_params": [
+                    {
+                      "name": "tool_id",
+                      "kind": "positional",
+                      "default": null
+                    }
+                  ],
+                  "keyword_params": [
+                    {
+                      "name": "cursor",
+                      "kind": "keyword",
+                      "default": null
+                    },
+                    {
+                      "name": "page_size",
+                      "kind": "keyword",
+                      "default": null
+                    },
+                    {
+                      "name": "is_error",
+                      "kind": "keyword",
+                      "default": null
+                    },
+                    {
+                      "name": "agent_id",
+                      "kind": "keyword",
+                      "default": null
+                    },
+                    {
+                      "name": "branch_id",
+                      "kind": "keyword",
+                      "default": null
+                    },
+                    {
+                      "name": "start_time",
+                      "kind": "keyword",
+                      "default": null
+                    },
+                    {
+                      "name": "end_time",
+                      "kind": "keyword",
+                      "default": null
+                    },
+                    {
+                      "name": "request_options",
+                      "kind": "keyword",
+                      "default": null
+                    }
+                  ],
+                  "request": {
+                    "method": "GET",
+                    "path": {
+                      "template": "v1/convai/tools/{tool_id}/executions",
+                      "params": [
+                        "tool_id"
+                      ]
+                    },
+                    "query": [
+                      {
+                        "name": "cursor",
+                        "param": "cursor"
+                      },
+                      {
+                        "name": "page_size",
+                        "param": "page_size"
+                      },
+                      {
+                        "name": "is_error",
+                        "param": "is_error"
+                      },
+                      {
+                        "name": "agent_id",
+                        "param": "agent_id"
+                      },
+                      {
+                        "name": "branch_id",
+                        "param": "branch_id"
+                      },
+                      {
+                        "name": "start_time",
+                        "param": "start_time"
+                      },
+                      {
+                        "name": "end_time",
+                        "param": "end_time"
+                      }
+                    ],
+                    "json": null,
+                    "form": null,
+                    "files": [],
+                    "headers": {},
+                    "force_multipart": false,
+                    "streaming": false
+                  }
+                }
+              ],
+              "children": {}
+            }
+          }
         },
         "twilio": {
           "operations": [
@@ -7209,7 +7819,7 @@
             },
             {
               "name": "register_call",
-              "doc": "Register a Twilio call and return TwiML to connect the call\n\nParameters\n----------\nagent_id : str\n\nfrom_number : str\n\nto_number : str\n\ndirection : typing.Optional[TelephonyDirection]\n\nconversation_initiation_client_data : typing.Optional[ConversationInitiationClientDataRequestInput]\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[None]",
+              "doc": "Register a Twilio call and return TwiML to connect the call\n\nParameters\n----------\nagent_id : str\n\nfrom_number : str\n\nto_number : str\n\ndirection : typing.Optional[TelephonyDirection]\n\nconversation_initiation_client_data : typing.Optional[ConversationInitiationClientDataRequestInput]\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[str]\n    Successful Response",
               "positional_params": [],
               "keyword_params": [
                 {
@@ -10291,7 +10901,7 @@
         },
         {
           "name": "upload",
-          "doc": "Upload a music file to be later used for inpainting. Only available to enterprise clients with access to the inpainting feature.\n\nParameters\n----------\nfile : core.File\n    See core.File for more documentation\n\nextract_composition_plan : typing.Optional[bool]\n    Whether to generate and return the composition plan for the uploaded song. If True, the response will include the composition_plan but will increase the latency.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[MusicUploadResponse]\n    Successfully uploaded music file with optional composition plan",
+          "doc": "Upload a music file to be later used for inpainting. Only available to enterprise clients with access to the inpainting feature. Price for uploading is the same as the one for song generation. All uploaded content gets inspected for copyright infringement. If copyrighted content is detected, half of the request cost is still charged.\n\nParameters\n----------\nfile : core.File\n    See core.File for more documentation\n\nextract_composition_plan : typing.Optional[bool]\n    Whether to generate and return the composition plan for the uploaded song. If True, the response will include the composition_plan but will increase the latency.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[MusicUploadResponse]\n    Successfully uploaded music file with optional composition plan",
           "positional_params": [],
           "keyword_params": [
             {
@@ -11614,7 +12224,7 @@
       "operations": [
         {
           "name": "convert",
-          "doc": "Transcribe an audio or video file. If webhook is set to true, the request will be processed asynchronously and results sent to configured webhooks. When use_multi_channel is true and the provided audio has multiple channels, a 'transcripts' object with separate transcripts for each channel is returned. Otherwise, returns a single transcript. The optional webhook_metadata parameter allows you to attach custom data that will be included in webhook responses for request correlation and tracking.\n\nParameters\n----------\nmodel_id : SpeechToTextConvertRequestModelId\n    The ID of the model to use for transcription.\n\nenable_logging : typing.Optional[bool]\n    When enable_logging is set to false zero retention mode will be used for the request. This will mean log and transcript storage features are unavailable for this request. Zero retention mode may only be used by enterprise customers.\n\nfile : typing.Optional[core.File]\n    See core.File for more documentation\n\nlanguage_code : typing.Optional[str]\n    An ISO-639-1 or ISO-639-3 language_code corresponding to the language of the audio file. Can sometimes improve transcription performance if known beforehand. Defaults to null, in this case the language is predicted automatically.\n\ntag_audio_events : typing.Optional[bool]\n    Whether to tag audio events like (laughter), (footsteps), etc. in the transcription.\n\nnum_speakers : typing.Optional[int]\n    The maximum amount of speakers talking in the uploaded file. Can help with predicting who speaks when. The maximum amount of speakers that can be predicted is 32. Defaults to null, in this case the amount of speakers is set to the maximum value the model supports.\n\ntimestamps_granularity : typing.Optional[SpeechToTextConvertRequestTimestampsGranularity]\n    The granularity of the timestamps in the transcription. 'word' provides word-level timestamps and 'character' provides character-level timestamps per word.\n\ndiarize : typing.Optional[bool]\n    Whether to annotate which speaker is currently talking in the uploaded file.\n\ndiarization_threshold : typing.Optional[float]\n    Diarization threshold to apply during speaker diarization. A higher value means there will be a lower chance of one speaker being diarized as two different speakers but also a higher chance of two different speakers being diarized as one speaker (less total speakers predicted). A low value means there will be a higher chance of one speaker being diarized as two different speakers but also a lower chance of two different speakers being diarized as one speaker (more total speakers predicted). Can only be set when diarize=True and num_speakers=None. Defaults to None, in which case we will choose a threshold based on the model_id (0.22 usually).\n\nadditional_formats : typing.Optional[AdditionalFormats]\n    A list of additional formats to export the transcript to.\n\nfile_format : typing.Optional[SpeechToTextConvertRequestFileFormat]\n    The format of input audio. Options are 'pcm_s16le_16' or 'other' For `pcm_s16le_16`, the input audio must be 16-bit PCM at a 16kHz sample rate, single channel (mono), and little-endian byte order. Latency will be lower than with passing an encoded waveform.\n\ncloud_storage_url : typing.Optional[str]\n    The HTTPS URL of the file to transcribe. Exactly one of the file or cloud_storage_url parameters must be provided. The file must be accessible via HTTPS and the file size must be less than 2GB. Any valid HTTPS URL is accepted, including URLs from cloud storage providers (AWS S3, Google Cloud Storage, Cloudflare R2, etc.), CDNs, or any other HTTPS source. URLs can be pre-signed or include authentication tokens in query parameters.\n\nsource_url : typing.Optional[str]\n    The URL of an audio or video file to transcribe. Supports hosted video or audio files, YouTube video URLs, TikTok video URLs, and other video hosting services.\n\nwebhook : typing.Optional[bool]\n    Whether to send the transcription result to configured speech-to-text webhooks.  If set the request will return early without the transcription, which will be delivered later via webhook.\n\nwebhook_id : typing.Optional[str]\n    Optional specific webhook ID to send the transcription result to. Only valid when webhook is set to true. If not provided, transcription will be sent to all configured speech-to-text webhooks.\n\ntemperature : typing.Optional[float]\n    Controls the randomness of the transcription output. Accepts values between 0.0 and 2.0, where higher values result in more diverse and less deterministic results. If omitted, we will use a temperature based on the model you selected which is usually 0.\n\nseed : typing.Optional[int]\n    If specified, our system will make a best effort to sample deterministically, such that repeated requests with the same seed and parameters should return the same result. Determinism is not guaranteed. Must be an integer between 0 and 2147483647.\n\nuse_multi_channel : typing.Optional[bool]\n    Whether the audio file contains multiple channels where each channel contains a single speaker. When enabled, each channel will be transcribed independently and the results will be combined. Each word in the response will include a 'channel_index' field indicating which channel it was spoken on. A maximum of 5 channels is supported.\n\nwebhook_metadata : typing.Optional[SpeechToTextConvertRequestWebhookMetadata]\n    Optional metadata to be included in the webhook response. This should be a JSON string representing an object with a maximum depth of 2 levels and maximum size of 16KB. Useful for tracking internal IDs, job references, or other contextual information.\n\nentity_detection : typing.Optional[SpeechToTextConvertRequestEntityDetection]\n    Detect entities in the transcript. Can be 'all' to detect all entities, a single entity type or category string, or a list of entity types/categories. Categories include 'pii', 'phi', 'pci', 'other', 'offensive_language'. When enabled, detected entities will be returned in the 'entities' field with their text, type, and character positions. Usage of this parameter will incur additional costs.\n\nno_verbatim : typing.Optional[bool]\n    If true, the transcription will not have any filler words, false starts and non-speech sounds. Only supported with scribe_v2 model.\n\nentity_redaction : typing.Optional[SpeechToTextConvertRequestEntityRedaction]\n    Redact entities from the transcript text. Accepts the same format as entity_detection: 'all', a category ('pii', 'phi'), or specific entity types. Must be a subset of entity_detection. When redaction is enabled, the entities field will not be returned.\n\nentity_redaction_mode : typing.Optional[str]\n    How to format redacted entities. 'redacted' replaces with {REDACTED}, 'entity_type' replaces with {ENTITY_TYPE}, 'enumerated_entity_type' replaces with {ENTITY_TYPE_N} where N enumerates each occurrence. Only used when entity_redaction is set.\n\nkeyterms : typing.Optional[typing.List[str]]\n    A list of keyterms to bias the transcription towards.           The keyterms are words or phrases you want the model to recognise more accurately.           The number of keyterms cannot exceed 1000.           The length of each keyterm must be less than 50 characters.           Keyterms can contain at most 5 words (after normalisation).           For example [\"hello\", \"world\", \"technical term\"].           Usage of this parameter will incur additional costs.           When more than 100 keyterms are provided, a minimum billable duration of 20 seconds applies per request.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[SpeechToTextConvertResponse]\n    Synchronous transcription result",
+          "doc": "Transcribe an audio or video file. If webhook is set to true, the request will be processed asynchronously and results sent to configured webhooks. When use_multi_channel is true and the provided audio has multiple channels, a 'transcripts' object with separate transcripts for each channel is returned. Otherwise, returns a single transcript. The optional webhook_metadata parameter allows you to attach custom data that will be included in webhook responses for request correlation and tracking.\n\nParameters\n----------\nmodel_id : SpeechToTextConvertRequestModelId\n    The ID of the model to use for transcription.\n\nenable_logging : typing.Optional[bool]\n    When enable_logging is set to false zero retention mode will be used for the request. This will mean log and transcript storage features are unavailable for this request. Zero retention mode may only be used by enterprise customers.\n\nfile : typing.Optional[core.File]\n    See core.File for more documentation\n\nlanguage_code : typing.Optional[str]\n    An ISO-639-1 or ISO-639-3 language_code corresponding to the language of the audio file. Can sometimes improve transcription performance if known beforehand. Defaults to null, in this case the language is predicted automatically.\n\ntag_audio_events : typing.Optional[bool]\n    Whether to tag audio events like (laughter), (footsteps), etc. in the transcription.\n\nnum_speakers : typing.Optional[int]\n    The maximum amount of speakers talking in the uploaded file. Can help with predicting who speaks when. The maximum amount of speakers that can be predicted is 32. Defaults to null, in this case the amount of speakers is set to the maximum value the model supports.\n\ntimestamps_granularity : typing.Optional[SpeechToTextConvertRequestTimestampsGranularity]\n    The granularity of the timestamps in the transcription. 'word' provides word-level timestamps and 'character' provides character-level timestamps per word.\n\ndiarize : typing.Optional[bool]\n    Whether to annotate which speaker is currently talking in the uploaded file.\n\ndiarization_threshold : typing.Optional[float]\n    Diarization threshold to apply during speaker diarization. A higher value means there will be a lower chance of one speaker being diarized as two different speakers but also a higher chance of two different speakers being diarized as one speaker (less total speakers predicted). A low value means there will be a higher chance of one speaker being diarized as two different speakers but also a lower chance of two different speakers being diarized as one speaker (more total speakers predicted). Can only be set when diarize=True and num_speakers=None. Defaults to None, in which case we will choose a threshold based on the model_id (0.22 usually).\n\nadditional_formats : typing.Optional[AdditionalFormats]\n    A list of additional formats to export the transcript to.\n\nfile_format : typing.Optional[SpeechToTextConvertRequestFileFormat]\n    The format of input audio. Options are 'pcm_s16le_16' or 'other' For `pcm_s16le_16`, the input audio must be 16-bit PCM at a 16kHz sample rate, single channel (mono), and little-endian byte order. Latency will be lower than with passing an encoded waveform.\n\ncloud_storage_url : typing.Optional[str]\n    The HTTPS URL of the file to transcribe. Exactly one of the file or cloud_storage_url parameters must be provided. The file must be accessible via HTTPS and the file size must be less than 2GB. Any valid HTTPS URL is accepted, including URLs from cloud storage providers (AWS S3, Google Cloud Storage, Cloudflare R2, etc.), CDNs, or any other HTTPS source. URLs can be pre-signed or include authentication tokens in query parameters.\n\nsource_url : typing.Optional[str]\n    The URL of an audio or video file to transcribe. Supports hosted video or audio files, YouTube video URLs, TikTok video URLs, and other video hosting services.\n\nwebhook : typing.Optional[bool]\n    Whether to send the transcription result to configured speech-to-text webhooks.  If set the request will return early without the transcription, which will be delivered later via webhook.\n\nwebhook_id : typing.Optional[str]\n    Optional specific webhook ID to send the transcription result to. Only valid when webhook is set to true. If not provided, transcription will be sent to all configured speech-to-text webhooks.\n\ntemperature : typing.Optional[float]\n    Controls the randomness of the transcription output. Accepts values between 0.0 and 2.0, where higher values result in more diverse and less deterministic results. If omitted, we will use a temperature based on the model you selected which is usually 0.\n\nseed : typing.Optional[int]\n    If specified, our system will make a best effort to sample deterministically, such that repeated requests with the same seed and parameters should return the same result. Determinism is not guaranteed. Must be an integer between 0 and 2147483647.\n\nuse_multi_channel : typing.Optional[bool]\n    Whether the audio file contains multiple channels where each channel contains a single speaker. When enabled, each channel will be transcribed independently and the results will be combined. Each word in the response will include a 'channel_index' field indicating which channel it was spoken on. A maximum of 5 channels is supported. Each channel is billed independently at the full audio duration, so cost scales linearly with the number of channels.\n\nwebhook_metadata : typing.Optional[SpeechToTextConvertRequestWebhookMetadata]\n    Optional metadata to be included in the webhook response. This should be a JSON string representing an object with a maximum depth of 2 levels and maximum size of 16KB. Useful for tracking internal IDs, job references, or other contextual information.\n\nentity_detection : typing.Optional[SpeechToTextConvertRequestEntityDetection]\n    Detect entities in the transcript. Can be 'all' to detect all entities, a single entity type or category string, or a list of entity types/categories. Categories include 'pii', 'phi', 'pci', 'other', 'offensive_language'. When enabled, detected entities will be returned in the 'entities' field with their text, type, and character positions. Usage of this parameter will incur an additional 30% surcharge on the base transcription cost.\n\nno_verbatim : typing.Optional[bool]\n    If true, the transcription will not have any filler words, false starts and non-speech sounds. Only supported with scribe_v2 model.\n\ndetect_speaker_roles : typing.Optional[bool]\n    Whether to detect speaker roles (agent vs customer). Requires diarize=true. Cannot be used with use_multi_channel=true. When enabled, speaker_id values will be 'agent' and 'customer' instead of 'speaker_0', 'speaker_1', etc. Usage incurs an additional 10% surcharge on base transcription cost.\n\nentity_redaction : typing.Optional[SpeechToTextConvertRequestEntityRedaction]\n    Redact entities from the transcript text. Accepts the same format as entity_detection: 'all', a category ('pii', 'phi'), or specific entity types. Must be a subset of entity_detection. When redaction is enabled, the entities field will not be returned. Usage of this parameter will incur an additional 30% surcharge on the base transcription cost.\n\nentity_redaction_mode : typing.Optional[str]\n    How to format redacted entities. 'redacted' replaces with {REDACTED}, 'entity_type' replaces with {ENTITY_TYPE}, 'enumerated_entity_type' replaces with {ENTITY_TYPE_N} where N enumerates each occurrence. Only used when entity_redaction is set.\n\nkeyterms : typing.Optional[typing.List[str]]\n    A list of keyterms to bias the transcription towards.           The keyterms are words or phrases you want the model to recognise more accurately.           The number of keyterms cannot exceed 1000.           The length of each keyterm must be less than 50 characters.           Keyterms can contain at most 5 words (after normalisation).           For example [\"hello\", \"world\", \"technical term\"].           Usage of this parameter will incur an additional 20% surcharge on the base transcription cost.           When more than 100 keyterms are provided, a minimum billable duration of 20 seconds applies per request.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[SpeechToTextConvertResponse]\n    Synchronous transcription result",
           "positional_params": [],
           "keyword_params": [
             {
@@ -11719,6 +12329,11 @@
             },
             {
               "name": "no_verbatim",
+              "kind": "keyword",
+              "default": "__OMIT__"
+            },
+            {
+              "name": "detect_speaker_roles",
               "kind": "keyword",
               "default": "__OMIT__"
             },
@@ -11869,6 +12484,12 @@
                 },
                 {
                   "path": [
+                    "detect_speaker_roles"
+                  ],
+                  "param": "detect_speaker_roles"
+                },
+                {
+                  "path": [
                     "entity_redaction"
                   ],
                   "param": "entity_redaction"
@@ -11994,7 +12615,7 @@
       "operations": [
         {
           "name": "create_podcast",
-          "doc": "Create and auto-convert a podcast project. Currently, the LLM cost is covered by us but you will still be charged for the audio generation. In the future, you will be charged for both the LLM and audio generation costs.\n\nParameters\n----------\nmodel_id : str\n    The ID of the model to be used for this Studio project, you can query GET /v1/models to list all available models.\n\nmode : BodyCreatePodcastV1StudioPodcastsPostMode\n    The type of podcast to generate. Can be 'conversation', an interaction between two voices, or 'bulletin', a monologue.\n\nsource : BodyCreatePodcastV1StudioPodcastsPostSource\n    The source content for the Podcast.\n\nsafety_identifier : typing.Optional[str]\n    Used for moderation. Your workspace must be allowlisted to use this feature.\n\nquality_preset : typing.Optional[BodyCreatePodcastV1StudioPodcastsPostQualityPreset]\n    Output quality of the generated audio. Must be one of:\n    'standard' - standard output format, 128kbps with 44.1kHz sample rate.\n    'high' - high quality output format, 192kbps with 44.1kHz sample rate and major improvements on our side.\n    'ultra' - ultra quality output format, 192kbps with 44.1kHz sample rate and highest improvements on our side.\n    'ultra_lossless' - ultra quality output format, 705.6kbps with 44.1kHz sample rate and highest improvements on our side in a fully lossless format.\n\nduration_scale : typing.Optional[BodyCreatePodcastV1StudioPodcastsPostDurationScale]\n    Duration of the generated podcast. Must be one of:\n    short - produces podcasts shorter than 3 minutes.\n    default - produces podcasts roughly between 3-7 minutes.\n    long - produces podcasts longer than 7 minutes.\n\nlanguage : typing.Optional[str]\n    An optional language of the Studio project. Two-letter language code (ISO 639-1).\n\nintro : typing.Optional[str]\n    The intro text that will always be added to the beginning of the podcast.\n\noutro : typing.Optional[str]\n    The outro text that will always be added to the end of the podcast.\n\ninstructions_prompt : typing.Optional[str]\n    Additional instructions prompt for the podcast generation used to adjust the podcast's style and tone.\n\nhighlights : typing.Optional[typing.Sequence[str]]\n    A brief summary or highlights of the Studio project's content, providing key points or themes. This should be between 10 and 70 characters.\n\ncallback_url : typing.Optional[str]\n\n        A url that will be called by our service when the Studio project is converted. Request will contain a json blob containing the status of the conversion\n        Messages:\n        1. When project was converted successfully:\n        {\n          type: \"project_conversion_status\",\n          event_timestamp: 1234567890,\n          data: {\n            request_id: \"1234567890\",\n            project_id: \"21m00Tcm4TlvDq8ikWAM\",\n            conversion_status: \"success\",\n            project_snapshot_id: \"22m00Tcm4TlvDq8ikMAT\",\n            error_details: None,\n          }\n        }\n        2. When project conversion failed:\n        {\n          type: \"project_conversion_status\",\n          event_timestamp: 1234567890,\n          data: {\n            request_id: \"1234567890\",\n            project_id: \"21m00Tcm4TlvDq8ikWAM\",\n            conversion_status: \"error\",\n            project_snapshot_id: None,\n            error_details: \"Error details if conversion failed\"\n          }\n        }\n\n        3. When chapter was converted successfully:\n        {\n          type: \"chapter_conversion_status\",\n          event_timestamp: 1234567890,\n          data: {\n            request_id: \"1234567890\",\n            project_id: \"21m00Tcm4TlvDq8ikWAM\",\n            chapter_id: \"22m00Tcm4TlvDq8ikMAT\",\n            conversion_status: \"success\",\n            chapter_snapshot_id: \"23m00Tcm4TlvDq8ikMAV\",\n            error_details: None,\n          }\n        }\n        4. When chapter conversion failed:\n        {\n          type: \"chapter_conversion_status\",\n          event_timestamp: 1234567890,\n          data: {\n            request_id: \"1234567890\",\n            project_id: \"21m00Tcm4TlvDq8ikWAM\",\n            chapter_id: \"22m00Tcm4TlvDq8ikMAT\",\n            conversion_status: \"error\",\n            chapter_snapshot_id: None,\n            error_details: \"Error details if conversion failed\"\n          }\n        }\n\n\napply_text_normalization : typing.Optional[BodyCreatePodcastV1StudioPodcastsPostApplyTextNormalization]\n\n        This parameter controls text normalization with four modes: 'auto', 'on', 'apply_english' and 'off'.\n        When set to 'auto', the system will automatically decide whether to apply text normalization\n        (e.g., spelling out numbers). With 'on', text normalization will always be applied, while\n        with 'off', it will be skipped. 'apply_english' is the same as 'on' but will assume that text is in English.\n\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[PodcastProjectResponseModel]\n    Successful Response",
+          "doc": "Create and auto-convert a podcast project. Currently, the LLM cost is covered by us but you will still be charged for the audio generation. In the future, you will be charged for both the LLM and audio generation costs.\n\nParameters\n----------\nmodel_id : str\n    The ID of the model to be used for this Studio project, you can query GET /v1/models to list all available models.\n\nmode : BodyCreatePodcastV1StudioPodcastsPostMode\n    The type of podcast to generate. Can be 'conversation', an interaction between two voices, or 'bulletin', a monologue.\n\nsource : BodyCreatePodcastV1StudioPodcastsPostSource\n    The source content for the Podcast.\n\nsafety_identifier : typing.Optional[str]\n    Used for moderation. Your workspace must be allowlisted to use this feature.\n\nquality_preset : typing.Optional[QualityPresetType]\n    Output quality of the generated audio. Must be one of:\n    'standard' - standard output format, 128kbps with 44.1kHz sample rate.\n    'high' - high quality output format, 192kbps with 44.1kHz sample rate and major improvements on our side.\n    'ultra' - ultra quality output format, 192kbps with 44.1kHz sample rate and highest improvements on our side.\n    'ultra_lossless' - ultra quality output format, 705.6kbps with 44.1kHz sample rate and highest improvements on our side in a fully lossless format.\n\nduration_scale : typing.Optional[BodyCreatePodcastV1StudioPodcastsPostDurationScale]\n    Duration of the generated podcast. Must be one of:\n    short - produces podcasts shorter than 3 minutes.\n    default - produces podcasts roughly between 3-7 minutes.\n    long - produces podcasts longer than 7 minutes.\n\nlanguage : typing.Optional[str]\n    An optional language of the Studio project. Two-letter language code (ISO 639-1).\n\nintro : typing.Optional[str]\n    The intro text that will always be added to the beginning of the podcast.\n\noutro : typing.Optional[str]\n    The outro text that will always be added to the end of the podcast.\n\ninstructions_prompt : typing.Optional[str]\n    Additional instructions prompt for the podcast generation used to adjust the podcast's style and tone.\n\nhighlights : typing.Optional[typing.Sequence[str]]\n    A brief summary or highlights of the Studio project's content, providing key points or themes. This should be between 10 and 70 characters.\n\ncallback_url : typing.Optional[str]\n\n        A url that will be called by our service when the Studio project is converted. Request will contain a json blob containing the status of the conversion\n        Messages:\n        1. When project was converted successfully:\n        {\n          type: \"project_conversion_status\",\n          event_timestamp: 1234567890,\n          data: {\n            request_id: \"1234567890\",\n            project_id: \"21m00Tcm4TlvDq8ikWAM\",\n            conversion_status: \"success\",\n            project_snapshot_id: \"22m00Tcm4TlvDq8ikMAT\",\n            error_details: None,\n          }\n        }\n        2. When project conversion failed:\n        {\n          type: \"project_conversion_status\",\n          event_timestamp: 1234567890,\n          data: {\n            request_id: \"1234567890\",\n            project_id: \"21m00Tcm4TlvDq8ikWAM\",\n            conversion_status: \"error\",\n            project_snapshot_id: None,\n            error_details: \"Error details if conversion failed\"\n          }\n        }\n\n        3. When chapter was converted successfully:\n        {\n          type: \"chapter_conversion_status\",\n          event_timestamp: 1234567890,\n          data: {\n            request_id: \"1234567890\",\n            project_id: \"21m00Tcm4TlvDq8ikWAM\",\n            chapter_id: \"22m00Tcm4TlvDq8ikMAT\",\n            conversion_status: \"success\",\n            chapter_snapshot_id: \"23m00Tcm4TlvDq8ikMAV\",\n            error_details: None,\n          }\n        }\n        4. When chapter conversion failed:\n        {\n          type: \"chapter_conversion_status\",\n          event_timestamp: 1234567890,\n          data: {\n            request_id: \"1234567890\",\n            project_id: \"21m00Tcm4TlvDq8ikWAM\",\n            chapter_id: \"22m00Tcm4TlvDq8ikMAT\",\n            conversion_status: \"error\",\n            chapter_snapshot_id: None,\n            error_details: \"Error details if conversion failed\"\n          }\n        }\n\n\napply_text_normalization : typing.Optional[BodyCreatePodcastV1StudioPodcastsPostApplyTextNormalization]\n\n        This parameter controls text normalization with four modes: 'auto', 'on', 'apply_english' and 'off'.\n        When set to 'auto', the system will automatically decide whether to apply text normalization\n        (e.g., spelling out numbers). With 'on', text normalization will always be applied, while\n        with 'off', it will be skipped. 'apply_english' is the same as 'on' but will assume that text is in English.\n\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[PodcastProjectResponseModel]\n    Successful Response",
           "positional_params": [],
           "keyword_params": [
             {
@@ -12194,7 +12815,7 @@
             },
             {
               "name": "create",
-              "doc": "Creates a new Studio project, it can be either initialized as blank, from a document or from a URL.\n\nParameters\n----------\nname : str\n    The name of the Studio project, used for identification only.\n\ndefault_title_voice_id : typing.Optional[str]\n    The voice_id that corresponds to the default voice used for new titles.\n\ndefault_paragraph_voice_id : typing.Optional[str]\n    The voice_id that corresponds to the default voice used for new paragraphs.\n\ndefault_model_id : typing.Optional[str]\n    The ID of the model to be used for this Studio project, you can query GET /v1/models to list all available models.\n\nfrom_url : typing.Optional[str]\n    An optional URL from which we will extract content to initialize the Studio project. If this is set, 'from_url' and 'from_content' must be null. If neither 'from_url', 'from_document', 'from_content' are provided we will initialize the Studio project as blank.\n\nfrom_document : typing.Optional[core.File]\n    See core.File for more documentation\n\nfrom_content_json : typing.Optional[str]\n\n        An optional content to initialize the Studio project with. If this is set, 'from_url' and 'from_document' must be null. If neither 'from_url', 'from_document', 'from_content' are provided we will initialize the Studio project as blank.\n\n        Example:\n        [{\"name\": \"Chapter A\", \"blocks\": [{\"sub_type\": \"p\", \"nodes\": [{\"voice_id\": \"6lCwbsX1yVjD49QmpkT0\", \"text\": \"A\", \"type\": \"tts_node\"}, {\"voice_id\": \"6lCwbsX1yVjD49QmpkT1\", \"text\": \"B\", \"type\": \"tts_node\"}]}, {\"sub_type\": \"h1\", \"nodes\": [{\"voice_id\": \"6lCwbsX1yVjD49QmpkT0\", \"text\": \"C\", \"type\": \"tts_node\"}, {\"voice_id\": \"6lCwbsX1yVjD49QmpkT1\", \"text\": \"D\", \"type\": \"tts_node\"}]}]}, {\"name\": \"Chapter B\", \"blocks\": [{\"sub_type\": \"p\", \"nodes\": [{\"voice_id\": \"6lCwbsX1yVjD49QmpkT0\", \"text\": \"E\", \"type\": \"tts_node\"}, {\"voice_id\": \"6lCwbsX1yVjD49QmpkT1\", \"text\": \"F\", \"type\": \"tts_node\"}]}, {\"sub_type\": \"h2\", \"nodes\": [{\"voice_id\": \"6lCwbsX1yVjD49QmpkT0\", \"text\": \"G\", \"type\": \"tts_node\"}, {\"voice_id\": \"6lCwbsX1yVjD49QmpkT1\", \"text\": \"H\", \"type\": \"tts_node\"}]}]}]\n\n\nquality_preset : typing.Optional[ProjectsCreateRequestQualityPreset]\n    Output quality of the generated audio. Must be one of:\n    'standard' - standard output format, 128kbps with 44.1kHz sample rate.\n    'high' - high quality output format, 192kbps with 44.1kHz sample rate and major improvements on our side.\n    'ultra' - ultra quality output format, 192kbps with 44.1kHz sample rate and highest improvements on our side.\n    'ultra_lossless' - ultra quality output format, 705.6kbps with 44.1kHz sample rate and highest improvements on our side in a fully lossless format.\n\ntitle : typing.Optional[str]\n    An optional name of the author of the Studio project, this will be added as metadata to the mp3 file on Studio project or chapter download.\n\nauthor : typing.Optional[str]\n    An optional name of the author of the Studio project, this will be added as metadata to the mp3 file on Studio project or chapter download.\n\ndescription : typing.Optional[str]\n    An optional description of the Studio project.\n\ngenres : typing.Optional[typing.List[str]]\n    An optional list of genres associated with the Studio project.\n\ntarget_audience : typing.Optional[ProjectsCreateRequestTargetAudience]\n    An optional target audience of the Studio project.\n\nlanguage : typing.Optional[str]\n    An optional language of the Studio project. Two-letter language code (ISO 639-1).\n\ncontent_type : typing.Optional[str]\n    An optional content type of the Studio project.\n\noriginal_publication_date : typing.Optional[str]\n    An optional original publication date of the Studio project, in the format YYYY-MM-DD or YYYY.\n\nmature_content : typing.Optional[bool]\n    An optional specification of whether this Studio project contains mature content.\n\nisbn_number : typing.Optional[str]\n    An optional ISBN number of the Studio project you want to create, this will be added as metadata to the mp3 file on Studio project or chapter download.\n\nacx_volume_normalization : typing.Optional[bool]\n    [Deprecated] When the Studio project is downloaded, should the returned audio have postprocessing in order to make it compliant with audiobook normalized volume requirements\n\nvolume_normalization : typing.Optional[bool]\n    When the Studio project is downloaded, should the returned audio have postprocessing in order to make it compliant with audiobook normalized volume requirements\n\npronunciation_dictionary_locators : typing.Optional[typing.List[str]]\n    A list of pronunciation dictionary locators (pronunciation_dictionary_id, version_id) encoded as a list of JSON strings for pronunciation dictionaries to be applied to the text. A list of json encoded strings is required as adding projects may occur through formData as opposed to jsonBody. To specify multiple dictionaries use multiple --form lines in your curl, such as --form 'pronunciation_dictionary_locators=\"{\\\"pronunciation_dictionary_id\\\":\\\"Vmd4Zor6fplcA7WrINey\\\",\\\"version_id\\\":\\\"hRPaxjlTdR7wFMhV4w0b\\\"}\"' --form 'pronunciation_dictionary_locators=\"{\\\"pronunciation_dictionary_id\\\":\\\"JzWtcGQMJ6bnlWwyMo7e\\\",\\\"version_id\\\":\\\"lbmwxiLu4q6txYxgdZqn\\\"}\"'.\n\ncallback_url : typing.Optional[str]\n\n        A url that will be called by our service when the Studio project is converted. Request will contain a json blob containing the status of the conversion\n        Messages:\n        1. When project was converted successfully:\n        {\n          type: \"project_conversion_status\",\n          event_timestamp: 1234567890,\n          data: {\n            request_id: \"1234567890\",\n            project_id: \"21m00Tcm4TlvDq8ikWAM\",\n            conversion_status: \"success\",\n            project_snapshot_id: \"22m00Tcm4TlvDq8ikMAT\",\n            error_details: None,\n          }\n        }\n        2. When project conversion failed:\n        {\n          type: \"project_conversion_status\",\n          event_timestamp: 1234567890,\n          data: {\n            request_id: \"1234567890\",\n            project_id: \"21m00Tcm4TlvDq8ikWAM\",\n            conversion_status: \"error\",\n            project_snapshot_id: None,\n            error_details: \"Error details if conversion failed\"\n          }\n        }\n\n        3. When chapter was converted successfully:\n        {\n          type: \"chapter_conversion_status\",\n          event_timestamp: 1234567890,\n          data: {\n            request_id: \"1234567890\",\n            project_id: \"21m00Tcm4TlvDq8ikWAM\",\n            chapter_id: \"22m00Tcm4TlvDq8ikMAT\",\n            conversion_status: \"success\",\n            chapter_snapshot_id: \"23m00Tcm4TlvDq8ikMAV\",\n            error_details: None,\n          }\n        }\n        4. When chapter conversion failed:\n        {\n          type: \"chapter_conversion_status\",\n          event_timestamp: 1234567890,\n          data: {\n            request_id: \"1234567890\",\n            project_id: \"21m00Tcm4TlvDq8ikWAM\",\n            chapter_id: \"22m00Tcm4TlvDq8ikMAT\",\n            conversion_status: \"error\",\n            chapter_snapshot_id: None,\n            error_details: \"Error details if conversion failed\"\n          }\n        }\n\n\nfiction : typing.Optional[ProjectsCreateRequestFiction]\n    An optional specification of whether the content of this Studio project is fiction.\n\napply_text_normalization : typing.Optional[ProjectsCreateRequestApplyTextNormalization]\n\n        This parameter controls text normalization with four modes: 'auto', 'on', 'apply_english' and 'off'.\n        When set to 'auto', the system will automatically decide whether to apply text normalization\n        (e.g., spelling out numbers). With 'on', text normalization will always be applied, while\n        with 'off', it will be skipped. 'apply_english' is the same as 'on' but will assume that text is in English.\n\n\nauto_convert : typing.Optional[bool]\n    Whether to auto convert the Studio project to audio or not.\n\nauto_assign_voices : typing.Optional[bool]\n    [Alpha Feature] Whether automatically assign voices to phrases in the create Project.\n\nsource_type : typing.Optional[ProjectsCreateRequestSourceType]\n    The type of Studio project to create.\n\nvoice_settings : typing.Optional[typing.List[str]]\n        Optional voice settings overrides for the project, encoded as a list of JSON strings.\n\n        Example:\n        [\"{\\\"voice_id\\\": \\\"21m00Tcm4TlvDq8ikWAM\\\", \\\"stability\\\": 0.7, \\\"similarity_boost\\\": 0.8, \\\"style\\\": 0.5, \\\"speed\\\": 1.0, \\\"use_speaker_boost\\\": true}\"]\n\n\ncreate_publishing_read : typing.Optional[bool]\n    If true, creates a corresponding read for direct publishing in draft state\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[AddProjectResponseModel]\n    Successful Response",
+              "doc": "Creates a new Studio project, it can be either initialized as blank, from a document or from a URL.\n\nParameters\n----------\nname : str\n    The name of the Studio project, used for identification only.\n\ndefault_title_voice_id : typing.Optional[str]\n    The voice_id that corresponds to the default voice used for new titles.\n\ndefault_paragraph_voice_id : typing.Optional[str]\n    The voice_id that corresponds to the default voice used for new paragraphs.\n\ndefault_model_id : typing.Optional[str]\n    The ID of the model to be used for this Studio project, you can query GET /v1/models to list all available models.\n\nfrom_url : typing.Optional[str]\n    An optional URL from which we will extract content to initialize the Studio project. If this is set, 'from_url' and 'from_content' must be null. If neither 'from_url', 'from_document', 'from_content' are provided we will initialize the Studio project as blank.\n\nfrom_document : typing.Optional[core.File]\n    See core.File for more documentation\n\nfrom_content_json : typing.Optional[str]\n\n        An optional content to initialize the Studio project with. If this is set, 'from_url' and 'from_document' must be null. If neither 'from_url', 'from_document', 'from_content' are provided we will initialize the Studio project as blank.\n\n        Example:\n        [{\"name\": \"Chapter A\", \"blocks\": [{\"sub_type\": \"p\", \"nodes\": [{\"voice_id\": \"6lCwbsX1yVjD49QmpkT0\", \"text\": \"A\", \"type\": \"tts_node\"}, {\"voice_id\": \"6lCwbsX1yVjD49QmpkT1\", \"text\": \"B\", \"type\": \"tts_node\"}]}, {\"sub_type\": \"h1\", \"nodes\": [{\"voice_id\": \"6lCwbsX1yVjD49QmpkT0\", \"text\": \"C\", \"type\": \"tts_node\"}, {\"voice_id\": \"6lCwbsX1yVjD49QmpkT1\", \"text\": \"D\", \"type\": \"tts_node\"}]}]}, {\"name\": \"Chapter B\", \"blocks\": [{\"sub_type\": \"p\", \"nodes\": [{\"voice_id\": \"6lCwbsX1yVjD49QmpkT0\", \"text\": \"E\", \"type\": \"tts_node\"}, {\"voice_id\": \"6lCwbsX1yVjD49QmpkT1\", \"text\": \"F\", \"type\": \"tts_node\"}]}, {\"sub_type\": \"h2\", \"nodes\": [{\"voice_id\": \"6lCwbsX1yVjD49QmpkT0\", \"text\": \"G\", \"type\": \"tts_node\"}, {\"voice_id\": \"6lCwbsX1yVjD49QmpkT1\", \"text\": \"H\", \"type\": \"tts_node\"}]}]}]\n\n\nquality_preset : typing.Optional[QualityPresetType]\n    Output quality of the generated audio. Must be one of:\n    'standard' - standard output format, 128kbps with 44.1kHz sample rate.\n    'high' - high quality output format, 192kbps with 44.1kHz sample rate and major improvements on our side.\n    'ultra' - ultra quality output format, 192kbps with 44.1kHz sample rate and highest improvements on our side.\n    'ultra_lossless' - ultra quality output format, 705.6kbps with 44.1kHz sample rate and highest improvements on our side in a fully lossless format.\n\ntitle : typing.Optional[str]\n    An optional name of the author of the Studio project, this will be added as metadata to the mp3 file on Studio project or chapter download.\n\nauthor : typing.Optional[str]\n    An optional name of the author of the Studio project, this will be added as metadata to the mp3 file on Studio project or chapter download.\n\ndescription : typing.Optional[str]\n    An optional description of the Studio project.\n\ngenres : typing.Optional[typing.List[str]]\n    An optional list of genres associated with the Studio project.\n\ntarget_audience : typing.Optional[ProjectsCreateRequestTargetAudience]\n    An optional target audience of the Studio project.\n\nlanguage : typing.Optional[str]\n    An optional language of the Studio project. Two-letter language code (ISO 639-1).\n\ncontent_type : typing.Optional[str]\n    An optional content type of the Studio project.\n\noriginal_publication_date : typing.Optional[str]\n    An optional original publication date of the Studio project, in the format YYYY-MM-DD or YYYY.\n\nmature_content : typing.Optional[bool]\n    An optional specification of whether this Studio project contains mature content.\n\nisbn_number : typing.Optional[str]\n    An optional ISBN number of the Studio project you want to create, this will be added as metadata to the mp3 file on Studio project or chapter download.\n\nacx_volume_normalization : typing.Optional[bool]\n    [Deprecated] When the Studio project is downloaded, should the returned audio have postprocessing in order to make it compliant with audiobook normalized volume requirements\n\nvolume_normalization : typing.Optional[bool]\n    When the Studio project is downloaded, should the returned audio have postprocessing in order to make it compliant with audiobook normalized volume requirements\n\npronunciation_dictionary_locators : typing.Optional[typing.List[str]]\n    A list of pronunciation dictionary locators (pronunciation_dictionary_id, version_id) encoded as a list of JSON strings for pronunciation dictionaries to be applied to the text. A list of json encoded strings is required as adding projects may occur through formData as opposed to jsonBody. To specify multiple dictionaries use multiple --form lines in your curl, such as --form 'pronunciation_dictionary_locators=\"{\\\"pronunciation_dictionary_id\\\":\\\"Vmd4Zor6fplcA7WrINey\\\",\\\"version_id\\\":\\\"hRPaxjlTdR7wFMhV4w0b\\\"}\"' --form 'pronunciation_dictionary_locators=\"{\\\"pronunciation_dictionary_id\\\":\\\"JzWtcGQMJ6bnlWwyMo7e\\\",\\\"version_id\\\":\\\"lbmwxiLu4q6txYxgdZqn\\\"}\"'.\n\ncallback_url : typing.Optional[str]\n\n        A url that will be called by our service when the Studio project is converted. Request will contain a json blob containing the status of the conversion\n        Messages:\n        1. When project was converted successfully:\n        {\n          type: \"project_conversion_status\",\n          event_timestamp: 1234567890,\n          data: {\n            request_id: \"1234567890\",\n            project_id: \"21m00Tcm4TlvDq8ikWAM\",\n            conversion_status: \"success\",\n            project_snapshot_id: \"22m00Tcm4TlvDq8ikMAT\",\n            error_details: None,\n          }\n        }\n        2. When project conversion failed:\n        {\n          type: \"project_conversion_status\",\n          event_timestamp: 1234567890,\n          data: {\n            request_id: \"1234567890\",\n            project_id: \"21m00Tcm4TlvDq8ikWAM\",\n            conversion_status: \"error\",\n            project_snapshot_id: None,\n            error_details: \"Error details if conversion failed\"\n          }\n        }\n\n        3. When chapter was converted successfully:\n        {\n          type: \"chapter_conversion_status\",\n          event_timestamp: 1234567890,\n          data: {\n            request_id: \"1234567890\",\n            project_id: \"21m00Tcm4TlvDq8ikWAM\",\n            chapter_id: \"22m00Tcm4TlvDq8ikMAT\",\n            conversion_status: \"success\",\n            chapter_snapshot_id: \"23m00Tcm4TlvDq8ikMAV\",\n            error_details: None,\n          }\n        }\n        4. When chapter conversion failed:\n        {\n          type: \"chapter_conversion_status\",\n          event_timestamp: 1234567890,\n          data: {\n            request_id: \"1234567890\",\n            project_id: \"21m00Tcm4TlvDq8ikWAM\",\n            chapter_id: \"22m00Tcm4TlvDq8ikMAT\",\n            conversion_status: \"error\",\n            chapter_snapshot_id: None,\n            error_details: \"Error details if conversion failed\"\n          }\n        }\n\n\nfiction : typing.Optional[ProjectsCreateRequestFiction]\n    An optional specification of whether the content of this Studio project is fiction.\n\napply_text_normalization : typing.Optional[ProjectsCreateRequestApplyTextNormalization]\n\n        This parameter controls text normalization with four modes: 'auto', 'on', 'apply_english' and 'off'.\n        When set to 'auto', the system will automatically decide whether to apply text normalization\n        (e.g., spelling out numbers). With 'on', text normalization will always be applied, while\n        with 'off', it will be skipped. 'apply_english' is the same as 'on' but will assume that text is in English.\n\n\nauto_convert : typing.Optional[bool]\n    Whether to auto convert the Studio project to audio or not.\n\nauto_assign_voices : typing.Optional[bool]\n    [Alpha Feature] Whether automatically assign voices to phrases in the create Project.\n\nsource_type : typing.Optional[ProjectsCreateRequestSourceType]\n    The type of Studio project to create.\n\nvoice_settings : typing.Optional[typing.List[str]]\n        Optional voice settings overrides for the project, encoded as a list of JSON strings.\n\n        Example:\n        [\"{\\\"voice_id\\\": \\\"21m00Tcm4TlvDq8ikWAM\\\", \\\"stability\\\": 0.7, \\\"similarity_boost\\\": 0.8, \\\"style\\\": 0.5, \\\"speed\\\": 1.0, \\\"use_speaker_boost\\\": true}\"]\n\n\ncreate_publishing_read : typing.Optional[bool]\n    If true, creates a corresponding read for direct publishing in draft state\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[AddProjectResponseModel]\n    Successful Response",
               "positional_params": [],
               "keyword_params": [
                 {
@@ -13592,7 +14213,7 @@
       "operations": [
         {
           "name": "convert",
-          "doc": "Converts a list of text and voice ID pairs into speech (dialogue) and returns audio.\n\nParameters\n----------\ninputs : typing.Sequence[DialogueInput]\n    A list of dialogue inputs, each containing text and a voice ID which will be converted into speech. The maximum number of unique voice IDs is 10.\n\noutput_format : typing.Optional[TextToDialogueConvertRequestOutputFormat]\n    Output format of the generated audio. Formatted as codec_sample_rate_bitrate. So an mp3 with 22.05kHz sample rate at 32kbs is represented as mp3_22050_32. MP3 with 192kbps bitrate requires you to be subscribed to Creator tier or above. PCM and WAV formats with 44.1kHz sample rate requires you to be subscribed to Pro tier or above. Note that the \u03bc-law format (sometimes written mu-law, often approximated as u-law) is commonly used for Twilio audio inputs.\n\nmodel_id : typing.Optional[str]\n    Identifier of the model that will be used, you can query them using GET /v1/models. The model needs to have support for text to speech, you can check this using the can_do_text_to_speech property.\n\nlanguage_code : typing.Optional[str]\n    Language code (ISO 639-1) used to enforce a language for the model and text normalization. If the model does not support provided language code, an error will be returned.\n\nsettings : typing.Optional[ModelSettingsResponseModel]\n    Settings controlling the dialogue generation.\n\npronunciation_dictionary_locators : typing.Optional[typing.Sequence[PronunciationDictionaryVersionLocator]]\n    A list of pronunciation dictionary locators (id, version_id) to be applied to the text. They will be applied in order. You may have up to 3 locators per request\n\nseed : typing.Optional[int]\n    If specified, our system will make a best effort to sample deterministically, such that repeated requests with the same seed and parameters should return the same result. Determinism is not guaranteed. Must be integer between 0 and 4294967295.\n\napply_text_normalization : typing.Optional[BodyTextToDialogueMultiVoiceV1TextToDialoguePostApplyTextNormalization]\n    This parameter controls text normalization with three modes: 'auto', 'on', and 'off'. When set to 'auto', the system will automatically decide whether to apply text normalization (e.g., spelling out numbers). With 'on', text normalization will always be applied, while with 'off', it will be skipped.\n\navatar_context : typing.Optional[AvatarContextRequestModel]\n    Avatar context when this generation is made from the Avatars video editor.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration. You can pass in configuration such as `chunk_size`, and more to customize the request and response.\n\nReturns\n-------\ntyping.Iterator[HttpResponse[typing.Iterator[bytes]]]\n    The generated audio file",
+          "doc": "Converts a list of text and voice ID pairs into speech (dialogue) and returns audio.\n\nParameters\n----------\ninputs : typing.Sequence[DialogueInput]\n    A list of dialogue inputs, each containing text and a voice ID which will be converted into speech. The maximum number of unique voice IDs is 10. For reliable generation, keep the total character count across all `inputs[].text` values at or below 2,000 characters per request. Longer requests can terminate early in streaming responses or return a validation error.\n\noutput_format : typing.Optional[TextToDialogueConvertRequestOutputFormat]\n    Output format of the generated audio. Formatted as codec_sample_rate_bitrate. So an mp3 with 22.05kHz sample rate at 32kbs is represented as mp3_22050_32. MP3 with 192kbps bitrate requires you to be subscribed to Creator tier or above. PCM and WAV formats with 44.1kHz sample rate requires you to be subscribed to Pro tier or above. Note that the \u03bc-law format (sometimes written mu-law, often approximated as u-law) is commonly used for Twilio audio inputs.\n\nmodel_id : typing.Optional[str]\n    Identifier of the model that will be used, you can query them using GET /v1/models. The model needs to have support for text to speech, you can check this using the can_do_text_to_speech property.\n\nlanguage_code : typing.Optional[str]\n    Language code (ISO 639-1) used to enforce a language for the model and text normalization. If the model does not support provided language code, an error will be returned.\n\nsettings : typing.Optional[ModelSettingsResponseModel]\n    Settings controlling the dialogue generation.\n\npronunciation_dictionary_locators : typing.Optional[typing.Sequence[PronunciationDictionaryVersionLocator]]\n    A list of pronunciation dictionary locators (id, version_id) to be applied to the text. They will be applied in order. You may have up to 3 locators per request\n\nseed : typing.Optional[int]\n    If specified, our system will make a best effort to sample deterministically, such that repeated requests with the same seed and parameters should return the same result. Determinism is not guaranteed. Must be integer between 0 and 4294967295.\n\napply_text_normalization : typing.Optional[BodyTextToDialogueMultiVoiceV1TextToDialoguePostApplyTextNormalization]\n    This parameter controls text normalization with three modes: 'auto', 'on', and 'off'. When set to 'auto', the system will automatically decide whether to apply text normalization (e.g., spelling out numbers). With 'on', text normalization will always be applied, while with 'off', it will be skipped.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration. You can pass in configuration such as `chunk_size`, and more to customize the request and response.\n\nReturns\n-------\ntyping.Iterator[HttpResponse[typing.Iterator[bytes]]]\n    The generated audio file",
           "positional_params": [],
           "keyword_params": [
             {
@@ -13632,11 +14253,6 @@
             },
             {
               "name": "apply_text_normalization",
-              "kind": "keyword",
-              "default": "__OMIT__"
-            },
-            {
-              "name": "avatar_context",
               "kind": "keyword",
               "default": "__OMIT__"
             },
@@ -13702,12 +14318,6 @@
                     "apply_text_normalization"
                   ],
                   "param": "apply_text_normalization"
-                },
-                {
-                  "path": [
-                    "avatar_context"
-                  ],
-                  "param": "avatar_context"
                 }
               ]
             },
@@ -13722,7 +14332,7 @@
         },
         {
           "name": "stream",
-          "doc": "Converts a list of text and voice ID pairs into speech (dialogue) and returns an audio stream.\n\nParameters\n----------\ninputs : typing.Sequence[DialogueInput]\n    A list of dialogue inputs, each containing text and a voice ID which will be converted into speech. The maximum number of unique voice IDs is 10.\n\noutput_format : typing.Optional[AllowedOutputFormats]\n    Output format of the generated audio. Formatted as codec_sample_rate_bitrate. So an mp3 with 22.05kHz sample rate at 32kbs is represented as mp3_22050_32. MP3 with 192kbps bitrate requires you to be subscribed to Creator tier or above. PCM with 44.1kHz sample rate requires you to be subscribed to Pro tier or above. Note that the \u03bc-law format (sometimes written mu-law, often approximated as u-law) is commonly used for Twilio audio inputs.\n\nmodel_id : typing.Optional[str]\n    Identifier of the model that will be used, you can query them using GET /v1/models. The model needs to have support for text to speech, you can check this using the can_do_text_to_speech property.\n\nlanguage_code : typing.Optional[str]\n    Language code (ISO 639-1) used to enforce a language for the model and text normalization. If the model does not support provided language code, an error will be returned.\n\nsettings : typing.Optional[ModelSettingsResponseModel]\n    Settings controlling the dialogue generation.\n\npronunciation_dictionary_locators : typing.Optional[typing.Sequence[PronunciationDictionaryVersionLocator]]\n    A list of pronunciation dictionary locators (id, version_id) to be applied to the text. They will be applied in order. You may have up to 3 locators per request\n\nseed : typing.Optional[int]\n    If specified, our system will make a best effort to sample deterministically, such that repeated requests with the same seed and parameters should return the same result. Determinism is not guaranteed. Must be integer between 0 and 4294967295.\n\napply_text_normalization : typing.Optional[BodyTextToDialogueMultiVoiceStreamingV1TextToDialogueStreamPostApplyTextNormalization]\n    This parameter controls text normalization with three modes: 'auto', 'on', and 'off'. When set to 'auto', the system will automatically decide whether to apply text normalization (e.g., spelling out numbers). With 'on', text normalization will always be applied, while with 'off', it will be skipped.\n\navatar_context : typing.Optional[AvatarContextRequestModel]\n    Avatar context when this generation is made from the Avatars video editor.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration. You can pass in configuration such as `chunk_size`, and more to customize the request and response.\n\nReturns\n-------\ntyping.Iterator[HttpResponse[typing.Iterator[bytes]]]\n    Streaming audio data",
+          "doc": "Converts a list of text and voice ID pairs into speech (dialogue) and returns an audio stream.\n\nParameters\n----------\ninputs : typing.Sequence[DialogueInput]\n    A list of dialogue inputs, each containing text and a voice ID which will be converted into speech. The maximum number of unique voice IDs is 10. For reliable generation, keep the total character count across all `inputs[].text` values at or below 2,000 characters per request. Longer requests can terminate early in streaming responses or return a validation error.\n\noutput_format : typing.Optional[AllowedOutputFormats]\n    Output format of the generated audio. Formatted as codec_sample_rate_bitrate. So an mp3 with 22.05kHz sample rate at 32kbs is represented as mp3_22050_32. MP3 with 192kbps bitrate requires you to be subscribed to Creator tier or above. PCM with 44.1kHz sample rate requires you to be subscribed to Pro tier or above. Note that the \u03bc-law format (sometimes written mu-law, often approximated as u-law) is commonly used for Twilio audio inputs.\n\nmodel_id : typing.Optional[str]\n    Identifier of the model that will be used, you can query them using GET /v1/models. The model needs to have support for text to speech, you can check this using the can_do_text_to_speech property.\n\nlanguage_code : typing.Optional[str]\n    Language code (ISO 639-1) used to enforce a language for the model and text normalization. If the model does not support provided language code, an error will be returned.\n\nsettings : typing.Optional[ModelSettingsResponseModel]\n    Settings controlling the dialogue generation.\n\npronunciation_dictionary_locators : typing.Optional[typing.Sequence[PronunciationDictionaryVersionLocator]]\n    A list of pronunciation dictionary locators (id, version_id) to be applied to the text. They will be applied in order. You may have up to 3 locators per request\n\nseed : typing.Optional[int]\n    If specified, our system will make a best effort to sample deterministically, such that repeated requests with the same seed and parameters should return the same result. Determinism is not guaranteed. Must be integer between 0 and 4294967295.\n\napply_text_normalization : typing.Optional[BodyTextToDialogueMultiVoiceStreamingV1TextToDialogueStreamPostApplyTextNormalization]\n    This parameter controls text normalization with three modes: 'auto', 'on', and 'off'. When set to 'auto', the system will automatically decide whether to apply text normalization (e.g., spelling out numbers). With 'on', text normalization will always be applied, while with 'off', it will be skipped.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration. You can pass in configuration such as `chunk_size`, and more to customize the request and response.\n\nReturns\n-------\ntyping.Iterator[HttpResponse[typing.Iterator[bytes]]]\n    Streaming audio data",
           "positional_params": [],
           "keyword_params": [
             {
@@ -13762,11 +14372,6 @@
             },
             {
               "name": "apply_text_normalization",
-              "kind": "keyword",
-              "default": "__OMIT__"
-            },
-            {
-              "name": "avatar_context",
               "kind": "keyword",
               "default": "__OMIT__"
             },
@@ -13832,12 +14437,6 @@
                     "apply_text_normalization"
                   ],
                   "param": "apply_text_normalization"
-                },
-                {
-                  "path": [
-                    "avatar_context"
-                  ],
-                  "param": "avatar_context"
                 }
               ]
             },
@@ -13852,7 +14451,7 @@
         },
         {
           "name": "stream_with_timestamps",
-          "doc": "Converts a list of text and voice ID pairs into speech (dialogue) and returns a stream of JSON blobs containing audio as a base64 encoded string and timestamps\n\nParameters\n----------\ninputs : typing.Sequence[DialogueInput]\n    A list of dialogue inputs, each containing text and a voice ID which will be converted into speech. The maximum number of unique voice IDs is 10.\n\noutput_format : typing.Optional[AllowedOutputFormats]\n    Output format of the generated audio. Formatted as codec_sample_rate_bitrate. So an mp3 with 22.05kHz sample rate at 32kbs is represented as mp3_22050_32. MP3 with 192kbps bitrate requires you to be subscribed to Creator tier or above. PCM with 44.1kHz sample rate requires you to be subscribed to Pro tier or above. Note that the \u03bc-law format (sometimes written mu-law, often approximated as u-law) is commonly used for Twilio audio inputs.\n\nmodel_id : typing.Optional[str]\n    Identifier of the model that will be used, you can query them using GET /v1/models. The model needs to have support for text to speech, you can check this using the can_do_text_to_speech property.\n\nlanguage_code : typing.Optional[str]\n    Language code (ISO 639-1) used to enforce a language for the model and text normalization. If the model does not support provided language code, an error will be returned.\n\nsettings : typing.Optional[ModelSettingsResponseModel]\n    Settings controlling the dialogue generation.\n\npronunciation_dictionary_locators : typing.Optional[typing.Sequence[PronunciationDictionaryVersionLocator]]\n    A list of pronunciation dictionary locators (id, version_id) to be applied to the text. They will be applied in order. You may have up to 3 locators per request\n\nseed : typing.Optional[int]\n    If specified, our system will make a best effort to sample deterministically, such that repeated requests with the same seed and parameters should return the same result. Determinism is not guaranteed. Must be integer between 0 and 4294967295.\n\napply_text_normalization : typing.Optional[BodyTextToDialogueStreamWithTimestampsApplyTextNormalization]\n    This parameter controls text normalization with three modes: 'auto', 'on', and 'off'. When set to 'auto', the system will automatically decide whether to apply text normalization (e.g., spelling out numbers). With 'on', text normalization will always be applied, while with 'off', it will be skipped.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nYields\n------\ntyping.Iterator[HttpResponse[typing.Iterator[StreamingAudioChunkWithTimestampsAndVoiceSegmentsResponseModel]]]\n    Stream of transcription chunks",
+          "doc": "Converts a list of text and voice ID pairs into speech (dialogue) and returns a stream of JSON blobs containing audio as a base64 encoded string and timestamps\n\nParameters\n----------\ninputs : typing.Sequence[DialogueInput]\n    A list of dialogue inputs, each containing text and a voice ID which will be converted into speech. The maximum number of unique voice IDs is 10. For reliable generation, keep the total character count across all `inputs[].text` values at or below 2,000 characters per request. Longer requests can terminate early in streaming responses or return a validation error.\n\noutput_format : typing.Optional[AllowedOutputFormats]\n    Output format of the generated audio. Formatted as codec_sample_rate_bitrate. So an mp3 with 22.05kHz sample rate at 32kbs is represented as mp3_22050_32. MP3 with 192kbps bitrate requires you to be subscribed to Creator tier or above. PCM with 44.1kHz sample rate requires you to be subscribed to Pro tier or above. Note that the \u03bc-law format (sometimes written mu-law, often approximated as u-law) is commonly used for Twilio audio inputs.\n\nmodel_id : typing.Optional[str]\n    Identifier of the model that will be used, you can query them using GET /v1/models. The model needs to have support for text to speech, you can check this using the can_do_text_to_speech property.\n\nlanguage_code : typing.Optional[str]\n    Language code (ISO 639-1) used to enforce a language for the model and text normalization. If the model does not support provided language code, an error will be returned.\n\nsettings : typing.Optional[ModelSettingsResponseModel]\n    Settings controlling the dialogue generation.\n\npronunciation_dictionary_locators : typing.Optional[typing.Sequence[PronunciationDictionaryVersionLocator]]\n    A list of pronunciation dictionary locators (id, version_id) to be applied to the text. They will be applied in order. You may have up to 3 locators per request\n\nseed : typing.Optional[int]\n    If specified, our system will make a best effort to sample deterministically, such that repeated requests with the same seed and parameters should return the same result. Determinism is not guaranteed. Must be integer between 0 and 4294967295.\n\napply_text_normalization : typing.Optional[BodyTextToDialogueStreamWithTimestampsApplyTextNormalization]\n    This parameter controls text normalization with three modes: 'auto', 'on', and 'off'. When set to 'auto', the system will automatically decide whether to apply text normalization (e.g., spelling out numbers). With 'on', text normalization will always be applied, while with 'off', it will be skipped.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nYields\n------\ntyping.Iterator[HttpResponse[typing.Iterator[StreamingAudioChunkWithTimestampsAndVoiceSegmentsResponseModel]]]\n    Stream of transcription chunks",
           "positional_params": [],
           "keyword_params": [
             {
@@ -13971,7 +14570,7 @@
         },
         {
           "name": "convert_with_timestamps",
-          "doc": "Generate dialogue from text with precise character-level timing information for audio-text synchronization.\n\nParameters\n----------\ninputs : typing.Sequence[DialogueInput]\n    A list of dialogue inputs, each containing text and a voice ID which will be converted into speech. The maximum number of unique voice IDs is 10.\n\noutput_format : typing.Optional[TextToDialogueConvertWithTimestampsRequestOutputFormat]\n    Output format of the generated audio. Formatted as codec_sample_rate_bitrate. So an mp3 with 22.05kHz sample rate at 32kbs is represented as mp3_22050_32. MP3 with 192kbps bitrate requires you to be subscribed to Creator tier or above. PCM and WAV formats with 44.1kHz sample rate requires you to be subscribed to Pro tier or above. Note that the \u03bc-law format (sometimes written mu-law, often approximated as u-law) is commonly used for Twilio audio inputs.\n\nmodel_id : typing.Optional[str]\n    Identifier of the model that will be used, you can query them using GET /v1/models. The model needs to have support for text to speech, you can check this using the can_do_text_to_speech property.\n\nlanguage_code : typing.Optional[str]\n    Language code (ISO 639-1) used to enforce a language for the model and text normalization. If the model does not support provided language code, an error will be returned.\n\nsettings : typing.Optional[ModelSettingsResponseModel]\n    Settings controlling the dialogue generation.\n\npronunciation_dictionary_locators : typing.Optional[typing.Sequence[PronunciationDictionaryVersionLocator]]\n    A list of pronunciation dictionary locators (id, version_id) to be applied to the text. They will be applied in order. You may have up to 3 locators per request\n\nseed : typing.Optional[int]\n    If specified, our system will make a best effort to sample deterministically, such that repeated requests with the same seed and parameters should return the same result. Determinism is not guaranteed. Must be integer between 0 and 4294967295.\n\napply_text_normalization : typing.Optional[BodyTextToDialogueFullWithTimestampsApplyTextNormalization]\n    This parameter controls text normalization with three modes: 'auto', 'on', and 'off'. When set to 'auto', the system will automatically decide whether to apply text normalization (e.g., spelling out numbers). With 'on', text normalization will always be applied, while with 'off', it will be skipped.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[AudioWithTimestampsAndVoiceSegmentsResponseModel]\n    Successful Response",
+          "doc": "Generate dialogue from text with precise character-level timing information for audio-text synchronization.\n\nParameters\n----------\ninputs : typing.Sequence[DialogueInput]\n    A list of dialogue inputs, each containing text and a voice ID which will be converted into speech. The maximum number of unique voice IDs is 10. For reliable generation, keep the total character count across all `inputs[].text` values at or below 2,000 characters per request. Longer requests can terminate early in streaming responses or return a validation error.\n\noutput_format : typing.Optional[TextToDialogueConvertWithTimestampsRequestOutputFormat]\n    Output format of the generated audio. Formatted as codec_sample_rate_bitrate. So an mp3 with 22.05kHz sample rate at 32kbs is represented as mp3_22050_32. MP3 with 192kbps bitrate requires you to be subscribed to Creator tier or above. PCM and WAV formats with 44.1kHz sample rate requires you to be subscribed to Pro tier or above. Note that the \u03bc-law format (sometimes written mu-law, often approximated as u-law) is commonly used for Twilio audio inputs.\n\nmodel_id : typing.Optional[str]\n    Identifier of the model that will be used, you can query them using GET /v1/models. The model needs to have support for text to speech, you can check this using the can_do_text_to_speech property.\n\nlanguage_code : typing.Optional[str]\n    Language code (ISO 639-1) used to enforce a language for the model and text normalization. If the model does not support provided language code, an error will be returned.\n\nsettings : typing.Optional[ModelSettingsResponseModel]\n    Settings controlling the dialogue generation.\n\npronunciation_dictionary_locators : typing.Optional[typing.Sequence[PronunciationDictionaryVersionLocator]]\n    A list of pronunciation dictionary locators (id, version_id) to be applied to the text. They will be applied in order. You may have up to 3 locators per request\n\nseed : typing.Optional[int]\n    If specified, our system will make a best effort to sample deterministically, such that repeated requests with the same seed and parameters should return the same result. Determinism is not guaranteed. Must be integer between 0 and 4294967295.\n\napply_text_normalization : typing.Optional[BodyTextToDialogueFullWithTimestampsApplyTextNormalization]\n    This parameter controls text normalization with three modes: 'auto', 'on', and 'off'. When set to 'auto', the system will automatically decide whether to apply text normalization (e.g., spelling out numbers). With 'on', text normalization will always be applied, while with 'off', it will be skipped.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[AudioWithTimestampsAndVoiceSegmentsResponseModel]\n    Successful Response",
           "positional_params": [],
           "keyword_params": [
             {
@@ -14197,7 +14796,7 @@
       "operations": [
         {
           "name": "convert",
-          "doc": "Converts text into speech using a voice of your choice and returns audio.\n\nParameters\n----------\nvoice_id : str\n    ID of the voice to be used. Use the [Get voices](/docs/api-reference/voices/search) endpoint list all the available voices.\n\ntext : str\n    The text that will get converted into speech.\n\nenable_logging : typing.Optional[bool]\n    When enable_logging is set to false zero retention mode will be used for the request. This will mean history features are unavailable for this request, including request stitching. Zero retention mode may only be used by enterprise customers.\n\noptimize_streaming_latency : typing.Optional[int]\n    You can turn on latency optimizations at some cost of quality. The best possible final latency varies by model. Possible values:\n    0 - default mode (no latency optimizations)\n    1 - normal latency optimizations (about 50% of possible latency improvement of option 3)\n    2 - strong latency optimizations (about 75% of possible latency improvement of option 3)\n    3 - max latency optimizations\n    4 - max latency optimizations, but also with text normalizer turned off for even more latency savings (best latency, but can mispronounce eg numbers and dates).\n\n    Defaults to None.\n\noutput_format : typing.Optional[TextToSpeechConvertRequestOutputFormat]\n    Output format of the generated audio. Formatted as codec_sample_rate_bitrate. So an mp3 with 22.05kHz sample rate at 32kbs is represented as mp3_22050_32. MP3 with 192kbps bitrate requires you to be subscribed to Creator tier or above. PCM and WAV formats with 44.1kHz sample rate requires you to be subscribed to Pro tier or above. Note that the \u03bc-law format (sometimes written mu-law, often approximated as u-law) is commonly used for Twilio audio inputs.\n\nmodel_id : typing.Optional[str]\n    Identifier of the model that will be used, you can query them using GET /v1/models. The model needs to have support for text to speech, you can check this using the can_do_text_to_speech property.\n\nlanguage_code : typing.Optional[str]\n    Language code (ISO 639-1) used to enforce a language for the model and text normalization. If the model does not support provided language code, an error will be returned.\n\nvoice_settings : typing.Optional[VoiceSettings]\n    Voice settings overriding stored settings for the given voice. They are applied only on the given request.\n\npronunciation_dictionary_locators : typing.Optional[typing.Sequence[PronunciationDictionaryVersionLocator]]\n    A list of pronunciation dictionary locators (id, version_id) to be applied to the text. They will be applied in order. You may have up to 3 locators per request\n\nseed : typing.Optional[int]\n    If specified, our system will make a best effort to sample deterministically, such that repeated requests with the same seed and parameters should return the same result. Determinism is not guaranteed. Must be integer between 0 and 4294967295.\n\nprevious_text : typing.Optional[str]\n    The text that came before the text of the current request. Can be used to improve the speech's continuity when concatenating together multiple generations or to influence the speech's continuity in the current generation.\n\nnext_text : typing.Optional[str]\n    The text that comes after the text of the current request. Can be used to improve the speech's continuity when concatenating together multiple generations or to influence the speech's continuity in the current generation.\n\nprevious_request_ids : typing.Optional[typing.Sequence[str]]\n    A list of request_id of the samples that were generated before this generation. Can be used to improve the speech's continuity when splitting up a large task into multiple requests. The results will be best when the same model is used across the generations. In case both previous_text and previous_request_ids is send, previous_text will be ignored. A maximum of 3 request_ids can be send.\n\nnext_request_ids : typing.Optional[typing.Sequence[str]]\n    A list of request_id of the samples that come after this generation. next_request_ids is especially useful for maintaining the speech's continuity when regenerating a sample that has had some audio quality issues. For example, if you have generated 3 speech clips, and you want to improve clip 2, passing the request id of clip 3 as a next_request_id (and that of clip 1 as a previous_request_id) will help maintain natural flow in the combined speech. The results will be best when the same model is used across the generations. In case both next_text and next_request_ids is send, next_text will be ignored. A maximum of 3 request_ids can be send.\n\nuse_pvc_as_ivc : typing.Optional[bool]\n    If true, we won't use PVC version of the voice for the generation but the IVC version. This is a temporary workaround for higher latency in PVC versions.\n\napply_text_normalization : typing.Optional[BodyTextToSpeechFullApplyTextNormalization]\n    This parameter controls text normalization with three modes: 'auto', 'on', and 'off'. When set to 'auto', the system will automatically decide whether to apply text normalization (e.g., spelling out numbers). With 'on', text normalization will always be applied, while with 'off', it will be skipped.\n\napply_language_text_normalization : typing.Optional[bool]\n    This parameter controls language text normalization. This helps with proper pronunciation of text in some supported languages. WARNING: This parameter can heavily increase the latency of the request. Currently only supported for Japanese.\n\navatar_context : typing.Optional[AvatarContextRequestModel]\n    Avatar context when this generation is made from the Avatars video editor.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration. You can pass in configuration such as `chunk_size`, and more to customize the request and response.\n\nReturns\n-------\ntyping.Iterator[HttpResponse[typing.Iterator[bytes]]]\n    The generated audio file",
+          "doc": "Converts text into speech using a voice of your choice and returns audio.\n\nParameters\n----------\nvoice_id : str\n    ID of the voice to be used. Use the [Get voices](/docs/api-reference/voices/search) endpoint list all the available voices.\n\ntext : str\n    The text that will get converted into speech.\n\nenable_logging : typing.Optional[bool]\n    When enable_logging is set to false zero retention mode will be used for the request. This will mean history features are unavailable for this request, including request stitching. Zero retention mode may only be used by enterprise customers.\n\noptimize_streaming_latency : typing.Optional[int]\n    You can turn on latency optimizations at some cost of quality. The best possible final latency varies by model. Possible values:\n    0 - default mode (no latency optimizations)\n    1 - normal latency optimizations (about 50% of possible latency improvement of option 3)\n    2 - strong latency optimizations (about 75% of possible latency improvement of option 3)\n    3 - max latency optimizations\n    4 - max latency optimizations, but also with text normalizer turned off for even more latency savings (best latency, but can mispronounce eg numbers and dates).\n\n    Defaults to None.\n\noutput_format : typing.Optional[TextToSpeechConvertRequestOutputFormat]\n    Output format of the generated audio. Formatted as codec_sample_rate_bitrate. So an mp3 with 22.05kHz sample rate at 32kbs is represented as mp3_22050_32. MP3 with 192kbps bitrate requires you to be subscribed to Creator tier or above. PCM and WAV formats with 44.1kHz sample rate requires you to be subscribed to Pro tier or above. Note that the \u03bc-law format (sometimes written mu-law, often approximated as u-law) is commonly used for Twilio audio inputs.\n\nmodel_id : typing.Optional[str]\n    Identifier of the model that will be used, you can query them using GET /v1/models. The model needs to have support for text to speech, you can check this using the can_do_text_to_speech property.\n\nlanguage_code : typing.Optional[str]\n    Language code (ISO 639-1) used to enforce a language for the model and text normalization. If the model does not support provided language code, an error will be returned.\n\nvoice_settings : typing.Optional[VoiceSettings]\n    Voice settings overriding stored settings for the given voice. They are applied only on the given request.\n\npronunciation_dictionary_locators : typing.Optional[typing.Sequence[PronunciationDictionaryVersionLocator]]\n    A list of pronunciation dictionary locators (id, version_id) to be applied to the text. They will be applied in order. You may have up to 3 locators per request\n\nseed : typing.Optional[int]\n    If specified, our system will make a best effort to sample deterministically, such that repeated requests with the same seed and parameters should return the same result. Determinism is not guaranteed. Must be integer between 0 and 4294967295.\n\nprevious_text : typing.Optional[str]\n    The text that came before the text of the current request. Can be used to improve the speech's continuity when concatenating together multiple generations or to influence the speech's continuity in the current generation.\n\nnext_text : typing.Optional[str]\n    The text that comes after the text of the current request. Can be used to improve the speech's continuity when concatenating together multiple generations or to influence the speech's continuity in the current generation.\n\nprevious_request_ids : typing.Optional[typing.Sequence[str]]\n    A list of request_id of the samples that were generated before this generation. Can be used to improve the speech's continuity when splitting up a large task into multiple requests. The results will be best when the same model is used across the generations. In case both previous_text and previous_request_ids is send, previous_text will be ignored. A maximum of 3 request_ids can be send.\n\nnext_request_ids : typing.Optional[typing.Sequence[str]]\n    A list of request_id of the samples that come after this generation. next_request_ids is especially useful for maintaining the speech's continuity when regenerating a sample that has had some audio quality issues. For example, if you have generated 3 speech clips, and you want to improve clip 2, passing the request id of clip 3 as a next_request_id (and that of clip 1 as a previous_request_id) will help maintain natural flow in the combined speech. The results will be best when the same model is used across the generations. In case both next_text and next_request_ids is send, next_text will be ignored. A maximum of 3 request_ids can be send.\n\nuse_pvc_as_ivc : typing.Optional[bool]\n    If true, we won't use PVC version of the voice for the generation but the IVC version. This is a temporary workaround for higher latency in PVC versions.\n\napply_text_normalization : typing.Optional[BodyTextToSpeechFullApplyTextNormalization]\n    This parameter controls text normalization with three modes: 'auto', 'on', and 'off'. When set to 'auto', the system will automatically decide whether to apply text normalization (e.g., spelling out numbers). With 'on', text normalization will always be applied, while with 'off', it will be skipped.\n\napply_language_text_normalization : typing.Optional[bool]\n    This parameter controls language text normalization. This helps with proper pronunciation of text in some supported languages. WARNING: This parameter can heavily increase the latency of the request. Currently only supported for Japanese.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration. You can pass in configuration such as `chunk_size`, and more to customize the request and response.\n\nReturns\n-------\ntyping.Iterator[HttpResponse[typing.Iterator[bytes]]]\n    The generated audio file",
           "positional_params": [
             {
               "name": "voice_id",
@@ -14283,11 +14882,6 @@
             },
             {
               "name": "apply_language_text_normalization",
-              "kind": "keyword",
-              "default": "__OMIT__"
-            },
-            {
-              "name": "avatar_context",
               "kind": "keyword",
               "default": "__OMIT__"
             },
@@ -14399,12 +14993,6 @@
                     "apply_language_text_normalization"
                   ],
                   "param": "apply_language_text_normalization"
-                },
-                {
-                  "path": [
-                    "avatar_context"
-                  ],
-                  "param": "avatar_context"
                 }
               ]
             },
@@ -14630,7 +15218,7 @@
         },
         {
           "name": "stream",
-          "doc": "Converts text into speech using a voice of your choice and returns audio as an audio stream.\n\nParameters\n----------\nvoice_id : str\n    ID of the voice to be used. Use the [Get voices](/docs/api-reference/voices/search) endpoint list all the available voices.\n\ntext : str\n    The text that will get converted into speech.\n\nenable_logging : typing.Optional[bool]\n    When enable_logging is set to false zero retention mode will be used for the request. This will mean history features are unavailable for this request, including request stitching. Zero retention mode may only be used by enterprise customers.\n\noptimize_streaming_latency : typing.Optional[int]\n    You can turn on latency optimizations at some cost of quality. The best possible final latency varies by model. Possible values:\n    0 - default mode (no latency optimizations)\n    1 - normal latency optimizations (about 50% of possible latency improvement of option 3)\n    2 - strong latency optimizations (about 75% of possible latency improvement of option 3)\n    3 - max latency optimizations\n    4 - max latency optimizations, but also with text normalizer turned off for even more latency savings (best latency, but can mispronounce eg numbers and dates).\n\n    Defaults to None.\n\noutput_format : typing.Optional[TextToSpeechStreamRequestOutputFormat]\n    Output format of the generated audio. Formatted as codec_sample_rate_bitrate. So an mp3 with 22.05kHz sample rate at 32kbs is represented as mp3_22050_32. MP3 with 192kbps bitrate requires you to be subscribed to Creator tier or above. PCM with 44.1kHz sample rate requires you to be subscribed to Pro tier or above. Note that the \u03bc-law format (sometimes written mu-law, often approximated as u-law) is commonly used for Twilio audio inputs.\n\nmodel_id : typing.Optional[str]\n    Identifier of the model that will be used, you can query them using GET /v1/models. The model needs to have support for text to speech, you can check this using the can_do_text_to_speech property.\n\nlanguage_code : typing.Optional[str]\n    Language code (ISO 639-1) used to enforce a language for the model and text normalization. If the model does not support provided language code, an error will be returned.\n\nvoice_settings : typing.Optional[VoiceSettings]\n    Voice settings overriding stored settings for the given voice. They are applied only on the given request.\n\npronunciation_dictionary_locators : typing.Optional[typing.Sequence[PronunciationDictionaryVersionLocator]]\n    A list of pronunciation dictionary locators (id, version_id) to be applied to the text. They will be applied in order. You may have up to 3 locators per request\n\nseed : typing.Optional[int]\n    If specified, our system will make a best effort to sample deterministically, such that repeated requests with the same seed and parameters should return the same result. Determinism is not guaranteed. Must be integer between 0 and 4294967295.\n\nprevious_text : typing.Optional[str]\n    The text that came before the text of the current request. Can be used to improve the speech's continuity when concatenating together multiple generations or to influence the speech's continuity in the current generation.\n\nnext_text : typing.Optional[str]\n    The text that comes after the text of the current request. Can be used to improve the speech's continuity when concatenating together multiple generations or to influence the speech's continuity in the current generation.\n\nprevious_request_ids : typing.Optional[typing.Sequence[str]]\n    A list of request_id of the samples that were generated before this generation. Can be used to improve the speech's continuity when splitting up a large task into multiple requests. The results will be best when the same model is used across the generations. In case both previous_text and previous_request_ids is send, previous_text will be ignored. A maximum of 3 request_ids can be send.\n\nnext_request_ids : typing.Optional[typing.Sequence[str]]\n    A list of request_id of the samples that come after this generation. next_request_ids is especially useful for maintaining the speech's continuity when regenerating a sample that has had some audio quality issues. For example, if you have generated 3 speech clips, and you want to improve clip 2, passing the request id of clip 3 as a next_request_id (and that of clip 1 as a previous_request_id) will help maintain natural flow in the combined speech. The results will be best when the same model is used across the generations. In case both next_text and next_request_ids is send, next_text will be ignored. A maximum of 3 request_ids can be send.\n\nuse_pvc_as_ivc : typing.Optional[bool]\n    If true, we won't use PVC version of the voice for the generation but the IVC version. This is a temporary workaround for higher latency in PVC versions.\n\napply_text_normalization : typing.Optional[BodyTextToSpeechStreamApplyTextNormalization]\n    This parameter controls text normalization with three modes: 'auto', 'on', and 'off'. When set to 'auto', the system will automatically decide whether to apply text normalization (e.g., spelling out numbers). With 'on', text normalization will always be applied, while with 'off', it will be skipped.\n\napply_language_text_normalization : typing.Optional[bool]\n    This parameter controls language text normalization. This helps with proper pronunciation of text in some supported languages. WARNING: This parameter can heavily increase the latency of the request. Currently only supported for Japanese.\n\navatar_context : typing.Optional[AvatarContextRequestModel]\n    Avatar context when this generation is made from the Avatars video editor.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration. You can pass in configuration such as `chunk_size`, and more to customize the request and response.\n\nReturns\n-------\ntyping.Iterator[HttpResponse[typing.Iterator[bytes]]]\n    Streaming audio data",
+          "doc": "Converts text into speech using a voice of your choice and returns audio as an audio stream.\n\nParameters\n----------\nvoice_id : str\n    ID of the voice to be used. Use the [Get voices](/docs/api-reference/voices/search) endpoint list all the available voices.\n\ntext : str\n    The text that will get converted into speech.\n\nenable_logging : typing.Optional[bool]\n    When enable_logging is set to false zero retention mode will be used for the request. This will mean history features are unavailable for this request, including request stitching. Zero retention mode may only be used by enterprise customers.\n\noptimize_streaming_latency : typing.Optional[int]\n    You can turn on latency optimizations at some cost of quality. The best possible final latency varies by model. Possible values:\n    0 - default mode (no latency optimizations)\n    1 - normal latency optimizations (about 50% of possible latency improvement of option 3)\n    2 - strong latency optimizations (about 75% of possible latency improvement of option 3)\n    3 - max latency optimizations\n    4 - max latency optimizations, but also with text normalizer turned off for even more latency savings (best latency, but can mispronounce eg numbers and dates).\n\n    Defaults to None.\n\noutput_format : typing.Optional[TextToSpeechStreamRequestOutputFormat]\n    Output format of the generated audio. Formatted as codec_sample_rate_bitrate. So an mp3 with 22.05kHz sample rate at 32kbs is represented as mp3_22050_32. MP3 with 192kbps bitrate requires you to be subscribed to Creator tier or above. PCM with 44.1kHz sample rate requires you to be subscribed to Pro tier or above. Note that the \u03bc-law format (sometimes written mu-law, often approximated as u-law) is commonly used for Twilio audio inputs.\n\nmodel_id : typing.Optional[str]\n    Identifier of the model that will be used, you can query them using GET /v1/models. The model needs to have support for text to speech, you can check this using the can_do_text_to_speech property.\n\nlanguage_code : typing.Optional[str]\n    Language code (ISO 639-1) used to enforce a language for the model and text normalization. If the model does not support provided language code, an error will be returned.\n\nvoice_settings : typing.Optional[VoiceSettings]\n    Voice settings overriding stored settings for the given voice. They are applied only on the given request.\n\npronunciation_dictionary_locators : typing.Optional[typing.Sequence[PronunciationDictionaryVersionLocator]]\n    A list of pronunciation dictionary locators (id, version_id) to be applied to the text. They will be applied in order. You may have up to 3 locators per request\n\nseed : typing.Optional[int]\n    If specified, our system will make a best effort to sample deterministically, such that repeated requests with the same seed and parameters should return the same result. Determinism is not guaranteed. Must be integer between 0 and 4294967295.\n\nprevious_text : typing.Optional[str]\n    The text that came before the text of the current request. Can be used to improve the speech's continuity when concatenating together multiple generations or to influence the speech's continuity in the current generation.\n\nnext_text : typing.Optional[str]\n    The text that comes after the text of the current request. Can be used to improve the speech's continuity when concatenating together multiple generations or to influence the speech's continuity in the current generation.\n\nprevious_request_ids : typing.Optional[typing.Sequence[str]]\n    A list of request_id of the samples that were generated before this generation. Can be used to improve the speech's continuity when splitting up a large task into multiple requests. The results will be best when the same model is used across the generations. In case both previous_text and previous_request_ids is send, previous_text will be ignored. A maximum of 3 request_ids can be send.\n\nnext_request_ids : typing.Optional[typing.Sequence[str]]\n    A list of request_id of the samples that come after this generation. next_request_ids is especially useful for maintaining the speech's continuity when regenerating a sample that has had some audio quality issues. For example, if you have generated 3 speech clips, and you want to improve clip 2, passing the request id of clip 3 as a next_request_id (and that of clip 1 as a previous_request_id) will help maintain natural flow in the combined speech. The results will be best when the same model is used across the generations. In case both next_text and next_request_ids is send, next_text will be ignored. A maximum of 3 request_ids can be send.\n\nuse_pvc_as_ivc : typing.Optional[bool]\n    If true, we won't use PVC version of the voice for the generation but the IVC version. This is a temporary workaround for higher latency in PVC versions.\n\napply_text_normalization : typing.Optional[BodyTextToSpeechStreamApplyTextNormalization]\n    This parameter controls text normalization with three modes: 'auto', 'on', and 'off'. When set to 'auto', the system will automatically decide whether to apply text normalization (e.g., spelling out numbers). With 'on', text normalization will always be applied, while with 'off', it will be skipped.\n\napply_language_text_normalization : typing.Optional[bool]\n    This parameter controls language text normalization. This helps with proper pronunciation of text in some supported languages. WARNING: This parameter can heavily increase the latency of the request. Currently only supported for Japanese.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration. You can pass in configuration such as `chunk_size`, and more to customize the request and response.\n\nReturns\n-------\ntyping.Iterator[HttpResponse[typing.Iterator[bytes]]]\n    Streaming audio data",
           "positional_params": [
             {
               "name": "voice_id",
@@ -14716,11 +15304,6 @@
             },
             {
               "name": "apply_language_text_normalization",
-              "kind": "keyword",
-              "default": "__OMIT__"
-            },
-            {
-              "name": "avatar_context",
               "kind": "keyword",
               "default": "__OMIT__"
             },
@@ -14832,12 +15415,6 @@
                     "apply_language_text_normalization"
                   ],
                   "param": "apply_language_text_normalization"
-                },
-                {
-                  "path": [
-                    "avatar_context"
-                  ],
-                  "param": "avatar_context"
                 }
               ]
             },
@@ -15730,7 +16307,7 @@
       "operations": [
         {
           "name": "get",
-          "doc": "Returns the usage metrics for the current user or the entire workspace they are part of. The response provides a time axis based on the specified aggregation interval (default: day), with usage values for each interval along that axis. Usage is broken down by the selected breakdown type. For example, breakdown type \"voice\" will return the usage of each voice for each interval along the time axis.\n\nParameters\n----------\nstart_unix : int\n    UTC Unix timestamp for the start of the usage window, in milliseconds. To include the first day of the window, the timestamp should be at 00:00:00 of that day.\n\nend_unix : int\n    UTC Unix timestamp for the end of the usage window, in milliseconds. To include the last day of the window, the timestamp should be at 23:59:59 of that day.\n\ninclude_workspace_metrics : typing.Optional[bool]\n    Whether or not to include the statistics of the entire workspace.\n\nbreakdown_type : typing.Optional[BreakdownTypes]\n    How to break down the information. Cannot be \"user\" if include_workspace_metrics is False.\n\naggregation_interval : typing.Optional[UsageAggregationInterval]\n    How to aggregate usage data over time. Can be \"hour\", \"day\", \"week\", \"month\", or \"cumulative\".\n\naggregation_bucket_size : typing.Optional[int]\n    Aggregation bucket size in seconds. Overrides the aggregation interval.\n\nmetric : typing.Optional[MetricType]\n    Which metric to aggregate.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[UsageCharactersResponseModel]\n    Successful Response",
+          "doc": "(Deprecated) This endpoint is deprecated. Use /v1/workspace/analytics/query/usage-by-product-over-time instead. Returns the usage metrics for the current user or the entire workspace they are part of. The response provides a time axis based on the specified aggregation interval (default: day), with usage values for each interval along that axis. Usage is broken down by the selected breakdown type. For example, breakdown type \"voice\" will return the usage of each voice for each interval along the time axis.\n\nParameters\n----------\nstart_unix : int\n    UTC Unix timestamp for the start of the usage window, in milliseconds. To include the first day of the window, the timestamp should be at 00:00:00 of that day.\n\nend_unix : int\n    UTC Unix timestamp for the end of the usage window, in milliseconds. To include the last day of the window, the timestamp should be at 23:59:59 of that day.\n\ninclude_workspace_metrics : typing.Optional[bool]\n    Whether or not to include the statistics of the entire workspace.\n\nbreakdown_type : typing.Optional[BreakdownTypes]\n    How to break down the information. Cannot be \"user\" if include_workspace_metrics is False.\n\naggregation_interval : typing.Optional[UsageAggregationInterval]\n    How to aggregate usage data over time. Can be \"hour\", \"day\", \"week\", \"month\", or \"cumulative\".\n\naggregation_bucket_size : typing.Optional[int]\n    Aggregation bucket size in seconds. Overrides the aggregation interval.\n\nmetric : typing.Optional[MetricType]\n    Which metric to aggregate.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[UsageCharactersResponseModel]\n    Successful Response",
           "positional_params": [],
           "keyword_params": [
             {
@@ -15924,7 +16501,7 @@
         },
         {
           "name": "search",
-          "doc": "Gets a list of all available voices for a user with search, filtering and pagination.\n\nParameters\n----------\nnext_page_token : typing.Optional[str]\n    The next page token to use for pagination. Returned from the previous request. Use this in combination with the has_more flag for reliable pagination.\n\npage_size : typing.Optional[int]\n    How many voices to return at maximum. Can not exceed 100, defaults to 10. Page 0 may include more voices due to default voices being included.\n\nsearch : typing.Optional[str]\n    Search term to filter voices by. Searches in name, description, labels, category.\n\nsort : typing.Optional[str]\n    Which field to sort by, one of 'created_at_unix' or 'name'. 'created_at_unix' may not be available for older voices.\n\nsort_direction : typing.Optional[str]\n    Which direction to sort the voices in. 'asc' or 'desc'.\n\nvoice_type : typing.Optional[str]\n    Type of the voice to filter by. One of 'personal', 'community', 'default', 'workspace', 'non-default', 'saved'. 'non-default' is equal to all but 'default'. 'saved' is equal to non-default, but includes default voices if they have been added to a collection.\n\ncategory : typing.Optional[str]\n    Category of the voice to filter by. One of 'premade', 'cloned', 'generated', 'professional'\n\nfine_tuning_state : typing.Optional[str]\n    State of the voice's fine tuning to filter by. Applicable only to professional voices clones. One of 'draft', 'not_verified', 'not_started', 'queued', 'fine_tuning', 'fine_tuned', 'failed', 'delayed'\n\ncollection_id : typing.Optional[str]\n    Collection ID to filter voices by.\n\ninclude_total_count : typing.Optional[bool]\n    Whether to include the total count of voices found in the response. NOTE: The total_count value is a live snapshot and may change between requests as users create, modify, or delete voices. For pagination, rely on the has_more flag instead. Only enable this when you actually need the total count (e.g., for display purposes), as it incurs a performance cost.\n\nvoice_ids : typing.Optional[typing.Union[str, typing.Sequence[str]]]\n    Voice IDs to lookup by. Maximum 100 voice IDs.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[GetVoicesV2Response]\n    Successful Response",
+          "doc": "Gets a list of all available voices for a user with search, filtering and pagination.\n\nParameters\n----------\nnext_page_token : typing.Optional[str]\n    The next page token to use for pagination. Returned from the previous request. Use this in combination with the has_more flag for reliable pagination.\n\npage_size : typing.Optional[int]\n    How many voices to return at maximum. Can not exceed 100, defaults to 10. Page 0 may include more voices due to default voices being included.\n\nsearch : typing.Optional[str]\n    Search term to filter voices by. Searches in name, description, labels, category.\n\nsort : typing.Optional[str]\n    Which field to sort by, one of 'created_at_unix' or 'name'. 'created_at_unix' may not be available for older voices.\n\nsort_direction : typing.Optional[str]\n    Which direction to sort the voices in. 'asc' or 'desc'.\n\nvoice_type : typing.Optional[str]\n    Type of the voice to filter by. One of 'personal', 'community', 'default', 'workspace', 'non-default', 'non-community', 'saved'. 'non-default' is equal to all but 'default'. 'non-community' is equal to 'personal' and 'workspace' combined (excludes library copies). 'saved' is equal to non-default, but includes default voices if they have been added to a collection.\n\ncategory : typing.Optional[str]\n    Category of the voice to filter by. One of 'premade', 'cloned', 'generated', 'professional'\n\nfine_tuning_state : typing.Optional[str]\n    State of the voice's fine tuning to filter by. Applicable only to professional voices clones. One of 'draft', 'not_verified', 'not_started', 'queued', 'fine_tuning', 'fine_tuned', 'failed', 'delayed'\n\ncollection_id : typing.Optional[str]\n    Collection ID to filter voices by.\n\ninclude_total_count : typing.Optional[bool]\n    Whether to include the total count of voices found in the response. NOTE: The total_count value is a live snapshot and may change between requests as users create, modify, or delete voices. For pagination, rely on the has_more flag instead. Only enable this when you actually need the total count (e.g., for display purposes), as it incurs a performance cost.\n\nvoice_ids : typing.Optional[typing.Union[str, typing.Sequence[str]]]\n    Voice IDs to lookup by. Maximum 100 voice IDs.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[GetVoicesV2Response]\n    Successful Response",
           "positional_params": [],
           "keyword_params": [
             {
@@ -18581,6 +19158,98 @@
                         "workspace_api_key_id"
                       ],
                       "param": "workspace_api_key_id"
+                    }
+                  ]
+                },
+                "form": null,
+                "files": [],
+                "headers": {
+                  "content-type": "application/json"
+                },
+                "force_multipart": false,
+                "streaming": false
+              }
+            }
+          ],
+          "children": {}
+        },
+        "usage": {
+          "operations": [
+            {
+              "name": "get_usage_by_product_over_time",
+              "doc": "Returns credit usage broken down by product type over time. Timestamps are Unix milliseconds. The response is a tabular structure with columns, column_types, column_units, and rows.\n\nParameters\n----------\nstart_time : int\n\nend_time : int\n\ninterval_seconds : typing.Optional[int]\n\ngroup_by : typing.Optional[typing.Sequence[BodyGetWorkspaceUsageV1WorkspaceAnalyticsQueryUsageByProductOverTimePostGroupByItem]]\n\nfilters : typing.Optional[typing.Sequence[ColumnFilter]]\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[WorkspaceAnalyticsQueryResponseModel]\n    Successful Response",
+              "positional_params": [],
+              "keyword_params": [
+                {
+                  "name": "start_time",
+                  "kind": "keyword",
+                  "default": null
+                },
+                {
+                  "name": "end_time",
+                  "kind": "keyword",
+                  "default": null
+                },
+                {
+                  "name": "interval_seconds",
+                  "kind": "keyword",
+                  "default": "__OMIT__"
+                },
+                {
+                  "name": "group_by",
+                  "kind": "keyword",
+                  "default": "__OMIT__"
+                },
+                {
+                  "name": "filters",
+                  "kind": "keyword",
+                  "default": "__OMIT__"
+                },
+                {
+                  "name": "request_options",
+                  "kind": "keyword",
+                  "default": null
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "path": {
+                  "template": "v1/workspace/analytics/query/usage-by-product-over-time",
+                  "params": []
+                },
+                "query": [],
+                "json": {
+                  "literal": null,
+                  "assignments": [
+                    {
+                      "path": [
+                        "start_time"
+                      ],
+                      "param": "start_time"
+                    },
+                    {
+                      "path": [
+                        "end_time"
+                      ],
+                      "param": "end_time"
+                    },
+                    {
+                      "path": [
+                        "interval_seconds"
+                      ],
+                      "param": "interval_seconds"
+                    },
+                    {
+                      "path": [
+                        "group_by"
+                      ],
+                      "param": "group_by"
+                    },
+                    {
+                      "path": [
+                        "filters"
+                      ],
+                      "param": "filters"
                     }
                   ]
                 },

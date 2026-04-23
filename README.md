@@ -10,7 +10,7 @@ This gem is published to **GitHub Packages** (not RubyGems.org). Add the GitHub 
 
 ```ruby
 source "https://rubygems.pkg.github.com/architecture" do
-  gem "elevenlabs", "0.5.0"
+  gem "elevenlabs", "0.6.0"
 end
 ```
 
@@ -31,7 +31,7 @@ Bundler can pull the gem straight from the git repository. This works for public
 
 ```ruby
 # Pin to a release tag (recommended for production)
-gem "elevenlabs", git: "https://github.com/architecture/elevenlabs-ruby", tag: "v0.5.0"
+gem "elevenlabs", git: "https://github.com/architecture/elevenlabs-ruby", tag: "v0.6.0"
 
 # Or track the latest main branch
 gem "elevenlabs", git: "https://github.com/architecture/elevenlabs-ruby", branch: "main"
@@ -368,6 +368,68 @@ gem "elevenlabs", path: "/path/to/elevenlabs-ruby"
 ```
 
 ## Recent Updates
+
+### 2026-04-23: v0.6.0 — Updated API Spec from elevenlabs-python v2.44.0
+
+Updated `lib/elevenlabs/spec.json` by running the extraction script against elevenlabs-python v2.44.0 (commits #762, #770, #775 — April 2026).
+
+**New Namespaces:**
+- `conversational_ai.conversations.topics` — topic discovery for agent conversations (`get`)
+- `conversational_ai.tests.folders` — CRUD for organizing agent tests into folders (`create`, `get`, `update`, `delete`)
+- `conversational_ai.tools.executions` — list historical tool executions per tool (`get`)
+- `workspace.usage` — workspace analytics for usage over time (`get_usage_by_product_over_time`)
+
+**New Operations:**
+- `conversational_ai.knowledge_base.search` — fuzzy text search over knowledge base documents
+- `conversational_ai.secrets.get` — fetch a single stored secret
+- `conversational_ai.secrets.get_dependencies` — list dependencies (agents, MCP servers) of a stored secret
+- `conversational_ai.tests.move` — bulk move tests between folders
+
+**New/Updated Parameters:**
+- `conversational_ai.agents.branches.merge` — added `force` to override timestamp-based conflict resolution; target now any branch (not just main)
+- `conversational_ai.conversations.list` — added `topic_ids` filter for conversations tagged by topic discovery
+
+**Removed Parameters:**
+- `text_to_speech.convert` / `stream` — removed `avatar_context`
+- `text_to_dialogue.convert` / `stream` — removed `avatar_context`
+
+**New Ruby access patterns:**
+```ruby
+# Topic discovery for an agent
+client.conversational_ai.conversations.topics.get("agent_123")
+
+# Fuzzy search across knowledge base content
+client.conversational_ai.knowledge_base.search(query: "pricing", page_size: 20)
+
+# Retrieve stored secret and its dependencies
+secret = client.conversational_ai.secrets.get("secret_123")
+deps   = client.conversational_ai.secrets.get_dependencies("secret_123", "agents")
+
+# Organize agent tests into folders
+folder = client.conversational_ai.tests.folders.create(name: "Regression")
+client.conversational_ai.tests.move(entity_ids: ["t1", "t2"], move_to: folder["id"])
+
+# Inspect tool execution history
+client.conversational_ai.tools.executions.get("tool_123", page_size: 50, is_error: false)
+
+# Workspace usage analytics
+client.workspace.usage.get_usage_by_product_over_time(
+  start_time: 1700000000,
+  end_time: 1700100000,
+  interval_seconds: 3600,
+  group_by: ["product"]
+)
+
+# Branch merge with force override
+client.conversational_ai.agents.branches.merge(
+  "agent_123",
+  "source_branch_id",
+  target_branch_id: "target_branch_id",
+  force: true
+)
+```
+
+Test suite now at 176 runs, 480 assertions, 0 failures.
 
 ### 2026-04-03: v0.5.0 — Updated API Spec from elevenlabs-python v2.41.0
 
