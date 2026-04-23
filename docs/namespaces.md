@@ -53,6 +53,23 @@ dub = client.dubbing.transcript.create(
 )
 ```
 
+## environment_variables
+
+Manage ConvAI environment variables — scoped secret/config values referenced by agents.
+
+```ruby
+client.environment_variables.list(page_size: 10)
+
+client.environment_variables.create(request: {
+  "label" => "API_KEY",
+  "type"  => "secret",
+  "values" => { "production" => "sk-123" }
+})
+
+client.environment_variables.get("env_var_123")
+client.environment_variables.update("env_var_123", request: { "label" => "API_KEY_V2" })
+```
+
 ## forced_alignment
 
 Align transcripts to audio by uploading files for high-precision timestamps.
