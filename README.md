@@ -330,6 +330,8 @@ python3 scripts/render_types_doc.py     # writes docs/types.md
 
 **When you need this:** any time you're calling an operation that takes a structured Hash and the API returns a `422 Input should be a valid dictionary` (or similar shape error). For example, `client.conversational_ai.agents.create(workflow: {...})` passes the Hash straight through; consult `docs/types.md#agentworkflowrequestmodel` for the expected `nodes` / `edges` dict layout, the discriminated-union variants of each node `type`, and the required `label` on `override_agent` nodes.
 
+**Workflow-specific gotchas:** a handful of server-side validation rules are enforced by custom model-validators that don't show up in the Pydantic schema (e.g. the start node must be keyed literally `start_node`, `forward_condition` requires an explicit `type:` even when the schema marks it defaulted, empty `{}` conditions are rejected). See [`docs/workflow-gotchas.md`](docs/workflow-gotchas.md) if `agents.create` keeps 422-ing on a workflow payload despite the types matching.
+
 ### Optional runtime validator
 
 For the same reason, the gem ships an opt-in validator at `ElevenLabs::Types.validate!`. It reads the schema from `types.json` and enforces required fields, union discriminant values, and enum membership **before** the request leaves your process — so you see the specific field that's wrong instead of a generic `422` from the server.

@@ -120,8 +120,27 @@ module ElevenLabs
         end
 
         discriminant_key = type["discriminant"] || "type"
-        _present, discriminant = fetch_key(value, discriminant_key)
+        present, discriminant = fetch_key(value, discriminant_key)
         variants = type.fetch("variants", [])
+        expected = variants.map { |v| @schema.dig(v, "discriminant_value") }.compact
+
+        # The discriminator field has a Pydantic default on each variant
+        # (e.g. WorkflowEdgeModelInputForwardCondition_Llm defaults to
+        # type="llm"), but the live server does NOT apply that default
+        # to inbound requests — it rejects payloads that omit the
+        # discriminator with a `union_tag_not_found` error. Distinguish
+        # "field absent" from "field present but value unknown" so the
+        # fix is obvious to the caller.
+        unless present
+          raise ValidationError.new(
+            "#{format_path(path)} is missing the required discriminator " \
+              "#{discriminant_key.inspect} (#{type_name}; expected one of " \
+              "#{expected.inspect}). The server requires this field explicitly " \
+              "on every variant, even when the Pydantic schema marks it as " \
+              "having a default.",
+            path: path + [discriminant_key], type_name: type_name,
+          )
+        end
 
         match = variants.find do |variant_name|
           variant_type = @schema[variant_name]
@@ -129,7 +148,6 @@ module ElevenLabs
         end
 
         if match.nil?
-          expected = variants.map { |v| @schema.dig(v, "discriminant_value") }.compact
           raise ValidationError.new(
             "#{format_path(path + [discriminant_key])} #{discriminant.inspect} " \
               "is not a valid variant of #{type_name} (expected one of #{expected.inspect})",

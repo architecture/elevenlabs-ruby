@@ -59,6 +59,33 @@ class TypesValidatorTest < Minitest::Test
     assert_match(/not a valid variant of WorkflowEdgeModelInputForwardCondition/, err.message)
   end
 
+  # The OpenAPI example for forward_condition omits `type:` and relies on
+  # the per-variant default, but the live server rejects that with
+  # union_tag_not_found. The validator treats a missing discriminator as a
+  # distinct error from an unknown variant — the fix is to add the field.
+  def test_missing_discriminator_on_forward_condition
+    bad = {
+      edges: {
+        "e" => { source: "a", target: "b", forward_condition: { condition: "foo" } },
+      },
+    }
+    err = assert_raises(ElevenLabs::Types::ValidationError) do
+      ElevenLabs::Types.validate!(:AgentWorkflowRequestModel, bad)
+    end
+    assert_match(/missing the required discriminator "type"/, err.message)
+    assert_match(/expected one of/, err.message)
+    assert_match(/server requires this field explicitly/, err.message)
+  end
+
+  def test_missing_discriminator_on_nodes_value
+    bad = { nodes: { "x" => { label: "hi", additional_prompt: "greet" } } }
+    err = assert_raises(ElevenLabs::Types::ValidationError) do
+      ElevenLabs::Types.validate!(:AgentWorkflowRequestModel, bad)
+    end
+    assert_match(/missing the required discriminator "type"/, err.message)
+    assert_match(/AgentWorkflowRequestModelNodesValue/, err.message)
+  end
+
   def test_missing_required_field_on_edge
     # source is required on WorkflowEdgeModelInput
     bad = { edges: { "e" => { target: "b" } } }
