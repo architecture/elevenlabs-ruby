@@ -1,3 +1,4 @@
 tmp-elevenlabs-python/
 .DS_Store
 *.gem
+.claude/
