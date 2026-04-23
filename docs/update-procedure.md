@@ -40,6 +40,17 @@ python3 scripts/extract_spec.py
 
 This reads the Python SDK source at `tmp-elevenlabs-python/src/elevenlabs/` and writes `lib/elevenlabs/spec.json`. The Ruby SDK dynamically generates all resource classes and methods from this file at runtime — no hand-written Ruby resource code is needed.
 
+### 2a. Regenerate types.json and docs/types.md
+
+`spec.json` only records operation signatures — it does not carry the nested shape of Pydantic-typed parameters like `workflow`, `conversation_config`, or `platform_settings`. A second extraction pass resolves those shapes so callers (and the optional runtime validator) have a machine-readable schema:
+
+```bash
+python3 scripts/extract_types.py        # writes lib/elevenlabs/types.json
+python3 scripts/render_types_doc.py     # writes docs/types.md
+```
+
+Run both any time the Python SDK is refreshed; the artifacts stay in lock-step with `spec.json`.
+
 ### 3. Run the existing test suite
 
 Verify that existing functionality is not broken:
@@ -168,8 +179,12 @@ ELEVENLABS_API_KEY=your_key ruby scripts/verify_api.rb
 |------|---------|
 | `tmp-elevenlabs-python/` | Vendored upstream Python SDK (git repo) |
 | `scripts/extract_spec.py` | Parses Python SDK, generates `spec.json` |
+| `scripts/extract_types.py` | Parses `types/` Pydantic models, generates `types.json` |
+| `scripts/render_types_doc.py` | Renders `types.json` into `docs/types.md` |
 | `scripts/verify_api.rb` | Live API verification (requires API key) |
 | `lib/elevenlabs/spec.json` | Generated spec driving the Ruby SDK |
+| `lib/elevenlabs/types.json` | Generated type schemas for nested request bodies |
+| `docs/types.md` | Human-readable rendering of `types.json` |
 | `lib/elevenlabs/version.rb` | Gem version constant |
 | `lib/elevenlabs/resources.rb` | Dynamic class generation from spec |
 | `.github/workflows/gem-push.yml` | CI: test + publish pipeline |

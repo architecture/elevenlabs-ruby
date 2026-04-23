@@ -697,12 +697,12 @@ Discriminated union on `type`. Variants:
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `id` | str | no | `nil` | The ID of the created pronunciation dictionary. |
-| `name` | str | no | `nil` | The name of the created pronunciation dictionary. |
-| `created_by` | str | no | `nil` | The user ID of the creator of the pronunciation dictionary. |
-| `creation_time_unix` | int | no | `nil` | The creation time of the pronunciation dictionary in Unix timestamp. |
-| `version_id` | str | no | `nil` | The ID of the created pronunciation dictionary version. |
-| `version_rules_num` | int | no | `nil` | The number of rules in the version of the pronunciation dictionary. |
+| `id` | str | **yes** | **required** | The ID of the created pronunciation dictionary. |
+| `name` | str | **yes** | **required** | The name of the created pronunciation dictionary. |
+| `created_by` | str | **yes** | **required** | The user ID of the creator of the pronunciation dictionary. |
+| `creation_time_unix` | int | **yes** | **required** | The creation time of the pronunciation dictionary in Unix timestamp. |
+| `version_id` | str | **yes** | **required** | The ID of the created pronunciation dictionary version. |
+| `version_rules_num` | int | **yes** | **required** | The number of rules in the version of the pronunciation dictionary. |
 | `description` | Optional<str> | no | `nil` | The description of the pronunciation dictionary. |
 | `permission_on_resource` | Optional<[AddPronunciationDictionaryResponseModelPermissionOnResource](#addpronunciationdictionaryresponsemodelpermissiononresource)> | no | `nil` | The permission on the resource of the pronunciation dictionary. |
 
@@ -710,36 +710,36 @@ Discriminated union on `type`. Variants:
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `voice_id` | str | no | `nil` | The ID of the newly created voice. |
-| `requires_verification` | bool | no | `nil` | Whether the voice requires verification |
+| `voice_id` | str | **yes** | **required** | The ID of the newly created voice. |
+| `requires_verification` | bool | **yes** | **required** | Whether the voice requires verification |
 
 ### AddVoiceResponseModel
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `voice_id` | str | no | `nil` | The ID of the voice. |
+| `voice_id` | str | **yes** | **required** | The ID of the voice. |
 
 ### AddWorkspaceGroupMemberResponseModel
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `status` | str | no | `nil` | The status of the workspace group member addition request. If the request was successful, the status will be 'ok'. Otherwise an error message with status 500 will be returned. |
+| `status` | str | **yes** | **required** | The status of the workspace group member addition request. If the request was successful, the status will be 'ok'. Otherwise an error message with status 500 will be returned. |
 
 ### AddWorkspaceInviteResponseModel
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `status` | str | no | `nil` | The status of the workspace invite request. If the request was successful, the status will be 'ok'. Otherwise an error message with status 500 will be returned. |
+| `status` | str | **yes** | **required** | The status of the workspace invite request. If the request was successful, the status will be 'ok'. Otherwise an error message with status 500 will be returned. |
 
 ### AdditionalFormatResponseModel
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `requested_format` | str | no | `nil` | The requested format. |
-| `file_extension` | str | no | `nil` | The file extension of the additional format. |
-| `content_type` | str | no | `nil` | The content type of the additional format. |
-| `is_base_64_encoded` | Annotated[bool, FieldMetadata(alias='is_base64_encoded')> | no | `nil` | Whether the content is base64 encoded. |
-| `content` | str | no | `nil` | The content of the additional format. |
+| `requested_format` | str | **yes** | **required** | The requested format. |
+| `file_extension` | str | **yes** | **required** | The file extension of the additional format. |
+| `content_type` | str | **yes** | **required** | The content type of the additional format. |
+| `is_base_64_encoded` | Annotated[bool, FieldMetadata(alias='is_base64_encoded')> | **yes** | **required** | Whether the content is base64 encoded. |
+| `content` | str | **yes** | **required** | The content of the additional format. |
 
 ### AdhocAgentConfigOverrideForTestRequestModel
 
@@ -866,19 +866,19 @@ Discriminated union on `type`. Variants:
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `type` | Optional<Literal<'percentage'>> | no | `nil` |  |
-| `traffic_percentage` | float | no | `nil` | Traffic percentage to deploy |
+| `traffic_percentage` | float | **yes** | **required** | Traffic percentage to deploy |
 
 ### AgentDeploymentRequest
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `requests` | Array<[AgentDeploymentRequestItem](#agentdeploymentrequestitem)> | no | `nil` | List of deployment requests |
+| `requests` | Array<[AgentDeploymentRequestItem](#agentdeploymentrequestitem)> | **yes** | **required** | List of deployment requests |
 
 ### AgentDeploymentRequestItem
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `branch_id` | str | no | `nil` | ID of the branch to deploy |
+| `branch_id` | str | **yes** | **required** | ID of the branch to deploy |
 | `deployment_strategy` | [AgentDeploymentPercentageStrategy](#agentdeploymentpercentagestrategy) | **yes** | **required** |  |
 
 ### AgentDeploymentResponse
@@ -907,8 +907,8 @@ Discriminated union on `type`. Variants:
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `created_at_unix_secs` | int | no | `nil` | The creation time of the agent in unix seconds |
-| `updated_at_unix_secs` | int | no | `nil` | The last update time of the agent in unix seconds |
+| `created_at_unix_secs` | int | **yes** | **required** | The creation time of the agent in unix seconds |
+| `updated_at_unix_secs` | int | **yes** | **required** | The last update time of the agent in unix seconds |
 
 ### AgentPlatformSettingsRequestModel
 
@@ -973,11 +973,11 @@ Discriminated union on `type`. Variants:
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `agent_id` | str | no | `nil` | The ID of the agent |
-| `name` | str | no | `nil` | The name of the agent |
-| `tags` | Array<str> | no | `nil` | Agent tags used to categorize the agent |
-| `created_at_unix_secs` | int | no | `nil` | The creation time of the agent in unix seconds |
-| `access_info` | [ResourceAccessInfo](#resourceaccessinfo) | no | `nil` | The access information of the agent |
+| `agent_id` | str | **yes** | **required** | The ID of the agent |
+| `name` | str | **yes** | **required** | The name of the agent |
+| `tags` | Array<str> | **yes** | **required** | Agent tags used to categorize the agent |
+| `created_at_unix_secs` | int | **yes** | **required** | The creation time of the agent in unix seconds |
+| `access_info` | [ResourceAccessInfo](#resourceaccessinfo) | **yes** | **required** | The access information of the agent |
 | `last_call_time_unix_secs` | Optional<int> | no | `nil` | The time of the most recent call in unix seconds, null if no calls have been made |
 | `archived` | Optional<bool> | no | `nil` | Whether the agent is archived |
 
@@ -1051,7 +1051,7 @@ Discriminated union on `type`. Variants:
 | --- | --- | --- | --- | --- |
 | `edges` | Hash<str, [WorkflowEdgeModelOutput](#workflowedgemodeloutput)> | **yes** | **required** |  |
 | `nodes` | Hash<str, [AgentWorkflowResponseModelNodesValue](#agentworkflowresponsemodelnodesvalue)> | **yes** | **required** |  |
-| `prevent_subagent_loops` | bool | no | `nil` | Whether to prevent loops in the workflow execution. |
+| `prevent_subagent_loops` | bool | **yes** | **required** | Whether to prevent loops in the workflow execution. |
 
 ### AgentWorkspaceOverridesInput
 
@@ -1079,7 +1079,7 @@ Discriminated union on `type`. Variants:
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `hostname` | str | no | `nil` | The hostname of the allowed origin |
+| `hostname` | str | **yes** | **required** | The hostname of the allowed origin |
 
 ### AnalysisProperty
 
@@ -1102,7 +1102,7 @@ Discriminated union on `type`. Variants:
 | `token_url` | str | **yes** | **required** |  |
 | `scopes` | Optional<Array<str>> | no | `nil` |  |
 | `scope_separator` | Optional<[ApiIntegrationOAuth2AuthCodeResponseScopeSeparator](#apiintegrationoauth2authcoderesponsescopeseparator)> | no | `nil` | Separator for scopes |
-| `expires_at` | str | no | `nil` | ISO 8601 timestamp of when the access token expires |
+| `expires_at` | str | **yes** | **required** | ISO 8601 timestamp of when the access token expires |
 | `integration_id` | str | **yes** | **required** |  |
 | `credential_id` | str | **yes** | **required** |  |
 | `status` | Optional<[OAuthConnectionStatus](#oauthconnectionstatus)> | no | `nil` | Current health status of the OAuth connection |
@@ -1125,7 +1125,7 @@ Discriminated union on `type`. Variants:
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `name` | str | **yes** | **required** |  |
-| `description` | str | no | `nil` | Description of when the tool should be used and what it does. |
+| `description` | str | **yes** | **required** | Description of when the tool should be used and what it does. |
 | `response_timeout_secs` | Optional<int> | no | `nil` | The maximum time in seconds to wait for the tool call to complete. Must be between 5 and 120 seconds (inclusive). |
 | `disable_interruptions` | Optional<bool> | no | `nil` | If true, the user will not be able to interrupt the agent while this tool is running. |
 | `force_pre_tool_speech` | Optional<bool> | no | `nil` | If true, the agent will speak before the tool call. |
@@ -1145,17 +1145,17 @@ Discriminated union on `type`. Variants:
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `name` | str | **yes** | **required** |  |
-| `description` | str | no | `nil` | Description of when the tool should be used and what it does. |
-| `response_timeout_secs` | int | no | `nil` | The maximum time in seconds to wait for the tool call to complete. Must be between 5 and 120 seconds (inclusive). |
-| `disable_interruptions` | bool | no | `nil` | If true, the user will not be able to interrupt the agent while this tool is running. |
-| `force_pre_tool_speech` | bool | no | `nil` | If true, the agent will speak before the tool call. |
-| `assignments` | Array<[DynamicVariableAssignment](#dynamicvariableassignment)> | no | `nil` | Configuration for extracting values from tool responses and assigning them to dynamic variables |
+| `description` | str | **yes** | **required** | Description of when the tool should be used and what it does. |
+| `response_timeout_secs` | int | **yes** | **required** | The maximum time in seconds to wait for the tool call to complete. Must be between 5 and 120 seconds (inclusive). |
+| `disable_interruptions` | bool | **yes** | **required** | If true, the user will not be able to interrupt the agent while this tool is running. |
+| `force_pre_tool_speech` | bool | **yes** | **required** | If true, the agent will speak before the tool call. |
+| `assignments` | Array<[DynamicVariableAssignment](#dynamicvariableassignment)> | **yes** | **required** | Configuration for extracting values from tool responses and assigning them to dynamic variables |
 | `tool_call_sound` | Optional<[ToolCallSoundType](#toolcallsoundtype)> | no | `nil` | Predefined tool call sound type to play during tool execution. If not specified, no tool call sound will be played. |
-| `tool_call_sound_behavior` | [ToolCallSoundBehavior](#toolcallsoundbehavior) | no | `nil` | Determines when the tool call sound should play. 'auto' only plays when there's pre-tool speech, 'always' plays for every tool call. |
-| `tool_error_handling_mode` | [ToolErrorHandlingMode](#toolerrorhandlingmode) | no | `nil` | Controls how tool errors are processed before being shared with the agent. 'auto' determines handling based on tool type (summarized for native integrations, hide for others), 'summarized' sends an LLM-generated summary, 'passthrough' sends the raw error, 'hide' does not share the error with the agent. |
-| `dynamic_variables` | [DynamicVariablesConfigOutput](#dynamicvariablesconfigoutput) | no | `nil` | Configuration for dynamic variables |
-| `execution_mode` | [ToolExecutionMode](#toolexecutionmode) | no | `nil` | Determines when and how the tool executes: 'immediate' executes the tool right away when requested by the LLM, 'post_tool_speech' waits for the agent to finish speaking before executing, 'async' runs the tool in the background without blocking - best for long-running operations. |
-| `tool_version` | str | no | `nil` | The version of the API integration tool |
+| `tool_call_sound_behavior` | [ToolCallSoundBehavior](#toolcallsoundbehavior) | **yes** | **required** | Determines when the tool call sound should play. 'auto' only plays when there's pre-tool speech, 'always' plays for every tool call. |
+| `tool_error_handling_mode` | [ToolErrorHandlingMode](#toolerrorhandlingmode) | **yes** | **required** | Controls how tool errors are processed before being shared with the agent. 'auto' determines handling based on tool type (summarized for native integrations, hide for others), 'summarized' sends an LLM-generated summary, 'passthrough' sends the raw error, 'hide' does not share the error with the agent. |
+| `dynamic_variables` | [DynamicVariablesConfigOutput](#dynamicvariablesconfigoutput) | **yes** | **required** | Configuration for dynamic variables |
+| `execution_mode` | [ToolExecutionMode](#toolexecutionmode) | **yes** | **required** | Determines when and how the tool executes: 'immediate' executes the tool right away when requested by the LLM, 'post_tool_speech' waits for the agent to finish speaking before executing, 'async' runs the tool in the background without blocking - best for long-running operations. |
+| `tool_version` | str | **yes** | **required** | The version of the API integration tool |
 | `api_integration_id` | str | **yes** | **required** |  |
 | `api_integration_connection_id` | str | **yes** | **required** |  |
 | `api_schema_overrides` | Optional<[ApiIntegrationWebhookOverrides](#apiintegrationwebhookoverrides)> | no | `nil` | User overrides applied on top of the base api_schema |
@@ -1202,179 +1202,179 @@ Discriminated union on `type`. Variants:
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `left` | '[AstNodeInput](#astnodeinput)' | no | `nil` | Left operand of the binary operator. |
-| `right` | '[AstNodeInput](#astnodeinput)' | no | `nil` | Right operand of the binary operator. |
+| `left` | '[AstNodeInput](#astnodeinput)' | **yes** | **required** | Left operand of the binary operator. |
+| `right` | '[AstNodeInput](#astnodeinput)' | **yes** | **required** | Right operand of the binary operator. |
 
 ### AstAdditionOperatorNodeOutput
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `left` | '[AstNodeOutput](#astnodeoutput)' | no | `nil` | Left operand of the binary operator. |
-| `right` | '[AstNodeOutput](#astnodeoutput)' | no | `nil` | Right operand of the binary operator. |
+| `left` | '[AstNodeOutput](#astnodeoutput)' | **yes** | **required** | Left operand of the binary operator. |
+| `right` | '[AstNodeOutput](#astnodeoutput)' | **yes** | **required** | Right operand of the binary operator. |
 
 ### AstAndOperatorNodeInput
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `children` | Array<'[AstNodeInput](#astnodeinput)'> | no | `nil` | Child nodes of the logical operator. |
+| `children` | Array<'[AstNodeInput](#astnodeinput)'> | **yes** | **required** | Child nodes of the logical operator. |
 
 ### AstAndOperatorNodeOutput
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `children` | Array<'[AstNodeOutput](#astnodeoutput)'> | no | `nil` | Child nodes of the logical operator. |
+| `children` | Array<'[AstNodeOutput](#astnodeoutput)'> | **yes** | **required** | Child nodes of the logical operator. |
 
 ### AstBooleanNodeInput
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `value` | bool | no | `nil` | Value of this literal. |
+| `value` | bool | **yes** | **required** | Value of this literal. |
 
 ### AstBooleanNodeOutput
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `value` | bool | no | `nil` | Value of this literal. |
+| `value` | bool | **yes** | **required** | Value of this literal. |
 
 ### AstConditionalOperatorNodeInput
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `condition` | '[AstNodeInput](#astnodeinput)' | no | `nil` | Condition deciding which expression should be selected. |
-| `true_expression` | Annotated['[AstNodeInput](#astnodeinput)', FieldMetadata(alias='trueExpression')> | no | `nil` | Expression selected if the condition is true. |
-| `false_expression` | Annotated['[AstNodeInput](#astnodeinput)', FieldMetadata(alias='falseExpression')> | no | `nil` | Expression selected if the condition is false. |
+| `condition` | '[AstNodeInput](#astnodeinput)' | **yes** | **required** | Condition deciding which expression should be selected. |
+| `true_expression` | Annotated['[AstNodeInput](#astnodeinput)', FieldMetadata(alias='trueExpression')> | **yes** | **required** | Expression selected if the condition is true. |
+| `false_expression` | Annotated['[AstNodeInput](#astnodeinput)', FieldMetadata(alias='falseExpression')> | **yes** | **required** | Expression selected if the condition is false. |
 
 ### AstConditionalOperatorNodeOutput
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `condition` | '[AstNodeOutput](#astnodeoutput)' | no | `nil` | Condition deciding which expression should be selected. |
-| `true_expression` | Annotated['[AstNodeOutput](#astnodeoutput)', FieldMetadata(alias='trueExpression')> | no | `nil` | Expression selected if the condition is true. |
-| `false_expression` | Annotated['[AstNodeOutput](#astnodeoutput)', FieldMetadata(alias='falseExpression')> | no | `nil` | Expression selected if the condition is false. |
+| `condition` | '[AstNodeOutput](#astnodeoutput)' | **yes** | **required** | Condition deciding which expression should be selected. |
+| `true_expression` | Annotated['[AstNodeOutput](#astnodeoutput)', FieldMetadata(alias='trueExpression')> | **yes** | **required** | Expression selected if the condition is true. |
+| `false_expression` | Annotated['[AstNodeOutput](#astnodeoutput)', FieldMetadata(alias='falseExpression')> | **yes** | **required** | Expression selected if the condition is false. |
 
 ### AstDivisionOperatorNodeInput
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `left` | '[AstNodeInput](#astnodeinput)' | no | `nil` | Left operand of the binary operator. |
-| `right` | '[AstNodeInput](#astnodeinput)' | no | `nil` | Right operand of the binary operator. |
+| `left` | '[AstNodeInput](#astnodeinput)' | **yes** | **required** | Left operand of the binary operator. |
+| `right` | '[AstNodeInput](#astnodeinput)' | **yes** | **required** | Right operand of the binary operator. |
 
 ### AstDivisionOperatorNodeOutput
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `left` | '[AstNodeOutput](#astnodeoutput)' | no | `nil` | Left operand of the binary operator. |
-| `right` | '[AstNodeOutput](#astnodeoutput)' | no | `nil` | Right operand of the binary operator. |
+| `left` | '[AstNodeOutput](#astnodeoutput)' | **yes** | **required** | Left operand of the binary operator. |
+| `right` | '[AstNodeOutput](#astnodeoutput)' | **yes** | **required** | Right operand of the binary operator. |
 
 ### AstDynamicVariableNodeInput
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `name` | str | no | `nil` | The name of the dynamic variable. |
+| `name` | str | **yes** | **required** | The name of the dynamic variable. |
 
 ### AstDynamicVariableNodeOutput
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `name` | str | no | `nil` | The name of the dynamic variable. |
+| `name` | str | **yes** | **required** | The name of the dynamic variable. |
 
 ### AstEqualsOperatorNodeInput
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `left` | '[AstNodeInput](#astnodeinput)' | no | `nil` | Left operand of the binary operator. |
-| `right` | '[AstNodeInput](#astnodeinput)' | no | `nil` | Right operand of the binary operator. |
+| `left` | '[AstNodeInput](#astnodeinput)' | **yes** | **required** | Left operand of the binary operator. |
+| `right` | '[AstNodeInput](#astnodeinput)' | **yes** | **required** | Right operand of the binary operator. |
 
 ### AstEqualsOperatorNodeOutput
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `left` | '[AstNodeOutput](#astnodeoutput)' | no | `nil` | Left operand of the binary operator. |
-| `right` | '[AstNodeOutput](#astnodeoutput)' | no | `nil` | Right operand of the binary operator. |
+| `left` | '[AstNodeOutput](#astnodeoutput)' | **yes** | **required** | Left operand of the binary operator. |
+| `right` | '[AstNodeOutput](#astnodeoutput)' | **yes** | **required** | Right operand of the binary operator. |
 
 ### AstGreaterThanOperatorNodeInput
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `left` | '[AstNodeInput](#astnodeinput)' | no | `nil` | Left operand of the binary operator. |
-| `right` | '[AstNodeInput](#astnodeinput)' | no | `nil` | Right operand of the binary operator. |
+| `left` | '[AstNodeInput](#astnodeinput)' | **yes** | **required** | Left operand of the binary operator. |
+| `right` | '[AstNodeInput](#astnodeinput)' | **yes** | **required** | Right operand of the binary operator. |
 
 ### AstGreaterThanOperatorNodeOutput
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `left` | '[AstNodeOutput](#astnodeoutput)' | no | `nil` | Left operand of the binary operator. |
-| `right` | '[AstNodeOutput](#astnodeoutput)' | no | `nil` | Right operand of the binary operator. |
+| `left` | '[AstNodeOutput](#astnodeoutput)' | **yes** | **required** | Left operand of the binary operator. |
+| `right` | '[AstNodeOutput](#astnodeoutput)' | **yes** | **required** | Right operand of the binary operator. |
 
 ### AstGreaterThanOrEqualsOperatorNodeInput
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `left` | '[AstNodeInput](#astnodeinput)' | no | `nil` | Left operand of the binary operator. |
-| `right` | '[AstNodeInput](#astnodeinput)' | no | `nil` | Right operand of the binary operator. |
+| `left` | '[AstNodeInput](#astnodeinput)' | **yes** | **required** | Left operand of the binary operator. |
+| `right` | '[AstNodeInput](#astnodeinput)' | **yes** | **required** | Right operand of the binary operator. |
 
 ### AstGreaterThanOrEqualsOperatorNodeOutput
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `left` | '[AstNodeOutput](#astnodeoutput)' | no | `nil` | Left operand of the binary operator. |
-| `right` | '[AstNodeOutput](#astnodeoutput)' | no | `nil` | Right operand of the binary operator. |
+| `left` | '[AstNodeOutput](#astnodeoutput)' | **yes** | **required** | Left operand of the binary operator. |
+| `right` | '[AstNodeOutput](#astnodeoutput)' | **yes** | **required** | Right operand of the binary operator. |
 
 ### AstLessThanOperatorNodeInput
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `left` | '[AstNodeInput](#astnodeinput)' | no | `nil` | Left operand of the binary operator. |
-| `right` | '[AstNodeInput](#astnodeinput)' | no | `nil` | Right operand of the binary operator. |
+| `left` | '[AstNodeInput](#astnodeinput)' | **yes** | **required** | Left operand of the binary operator. |
+| `right` | '[AstNodeInput](#astnodeinput)' | **yes** | **required** | Right operand of the binary operator. |
 
 ### AstLessThanOperatorNodeOutput
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `left` | '[AstNodeOutput](#astnodeoutput)' | no | `nil` | Left operand of the binary operator. |
-| `right` | '[AstNodeOutput](#astnodeoutput)' | no | `nil` | Right operand of the binary operator. |
+| `left` | '[AstNodeOutput](#astnodeoutput)' | **yes** | **required** | Left operand of the binary operator. |
+| `right` | '[AstNodeOutput](#astnodeoutput)' | **yes** | **required** | Right operand of the binary operator. |
 
 ### AstLessThanOrEqualsOperatorNodeInput
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `left` | '[AstNodeInput](#astnodeinput)' | no | `nil` | Left operand of the binary operator. |
-| `right` | '[AstNodeInput](#astnodeinput)' | no | `nil` | Right operand of the binary operator. |
+| `left` | '[AstNodeInput](#astnodeinput)' | **yes** | **required** | Left operand of the binary operator. |
+| `right` | '[AstNodeInput](#astnodeinput)' | **yes** | **required** | Right operand of the binary operator. |
 
 ### AstLessThanOrEqualsOperatorNodeOutput
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `left` | '[AstNodeOutput](#astnodeoutput)' | no | `nil` | Left operand of the binary operator. |
-| `right` | '[AstNodeOutput](#astnodeoutput)' | no | `nil` | Right operand of the binary operator. |
+| `left` | '[AstNodeOutput](#astnodeoutput)' | **yes** | **required** | Left operand of the binary operator. |
+| `right` | '[AstNodeOutput](#astnodeoutput)' | **yes** | **required** | Right operand of the binary operator. |
 
 ### AstMultiplicationOperatorNodeInput
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `left` | '[AstNodeInput](#astnodeinput)' | no | `nil` | Left operand of the binary operator. |
-| `right` | '[AstNodeInput](#astnodeinput)' | no | `nil` | Right operand of the binary operator. |
+| `left` | '[AstNodeInput](#astnodeinput)' | **yes** | **required** | Left operand of the binary operator. |
+| `right` | '[AstNodeInput](#astnodeinput)' | **yes** | **required** | Right operand of the binary operator. |
 
 ### AstMultiplicationOperatorNodeOutput
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `left` | '[AstNodeOutput](#astnodeoutput)' | no | `nil` | Left operand of the binary operator. |
-| `right` | '[AstNodeOutput](#astnodeoutput)' | no | `nil` | Right operand of the binary operator. |
+| `left` | '[AstNodeOutput](#astnodeoutput)' | **yes** | **required** | Left operand of the binary operator. |
+| `right` | '[AstNodeOutput](#astnodeoutput)' | **yes** | **required** | Right operand of the binary operator. |
 
 ### AstNotEqualsOperatorNodeInput
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `left` | '[AstNodeInput](#astnodeinput)' | no | `nil` | Left operand of the binary operator. |
-| `right` | '[AstNodeInput](#astnodeinput)' | no | `nil` | Right operand of the binary operator. |
+| `left` | '[AstNodeInput](#astnodeinput)' | **yes** | **required** | Left operand of the binary operator. |
+| `right` | '[AstNodeInput](#astnodeinput)' | **yes** | **required** | Right operand of the binary operator. |
 
 ### AstNotEqualsOperatorNodeOutput
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `left` | '[AstNodeOutput](#astnodeoutput)' | no | `nil` | Left operand of the binary operator. |
-| `right` | '[AstNodeOutput](#astnodeoutput)' | no | `nil` | Right operand of the binary operator. |
+| `left` | '[AstNodeOutput](#astnodeoutput)' | **yes** | **required** | Left operand of the binary operator. |
+| `right` | '[AstNodeOutput](#astnodeoutput)' | **yes** | **required** | Right operand of the binary operator. |
 
 ### AstNullNodeInput
 
@@ -1388,72 +1388,72 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `value` | float | no | `nil` | Value of this literal. |
+| `value` | float | **yes** | **required** | Value of this literal. |
 
 ### AstNumberNodeOutput
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `value` | float | no | `nil` | Value of this literal. |
+| `value` | float | **yes** | **required** | Value of this literal. |
 
 ### AstOrOperatorNodeInput
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `children` | Array<'[AstNodeInput](#astnodeinput)'> | no | `nil` | Child nodes of the logical operator. |
+| `children` | Array<'[AstNodeInput](#astnodeinput)'> | **yes** | **required** | Child nodes of the logical operator. |
 
 ### AstOrOperatorNodeOutput
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `children` | Array<'[AstNodeOutput](#astnodeoutput)'> | no | `nil` | Child nodes of the logical operator. |
+| `children` | Array<'[AstNodeOutput](#astnodeoutput)'> | **yes** | **required** | Child nodes of the logical operator. |
 
 ### AstStringNodeInput
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `value` | str | no | `nil` | Value of this literal. |
+| `value` | str | **yes** | **required** | Value of this literal. |
 
 ### AstStringNodeOutput
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `value` | str | no | `nil` | Value of this literal. |
+| `value` | str | **yes** | **required** | Value of this literal. |
 
 ### AstSubtractionOperatorNodeInput
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `left` | '[AstNodeInput](#astnodeinput)' | no | `nil` | Left operand of the binary operator. |
-| `right` | '[AstNodeInput](#astnodeinput)' | no | `nil` | Right operand of the binary operator. |
+| `left` | '[AstNodeInput](#astnodeinput)' | **yes** | **required** | Left operand of the binary operator. |
+| `right` | '[AstNodeInput](#astnodeinput)' | **yes** | **required** | Right operand of the binary operator. |
 
 ### AstSubtractionOperatorNodeOutput
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `left` | '[AstNodeOutput](#astnodeoutput)' | no | `nil` | Left operand of the binary operator. |
-| `right` | '[AstNodeOutput](#astnodeoutput)' | no | `nil` | Right operand of the binary operator. |
+| `left` | '[AstNodeOutput](#astnodeoutput)' | **yes** | **required** | Left operand of the binary operator. |
+| `right` | '[AstNodeOutput](#astnodeoutput)' | **yes** | **required** | Right operand of the binary operator. |
 
 ### AstllmNodeInputPrompt
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `type` | Optional<Literal<'llm'>> | no | `nil` |  |
-| `prompt` | str | no | `nil` | The prompt to evaluate to a boolean value. Deprecated. Use a boolean schema instead. |
+| `prompt` | str | **yes** | **required** | The prompt to evaluate to a boolean value. Deprecated. Use a boolean schema instead. |
 
 ### AstllmNodeInputValueSchema
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `type` | Optional<Literal<'llm'>> | no | `nil` |  |
-| `value_schema` | [LlmLiteralJsonSchemaProperty](#llmliteraljsonschemaproperty) | no | `nil` | JSON schema describing the value that the LLM should extract. |
+| `value_schema` | [LlmLiteralJsonSchemaProperty](#llmliteraljsonschemaproperty) | **yes** | **required** | JSON schema describing the value that the LLM should extract. |
 
 ### AstllmNodeOutput
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `value_schema` | [LlmLiteralJsonSchemaProperty](#llmliteraljsonschemaproperty) | no | `nil` | JSON schema describing the value that the LLM should extract. |
-| `prompt` | str | no | `nil` | The prompt to evaluate to a boolean value. Deprecated. Use a boolean schema instead. |
+| `value_schema` | [LlmLiteralJsonSchemaProperty](#llmliteraljsonschemaproperty) | **yes** | **required** | JSON schema describing the value that the LLM should extract. |
+| `prompt` | str | **yes** | **required** | The prompt to evaluate to a boolean value. Deprecated. Use a boolean schema instead. |
 
 ### AsyncConversationMetadata
 
@@ -1507,30 +1507,30 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `project_id` | str | no | `nil` | The ID of the created Audio Native project. |
-| `converting` | bool | no | `nil` | Whether the project is currently being converted. |
-| `html_snippet` | str | no | `nil` | The HTML snippet to embed the Audio Native player. |
+| `project_id` | str | **yes** | **required** | The ID of the created Audio Native project. |
+| `converting` | bool | **yes** | **required** | Whether the project is currently being converted. |
+| `html_snippet` | str | **yes** | **required** | The HTML snippet to embed the Audio Native player. |
 
 ### AudioNativeEditContentResponseModel
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `project_id` | str | no | `nil` | The ID of the project. |
-| `converting` | bool | no | `nil` | Whether the project is currently being converted. |
-| `publishing` | bool | no | `nil` | Whether the project is currently being published. |
-| `html_snippet` | str | no | `nil` | The HTML snippet to embed the Audio Native player. |
+| `project_id` | str | **yes** | **required** | The ID of the project. |
+| `converting` | bool | **yes** | **required** | Whether the project is currently being converted. |
+| `publishing` | bool | **yes** | **required** | Whether the project is currently being published. |
+| `html_snippet` | str | **yes** | **required** | The HTML snippet to embed the Audio Native player. |
 
 ### AudioNativeProjectSettingsResponseModel
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `title` | str | no | `nil` | The title of the project. |
-| `image` | str | no | `nil` | The image of the project. |
-| `author` | str | no | `nil` | The author of the project. |
-| `small` | bool | no | `nil` | Whether the project is small. |
-| `text_color` | str | no | `nil` | The text color of the project. |
-| `background_color` | str | no | `nil` | The background color of the project. |
-| `sessionization` | int | no | `nil` | The sessionization of the project. Specifies for how many minutes to persist the session across page reloads. |
+| `title` | str | **yes** | **required** | The title of the project. |
+| `image` | str | **yes** | **required** | The image of the project. |
+| `author` | str | **yes** | **required** | The author of the project. |
+| `small` | bool | **yes** | **required** | Whether the project is small. |
+| `text_color` | str | **yes** | **required** | The text color of the project. |
+| `background_color` | str | **yes** | **required** | The background color of the project. |
+| `sessionization` | int | **yes** | **required** | The sessionization of the project. Specifies for how many minutes to persist the session across page reloads. |
 | `audio_path` | Optional<str> | no | `nil` | The path of the audio file. |
 | `audio_url` | Optional<str> | no | `nil` | The URL of the audio file. |
 | `status` | Optional<[AudioNativeProjectSettingsResponseModelStatus](#audionativeprojectsettingsresponsemodelstatus)> | no | `nil` | Current state of the project |
@@ -1539,7 +1539,7 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `audio` | str | no | `nil` | A generated partial audio chunk, encoded using the selected output_format, by default this     is MP3 encoded as a base64 string. |
+| `audio` | str | **yes** | **required** | A generated partial audio chunk, encoded using the selected output_format, by default this     is MP3 encoded as a base64 string. |
 | `normalized_alignment` | Annotated[Optional<[NormalizedAlignment](#normalizedalignment)>, FieldMetadata(alias='normalized[Alignment](#alignment)')> | no | `nil` |  |
 | `alignment` | Optional<[Alignment](#alignment)> | no | `nil` |  |
 
@@ -1547,7 +1547,7 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `audio` | str | no | `nil` | Base64 encoded audio chunk. |
+| `audio` | str | **yes** | **required** | Base64 encoded audio chunk. |
 | `normalized_alignment` | Annotated[Optional<[NormalizedAlignment](#normalizedalignment)>, FieldMetadata(alias='normalized[Alignment](#alignment)')> | no | `nil` |  |
 | `alignment` | Optional<[Alignment](#alignment)> | no | `nil` |  |
 | `context_id` | Annotated[Optional<str>, FieldMetadata(alias='contextId')> | no | `nil` | The contextId for which this audio is. |
@@ -1568,16 +1568,16 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `audio_base_64` | Annotated[str, FieldMetadata(alias='audio_base64')> | no | `nil` | Base64 encoded audio data |
+| `audio_base_64` | Annotated[str, FieldMetadata(alias='audio_base64')> | **yes** | **required** | Base64 encoded audio data |
 | `alignment` | Optional<[CharacterAlignmentResponseModel](#characteralignmentresponsemodel)> | no | `nil` | Timestamp information for each character in the original text |
 | `normalized_alignment` | Optional<[CharacterAlignmentResponseModel](#characteralignmentresponsemodel)> | no | `nil` | Timestamp information for each character in the normalized text |
-| `voice_segments` | Array<[VoiceSegment](#voicesegment)> | no | `nil` | Voice segments for the audio |
+| `voice_segments` | Array<[VoiceSegment](#voicesegment)> | **yes** | **required** | Voice segments for the audio |
 
 ### AudioWithTimestampsResponse
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `audio_base_64` | Annotated[str, FieldMetadata(alias='audio_base64')> | no | `nil` | Base64 encoded audio data |
+| `audio_base_64` | Annotated[str, FieldMetadata(alias='audio_base64')> | **yes** | **required** | Base64 encoded audio data |
 | `alignment` | Optional<[CharacterAlignmentResponseModel](#characteralignmentresponsemodel)> | no | `nil` | Timestamp information for each character in the original text |
 | `normalized_alignment` | Optional<[CharacterAlignmentResponseModel](#characteralignmentresponsemodel)> | no | `nil` | Timestamp information for each character in the normalized text |
 
@@ -1919,12 +1919,12 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `chapter_id` | str | no | `nil` | The ID of the chapter. |
-| `name` | str | no | `nil` | The name of the chapter. |
+| `chapter_id` | str | **yes** | **required** | The ID of the chapter. |
+| `name` | str | **yes** | **required** | The name of the chapter. |
 | `last_conversion_date_unix` | Optional<int> | no | `nil` | The last conversion date of the chapter. |
 | `conversion_progress` | Optional<float> | no | `nil` | The conversion progress of the chapter. |
-| `can_be_downloaded` | bool | no | `nil` | Whether the chapter can be downloaded. |
-| `state` | [ChapterState](#chapterstate) | no | `nil` | The state of the chapter. |
+| `can_be_downloaded` | bool | **yes** | **required** | Whether the chapter can be downloaded. |
+| `state` | [ChapterState](#chapterstate) | **yes** | **required** | The state of the chapter. |
 | `has_video` | Optional<bool> | no | `nil` | Whether the chapter has a video. |
 | `has_visual_content` | Optional<bool> | no | `nil` | Whether the chapter has any visual content (video, image, or text clips). |
 | `voice_ids` | Optional<Array<str>> | no | `nil` | List of voice ids used by the chapter |
@@ -1935,49 +1935,49 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `chapter_snapshot_id` | str | no | `nil` | The ID of the chapter snapshot. |
-| `project_id` | str | no | `nil` | The ID of the project. |
-| `chapter_id` | str | no | `nil` | The ID of the chapter. |
-| `created_at_unix` | int | no | `nil` | The creation date of the chapter snapshot. |
-| `name` | str | no | `nil` | The name of the chapter snapshot. |
+| `chapter_snapshot_id` | str | **yes** | **required** | The ID of the chapter snapshot. |
+| `project_id` | str | **yes** | **required** | The ID of the project. |
+| `chapter_id` | str | **yes** | **required** | The ID of the chapter. |
+| `created_at_unix` | int | **yes** | **required** | The creation date of the chapter snapshot. |
+| `name` | str | **yes** | **required** | The name of the chapter snapshot. |
 | `character_alignments` | Array<[CharacterAlignmentModel](#characteralignmentmodel)> | **yes** | **required** |  |
 
 ### ChapterSnapshotResponse
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `chapter_snapshot_id` | str | no | `nil` | The ID of the chapter snapshot. |
-| `project_id` | str | no | `nil` | The ID of the project. |
-| `chapter_id` | str | no | `nil` | The ID of the chapter. |
-| `created_at_unix` | int | no | `nil` | The creation date of the chapter snapshot. |
-| `name` | str | no | `nil` | The name of the chapter snapshot. |
+| `chapter_snapshot_id` | str | **yes** | **required** | The ID of the chapter snapshot. |
+| `project_id` | str | **yes** | **required** | The ID of the project. |
+| `chapter_id` | str | **yes** | **required** | The ID of the chapter. |
+| `created_at_unix` | int | **yes** | **required** | The creation date of the chapter snapshot. |
+| `name` | str | **yes** | **required** | The name of the chapter snapshot. |
 
 ### ChapterSnapshotsResponse
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `snapshots` | Array<[ChapterSnapshotResponse](#chaptersnapshotresponse)> | no | `nil` | List of chapter snapshots. |
+| `snapshots` | Array<[ChapterSnapshotResponse](#chaptersnapshotresponse)> | **yes** | **required** | List of chapter snapshots. |
 
 ### ChapterStatisticsResponse
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `characters_unconverted` | int | no | `nil` | The number of unconverted characters. |
-| `characters_converted` | int | no | `nil` | The number of converted characters. |
-| `paragraphs_converted` | int | no | `nil` | The number of converted paragraphs. |
-| `paragraphs_unconverted` | int | no | `nil` | The number of unconverted paragraphs. |
+| `characters_unconverted` | int | **yes** | **required** | The number of unconverted characters. |
+| `characters_converted` | int | **yes** | **required** | The number of converted characters. |
+| `paragraphs_converted` | int | **yes** | **required** | The number of converted paragraphs. |
+| `paragraphs_unconverted` | int | **yes** | **required** | The number of unconverted paragraphs. |
 | `voice_statistics` | Optional<Array<[VoiceStatisticsResponseModel](#voicestatisticsresponsemodel)>> | no | `nil` | Per-voice breakdown of character counts. |
 
 ### ChapterWithContentResponseModel
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `chapter_id` | str | no | `nil` | The ID of the chapter. |
-| `name` | str | no | `nil` | The name of the chapter. |
+| `chapter_id` | str | **yes** | **required** | The ID of the chapter. |
+| `name` | str | **yes** | **required** | The name of the chapter. |
 | `last_conversion_date_unix` | Optional<int> | no | `nil` | The last conversion date of the chapter. |
 | `conversion_progress` | Optional<float> | no | `nil` | The conversion progress of the chapter. |
-| `can_be_downloaded` | bool | no | `nil` | Whether the chapter can be downloaded. |
-| `state` | [ChapterWithContentResponseModelState](#chapterwithcontentresponsemodelstate) | no | `nil` | The state of the chapter. |
+| `can_be_downloaded` | bool | **yes** | **required** | Whether the chapter can be downloaded. |
+| `state` | [ChapterWithContentResponseModelState](#chapterwithcontentresponsemodelstate) | **yes** | **required** | The state of the chapter. |
 | `has_video` | Optional<bool> | no | `nil` | Whether the chapter has a video. |
 | `has_visual_content` | Optional<bool> | no | `nil` | Whether the chapter has any visual content (video, image, or text clips). |
 | `voice_ids` | Optional<Array<str>> | no | `nil` | List of voice ids used by the chapter |
@@ -2018,7 +2018,7 @@ _(no fields)_
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `name` | str | **yes** | **required** |  |
-| `description` | str | no | `nil` | Description of when the tool should be used and what it does. |
+| `description` | str | **yes** | **required** | Description of when the tool should be used and what it does. |
 | `response_timeout_secs` | Optional<int> | no | `nil` | The maximum time in seconds to wait for the tool call to complete. Must be between 1 and 120 seconds (inclusive). |
 | `disable_interruptions` | Optional<bool> | no | `nil` | If true, the user will not be able to interrupt the agent while this tool is running. |
 | `force_pre_tool_speech` | Optional<bool> | no | `nil` | If true, the agent will speak before the tool call. |
@@ -2036,7 +2036,7 @@ _(no fields)_
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `name` | str | **yes** | **required** |  |
-| `description` | str | no | `nil` | Description of when the tool should be used and what it does. |
+| `description` | str | **yes** | **required** | Description of when the tool should be used and what it does. |
 | `response_timeout_secs` | Optional<int> | no | `nil` | The maximum time in seconds to wait for the tool call to complete. Must be between 1 and 120 seconds (inclusive). |
 | `disable_interruptions` | Optional<bool> | no | `nil` | If true, the user will not be able to interrupt the agent while this tool is running. |
 | `force_pre_tool_speech` | Optional<bool> | no | `nil` | If true, the agent will speak before the tool call. |
@@ -2068,8 +2068,8 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `context_id` | str | no | `nil` | The context_id to close. |
-| `close_context` | bool | no | `nil` | Must set the close_context to true, to close the specified context. If false, the context will remain open and the text will be ignored. If set to true, the context will close. If it has already been set to flush it will continue flushing. The same context id can be used again but will not be linked to the previous context with the same name. |
+| `context_id` | str | **yes** | **required** | The context_id to close. |
+| `close_context` | bool | **yes** | **required** | Must set the close_context to true, to close the specified context. If false, the context will remain open and the text will be ignored. If set to true, the context will close. If it has already been set to flush it will continue flushing. The same context id can be used again but will not be linked to the previous context with the same name. |
 
 ### CloseSocket
 
@@ -2105,14 +2105,14 @@ _(no fields)_
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `message_type` | Literal<'committed_transcript'> | no | `'committed_transcript'` | The message type identifier. |
-| `text` | str | no | `nil` | Committed transcription text. |
+| `text` | str | **yes** | **required** | Committed transcription text. |
 
 ### CommittedTranscriptWithTimestampsPayload
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `message_type` | Literal<'committed_transcript_with_timestamps'> | no | `'committed_transcript_with_timestamps'` | The message type identifier. |
-| `text` | str | no | `nil` | Committed transcription text. |
+| `text` | str | **yes** | **required** | Committed transcription text. |
 | `language_code` | Optional<str> | no | `nil` | Detected or specified language code. |
 | `words` | Optional<Array<[TranscriptionWord](#transcriptionword)>> | no | `nil` | Word-level information with timestamps. |
 
@@ -2120,7 +2120,7 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `constant_value` | ConstantSchemaOverrideConstantValue | no | `nil` | The constant value to use |
+| `constant_value` | ConstantSchemaOverrideConstantValue | **yes** | **required** | The constant value to use |
 
 ### ContentConfig
 
@@ -2785,8 +2785,8 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `url` | str | no | `nil` | The URL to send the webhook to |
-| `request_headers` | Hash<str, ConversationInitiationClientDataWebhookRequestHeadersValue> | no | `nil` | The headers to send with the webhook request |
+| `url` | str | **yes** | **required** | The URL to send the webhook to |
+| `request_headers` | Hash<str, ConversationInitiationClientDataWebhookRequestHeadersValue> | **yes** | **required** | The headers to send with the webhook request |
 
 ### ConversationInitiationSourceInfo
 
@@ -2837,8 +2837,8 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `agent_id` | str | no | `nil` | The ID of the agent |
-| `conversation_token` | str | no | `nil` | The token for the agent |
+| `agent_id` | str | **yes** | **required** | The ID of the agent |
+| `conversation_token` | str | **yes** | **required** | The token for the agent |
 | `expiration_time_unix_secs` | Optional<int> | no | `nil` | The expiration time of the token in unix seconds |
 | `conversation_id` | Optional<str> | no | `nil` | The ID of the conversation |
 | `purpose` | Optional<[ConversationTokenPurpose](#conversationtokenpurpose)> | no | `nil` | The purpose of the token |
@@ -2905,26 +2905,26 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `status` | str | no | `nil` | The status of the studio chapter conversion request. If the request was successful, the status will be 'ok'. Otherwise an error message with status 500 will be returned. |
+| `status` | str | **yes** | **required** | The status of the studio chapter conversion request. If the request was successful, the status will be 'ok'. Otherwise an error message with status 500 will be returned. |
 
 ### ConvertProjectResponseModel
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `status` | str | no | `nil` | The status of the studio project conversion request. If the request was successful, the status will be 'ok'. Otherwise an error message with status 500 will be returned. |
+| `status` | str | **yes** | **required** | The status of the studio project conversion request. If the request was successful, the status will be 'ok'. Otherwise an error message with status 500 will be returned. |
 
 ### CreateAgentBranchResponseModel
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `created_branch_id` | str | no | `nil` | ID of the created branch |
-| `created_version_id` | str | no | `nil` | ID of the first version on the created branch |
+| `created_branch_id` | str | **yes** | **required** | ID of the created branch |
+| `created_version_id` | str | **yes** | **required** | ID of the first version on the created branch |
 
 ### CreateAgentResponseModel
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `agent_id` | str | no | `nil` | ID of the created agent |
+| `agent_id` | str | **yes** | **required** | ID of the created agent |
 
 ### CreateAgentRuleParams
 
@@ -2955,8 +2955,8 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `label` | str | no | `nil` | Unique label for the environment variable. |
-| `values` | Hash<str, [EnvironmentVariableAuthConnectionValueRequest](#environmentvariableauthconnectionvaluerequest)> | no | `nil` | Environment-specific auth connection references. Must include 'production' key. |
+| `label` | str | **yes** | **required** | Unique label for the environment variable. |
+| `values` | Hash<str, [EnvironmentVariableAuthConnectionValueRequest](#environmentvariableauthconnectionvaluerequest)> | **yes** | **required** | Environment-specific auth connection references. Must include 'production' key. |
 
 ### CreateBasicAuthRequest
 
@@ -2991,7 +2991,7 @@ _(no fields)_
 | --- | --- | --- | --- | --- |
 | `name` | str | **yes** | **required** |  |
 | `provider` | str | **yes** | **required** |  |
-| `header_name` | str | no | `nil` | The name of the header to use for authentication (e.g., 'x-api-key') |
+| `header_name` | str | **yes** | **required** | The name of the header to use for authentication (e.g., 'x-api-key') |
 | `token` | str | **yes** | **required** |  |
 
 ### CreateHolidayParams
@@ -3039,12 +3039,12 @@ _(no fields)_
 | `provider` | str | **yes** | **required** |  |
 | `algorithm` | Optional<[CreateOAuth2JwtRequestAlgorithm](#createoauth2jwtrequestalgorithm)> | no | `nil` | JWT signing algorithm |
 | `key_id` | Optional<str> | no | `nil` | Key ID (kid) for JWT header - useful for key rotation |
-| `issuer` | str | no | `nil` | JWT issuer (iss claim) |
-| `audience` | str | no | `nil` | JWT audience (aud claim) |
-| `subject` | str | no | `nil` | JWT subject (sub claim) |
+| `issuer` | str | **yes** | **required** | JWT issuer (iss claim) |
+| `audience` | str | **yes** | **required** | JWT audience (aud claim) |
+| `subject` | str | **yes** | **required** | JWT subject (sub claim) |
 | `expiration_seconds` | Optional<int> | no | `nil` | Token expiration time in seconds |
 | `extra_params` | Optional<Hash<str, str>> | no | `nil` | Additional custom claims to include in the JWT |
-| `token_url` | str | no | `nil` | Token endpoint URL for exchanging JWT for access token |
+| `token_url` | str | **yes** | **required** | Token endpoint URL for exchanging JWT for access token |
 | `scopes` | Optional<Array<str>> | no | `nil` | OAuth2 scopes to request when exchanging JWT for access token |
 | `secret_key` | str | **yes** | **required** |  |
 
@@ -3052,7 +3052,7 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `phone_number_id` | str | no | `nil` | Phone entity ID |
+| `phone_number_id` | str | **yes** | **required** | Phone entity ID |
 
 ### CreatePrivateKeyJwtRequest
 
@@ -3062,9 +3062,9 @@ _(no fields)_
 | `provider` | str | **yes** | **required** |  |
 | `algorithm` | Optional<[CreatePrivateKeyJwtRequestAlgorithm](#createprivatekeyjwtrequestalgorithm)> | no | `nil` | JWT signing algorithm |
 | `key_id` | Optional<str> | no | `nil` | Key ID (kid) for JWT header - useful for key rotation |
-| `issuer` | str | no | `nil` | JWT issuer (iss claim) |
-| `audience` | str | no | `nil` | JWT audience (aud claim) |
-| `subject` | str | no | `nil` | JWT subject (sub claim) |
+| `issuer` | str | **yes** | **required** | JWT issuer (iss claim) |
+| `audience` | str | **yes** | **required** | JWT audience (aud claim) |
+| `subject` | str | **yes** | **required** | JWT subject (sub claim) |
 | `expiration_seconds` | Optional<int> | no | `nil` | Token expiration time in seconds |
 | `extra_params` | Optional<Hash<str, str>> | no | `nil` | Additional custom claims to include in the JWT |
 | `secret_key` | str | **yes** | **required** |  |
@@ -3079,7 +3079,7 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `status` | str | no | `nil` | The status of the create pronunciation dictionary request. If the request was successful, the status will be 'ok'. Otherwise an error message with status 500 will be returned. |
+| `status` | str | **yes** | **required** | The status of the create pronunciation dictionary request. If the request was successful, the status will be 'ok'. Otherwise an error message with status 500 will be returned. |
 
 ### CreateRentalBookingParams
 
@@ -3110,8 +3110,8 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `label` | str | no | `nil` | Unique label for the environment variable. |
-| `values` | Hash<str, [EnvironmentVariableSecretValueRequest](#environmentvariablesecretvaluerequest)> | no | `nil` | Environment-specific secret references. Must include 'production' key. |
+| `label` | str | **yes** | **required** | Unique label for the environment variable. |
+| `values` | Hash<str, [EnvironmentVariableSecretValueRequest](#environmentvariablesecretvaluerequest)> | **yes** | **required** | Environment-specific secret references. Must include 'production' key. |
 
 ### CreateServiceParams
 
@@ -3138,8 +3138,8 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `phone_number` | str | no | `nil` | Phone number |
-| `label` | str | no | `nil` | Label for the phone number |
+| `phone_number` | str | **yes** | **required** | Phone number |
+| `label` | str | **yes** | **required** | Label for the phone number |
 | `supports_inbound` | Optional<bool> | no | `nil` | This field is deprecated and will be removed in the future. Whether this phone number supports inbound calls |
 | `supports_outbound` | Optional<bool> | no | `nil` | This field is deprecated and will be removed in the future. Whether this phone number supports outbound calls |
 | `inbound_trunk_config` | Optional<[InboundSipTrunkConfigRequestModel](#inboundsiptrunkconfigrequestmodel)> | no | `nil` |  |
@@ -3155,8 +3155,8 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `label` | str | no | `nil` | Unique label for the environment variable. |
-| `values` | Hash<str, str> | no | `nil` | Environment-specific values. Must include 'production' key. |
+| `label` | str | **yes** | **required** | Unique label for the environment variable. |
+| `values` | Hash<str, str> | **yes** | **required** | Environment-specific values. Must include 'production' key. |
 
 ### CreateToolCallUnitTestRequest
 
@@ -3174,12 +3174,12 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `phone_number` | str | no | `nil` | Phone number |
-| `label` | str | no | `nil` | Label for the phone number |
+| `phone_number` | str | **yes** | **required** | Phone number |
+| `label` | str | **yes** | **required** | Label for the phone number |
 | `supports_inbound` | Optional<bool> | no | `nil` | This field is deprecated and will be removed in the future. Whether this phone number supports inbound calls |
 | `supports_outbound` | Optional<bool> | no | `nil` | This field is deprecated and will be removed in the future. Whether this phone number supports outbound calls |
-| `sid` | str | no | `nil` | Twilio Account SID |
-| `token` | str | no | `nil` | Twilio Auth Token |
+| `sid` | str | **yes** | **required** | Twilio Account SID |
+| `token` | str | **yes** | **required** | Twilio Auth Token |
 | `region_config` | Optional<[RegionConfigRequest](#regionconfigrequest)> | no | `nil` | Twilio Additional Region Configuration |
 
 ### CustomGuardrailConfig
@@ -3187,8 +3187,8 @@ _(no fields)_
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `is_enabled` | Optional<bool> | no | `nil` |  |
-| `name` | str | no | `nil` | User-facing name for this guardrail |
-| `prompt` | str | no | `nil` | Instruction describing what to block, e.g. 'don't talk about politics' |
+| `name` | str | **yes** | **required** | User-facing name for this guardrail |
+| `prompt` | str | **yes** | **required** | Instruction describing what to block, e.g. 'don't talk about politics' |
 | `execution_mode` | Optional<[GuardrailExecutionMode](#guardrailexecutionmode)> | no | `nil` |  |
 | `trigger_action` | Optional<[CustomGuardrailConfigTriggerAction](#customguardrailconfigtriggeraction)> | no | `nil` |  |
 
@@ -3222,7 +3222,7 @@ _(no fields)_
 | --- | --- | --- | --- | --- |
 | `name` | str | **yes** | **required** |  |
 | `provider` | str | **yes** | **required** |  |
-| `header_name` | str | no | `nil` | The name of the header to use for authentication (e.g., 'x-api-key') |
+| `header_name` | str | **yes** | **required** | The name of the header to use for authentication (e.g., 'x-api-key') |
 | `id` | str | **yes** | **required** |  |
 | `used_by` | Optional<[AuthConnectionDependencies](#authconnectiondependencies)> | no | `nil` |  |
 
@@ -3230,7 +3230,7 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `url` | str | no | `nil` | The URL of the Chat Completions compatible endpoint |
+| `url` | str | **yes** | **required** | The URL of the Chat Completions compatible endpoint |
 | `model_id` | Optional<str> | no | `nil` | The model ID to be used if URL serves multiple models |
 | `api_key` | Optional<CustomLlmApiKey> | no | `nil` | The API key for authentication. Either a workspace secret reference {'secret_id': '...'} or an environment variable reference {'env_var_label': '...'}. |
 | `request_headers` | Optional<Hash<str, CustomLlmRequestHeadersValue>> | no | `nil` | Headers that should be included in the request |
@@ -3241,15 +3241,15 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `key` | str | no | `nil` | The SIP header name (e.g., 'X-Customer-ID') |
-| `value` | str | no | `nil` | The header value |
+| `key` | str | **yes** | **required** | The SIP header name (e.g., 'X-Customer-ID') |
+| `value` | str | **yes** | **required** | The header value |
 
 ### CustomSipHeaderWithDynamicVariable
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `key` | str | no | `nil` | The SIP header name (e.g., 'X-Customer-ID') |
-| `value` | str | no | `nil` | The dynamic variable name to resolve |
+| `key` | str | **yes** | **required** | The SIP header name (e.g., 'X-Customer-ID') |
+| `value` | str | **yes** | **required** | The dynamic variable name to resolve |
 
 ### DashboardCallSuccessChartModel
 
@@ -3284,8 +3284,8 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `group` | [WorkspaceGroupResponseModel](#workspacegroupresponsemodel) | no | `nil` | The group to share with by default |
-| `permission_level` | [DefaultSharingGroupResponseModelPermissionLevel](#defaultsharinggroupresponsemodelpermissionlevel) | no | `nil` | The permission level to grant to the group |
+| `group` | [WorkspaceGroupResponseModel](#workspacegroupresponsemodel) | **yes** | **required** | The group to share with by default |
+| `permission_level` | [DefaultSharingGroupResponseModelPermissionLevel](#defaultsharinggroupresponsemodelpermissionlevel) | **yes** | **required** | The permission level to grant to the group |
 
 ### DeleteAgentRuleParams
 
@@ -3309,7 +3309,7 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `status` | str | no | `nil` | The status of the studio chapter deletion request. If the request was successful, the status will be 'ok'. Otherwise an error message with status 500 will be returned. |
+| `status` | str | **yes** | **required** | The status of the studio chapter deletion request. If the request was successful, the status will be 'ok'. Otherwise an error message with status 500 will be returned. |
 
 ### DeleteClientInteractionParams
 
@@ -3327,13 +3327,13 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `status` | str | no | `nil` | The status of the dubbing project. If the request was successful, the status will be 'ok'. Otherwise an error message with status 500 will be returned. |
+| `status` | str | **yes** | **required** | The status of the dubbing project. If the request was successful, the status will be 'ok'. Otherwise an error message with status 500 will be returned. |
 
 ### DeleteHistoryItemResponse
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `status` | str | no | `nil` | The status of the deletion request. If the request was successful, the status will be 'ok'. Otherwise an error message with http code 500 will be returned. |
+| `status` | str | **yes** | **required** | The status of the deletion request. If the request was successful, the status will be 'ok'. Otherwise an error message with http code 500 will be returned. |
 
 ### DeleteHolidayParams
 
@@ -3357,7 +3357,7 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `status` | str | no | `nil` | The status of the studio project deletion request. If the request was successful, the status will be 'ok'. Otherwise an error message with status 500 will be returned. |
+| `status` | str | **yes** | **required** | The status of the studio project deletion request. If the request was successful, the status will be 'ok'. Otherwise an error message with status 500 will be returned. |
 
 ### DeleteRentalServiceParams
 
@@ -3369,7 +3369,7 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `status` | str | no | `nil` | The status of the sample deletion request. If the request was successful, the status will be 'ok'. Otherwise an error message with status 500 will be returned. |
+| `status` | str | **yes** | **required** | The status of the sample deletion request. If the request was successful, the status will be 'ok'. Otherwise an error message with status 500 will be returned. |
 
 ### DeleteServiceParams
 
@@ -3387,31 +3387,31 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `status` | str | no | `nil` | The status of the voice deletion request. If the request was successful, the status will be 'ok'. Otherwise an error message with status 500 will be returned. |
+| `status` | str | **yes** | **required** | The status of the voice deletion request. If the request was successful, the status will be 'ok'. Otherwise an error message with status 500 will be returned. |
 
 ### DeleteVoiceSampleResponseModel
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `status` | str | no | `nil` | The status of the voice sample deletion request. If the request was successful, the status will be 'ok'. Otherwise an error message with status 500 will be returned. |
+| `status` | str | **yes** | **required** | The status of the voice sample deletion request. If the request was successful, the status will be 'ok'. Otherwise an error message with status 500 will be returned. |
 
 ### DeleteWorkspaceGroupMemberResponseModel
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `status` | str | no | `nil` | The status of the workspace group member deletion request. If the request was successful, the status will be 'ok'. Otherwise an error message with status 500 will be returned. |
+| `status` | str | **yes** | **required** | The status of the workspace group member deletion request. If the request was successful, the status will be 'ok'. Otherwise an error message with status 500 will be returned. |
 
 ### DeleteWorkspaceInviteResponseModel
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `status` | str | no | `nil` | The status of the workspace invite deletion request. If the request was successful, the status will be 'ok'. Otherwise an error message with status 500 will be returned. |
+| `status` | str | **yes** | **required** | The status of the workspace invite deletion request. If the request was successful, the status will be 'ok'. Otherwise an error message with status 500 will be returned. |
 
 ### DeleteWorkspaceWebhookResponseModel
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `status` | str | no | `nil` | The status of the workspace webhook deletion request. If the request was successful, the status will be 'ok'. Otherwise an error message with status 500 will be returned. |
+| `status` | str | **yes** | **required** | The status of the workspace webhook deletion request. If the request was successful, the status will be 'ok'. Otherwise an error message with status 500 will be returned. |
 
 ### DependentAvailableAgentIdentifier
 
@@ -3490,33 +3490,33 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `composition_plan` | [MusicPrompt](#musicprompt) | no | `nil` | The composition plan used to generate the song |
-| `song_metadata` | [SongMetadata](#songmetadata) | no | `nil` | The metadata of the generated song |
+| `composition_plan` | [MusicPrompt](#musicprompt) | **yes** | **required** | The composition plan used to generate the song |
+| `song_metadata` | [SongMetadata](#songmetadata) | **yes** | **required** | The metadata of the generated song |
 | `words_timestamps` | Optional<Array<[WordTimestamp](#wordtimestamp)>> | no | `nil` | The timestamps of the words in the generated song |
 
 ### DetectedEntity
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `text` | str | no | `nil` | The text that was identified as an entity. |
-| `entity_type` | str | no | `nil` | The type of entity detected (e.g., 'credit_card', 'email_address', 'person_name'). |
-| `start_char` | int | no | `nil` | Start character position in the transcript text. |
-| `end_char` | int | no | `nil` | End character position in the transcript text. |
+| `text` | str | **yes** | **required** | The text that was identified as an entity. |
+| `entity_type` | str | **yes** | **required** | The type of entity detected (e.g., 'credit_card', 'email_address', 'person_name'). |
+| `start_char` | int | **yes** | **required** | Start character position in the transcript text. |
+| `end_char` | int | **yes** | **required** | End character position in the transcript text. |
 
 ### DialogueInput
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `text` | str | no | `nil` | The text to be converted into speech. |
-| `voice_id` | str | no | `nil` | The ID of the voice to be used for the generation. |
+| `text` | str | **yes** | **required** | The text to be converted into speech. |
+| `voice_id` | str | **yes** | **required** | The ID of the voice to be used for the generation. |
 
 ### DialogueInputResponseModel
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `text` | str | no | `nil` | The text of the dialogue input line. |
-| `voice_id` | str | no | `nil` | The ID of the voice used for this dialogue input line. |
-| `voice_name` | str | no | `nil` | The name of the voice used for this dialogue input line. |
+| `text` | str | **yes** | **required** | The text of the dialogue input line. |
+| `voice_id` | str | **yes** | **required** | The ID of the voice used for this dialogue input line. |
+| `voice_name` | str | **yes** | **required** | The name of the voice used for this dialogue input line. |
 
 ### DirectPublishingReadResponseModel
 
@@ -3584,8 +3584,8 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `dubbing_id` | str | no | `nil` | The ID of the dubbing project. |
-| `expected_duration_sec` | float | no | `nil` | The expected duration of the dubbing project in seconds. |
+| `dubbing_id` | str | **yes** | **required** | The ID of the dubbing project. |
+| `expected_duration_sec` | float | **yes** | **required** | The expected duration of the dubbing project in seconds. |
 
 ### DocxExportOptions
 
@@ -3619,8 +3619,8 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `content_type` | str | no | `nil` | The content type of the media. |
-| `duration` | float | no | `nil` | The duration of the media in seconds. |
+| `content_type` | str | **yes** | **required** | The content type of the media. |
+| `duration` | float | **yes** | **required** | The duration of the media in seconds. |
 
 ### DubbingMediaReference
 
@@ -3646,13 +3646,13 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `dubbing_id` | str | no | `nil` | The ID of the dubbing project. |
-| `name` | str | no | `nil` | The name of the dubbing project. |
-| `status` | str | no | `nil` | The state this dub is in. |
+| `dubbing_id` | str | **yes** | **required** | The ID of the dubbing project. |
+| `name` | str | **yes** | **required** | The name of the dubbing project. |
+| `status` | str | **yes** | **required** | The state this dub is in. |
 | `source_language` | Optional<str> | no | `nil` | Once dubbing has completed, the ISO-639-1 code of the original media's source language. |
-| `target_languages` | Array<str> | no | `nil` | The ISO-639-1 code of the languages this media has been dubbed into. |
+| `target_languages` | Array<str> | **yes** | **required** | The ISO-639-1 code of the languages this media has been dubbed into. |
 | `editable` | Optional<bool> | no | `nil` | Whether this dubbing project is editable in Dubbing Studio. |
-| `created_at` | dt.datetime | no | `nil` | Timestamp this dub was created. |
+| `created_at` | dt.datetime | **yes** | **required** | Timestamp this dub was created. |
 | `media_metadata` | Optional<[DubbingMediaMetadata](#dubbingmediametadata)> | no | `nil` | Metadata, such as the length in seconds and content type, of the dubbed content. |
 | `error` | Optional<str> | no | `nil` | Error message indicate, if this dub has failed, what happened. |
 
@@ -3734,8 +3734,8 @@ _(no fields)_
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `source` | Optional<Literal<'response'>> | no | `nil` | The source to extract the value from. Currently only 'response' is supported. |
-| `dynamic_variable` | str | no | `nil` | The name of the dynamic variable to assign the extracted value to |
-| `value_path` | str | no | `nil` | Dot notation path to extract the value from the source (e.g., 'user.name' or 'data.0.id') |
+| `dynamic_variable` | str | **yes** | **required** | The name of the dynamic variable to assign the extracted value to |
+| `value_path` | str | **yes** | **required** | Dot notation path to extract the value from the source (e.g., 'user.name' or 'data.0.id') |
 | `sanitize` | Optional<bool> | no | `nil` | If true, this assignment's value will be removed from the tool response before sending to the LLM and transcript, but still processed for variable assignment. |
 | `preserve_native_type` | Optional<bool> | no | `nil` | If true, non-scalar values (lists, objects) extracted from the tool response are stored as their native type instead of being stringified to JSON. Enable this to use extracted arrays directly as list dynamic variables. |
 
@@ -3743,7 +3743,7 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `dynamic_variable` | str | no | `nil` | The name of the dynamic variable to use |
+| `dynamic_variable` | str | **yes** | **required** | The name of the dynamic variable to use |
 
 ### DynamicVariableUpdateCommonModel
 
@@ -3796,13 +3796,13 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `status` | str | no | `nil` | The status of the voice edit request. If the request was successful, the status will be 'ok'. Otherwise an error message with status 500 will be returned. |
+| `status` | str | **yes** | **required** | The status of the voice edit request. If the request was successful, the status will be 'ok'. Otherwise an error message with status 500 will be returned. |
 
 ### EditVoiceSettingsResponseModel
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `status` | str | no | `nil` | The status of the voice settings edit request. If the request was successful, the status will be 'ok'. Otherwise an error message with status 500 will be returned. |
+| `status` | str | **yes** | **required** | The status of the voice settings edit request. If the request was successful, the status will be 'ok'. Otherwise an error message with status 500 will be returned. |
 
 ### EndCallToolConfig
 
@@ -3887,7 +3887,7 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `expected_value` | str | no | `nil` | The exact string value that the parameter must match. |
+| `expected_value` | str | **yes** | **required** | The exact string value that the parameter must match. |
 
 ### FeatureStatusCommonModel
 
@@ -3921,13 +3921,13 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `thumbs_up` | bool | no | `nil` | Whether the user liked the generated item. |
-| `feedback` | str | no | `nil` | The feedback text provided by the user. |
-| `emotions` | bool | no | `nil` | Whether the user provided emotions. |
-| `inaccurate_clone` | bool | no | `nil` | Whether the user thinks the clone is inaccurate. |
-| `glitches` | bool | no | `nil` | Whether the user thinks there are glitches in the audio. |
-| `audio_quality` | bool | no | `nil` | Whether the user thinks the audio quality is good. |
-| `other` | bool | no | `nil` | Whether the user provided other feedback. |
+| `thumbs_up` | bool | **yes** | **required** | Whether the user liked the generated item. |
+| `feedback` | str | **yes** | **required** | The feedback text provided by the user. |
+| `emotions` | bool | **yes** | **required** | Whether the user provided emotions. |
+| `inaccurate_clone` | bool | **yes** | **required** | Whether the user thinks the clone is inaccurate. |
+| `glitches` | bool | **yes** | **required** | Whether the user thinks there are glitches in the audio. |
+| `audio_quality` | bool | **yes** | **required** | Whether the user thinks the audio quality is good. |
+| `other` | bool | **yes** | **required** | Whether the user provided other feedback. |
 | `review_status` | Optional<str> | no | `nil` | The review status of the item. Defaults to 'not_reviewed'. |
 
 ### FileInputConfig
@@ -3981,9 +3981,9 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `context_id` | str | no | `nil` | The context_id to flush. |
+| `context_id` | str | **yes** | **required** | The context_id to flush. |
 | `text` | Optional<str> | no | `nil` | The text to append to the buffer to be flushed. |
-| `flush` | bool | no | `nil` | If true, flushes the audio buffer for the specified context. If false, the context will remain open and the text will be appended to the buffer to be generated. |
+| `flush` | bool | **yes** | **required** | If true, flushes the audio buffer for the specified context. If false, the context will remain open and the text will be appended to the buffer to be generated. |
 
 ### FocusGuardrail
 
@@ -3995,26 +3995,26 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `text` | str | no | `nil` | The character that was transcribed. |
-| `start` | float | no | `nil` | The start time of the character in seconds. |
-| `end` | float | no | `nil` | The end time of the character in seconds. |
+| `text` | str | **yes** | **required** | The character that was transcribed. |
+| `start` | float | **yes** | **required** | The start time of the character in seconds. |
+| `end` | float | **yes** | **required** | The end time of the character in seconds. |
 
 ### ForcedAlignmentResponseModel
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `characters` | Array<[ForcedAlignmentCharacterResponseModel](#forcedalignmentcharacterresponsemodel)> | no | `nil` | List of characters with their timing information. |
-| `words` | Array<[ForcedAlignmentWordResponseModel](#forcedalignmentwordresponsemodel)> | no | `nil` | List of words with their timing information. |
-| `loss` | float | no | `nil` | The average alignment loss/confidence score for the entire transcript, calculated from all characters. |
+| `characters` | Array<[ForcedAlignmentCharacterResponseModel](#forcedalignmentcharacterresponsemodel)> | **yes** | **required** | List of characters with their timing information. |
+| `words` | Array<[ForcedAlignmentWordResponseModel](#forcedalignmentwordresponsemodel)> | **yes** | **required** | List of words with their timing information. |
+| `loss` | float | **yes** | **required** | The average alignment loss/confidence score for the entire transcript, calculated from all characters. |
 
 ### ForcedAlignmentWordResponseModel
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `text` | str | no | `nil` | The word that was transcribed. |
-| `start` | float | no | `nil` | The start time of the word in seconds. |
-| `end` | float | no | `nil` | The end time of the word in seconds. |
-| `loss` | float | no | `nil` | The average alignment loss/confidence score for this word, calculated from its constituent characters. |
+| `text` | str | **yes** | **required** | The word that was transcribed. |
+| `start` | float | **yes** | **required** | The start time of the word in seconds. |
+| `end` | float | **yes** | **required** | The end time of the word in seconds. |
+| `loss` | float | **yes** | **required** | The average alignment loss/confidence score for this word, calculated from its constituent characters. |
 
 ### GenerationConfig
 
@@ -4054,17 +4054,17 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `agent_id` | str | no | `nil` | The ID of the agent |
+| `agent_id` | str | **yes** | **required** | The ID of the agent |
 | `token` | Optional<[ConversationTokenDbModel](#conversationtokendbmodel)> | no | `nil` | The token data for the agent |
 
 ### GetAgentResponseModel
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `agent_id` | str | no | `nil` | The ID of the agent |
-| `name` | str | no | `nil` | The name of the agent |
-| `conversation_config` | [ConversationalConfig](#conversationalconfig) | no | `nil` | The conversation configuration of the agent |
-| `metadata` | [AgentMetadataResponseModel](#agentmetadataresponsemodel) | no | `nil` | The metadata of the agent |
+| `agent_id` | str | **yes** | **required** | The ID of the agent |
+| `name` | str | **yes** | **required** | The name of the agent |
+| `conversation_config` | [ConversationalConfig](#conversationalconfig) | **yes** | **required** | The conversation configuration of the agent |
+| `metadata` | [AgentMetadataResponseModel](#agentmetadataresponsemodel) | **yes** | **required** | The metadata of the agent |
 | `platform_settings` | Optional<[AgentPlatformSettingsResponseModel](#agentplatformsettingsresponsemodel)> | no | `nil` | The platform settings of the agent |
 | `phone_numbers` | Optional<Array<[GetAgentResponseModelPhoneNumbersItem](#getagentresponsemodelphonenumbersitem)>> | no | `nil` | The phone numbers of the agent |
 | `whatsapp_accounts` | Optional<Array<[GetWhatsAppAccountResponse](#getwhatsappaccountresponse)>> | no | `nil` | WhatsApp accounts assigned to the agent |
@@ -4096,9 +4096,9 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `agents` | Array<[AgentSummaryResponseModel](#agentsummaryresponsemodel)> | no | `nil` | A list of agents and their metadata |
+| `agents` | Array<[AgentSummaryResponseModel](#agentsummaryresponsemodel)> | **yes** | **required** | A list of agents and their metadata |
 | `next_cursor` | Optional<str> | no | `nil` | The next cursor to paginate through the agents |
-| `has_more` | bool | no | `nil` | Whether there are more agents to paginate through |
+| `has_more` | bool | **yes** | **required** | Whether there are more agents to paginate through |
 
 ### GetAnalyticsSummaryParams
 
@@ -4110,7 +4110,7 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `enabled` | bool | no | `nil` | Whether the project is enabled. |
+| `enabled` | bool | **yes** | **required** | Whether the project is enabled. |
 | `snapshot_id` | Optional<str> | no | `nil` | The ID of the latest snapshot of the project. |
 | `settings` | Optional<[AudioNativeProjectSettingsResponseModel](#audionativeprojectsettingsresponsemodel)> | no | `nil` | The settings of the project. |
 
@@ -4254,7 +4254,7 @@ _(no fields)_
 | `access_info` | [ResourceAccessInfo](#resourceaccessinfo) | **yes** | **required** |  |
 | `folder_parent_id` | Optional<str> | no | `nil` | The ID of the parent folder, or null if the document is at the root level. |
 | `folder_path` | Optional<Array<[KnowledgeBaseFolderPathSegmentSummaryResponseModel](#knowledgebasefolderpathsegmentsummaryresponsemodel)>> | no | `nil` | The folder path segments leading to this entity, from root to parent folder. |
-| `dependent_agents` | Array<[GetKnowledgeBaseSummaryFileResponseModelDependentAgentsItem](#getknowledgebasesummaryfileresponsemodeldependentagentsitem)> | no | `nil` | This field is deprecated and will be removed in the future, use the separate endpoint to get dependent agents instead. |
+| `dependent_agents` | Array<[GetKnowledgeBaseSummaryFileResponseModelDependentAgentsItem](#getknowledgebasesummaryfileresponsemodeldependentagentsitem)> | **yes** | **required** | This field is deprecated and will be removed in the future, use the separate endpoint to get dependent agents instead. |
 
 ### GetKnowledgeBaseSummaryFolderResponseModel
 
@@ -4267,7 +4267,7 @@ _(no fields)_
 | `access_info` | [ResourceAccessInfo](#resourceaccessinfo) | **yes** | **required** |  |
 | `folder_parent_id` | Optional<str> | no | `nil` | The ID of the parent folder, or null if the document is at the root level. |
 | `folder_path` | Optional<Array<[KnowledgeBaseFolderPathSegmentSummaryResponseModel](#knowledgebasefolderpathsegmentsummaryresponsemodel)>> | no | `nil` | The folder path segments leading to this entity, from root to parent folder. |
-| `dependent_agents` | Array<[GetKnowledgeBaseSummaryFolderResponseModelDependentAgentsItem](#getknowledgebasesummaryfolderresponsemodeldependentagentsitem)> | no | `nil` | This field is deprecated and will be removed in the future, use the separate endpoint to get dependent agents instead. |
+| `dependent_agents` | Array<[GetKnowledgeBaseSummaryFolderResponseModelDependentAgentsItem](#getknowledgebasesummaryfolderresponsemodeldependentagentsitem)> | **yes** | **required** | This field is deprecated and will be removed in the future, use the separate endpoint to get dependent agents instead. |
 | `children_count` | int | **yes** | **required** |  |
 | `auto_sync_info` | Optional<[AutoSyncInfo](#autosyncinfo)> | no | `nil` |  |
 
@@ -4282,7 +4282,7 @@ _(no fields)_
 | `access_info` | [ResourceAccessInfo](#resourceaccessinfo) | **yes** | **required** |  |
 | `folder_parent_id` | Optional<str> | no | `nil` | The ID of the parent folder, or null if the document is at the root level. |
 | `folder_path` | Optional<Array<[KnowledgeBaseFolderPathSegmentSummaryResponseModel](#knowledgebasefolderpathsegmentsummaryresponsemodel)>> | no | `nil` | The folder path segments leading to this entity, from root to parent folder. |
-| `dependent_agents` | Array<[GetKnowledgeBaseSummaryTextResponseModelDependentAgentsItem](#getknowledgebasesummarytextresponsemodeldependentagentsitem)> | no | `nil` | This field is deprecated and will be removed in the future, use the separate endpoint to get dependent agents instead. |
+| `dependent_agents` | Array<[GetKnowledgeBaseSummaryTextResponseModelDependentAgentsItem](#getknowledgebasesummarytextresponsemodeldependentagentsitem)> | **yes** | **required** | This field is deprecated and will be removed in the future, use the separate endpoint to get dependent agents instead. |
 
 ### GetKnowledgeBaseSummaryUrlResponseModel
 
@@ -4295,7 +4295,7 @@ _(no fields)_
 | `access_info` | [ResourceAccessInfo](#resourceaccessinfo) | **yes** | **required** |  |
 | `folder_parent_id` | Optional<str> | no | `nil` | The ID of the parent folder, or null if the document is at the root level. |
 | `folder_path` | Optional<Array<[KnowledgeBaseFolderPathSegmentSummaryResponseModel](#knowledgebasefolderpathsegmentsummaryresponsemodel)>> | no | `nil` | The folder path segments leading to this entity, from root to parent folder. |
-| `dependent_agents` | Array<[GetKnowledgeBaseSummaryUrlResponseModelDependentAgentsItem](#getknowledgebasesummaryurlresponsemodeldependentagentsitem)> | no | `nil` | This field is deprecated and will be removed in the future, use the separate endpoint to get dependent agents instead. |
+| `dependent_agents` | Array<[GetKnowledgeBaseSummaryUrlResponseModelDependentAgentsItem](#getknowledgebasesummaryurlresponsemodeldependentagentsitem)> | **yes** | **required** | This field is deprecated and will be removed in the future, use the separate endpoint to get dependent agents instead. |
 | `url` | str | **yes** | **required** |  |
 | `auto_sync_info` | Optional<[AutoSyncInfo](#autosyncinfo)> | no | `nil` |  |
 
@@ -4331,8 +4331,8 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `voices` | Array<[LibraryVoiceResponse](#libraryvoiceresponse)> | no | `nil` | The list of shared voices |
-| `has_more` | bool | no | `nil` | Whether there are more shared voices in subsequent pages. |
+| `voices` | Array<[LibraryVoiceResponse](#libraryvoiceresponse)> | **yes** | **required** | The list of shared voices |
+| `has_more` | bool | **yes** | **required** | Whether there are more shared voices in subsequent pages. |
 | `total_count` | Optional<int> | no | `nil` | The total number of shared voices matching the query. |
 | `last_sort_id` | Optional<str> | no | `nil` |  |
 
@@ -4340,24 +4340,24 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `count` | int | no | `nil` | The number of active ongoing conversations. |
+| `count` | int | **yes** | **required** | The number of active ongoing conversations. |
 
 ### GetOrCreateRagIndexRequestModel
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `document_id` | str | no | `nil` | ID of the knowledgebase document for which to retrieve the index |
-| `create_if_missing` | bool | no | `nil` | Whether to create the RAG index if it does not exist |
-| `model` | [EmbeddingModelEnum](#embeddingmodelenum) | no | `nil` | Embedding model to use for the RAG index |
+| `document_id` | str | **yes** | **required** | ID of the knowledgebase document for which to retrieve the index |
+| `create_if_missing` | bool | **yes** | **required** | Whether to create the RAG index if it does not exist |
+| `model` | [EmbeddingModelEnum](#embeddingmodelenum) | **yes** | **required** | Embedding model to use for the RAG index |
 
 ### GetPhoneNumberInboundSipTrunkConfigResponseModel
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `allowed_addresses` | Array<str> | no | `nil` | List of IP addresses that are allowed to use the trunk. Each item in the list can be an individual IP address or a Classless Inter-Domain Routing notation representing a CIDR block. |
+| `allowed_addresses` | Array<str> | **yes** | **required** | List of IP addresses that are allowed to use the trunk. Each item in the list can be an individual IP address or a Classless Inter-Domain Routing notation representing a CIDR block. |
 | `allowed_numbers` | Optional<Array<str>> | no | `nil` | List of phone numbers that are allowed to use the trunk. |
 | `media_encryption` | [SipMediaEncryptionEnum](#sipmediaencryptionenum) | **yes** | **required** |  |
-| `has_auth_credentials` | bool | no | `nil` | Whether authentication credentials are configured |
+| `has_auth_credentials` | bool | **yes** | **required** | Whether authentication credentials are configured |
 | `username` | Optional<str> | no | `nil` | SIP trunk username (if available) |
 | `remote_domains` | Optional<Array<str>> | no | `nil` | Domains of remote SIP servers used to validate TLS certificates. |
 
@@ -4365,11 +4365,11 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `address` | str | no | `nil` | Hostname or IP the SIP INVITE is sent to |
-| `transport` | [SipTrunkTransportEnum](#siptrunktransportenum) | no | `nil` | Protocol to use for SIP transport |
-| `media_encryption` | [SipMediaEncryptionEnum](#sipmediaencryptionenum) | no | `nil` | Whether or not to encrypt media (data layer). |
+| `address` | str | **yes** | **required** | Hostname or IP the SIP INVITE is sent to |
+| `transport` | [SipTrunkTransportEnum](#siptrunktransportenum) | **yes** | **required** | Protocol to use for SIP transport |
+| `media_encryption` | [SipMediaEncryptionEnum](#sipmediaencryptionenum) | **yes** | **required** | Whether or not to encrypt media (data layer). |
 | `headers` | Optional<Hash<str, str>> | no | `nil` | SIP headers for INVITE request |
-| `has_auth_credentials` | bool | no | `nil` | Whether authentication credentials are configured |
+| `has_auth_credentials` | bool | **yes** | **required** | Whether authentication credentials are configured |
 | `username` | Optional<str> | no | `nil` | SIP trunk username (if available) |
 | `has_outbound_trunk` | Optional<bool> | no | `nil` | Whether a LiveKit SIP outbound trunk is configured |
 
@@ -4377,53 +4377,53 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `phone_number` | str | no | `nil` | Phone number |
-| `label` | str | no | `nil` | Label for the phone number |
+| `phone_number` | str | **yes** | **required** | Phone number |
+| `label` | str | **yes** | **required** | Label for the phone number |
 | `supports_inbound` | Optional<bool> | no | `nil` | This field is deprecated and will be removed in the future. Whether this phone number supports inbound calls |
 | `supports_outbound` | Optional<bool> | no | `nil` | This field is deprecated and will be removed in the future. Whether this phone number supports outbound calls |
-| `phone_number_id` | str | no | `nil` | The ID of the phone number |
+| `phone_number_id` | str | **yes** | **required** | The ID of the phone number |
 | `assigned_agent` | Optional<[PhoneNumberAgentInfo](#phonenumberagentinfo)> | no | `nil` | The agent that is assigned to the phone number |
 | `provider_config` | Optional<[GetPhoneNumberOutboundSipTrunkConfigResponseModel](#getphonenumberoutboundsiptrunkconfigresponsemodel)> | no | `nil` |  |
 | `outbound_trunk` | Optional<[GetPhoneNumberOutboundSipTrunkConfigResponseModel](#getphonenumberoutboundsiptrunkconfigresponsemodel)> | no | `nil` | Configuration of the Outbound SIP trunk - if configured. |
 | `inbound_trunk` | Optional<[GetPhoneNumberInboundSipTrunkConfigResponseModel](#getphonenumberinboundsiptrunkconfigresponsemodel)> | no | `nil` | Configuration of the Inbound SIP trunk - if configured. |
-| `livekit_stack` | [LivekitStackType](#livekitstacktype) | no | `nil` | Type of Livekit stack used for this number. |
+| `livekit_stack` | [LivekitStackType](#livekitstacktype) | **yes** | **required** | Type of Livekit stack used for this number. |
 
 ### GetPhoneNumberTwilioResponseModel
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `phone_number` | str | no | `nil` | Phone number |
-| `label` | str | no | `nil` | Label for the phone number |
+| `phone_number` | str | **yes** | **required** | Phone number |
+| `label` | str | **yes** | **required** | Label for the phone number |
 | `supports_inbound` | Optional<bool> | no | `nil` | This field is deprecated and will be removed in the future. Whether this phone number supports inbound calls |
 | `supports_outbound` | Optional<bool> | no | `nil` | This field is deprecated and will be removed in the future. Whether this phone number supports outbound calls |
-| `phone_number_id` | str | no | `nil` | The ID of the phone number |
+| `phone_number_id` | str | **yes** | **required** | The ID of the phone number |
 | `assigned_agent` | Optional<[PhoneNumberAgentInfo](#phonenumberagentinfo)> | no | `nil` | The agent that is assigned to the phone number |
 
 ### GetProjectsResponse
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `projects` | Array<[ProjectResponse](#projectresponse)> | no | `nil` | A list of projects with their metadata. |
+| `projects` | Array<[ProjectResponse](#projectresponse)> | **yes** | **required** | A list of projects with their metadata. |
 
 ### GetPronunciationDictionariesMetadataResponseModel
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `pronunciation_dictionaries` | Array<[GetPronunciationDictionaryMetadataResponse](#getpronunciationdictionarymetadataresponse)> | no | `nil` | A list of pronunciation dictionaries and their metadata. |
+| `pronunciation_dictionaries` | Array<[GetPronunciationDictionaryMetadataResponse](#getpronunciationdictionarymetadataresponse)> | **yes** | **required** | A list of pronunciation dictionaries and their metadata. |
 | `next_cursor` | Optional<str> | no | `nil` | The next cursor to use for pagination. |
-| `has_more` | bool | no | `nil` | Whether there are more pronunciation dictionaries to fetch. |
+| `has_more` | bool | **yes** | **required** | Whether there are more pronunciation dictionaries to fetch. |
 
 ### GetPronunciationDictionaryMetadataResponse
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `id` | str | no | `nil` | The ID of the pronunciation dictionary. |
-| `latest_version_id` | str | no | `nil` | The ID of the latest version of the pronunciation dictionary. |
-| `latest_version_rules_num` | int | no | `nil` | The number of rules in the latest version of the pronunciation dictionary. |
-| `name` | str | no | `nil` | The name of the pronunciation dictionary. |
+| `id` | str | **yes** | **required** | The ID of the pronunciation dictionary. |
+| `latest_version_id` | str | **yes** | **required** | The ID of the latest version of the pronunciation dictionary. |
+| `latest_version_rules_num` | int | **yes** | **required** | The number of rules in the latest version of the pronunciation dictionary. |
+| `name` | str | **yes** | **required** | The name of the pronunciation dictionary. |
 | `permission_on_resource` | Optional<[GetPronunciationDictionaryMetadataResponseModelPermissionOnResource](#getpronunciationdictionarymetadataresponsemodelpermissiononresource)> | no | `nil` | The permission on the resource of the pronunciation dictionary. |
-| `created_by` | str | no | `nil` | The user ID of the creator of the pronunciation dictionary. |
-| `creation_time_unix` | int | no | `nil` | The creation time of the pronunciation dictionary in Unix timestamp. |
+| `created_by` | str | **yes** | **required** | The user ID of the creator of the pronunciation dictionary. |
+| `creation_time_unix` | int | **yes** | **required** | The creation time of the pronunciation dictionary in Unix timestamp. |
 | `archived_time_unix` | Optional<int> | no | `nil` | The archive time of the pronunciation dictionary in Unix timestamp. |
 | `description` | Optional<str> | no | `nil` | The description of the pronunciation dictionary. |
 
@@ -4431,16 +4431,16 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `id` | str | no | `nil` | The ID of the pronunciation dictionary. |
-| `latest_version_id` | str | no | `nil` | The ID of the latest version of the pronunciation dictionary. |
-| `latest_version_rules_num` | int | no | `nil` | The number of rules in the latest version of the pronunciation dictionary. |
-| `name` | str | no | `nil` | The name of the pronunciation dictionary. |
+| `id` | str | **yes** | **required** | The ID of the pronunciation dictionary. |
+| `latest_version_id` | str | **yes** | **required** | The ID of the latest version of the pronunciation dictionary. |
+| `latest_version_rules_num` | int | **yes** | **required** | The number of rules in the latest version of the pronunciation dictionary. |
+| `name` | str | **yes** | **required** | The name of the pronunciation dictionary. |
 | `permission_on_resource` | Optional<[GetPronunciationDictionaryWithRulesResponseModelPermissionOnResource](#getpronunciationdictionarywithrulesresponsemodelpermissiononresource)> | no | `nil` | The permission on the resource of the pronunciation dictionary. |
-| `created_by` | str | no | `nil` | The user ID of the creator of the pronunciation dictionary. |
-| `creation_time_unix` | int | no | `nil` | The creation time of the pronunciation dictionary in Unix timestamp. |
+| `created_by` | str | **yes** | **required** | The user ID of the creator of the pronunciation dictionary. |
+| `creation_time_unix` | int | **yes** | **required** | The creation time of the pronunciation dictionary in Unix timestamp. |
 | `archived_time_unix` | Optional<int> | no | `nil` | The archive time of the pronunciation dictionary in Unix timestamp. |
 | `description` | Optional<str> | no | `nil` | The description of the pronunciation dictionary. |
-| `rules` | Array<[GetPronunciationDictionaryWithRulesResponseModelRulesItem](#getpronunciationdictionarywithrulesresponsemodelrulesitem)> | no | `nil` | The rules in the latest version of the pronunciation dictionary. |
+| `rules` | Array<[GetPronunciationDictionaryWithRulesResponseModelRulesItem](#getpronunciationdictionarywithrulesresponsemodelrulesitem)> | **yes** | **required** | The rules in the latest version of the pronunciation dictionary. |
 
 ### GetResponseUnitTestResponseModel
 
@@ -4488,9 +4488,9 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `history` | Array<[SpeechHistoryItemResponse](#speechhistoryitemresponse)> | no | `nil` | A list of speech history items. |
+| `history` | Array<[SpeechHistoryItemResponse](#speechhistoryitemresponse)> | **yes** | **required** | A list of speech history items. |
 | `last_history_item_id` | Optional<str> | no | `nil` | The ID of the last history item. |
-| `has_more` | bool | no | `nil` | Whether there are more history items to fetch. |
+| `has_more` | bool | **yes** | **required** | Whether there are more history items to fetch. |
 | `scanned_until` | Optional<int> | no | `nil` | The timestamp of the last history item. |
 
 ### GetTestInvocationsPageResponseModel
@@ -4500,7 +4500,7 @@ _(no fields)_
 | `meta` | Optional<[ListResponseMeta](#listresponsemeta)> | no | `nil` |  |
 | `results` | Array<[TestInvocationSummaryResponseModel](#testinvocationsummaryresponsemodel)> | **yes** | **required** |  |
 | `next_cursor` | Optional<str> | no | `nil` | Cursor for the next page of results |
-| `has_more` | bool | no | `nil` | Whether there are more results available |
+| `has_more` | bool | **yes** | **required** | Whether there are more results available |
 
 ### GetTestSuiteInvocationResponseModel
 
@@ -4525,7 +4525,7 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `tests` | Hash<str, [UnitTestSummaryResponseModel](#unittestsummaryresponsemodel)> | no | `nil` | Dictionary mapping test IDs to their summary information |
+| `tests` | Hash<str, [UnitTestSummaryResponseModel](#unittestsummaryresponsemodel)> | **yes** | **required** | Dictionary mapping test IDs to their summary information |
 
 ### GetToolCallUnitTestResponseModel
 
@@ -4560,15 +4560,15 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `voices` | Array<[Voice](#voice)> | no | `nil` | A list of available voices. |
+| `voices` | Array<[Voice](#voice)> | **yes** | **required** | A list of available voices. |
 
 ### GetVoicesV2Response
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `voices` | Array<[Voice](#voice)> | no | `nil` | The list of voices matching the query. |
-| `has_more` | bool | no | `nil` | Indicates whether there are more voices available in subsequent pages. Use this flag (and next_page_token) for reliable pagination instead of relying on total_count. |
-| `total_count` | int | no | `nil` | The total count of voices matching the query. This value is a live snapshot that reflects the current state of the database and may change between requests as users create, modify, or delete voices. For reliable pagination, use the has_more flag instead of relying on this value. Only request this field when you actually need the total count (e.g., for display purposes), as calculating it incurs a performance cost. |
+| `voices` | Array<[Voice](#voice)> | **yes** | **required** | The list of voices matching the query. |
+| `has_more` | bool | **yes** | **required** | Indicates whether there are more voices available in subsequent pages. Use this flag (and next_page_token) for reliable pagination instead of relying on total_count. |
+| `total_count` | int | **yes** | **required** | The total count of voices matching the query. This value is a live snapshot that reflects the current state of the database and may change between requests as users create, modify, or delete voices. For reliable pagination, use the has_more flag instead of relying on this value. Only request this field when you actually need the total count (e.g., for display purposes), as calculating it incurs a performance cost. |
 | `next_page_token` | Optional<str> | no | `nil` | Token to retrieve the next page of results. Pass this value to the next request to continue pagination. Null if there are no more results. |
 
 ### GetWhatsAppAccountResponse
@@ -4617,16 +4617,16 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `characters` | Array<str> | no | `nil` | The characters in the alignment. |
-| `character_start_times_seconds` | Array<float> | no | `nil` | The start times of the characters in seconds. |
-| `character_end_times_seconds` | Array<float> | no | `nil` | The end times of the characters in seconds. |
+| `characters` | Array<str> | **yes** | **required** | The characters in the alignment. |
+| `character_start_times_seconds` | Array<float> | **yes** | **required** | The start times of the characters in seconds. |
+| `character_end_times_seconds` | Array<float> | **yes** | **required** | The end times of the characters in seconds. |
 
 ### HistoryAlignmentsResponseModel
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `alignment` | [HistoryAlignmentResponseModel](#historyalignmentresponsemodel) | no | `nil` | The alignment of the text. |
-| `normalized_alignment` | [HistoryAlignmentResponseModel](#historyalignmentresponsemodel) | no | `nil` | The normalized alignment of the text. |
+| `alignment` | [HistoryAlignmentResponseModel](#historyalignmentresponsemodel) | **yes** | **required** | The alignment of the text. |
+| `normalized_alignment` | [HistoryAlignmentResponseModel](#historyalignmentresponsemodel) | **yes** | **required** | The normalized alignment of the text. |
 
 ### HistoryItemResponse
 
@@ -4671,7 +4671,7 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `text` | str | no | `nil` | The initial text to synthesize. Should end with a single space. |
+| `text` | str | **yes** | **required** | The initial text to synthesize. Should end with a single space. |
 | `voice_settings` | Optional<[RealtimeVoiceSettings](#realtimevoicesettings)> | no | `nil` |  |
 | `generation_config` | Optional<[GenerationConfig](#generationconfig)> | no | `nil` |  |
 | `pronunciation_dictionary_locators` | Optional<Array<[PronunciationDictionaryLocator](#pronunciationdictionarylocator)>> | no | `nil` | Optional list of pronunciation dictionary locators to be used for this context. |
@@ -4707,31 +4707,31 @@ _(no fields)_
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `message_type` | Literal<'input_audio_chunk'> | no | `'input_audio_chunk'` | The message type identifier. |
-| `audio_base_64` | str | no | `nil` | Base64-encoded audio data. |
-| `commit` | bool | no | `nil` | Whether to commit the transcription after this chunk. |
-| `sample_rate` | int | no | `nil` | Sample rate of the audio in Hz. |
+| `audio_base_64` | str | **yes** | **required** | Base64-encoded audio data. |
+| `commit` | bool | **yes** | **required** | Whether to commit the transcription after this chunk. |
+| `sample_rate` | int | **yes** | **required** | Sample rate of the audio in Hz. |
 | `previous_text` | Optional<str> | no | `nil` | Send text context to the model. Can only be sent alongside the first audio chunk. If sent in a subsequent chunk, an error will be returned. |
 
 ### InvoiceResponse
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `amount_due_cents` | int | no | `nil` | The amount due in cents. |
+| `amount_due_cents` | int | **yes** | **required** | The amount due in cents. |
 | `subtotal_cents` | Optional<int> | no | `nil` | The subtotal amount in cents before tax (exclusive of tax and discounts). |
 | `tax_cents` | Optional<int> | no | `nil` | The tax amount in cents. |
 | `discount_percent_off` | Optional<float> | no | `nil` | Deprecated. Use [discounts] instead. The discount applied to the invoice. E.g. [20.0f] for 20% off. |
 | `discount_amount_off` | Optional<float> | no | `nil` | Deprecated. Use [discounts] instead. The discount applied to the invoice. E.g. [20.0f] for 20 cents off. |
-| `discounts` | Array<[DiscountResponseModel](#discountresponsemodel)> | no | `nil` | The discounts applied to the invoice. |
-| `next_payment_attempt_unix` | int | no | `nil` | The Unix timestamp of the next payment attempt. -1 when there is no next payment attempt. |
+| `discounts` | Array<[DiscountResponseModel](#discountresponsemodel)> | **yes** | **required** | The discounts applied to the invoice. |
+| `next_payment_attempt_unix` | int | **yes** | **required** | The Unix timestamp of the next payment attempt. -1 when there is no next payment attempt. |
 | `payment_intent_status` | Optional<[InvoiceResponseModelPaymentIntentStatus](#invoiceresponsemodelpaymentintentstatus)> | no | `nil` | Deprecated. Use [payment_intent_statusses] instead. The status of this invoice's first payment intent. None when there is no payment intent. |
-| `payment_intent_statusses` | Array<[InvoiceResponseModelPaymentIntentStatussesItem](#invoiceresponsemodelpaymentintentstatussesitem)> | no | `nil` | The statuses of this invoice's payment intents. Empty list when there are no payment intents. |
+| `payment_intent_statusses` | Array<[InvoiceResponseModelPaymentIntentStatussesItem](#invoiceresponsemodelpaymentintentstatussesitem)> | **yes** | **required** | The statuses of this invoice's payment intents. Empty list when there are no payment intents. |
 
 ### KeepContextAlive
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `text` | Literal<''> | no | `''` | An empty string. This text is ignored by the server but its presence resets the inactivity timeout for the specified context. |
-| `context_id` | str | no | `nil` | The identifier of the context to keep alive. |
+| `context_id` | str | **yes** | **required** | The identifier of the context to keep alive. |
 
 ### KnowledgeBaseContentSearchResponseModel
 
@@ -4781,16 +4781,16 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `type` | [KnowledgeBaseDocumentType](#knowledgebasedocumenttype) | no | `nil` | The type of the knowledge base |
-| `name` | str | no | `nil` | The name of the knowledge base |
-| `id` | str | no | `nil` | The ID of the knowledge base |
+| `type` | [KnowledgeBaseDocumentType](#knowledgebasedocumenttype) | **yes** | **required** | The type of the knowledge base |
+| `name` | str | **yes** | **required** | The name of the knowledge base |
+| `id` | str | **yes** | **required** | The ID of the knowledge base |
 | `usage_mode` | Optional<[DocumentUsageModeEnum](#documentusagemodeenum)> | no | `nil` | The usage mode of the knowledge base |
 
 ### KnowledgeBaseSourceFileUrlResponseModel
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `signed_url` | str | no | `nil` | Signed URL to download the source file directly |
+| `signed_url` | str | **yes** | **required** | Signed URL to download the source file directly |
 
 ### KnowledgeBaseSummaryBatchSuccessfulResponseModel
 
@@ -4820,7 +4820,7 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `overrides` | [ConversationConfigClientOverrideInput](#conversationconfigclientoverrideinput) | no | `nil` | The overrides for the language preset |
+| `overrides` | [ConversationConfigClientOverrideInput](#conversationconfigclientoverrideinput) | **yes** | **required** | The overrides for the language preset |
 | `first_message_translation` | Optional<[LanguagePresetTranslation](#languagepresettranslation)> | no | `nil` | The translation of the first message |
 | `soft_timeout_translation` | Optional<[LanguagePresetTranslation](#languagepresettranslation)> | no | `nil` | The translation of the soft timeout message |
 
@@ -4828,7 +4828,7 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `overrides` | [ConversationConfigClientOverrideOutput](#conversationconfigclientoverrideoutput) | no | `nil` | The overrides for the language preset |
+| `overrides` | [ConversationConfigClientOverrideOutput](#conversationconfigclientoverrideoutput) | **yes** | **required** | The overrides for the language preset |
 | `first_message_translation` | Optional<[LanguagePresetTranslation](#languagepresettranslation)> | no | `nil` | The translation of the first message |
 | `soft_timeout_translation` | Optional<[LanguagePresetTranslation](#languagepresettranslation)> | no | `nil` | The translation of the soft timeout message |
 
@@ -4843,36 +4843,36 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `language_id` | str | no | `nil` | The unique identifier of the language. |
-| `name` | str | no | `nil` | The name of the language. |
+| `language_id` | str | **yes** | **required** | The unique identifier of the language. |
+| `name` | str | **yes** | **required** | The name of the language. |
 
 ### LibraryVoiceResponse
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `public_owner_id` | str | no | `nil` | The public owner id of the voice. |
-| `voice_id` | str | no | `nil` | The id of the voice. |
-| `date_unix` | int | no | `nil` | The date the voice was added to the library in Unix time. |
-| `name` | str | no | `nil` | The name of the voice. |
-| `accent` | str | no | `nil` | The accent of the voice. |
-| `gender` | str | no | `nil` | The gender of the voice. |
-| `age` | str | no | `nil` | The age of the voice. |
-| `descriptive` | str | no | `nil` | The descriptive of the voice. |
-| `use_case` | str | no | `nil` | The use case of the voice. |
-| `category` | [LibraryVoiceResponseModelCategory](#libraryvoiceresponsemodelcategory) | no | `nil` | The category of the voice. |
+| `public_owner_id` | str | **yes** | **required** | The public owner id of the voice. |
+| `voice_id` | str | **yes** | **required** | The id of the voice. |
+| `date_unix` | int | **yes** | **required** | The date the voice was added to the library in Unix time. |
+| `name` | str | **yes** | **required** | The name of the voice. |
+| `accent` | str | **yes** | **required** | The accent of the voice. |
+| `gender` | str | **yes** | **required** | The gender of the voice. |
+| `age` | str | **yes** | **required** | The age of the voice. |
+| `descriptive` | str | **yes** | **required** | The descriptive of the voice. |
+| `use_case` | str | **yes** | **required** | The use case of the voice. |
+| `category` | [LibraryVoiceResponseModelCategory](#libraryvoiceresponsemodelcategory) | **yes** | **required** | The category of the voice. |
 | `language` | Optional<str> | no | `nil` | The language of the voice. |
 | `locale` | Optional<str> | no | `nil` | The locale of the voice. |
 | `description` | Optional<str> | no | `nil` | The description of the voice. |
 | `preview_url` | Optional<str> | no | `nil` | The preview URL of the voice. |
-| `usage_character_count_1_y` | Annotated[int, FieldMetadata(alias='usage_character_count_1y')> | no | `nil` | The usage character count of the voice in the last year. |
-| `usage_character_count_7_d` | Annotated[int, FieldMetadata(alias='usage_character_count_7d')> | no | `nil` | The usage character count of the voice in the last 7 days. |
-| `play_api_usage_character_count_1_y` | Annotated[int, FieldMetadata(alias='play_api_usage_character_count_1y')> | no | `nil` | The play API usage character count of the voice in the last year. |
-| `cloned_by_count` | int | no | `nil` | The number of times the voice has been cloned. |
+| `usage_character_count_1_y` | Annotated[int, FieldMetadata(alias='usage_character_count_1y')> | **yes** | **required** | The usage character count of the voice in the last year. |
+| `usage_character_count_7_d` | Annotated[int, FieldMetadata(alias='usage_character_count_7d')> | **yes** | **required** | The usage character count of the voice in the last 7 days. |
+| `play_api_usage_character_count_1_y` | Annotated[int, FieldMetadata(alias='play_api_usage_character_count_1y')> | **yes** | **required** | The play API usage character count of the voice in the last year. |
+| `cloned_by_count` | int | **yes** | **required** | The number of times the voice has been cloned. |
 | `rate` | Optional<float> | no | `nil` | The rate multiplier of the voice. |
 | `fiat_rate` | Optional<float> | no | `nil` | The rate of the voice in USD per 1000 credits. null if default |
-| `free_users_allowed` | bool | no | `nil` | Whether free users are allowed to use the voice. |
-| `live_moderation_enabled` | bool | no | `nil` | Whether live moderation is enabled for the voice. |
-| `featured` | bool | no | `nil` | Whether the voice is featured. |
+| `free_users_allowed` | bool | **yes** | **required** | Whether free users are allowed to use the voice. |
+| `live_moderation_enabled` | bool | **yes** | **required** | Whether live moderation is enabled for the voice. |
+| `featured` | bool | **yes** | **required** | Whether the voice is featured. |
 | `verified_languages` | Optional<Array<[VerifiedVoiceLanguageResponseModel](#verifiedvoicelanguageresponsemodel)>> | no | `nil` | The verified languages of the voice. |
 | `notice_period` | Optional<int> | no | `nil` | The notice period of the voice. |
 | `instagram_username` | Optional<str> | no | `nil` | The Instagram username of the voice. |
@@ -4936,8 +4936,8 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `success` | bool | no | `nil` | Indicates if the operation was successful. |
-| `tools` | Array<[Tool](#tool)> | no | `nil` | A list of tools available on the MCP server. |
+| `success` | bool | **yes** | **required** | Indicates if the operation was successful. |
+| `tools` | Array<[Tool](#tool)> | **yes** | **required** | A list of tools available on the MCP server. |
 | `error_message` | Optional<str> | no | `nil` | Error message if the operation was not successful. |
 
 ### ListProductsParams
@@ -5011,18 +5011,18 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `warning_start_days` | int | no | `nil` | Number of days before the provider deprecation date when warnings start being shown. |
-| `fallback_start_days` | int | no | `nil` | Number of days before the provider deprecation date when traffic starts being routed to the replacement model. |
-| `fallback_complete_days` | int | no | `nil` | Number of days before the provider deprecation date when all traffic is routed to the replacement model. |
-| `fallback_start_percentage` | int | no | `nil` | Percentage of traffic routed to the replacement model when fallback begins. |
-| `fallback_complete_percentage` | int | no | `nil` | Percentage of traffic routed to the replacement model when fallback is complete. |
+| `warning_start_days` | int | **yes** | **required** | Number of days before the provider deprecation date when warnings start being shown. |
+| `fallback_start_days` | int | **yes** | **required** | Number of days before the provider deprecation date when traffic starts being routed to the replacement model. |
+| `fallback_complete_days` | int | **yes** | **required** | Number of days before the provider deprecation date when all traffic is routed to the replacement model. |
+| `fallback_start_percentage` | int | **yes** | **required** | Percentage of traffic routed to the replacement model when fallback begins. |
+| `fallback_complete_percentage` | int | **yes** | **required** | Percentage of traffic routed to the replacement model when fallback is complete. |
 
 ### LlmDeprecationInfoModel
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `llm` | [Llm](#llm) | no | `nil` | The identifier of the deprecated LLM model. |
-| `is_deprecated` | bool | no | `nil` | Whether this model is currently deprecated. True if the model is immediately deprecated or within the warning period. |
+| `llm` | [Llm](#llm) | **yes** | **required** | The identifier of the deprecated LLM model. |
+| `is_deprecated` | bool | **yes** | **required** | Whether this model is currently deprecated. True if the model is immediately deprecated or within the warning period. |
 | `is_in_warning_period` | Optional<bool> | no | `nil` | Whether this model is currently in the warning period before deprecation. |
 | `is_in_fallback_period` | Optional<bool> | no | `nil` | Whether traffic is currently being progressively routed to the replacement model. |
 | `fallback_percentage` | Optional<int> | no | `nil` | Current percentage of traffic being routed to the replacement model (0-100). |
@@ -5034,13 +5034,13 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `llm` | [Llm](#llm) | no | `nil` | The model identifier. |
-| `is_checkpoint` | bool | no | `nil` | Whether this is a pinned checkpoint version of a model rather than a top-level alias. |
-| `max_tokens_limit` | int | no | `nil` | Maximum number of output tokens the model can generate. |
-| `max_context_limit` | int | no | `nil` | Maximum number of input context tokens the model supports. |
-| `supports_image_input` | bool | no | `nil` | Whether the model supports image file inputs during conversations. |
-| `supports_document_input` | bool | no | `nil` | Whether the model supports document (PDF) file inputs during conversations. |
-| `supports_parallel_tool_calls` | bool | no | `nil` | Whether the model supports calling multiple tools in parallel. |
+| `llm` | [Llm](#llm) | **yes** | **required** | The model identifier. |
+| `is_checkpoint` | bool | **yes** | **required** | Whether this is a pinned checkpoint version of a model rather than a top-level alias. |
+| `max_tokens_limit` | int | **yes** | **required** | Maximum number of output tokens the model can generate. |
+| `max_context_limit` | int | **yes** | **required** | Maximum number of input context tokens the model supports. |
+| `supports_image_input` | bool | **yes** | **required** | Whether the model supports image file inputs during conversations. |
+| `supports_document_input` | bool | **yes** | **required** | Whether the model supports document (PDF) file inputs during conversations. |
+| `supports_parallel_tool_calls` | bool | **yes** | **required** | Whether the model supports calling multiple tools in parallel. |
 | `available_reasoning_efforts` | Optional<Array<[LlmReasoningEffort](#llmreasoningeffort)>> | no | `nil` | Available reasoning effort levels for this model. Null if the model does not support configurable reasoning. |
 | `deprecation_info` | Optional<[LlmDeprecationInfoModel](#llmdeprecationinfomodel)> | no | `nil` | Deprecation information if this model is deprecated or scheduled for deprecation. Null if the model is not affected. |
 
@@ -5048,13 +5048,13 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `llm` | [Llm](#llm) | no | `nil` | The model identifier. |
-| `is_checkpoint` | bool | no | `nil` | Whether this is a pinned checkpoint version of a model rather than a top-level alias. |
-| `max_tokens_limit` | int | no | `nil` | Maximum number of output tokens the model can generate. |
-| `max_context_limit` | int | no | `nil` | Maximum number of input context tokens the model supports. |
-| `supports_image_input` | bool | no | `nil` | Whether the model supports image file inputs during conversations. |
-| `supports_document_input` | bool | no | `nil` | Whether the model supports document (PDF) file inputs during conversations. |
-| `supports_parallel_tool_calls` | bool | no | `nil` | Whether the model supports calling multiple tools in parallel. |
+| `llm` | [Llm](#llm) | **yes** | **required** | The model identifier. |
+| `is_checkpoint` | bool | **yes** | **required** | Whether this is a pinned checkpoint version of a model rather than a top-level alias. |
+| `max_tokens_limit` | int | **yes** | **required** | Maximum number of output tokens the model can generate. |
+| `max_context_limit` | int | **yes** | **required** | Maximum number of input context tokens the model supports. |
+| `supports_image_input` | bool | **yes** | **required** | Whether the model supports image file inputs during conversations. |
+| `supports_document_input` | bool | **yes** | **required** | Whether the model supports document (PDF) file inputs during conversations. |
+| `supports_parallel_tool_calls` | bool | **yes** | **required** | Whether the model supports calling multiple tools in parallel. |
 | `available_reasoning_efforts` | Optional<Array<[LlmReasoningEffort](#llmreasoningeffort)>> | no | `nil` | Available reasoning effort levels for this model. Null if the model does not support configurable reasoning. |
 | `deprecation_info` | Optional<[LlmDeprecationInfoModel](#llmdeprecationinfomodel)> | no | `nil` | Deprecation information if this model is deprecated or scheduled for deprecation. Null if the model is not affected. |
 
@@ -5071,15 +5071,15 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `llms` | Array<[LlmInfoModelInput](#llminfomodelinput)> | no | `nil` | List of all available LLM models that can be used with agents. |
-| `default_deprecation_config` | [LlmDeprecationConfigModel](#llmdeprecationconfigmodel) | no | `nil` | The default deprecation timing configuration used for models without a custom override. |
+| `llms` | Array<[LlmInfoModelInput](#llminfomodelinput)> | **yes** | **required** | List of all available LLM models that can be used with agents. |
+| `default_deprecation_config` | [LlmDeprecationConfigModel](#llmdeprecationconfigmodel) | **yes** | **required** | The default deprecation timing configuration used for models without a custom override. |
 
 ### LlmListResponseModelOutput
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `llms` | Array<[LlmInfoModelOutput](#llminfomodeloutput)> | no | `nil` | List of all available LLM models that can be used with agents. |
-| `default_deprecation_config` | [LlmDeprecationConfigModel](#llmdeprecationconfigmodel) | no | `nil` | The default deprecation timing configuration used for models without a custom override. |
+| `llms` | Array<[LlmInfoModelOutput](#llminfomodeloutput)> | **yes** | **required** | List of all available LLM models that can be used with agents. |
+| `default_deprecation_config` | [LlmDeprecationConfigModel](#llmdeprecationconfigmodel) | **yes** | **required** | The default deprecation timing configuration used for models without a custom override. |
 
 ### LlmLiteralJsonSchemaProperty
 
@@ -5093,7 +5093,7 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `description` | str | no | `nil` | A description of the evaluation strategy to use for the test. |
+| `description` | str | **yes** | **required** | A description of the evaluation strategy to use for the test. |
 
 ### LlmSchemaOverride
 
@@ -5137,19 +5137,19 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `file_id` | str | no | `nil` | The ID of the file. |
-| `file_name` | str | no | `nil` | The name of the file. |
-| `mime_type` | str | no | `nil` | The MIME type of the file. |
-| `size_bytes` | int | no | `nil` | The size of the file in bytes. |
-| `upload_date_unix` | int | no | `nil` | The date of the file in Unix time. |
+| `file_id` | str | **yes** | **required** | The ID of the file. |
+| `file_name` | str | **yes** | **required** | The name of the file. |
+| `mime_type` | str | **yes** | **required** | The MIME type of the file. |
+| `size_bytes` | int | **yes** | **required** | The size of the file in bytes. |
+| `upload_date_unix` | int | **yes** | **required** | The date of the file in Unix time. |
 
 ### ManualVerificationResponse
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `extra_text` | str | no | `nil` | The extra text of the manual verification. |
-| `request_time_unix` | int | no | `nil` | The date of the manual verification in Unix time. |
-| `files` | Array<[ManualVerificationFileResponse](#manualverificationfileresponse)> | no | `nil` | The files of the manual verification. |
+| `extra_text` | str | **yes** | **required** | The extra text of the manual verification. |
+| `request_time_unix` | int | **yes** | **required** | The date of the manual verification in Unix time. |
+| `files` | Array<[ManualVerificationFileResponse](#manualverificationfileresponse)> | **yes** | **required** | The files of the manual verification. |
 
 ### MatchAnythingParameterEvaluationStrategy
 
@@ -5162,7 +5162,7 @@ _(no fields)_
 | `approval_policy` | Optional<[McpApprovalPolicy](#mcpapprovalpolicy)> | no | `nil` |  |
 | `tool_approval_hashes` | Optional<Array<[McpToolApprovalHash](#mcptoolapprovalhash)>> | no | `nil` | List of tool approval hashes for per-tool approval when approval_policy is REQUIRE_APPROVAL_PER_TOOL |
 | `transport` | Optional<[McpServerTransport](#mcpservertransport)> | no | `nil` | The transport type used to connect to the MCP server |
-| `url` | McpServerConfigInputUrl | no | `nil` | The URL of the MCP server, if this contains a secret please store as a workspace secret, otherwise store as a plain string. Must use https |
+| `url` | McpServerConfigInputUrl | **yes** | **required** | The URL of the MCP server, if this contains a secret please store as a workspace secret, otherwise store as a plain string. Must use https |
 | `secret_token` | Optional<McpServerConfigInputSecretToken> | no | `nil` | The secret token (Authorization header) stored as a workspace secret or in-place secret |
 | `request_headers` | Optional<Hash<str, McpServerConfigInputRequestHeadersValue>> | no | `nil` | The headers included in the request |
 | `auth_connection` | Optional<McpServerConfigInputAuthConnection> | no | `nil` | Optional auth connection to use for authentication with this MCP server |
@@ -5183,7 +5183,7 @@ _(no fields)_
 | `approval_policy` | Optional<[McpApprovalPolicy](#mcpapprovalpolicy)> | no | `nil` |  |
 | `tool_approval_hashes` | Optional<Array<[McpToolApprovalHash](#mcptoolapprovalhash)>> | no | `nil` | List of tool approval hashes for per-tool approval when approval_policy is REQUIRE_APPROVAL_PER_TOOL |
 | `transport` | Optional<[McpServerTransport](#mcpservertransport)> | no | `nil` | The transport type used to connect to the MCP server |
-| `url` | McpServerConfigOutputUrl | no | `nil` | The URL of the MCP server, if this contains a secret please store as a workspace secret, otherwise store as a plain string. Must use https |
+| `url` | McpServerConfigOutputUrl | **yes** | **required** | The URL of the MCP server, if this contains a secret please store as a workspace secret, otherwise store as a plain string. Must use https |
 | `secret_token` | Optional<McpServerConfigOutputSecretToken> | no | `nil` | The secret token (Authorization header) stored as a workspace secret or in-place secret |
 | `request_headers` | Optional<Hash<str, McpServerConfigOutputRequestHeadersValue>> | no | `nil` | The headers included in the request |
 | `auth_connection` | Optional<McpServerConfigOutputAuthConnection> | no | `nil` | Optional auth connection to use for authentication with this MCP server |
@@ -5212,7 +5212,7 @@ _(no fields)_
 | `config` | [McpServerConfigOutput](#mcpserverconfigoutput) | **yes** | **required** |  |
 | `access_info` | Optional<[ResourceAccessInfo](#resourceaccessinfo)> | no | `nil` | The access information of the MCP Server |
 | `dependent_agents` | Optional<Array<[McpServerResponseModelDependentAgentsItem](#mcpserverresponsemodeldependentagentsitem)>> | no | `nil` | List of agents that depend on this MCP Server. |
-| `metadata` | [McpServerMetadataResponseModel](#mcpservermetadataresponsemodel) | no | `nil` | The metadata of the MCP Server |
+| `metadata` | [McpServerMetadataResponseModel](#mcpservermetadataresponsemodel) | **yes** | **required** | The metadata of the MCP Server |
 
 ### McpServersResponseModel
 
@@ -5224,15 +5224,15 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `tool_name` | str | no | `nil` | The name of the MCP tool |
-| `tool_hash` | str | no | `nil` | SHA256 hash of the tool's parameters and description |
+| `tool_name` | str | **yes** | **required** | The name of the MCP tool |
+| `tool_hash` | str | **yes** | **required** | SHA256 hash of the tool's parameters and description |
 | `approval_policy` | Optional<[McpToolApprovalPolicy](#mcptoolapprovalpolicy)> | no | `nil` | The approval policy for this tool |
 
 ### McpToolConfigOverrideInput
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `tool_name` | str | no | `nil` | The name of the MCP tool |
+| `tool_name` | str | **yes** | **required** | The name of the MCP tool |
 | `force_pre_tool_speech` | Optional<bool> | no | `nil` | If set, overrides the server's force_pre_tool_speech setting for this tool |
 | `disable_interruptions` | Optional<bool> | no | `nil` | If set, overrides the server's disable_interruptions setting for this tool |
 | `tool_call_sound` | Optional<[ToolCallSoundType](#toolcallsoundtype)> | no | `nil` | If set, overrides the server's tool_call_sound setting for this tool |
@@ -5246,7 +5246,7 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `tool_name` | str | no | `nil` | The name of the MCP tool |
+| `tool_name` | str | **yes** | **required** | The name of the MCP tool |
 | `force_pre_tool_speech` | Optional<bool> | no | `nil` | If set, overrides the server's force_pre_tool_speech setting for this tool |
 | `disable_interruptions` | Optional<bool> | no | `nil` | If set, overrides the server's disable_interruptions setting for this tool |
 | `tool_call_sound` | Optional<[ToolCallSoundType](#toolcallsoundtype)> | no | `nil` | If set, overrides the server's tool_call_sound setting for this tool |
@@ -5263,7 +5263,7 @@ _(no fields)_
 | `meta` | Optional<[ListResponseMeta](#listresponsemeta)> | no | `nil` |  |
 | `results` | Array<[MessagesSearchResult](#messagessearchresult)> | **yes** | **required** |  |
 | `next_cursor` | Optional<str> | no | `nil` | Cursor for the next page of results |
-| `has_more` | bool | no | `nil` | Whether there are more results available |
+| `has_more` | bool | **yes** | **required** | Whether there are more results available |
 
 ### MessagesSearchResult
 
@@ -5287,7 +5287,7 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `model_id` | str | no | `nil` | The unique identifier of the model. |
+| `model_id` | str | **yes** | **required** | The unique identifier of the model. |
 | `name` | Optional<str> | no | `nil` | The name of the model. |
 | `can_be_finetuned` | Optional<bool> | no | `nil` | Whether the model can be finetuned. |
 | `can_do_text_to_speech` | Optional<bool> | no | `nil` | Whether the model can do text-to-speech. |
@@ -5309,7 +5309,7 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `character_cost_multiplier` | float | no | `nil` | The cost multiplier for characters. |
+| `character_cost_multiplier` | float | **yes** | **required** | The cost multiplier for characters. |
 | `cost_discount_multiplier` | Optional<float> | no | `nil` | Discount multiplier applied to cost estimates. Defaults to 1.0 (no discount). |
 
 ### ModelSettingsResponseModel
@@ -5373,7 +5373,7 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `transcripts` | Array<[SpeechToTextChunkResponseModel](#speechtotextchunkresponsemodel)> | no | `nil` | List of transcripts, one for each audio channel. Each transcript contains the text and word-level details for its respective channel. |
+| `transcripts` | Array<[SpeechToTextChunkResponseModel](#speechtotextchunkresponsemodel)> | **yes** | **required** | List of transcripts, one for each audio channel. Each transcript contains the text and word-level details for its respective channel. |
 | `transcription_id` | Optional<str> | no | `nil` | The transcription ID of the response. |
 | `audio_duration_secs` | Optional<float> | no | `nil` | The duration of the audio that was transcribed across all channels in seconds. |
 
@@ -5381,8 +5381,8 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `metadata` | [DetailedMusicResponse](#detailedmusicresponse) | no | `nil` | JSON metadata about the generated audio |
-| `audio` | str | no | `nil` | Binary audio data in the requested format |
+| `metadata` | [DetailedMusicResponse](#detailedmusicresponse) | **yes** | **required** | JSON metadata about the generated audio |
+| `audio` | str | **yes** | **required** | Binary audio data in the requested format |
 
 ### MusicExploreSongSourceContext
 
@@ -5399,15 +5399,15 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `positive_global_styles` | Array<str> | no | `nil` | The styles and musical directions that should be present in the entire song. Use English language for best result. |
-| `negative_global_styles` | Array<str> | no | `nil` | The styles and musical directions that should not be present in the entire song. Use English language for best result. |
-| `sections` | Array<[SongSection](#songsection)> | no | `nil` | The sections of the song. |
+| `positive_global_styles` | Array<str> | **yes** | **required** | The styles and musical directions that should be present in the entire song. Use English language for best result. |
+| `negative_global_styles` | Array<str> | **yes** | **required** | The styles and musical directions that should not be present in the entire song. Use English language for best result. |
+| `sections` | Array<[SongSection](#songsection)> | **yes** | **required** | The sections of the song. |
 
 ### MusicUploadResponse
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `song_id` | str | no | `nil` | Unique identifier for the uploaded song |
+| `song_id` | str | **yes** | **required** | Unique identifier for the uploaded song |
 | `composition_plan` | Optional<[MusicPrompt](#musicprompt)> | no | `nil` | The composition plan extracted from the uploaded song. Only present if `extract_composition_plan` was True in the request body |
 
 ### NoCoachingSettings
@@ -5447,12 +5447,12 @@ _(no fields)_
 | `provider` | str | **yes** | **required** |  |
 | `algorithm` | Optional<[OAuth2JwtResponseAlgorithm](#oauth2jwtresponsealgorithm)> | no | `nil` | JWT signing algorithm |
 | `key_id` | Optional<str> | no | `nil` | Key ID (kid) for JWT header - useful for key rotation |
-| `issuer` | str | no | `nil` | JWT issuer (iss claim) |
-| `audience` | str | no | `nil` | JWT audience (aud claim) |
-| `subject` | str | no | `nil` | JWT subject (sub claim) |
+| `issuer` | str | **yes** | **required** | JWT issuer (iss claim) |
+| `audience` | str | **yes** | **required** | JWT audience (aud claim) |
+| `subject` | str | **yes** | **required** | JWT subject (sub claim) |
 | `expiration_seconds` | Optional<int> | no | `nil` | Token expiration time in seconds |
 | `extra_params` | Optional<Hash<str, str>> | no | `nil` | Additional custom claims to include in the JWT |
-| `token_url` | str | no | `nil` | Token endpoint URL for exchanging JWT for access token |
+| `token_url` | str | **yes** | **required** | Token endpoint URL for exchanging JWT for access token |
 | `scopes` | Optional<Array<str>> | no | `nil` | OAuth2 scopes to request when exchanging JWT for access token |
 | `id` | str | **yes** | **required** |  |
 | `used_by` | Optional<[AuthConnectionDependencies](#authconnectiondependencies)> | no | `nil` |  |
@@ -5518,7 +5518,7 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `address` | str | no | `nil` | Hostname or IP the SIP INVITE is sent to. |
+| `address` | str | **yes** | **required** | Hostname or IP the SIP INVITE is sent to. |
 | `transport` | Optional<[SipTrunkTransportEnum](#siptrunktransportenum)> | no | `nil` | Protocol to use for SIP transport (signalling layer). |
 | `media_encryption` | Optional<[SipMediaEncryptionEnum](#sipmediaencryptionenum)> | no | `nil` | Whether or not to encrypt media (data layer). |
 | `headers` | Optional<Hash<str, str>> | no | `nil` | SIP X-* headers for INVITE request. These headers are sent as-is and may help identify this call. |
@@ -5529,13 +5529,13 @@ _(no fields)_
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `message_type` | Literal<'partial_transcript'> | no | `'partial_transcript'` | The message type identifier. |
-| `text` | str | no | `nil` | Partial transcription text. |
+| `text` | str | **yes** | **required** | Partial transcription text. |
 
 ### PatchWorkspaceWebhookResponseModel
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `status` | str | no | `nil` | The status of the workspace webhook patch request. If the request was successful, the status will be 'ok'. Otherwise an error message with status 500 will be returned. |
+| `status` | str | **yes** | **required** | The status of the workspace webhook patch request. If the request was successful, the status will be 'ok'. Otherwise an error message with status 500 will be returned. |
 
 ### PdfExportOptions
 
@@ -5552,7 +5552,7 @@ _(no fields)_
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `kind` | Optional<Literal<'cancellation'>> | no | `nil` |  |
-| `timestamp_seconds` | int | no | `nil` | The timestamp of the cancellation. |
+| `timestamp_seconds` | int | **yes** | **required** | The timestamp of the cancellation. |
 
 ### PendingClipTask
 
@@ -5569,16 +5569,16 @@ _(no fields)_
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `kind` | Optional<Literal<'change'>> | no | `nil` |  |
-| `next_tier` | [PendingSubscriptionSwitchResponseModelNextTier](#pendingsubscriptionswitchresponsemodelnexttier) | no | `nil` | The tier to change to. |
-| `next_billing_period` | [BillingPeriod](#billingperiod) | no | `nil` | The billing period to change to. |
-| `timestamp_seconds` | int | no | `nil` | The timestamp of the change. |
+| `next_tier` | [PendingSubscriptionSwitchResponseModelNextTier](#pendingsubscriptionswitchresponsemodelnexttier) | **yes** | **required** | The tier to change to. |
+| `next_billing_period` | [BillingPeriod](#billingperiod) | **yes** | **required** | The billing period to change to. |
+| `timestamp_seconds` | int | **yes** | **required** | The timestamp of the change. |
 
 ### PhoneNumberAgentInfo
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `agent_id` | str | no | `nil` | The ID of the agent |
-| `agent_name` | str | no | `nil` | The name of the agent |
+| `agent_id` | str | **yes** | **required** | The ID of the agent |
+| `agent_name` | str | **yes** | **required** | The name of the agent |
 
 ### PhoneNumberDynamicVariableTransferDestination
 
@@ -5630,46 +5630,46 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `bulletin` | [PodcastBulletinModeData](#podcastbulletinmodedata) | no | `nil` | The voice settings for the bulletin. |
+| `bulletin` | [PodcastBulletinModeData](#podcastbulletinmodedata) | **yes** | **required** | The voice settings for the bulletin. |
 
 ### PodcastBulletinModeData
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `host_voice_id` | str | no | `nil` | The ID of the host voice. |
+| `host_voice_id` | str | **yes** | **required** | The ID of the host voice. |
 
 ### PodcastConversationMode
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `conversation` | [PodcastConversationModeData](#podcastconversationmodedata) | no | `nil` | The voice settings for the conversation. |
+| `conversation` | [PodcastConversationModeData](#podcastconversationmodedata) | **yes** | **required** | The voice settings for the conversation. |
 
 ### PodcastConversationModeData
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `host_voice_id` | str | no | `nil` | The ID of the host voice. |
-| `guest_voice_id` | str | no | `nil` | The ID of the guest voice. |
+| `host_voice_id` | str | **yes** | **required** | The ID of the host voice. |
+| `guest_voice_id` | str | **yes** | **required** | The ID of the guest voice. |
 
 ### PodcastProjectResponseModel
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `project` | [ProjectResponse](#projectresponse) | no | `nil` | The project associated with the created podcast. |
+| `project` | [ProjectResponse](#projectresponse) | **yes** | **required** | The project associated with the created podcast. |
 
 ### PodcastTextSource
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `type` | Literal<'text'> | no | `'text'` | The type of source to create. |
-| `text` | str | no | `nil` | The text to create the podcast from. |
+| `text` | str | **yes** | **required** | The text to create the podcast from. |
 
 ### PodcastUrlSource
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `type` | Literal<'url'> | no | `'url'` | The type of source to create. |
-| `url` | str | no | `nil` | The URL to create the podcast from. |
+| `url` | str | **yes** | **required** | The URL to create the podcast from. |
 
 ### PositionInput
 
@@ -5696,13 +5696,13 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `value` | str | no | `nil` | The dynamic variable name to resolve |
+| `value` | str | **yes** | **required** | The dynamic variable name to resolve |
 
 ### PostDialDigitsStatic
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `value` | str | no | `nil` | DTMF digits to send after call connects (e.g., 'ww1234' for extension) |
+| `value` | str | **yes** | **required** | DTMF digits to send after call connects (e.g., 'ww1234' for extension) |
 
 ### PostWorkspaceSecretResponseModel
 
@@ -5756,9 +5756,9 @@ _(no fields)_
 | `provider` | str | **yes** | **required** |  |
 | `algorithm` | Optional<[PrivateKeyJwtResponseAlgorithm](#privatekeyjwtresponsealgorithm)> | no | `nil` | JWT signing algorithm |
 | `key_id` | Optional<str> | no | `nil` | Key ID (kid) for JWT header - useful for key rotation |
-| `issuer` | str | no | `nil` | JWT issuer (iss claim) |
-| `audience` | str | no | `nil` | JWT audience (aud claim) |
-| `subject` | str | no | `nil` | JWT subject (sub claim) |
+| `issuer` | str | **yes** | **required** | JWT issuer (iss claim) |
+| `audience` | str | **yes** | **required** | JWT audience (aud claim) |
+| `subject` | str | **yes** | **required** | JWT subject (sub claim) |
 | `expiration_seconds` | Optional<int> | no | `nil` | Token expiration time in seconds |
 | `extra_params` | Optional<Hash<str, str>> | no | `nil` | Additional custom claims to include in the JWT |
 | `id` | str | **yes** | **required** |  |
@@ -5768,7 +5768,7 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `procedure_id` | str | no | `nil` | Procedure ID |
+| `procedure_id` | str | **yes** | **required** | Procedure ID |
 | `version_id` | Optional<str> | no | `nil` | Version ID of a version of the procedure. None for a procedure never versioned. |
 | `name` | Optional<str> | no | `nil` | Procedure name |
 
@@ -5782,23 +5782,23 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `creation_progress` | float | no | `nil` | The progress of the project creation. |
-| `status` | [ProjectCreationMetaResponseModelStatus](#projectcreationmetaresponsemodelstatus) | no | `nil` | The status of the project creation action. |
-| `type` | [ProjectCreationMetaResponseModelType](#projectcreationmetaresponsemodeltype) | no | `nil` | The type of the project creation action. |
+| `creation_progress` | float | **yes** | **required** | The progress of the project creation. |
+| `status` | [ProjectCreationMetaResponseModelStatus](#projectcreationmetaresponsemodelstatus) | **yes** | **required** | The status of the project creation action. |
+| `type` | [ProjectCreationMetaResponseModelType](#projectcreationmetaresponsemodeltype) | **yes** | **required** | The type of the project creation action. |
 
 ### ProjectExtendedResponse
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `project_id` | str | no | `nil` | The ID of the project. |
-| `name` | str | no | `nil` | The name of the project. |
-| `create_date_unix` | int | no | `nil` | The creation date of the project. |
+| `project_id` | str | **yes** | **required** | The ID of the project. |
+| `name` | str | **yes** | **required** | The name of the project. |
+| `create_date_unix` | int | **yes** | **required** | The creation date of the project. |
 | `created_by_user_id` | Optional<str> | no | `nil` | The user ID who created the project. |
-| `default_title_voice_id` | str | no | `nil` | The default title voice ID. |
-| `default_paragraph_voice_id` | str | no | `nil` | The default paragraph voice ID. |
-| `default_model_id` | str | no | `nil` | The default model ID. |
+| `default_title_voice_id` | str | **yes** | **required** | The default title voice ID. |
+| `default_paragraph_voice_id` | str | **yes** | **required** | The default paragraph voice ID. |
+| `default_model_id` | str | **yes** | **required** | The default model ID. |
 | `last_conversion_date_unix` | Optional<int> | no | `nil` | The last conversion date of the project. |
-| `can_be_downloaded` | bool | no | `nil` | Whether the project can be downloaded. |
+| `can_be_downloaded` | bool | **yes** | **required** | Whether the project can be downloaded. |
 | `title` | Optional<str> | no | `nil` | The title of the project. |
 | `author` | Optional<str> | no | `nil` | The author of the project. |
 | `description` | Optional<str> | no | `nil` | The description of the project. |
@@ -5810,12 +5810,12 @@ _(no fields)_
 | `original_publication_date` | Optional<str> | no | `nil` | The original publication date of the project. |
 | `mature_content` | Optional<bool> | no | `nil` | Whether the project contains mature content. |
 | `isbn_number` | Optional<str> | no | `nil` | The ISBN number of the project. |
-| `volume_normalization` | bool | no | `nil` | Whether the project uses volume normalization. |
-| `state` | [ProjectState](#projectstate) | no | `nil` | The state of the project. |
-| `access_level` | [ProjectExtendedResponseModelAccessLevel](#projectextendedresponsemodelaccesslevel) | no | `nil` | The access level of the project. |
+| `volume_normalization` | bool | **yes** | **required** | Whether the project uses volume normalization. |
+| `state` | [ProjectState](#projectstate) | **yes** | **required** | The state of the project. |
+| `access_level` | [ProjectExtendedResponseModelAccessLevel](#projectextendedresponsemodelaccesslevel) | **yes** | **required** | The access level of the project. |
 | `fiction` | Optional<[ProjectExtendedResponseModelFiction](#projectextendedresponsemodelfiction)> | no | `nil` | Whether the project is fiction. |
-| `quality_check_on` | bool | no | `nil` | Whether quality check is enabled for this project. |
-| `quality_check_on_when_bulk_convert` | bool | no | `nil` | Whether quality check is enabled on the project when bulk converting. |
+| `quality_check_on` | bool | **yes** | **required** | Whether quality check is enabled for this project. |
+| `quality_check_on_when_bulk_convert` | bool | **yes** | **required** | Whether quality check is enabled on the project when bulk converting. |
 | `creation_meta` | Optional<[ProjectCreationMetaResponseModel](#projectcreationmetaresponsemodel)> | no | `nil` | The creation meta of the project. |
 | `source_type` | Optional<[ProjectExtendedResponseModelSourceType](#projectextendedresponsemodelsourcetype)> | no | `nil` | The source type of the project. |
 | `chapters_enabled` | Optional<bool> | no | `nil` | Whether chapters are enabled for the project. |
@@ -5825,14 +5825,14 @@ _(no fields)_
 | `public_share_id` | Optional<str> | no | `nil` | The public share ID of the project. |
 | `aspect_ratio` | Optional<[ProjectExtendedResponseModelAspectRatio](#projectextendedresponsemodelaspectratio)> | no | `nil` | The aspect ratio of the project. |
 | `agent_settings` | Optional<[StudioAgentSettingsModel](#studioagentsettingsmodel)> | no | `nil` | Agent-related settings for the project |
-| `quality_preset` | [QualityPresetType](#qualitypresettype) | no | `nil` | The quality preset level of the project. |
-| `chapters` | Array<[ChapterResponse](#chapterresponse)> | no | `nil` | List of chapters of the project and their metadata. |
-| `pronunciation_dictionary_versions` | Array<[PronunciationDictionaryVersionResponseModel](#pronunciationdictionaryversionresponsemodel)> | no | `nil` | List of pronunciation dictionary versions of the project and their metadata. |
-| `pronunciation_dictionary_locators` | Array<[PronunciationDictionaryLocatorResponseModel](#pronunciationdictionarylocatorresponsemodel)> | no | `nil` | List of pronunciation dictionary locators. |
-| `apply_text_normalization` | [ProjectExtendedResponseModelApplyTextNormalization](#projectextendedresponsemodelapplytextnormalization) | no | `nil` | Whether text normalization is applied to the project. |
+| `quality_preset` | [QualityPresetType](#qualitypresettype) | **yes** | **required** | The quality preset level of the project. |
+| `chapters` | Array<[ChapterResponse](#chapterresponse)> | **yes** | **required** | List of chapters of the project and their metadata. |
+| `pronunciation_dictionary_versions` | Array<[PronunciationDictionaryVersionResponseModel](#pronunciationdictionaryversionresponsemodel)> | **yes** | **required** | List of pronunciation dictionary versions of the project and their metadata. |
+| `pronunciation_dictionary_locators` | Array<[PronunciationDictionaryLocatorResponseModel](#pronunciationdictionarylocatorresponsemodel)> | **yes** | **required** | List of pronunciation dictionary locators. |
+| `apply_text_normalization` | [ProjectExtendedResponseModelApplyTextNormalization](#projectextendedresponsemodelapplytextnormalization) | **yes** | **required** | Whether text normalization is applied to the project. |
 | `experimental` | Optional<Hash<str, Any>> | no | `nil` | Experimental features for the project. |
-| `assets` | Array<[ProjectExtendedResponseModelAssetsItem](#projectextendedresponsemodelassetsitem)> | no | `nil` | List of uploaded assets e.g. videos, audios. |
-| `voices` | Array<[ProjectVoiceResponseModel](#projectvoiceresponsemodel)> | no | `nil` | List of configured project voices. |
+| `assets` | Array<[ProjectExtendedResponseModelAssetsItem](#projectextendedresponsemodelassetsitem)> | **yes** | **required** | List of uploaded assets e.g. videos, audios. |
+| `voices` | Array<[ProjectVoiceResponseModel](#projectvoiceresponsemodel)> | **yes** | **required** | List of configured project voices. |
 | `base_voices` | Optional<Array<[Voice](#voice)>> | no | `nil` | List of voices used by the project. |
 | `publishing_read` | Optional<[DirectPublishingReadResponseModel](#directpublishingreadresponsemodel)> | no | `nil` | The ElevenReader data if the book was published. |
 
@@ -5895,21 +5895,21 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `chapter_ids` | Array<str> | no | `nil` | List of chapter IDs that have muted tracks. |
+| `chapter_ids` | Array<str> | **yes** | **required** | List of chapter IDs that have muted tracks. |
 
 ### ProjectResponse
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `project_id` | str | no | `nil` | The ID of the project. |
-| `name` | str | no | `nil` | The name of the project. |
-| `create_date_unix` | int | no | `nil` | The creation date of the project. |
+| `project_id` | str | **yes** | **required** | The ID of the project. |
+| `name` | str | **yes** | **required** | The name of the project. |
+| `create_date_unix` | int | **yes** | **required** | The creation date of the project. |
 | `created_by_user_id` | Optional<str> | no | `nil` | The user ID who created the project. |
-| `default_title_voice_id` | str | no | `nil` | The default title voice ID. |
-| `default_paragraph_voice_id` | str | no | `nil` | The default paragraph voice ID. |
-| `default_model_id` | str | no | `nil` | The default model ID. |
+| `default_title_voice_id` | str | **yes** | **required** | The default title voice ID. |
+| `default_paragraph_voice_id` | str | **yes** | **required** | The default paragraph voice ID. |
+| `default_model_id` | str | **yes** | **required** | The default model ID. |
 | `last_conversion_date_unix` | Optional<int> | no | `nil` | The last conversion date of the project. |
-| `can_be_downloaded` | bool | no | `nil` | Whether the project can be downloaded. |
+| `can_be_downloaded` | bool | **yes** | **required** | Whether the project can be downloaded. |
 | `title` | Optional<str> | no | `nil` | The title of the project. |
 | `author` | Optional<str> | no | `nil` | The author of the project. |
 | `description` | Optional<str> | no | `nil` | The description of the project. |
@@ -5921,12 +5921,12 @@ _(no fields)_
 | `original_publication_date` | Optional<str> | no | `nil` | The original publication date of the project. |
 | `mature_content` | Optional<bool> | no | `nil` | Whether the project contains mature content. |
 | `isbn_number` | Optional<str> | no | `nil` | The ISBN number of the project. |
-| `volume_normalization` | bool | no | `nil` | Whether the project uses volume normalization. |
-| `state` | [ProjectState](#projectstate) | no | `nil` | The state of the project. |
-| `access_level` | [ProjectResponseModelAccessLevel](#projectresponsemodelaccesslevel) | no | `nil` | The access level of the project. |
+| `volume_normalization` | bool | **yes** | **required** | Whether the project uses volume normalization. |
+| `state` | [ProjectState](#projectstate) | **yes** | **required** | The state of the project. |
+| `access_level` | [ProjectResponseModelAccessLevel](#projectresponsemodelaccesslevel) | **yes** | **required** | The access level of the project. |
 | `fiction` | Optional<[ProjectResponseModelFiction](#projectresponsemodelfiction)> | no | `nil` | Whether the project is fiction. |
-| `quality_check_on` | bool | no | `nil` | Whether quality check is enabled for this project. |
-| `quality_check_on_when_bulk_convert` | bool | no | `nil` | Whether quality check is enabled on the project when bulk converting. |
+| `quality_check_on` | bool | **yes** | **required** | Whether quality check is enabled for this project. |
+| `quality_check_on_when_bulk_convert` | bool | **yes** | **required** | Whether quality check is enabled on the project when bulk converting. |
 | `creation_meta` | Optional<[ProjectCreationMetaResponseModel](#projectcreationmetaresponsemodel)> | no | `nil` | The creation meta of the project. |
 | `source_type` | Optional<[ProjectResponseModelSourceType](#projectresponsemodelsourcetype)> | no | `nil` | The source type of the project. |
 | `chapters_enabled` | Optional<bool> | no | `nil` | Whether chapters are enabled for the project. |
@@ -5941,23 +5941,23 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `project_snapshot_id` | str | no | `nil` | The ID of the project snapshot. |
-| `project_id` | str | no | `nil` | The ID of the project. |
-| `created_at_unix` | int | no | `nil` | The creation date of the project snapshot. |
-| `name` | str | no | `nil` | The name of the project snapshot. |
+| `project_snapshot_id` | str | **yes** | **required** | The ID of the project snapshot. |
+| `project_id` | str | **yes** | **required** | The ID of the project. |
+| `created_at_unix` | int | **yes** | **required** | The creation date of the project snapshot. |
+| `name` | str | **yes** | **required** | The name of the project snapshot. |
 | `audio_upload` | Optional<Hash<str, Any>> | no | `nil` | (Deprecated) |
 | `zip_upload` | Optional<Hash<str, Any>> | no | `nil` | (Deprecated) |
 | `character_alignments` | Array<[CharacterAlignmentModel](#characteralignmentmodel)> | **yes** | **required** |  |
-| `audio_duration_secs` | float | no | `nil` | The total duration of the audio in seconds. |
+| `audio_duration_secs` | float | **yes** | **required** | The total duration of the audio in seconds. |
 
 ### ProjectSnapshotResponse
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `project_snapshot_id` | str | no | `nil` | The ID of the project snapshot. |
-| `project_id` | str | no | `nil` | The ID of the project. |
-| `created_at_unix` | int | no | `nil` | The creation date of the project snapshot. |
-| `name` | str | no | `nil` | The name of the project snapshot. |
+| `project_snapshot_id` | str | **yes** | **required** | The ID of the project snapshot. |
+| `project_id` | str | **yes** | **required** | The ID of the project. |
+| `created_at_unix` | int | **yes** | **required** | The creation date of the project snapshot. |
+| `name` | str | **yes** | **required** | The name of the project snapshot. |
 | `audio_upload` | Optional<Hash<str, Any>> | no | `nil` | (Deprecated) |
 | `zip_upload` | Optional<Hash<str, Any>> | no | `nil` | (Deprecated) |
 
@@ -5965,7 +5965,7 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `snapshots` | Array<[ProjectSnapshotResponse](#projectsnapshotresponse)> | no | `nil` | List of project snapshots. |
+| `snapshots` | Array<[ProjectSnapshotResponse](#projectsnapshotresponse)> | **yes** | **required** | List of project snapshots. |
 
 ### ProjectVideoResponseModel
 
@@ -6167,10 +6167,10 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `id` | str | no | `nil` | The unique identifier for the evaluation criteria |
+| `id` | str | **yes** | **required** | The unique identifier for the evaluation criteria |
 | `name` | str | **yes** | **required** |  |
 | `type` | Optional<Literal<'prompt'>> | no | `nil` | The type of evaluation criteria |
-| `conversation_goal_prompt` | str | no | `nil` | The prompt that the agent should use to evaluate the conversation |
+| `conversation_goal_prompt` | str | **yes** | **required** | The prompt that the agent should use to evaluate the conversation |
 | `use_knowledge_base` | Optional<bool> | no | `nil` | When evaluating the prompt, should the agent's knowledge base be used. |
 | `scope` | Optional<[AnalysisScope](#analysisscope)> | no | `nil` | The scope of transcript context used when evaluating this criterion. 'conversation' uses the full transcript; 'agent' uses only the portion where the defining agent was active. |
 | `llm` | Optional<[Llm](#llm)> | no | `nil` | LLM model to use for this evaluation criteria. If not set, uses agent's analysis_llm default. |
@@ -6185,10 +6185,10 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `string_to_replace` | str | no | `nil` | The string to replace. Must be a non-empty string. |
+| `string_to_replace` | str | **yes** | **required** | The string to replace. Must be a non-empty string. |
 | `case_sensitive` | Optional<bool> | no | `nil` | Whether the rule should match case-sensitively. |
 | `word_boundaries` | Optional<bool> | no | `nil` | Whether the rule should only match at word boundaries. |
-| `alias` | str | no | `nil` | The alias for the string to be replaced. |
+| `alias` | str | **yes** | **required** | The alias for the string to be replaced. |
 
 ### PronunciationDictionaryAliasRuleResponseModel
 
@@ -6203,8 +6203,8 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `pronunciation_dictionary_id` | str | no | `nil` | The unique identifier of the pronunciation dictionary |
-| `version_id` | str | no | `nil` | The version identifier of the pronunciation dictionary |
+| `pronunciation_dictionary_id` | str | **yes** | **required** | The unique identifier of the pronunciation dictionary |
+| `version_id` | str | **yes** | **required** | The version identifier of the pronunciation dictionary |
 
 ### PronunciationDictionaryLocatorResponseModel
 
@@ -6217,11 +6217,11 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `string_to_replace` | str | no | `nil` | The string to replace. Must be a non-empty string. |
+| `string_to_replace` | str | **yes** | **required** | The string to replace. Must be a non-empty string. |
 | `case_sensitive` | Optional<bool> | no | `nil` | Whether the rule should match case-sensitively. |
 | `word_boundaries` | Optional<bool> | no | `nil` | Whether the rule should only match at word boundaries. |
-| `phoneme` | str | no | `nil` | The phoneme rule. |
-| `alphabet` | str | no | `nil` | The alphabet to use with the phoneme rule. |
+| `phoneme` | str | **yes** | **required** | The phoneme rule. |
+| `alphabet` | str | **yes** | **required** | The alphabet to use with the phoneme rule. |
 
 ### PronunciationDictionaryPhonemeRuleResponseModel
 
@@ -6237,15 +6237,15 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `id` | str | no | `nil` | The ID of the pronunciation dictionary. |
-| `version_id` | str | no | `nil` | The version ID of the pronunciation dictionary. |
-| `version_rules_num` | int | no | `nil` | The number of rules in the version of the pronunciation dictionary. |
+| `id` | str | **yes** | **required** | The ID of the pronunciation dictionary. |
+| `version_id` | str | **yes** | **required** | The version ID of the pronunciation dictionary. |
+| `version_rules_num` | int | **yes** | **required** | The number of rules in the version of the pronunciation dictionary. |
 
 ### PronunciationDictionaryVersionLocator
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `pronunciation_dictionary_id` | str | no | `nil` | The ID of the pronunciation dictionary. |
+| `pronunciation_dictionary_id` | str | **yes** | **required** | The ID of the pronunciation dictionary. |
 | `version_id` | Optional<str> | no | `nil` | The ID of the version of the pronunciation dictionary. If not provided, the latest version will be used. |
 
 ### PronunciationDictionaryVersionResponseModel
@@ -6266,7 +6266,7 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `pronunciation_dictionary_id` | str | no | `nil` | The ID of the pronunciation dictionary |
+| `pronunciation_dictionary_id` | str | **yes** | **required** | The ID of the pronunciation dictionary |
 | `version_id` | Optional<str> | no | `nil` | The ID of the version of the pronunciation dictionary |
 
 ### QueryParamsJsonSchema
@@ -6385,8 +6385,8 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `resource_type` | [ReaderResourceResponseModelResourceType](#readerresourceresponsemodelresourcetype) | no | `nil` | The type of resource. |
-| `resource_id` | str | no | `nil` | The ID of the resource. |
+| `resource_type` | [ReaderResourceResponseModelResourceType](#readerresourceresponsemodelresourcetype) | **yes** | **required** | The type of resource. |
+| `resource_id` | str | **yes** | **required** | The ID of the resource. |
 
 ### RealtimeVoiceSettings
 
@@ -6402,11 +6402,11 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `recording_id` | str | no | `nil` | The ID of the recording. |
-| `mime_type` | str | no | `nil` | The MIME type of the recording. |
-| `size_bytes` | int | no | `nil` | The size of the recording in bytes. |
-| `upload_date_unix` | int | no | `nil` | The date of the recording in Unix time. |
-| `transcription` | str | no | `nil` | The transcription of the recording. |
+| `recording_id` | str | **yes** | **required** | The ID of the recording. |
+| `mime_type` | str | **yes** | **required** | The MIME type of the recording. |
+| `size_bytes` | int | **yes** | **required** | The size of the recording in bytes. |
+| `upload_date_unix` | int | **yes** | **required** | The date of the recording in Unix time. |
+| `transcription` | str | **yes** | **required** | The transcription of the recording. |
 
 ### ReferenceVideo
 
@@ -6421,22 +6421,22 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `id` | str | no | `nil` | The ID of the tool |
-| `type` | [ReferencedToolCommonModelType](#referencedtoolcommonmodeltype) | no | `nil` | The type of the tool |
+| `id` | str | **yes** | **required** | The ID of the tool |
+| `type` | [ReferencedToolCommonModelType](#referencedtoolcommonmodeltype) | **yes** | **required** | The type of the tool |
 
 ### RegexParameterEvaluationStrategy
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `pattern` | str | no | `nil` | A regex pattern to match the agent's response against. |
+| `pattern` | str | **yes** | **required** | A regex pattern to match the agent's response against. |
 
 ### RegionConfigRequest
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `region_id` | [TwilioRegionId](#twilioregionid) | no | `nil` | Region ID |
-| `token` | str | no | `nil` | Auth Token for this region |
-| `edge_location` | [TwilioEdgeLocation](#twilioedgelocation) | no | `nil` | Edge location for this region |
+| `region_id` | [TwilioRegionId](#twilioregionid) | **yes** | **required** | Region ID |
+| `token` | str | **yes** | **required** | Auth Token for this region |
+| `edge_location` | [TwilioEdgeLocation](#twilioedgelocation) | **yes** | **required** | Edge location for this region |
 
 ### Render
 
@@ -6453,7 +6453,7 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `status` | str | no | `nil` | The status of the request PVC manual verification request. If the request was successful, the status will be 'ok'. Otherwise an error message with status 500 will be returned. |
+| `status` | str | **yes** | **required** | The status of the request PVC manual verification request. If the request was successful, the status will be 'ok'. Otherwise an error message with status 500 will be returned. |
 
 ### RequiredConstraint
 
@@ -6472,22 +6472,22 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `is_creator` | bool | no | `nil` | Whether the user making the request is the creator of the agent |
-| `creator_name` | str | no | `nil` | Name of the agent's creator |
-| `creator_email` | str | no | `nil` | Email of the agent's creator |
-| `role` | [ResourceAccessInfoRole](#resourceaccessinforole) | no | `nil` | The role of the user making the request |
+| `is_creator` | bool | **yes** | **required** | Whether the user making the request is the creator of the agent |
+| `creator_name` | str | **yes** | **required** | Name of the agent's creator |
+| `creator_email` | str | **yes** | **required** | Email of the agent's creator |
+| `role` | [ResourceAccessInfoRole](#resourceaccessinforole) | **yes** | **required** | The role of the user making the request |
 
 ### ResourceMetadataResponseModel
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `resource_id` | str | no | `nil` | The ID of the resource. |
+| `resource_id` | str | **yes** | **required** | The ID of the resource. |
 | `resource_name` | Optional<str> | no | `nil` | The name of the resource, if available. |
-| `resource_type` | [WorkspaceResourceType](#workspaceresourcetype) | no | `nil` | The type of the resource. |
+| `resource_type` | [WorkspaceResourceType](#workspaceresourcetype) | **yes** | **required** | The type of the resource. |
 | `creator_user_id` | Optional<str> | no | `nil` | The ID of the user who created the resource. |
 | `anonymous_access_level_override` | Optional<[ResourceMetadataResponseModelAnonymousAccessLevelOverride](#resourcemetadataresponsemodelanonymousaccessleveloverride)> | no | `nil` | The access level for anonymous users. If None, the resource is not shared publicly. |
-| `role_to_group_ids` | Hash<str, Array<str>> | no | `nil` | A mapping of roles to group IDs. When the resource is shared with a user, the group id is the user's id. |
-| `share_options` | Array<[ShareOptionResponseModel](#shareoptionresponsemodel)> | no | `nil` | List of options for sharing the resource further in the workspace. These are users who don't have access to the resource yet. |
+| `role_to_group_ids` | Hash<str, Array<str>> | **yes** | **required** | A mapping of roles to group IDs. When the resource is shared with a user, the group id is the user's id. |
+| `share_options` | Array<[ShareOptionResponseModel](#shareoptionresponsemodel)> | **yes** | **required** | List of options for sharing the resource further in the workspace. These are users who don't have access to the resource yet. |
 
 ### ResponseFilter
 
@@ -6563,34 +6563,34 @@ _(no fields)_
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `type` | Optional<Literal<'literal'>> | no | `nil` |  |
-| `text` | str | no | `nil` | Literal text message to be spoken by the agent. |
+| `text` | str | **yes** | **required** | Literal text message to be spoken by the agent. |
 
 ### SayNodeLiteralMessageOutput
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `type` | Literal<'literal'> | no | `'literal'` |  |
-| `text` | str | no | `nil` | Literal text message to be spoken by the agent. |
+| `text` | str | **yes** | **required** | Literal text message to be spoken by the agent. |
 
 ### SayNodePromptMessageInput
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `type` | Optional<Literal<'prompt'>> | no | `nil` |  |
-| `prompt` | str | no | `nil` | LLM prompt describing what message should be generated. |
+| `prompt` | str | **yes** | **required** | LLM prompt describing what message should be generated. |
 
 ### SayNodePromptMessageOutput
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `type` | Literal<'prompt'> | no | `'prompt'` |  |
-| `prompt` | str | no | `nil` | LLM prompt describing what message should be generated. |
+| `prompt` | str | **yes** | **required** | LLM prompt describing what message should be generated. |
 
 ### ScopedAnalysisResult
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `scope` | [AnalysisScope](#analysisscope) | no | `nil` | The scope of the analysis. 'conversation' uses the full transcript; 'agent' uses only the portion where the defining agent was active. |
+| `scope` | [AnalysisScope](#analysisscope) | **yes** | **required** | The scope of the analysis. 'conversation' uses the full transcript; 'agent' uses only the portion where the defining agent was active. |
 | `source_agent_id` | str | **yes** | **required** |  |
 | `source_branch_id` | Optional<str> | no | `nil` | Branch of the agent for this scoped block; disambiguates repeated agent_id. |
 | `evaluation_criteria_results` | Optional<Hash<str, [ConversationHistoryEvaluationCriteriaResultCommonModel](#conversationhistoryevaluationcriteriaresultcommonmodel)>> | no | `nil` |  |
@@ -6602,91 +6602,91 @@ _(no fields)_
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `message_type` | Literal<'auth_error'> | no | `'auth_error'` | The message type identifier. |
-| `error` | str | no | `nil` | Authentication error details. |
+| `error` | str | **yes** | **required** | Authentication error details. |
 
 ### ScribeChunkSizeExceededErrorPayload
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `message_type` | Literal<'chunk_size_exceeded'> | no | `'chunk_size_exceeded'` | The message type identifier. |
-| `error` | str | no | `nil` | Chunk size exceeded error details. |
+| `error` | str | **yes** | **required** | Chunk size exceeded error details. |
 
 ### ScribeErrorPayload
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `message_type` | Literal<'error'> | no | `'error'` | The message type identifier. |
-| `error` | str | no | `nil` | Error message describing what went wrong. |
+| `error` | str | **yes** | **required** | Error message describing what went wrong. |
 
 ### ScribeInputErrorPayload
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `message_type` | Literal<'input_error'> | no | `'input_error'` | The message type identifier. |
-| `error` | str | no | `nil` | Input error details. |
+| `error` | str | **yes** | **required** | Input error details. |
 
 ### ScribeInsufficientAudioActivityErrorPayload
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `message_type` | Literal<'insufficient_audio_activity'> | no | `'insufficient_audio_activity'` | The message type identifier. |
-| `error` | str | no | `nil` | Insufficient audio activity error details. |
+| `error` | str | **yes** | **required** | Insufficient audio activity error details. |
 
 ### ScribeQueueOverflowErrorPayload
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `message_type` | Literal<'queue_overflow'> | no | `'queue_overflow'` | The message type identifier. |
-| `error` | str | no | `nil` | Queue overflow error details. |
+| `error` | str | **yes** | **required** | Queue overflow error details. |
 
 ### ScribeQuotaExceededErrorPayload
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `message_type` | Literal<'quota_exceeded'> | no | `'quota_exceeded'` | The message type identifier. |
-| `error` | str | no | `nil` | Quota exceeded error details. |
+| `error` | str | **yes** | **required** | Quota exceeded error details. |
 
 ### ScribeRateLimitedErrorPayload
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `message_type` | Literal<'rate_limited'> | no | `'rate_limited'` | The message type identifier. |
-| `error` | str | no | `nil` | Rate limited error details. |
+| `error` | str | **yes** | **required** | Rate limited error details. |
 
 ### ScribeResourceExhaustedErrorPayload
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `message_type` | Literal<'resource_exhausted'> | no | `'resource_exhausted'` | The message type identifier. |
-| `error` | str | no | `nil` | Resource exhausted error details. |
+| `error` | str | **yes** | **required** | Resource exhausted error details. |
 
 ### ScribeSessionTimeLimitExceededErrorPayload
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `message_type` | Literal<'session_time_limit_exceeded'> | no | `'session_time_limit_exceeded'` | The message type identifier. |
-| `error` | str | no | `nil` | Session time limit exceeded error details. |
+| `error` | str | **yes** | **required** | Session time limit exceeded error details. |
 
 ### ScribeThrottledErrorPayload
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `message_type` | Literal<'commit_throttled'> | no | `'commit_throttled'` | The message type identifier. |
-| `error` | str | no | `nil` | Throttled error details. |
+| `error` | str | **yes** | **required** | Throttled error details. |
 
 ### ScribeTranscriberErrorPayload
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `message_type` | Literal<'transcriber_error'> | no | `'transcriber_error'` | The message type identifier. |
-| `error` | str | no | `nil` | Transcriber error details. |
+| `error` | str | **yes** | **required** | Transcriber error details. |
 
 ### ScribeUnacceptedTermsErrorPayload
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `message_type` | Literal<'unaccepted_terms'> | no | `'unaccepted_terms'` | The message type identifier. |
-| `error` | str | no | `nil` | Unaccepted terms error details. |
+| `error` | str | **yes** | **required** | Unaccepted terms error details. |
 
 ### SearchClientsParams
 
@@ -6705,8 +6705,8 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `song_id` | str | no | `nil` | The ID of the song to source the section from. You can find the song ID in the response headers when you generate a song. |
-| `range` | [TimeRange](#timerange) | no | `nil` | The range to extract from the source song. |
+| `song_id` | str | **yes** | **required** | The ID of the song to source the section from. You can find the song ID in the response headers when you generate a song. |
+| `range` | [TimeRange](#timerange) | **yes** | **required** | The range to extract from the source song. |
 | `negative_ranges` | Optional<Array<[TimeRange](#timerange)>> | no | `nil` | The ranges to exclude from the 'range'. |
 
 ### SegmentCreateResponse
@@ -6774,7 +6774,7 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `text` | str | no | `nil` | The text to be sent to the API for audio generation. Should always end with a single space string. |
+| `text` | str | **yes** | **required** | The text to be sent to the API for audio generation. Should always end with a single space string. |
 | `try_trigger_generation` | Optional<bool> | no | `nil` | This is an advanced setting that most users shouldn't need to use. It relates to our generation schedule.          Use this to attempt to immediately trigger the generation of audio, overriding the `chunk_length_schedule`.     Unlike flush, `try_trigger_generation` will only generate audio if our     buffer contains more than a minimum     threshold of characters, this is to ensure a higher quality response from our model.          Note that overriding the chunk schedule to generate small amounts of     text may result in lower quality audio, therefore, only use this parameter if you     really need text to be processed immediately. We generally recommend keeping the default value of     `false` and adjusting the `chunk_length_schedule` in the `generation_config` instead. |
 | `voice_settings` | Optional<[RealtimeVoiceSettings](#realtimevoicesettings)> | no | `nil` | The voice settings field can be provided in the first `InitializeConnection` message and then must either be not provided or not changed. |
 | `generator_config` | Optional<[GenerationConfig](#generationconfig)> | no | `nil` | The generator config field can be provided in the first `InitializeConnection` message and then must either be not provided or not changed. |
@@ -6784,7 +6784,7 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `text` | str | no | `nil` | Text to synthesize. Should end with a single space. |
+| `text` | str | **yes** | **required** | Text to synthesize. Should end with a single space. |
 | `context_id` | Optional<str> | no | `nil` | The target context_id for this text. |
 | `flush` | Optional<bool> | no | `nil` | If true, flushes the audio buffer for the specified context. If false, the text will be appended to the buffer to be generated. |
 
@@ -6793,8 +6793,8 @@ _(no fields)_
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `message_type` | Literal<'session_started'> | no | `'session_started'` | The message type identifier. |
-| `session_id` | str | no | `nil` | Unique identifier for the session. |
-| `config` | [SessionStartedPayloadConfig](#sessionstartedpayloadconfig) | no | `nil` | Configuration for the transcription session. |
+| `session_id` | str | **yes** | **required** | Unique identifier for the session. |
+| `config` | [SessionStartedPayloadConfig](#sessionstartedpayloadconfig) | **yes** | **required** | Configuration for the transcription session. |
 
 ### SessionStartedPayloadConfig
 
@@ -6831,9 +6831,9 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `name` | str | no | `nil` | The name of the principal. |
-| `id` | str | no | `nil` | The ID of the principal. |
-| `type` | [ShareOptionResponseModelType](#shareoptionresponsemodeltype) | no | `nil` | The type of the principal: user, group, or service account (under 'key'). |
+| `name` | str | **yes** | **required** | The name of the principal. |
+| `id` | str | **yes** | **required** | The ID of the principal. |
+| `type` | [ShareOptionResponseModelType](#shareoptionresponsemodeltype) | **yes** | **required** | The type of the principal: user, group, or service account (under 'key'). |
 
 ### SimilarVoice
 
@@ -6876,7 +6876,7 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `test_id` | str | no | `nil` | ID of the test to run |
+| `test_id` | str | **yes** | **required** | ID of the test to run |
 | `workflow_node_id` | Optional<str> | no | `nil` | ID of the workflow node to run the test on. If not provided, the test will be run on the agent's default workflow node. |
 | `root_folder_id` | Optional<str> | no | `nil` | ID of the root folder to run the test on. If not provided, the test will be run on the agent's default folder. |
 | `root_folder_name` | Optional<str> | no | `nil` | Name of the root folder to run the test on. If not provided, the test will be run on the agent's default folder. |
@@ -6885,13 +6885,13 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `token` | str | no | `nil` | A time bound single use token that expires after 15 minutes. Will be consumed on use. |
+| `token` | str | **yes** | **required** | A time bound single use token that expires after 15 minutes. Will be consumed on use. |
 
 ### SipTrunkCredentialsRequestModel
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `username` | str | no | `nil` | SIP trunk username |
+| `username` | str | **yes** | **required** | SIP trunk username |
 | `password` | Optional<str> | no | `nil` | SIP trunk password - if not specified, then remain unchanged |
 
 ### SipTrunkOutboundCallResponse
@@ -6960,19 +6960,19 @@ _(no fields)_
 | --- | --- | --- | --- | --- |
 | `title` | Optional<str> | no | `nil` | The title of the song |
 | `description` | Optional<str> | no | `nil` | The description of the song |
-| `genres` | Array<str> | no | `nil` | The genres of the song |
-| `languages` | Array<str> | no | `nil` | The languages of the song |
+| `genres` | Array<str> | **yes** | **required** | The genres of the song |
+| `languages` | Array<str> | **yes** | **required** | The languages of the song |
 | `is_explicit` | Optional<bool> | no | `nil` | Whether the song is explicit |
 
 ### SongSection
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `section_name` | str | no | `nil` | The name of the section. Must be between 1 and 100 characters. |
-| `positive_local_styles` | Array<str> | no | `nil` | The styles and musical directions that should be present in this section. Use English language for best result. |
-| `negative_local_styles` | Array<str> | no | `nil` | The styles and musical directions that should not be present in this section. Use English language for best result. |
-| `duration_ms` | int | no | `nil` | The duration of the section in milliseconds. Must be between 3000ms and 120000ms. |
-| `lines` | Array<str> | no | `nil` | The lyrics of the section. Max 200 characters per line. |
+| `section_name` | str | **yes** | **required** | The name of the section. Must be between 1 and 100 characters. |
+| `positive_local_styles` | Array<str> | **yes** | **required** | The styles and musical directions that should be present in this section. Use English language for best result. |
+| `negative_local_styles` | Array<str> | **yes** | **required** | The styles and musical directions that should not be present in this section. Use English language for best result. |
+| `duration_ms` | int | **yes** | **required** | The duration of the section in milliseconds. Must be between 3000ms and 120000ms. |
+| `lines` | Array<str> | **yes** | **required** | The lyrics of the section. Max 200 characters per line. |
 | `source_from` | Optional<[SectionSource](#sectionsource)> | no | `nil` | Optional source to extract the section from. Used for inpainting. Only available to enterprise clients with access to the inpainting feature. |
 
 ### SongSourceContext
@@ -6992,7 +6992,7 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `name` | str | no | `nil` | Source name (can be existing or new) |
+| `name` | str | **yes** | **required** | Source name (can be existing or new) |
 | `db_name` | Optional<str> | no | `nil` | MongoDB database name. Default: eleven_customer_support |
 | `collection_name` | Optional<str> | no | `nil` | MongoDB collection name. Required for new sources. |
 | `k_dense` | Optional<int> | no | `nil` | Number of chunks from vector search |
@@ -7029,9 +7029,9 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `audio_base_64` | str | no | `nil` | The base64 encoded audio. |
-| `media_type` | str | no | `nil` | The media type of the audio. |
-| `duration_secs` | float | no | `nil` | The duration of the audio in seconds. |
+| `audio_base_64` | str | **yes** | **required** | The base64 encoded audio. |
+| `media_type` | str | **yes** | **required** | The media type of the audio. |
+| `duration_secs` | float | **yes** | **required** | The duration of the audio in seconds. |
 
 ### SpeakerCreatedResponse
 
@@ -7044,8 +7044,8 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `speaker_id` | str | no | `nil` | The ID of the speaker. |
-| `duration_secs` | float | no | `nil` | The duration of the speaker segment in seconds. |
+| `speaker_id` | str | **yes** | **required** | The ID of the speaker. |
+| `duration_secs` | float | **yes** | **required** | The duration of the speaker segment in seconds. |
 | `utterances` | Optional<Array<[UtteranceResponseModel](#utteranceresponsemodel)>> | no | `nil` | The utterances of the speaker. |
 
 ### SpeakerSegment
@@ -7063,9 +7063,9 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `voice_id` | str | no | `nil` | The ID of the voice. |
-| `sample_id` | str | no | `nil` | The ID of the sample. |
-| `status` | [SpeakerSeparationResponseModelStatus](#speakerseparationresponsemodelstatus) | no | `nil` | The status of the speaker separation. |
+| `voice_id` | str | **yes** | **required** | The ID of the voice. |
+| `sample_id` | str | **yes** | **required** | The ID of the sample. |
+| `status` | [SpeakerSeparationResponseModelStatus](#speakerseparationresponsemodelstatus) | **yes** | **required** | The status of the speaker separation. |
 | `speakers` | Optional<Hash<str, Optional<[SpeakerResponseModel](#speakerresponsemodel)>>> | no | `nil` | The speakers of the sample. |
 | `selected_speaker_ids` | Optional<Array<str>> | no | `nil` | The IDs of the selected speakers. |
 
@@ -7089,17 +7089,17 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `history_item_id` | str | no | `nil` | The ID of the history item. |
+| `history_item_id` | str | **yes** | **required** | The ID of the history item. |
 | `request_id` | Optional<str> | no | `nil` | The ID of the request. |
 | `voice_id` | Optional<str> | no | `nil` | The ID of the voice used. |
 | `model_id` | Optional<str> | no | `nil` | The ID of the model. |
 | `voice_name` | Optional<str> | no | `nil` | The name of the voice. |
 | `voice_category` | Optional<[SpeechHistoryItemResponseModelVoiceCategory](#speechhistoryitemresponsemodelvoicecategory)> | no | `nil` | The category of the voice. Either 'premade', 'cloned', 'generated' or 'professional'. |
 | `text` | Optional<str> | no | `nil` | The text used to generate the audio item. |
-| `date_unix` | int | no | `nil` | Unix timestamp of when the item was created. |
-| `character_count_change_from` | int | no | `nil` | The character count change from. |
-| `character_count_change_to` | int | no | `nil` | The character count change to. |
-| `content_type` | str | no | `nil` | The content type of the generated item. |
+| `date_unix` | int | **yes** | **required** | Unix timestamp of when the item was created. |
+| `character_count_change_from` | int | **yes** | **required** | The character count change from. |
+| `character_count_change_to` | int | **yes** | **required** | The character count change to. |
+| `content_type` | str | **yes** | **required** | The content type of the generated item. |
 | `state` | Any | **yes** | **required** |  |
 | `settings` | Optional<Hash<str, Any>> | no | `nil` | The settings of the history item. |
 | `feedback` | Optional<[FeedbackItem](#feedbackitem)> | no | `nil` | Feedback associated with the generated item. Returns null if no feedback has been provided. |
@@ -7113,7 +7113,7 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `text` | str | no | `nil` | The character that was transcribed. |
+| `text` | str | **yes** | **required** | The character that was transcribed. |
 | `start` | Optional<float> | no | `nil` | The start time of the character in seconds. |
 | `end` | Optional<float> | no | `nil` | The end time of the character in seconds. |
 
@@ -7121,10 +7121,10 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `language_code` | str | no | `nil` | The detected language code (e.g. 'eng' for English). |
-| `language_probability` | float | no | `nil` | The confidence score of the language detection (0 to 1). |
-| `text` | str | no | `nil` | The raw text of the transcription. |
-| `words` | Array<[SpeechToTextWordResponseModel](#speechtotextwordresponsemodel)> | no | `nil` | List of words with their timing information. |
+| `language_code` | str | **yes** | **required** | The detected language code (e.g. 'eng' for English). |
+| `language_probability` | float | **yes** | **required** | The confidence score of the language detection (0 to 1). |
+| `text` | str | **yes** | **required** | The raw text of the transcription. |
+| `words` | Array<[SpeechToTextWordResponseModel](#speechtotextwordresponsemodel)> | **yes** | **required** | List of words with their timing information. |
 | `channel_index` | Optional<int> | no | `nil` | The channel index this transcript belongs to (for multichannel audio). |
 | `additional_formats` | Optional<Array<Optional<[AdditionalFormatResponseModel](#additionalformatresponsemodel)>>> | no | `nil` | Requested additional formats of the transcript. |
 | `transcription_id` | Optional<str> | no | `nil` | The transcription ID of the response. |
@@ -7135,20 +7135,20 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `message` | str | no | `nil` | The message of the webhook response. |
-| `request_id` | str | no | `nil` | The request ID of the webhook response. |
+| `message` | str | **yes** | **required** | The message of the webhook response. |
+| `request_id` | str | **yes** | **required** | The request ID of the webhook response. |
 | `transcription_id` | Optional<str> | no | `nil` | The transcription ID of the webhook response. |
 
 ### SpeechToTextWordResponseModel
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `text` | str | no | `nil` | The word or sound that was transcribed. |
+| `text` | str | **yes** | **required** | The word or sound that was transcribed. |
 | `start` | Optional<float> | no | `nil` | The start time of the word or sound in seconds. |
 | `end` | Optional<float> | no | `nil` | The end time of the word or sound in seconds. |
-| `type` | [SpeechToTextWordResponseModelType](#speechtotextwordresponsemodeltype) | no | `nil` | The type of the word or sound. 'audio_event' is used for non-word sounds like laughter or footsteps. |
+| `type` | [SpeechToTextWordResponseModelType](#speechtotextwordresponsemodeltype) | **yes** | **required** | The type of the word or sound. 'audio_event' is used for non-word sounds like laughter or footsteps. |
 | `speaker_id` | Optional<str> | no | `nil` | Unique identifier for the speaker of this word. |
-| `logprob` | float | no | `nil` | The log of the probability with which this word was predicted. Logprobs are in range [-infinity, 0], higher logprobs indicate a higher confidence the model has in its predictions. |
+| `logprob` | float | **yes** | **required** | The log of the probability with which this word was predicted. Logprobs are in range [-infinity, 0], higher logprobs indicate a higher confidence the model has in its predictions. |
 | `characters` | Optional<Array<[SpeechToTextCharacterResponseModel](#speechtotextcharacterresponsemodel)>> | no | `nil` | The characters that make up the word and their timing information. |
 
 ### SrtExportOptions
@@ -7166,28 +7166,28 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `status` | str | no | `nil` | The status of the start PVC voice training request. If the request was successful, the status will be 'ok'. Otherwise an error message with status 500 will be returned. |
+| `status` | str | **yes** | **required** | The status of the start PVC voice training request. If the request was successful, the status will be 'ok'. Otherwise an error message with status 500 will be returned. |
 
 ### StartSpeakerSeparationResponseModel
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `status` | str | no | `nil` | The status of the start speaker seperation request. If the request was successful, the status will be 'ok'. Otherwise an error message with status 500 will be returned. |
+| `status` | str | **yes** | **required** | The status of the start speaker seperation request. If the request was successful, the status will be 'ok'. Otherwise an error message with status 500 will be returned. |
 
 ### StreamingAudioChunkWithTimestampsAndVoiceSegmentsResponseModel
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `audio_base_64` | Annotated[str, FieldMetadata(alias='audio_base64')> | no | `nil` | Base64 encoded audio data |
+| `audio_base_64` | Annotated[str, FieldMetadata(alias='audio_base64')> | **yes** | **required** | Base64 encoded audio data |
 | `alignment` | Optional<[CharacterAlignmentResponseModel](#characteralignmentresponsemodel)> | no | `nil` | Timestamp information for each character in the original text |
 | `normalized_alignment` | Optional<[CharacterAlignmentResponseModel](#characteralignmentresponsemodel)> | no | `nil` | Timestamp information for each character in the normalized text |
-| `voice_segments` | Array<[VoiceSegment](#voicesegment)> | no | `nil` | Voice segments for the audio |
+| `voice_segments` | Array<[VoiceSegment](#voicesegment)> | **yes** | **required** | Voice segments for the audio |
 
 ### StreamingAudioChunkWithTimestampsResponse
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `audio_base_64` | Annotated[str, FieldMetadata(alias='audio_base64')> | no | `nil` | Base64 encoded audio data |
+| `audio_base_64` | Annotated[str, FieldMetadata(alias='audio_base64')> | **yes** | **required** | Base64 encoded audio data |
 | `alignment` | Optional<[CharacterAlignmentResponseModel](#characteralignmentresponsemodel)> | no | `nil` | Timestamp information for each character in the original text |
 | `normalized_alignment` | Optional<[CharacterAlignmentResponseModel](#characteralignmentresponsemodel)> | no | `nil` | Timestamp information for each character in the normalized text |
 
@@ -7238,30 +7238,30 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `tier` | str | no | `nil` | The tier of the user's subscription. |
-| `character_count` | int | no | `nil` | The number of characters used by the user. |
-| `character_limit` | int | no | `nil` | The maximum number of characters allowed in the current billing period. |
+| `tier` | str | **yes** | **required** | The tier of the user's subscription. |
+| `character_count` | int | **yes** | **required** | The number of characters used by the user. |
+| `character_limit` | int | **yes** | **required** | The maximum number of characters allowed in the current billing period. |
 | `max_character_limit_extension` | Optional<int> | no | `nil` | Deprecated: use `max_credit_limit_extension`. Maximum number of characters that the character limit can be exceeded by. Managed by the workspace admin. |
-| `max_credit_limit_extension` | ExtendedSubscriptionResponseModelMaxCreditLimitExtension | no | `nil` | Maximum number of credits that the credit limit can be exceeded by. Managed by the workspace admin. `"unlimited"` means no cap, `0` means usage-based billing is disabled. |
-| `can_extend_character_limit` | bool | no | `nil` | Whether the workspace is entitled to enter overages (usage-based billing). |
-| `allowed_to_extend_character_limit` | bool | no | `nil` | Deprecated: use `max_credit_limit_extension != 0`. Whether the user is allowed to extend their character limit. |
+| `max_credit_limit_extension` | ExtendedSubscriptionResponseModelMaxCreditLimitExtension | **yes** | **required** | Maximum number of credits that the credit limit can be exceeded by. Managed by the workspace admin. `"unlimited"` means no cap, `0` means usage-based billing is disabled. |
+| `can_extend_character_limit` | bool | **yes** | **required** | Whether the workspace is entitled to enter overages (usage-based billing). |
+| `allowed_to_extend_character_limit` | bool | **yes** | **required** | Deprecated: use `max_credit_limit_extension != 0`. Whether the user is allowed to extend their character limit. |
 | `next_character_count_reset_unix` | Optional<int> | no | `nil` | The Unix timestamp of the next character count reset. |
-| `voice_slots_used` | int | no | `nil` | The number of voice slots used by the user. |
-| `professional_voice_slots_used` | int | no | `nil` | The number of professional voice slots used by the workspace/user if single seat. |
-| `voice_limit` | int | no | `nil` | The maximum number of voice slots allowed for the user. |
+| `voice_slots_used` | int | **yes** | **required** | The number of voice slots used by the user. |
+| `professional_voice_slots_used` | int | **yes** | **required** | The number of professional voice slots used by the workspace/user if single seat. |
+| `voice_limit` | int | **yes** | **required** | The maximum number of voice slots allowed for the user. |
 | `max_voice_add_edits` | Optional<int> | no | `nil` | The maximum number of voice add/edits allowed for the user. |
-| `voice_add_edit_counter` | int | no | `nil` | The number of voice add/edits used by the user. |
-| `professional_voice_limit` | int | no | `nil` | The maximum number of professional voices allowed for the user. |
-| `can_extend_voice_limit` | bool | no | `nil` | Whether the user can extend their voice limit. |
-| `can_use_instant_voice_cloning` | bool | no | `nil` | Whether the user can use instant voice cloning. |
-| `can_use_professional_voice_cloning` | bool | no | `nil` | Whether the user can use professional voice cloning. |
+| `voice_add_edit_counter` | int | **yes** | **required** | The number of voice add/edits used by the user. |
+| `professional_voice_limit` | int | **yes** | **required** | The maximum number of professional voices allowed for the user. |
+| `can_extend_voice_limit` | bool | **yes** | **required** | Whether the user can extend their voice limit. |
+| `can_use_instant_voice_cloning` | bool | **yes** | **required** | Whether the user can use instant voice cloning. |
+| `can_use_professional_voice_cloning` | bool | **yes** | **required** | Whether the user can use professional voice cloning. |
 | `currency` | Optional<[ExtendedSubscriptionResponseModelCurrency](#extendedsubscriptionresponsemodelcurrency)> | no | `nil` | The currency of the user's subscription. |
-| `status` | [SubscriptionStatusType](#subscriptionstatustype) | no | `nil` | The status of the user's subscription. |
+| `status` | [SubscriptionStatusType](#subscriptionstatustype) | **yes** | **required** | The status of the user's subscription. |
 | `billing_period` | Optional<[BillingPeriod](#billingperiod)> | no | `nil` | The billing period of the user's subscription. |
 | `character_refresh_period` | Optional<[CharacterRefreshPeriod](#characterrefreshperiod)> | no | `nil` | The character refresh period of the user's subscription. |
 | `next_invoice` | Optional<[InvoiceResponse](#invoiceresponse)> | no | `nil` | The next invoice for the user. |
-| `open_invoices` | Array<[InvoiceResponse](#invoiceresponse)> | no | `nil` | The open invoices for the user. |
-| `has_open_invoices` | bool | no | `nil` | Whether the user has open invoices. |
+| `open_invoices` | Array<[InvoiceResponse](#invoiceresponse)> | **yes** | **required** | The open invoices for the user. |
+| `has_open_invoices` | bool | **yes** | **required** | Whether the user has open invoices. |
 | `pending_change` | Optional<ExtendedSubscriptionResponseModelPendingChange> | no | `nil` | The pending change for the user. |
 | `has_used_starter_coupon_on_account` | Optional<bool> | no | `nil` | True if any workspace owned by this user's auth account has redeemed the starter first-month discount coupon. |
 | `has_used_creator_coupon_on_account` | Optional<bool> | no | `nil` | True if any workspace owned by this user's auth account has redeemed the creator first-month discount coupon. |
@@ -7270,25 +7270,25 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `tier` | str | no | `nil` | The tier of the user's subscription. |
-| `character_count` | int | no | `nil` | The number of characters used by the user. |
-| `character_limit` | int | no | `nil` | The maximum number of characters allowed in the current billing period. |
+| `tier` | str | **yes** | **required** | The tier of the user's subscription. |
+| `character_count` | int | **yes** | **required** | The number of characters used by the user. |
+| `character_limit` | int | **yes** | **required** | The maximum number of characters allowed in the current billing period. |
 | `max_character_limit_extension` | Optional<int> | no | `nil` | Deprecated: use `max_credit_limit_extension`. Maximum number of characters that the character limit can be exceeded by. Managed by the workspace admin. |
-| `max_credit_limit_extension` | SubscriptionResponseModelMaxCreditLimitExtension | no | `nil` | Maximum number of credits that the credit limit can be exceeded by. Managed by the workspace admin. `"unlimited"` means no cap, `0` means usage-based billing is disabled. |
-| `can_extend_character_limit` | bool | no | `nil` | Whether the workspace is entitled to enter overages (usage-based billing). |
-| `allowed_to_extend_character_limit` | bool | no | `nil` | Deprecated: use `max_credit_limit_extension != 0`. Whether the user is allowed to extend their character limit. |
+| `max_credit_limit_extension` | SubscriptionResponseModelMaxCreditLimitExtension | **yes** | **required** | Maximum number of credits that the credit limit can be exceeded by. Managed by the workspace admin. `"unlimited"` means no cap, `0` means usage-based billing is disabled. |
+| `can_extend_character_limit` | bool | **yes** | **required** | Whether the workspace is entitled to enter overages (usage-based billing). |
+| `allowed_to_extend_character_limit` | bool | **yes** | **required** | Deprecated: use `max_credit_limit_extension != 0`. Whether the user is allowed to extend their character limit. |
 | `next_character_count_reset_unix` | Optional<int> | no | `nil` | The Unix timestamp of the next character count reset. |
-| `voice_slots_used` | int | no | `nil` | The number of voice slots used by the user. |
-| `professional_voice_slots_used` | int | no | `nil` | The number of professional voice slots used by the workspace/user if single seat. |
-| `voice_limit` | int | no | `nil` | The maximum number of voice slots allowed for the user. |
+| `voice_slots_used` | int | **yes** | **required** | The number of voice slots used by the user. |
+| `professional_voice_slots_used` | int | **yes** | **required** | The number of professional voice slots used by the workspace/user if single seat. |
+| `voice_limit` | int | **yes** | **required** | The maximum number of voice slots allowed for the user. |
 | `max_voice_add_edits` | Optional<int> | no | `nil` | The maximum number of voice add/edits allowed for the user. |
-| `voice_add_edit_counter` | int | no | `nil` | The number of voice add/edits used by the user. |
-| `professional_voice_limit` | int | no | `nil` | The maximum number of professional voices allowed for the user. |
-| `can_extend_voice_limit` | bool | no | `nil` | Whether the user can extend their voice limit. |
-| `can_use_instant_voice_cloning` | bool | no | `nil` | Whether the user can use instant voice cloning. |
-| `can_use_professional_voice_cloning` | bool | no | `nil` | Whether the user can use professional voice cloning. |
+| `voice_add_edit_counter` | int | **yes** | **required** | The number of voice add/edits used by the user. |
+| `professional_voice_limit` | int | **yes** | **required** | The maximum number of professional voices allowed for the user. |
+| `can_extend_voice_limit` | bool | **yes** | **required** | Whether the user can extend their voice limit. |
+| `can_use_instant_voice_cloning` | bool | **yes** | **required** | Whether the user can use instant voice cloning. |
+| `can_use_professional_voice_cloning` | bool | **yes** | **required** | Whether the user can use professional voice cloning. |
 | `currency` | Optional<[SubscriptionResponseModelCurrency](#subscriptionresponsemodelcurrency)> | no | `nil` | The currency of the user's subscription. |
-| `status` | [SubscriptionStatusType](#subscriptionstatustype) | no | `nil` | The status of the user's subscription. |
+| `status` | [SubscriptionStatusType](#subscriptionstatustype) | **yes** | **required** | The status of the user's subscription. |
 | `billing_period` | Optional<[BillingPeriod](#billingperiod)> | no | `nil` | The billing period of the user's subscription. |
 | `character_refresh_period` | Optional<[CharacterRefreshPeriod](#characterrefreshperiod)> | no | `nil` | The character refresh period of the user's subscription. |
 
@@ -7296,7 +7296,7 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `tag` | str | no | `nil` | Audio tag to use (for best performance, 1-2 words, e.g., 'happy', 'excited') |
+| `tag` | str | **yes** | **required** | Audio tag to use (for best performance, 1-2 words, e.g., 'happy', 'excited') |
 | `description` | Optional<str> | no | `nil` | Optional description of when to use this tag |
 
 ### SupportedVoice
@@ -7389,15 +7389,15 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `id` | str | no | `nil` | The ID of the test invocation |
+| `id` | str | **yes** | **required** | The ID of the test invocation |
 | `agent_id` | Optional<str> | no | `nil` | The ID of the agent this test invocation belongs to |
 | `branch_id` | Optional<str> | no | `nil` | The ID of the branch this test invocation was run on |
-| `created_at_unix_secs` | int | no | `nil` | Creation time of the test invocation in unix seconds |
-| `test_run_count` | int | no | `nil` | Number of test runs in this invocation |
-| `passed_count` | int | no | `nil` | Number of test runs that passed |
-| `failed_count` | int | no | `nil` | Number of test runs that failed |
-| `pending_count` | int | no | `nil` | Number of test runs that are pending |
-| `title` | str | no | `nil` | Title of the test invocation - either the single test name or count of tests |
+| `created_at_unix_secs` | int | **yes** | **required** | Creation time of the test invocation in unix seconds |
+| `test_run_count` | int | **yes** | **required** | Number of test runs in this invocation |
+| `passed_count` | int | **yes** | **required** | Number of test runs that passed |
+| `failed_count` | int | **yes** | **required** | Number of test runs that failed |
+| `pending_count` | int | **yes** | **required** | Number of test runs that are pending |
+| `title` | str | **yes** | **required** | Title of the test invocation - either the single test name or count of tests |
 | `access_info` | Optional<[ResourceAccessInfo](#resourceaccessinfo)> | no | `nil` | The access information of the test invocation |
 
 ### TestRunMetadata
@@ -7487,13 +7487,13 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `tool_id` | str | no | `nil` | The ID of the tool that was executed |
-| `tool_request_id` | str | no | `nil` | The request/call ID associated with this tool execution |
-| `conversation_id` | str | no | `nil` | The ID of the conversation where the tool was executed |
-| `agent_id` | str | no | `nil` | The ID of the agent that ran the tool |
+| `tool_id` | str | **yes** | **required** | The ID of the tool that was executed |
+| `tool_request_id` | str | **yes** | **required** | The request/call ID associated with this tool execution |
+| `conversation_id` | str | **yes** | **required** | The ID of the conversation where the tool was executed |
+| `agent_id` | str | **yes** | **required** | The ID of the agent that ran the tool |
 | `branch_id` | Optional<str> | no | `nil` | The branch ID if the agent has branches |
-| `timestamp` | float | no | `nil` | Unix timestamp when the tool was executed |
-| `latency_secs` | float | no | `nil` | How long the tool execution took |
+| `timestamp` | float | **yes** | **required** | Unix timestamp when the tool was executed |
+| `latency_secs` | float | **yes** | **required** | How long the tool execution took |
 | `is_error` | Optional<bool> | no | `nil` | Whether the tool execution failed |
 | `request_payload` | Optional<str> | no | `nil` | LLM-extracted parameters sent to the tool (JSON string) |
 | `response_payload` | Optional<str> | no | `nil` | Response returned by the tool |
@@ -7513,7 +7513,7 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `tool_config` | [ToolRequestModelToolConfig](#toolrequestmodeltoolconfig) | no | `nil` | Configuration for the tool |
+| `tool_config` | [ToolRequestModelToolConfig](#toolrequestmodeltoolconfig) | **yes** | **required** | Configuration for the tool |
 | `response_mocks` | Optional<Array<[ToolResponseMockConfigInput](#toolresponsemockconfiginput)>> | no | `nil` | Mock responses with optional parameter conditions. Evaluated top-to-bottom; first match wins. |
 
 ### ToolResponseMockConfigInput
@@ -7521,21 +7521,21 @@ _(no fields)_
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `parameter_conditions` | Optional<Array<[UnitTestToolCallParameter](#unittesttoolcallparameter)>> | no | `nil` | If the list is empty, the mock will always activate. |
-| `mock_result` | str | no | `nil` | The return value the LLM sees when this mock is active. |
+| `mock_result` | str | **yes** | **required** | The return value the LLM sees when this mock is active. |
 
 ### ToolResponseMockConfigOutput
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `parameter_conditions` | Optional<Array<[UnitTestToolCallParameter](#unittesttoolcallparameter)>> | no | `nil` | If the list is empty, the mock will always activate. |
-| `mock_result` | str | no | `nil` | The return value the LLM sees when this mock is active. |
+| `mock_result` | str | **yes** | **required** | The return value the LLM sees when this mock is active. |
 
 ### ToolResponseModel
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `id` | str | **yes** | **required** |  |
-| `tool_config` | [ToolResponseModelToolConfig](#toolresponsemodeltoolconfig) | no | `nil` | The type of tool |
+| `tool_config` | [ToolResponseModelToolConfig](#toolresponsemodeltoolconfig) | **yes** | **required** | The type of tool |
 | `access_info` | [ResourceAccessInfo](#resourceaccessinfo) | **yes** | **required** |  |
 | `usage_stats` | [ToolUsageStatsResponseModel](#toolusagestatsresponsemodel) | **yes** | **required** |  |
 | `response_mocks` | Optional<Array<[ToolResponseMockConfigOutput](#toolresponsemockconfigoutput)>> | no | `nil` | Mock responses with optional parameter conditions. Evaluated top-to-bottom; first match wins. |
@@ -7820,12 +7820,12 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `id` | str | no | `nil` | The ID of the test |
-| `name` | str | no | `nil` | Name of the test |
+| `id` | str | **yes** | **required** | The ID of the test |
+| `name` | str | **yes** | **required** | Name of the test |
 | `access_info` | Optional<[ResourceAccessInfo](#resourceaccessinfo)> | no | `nil` | The access information of the test |
-| `created_at_unix_secs` | int | no | `nil` | Creation time of the test in unix seconds |
-| `last_updated_at_unix_secs` | int | no | `nil` | Last update time of the test in unix seconds |
-| `type` | [TestType](#testtype) | no | `nil` | Type of the test or entity |
+| `created_at_unix_secs` | int | **yes** | **required** | Creation time of the test in unix seconds |
+| `last_updated_at_unix_secs` | int | **yes** | **required** | Last update time of the test in unix seconds |
+| `type` | [TestType](#testtype) | **yes** | **required** | Type of the test or entity |
 | `entity_type` | Optional<[AgentTestEntityType](#agenttestentitytype)> | no | `nil` | The type of entity (test or folder) |
 | `folder_parent_id` | Optional<str> | no | `nil` | The ID of the parent folder |
 | `folder_path` | Optional<Array<[AgentTestFolderPathSegmentResponseModel](#agenttestfolderpathsegmentresponsemodel)>> | no | `nil` | The folder path segments from root to this entity |
@@ -7861,8 +7861,8 @@ _(no fields)_
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `type` | Optional<Literal<'node_id'>> | no | `nil` |  |
-| `agent_id` | str | no | `nil` | The ID of the agent whose workflow contains the target node. |
-| `target_node_id` | str | no | `nil` | The ID of the workflow node that the agent should transition to. |
+| `agent_id` | str | **yes** | **required** | The ID of the agent whose workflow contains the target node. |
+| `target_node_id` | str | **yes** | **required** | The ID of the workflow node that the agent should transition to. |
 
 ### UpdateAgentRuleParams
 
@@ -7986,7 +7986,7 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `status` | str | no | `nil` | The status of the workspace member update request. If the request was successful, the status will be 'ok'. Otherwise an error message with status 500 will be returned. |
+| `status` | str | **yes** | **required** | The status of the workspace member update request. If the request was successful, the status will be 'ok'. Otherwise an error message with status 500 will be returned. |
 
 ### UrlAvatar
 
@@ -7998,28 +7998,28 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `time` | Array<int> | no | `nil` | The time axis with unix timestamps for each day. |
-| `usage` | Hash<str, Array<float>> | no | `nil` | The usage of each breakdown type along the time axis. |
+| `time` | Array<int> | **yes** | **required** | The time axis with unix timestamps for each day. |
+| `usage` | Hash<str, Array<float>> | **yes** | **required** | The usage of each breakdown type along the time axis. |
 
 ### User
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `user_id` | str | no | `nil` | The unique identifier of the user. |
-| `subscription` | [SubscriptionResponse](#subscriptionresponse) | no | `nil` | Details of the user's subscription. |
-| `is_new_user` | bool | no | `nil` | Whether the user is new. This field is deprecated and will be removed in the future. Use 'created_at' instead. |
+| `user_id` | str | **yes** | **required** | The unique identifier of the user. |
+| `subscription` | [SubscriptionResponse](#subscriptionresponse) | **yes** | **required** | Details of the user's subscription. |
+| `is_new_user` | bool | **yes** | **required** | Whether the user is new. This field is deprecated and will be removed in the future. Use 'created_at' instead. |
 | `xi_api_key` | Optional<str> | no | `nil` | The API key of the user. |
-| `can_use_delayed_payment_methods` | bool | no | `nil` | This field is deprecated and will be removed in a future major version. Instead use subscription.trust_on_invoice_creation. |
-| `is_onboarding_completed` | bool | no | `nil` | Whether the user's onboarding is completed. |
-| `is_onboarding_checklist_completed` | bool | no | `nil` | Whether the user's onboarding checklist is completed. |
+| `can_use_delayed_payment_methods` | bool | **yes** | **required** | This field is deprecated and will be removed in a future major version. Instead use subscription.trust_on_invoice_creation. |
+| `is_onboarding_completed` | bool | **yes** | **required** | Whether the user's onboarding is completed. |
+| `is_onboarding_checklist_completed` | bool | **yes** | **required** | Whether the user's onboarding checklist is completed. |
 | `show_compliance_terms` | Optional<bool> | no | `nil` | Whether to show compliance terms (ToS, Privacy Policy, biometric consent) during onboarding. Set for users signing up from the marketing site. |
 | `first_name` | Optional<str> | no | `nil` | First name of the user. |
 | `is_api_key_hashed` | Optional<bool> | no | `nil` | Whether the user's API key is hashed. |
 | `xi_api_key_preview` | Optional<str> | no | `nil` | The preview of the user's API key. |
 | `referral_link_code` | Optional<str> | no | `nil` | The referral link code of the user. |
 | `partnerstack_partner_default_link` | Optional<str> | no | `nil` | The Partnerstack partner default link of the user. |
-| `created_at` | int | no | `nil` | The unix timestamp of the user's creation. 0 if the user was created before the unix timestamp was added. |
-| `seat_type` | [SeatType](#seattype) | no | `nil` | The seat type of the user. |
+| `created_at` | int | **yes** | **required** | The unix timestamp of the user's creation. 0 if the user was created before the unix timestamp was added. |
+| `seat_type` | [SeatType](#seattype) | **yes** | **required** | The seat type of the user. |
 
 ### UserFeedback
 
@@ -8032,8 +8032,8 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `start` | float | no | `nil` | The start time of the utterance in seconds. |
-| `end` | float | no | `nil` | The end time of the utterance in seconds. |
+| `start` | float | **yes** | **required** | The start time of the utterance in seconds. |
+| `end` | float | **yes** | **required** | The end time of the utterance in seconds. |
 
 ### VadConfig
 
@@ -8055,19 +8055,19 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `text` | str | no | `nil` | The text of the verification attempt. |
-| `date_unix` | int | no | `nil` | The date of the verification attempt in Unix time. |
-| `accepted` | bool | no | `nil` | Whether the verification attempt was accepted. |
-| `similarity` | float | no | `nil` | The similarity of the verification attempt. |
-| `levenshtein_distance` | float | no | `nil` | The Levenshtein distance of the verification attempt. |
+| `text` | str | **yes** | **required** | The text of the verification attempt. |
+| `date_unix` | int | **yes** | **required** | The date of the verification attempt in Unix time. |
+| `accepted` | bool | **yes** | **required** | Whether the verification attempt was accepted. |
+| `similarity` | float | **yes** | **required** | The similarity of the verification attempt. |
+| `levenshtein_distance` | float | **yes** | **required** | The Levenshtein distance of the verification attempt. |
 | `recording` | Optional<[RecordingResponse](#recordingresponse)> | no | `nil` | The recording of the verification attempt. |
 
 ### VerifiedVoiceLanguageResponseModel
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `language` | str | no | `nil` | The language of the voice. |
-| `model_id` | str | no | `nil` | The voice's model ID. |
+| `language` | str | **yes** | **required** | The language of the voice. |
+| `model_id` | str | **yes** | **required** | The voice's model ID. |
 | `accent` | Optional<str> | no | `nil` | The voice's accent, if applicable. |
 | `locale` | Optional<str> | no | `nil` | The voice's locale, if applicable. |
 | `preview_url` | Optional<str> | no | `nil` | The voice's preview URL, if applicable. |
@@ -8076,7 +8076,7 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `status` | str | no | `nil` | The status of the verify PVC captcha request. If the request was successful, the status will be 'ok'. Otherwise an error message with status 500 will be returned. |
+| `status` | str | **yes** | **required** | The status of the verify PVC captcha request. If the request was successful, the status will be 'ok'. Otherwise an error message with status 500 will be returned. |
 
 ### VideoAnalysis
 
@@ -8139,7 +8139,7 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `voice_id` | str | no | `nil` | The ID of the voice. |
+| `voice_id` | str | **yes** | **required** | The ID of the voice. |
 | `name` | Optional<str> | no | `nil` | The name of the voice. |
 | `samples` | Optional<Array<[VoiceSample](#voicesample)>> | no | `nil` | List of samples associated with the voice. |
 | `category` | Optional<[VoiceResponseModelCategory](#voiceresponsemodelcategory)> | no | `nil` | The category of the voice. |
@@ -8170,8 +8170,8 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `previews` | Array<[VoicePreviewResponseModel](#voicepreviewresponsemodel)> | no | `nil` | The previews of the generated voices. |
-| `text` | str | no | `nil` | The text used to preview the voices. |
+| `previews` | Array<[VoicePreviewResponseModel](#voicepreviewresponsemodel)> | **yes** | **required** | The previews of the generated voices. |
+| `text` | str | **yes** | **required** | The text used to preview the voices. |
 
 ### VoiceMailDetectionResultSuccessModel
 
@@ -8185,10 +8185,10 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `audio_base_64` | str | no | `nil` | The base64 encoded audio of the preview. |
-| `generated_voice_id` | str | no | `nil` | The ID of the generated voice. Use it to create a voice from the preview. |
-| `media_type` | str | no | `nil` | The media type of the preview. |
-| `duration_secs` | float | no | `nil` | The duration of the preview in seconds. |
+| `audio_base_64` | str | **yes** | **required** | The base64 encoded audio of the preview. |
+| `generated_voice_id` | str | **yes** | **required** | The ID of the generated voice. Use it to create a voice from the preview. |
+| `media_type` | str | **yes** | **required** | The media type of the preview. |
+| `duration_secs` | float | **yes** | **required** | The duration of the preview in seconds. |
 | `language` | Optional<str> | no | `nil` | The language of the preview. |
 
 ### VoiceSample
@@ -8212,29 +8212,29 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `audio_base_64` | str | no | `nil` | The base64 encoded audio. |
-| `voice_id` | str | no | `nil` | The ID of the voice. |
-| `sample_id` | str | no | `nil` | The ID of the sample. |
-| `media_type` | str | no | `nil` | The media type of the audio. |
+| `audio_base_64` | str | **yes** | **required** | The base64 encoded audio. |
+| `voice_id` | str | **yes** | **required** | The ID of the voice. |
+| `sample_id` | str | **yes** | **required** | The ID of the sample. |
+| `media_type` | str | **yes** | **required** | The media type of the audio. |
 | `duration_secs` | Optional<float> | no | `nil` | The duration of the audio in seconds. |
 
 ### VoiceSampleVisualWaveformResponseModel
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `sample_id` | str | no | `nil` | The ID of the sample. |
-| `visual_waveform` | Array<float> | no | `nil` | The visual waveform of the sample, represented as a list of floats. |
+| `sample_id` | str | **yes** | **required** | The ID of the sample. |
+| `visual_waveform` | Array<float> | **yes** | **required** | The visual waveform of the sample, represented as a list of floats. |
 
 ### VoiceSegment
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `voice_id` | str | no | `nil` | The voice ID used for this segment |
-| `start_time_seconds` | float | no | `nil` | Start time of this voice segment |
-| `end_time_seconds` | float | no | `nil` | End time of this voice segment |
-| `character_start_index` | int | no | `nil` | Start index in the characters array |
-| `character_end_index` | int | no | `nil` | End index in the characters array (exclusive) |
-| `dialogue_input_index` | int | no | `nil` | Line of the dialogue (script) that this segment is a part of. |
+| `voice_id` | str | **yes** | **required** | The voice ID used for this segment |
+| `start_time_seconds` | float | **yes** | **required** | Start time of this voice segment |
+| `end_time_seconds` | float | **yes** | **required** | End time of this voice segment |
+| `character_start_index` | int | **yes** | **required** | Start index in the characters array |
+| `character_end_index` | int | **yes** | **required** | End index in the characters array (exclusive) |
+| `dialogue_input_index` | int | **yes** | **required** | Line of the dialogue (script) that this segment is a part of. |
 
 ### VoiceSettings
 
@@ -8302,18 +8302,18 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `voice_id` | str | no | `nil` | The voice ID. |
-| `characters_unconverted` | int | no | `nil` | The number of unconverted characters for this voice. |
-| `characters_converted` | int | no | `nil` | The number of converted characters for this voice. |
+| `voice_id` | str | **yes** | **required** | The voice ID. |
+| `characters_unconverted` | int | **yes** | **required** | The number of unconverted characters for this voice. |
+| `characters_converted` | int | **yes** | **required** | The number of converted characters for this voice. |
 
 ### VoiceVerificationResponse
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `requires_verification` | bool | no | `nil` | Whether the voice requires verification. |
-| `is_verified` | bool | no | `nil` | Whether the voice has been verified. |
-| `verification_failures` | Array<str> | no | `nil` | List of verification failures. |
-| `verification_attempts_count` | int | no | `nil` | The number of verification attempts. |
+| `requires_verification` | bool | **yes** | **required** | Whether the voice requires verification. |
+| `is_verified` | bool | **yes** | **required** | Whether the voice has been verified. |
+| `verification_failures` | Array<str> | **yes** | **required** | List of verification failures. |
+| `verification_attempts_count` | int | **yes** | **required** | The number of verification attempts. |
 | `language` | Optional<str> | no | `nil` | The language of the voice. |
 | `verification_attempts` | Optional<Array<[VerificationAttemptResponse](#verificationattemptresponse)>> | no | `nil` | Number of times a verification was attempted. |
 
@@ -8328,15 +8328,15 @@ _(no fields)_
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `auth_type` | Literal<'hmac'> | no | `'hmac'` | The authentication type for this webhook |
-| `name` | str | no | `nil` | The display name for this webhook |
-| `webhook_url` | str | no | `nil` | The HTTPS callback URL that will be called when this webhook is triggered |
+| `name` | str | **yes** | **required** | The display name for this webhook |
+| `webhook_url` | str | **yes** | **required** | The HTTPS callback URL that will be called when this webhook is triggered |
 
 ### WebhookToolApiSchemaConfigInput
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `request_headers` | Optional<Hash<str, WebhookToolApiSchemaConfigInputRequestHeadersValue>> | no | `nil` | Headers that should be included in the request |
-| `url` | str | no | `nil` | The URL that the webhook will be sent to. May include path parameters, e.g. https://example.com/agents/{agent_id} |
+| `url` | str | **yes** | **required** | The URL that the webhook will be sent to. May include path parameters, e.g. https://example.com/agents/{agent_id} |
 | `method` | Optional<[WebhookToolApiSchemaConfigInputMethod](#webhooktoolapischemaconfiginputmethod)> | no | `nil` | The HTTP method to use for the webhook |
 | `path_params_schema` | Optional<Hash<str, [LiteralJsonSchemaProperty](#literaljsonschemaproperty)>> | no | `nil` | Schema for path parameters, if any. The keys should match the placeholders in the URL. |
 | `query_params_schema` | Optional<[QueryParamsJsonSchema](#queryparamsjsonschema)> | no | `nil` | Schema for any query params, if any. These will be added to end of the URL as query params. Note: properties in a query param must all be literal types |
@@ -8349,7 +8349,7 @@ _(no fields)_
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `request_headers` | Optional<Hash<str, WebhookToolApiSchemaConfigOutputRequestHeadersValue>> | no | `nil` | Headers that should be included in the request |
-| `url` | str | no | `nil` | The URL that the webhook will be sent to. May include path parameters, e.g. https://example.com/agents/{agent_id} |
+| `url` | str | **yes** | **required** | The URL that the webhook will be sent to. May include path parameters, e.g. https://example.com/agents/{agent_id} |
 | `method` | Optional<[WebhookToolApiSchemaConfigOutputMethod](#webhooktoolapischemaconfigoutputmethod)> | no | `nil` | The HTTP method to use for the webhook |
 | `path_params_schema` | Optional<Hash<str, [LiteralJsonSchemaProperty](#literaljsonschemaproperty)>> | no | `nil` | Schema for path parameters, if any. The keys should match the placeholders in the URL. |
 | `query_params_schema` | Optional<[QueryParamsJsonSchema](#queryparamsjsonschema)> | no | `nil` | Schema for any query params, if any. These will be added to end of the URL as query params. Note: properties in a query param must all be literal types |
@@ -8362,7 +8362,7 @@ _(no fields)_
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `name` | str | **yes** | **required** |  |
-| `description` | str | no | `nil` | Description of when the tool should be used and what it does. |
+| `description` | str | **yes** | **required** | Description of when the tool should be used and what it does. |
 | `response_timeout_secs` | Optional<int> | no | `nil` | The maximum time in seconds to wait for the tool call to complete. Must be between 5 and 120 seconds (inclusive). |
 | `disable_interruptions` | Optional<bool> | no | `nil` | If true, the user will not be able to interrupt the agent while this tool is running. |
 | `force_pre_tool_speech` | Optional<bool> | no | `nil` | If true, the agent will speak before the tool call. |
@@ -8372,14 +8372,14 @@ _(no fields)_
 | `tool_error_handling_mode` | Optional<[ToolErrorHandlingMode](#toolerrorhandlingmode)> | no | `nil` | Controls how tool errors are processed before being shared with the agent. 'auto' determines handling based on tool type (summarized for native integrations, hide for others), 'summarized' sends an LLM-generated summary, 'passthrough' sends the raw error, 'hide' does not share the error with the agent. |
 | `dynamic_variables` | Optional<[DynamicVariablesConfigInput](#dynamicvariablesconfiginput)> | no | `nil` | Configuration for dynamic variables |
 | `execution_mode` | Optional<[ToolExecutionMode](#toolexecutionmode)> | no | `nil` | Determines when and how the tool executes: 'immediate' executes the tool right away when requested by the LLM, 'post_tool_speech' waits for the agent to finish speaking before executing, 'async' runs the tool in the background without blocking - best for long-running operations. |
-| `api_schema` | [WebhookToolApiSchemaConfigInput](#webhooktoolapischemaconfiginput) | no | `nil` | The schema for the outgoing webhoook, including parameters and URL specification |
+| `api_schema` | [WebhookToolApiSchemaConfigInput](#webhooktoolapischemaconfiginput) | **yes** | **required** | The schema for the outgoing webhoook, including parameters and URL specification |
 
 ### WebhookToolConfigOutput
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `name` | str | **yes** | **required** |  |
-| `description` | str | no | `nil` | Description of when the tool should be used and what it does. |
+| `description` | str | **yes** | **required** | Description of when the tool should be used and what it does. |
 | `response_timeout_secs` | Optional<int> | no | `nil` | The maximum time in seconds to wait for the tool call to complete. Must be between 5 and 120 seconds (inclusive). |
 | `disable_interruptions` | Optional<bool> | no | `nil` | If true, the user will not be able to interrupt the agent while this tool is running. |
 | `force_pre_tool_speech` | Optional<bool> | no | `nil` | If true, the agent will speak before the tool call. |
@@ -8389,7 +8389,7 @@ _(no fields)_
 | `tool_error_handling_mode` | Optional<[ToolErrorHandlingMode](#toolerrorhandlingmode)> | no | `nil` | Controls how tool errors are processed before being shared with the agent. 'auto' determines handling based on tool type (summarized for native integrations, hide for others), 'summarized' sends an LLM-generated summary, 'passthrough' sends the raw error, 'hide' does not share the error with the agent. |
 | `dynamic_variables` | Optional<[DynamicVariablesConfigOutput](#dynamicvariablesconfigoutput)> | no | `nil` | Configuration for dynamic variables |
 | `execution_mode` | Optional<[ToolExecutionMode](#toolexecutionmode)> | no | `nil` | Determines when and how the tool executes: 'immediate' executes the tool right away when requested by the LLM, 'post_tool_speech' waits for the agent to finish speaking before executing, 'async' runs the tool in the background without blocking - best for long-running operations. |
-| `api_schema` | [WebhookToolApiSchemaConfigOutput](#webhooktoolapischemaconfigoutput) | no | `nil` | The schema for the outgoing webhoook, including parameters and URL specification |
+| `api_schema` | [WebhookToolApiSchemaConfigOutput](#webhooktoolapischemaconfigoutput) | **yes** | **required** | The schema for the outgoing webhoook, including parameters and URL specification |
 
 ### WebsocketTtsClientMessageMulti
 
@@ -8744,8 +8744,8 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `source` | str | no | `nil` | ID of the source node. |
-| `target` | str | no | `nil` | ID of the target node. |
+| `source` | str | **yes** | **required** | ID of the source node. |
+| `target` | str | **yes** | **required** | ID of the target node. |
 | `forward_condition` | Optional<[WorkflowEdgeModelInputForwardCondition](#workflowedgemodelinputforwardcondition)> | no | `nil` | Condition that must be met for the edge to be traversed in the forward direction (source to target). |
 | `backward_condition` | Optional<[WorkflowEdgeModelInputBackwardCondition](#workflowedgemodelinputbackwardcondition)> | no | `nil` | Condition that must be met for the edge to be traversed in the backward direction (target to source). |
 
@@ -8753,8 +8753,8 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `source` | str | no | `nil` | ID of the source node. |
-| `target` | str | no | `nil` | ID of the target node. |
+| `source` | str | **yes** | **required** | ID of the source node. |
+| `target` | str | **yes** | **required** | ID of the target node. |
 | `forward_condition` | Optional<[WorkflowEdgeModelOutputForwardCondition](#workflowedgemodeloutputforwardcondition)> | no | `nil` | Condition that must be met for the edge to be traversed in the forward direction (source to target). |
 | `backward_condition` | Optional<[WorkflowEdgeModelOutputBackwardCondition](#workflowedgemodeloutputbackwardcondition)> | no | `nil` | Condition that must be met for the edge to be traversed in the backward direction (target to source). |
 
@@ -8769,22 +8769,22 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `position` | [PositionOutput](#positionoutput) | no | `nil` | Position of the node in the workflow. |
-| `edge_order` | Array<str> | no | `nil` | The ids of outgoing edges in the order they should be evaluated. |
+| `position` | [PositionOutput](#positionoutput) | **yes** | **required** | Position of the node in the workflow. |
+| `edge_order` | Array<str> | **yes** | **required** | The ids of outgoing edges in the order they should be evaluated. |
 
 ### WorkflowExpressionConditionModelInput
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `label` | Optional<str> | no | `nil` | Optional human-readable label for the condition used throughout the UI. |
-| `expression` | '[AstNodeInput](#astnodeinput)' | no | `nil` | Expression to evaluate. |
+| `expression` | '[AstNodeInput](#astnodeinput)' | **yes** | **required** | Expression to evaluate. |
 
 ### WorkflowExpressionConditionModelOutput
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `label` | Optional<str> | no | `nil` | Optional human-readable label for the condition used throughout the UI. |
-| `expression` | '[AstNodeOutput](#astnodeoutput)' | no | `nil` | Expression to evaluate. |
+| `expression` | '[AstNodeOutput](#astnodeoutput)' | **yes** | **required** | Expression to evaluate. |
 
 ### WorkflowFeaturesUsageCommonModel
 
@@ -8801,14 +8801,14 @@ _(no fields)_
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `label` | Optional<str> | no | `nil` | Optional human-readable label for the condition used throughout the UI. |
-| `condition` | str | no | `nil` | Condition to evaluate |
+| `condition` | str | **yes** | **required** | Condition to evaluate |
 
 ### WorkflowLlmConditionModelOutput
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `label` | Optional<str> | no | `nil` | Optional human-readable label for the condition used throughout the UI. |
-| `condition` | str | no | `nil` | Condition to evaluate |
+| `condition` | str | **yes** | **required** | Condition to evaluate |
 
 ### WorkflowOverrideAgentNodeModelInput
 
@@ -8820,19 +8820,19 @@ _(no fields)_
 | `additional_tool_ids` | Optional<Array<str>> | no | `nil` | IDs of additional tools that the subagent has access to. These will be used in addition to the main agent's tools. |
 | `position` | Optional<[PositionInput](#positioninput)> | no | `nil` | Position of the node in the workflow. |
 | `edge_order` | Optional<Array<str>> | no | `nil` | The ids of outgoing edges in the order they should be evaluated. |
-| `label` | str | no | `nil` | Human-readable label for the node used throughout the UI. |
+| `label` | str | **yes** | **required** | Human-readable label for the node used throughout the UI. |
 
 ### WorkflowOverrideAgentNodeModelOutput
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `conversation_config` | [ConversationalConfigApiModelWorkflowOverrideOutput](#conversationalconfigapimodelworkflowoverrideoutput) | no | `nil` | Configuration overrides applied while the subagent is conducting the conversation. |
-| `additional_prompt` | str | no | `nil` | Specific goal for this subagent. It will be added to the system prompt and can be used to further refine the agent's behavior in this specific context. |
-| `additional_knowledge_base` | Array<[KnowledgeBaseLocator](#knowledgebaselocator)> | no | `nil` | Additional knowledge base documents that the subagent has access to. These will be used in addition to the main agent's documents. |
-| `additional_tool_ids` | Array<str> | no | `nil` | IDs of additional tools that the subagent has access to. These will be used in addition to the main agent's tools. |
-| `position` | [PositionOutput](#positionoutput) | no | `nil` | Position of the node in the workflow. |
-| `edge_order` | Array<str> | no | `nil` | The ids of outgoing edges in the order they should be evaluated. |
-| `label` | str | no | `nil` | Human-readable label for the node used throughout the UI. |
+| `conversation_config` | [ConversationalConfigApiModelWorkflowOverrideOutput](#conversationalconfigapimodelworkflowoverrideoutput) | **yes** | **required** | Configuration overrides applied while the subagent is conducting the conversation. |
+| `additional_prompt` | str | **yes** | **required** | Specific goal for this subagent. It will be added to the system prompt and can be used to further refine the agent's behavior in this specific context. |
+| `additional_knowledge_base` | Array<[KnowledgeBaseLocator](#knowledgebaselocator)> | **yes** | **required** | Additional knowledge base documents that the subagent has access to. These will be used in addition to the main agent's documents. |
+| `additional_tool_ids` | Array<str> | **yes** | **required** | IDs of additional tools that the subagent has access to. These will be used in addition to the main agent's tools. |
+| `position` | [PositionOutput](#positionoutput) | **yes** | **required** | Position of the node in the workflow. |
+| `edge_order` | Array<str> | **yes** | **required** | The ids of outgoing edges in the order they should be evaluated. |
+| `label` | str | **yes** | **required** | Human-readable label for the node used throughout the UI. |
 
 ### WorkflowPhoneNumberNodeModelInput
 
@@ -8849,26 +8849,26 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `custom_sip_headers` | Array<[WorkflowPhoneNumberNodeModelOutputCustomSipHeadersItem](#workflowphonenumbernodemodeloutputcustomsipheadersitem)> | no | `nil` | Custom SIP headers to include when transferring the call. Each header can be either a static value or a dynamic variable reference. |
+| `custom_sip_headers` | Array<[WorkflowPhoneNumberNodeModelOutputCustomSipHeadersItem](#workflowphonenumbernodemodeloutputcustomsipheadersitem)> | **yes** | **required** | Custom SIP headers to include when transferring the call. Each header can be either a static value or a dynamic variable reference. |
 | `transfer_destination` | [WorkflowPhoneNumberNodeModelOutputTransferDestination](#workflowphonenumbernodemodeloutputtransferdestination) | **yes** | **required** |  |
 | `transfer_type` | [TransferTypeEnum](#transfertypeenum) | **yes** | **required** |  |
 | `post_dial_digits` | Optional<[WorkflowPhoneNumberNodeModelOutputPostDialDigits](#workflowphonenumbernodemodeloutputpostdialdigits)> | no | `nil` | DTMF digits to send after call connects (e.g., 'ww1234' for extension). Can be either a static value or a dynamic variable reference. Use 'w' for 0.5s pause. Only supported for Twilio transfers. |
-| `position` | [PositionOutput](#positionoutput) | no | `nil` | Position of the node in the workflow. |
-| `edge_order` | Array<str> | no | `nil` | The ids of outgoing edges in the order they should be evaluated. |
+| `position` | [PositionOutput](#positionoutput) | **yes** | **required** | Position of the node in the workflow. |
+| `edge_order` | Array<str> | **yes** | **required** | The ids of outgoing edges in the order they should be evaluated. |
 
 ### WorkflowResultConditionModelInput
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `label` | Optional<str> | no | `nil` | Optional human-readable label for the condition used throughout the UI. |
-| `successful` | bool | no | `nil` | Whether all tools in the previously executed tool node were executed successfully. |
+| `successful` | bool | **yes** | **required** | Whether all tools in the previously executed tool node were executed successfully. |
 
 ### WorkflowResultConditionModelOutput
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `label` | Optional<str> | no | `nil` | Optional human-readable label for the condition used throughout the UI. |
-| `successful` | bool | no | `nil` | Whether all tools in the previously executed tool node were executed successfully. |
+| `successful` | bool | **yes** | **required** | Whether all tools in the previously executed tool node were executed successfully. |
 
 ### WorkflowStandaloneAgentNodeModelInput
 
@@ -8876,7 +8876,7 @@ _(no fields)_
 | --- | --- | --- | --- | --- |
 | `position` | Optional<[PositionInput](#positioninput)> | no | `nil` | Position of the node in the workflow. |
 | `edge_order` | Optional<Array<str>> | no | `nil` | The ids of outgoing edges in the order they should be evaluated. |
-| `agent_id` | str | no | `nil` | The ID of the agent to transfer the conversation to. |
+| `agent_id` | str | **yes** | **required** | The ID of the agent to transfer the conversation to. |
 | `delay_ms` | Optional<int> | no | `nil` | Artificial delay in milliseconds applied before transferring the conversation. |
 | `transfer_message` | Optional<str> | no | `nil` | Optional message sent to the user before the transfer is initiated. |
 | `enable_transferred_agent_first_message` | Optional<bool> | no | `nil` | Whether to enable the transferred agent to send its configured first message after the transfer. |
@@ -8885,12 +8885,12 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `position` | [PositionOutput](#positionoutput) | no | `nil` | Position of the node in the workflow. |
-| `edge_order` | Array<str> | no | `nil` | The ids of outgoing edges in the order they should be evaluated. |
-| `agent_id` | str | no | `nil` | The ID of the agent to transfer the conversation to. |
-| `delay_ms` | int | no | `nil` | Artificial delay in milliseconds applied before transferring the conversation. |
+| `position` | [PositionOutput](#positionoutput) | **yes** | **required** | Position of the node in the workflow. |
+| `edge_order` | Array<str> | **yes** | **required** | The ids of outgoing edges in the order they should be evaluated. |
+| `agent_id` | str | **yes** | **required** | The ID of the agent to transfer the conversation to. |
+| `delay_ms` | int | **yes** | **required** | Artificial delay in milliseconds applied before transferring the conversation. |
 | `transfer_message` | Optional<str> | no | `nil` | Optional message sent to the user before the transfer is initiated. |
-| `enable_transferred_agent_first_message` | bool | no | `nil` | Whether to enable the transferred agent to send its configured first message after the transfer. |
+| `enable_transferred_agent_first_message` | bool | **yes** | **required** | Whether to enable the transferred agent to send its configured first message after the transfer. |
 
 ### WorkflowStartNodeModelInput
 
@@ -8903,8 +8903,8 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `position` | [PositionOutput](#positionoutput) | no | `nil` | Position of the node in the workflow. |
-| `edge_order` | Array<str> | no | `nil` | The ids of outgoing edges in the order they should be evaluated. |
+| `position` | [PositionOutput](#positionoutput) | **yes** | **required** | Position of the node in the workflow. |
+| `edge_order` | Array<str> | **yes** | **required** | The ids of outgoing edges in the order they should be evaluated. |
 
 ### WorkflowToolEdgeStepModel
 
@@ -8959,9 +8959,9 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `position` | [PositionOutput](#positionoutput) | no | `nil` | Position of the node in the workflow. |
-| `edge_order` | Array<str> | no | `nil` | The ids of outgoing edges in the order they should be evaluated. |
-| `tools` | Array<[WorkflowToolLocator](#workflowtoollocator)> | no | `nil` | List of tools to execute in parallel. The entire node is considered successful if all tools are executed successfully. |
+| `position` | [PositionOutput](#positionoutput) | **yes** | **required** | Position of the node in the workflow. |
+| `edge_order` | Array<str> | **yes** | **required** | The ids of outgoing edges in the order they should be evaluated. |
+| `tools` | Array<[WorkflowToolLocator](#workflowtoollocator)> | **yes** | **required** | List of tools to execute in parallel. The entire node is considered successful if all tools are executed successfully. |
 
 ### WorkflowToolResponseModelInput
 
@@ -9043,9 +9043,9 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `name` | str | no | `nil` | The name of the workspace group. |
-| `id` | str | no | `nil` | The ID of the workspace group. |
-| `members_emails` | Array<str> | no | `nil` | The emails of the members of the workspace group. |
+| `name` | str | **yes** | **required** | The name of the workspace group. |
+| `id` | str | **yes** | **required** | The ID of the workspace group. |
+| `members_emails` | Array<str> | **yes** | **required** | The emails of the members of the workspace group. |
 
 ### WorkspaceGroupResponseModel
 
@@ -9080,19 +9080,19 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `webhooks` | Array<[WorkspaceWebhookResponseModel](#workspacewebhookresponsemodel)> | no | `nil` | List of webhooks currently configured for the workspace |
+| `webhooks` | Array<[WorkspaceWebhookResponseModel](#workspacewebhookresponsemodel)> | **yes** | **required** | List of webhooks currently configured for the workspace |
 
 ### WorkspaceWebhookResponseModel
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `name` | str | no | `nil` | The display name for this webhook. |
-| `webhook_id` | str | no | `nil` | The unique ID for this webhook. |
-| `webhook_url` | str | no | `nil` | The HTTPS callback URL that is called when this webhook is triggered in the platform. |
-| `is_disabled` | bool | no | `nil` | Whether the webhook has been manually disabled by a user. |
-| `is_auto_disabled` | bool | no | `nil` | Whether the webhook has been automatically disabled due to repeated consecutive failures over a long period of time. |
-| `created_at_unix` | int | no | `nil` | Original creation time of the webhook. |
-| `auth_type` | [WebhookAuthMethodType](#webhookauthmethodtype) | no | `nil` | The authentication mode used to secure the webhook. |
+| `name` | str | **yes** | **required** | The display name for this webhook. |
+| `webhook_id` | str | **yes** | **required** | The unique ID for this webhook. |
+| `webhook_url` | str | **yes** | **required** | The HTTPS callback URL that is called when this webhook is triggered in the platform. |
+| `is_disabled` | bool | **yes** | **required** | Whether the webhook has been manually disabled by a user. |
+| `is_auto_disabled` | bool | **yes** | **required** | Whether the webhook has been automatically disabled due to repeated consecutive failures over a long period of time. |
+| `created_at_unix` | int | **yes** | **required** | Original creation time of the webhook. |
+| `auth_type` | [WebhookAuthMethodType](#webhookauthmethodtype) | **yes** | **required** | The authentication mode used to secure the webhook. |
 | `usage` | Optional<Array<[WorkspaceWebhookUsageResponseModel](#workspacewebhookusageresponsemodel)>> | no | `nil` | The list of products that are currently configured to trigger this webhook. |
 | `most_recent_failure_error_code` | Optional<int> | no | `nil` | The most recent error code returned from the callback URL. |
 | `most_recent_failure_timestamp` | Optional<int> | no | `nil` | The most recent time the webhook failed, failures are any non-200 codes returned by the callback URL. |

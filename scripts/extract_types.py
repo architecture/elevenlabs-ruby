@@ -80,22 +80,28 @@ def literal_single_value(node: ast.AST) -> Optional[Any]:
     return None
 
 
-def extract_pydantic_field_default(node: ast.AST) -> Tuple[Optional[Any], bool]:
-    """For `pydantic.Field(default=X, ...)`, return (default, is_literal_ok)."""
-    if not isinstance(node, ast.Call):
-        return None, False
+def extract_pydantic_field_default(node: ast.Call) -> Tuple[bool, Any]:
+    """
+    Given a `Call` node, detect `pydantic.Field(...)` and extract its
+    default. Returns (is_field_call, default_value).
+
+    - `Field(default=X)` → (True, X)
+    - `Field()` with no default kwarg → (True, "__REQUIRED__") — Pydantic
+      treats a bare `Field()` as required, same as omitting it
+    - Any other Call → (False, None)
+    """
     func = node.func
     is_field = (
         isinstance(func, ast.Attribute) and func.attr == "Field"
     ) or (isinstance(func, ast.Name) and func.id == "Field")
     if not is_field:
-        return None, False
+        return False, None
     for kw in node.keywords:
         if kw.arg == "default":
             if isinstance(kw.value, ast.Constant):
-                return kw.value.value, True
-            return unparse(kw.value), False
-    return None, True  # Field() with no default ≈ required
+                return True, kw.value.value
+            return True, unparse(kw.value)
+    return True, "__REQUIRED__"
 
 
 def parse_default(node: Optional[ast.AST]) -> Any:
@@ -103,9 +109,11 @@ def parse_default(node: Optional[ast.AST]) -> Any:
         return "__REQUIRED__"
     if isinstance(node, ast.Constant):
         return node.value
-    default, _ok = extract_pydantic_field_default(node)
-    if default is not None or isinstance(node, ast.Call):
-        return default
+    if isinstance(node, ast.Call):
+        is_field, value = extract_pydantic_field_default(node)
+        if is_field:
+            return value
+        return None  # Some other call we don't interpret
     return unparse(node)
 
 

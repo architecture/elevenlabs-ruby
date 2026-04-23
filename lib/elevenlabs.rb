@@ -9,6 +9,7 @@ require_relative "elevenlabs/http_client"
 require_relative "elevenlabs/operation_executor"
 require_relative "elevenlabs/resources"
 require_relative "elevenlabs/client"
+require_relative "elevenlabs/types"
 
 module ElevenLabs
   # Sentinel used to differentiate between omitted optional parameters and those explicitly set to nil.

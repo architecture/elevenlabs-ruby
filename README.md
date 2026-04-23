@@ -330,6 +330,51 @@ python3 scripts/render_types_doc.py     # writes docs/types.md
 
 **When you need this:** any time you're calling an operation that takes a structured Hash and the API returns a `422 Input should be a valid dictionary` (or similar shape error). For example, `client.conversational_ai.agents.create(workflow: {...})` passes the Hash straight through; consult `docs/types.md#agentworkflowrequestmodel` for the expected `nodes` / `edges` dict layout, the discriminated-union variants of each node `type`, and the required `label` on `override_agent` nodes.
 
+### Optional runtime validator
+
+For the same reason, the gem ships an opt-in validator at `ElevenLabs::Types.validate!`. It reads the schema from `types.json` and enforces required fields, union discriminant values, and enum membership **before** the request leaves your process — so you see the specific field that's wrong instead of a generic `422` from the server.
+
+```ruby
+workflow = {
+  nodes: {
+    "start"  => { type: "start" },
+    "intake" => { type: "override_agent", label: "Intake", additional_prompt: "..." },
+    "done"   => { type: "end" },
+  },
+  edges: {
+    "s_to_i" => { source: "start", target: "intake",
+                  forward_condition: { type: "unconditional" } },
+  },
+}
+
+ElevenLabs::Types.validate!(:AgentWorkflowRequestModel, workflow)
+# => nil (valid)
+
+# Example failure — an override_agent node missing its required label:
+bad = { nodes: { "x" => { type: "override_agent" } } }
+ElevenLabs::Types.validate!(:AgentWorkflowRequestModel, bad)
+# => raises ElevenLabs::Types::ValidationError:
+#    AgentWorkflowRequestModel.nodes["x"].label is required
+#    (AgentWorkflowRequestModelNodesValue_OverrideAgent)
+
+# Example failure — unknown node type (caught against the discriminated union):
+bad = { nodes: { "x" => { type: "not_a_real_type" } } }
+ElevenLabs::Types.validate!(:AgentWorkflowRequestModel, bad)
+# => raises ElevenLabs::Types::ValidationError:
+#    AgentWorkflowRequestModel.nodes["x"].type "not_a_real_type" is not a valid
+#    variant of AgentWorkflowRequestModelNodesValue (expected one of
+#    ["end", "override_agent", "phone_number", "standalone_agent", "start", "tool"])
+```
+
+**Semantics:**
+
+- Accepts both string- and symbol-keyed Hashes.
+- Matches Pydantic's `extra="allow"` default — **unknown keys are tolerated** (the server accepts them too). Only required-field presence, discriminant validity, and enum membership are enforced.
+- Unknown types (future SDK additions you haven't regenerated for) pass silently, so the validator is forward-compatible.
+- Not wired into the HTTP path. Call it explicitly where you want the check (typically right before the `client.conversational_ai.agents.create(...)` call), or wrap your own helper around it.
+
+`ElevenLabs::Types.describe(:TypeName)` returns the raw schema entry for REPL exploration.
+
 ## Development & testing
 
 Run the full test suite using Rake:
@@ -386,6 +431,19 @@ gem "elevenlabs", path: "/path/to/elevenlabs-ruby"
 ```
 
 ## Recent Updates
+
+### 2026-04-23: Optional runtime validator for nested request bodies
+
+Added `ElevenLabs::Types.validate!(:TypeName, hash)` — an opt-in validator backed by `lib/elevenlabs/types.json` that enforces required fields, union discriminants, and enum membership locally, so callers see the specific bad field instead of a generic `422` from the API.
+
+- New module: `lib/elevenlabs/types.rb` (`ElevenLabs::Types`, `ElevenLabs::Types::ValidationError`)
+- New tests: `test/types_validator_test.rb` — 14 cases covering valid fixtures, missing-required, bad discriminant, bad literal, bad enum, unknown-type forward-compat, and Pydantic-matched `extra="allow"` tolerance of unknown keys.
+- Not wired into the HTTP path — purely opt-in per call site.
+- Bug fix in the extractor: `pydantic.Field()` with no `default=` kwarg now correctly registers as required. Regenerated `types.json` and `docs/types.md` accordingly.
+
+Test suite now at 190 runs, 515 assertions, 0 failures.
+
+Also wired `scripts/extract_types.py` and `scripts/render_types_doc.py` into `docs/update-procedure.md` and the `CLAUDE.md` update checklist, so the types artifacts stay in lock-step with `spec.json` on every upstream refresh. `types.json` is picked up by the existing `Dir.glob("lib/**/*")` in the gemspec, so the validator works from an installed gem with no extra wiring; `docs/types.md` is intentionally outside `lib/` and stays out of the packaged gem.
 
 ### 2026-04-23: Type reference for nested request bodies
 
