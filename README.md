@@ -10,7 +10,7 @@ This gem is published to **GitHub Packages** (not RubyGems.org). Add the GitHub 
 
 ```ruby
 source "https://rubygems.pkg.github.com/architecture" do
-  gem "elevenlabs", "0.6.0"
+  gem "elevenlabs", "0.7.0"
 end
 ```
 
@@ -31,7 +31,7 @@ Bundler can pull the gem straight from the git repository. This works for public
 
 ```ruby
 # Pin to a release tag (recommended for production)
-gem "elevenlabs", git: "https://github.com/architecture/elevenlabs-ruby", tag: "v0.6.0"
+gem "elevenlabs", git: "https://github.com/architecture/elevenlabs-ruby", tag: "v0.7.0"
 
 # Or track the latest main branch
 gem "elevenlabs", git: "https://github.com/architecture/elevenlabs-ruby", branch: "main"
@@ -432,32 +432,18 @@ gem "elevenlabs", path: "/path/to/elevenlabs-ruby"
 
 ## Recent Updates
 
-### 2026-04-23: Optional runtime validator for nested request bodies
+### 2026-04-23: v0.7.0 — Type reference and optional runtime validator
 
-Added `ElevenLabs::Types.validate!(:TypeName, hash)` — an opt-in validator backed by `lib/elevenlabs/types.json` that enforces required fields, union discriminants, and enum membership locally, so callers see the specific bad field instead of a generic `422` from the API.
+Closes the gap where parameters like `workflow`, `conversation_config`, and `platform_settings` were passed through as opaque Hashes with no machine-readable description of the expected shape. Two additions:
 
-- New module: `lib/elevenlabs/types.rb` (`ElevenLabs::Types`, `ElevenLabs::Types::ValidationError`)
-- New tests: `test/types_validator_test.rb` — 14 cases covering valid fixtures, missing-required, bad discriminant, bad literal, bad enum, unknown-type forward-compat, and Pydantic-matched `extra="allow"` tolerance of unknown keys.
-- Not wired into the HTTP path — purely opt-in per call site.
-- Bug fix in the extractor: `pydantic.Field()` with no `default=` kwarg now correctly registers as required. Regenerated `types.json` and `docs/types.md` accordingly.
+- **`lib/elevenlabs/types.json`** (new) and **`docs/types.md`** (new) — 1,458 type schemas (1,180 models, 73 discriminated unions, 205 enums) generated from the vendored Python SDK's Pydantic models. Each model lists fields with annotation, required flag, default, docstring, and literal discriminator values. Downstream callers can consult `docs/types.md` directly; tools can consume `types.json`.
+- **`ElevenLabs::Types.validate!(:TypeName, hash)`** (new, opt-in) — runtime validator backed by `types.json`. Enforces required fields, union discriminants, and enum membership before the request leaves your process, so callers see the specific bad field instead of a generic `422` from the server. Pydantic `extra="allow"` semantics preserved (unknown keys tolerated). Not wired into the HTTP path.
 
-Test suite now at 190 runs, 515 assertions, 0 failures.
+**New scripts:** `scripts/extract_types.py`, `scripts/render_types_doc.py`. Wired into the upstream refresh procedure (`docs/update-procedure.md`, `CLAUDE.md`) so the types artifacts stay in lock-step with `spec.json`.
 
-Also wired `scripts/extract_types.py` and `scripts/render_types_doc.py` into `docs/update-procedure.md` and the `CLAUDE.md` update checklist, so the types artifacts stay in lock-step with `spec.json` on every upstream refresh. `types.json` is picked up by the existing `Dir.glob("lib/**/*")` in the gemspec, so the validator works from an installed gem with no extra wiring; `docs/types.md` is intentionally outside `lib/` and stays out of the packaged gem.
+**Motivation:** a downstream project hit `422 Input should be a valid dictionary` on `client.conversational_ai.agents.create(workflow: {...})` because the gem gave them no way to discover that `AgentWorkflowRequestModel.nodes` is a Hash-keyed-by-id of a discriminated union, that `override_agent` variants require a `label`, or that `forward_condition` is itself a discriminated union with `llm` / `result` / `expression` / `unconditional` variants.
 
-### 2026-04-23: Type reference for nested request bodies
-
-Added a second extraction pass that resolves the Pydantic models the gem previously treated as opaque Hashes. Prompted by a downstream session where `client.conversational_ai.agents.create(workflow: {...})` returned `422 Input should be a valid dictionary` — the caller had no machine-readable description of `AgentWorkflowRequestModel`'s nested `nodes` / `edges` dicts or its discriminated-union node variants.
-
-**New artifacts:**
-- `lib/elevenlabs/types.json` — 1,458 types (1,180 models, 73 discriminated unions, 205 enums) with per-field annotation, optional/required flag, default, docstring, and literal discriminator values
-- `docs/types.md` — rendered Markdown reference, grouped by kind with cross-referenced type links
-
-**New scripts:**
-- `scripts/extract_types.py` — AST-walks `tmp-elevenlabs-python/src/elevenlabs/types/*.py`
-- `scripts/render_types_doc.py` — renders `types.json` → `docs/types.md`
-
-No runtime behavior change; no change to existing operation surface. All 176 tests still pass.
+Test suite now at 190 runs, 515 assertions, 0 failures (14 new validator tests).
 
 ### 2026-04-23: v0.6.0 — Updated API Spec from elevenlabs-python v2.44.0
 
