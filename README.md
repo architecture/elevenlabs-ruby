@@ -10,7 +10,7 @@ This gem is published to **GitHub Packages** (not RubyGems.org). Add the GitHub 
 
 ```ruby
 source "https://rubygems.pkg.github.com/architecture" do
-  gem "elevenlabs", "0.7.0"
+  gem "elevenlabs", "0.7.1"
 end
 ```
 
@@ -31,7 +31,7 @@ Bundler can pull the gem straight from the git repository. This works for public
 
 ```ruby
 # Pin to a release tag (recommended for production)
-gem "elevenlabs", git: "https://github.com/architecture/elevenlabs-ruby", tag: "v0.7.0"
+gem "elevenlabs", git: "https://github.com/architecture/elevenlabs-ruby", tag: "v0.7.1"
 
 # Or track the latest main branch
 gem "elevenlabs", git: "https://github.com/architecture/elevenlabs-ruby", branch: "main"
@@ -433,6 +433,18 @@ gem "elevenlabs", path: "/path/to/elevenlabs-ruby"
 ```
 
 ## Recent Updates
+
+### 2026-04-23: v0.7.1 — Workflow validator quirks documented + sharper missing-discriminator error
+
+Three server-side validation rules on `agents.create(workflow: {...})` were discovered empirically that aren't expressible in the Pydantic schema we extract into `types.json` — they live in custom `@model_validator` logic on the server and fire after field validation. Callers hitting a `422 value_error` with an otherwise shape-correct payload had no way to locate the rule.
+
+- **`docs/workflow-gotchas.md`** (new) — a reference page for the three rules, each with a rejected/accepted payload pair and a minimal-accepted-workflow example:
+  1. The start node must be keyed literally `start_node`.
+  2. `forward_condition` requires an explicit `type:` discriminator (the schema marks it defaulted, but the server doesn't apply the default to inbound requests).
+  3. `forward_condition` cannot be `{}` — unconditional edges need `{ type: "unconditional" }`.
+- **`ElevenLabs::Types.validate!`** now distinguishes "discriminator field absent" from "discriminator value unknown" on discriminated unions, emitting a targeted error message that explains the server requires the field despite the Pydantic default. Rule #2 is now catchable at unit-test time instead of surfacing as a server 422.
+
+Test suite: 192 runs, 527 assertions, 0 failures (2 new validator tests).
 
 ### 2026-04-23: v0.7.0 — Type reference and optional runtime validator
 

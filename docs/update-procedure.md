@@ -185,6 +185,7 @@ ELEVENLABS_API_KEY=your_key ruby scripts/verify_api.rb
 | `lib/elevenlabs/spec.json` | Generated spec driving the Ruby SDK |
 | `lib/elevenlabs/types.json` | Generated type schemas for nested request bodies |
 | `docs/types.md` | Human-readable rendering of `types.json` |
+| `docs/workflow-gotchas.md` | Hand-maintained reference for server-side workflow validation rules that aren't expressible in `types.json` (not regenerated from the Python SDK) |
 | `lib/elevenlabs/version.rb` | Gem version constant |
 | `lib/elevenlabs/resources.rb` | Dynamic class generation from spec |
 | `.github/workflows/gem-push.yml` | CI: test + publish pipeline |
