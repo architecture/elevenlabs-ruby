@@ -955,4 +955,24 @@ class OperationSerializationTest < Minitest::Test
     assert_equal "v1/speech-engine/eng_123", request[:path]
     assert_equal({ "name" => "Renamed", "tags" => ["prod"] }, request[:json])
   end
+
+  # Regression: phone_numbers.list returns a bare top-level array from the API.
+  # The gem performs no response typing, so the executor must hand that array
+  # back to the caller unchanged (object-identical) — it must not wrap it in a
+  # Hash or otherwise coerce the shape.
+  def test_phone_numbers_list_returns_response_untouched
+    array_response = [
+      { "phone_number_id" => "pn_1", "provider" => "twilio" },
+      { "phone_number_id" => "pn_2", "provider" => "twilio" }
+    ]
+    http = Class.new do
+      define_method(:request) { |**_kwargs| array_response }
+      def stream(**_kwargs); end
+    end.new
+    client = ElevenLabs::Client.new(api_key: "test", http_client: http)
+
+    result = client.conversational_ai.phone_numbers.list
+
+    assert_same array_response, result, "expected the bare array response to pass through untouched"
+  end
 end

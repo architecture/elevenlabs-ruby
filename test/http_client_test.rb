@@ -151,4 +151,26 @@ class HttpClientTest < Minitest::Test
       client.request(method: "PATCH", path: "/agents/abc", json: {}, headers: {})
     end
   end
+
+  # Regression: endpoints like conversational_ai.phone_numbers.list return a
+  # bare top-level JSON array. handle_response must parse it into a Ruby Array
+  # and return it verbatim — never coerce it to a Hash (which would raise
+  # "TypeError: wrong element type Hash at 0 (expected array)") or wrap it.
+  def test_request_returns_bare_json_array_untouched
+    body = '[{"phone_number_id":"pn_1","provider":"twilio"},{"phone_number_id":"pn_2","provider":"twilio"}]'
+    client, = make_client_with_connection(FakeResponse.new(200, body, {}))
+
+    result = client.request(method: "GET", path: "/v1/convai/phone-numbers", headers: {})
+
+    assert_instance_of Array, result
+    assert_equal 2, result.length
+    assert_equal "pn_1", result.first["phone_number_id"]
+    assert_equal(
+      [
+        { "phone_number_id" => "pn_1", "provider" => "twilio" },
+        { "phone_number_id" => "pn_2", "provider" => "twilio" }
+      ],
+      result
+    )
+  end
 end
