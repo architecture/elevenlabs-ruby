@@ -109,6 +109,21 @@ Create music compositions or manage custom plans.
 plan = client.music.composition_plan.create(prompt: "Lofi beats")
 ```
 
+## productions
+
+Manage Productions orders — create orders, add items and media, then submit for fulfillment.
+
+```ruby
+order = client.productions.orders.create(request: { "name" => "Localization batch" })
+client.productions.orders.items.upsert(order["order_id"], request: { "items" => [] })
+client.productions.orders.media.register(
+  order["order_id"],
+  declared_language: "en",
+  media: ElevenLabs::Upload.from_path("source.wav")
+)
+client.productions.orders.submit(order["order_id"])
+```
+
 ## pronunciation_dictionaries
 
 Create and manage pronunciation dictionaries and rules.
@@ -137,6 +152,16 @@ Manage workspace service accounts and API keys.
 ```ruby
 account = client.service_accounts.create(name: "CI Bot")
 keys = client.service_accounts.api_keys.list(service_account_id: account["id"])
+```
+
+## speech_engine
+
+Create and manage Speech Engine configurations.
+
+```ruby
+client.speech_engine.list(page_size: 10)
+engine = client.speech_engine.create(name: "Support Bot")
+client.speech_engine.update(engine["speech_engine_id"], name: "Support Bot v2")
 ```
 
 ## speech_to_speech
@@ -268,4 +293,13 @@ Invite members, manage groups, and access workspace-level resources.
 ```ruby
 client.workspace.invites.create(email: "teammate@example.com", role: "member")
 client.workspace.groups.list
+client.workspace.audit_logs.list(limit: 100)
+```
+
+## workspaces
+
+Workspace-level API key administration (distinct from the singular `workspace` namespace).
+
+```ruby
+client.workspaces.api_keys.disable(api_key_name: "ci-bot")
 ```

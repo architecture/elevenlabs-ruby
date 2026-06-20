@@ -2,7 +2,7 @@
 
 Auto-generated from `lib/elevenlabs/types.json` by `scripts/render_types_doc.py`. Describes the nested Hash shapes expected by operation parameters the gem otherwise treats as opaque (`workflow`, `conversation_config`, `platform_settings`, etc.).
 
-Source: `tmp-elevenlabs-python` @ `67367aa86a27cd1ed4da1fe4a27e3a3349fe7146` · 1458 types (887 models, 73 unions, 293 variant classes, 205 enums).
+Source: `tmp-elevenlabs-python` @ `df576b47f3898ddea8d51339fe2af8f0965f97ee` · 1682 types (1041 models, 77 unions, 319 variant classes, 245 enums).
 
 ## Contents
 
@@ -42,6 +42,7 @@ Discriminated union on `source`. Variants:
 - [ApiIntegrationWebhookOverridesSchemaOverridesValue_Constant](#apiintegrationwebhookoverridesschemaoverridesvalue_constant)
 - [ApiIntegrationWebhookOverridesSchemaOverridesValue_DynamicVariable](#apiintegrationwebhookoverridesschemaoverridesvalue_dynamicvariable)
 - [ApiIntegrationWebhookOverridesSchemaOverridesValue_Llm](#apiintegrationwebhookoverridesschemaoverridesvalue_llm)
+- [ApiIntegrationWebhookOverridesSchemaOverridesValue_Omit](#apiintegrationwebhookoverridesschemaoverridesvalue_omit)
 
 ### AstNodeInput
 
@@ -151,6 +152,7 @@ Discriminated union on `type`. Variants:
 
 Discriminated union on `type`. Variants:
 
+- [ConversationHistoryMetadataCommonModelPhoneCall_Exotel](#conversationhistorymetadatacommonmodelphonecall_exotel)
 - [ConversationHistoryMetadataCommonModelPhoneCall_SipTrunking](#conversationhistorymetadatacommonmodelphonecall_siptrunking)
 - [ConversationHistoryMetadataCommonModelPhoneCall_Twilio](#conversationhistorymetadatacommonmodelphonecall_twilio)
 
@@ -159,6 +161,7 @@ Discriminated union on `type`. Variants:
 Discriminated union on `result_type`. Variants:
 
 - [ConversationHistoryTranscriptSystemToolResultCommonModelInputResult_EndCallSuccess](#conversationhistorytranscriptsystemtoolresultcommonmodelinputresult_endcallsuccess)
+- [ConversationHistoryTranscriptSystemToolResultCommonModelInputResult_KnowledgeBaseRagSuccess](#conversationhistorytranscriptsystemtoolresultcommonmodelinputresult_knowledgebaseragsuccess)
 - [ConversationHistoryTranscriptSystemToolResultCommonModelInputResult_LanguageDetectionSuccess](#conversationhistorytranscriptsystemtoolresultcommonmodelinputresult_languagedetectionsuccess)
 - [ConversationHistoryTranscriptSystemToolResultCommonModelInputResult_PlayDtmfError](#conversationhistorytranscriptsystemtoolresultcommonmodelinputresult_playdtmferror)
 - [ConversationHistoryTranscriptSystemToolResultCommonModelInputResult_PlayDtmfSuccess](#conversationhistorytranscriptsystemtoolresultcommonmodelinputresult_playdtmfsuccess)
@@ -167,6 +170,7 @@ Discriminated union on `result_type`. Variants:
 - [ConversationHistoryTranscriptSystemToolResultCommonModelInputResult_TransferToAgentError](#conversationhistorytranscriptsystemtoolresultcommonmodelinputresult_transfertoagenterror)
 - [ConversationHistoryTranscriptSystemToolResultCommonModelInputResult_TransferToAgentSuccess](#conversationhistorytranscriptsystemtoolresultcommonmodelinputresult_transfertoagentsuccess)
 - [ConversationHistoryTranscriptSystemToolResultCommonModelInputResult_TransferToNumberError](#conversationhistorytranscriptsystemtoolresultcommonmodelinputresult_transfertonumbererror)
+- [ConversationHistoryTranscriptSystemToolResultCommonModelInputResult_TransferToNumberExotelSuccess](#conversationhistorytranscriptsystemtoolresultcommonmodelinputresult_transfertonumberexotelsuccess)
 - [ConversationHistoryTranscriptSystemToolResultCommonModelInputResult_TransferToNumberSipSuccess](#conversationhistorytranscriptsystemtoolresultcommonmodelinputresult_transfertonumbersipsuccess)
 - [ConversationHistoryTranscriptSystemToolResultCommonModelInputResult_TransferToNumberTwilioSuccess](#conversationhistorytranscriptsystemtoolresultcommonmodelinputresult_transfertonumbertwiliosuccess)
 - [ConversationHistoryTranscriptSystemToolResultCommonModelInputResult_VoicemailDetectionSuccess](#conversationhistorytranscriptsystemtoolresultcommonmodelinputresult_voicemaildetectionsuccess)
@@ -176,6 +180,7 @@ Discriminated union on `result_type`. Variants:
 Discriminated union on `result_type`. Variants:
 
 - [ConversationHistoryTranscriptSystemToolResultCommonModelOutputResult_EndCallSuccess](#conversationhistorytranscriptsystemtoolresultcommonmodeloutputresult_endcallsuccess)
+- [ConversationHistoryTranscriptSystemToolResultCommonModelOutputResult_KnowledgeBaseRagSuccess](#conversationhistorytranscriptsystemtoolresultcommonmodeloutputresult_knowledgebaseragsuccess)
 - [ConversationHistoryTranscriptSystemToolResultCommonModelOutputResult_LanguageDetectionSuccess](#conversationhistorytranscriptsystemtoolresultcommonmodeloutputresult_languagedetectionsuccess)
 - [ConversationHistoryTranscriptSystemToolResultCommonModelOutputResult_PlayDtmfError](#conversationhistorytranscriptsystemtoolresultcommonmodeloutputresult_playdtmferror)
 - [ConversationHistoryTranscriptSystemToolResultCommonModelOutputResult_PlayDtmfSuccess](#conversationhistorytranscriptsystemtoolresultcommonmodeloutputresult_playdtmfsuccess)
@@ -184,6 +189,7 @@ Discriminated union on `result_type`. Variants:
 - [ConversationHistoryTranscriptSystemToolResultCommonModelOutputResult_TransferToAgentError](#conversationhistorytranscriptsystemtoolresultcommonmodeloutputresult_transfertoagenterror)
 - [ConversationHistoryTranscriptSystemToolResultCommonModelOutputResult_TransferToAgentSuccess](#conversationhistorytranscriptsystemtoolresultcommonmodeloutputresult_transfertoagentsuccess)
 - [ConversationHistoryTranscriptSystemToolResultCommonModelOutputResult_TransferToNumberError](#conversationhistorytranscriptsystemtoolresultcommonmodeloutputresult_transfertonumbererror)
+- [ConversationHistoryTranscriptSystemToolResultCommonModelOutputResult_TransferToNumberExotelSuccess](#conversationhistorytranscriptsystemtoolresultcommonmodeloutputresult_transfertonumberexotelsuccess)
 - [ConversationHistoryTranscriptSystemToolResultCommonModelOutputResult_TransferToNumberSipSuccess](#conversationhistorytranscriptsystemtoolresultcommonmodeloutputresult_transfertonumbersipsuccess)
 - [ConversationHistoryTranscriptSystemToolResultCommonModelOutputResult_TransferToNumberTwilioSuccess](#conversationhistorytranscriptsystemtoolresultcommonmodeloutputresult_transfertonumbertwiliosuccess)
 - [ConversationHistoryTranscriptSystemToolResultCommonModelOutputResult_VoicemailDetectionSuccess](#conversationhistorytranscriptsystemtoolresultcommonmodeloutputresult_voicemaildetectionsuccess)
@@ -228,6 +234,7 @@ Discriminated union on `format`. Variants:
 
 Discriminated union on `provider`. Variants:
 
+- [GetAgentResponseModelPhoneNumbersItem_Exotel](#getagentresponsemodelphonenumbersitem_exotel)
 - [GetAgentResponseModelPhoneNumbersItem_SipTrunk](#getagentresponsemodelphonenumbersitem_siptrunk)
 - [GetAgentResponseModelPhoneNumbersItem_Twilio](#getagentresponsemodelphonenumbersitem_twilio)
 
@@ -329,11 +336,19 @@ Discriminated union on `type`. Variants:
 - [KnowledgeBaseSummaryBatchSuccessfulResponseModelData_Text](#knowledgebasesummarybatchsuccessfulresponsemodeldata_text)
 - [KnowledgeBaseSummaryBatchSuccessfulResponseModelData_Url](#knowledgebasesummarybatchsuccessfulresponsemodeldata_url)
 
+### LanguagesResponse
+
+Discriminated union on `kind`. Variants:
+
+- [LanguagesResponse_Pair](#languagesresponse_pair)
+- [LanguagesResponse_Single](#languagesresponse_single)
+
 ### ListAuthConnectionsResponseAuthConnectionsItem
 
 Discriminated union on `auth_type`. Variants:
 
 - [ListAuthConnectionsResponseAuthConnectionsItem_ApiIntegrationOauth2AuthCode](#listauthconnectionsresponseauthconnectionsitem_apiintegrationoauth2authcode)
+- [ListAuthConnectionsResponseAuthConnectionsItem_ApiIntegrationOauth2CustomApp](#listauthconnectionsresponseauthconnectionsitem_apiintegrationoauth2customapp)
 - [ListAuthConnectionsResponseAuthConnectionsItem_BasicAuth](#listauthconnectionsresponseauthconnectionsitem_basicauth)
 - [ListAuthConnectionsResponseAuthConnectionsItem_BearerAuth](#listauthconnectionsresponseauthconnectionsitem_bearerauth)
 - [ListAuthConnectionsResponseAuthConnectionsItem_CustomHeaderAuth](#listauthconnectionsresponseauthconnectionsitem_customheaderauth)
@@ -341,6 +356,8 @@ Discriminated union on `auth_type`. Variants:
 - [ListAuthConnectionsResponseAuthConnectionsItem_Oauth2ClientCredentials](#listauthconnectionsresponseauthconnectionsitem_oauth2clientcredentials)
 - [ListAuthConnectionsResponseAuthConnectionsItem_Oauth2Jwt](#listauthconnectionsresponseauthconnectionsitem_oauth2jwt)
 - [ListAuthConnectionsResponseAuthConnectionsItem_PrivateKeyJwt](#listauthconnectionsresponseauthconnectionsitem_privatekeyjwt)
+- [ListAuthConnectionsResponseAuthConnectionsItem_SlackBotAuth](#listauthconnectionsresponseauthconnectionsitem_slackbotauth)
+- [ListAuthConnectionsResponseAuthConnectionsItem_UrlSecret](#listauthconnectionsresponseauthconnectionsitem_urlsecret)
 - [ListAuthConnectionsResponseAuthConnectionsItem_WhatsappAuth](#listauthconnectionsresponseauthconnectionsitem_whatsappauth)
 
 ### McpServerResponseModelDependentAgentsItem
@@ -357,6 +374,7 @@ Discriminated union on `source`. Variants:
 - [McpToolConfigOverrideInputInputOverridesValue_Constant](#mcptoolconfigoverrideinputinputoverridesvalue_constant)
 - [McpToolConfigOverrideInputInputOverridesValue_DynamicVariable](#mcptoolconfigoverrideinputinputoverridesvalue_dynamicvariable)
 - [McpToolConfigOverrideInputInputOverridesValue_Llm](#mcptoolconfigoverrideinputinputoverridesvalue_llm)
+- [McpToolConfigOverrideInputInputOverridesValue_Omit](#mcptoolconfigoverrideinputinputoverridesvalue_omit)
 
 ### McpToolConfigOverrideOutputInputOverridesValue
 
@@ -365,6 +383,28 @@ Discriminated union on `source`. Variants:
 - [McpToolConfigOverrideOutputInputOverridesValue_Constant](#mcptoolconfigoverrideoutputinputoverridesvalue_constant)
 - [McpToolConfigOverrideOutputInputOverridesValue_DynamicVariable](#mcptoolconfigoverrideoutputinputoverridesvalue_dynamicvariable)
 - [McpToolConfigOverrideOutputInputOverridesValue_Llm](#mcptoolconfigoverrideoutputinputoverridesvalue_llm)
+- [McpToolConfigOverrideOutputInputOverridesValue_Omit](#mcptoolconfigoverrideoutputinputoverridesvalue_omit)
+
+### OpenAiSessionConfigToolsItem
+
+Discriminated union on `type`. Variants:
+
+- [OpenAiSessionConfigToolsItem_Function](#openaisessionconfigtoolsitem_function)
+- [OpenAiSessionConfigToolsItem_Mcp](#openaisessionconfigtoolsitem_mcp)
+
+### OrderItemRequestInput
+
+Discriminated union on `kind`. Variants:
+
+- [OrderItemRequestInput_Dub](#orderitemrequestinput_dub)
+- [OrderItemRequestInput_Subtitles](#orderitemrequestinput_subtitles)
+
+### OrderItemRequestOutput
+
+Discriminated union on `kind`. Variants:
+
+- [OrderItemRequestOutput_Dub](#orderitemrequestoutput_dub)
+- [OrderItemRequestOutput_Subtitles](#orderitemrequestoutput_subtitles)
 
 ### PhoneNumberTransferCustomSipHeadersItem
 
@@ -470,9 +510,12 @@ Discriminated union on `type`. Variants:
 Discriminated union on `system_tool_type`. Variants:
 
 - [SystemToolConfigInputParams_EndCall](#systemtoolconfiginputparams_endcall)
+- [SystemToolConfigInputParams_EndProcedure](#systemtoolconfiginputparams_endprocedure)
+- [SystemToolConfigInputParams_KnowledgeBaseRag](#systemtoolconfiginputparams_knowledgebaserag)
 - [SystemToolConfigInputParams_LanguageDetection](#systemtoolconfiginputparams_languagedetection)
 - [SystemToolConfigInputParams_PlayKeypadTouchTone](#systemtoolconfiginputparams_playkeypadtouchtone)
 - [SystemToolConfigInputParams_SkipTurn](#systemtoolconfiginputparams_skipturn)
+- [SystemToolConfigInputParams_StartProcedure](#systemtoolconfiginputparams_startprocedure)
 - [SystemToolConfigInputParams_TransferToAgent](#systemtoolconfiginputparams_transfertoagent)
 - [SystemToolConfigInputParams_TransferToNumber](#systemtoolconfiginputparams_transfertonumber)
 - [SystemToolConfigInputParams_VoicemailDetection](#systemtoolconfiginputparams_voicemaildetection)
@@ -482,9 +525,12 @@ Discriminated union on `system_tool_type`. Variants:
 Discriminated union on `system_tool_type`. Variants:
 
 - [SystemToolConfigOutputParams_EndCall](#systemtoolconfigoutputparams_endcall)
+- [SystemToolConfigOutputParams_EndProcedure](#systemtoolconfigoutputparams_endprocedure)
+- [SystemToolConfigOutputParams_KnowledgeBaseRag](#systemtoolconfigoutputparams_knowledgebaserag)
 - [SystemToolConfigOutputParams_LanguageDetection](#systemtoolconfigoutputparams_languagedetection)
 - [SystemToolConfigOutputParams_PlayKeypadTouchTone](#systemtoolconfigoutputparams_playkeypadtouchtone)
 - [SystemToolConfigOutputParams_SkipTurn](#systemtoolconfigoutputparams_skipturn)
+- [SystemToolConfigOutputParams_StartProcedure](#systemtoolconfigoutputparams_startprocedure)
 - [SystemToolConfigOutputParams_TransferToAgent](#systemtoolconfigoutputparams_transfertoagent)
 - [SystemToolConfigOutputParams_TransferToNumber](#systemtoolconfigoutputparams_transfertonumber)
 - [SystemToolConfigOutputParams_VoicemailDetection](#systemtoolconfigoutputparams_voicemaildetection)
@@ -673,6 +719,15 @@ Discriminated union on `type`. Variants:
 
 ## Models
 
+### ActorModel
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `user` | [UserModel](#usermodel) | **yes** | **required** | User who performed the action |
+| `app_name` | Optional<str> | no | `nil` | Client application or service name |
+| `app_uid` | Optional<str> | no | `nil` | Client application unique identifier |
+| `session` | Optional<Hash<str, Any>> | no | `nil` | Session information |
+
 ### AddChapterResponseModel
 
 | Field | Type | Required | Default | Notes |
@@ -808,6 +863,7 @@ Discriminated union on `type`. Variants:
 | `dynamic_variables` | Optional<[DynamicVariablesConfigOutput](#dynamicvariablesconfigoutput)> | no | `nil` | Configuration for dynamic variables |
 | `disable_first_message_interruptions` | Optional<bool> | no | `nil` | If true, the user will not be able to interrupt the agent while the first message is being delivered. |
 | `max_conversation_duration_message` | Optional<str> | no | `nil` | If non-empty, the message the agent will send when max conversation duration is reached. |
+| `text_behavior_overrides` | Optional<Hash<str, Optional<[BehaviorOverride](#behavioroverride)>>> | no | `nil` | Per-channel response behavior overrides for text conversations. Built-in channel defaults apply when unset. |
 | `prompt` | Optional<[PromptAgentApiModelOutput](#promptagentapimodeloutput)> | no | `nil` | The prompt for the agent |
 
 ### AgentConfigApiModelWorkflowOverrideInput
@@ -820,6 +876,7 @@ Discriminated union on `type`. Variants:
 | `dynamic_variables` | Optional<[DynamicVariablesConfigWorkflowOverrideInput](#dynamicvariablesconfigworkflowoverrideinput)> | no | `nil` | Configuration for dynamic variables |
 | `disable_first_message_interruptions` | Optional<bool> | no | `nil` | If true, the user will not be able to interrupt the agent while the first message is being delivered. |
 | `max_conversation_duration_message` | Optional<str> | no | `nil` | If non-empty, the message the agent will send when max conversation duration is reached. |
+| `text_behavior_overrides` | Optional<Hash<str, Optional<[BehaviorOverride](#behavioroverride)>>> | no | `nil` | Per-channel response behavior overrides for text conversations. Built-in channel defaults apply when unset. |
 | `prompt` | Optional<[PromptAgentApiModelWorkflowOverrideInput](#promptagentapimodelworkflowoverrideinput)> | no | `nil` | The prompt for the agent |
 
 ### AgentConfigApiModelWorkflowOverrideOutput
@@ -832,6 +889,7 @@ Discriminated union on `type`. Variants:
 | `dynamic_variables` | Optional<[DynamicVariablesConfigWorkflowOverrideOutput](#dynamicvariablesconfigworkflowoverrideoutput)> | no | `nil` | Configuration for dynamic variables |
 | `disable_first_message_interruptions` | Optional<bool> | no | `nil` | If true, the user will not be able to interrupt the agent while the first message is being delivered. |
 | `max_conversation_duration_message` | Optional<str> | no | `nil` | If non-empty, the message the agent will send when max conversation duration is reached. |
+| `text_behavior_overrides` | Optional<Hash<str, Optional<[BehaviorOverride](#behavioroverride)>>> | no | `nil` | Per-channel response behavior overrides for text conversations. Built-in channel defaults apply when unset. |
 | `prompt` | Optional<[PromptAgentApiModelWorkflowOverrideOutput](#promptagentapimodelworkflowoverrideoutput)> | no | `nil` | The prompt for the agent |
 
 ### AgentConfigOverrideConfig
@@ -903,6 +961,15 @@ Discriminated union on `type`. Variants:
 | `workflow_node_id` | Optional<str> | no | `nil` |  |
 | `version_id` | Optional<str> | no | `nil` |  |
 
+### AgentMetadataDbModel
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `created_at_unix_secs` | int | **yes** | **required** |  |
+| `updated_at_unix_secs` | int | **yes** | **required** |  |
+| `created_from` | Optional<[AgentDefinitionSource](#agentdefinitionsource)> | no | `nil` |  |
+| `last_updated_from` | Optional<[AgentDefinitionSource](#agentdefinitionsource)> | no | `nil` |  |
+
 ### AgentMetadataResponseModel
 
 | Field | Type | Required | Default | Notes |
@@ -927,6 +994,7 @@ Discriminated union on `type`. Variants:
 | `auth` | Optional<[AuthSettings](#authsettings)> | no | `nil` | Settings for authentication |
 | `call_limits` | Optional<[AgentCallLimits](#agentcalllimits)> | no | `nil` | Call limits for the agent |
 | `privacy` | Optional<[PrivacyConfigInput](#privacyconfiginput)> | no | `nil` | Privacy settings for the agent |
+| `trust_context` | Optional<[AgentTrustContext](#agenttrustcontext)> | no | `nil` | The trust context in which the agent operates. |
 | `analysis_llm` | Optional<[Llm](#llm)> | no | `nil` | Default LLM model for post-call analysis (evaluation and data collection) |
 
 ### AgentPlatformSettingsResponseModel
@@ -946,8 +1014,18 @@ Discriminated union on `type`. Variants:
 | `auth` | Optional<[AuthSettings](#authsettings)> | no | `nil` | Settings for authentication |
 | `call_limits` | Optional<[AgentCallLimits](#agentcalllimits)> | no | `nil` | Call limits for the agent |
 | `privacy` | Optional<[PrivacyConfigOutput](#privacyconfigoutput)> | no | `nil` | Privacy settings for the agent |
+| `trust_context` | Optional<[AgentTrustContext](#agenttrustcontext)> | no | `nil` | The trust context in which the agent operates. |
 | `analysis_llm` | Optional<[Llm](#llm)> | no | `nil` | Default LLM model for post-call analysis (evaluation and data collection) |
 | `safety` | Optional<[SafetyResponseModel](#safetyresponsemodel)> | no | `nil` |  |
+
+### AgentResponsePayload
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `type` | Literal<'agent_response'> | no | `'agent_response'` | The message type identifier. |
+| `content` | str | **yes** | **required** | The text to synthesize. For streaming responses, send incremental chunks here.     The final message in a response must have an empty string (`""`). |
+| `event_id` | Optional<int> | no | `nil` | The `event_id` from the `user_transcript` this response addresses. ElevenLabs     uses this to discard responses that belong to an interrupted turn. |
+| `is_final` | bool | **yes** | **required** | Set to `true` on the last message of a response (with an empty `content`).     Set to `false` on all preceding chunks. |
 
 ### AgentSimulatedChatTestResponseModel
 
@@ -1002,17 +1080,22 @@ Discriminated union on `type`. Variants:
 | `label` | str | **yes** | **required** |  |
 | `description` | str | **yes** | **required** |  |
 | `conversation_count` | int | **yes** | **required** |  |
+| `parent_topic_id` | Optional<str> | no | `nil` |  |
+| `x_2_d` | Annotated[Optional<float>, FieldMetadata(alias='x_2d')> | no | `nil` |  |
+| `y_2_d` | Annotated[Optional<float>, FieldMetadata(alias='y_2d')> | no | `nil` |  |
 
 ### AgentTransfer
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `agent_id` | str | **yes** | **required** |  |
+| `agent_id` | Optional<str> | no | `nil` |  |
+| `node_id` | Optional<str> | no | `nil` |  |
 | `condition` | str | **yes** | **required** |  |
 | `delay_ms` | Optional<int> | no | `nil` |  |
 | `transfer_message` | Optional<str> | no | `nil` |  |
 | `enable_transferred_agent_first_message` | Optional<bool> | no | `nil` |  |
 | `is_workflow_node_transfer` | Optional<bool> | no | `nil` |  |
+| `preserve_client_tts_overrides` | Optional<bool> | no | `nil` | Defines whether TTS client overrides should be carried over to the transferred agent. |
 
 ### AgentVersionMetadata
 
@@ -1067,6 +1150,28 @@ Discriminated union on `type`. Variants:
 | `conversation_initiation_client_data_webhook` | Optional<[ConversationInitiationClientDataWebhook](#conversationinitiationclientdatawebhook)> | no | `nil` | The webhook to send conversation initiation client data to |
 | `webhooks` | Optional<[ConvAiWebhooks](#convaiwebhooks)> | no | `nil` |  |
 
+### AlertingMonitorConfig
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `threshold` | Optional<float> | no | `nil` | Failure rate threshold at which this monitor can notify. |
+| `auto_resolve_after_inactive_minutes` | Optional<int> | no | `nil` | How many minutes an alert can stay inactive before it is auto-resolved. |
+
+### AlertingSettings
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `monitor_configs` | Optional<Hash<str, [AlertingMonitorConfig](#alertingmonitorconfig)>> | no | `nil` | Alerting configuration keyed by monitor name. |
+| `auto_resolve_after_inactive_minutes` | Optional<int> | no | `nil` | How many minutes an alert can stay inactive before it is auto-resolved. Unset values fall through to the next layer. |
+| `notifiers` | Optional<Array<[AlertingWebhookNotifier](#alertingwebhooknotifier)>> | no | `nil` | Delivery channels for alert lifecycle notifications. Stacked and deduped by URL with other layers. |
+
+### AlertingWebhookNotifier
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `type` | Optional<Literal<'webhook'>> | no | `nil` |  |
+| `url` | str | **yes** | **required** | The URL to send alert lifecycle notifications to. |
+
 ### Alignment
 
 | Field | Type | Required | Default | Notes |
@@ -1086,11 +1191,12 @@ Discriminated union on `type`. Variants:
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `type` | [AnalysisPropertyType](#analysispropertytype) | **yes** | **required** |  |
-| `description` | Optional<str> | no | `nil` | The description of the property. When set, the LLM will provide the value based on this description. Mutually exclusive with dynamic_variable, is_system_provided, and constant_value. |
+| `description` | Optional<str> | no | `nil` | The description of the property. When set, the LLM will provide the value based on this description. Mutually exclusive with dynamic_variable, is_system_provided, constant_value, and is_omitted. |
 | `enum` | Optional<Array<str>> | no | `nil` | List of allowed string values for string type parameters |
-| `is_system_provided` | Optional<bool> | no | `nil` | If true, the value will be populated by the system at runtime. Used by API Integration Webhook tools for templating. Mutually exclusive with description, dynamic_variable, and constant_value. |
-| `dynamic_variable` | Optional<str> | no | `nil` | The name of the dynamic variable to use for this property's value. Mutually exclusive with description, is_system_provided, and constant_value. |
-| `constant_value` | Optional<AnalysisPropertyConstantValue> | no | `nil` | A constant value to use for this property. Mutually exclusive with description, dynamic_variable, and is_system_provided. |
+| `is_system_provided` | Optional<bool> | no | `nil` | If true, the value will be populated by the system at runtime. Used by API Integration Webhook tools for templating. Mutually exclusive with description, dynamic_variable, constant_value, and is_omitted. |
+| `dynamic_variable` | Optional<str> | no | `nil` | The name of the dynamic variable to use for this property's value. Mutually exclusive with description, is_system_provided, constant_value, and is_omitted. |
+| `constant_value` | Optional<AnalysisPropertyConstantValue> | no | `nil` | A constant value to use for this property. Mutually exclusive with description, dynamic_variable, is_system_provided, and is_omitted. |
+| `is_omitted` | Optional<bool> | no | `nil` | If true, this parameter will be completely omitted from the request. Only valid for optional parameters. Mutually exclusive with description, dynamic_variable, is_system_provided, and constant_value. |
 | `llm` | Optional<[Llm](#llm)> | no | `nil` | LLM model to use for this analysis item. If not set, uses agent's analysis_llm default. |
 
 ### ApiIntegrationOAuth2AuthCodeResponse
@@ -1111,6 +1217,25 @@ Discriminated union on `type`. Variants:
 | `id` | str | **yes** | **required** |  |
 | `used_by` | Optional<[AuthConnectionDependencies](#authconnectiondependencies)> | no | `nil` |  |
 
+### ApiIntegrationOAuth2CustomAppResponse
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `name` | str | **yes** | **required** |  |
+| `provider` | str | **yes** | **required** |  |
+| `token_url` | str | **yes** | **required** |  |
+| `scopes` | Optional<Array<str>> | no | `nil` |  |
+| `scope_separator` | Optional<[ApiIntegrationOAuth2CustomAppResponseScopeSeparator](#apiintegrationoauth2customappresponsescopeseparator)> | no | `nil` | Separator for scopes |
+| `expires_at` | str | **yes** | **required** | ISO 8601 timestamp of when the access token expires |
+| `integration_id` | str | **yes** | **required** |  |
+| `credential_id` | str | **yes** | **required** |  |
+| `status` | Optional<[OAuthConnectionStatus](#oauthconnectionstatus)> | no | `nil` | Current health status of the OAuth connection |
+| `status_detail` | Optional<str> | no | `nil` | Human-readable detail about the current status, e.g. the error message on refresh failure |
+| `status_updated_at` | Optional<str> | no | `nil` | ISO 8601 timestamp of the last status change |
+| `client_id` | str | **yes** | **required** | OAuth client ID (rendered from template if credential uses templated credentials, None for legacy connections) |
+| `id` | str | **yes** | **required** |  |
+| `used_by` | Optional<[AuthConnectionDependencies](#authconnectiondependencies)> | no | `nil` |  |
+
 ### ApiIntegrationWebhookOverrides
 
 | Field | Type | Required | Default | Notes |
@@ -1128,7 +1253,8 @@ Discriminated union on `type`. Variants:
 | `description` | str | **yes** | **required** | Description of when the tool should be used and what it does. |
 | `response_timeout_secs` | Optional<int> | no | `nil` | The maximum time in seconds to wait for the tool call to complete. Must be between 5 and 120 seconds (inclusive). |
 | `disable_interruptions` | Optional<bool> | no | `nil` | If true, the user will not be able to interrupt the agent while this tool is running. |
-| `force_pre_tool_speech` | Optional<bool> | no | `nil` | If true, the agent will speak before the tool call. |
+| `force_pre_tool_speech` | Optional<bool> | no | `nil` | DEPRECATED: use `pre_tool_speech` instead. If true, the agent will speak before the tool call. |
+| `pre_tool_speech` | Optional<[PreToolSpeechMode](#pretoolspeechmode)> | no | `nil` | Controls whether the agent speaks before this tool is called. 'auto' (default) decides based on recent tool latency, 'force' always asks the agent to speak, 'off' fully opts out regardless of latency. |
 | `assignments` | Optional<Array<[DynamicVariableAssignment](#dynamicvariableassignment)>> | no | `nil` | Configuration for extracting values from tool responses and assigning them to dynamic variables |
 | `tool_call_sound` | Optional<[ToolCallSoundType](#toolcallsoundtype)> | no | `nil` | Predefined tool call sound type to play during tool execution. If not specified, no tool call sound will be played. |
 | `tool_call_sound_behavior` | Optional<[ToolCallSoundBehavior](#toolcallsoundbehavior)> | no | `nil` | Determines when the tool call sound should play. 'auto' only plays when there's pre-tool speech, 'always' plays for every tool call. |
@@ -1148,7 +1274,8 @@ Discriminated union on `type`. Variants:
 | `description` | str | **yes** | **required** | Description of when the tool should be used and what it does. |
 | `response_timeout_secs` | int | **yes** | **required** | The maximum time in seconds to wait for the tool call to complete. Must be between 5 and 120 seconds (inclusive). |
 | `disable_interruptions` | bool | **yes** | **required** | If true, the user will not be able to interrupt the agent while this tool is running. |
-| `force_pre_tool_speech` | bool | **yes** | **required** | If true, the agent will speak before the tool call. |
+| `force_pre_tool_speech` | bool | **yes** | **required** | DEPRECATED: use `pre_tool_speech` instead. If true, the agent will speak before the tool call. |
+| `pre_tool_speech` | [PreToolSpeechMode](#pretoolspeechmode) | **yes** | **required** | Controls whether the agent speaks before this tool is called. 'auto' (default) decides based on recent tool latency, 'force' always asks the agent to speak, 'off' fully opts out regardless of latency. |
 | `assignments` | Array<[DynamicVariableAssignment](#dynamicvariableassignment)> | **yes** | **required** | Configuration for extracting values from tool responses and assigning them to dynamic variables |
 | `tool_call_sound` | Optional<[ToolCallSoundType](#toolcallsoundtype)> | no | `nil` | Predefined tool call sound type to play during tool execution. If not specified, no tool call sound will be played. |
 | `tool_call_sound_behavior` | [ToolCallSoundBehavior](#toolcallsoundbehavior) | **yes** | **required** | Determines when the tool call sound should play. 'auto' only plays when there's pre-tool speech, 'always' plays for every tool call. |
@@ -1167,8 +1294,9 @@ Discriminated union on `type`. Variants:
 | `type` | Optional<Literal<'array'>> | no | `nil` |  |
 | `description` | Optional<str> | no | `nil` |  |
 | `items` | Optional<'ArrayJsonSchemaPropertyInputItems'> | no | `nil` | Schema for array elements. |
-| `dynamic_variable` | Optional<str> | no | `nil` | When set, the entire array is populated from this dynamic variable at runtime. Mutually exclusive with description (LLM-provided array) and constant_value. |
-| `constant_value` | Optional<Array<ArrayJsonSchemaPropertyInputConstantValueItem>> | no | `nil` | When set, the entire array uses this constant value at runtime. Mutually exclusive with description (LLM-provided array) and dynamic_variable. |
+| `dynamic_variable` | Optional<str> | no | `nil` | When set, the entire array is populated from this dynamic variable at runtime. Mutually exclusive with description (LLM-provided array), constant_value, and is_omitted. |
+| `constant_value` | Optional<Array<ArrayJsonSchemaPropertyInputConstantValueItem>> | no | `nil` | When set, the entire array uses this constant value at runtime. Mutually exclusive with description (LLM-provided array), dynamic_variable, and is_omitted. |
+| `is_omitted` | Optional<bool> | no | `nil` | If true, this array parameter will be completely omitted from the request. Only valid for optional parameters. Mutually exclusive with description, dynamic_variable, and constant_value. |
 
 ### ArrayJsonSchemaPropertyOutput
 
@@ -1177,8 +1305,9 @@ Discriminated union on `type`. Variants:
 | `type` | Optional<Literal<'array'>> | no | `nil` |  |
 | `description` | Optional<str> | no | `nil` |  |
 | `items` | Optional<'ArrayJsonSchemaPropertyOutputItems'> | no | `nil` | Schema for array elements. |
-| `dynamic_variable` | Optional<str> | no | `nil` | When set, the entire array is populated from this dynamic variable at runtime. Mutually exclusive with description (LLM-provided array) and constant_value. |
-| `constant_value` | Optional<Array<ArrayJsonSchemaPropertyOutputConstantValueItem>> | no | `nil` | When set, the entire array uses this constant value at runtime. Mutually exclusive with description (LLM-provided array) and dynamic_variable. |
+| `dynamic_variable` | Optional<str> | no | `nil` | When set, the entire array is populated from this dynamic variable at runtime. Mutually exclusive with description (LLM-provided array), constant_value, and is_omitted. |
+| `constant_value` | Optional<Array<ArrayJsonSchemaPropertyOutputConstantValueItem>> | no | `nil` | When set, the entire array uses this constant value at runtime. Mutually exclusive with description (LLM-provided array), dynamic_variable, and is_omitted. |
+| `is_omitted` | Optional<bool> | no | `nil` | If true, this array parameter will be completely omitted from the request. Only valid for optional parameters. Mutually exclusive with description, dynamic_variable, and constant_value. |
 
 ### AsrConversationalConfig
 
@@ -1189,6 +1318,18 @@ Discriminated union on `type`. Variants:
 | `user_input_audio_format` | Optional<[AsrInputFormat](#asrinputformat)> | no | `nil` | The format of the audio to be transcribed |
 | `keywords` | Optional<Array<str>> | no | `nil` | Keywords to boost prediction probability for |
 
+### AsrConversationalConfigOverride
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `keywords` | Optional<Array<str>> | no | `nil` | Keywords to boost prediction probability for |
+
+### AsrConversationalConfigOverrideConfig
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `keywords` | Optional<bool> | no | `nil` | Whether to allow overriding the keywords field. |
+
 ### AsrConversationalConfigWorkflowOverride
 
 | Field | Type | Required | Default | Notes |
@@ -1197,6 +1338,25 @@ Discriminated union on `type`. Variants:
 | `provider` | Optional<[AsrProvider](#asrprovider)> | no | `nil` | The provider of the transcription service |
 | `user_input_audio_format` | Optional<[AsrInputFormat](#asrinputformat)> | no | `nil` | The format of the audio to be transcribed |
 | `keywords` | Optional<Array<str>> | no | `nil` | Keywords to boost prediction probability for |
+
+### AssetTranscription
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `status` | [AssetTranscriptionStatus](#assettranscriptionstatus) | **yes** | **required** |  |
+| `data` | Optional<[AssetTranscriptionData](#assettranscriptiondata)> | no | `nil` |  |
+| `updated_at_ms` | Optional<int> | no | `nil` |  |
+
+### AssetTranscriptionData
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `language_code` | str | **yes** | **required** |  |
+| `text` | str | **yes** | **required** |  |
+| `words` | Array<str> | **yes** | **required** |  |
+| `word_start_times_ms` | Array<int> | **yes** | **required** |  |
+| `word_end_times_ms` | Array<int> | **yes** | **required** |  |
+| `word_speaker_ids` | Array<Optional<str>> | **yes** | **required** |  |
 
 ### AstAdditionOperatorNodeInput
 
@@ -1495,6 +1655,23 @@ _(no fields)_
 | `segments` | Optional<Array<[AudioSegment](#audiosegment)>> | no | `nil` |  |
 | `key_moments` | Optional<Array<[AudioKeyMoment](#audiokeymoment)>> | no | `nil` |  |
 
+### AudioIsolationHistoryItemResponseModel
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `id` | str | **yes** | **required** |  |
+| `title` | Optional<str> | no | `nil` |  |
+| `created_at_unix` | int | **yes** | **required** |  |
+| `format` | str | **yes** | **required** |  |
+| `duration_seconds` | Optional<float> | no | `nil` |  |
+| `download_url` | Optional<str> | no | `nil` |  |
+| `icon_url` | Optional<str> | no | `nil` |  |
+| `source_video_url` | Optional<str> | no | `nil` |  |
+| `supports_video` | bool | **yes** | **required** |  |
+| `processing` | bool | **yes** | **required** |  |
+| `video_processing_failed` | bool | **yes** | **required** |  |
+| `preview_b_64` | Annotated[Optional<str>, FieldMetadata(alias='preview_b64')> | no | `nil` |  |
+
 ### AudioKeyMoment
 
 | Field | Type | Required | Default | Notes |
@@ -1551,6 +1728,13 @@ _(no fields)_
 | `normalized_alignment` | Annotated[Optional<[NormalizedAlignment](#normalizedalignment)>, FieldMetadata(alias='normalized[Alignment](#alignment)')> | no | `nil` |  |
 | `alignment` | Optional<[Alignment](#alignment)> | no | `nil` |  |
 | `context_id` | Annotated[Optional<str>, FieldMetadata(alias='contextId')> | no | `nil` | The contextId for which this audio is. |
+
+### AudioRefChunk
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `song_id` | str | **yes** | **required** | The ID of the song to source the chunk from. You can find the song ID in the response headers when you generate a song. |
+| `range` | [TimeRange](#timerange) | **yes** | **required** | The time range to extract from the song. |
 
 ### AudioSegment
 
@@ -1613,6 +1797,24 @@ _(no fields)_
 | `consec_failures` | Optional<int> | no | `nil` | Number of consecutive sync failures |
 | `next_refresh_by` | Optional<int> | no | `nil` | Unix timestamp for the next scheduled sync or None (in case of folders) |
 
+### BackgroundSoundConfig
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `source_type` | Optional<BackgroundSoundSourceType> | no | `nil` | The type of background sound source. |
+| `source_id` | Optional<[BackgroundSoundPresetId](#backgroundsoundpresetid)> | no | `nil` | Identifier for the sound source. |
+| `volume` | Optional<float> | no | `nil` | Volume level for background sound (0.01 to 1.0). |
+| `crossfade_loop` | Optional<bool> | no | `nil` | Apply a crossfade at the loop boundary to avoid audible pops when the sound loops. |
+
+### BackgroundSoundConfigWorkflowOverride
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `source_type` | Optional<BackgroundSoundSourceType> | no | `nil` | The type of background sound source. |
+| `source_id` | Optional<[BackgroundSoundPresetId](#backgroundsoundpresetid)> | no | `nil` | Identifier for the sound source. |
+| `volume` | Optional<float> | no | `nil` | Volume level for background sound (0.01 to 1.0). |
+| `crossfade_loop` | Optional<bool> | no | `nil` | Apply a crossfade at the loop boundary to avoid audible pops when the sound loops. |
+
 ### BackupLlmDefault
 
 | Field | Type | Required | Default | Notes |
@@ -1638,6 +1840,19 @@ _(no fields)_
 | --- | --- | --- | --- | --- |
 | `error` | Optional<str> | no | `nil` |  |
 | `message` | Optional<str> | no | `nil` |  |
+
+### BaseTurnConfig
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `turn_timeout` | Optional<float> | no | `nil` | Maximum wait time for the user's reply before re-engaging the user |
+| `initial_wait_time` | Optional<float> | no | `nil` | How long the agent will wait for the user to start the conversation if the first message is empty. If not set, uses the regular turn_timeout. |
+| `silence_end_call_timeout` | Optional<float> | no | `nil` | Maximum wait time since the user last spoke before terminating the call |
+| `turn_eagerness` | Optional<[TurnEagerness](#turneagerness)> | no | `nil` | Controls how eager the agent is to respond. Low = less eager (waits longer), Standard = default eagerness, High = more eager (responds sooner) |
+| `spelling_patience` | Optional<[SpellingPatience](#spellingpatience)> | no | `nil` | Controls if the agent should be more patient when user is spelling numbers and named entities. Auto = model based, Off = never wait extra |
+| `speculative_turn` | Optional<bool> | no | `nil` | When enabled, starts generating LLM responses during silence before full turn confidence is reached, reducing perceived latency. May increase LLM costs. |
+| `retranscribe_on_turn_timeout` | Optional<bool> | no | `nil` | When enabled, if VAD detects no speech, attempts to re-transcribe accumulated audio at turn timeout. Disables silence discount billing for affected turns. |
+| `turn_model` | Optional<[TurnModel](#turnmodel)> | no | `nil` |  |
 
 ### BasicAuthResponse
 
@@ -1727,6 +1942,14 @@ _(no fields)_
 | `id` | str | **yes** | **required** |  |
 | `used_by` | Optional<[AuthConnectionDependencies](#authconnectiondependencies)> | no | `nil` |  |
 
+### BehaviorOverride
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `verbosity` | Optional<[Verbosity](#verbosity)> | no | `nil` | Verbosity override. Underlying default applies when unset. |
+| `output_format` | Optional<[OutputFormat](#outputformat)> | no | `nil` | Output format override. Underlying default applies when unset. |
+| `interaction_budget` | Optional<[InteractionBudget](#interactionbudget)> | no | `nil` | Interaction budget override. Underlying default applies when unset. |
+
 ### BuiltInToolsInput
 
 | Field | Type | Required | Default | Notes |
@@ -1774,6 +1997,24 @@ _(no fields)_
 | `skip_turn` | Optional<[SystemToolConfigOutput](#systemtoolconfigoutput)> | no | `nil` | The skip turn tool |
 | `play_keypad_touch_tone` | Optional<[SystemToolConfigOutput](#systemtoolconfigoutput)> | no | `nil` | The play DTMF tool |
 | `voicemail_detection` | Optional<[SystemToolConfigOutput](#systemtoolconfigoutput)> | no | `nil` | The voicemail detection tool |
+
+### CancelCalendarEventParams
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `smb_tool_type` | Optional<Literal<'cancel_calendar_event'>> | no | `nil` |  |
+
+### CancelGroupSessionForAllParams
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `smb_tool_type` | Optional<Literal<'cancel_group_session_for_all'>> | no | `nil` |  |
+
+### CancelGroupSessionRegistrationParams
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `smb_tool_type` | Optional<Literal<'cancel_group_session_registration'>> | no | `nil` |  |
 
 ### CanvasPlacement
 
@@ -1892,8 +2133,9 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `voice_id` | str | **yes** | **required** |  |
+| `project_voice_ref_id` | str | **yes** | **required** |  |
 | `text` | str | **yes** | **required** |  |
+| `voice_id` | Optional<str> | no | `nil` |  |
 
 ### ChapterContentInputModel
 
@@ -1966,6 +2208,7 @@ _(no fields)_
 | `characters_converted` | int | **yes** | **required** | The number of converted characters. |
 | `paragraphs_converted` | int | **yes** | **required** | The number of converted paragraphs. |
 | `paragraphs_unconverted` | int | **yes** | **required** | The number of unconverted paragraphs. |
+| `credits_needed_to_convert` | Optional<int> | no | `nil` | The number of credits needed to convert the remaining paragraphs. |
 | `voice_statistics` | Optional<Array<[VoiceStatisticsResponseModel](#voicestatisticsresponsemodel)>> | no | `nil` | Per-voice breakdown of character counts. |
 
 ### ChapterWithContentResponseModel
@@ -2001,12 +2244,6 @@ _(no fields)_
 | `character_start_times_seconds` | Array<float> | **yes** | **required** |  |
 | `character_end_times_seconds` | Array<float> | **yes** | **required** |  |
 
-### CheckRentalAvailabilityParams
-
-| Field | Type | Required | Default | Notes |
-| --- | --- | --- | --- | --- |
-| `smb_tool_type` | Optional<Literal<'check_rental_availability'>> | no | `nil` |  |
-
 ### CheckServiceAvailabilityParams
 
 | Field | Type | Required | Default | Notes |
@@ -2021,7 +2258,8 @@ _(no fields)_
 | `description` | str | **yes** | **required** | Description of when the tool should be used and what it does. |
 | `response_timeout_secs` | Optional<int> | no | `nil` | The maximum time in seconds to wait for the tool call to complete. Must be between 1 and 120 seconds (inclusive). |
 | `disable_interruptions` | Optional<bool> | no | `nil` | If true, the user will not be able to interrupt the agent while this tool is running. |
-| `force_pre_tool_speech` | Optional<bool> | no | `nil` | If true, the agent will speak before the tool call. |
+| `force_pre_tool_speech` | Optional<bool> | no | `nil` | DEPRECATED: use `pre_tool_speech` instead. If true, the agent will speak before the tool call. |
+| `pre_tool_speech` | Optional<[PreToolSpeechMode](#pretoolspeechmode)> | no | `nil` | Controls whether the agent speaks before this tool is called. 'auto' (default) decides based on recent tool latency, 'force' always asks the agent to speak, 'off' fully opts out regardless of latency. |
 | `assignments` | Optional<Array<[DynamicVariableAssignment](#dynamicvariableassignment)>> | no | `nil` | Configuration for extracting values from tool responses and assigning them to dynamic variables |
 | `tool_call_sound` | Optional<[ToolCallSoundType](#toolcallsoundtype)> | no | `nil` | Predefined tool call sound type to play during tool execution. If not specified, no tool call sound will be played. |
 | `tool_call_sound_behavior` | Optional<[ToolCallSoundBehavior](#toolcallsoundbehavior)> | no | `nil` | Determines when the tool call sound should play. 'auto' only plays when there's pre-tool speech, 'always' plays for every tool call. |
@@ -2039,7 +2277,8 @@ _(no fields)_
 | `description` | str | **yes** | **required** | Description of when the tool should be used and what it does. |
 | `response_timeout_secs` | Optional<int> | no | `nil` | The maximum time in seconds to wait for the tool call to complete. Must be between 1 and 120 seconds (inclusive). |
 | `disable_interruptions` | Optional<bool> | no | `nil` | If true, the user will not be able to interrupt the agent while this tool is running. |
-| `force_pre_tool_speech` | Optional<bool> | no | `nil` | If true, the agent will speak before the tool call. |
+| `force_pre_tool_speech` | Optional<bool> | no | `nil` | DEPRECATED: use `pre_tool_speech` instead. If true, the agent will speak before the tool call. |
+| `pre_tool_speech` | Optional<[PreToolSpeechMode](#pretoolspeechmode)> | no | `nil` | Controls whether the agent speaks before this tool is called. 'auto' (default) decides based on recent tool latency, 'force' always asks the agent to speak, 'off' fully opts out regardless of latency. |
 | `assignments` | Optional<Array<[DynamicVariableAssignment](#dynamicvariableassignment)>> | no | `nil` | Configuration for extracting values from tool responses and assigning them to dynamic variables |
 | `tool_call_sound` | Optional<[ToolCallSoundType](#toolcallsoundtype)> | no | `nil` | Predefined tool call sound type to play during tool execution. If not specified, no tool call sound will be played. |
 | `tool_call_sound_behavior` | Optional<[ToolCallSoundBehavior](#toolcallsoundbehavior)> | no | `nil` | Determines when the tool call sound should play. 'auto' only plays when there's pre-tool speech, 'always' plays for every tool call. |
@@ -2071,6 +2310,12 @@ _(no fields)_
 | `context_id` | str | **yes** | **required** | The context_id to close. |
 | `close_context` | bool | **yes** | **required** | Must set the close_context to true, to close the specified context. If false, the context will remain open and the text will be ignored. If set to true, the context will close. If it has already been set to flush it will continue flushing. The same context id can be used again but will not be linked to the previous context with the same name. |
 
+### ClosePayload
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `type` | Literal<'close'> | no | `'close'` | The message type identifier. |
+
 ### CloseSocket
 
 | Field | Type | Required | Default | Notes |
@@ -2091,6 +2336,20 @@ _(no fields)_
 | `type` | Optional<Literal<'coaching'>> | no | `nil` |  |
 | `coached_agent_id` | str | **yes** | **required** |  |
 | `memory_base_id` | Optional<str> | no | `nil` |  |
+
+### CodeToolAllowedDomain
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `domain` | str | **yes** | **required** | Domain pattern that code tools can access. Must be a valid domain (e.g. api.github.com), optionally with a subdomain wildcard (*.example.com) or path glob (api.example.com/v1/*). |
+| `name` | str | **yes** | **required** | Human-readable label for this domain entry |
+
+### CodeToolContextVariable
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `name` | str | **yes** | **required** |  |
+| `env_var_label` | str | **yes** | **required** |  |
 
 ### ColumnFilter
 
@@ -2115,6 +2374,12 @@ _(no fields)_
 | `text` | str | **yes** | **required** | Committed transcription text. |
 | `language_code` | Optional<str> | no | `nil` | Detected or specified language code. |
 | `words` | Optional<Array<[TranscriptionWord](#transcriptionword)>> | no | `nil` | Word-level information with timestamps. |
+
+### CompositionPlan
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `chunks` | Array<CompositionPlanChunksItem> | **yes** | **required** | The chunks that make up the generation. |
 
 ### ConstantSchemaOverride
 
@@ -2156,6 +2421,13 @@ _(no fields)_
 | --- | --- | --- | --- | --- |
 | `is_enabled` | Optional<bool> | no | `nil` |  |
 | `threshold` | Optional<ContentThresholdGuardrailThreshold> | no | `nil` |  |
+
+### ContextualUpdateInfo
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `context_id` | str | **yes** | **required** | Client-supplied identifier grouping related contextual updates. |
+| `is_superseded` | Optional<bool> | no | `nil` | True when this contextual update has been replaced by a newer update with the same context_id. |
 
 ### Contributor
 
@@ -2218,6 +2490,7 @@ _(no fields)_
 | --- | --- | --- | --- | --- |
 | `post_call_webhook_id` | Optional<str> | no | `nil` |  |
 | `events` | Optional<Array<[WebhookEventType](#webhookeventtype)>> | no | `nil` | List of event types to send via webhook. Options: transcript, audio, call_initiation_failure. |
+| `transcript_format` | Optional<[WebhookTranscriptFormat](#webhooktranscriptformat)> | no | `nil` | Format for transcript webhooks. |
 | `send_audio` | Optional<bool> | no | `nil` | DEPRECATED: Use 'events' field instead. Whether to send audio data with post-call webhooks for ConvAI conversations |
 
 ### ConvAiWorkspaceStoredSecretConfig
@@ -2228,6 +2501,14 @@ _(no fields)_
 | `secret_id` | str | **yes** | **required** |  |
 | `name` | str | **yes** | **required** |  |
 | `used_by` | [ConvAiStoredSecretDependencies](#convaistoredsecretdependencies) | **yes** | **required** |  |
+
+### ConversationAsrUsageModel
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `asr_model` | Optional<str> | no | `nil` |  |
+| `total_transcription_calls` | Optional<int> | no | `nil` |  |
+| `total_audio_input_seconds` | Optional<float> | no | `nil` |  |
 
 ### ConversationChargingCommonModel
 
@@ -2242,22 +2523,14 @@ _(no fields)_
 | `call_charge` | Optional<int> | no | `nil` |  |
 | `free_minutes_consumed` | Optional<float> | no | `nil` |  |
 | `free_llm_dollars_consumed` | Optional<float> | no | `nil` |  |
-
-### ConversationConfig
-
-| Field | Type | Required | Default | Notes |
-| --- | --- | --- | --- | --- |
-| `text_only` | Optional<bool> | no | `nil` | If enabled audio will not be processed and only text will be used, use to avoid audio pricing. |
-| `max_duration_seconds` | Optional<int> | no | `nil` | The maximum duration of a conversation in seconds |
-| `client_events` | Optional<Array<[ClientEvent](#clientevent)>> | no | `nil` | The events that will be sent to the client |
-| `file_input` | Optional<[FileInputConfig](#fileinputconfig)> | no | `nil` | Configuration for file input (image/PDF uploads) during conversations. |
-| `monitoring_enabled` | Optional<bool> | no | `nil` | Enable real-time monitoring of conversations via WebSocket |
-| `monitoring_events` | Optional<Array<[ClientEvent](#clientevent)>> | no | `nil` | The events that will be sent to monitoring connections. |
+| `tts_usage` | Optional<[ConversationTtsUsageModel](#conversationttsusagemodel)> | no | `nil` |  |
+| `asr_usage` | Optional<[ConversationAsrUsageModel](#conversationasrusagemodel)> | no | `nil` |  |
 
 ### ConversationConfigClientOverrideConfigInput
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
+| `asr` | Optional<[AsrConversationalConfigOverrideConfig](#asrconversationalconfigoverrideconfig)> | no | `nil` | Configures overrides for nested fields. |
 | `turn` | Optional<[TurnConfigOverrideConfig](#turnconfigoverrideconfig)> | no | `nil` | Configures overrides for nested fields. |
 | `tts` | Optional<[TtsConversationalConfigOverrideConfig](#ttsconversationalconfigoverrideconfig)> | no | `nil` | Configures overrides for nested fields. |
 | `conversation` | Optional<[ConversationConfigOverrideConfig](#conversationconfigoverrideconfig)> | no | `nil` | Configures overrides for nested fields. |
@@ -2267,6 +2540,7 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
+| `asr` | Optional<[AsrConversationalConfigOverrideConfig](#asrconversationalconfigoverrideconfig)> | no | `nil` | Configures overrides for nested fields. |
 | `turn` | Optional<[TurnConfigOverrideConfig](#turnconfigoverrideconfig)> | no | `nil` | Configures overrides for nested fields. |
 | `tts` | Optional<[TtsConversationalConfigOverrideConfig](#ttsconversationalconfigoverrideconfig)> | no | `nil` | Configures overrides for nested fields. |
 | `conversation` | Optional<[ConversationConfigOverrideConfig](#conversationconfigoverrideconfig)> | no | `nil` | Configures overrides for nested fields. |
@@ -2276,6 +2550,7 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
+| `asr` | Optional<[AsrConversationalConfigOverride](#asrconversationalconfigoverride)> | no | `nil` | Configuration for conversational transcription |
 | `turn` | Optional<[TurnConfigOverride](#turnconfigoverride)> | no | `nil` | Configuration for turn detection |
 | `tts` | Optional<[TtsConversationalConfigOverride](#ttsconversationalconfigoverride)> | no | `nil` | Configuration for conversational text to speech |
 | `conversation` | Optional<[ConversationConfigOverride](#conversationconfigoverride)> | no | `nil` | Configuration for conversational events |
@@ -2285,10 +2560,35 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
+| `asr` | Optional<[AsrConversationalConfigOverride](#asrconversationalconfigoverride)> | no | `nil` | Configuration for conversational transcription |
 | `turn` | Optional<[TurnConfigOverride](#turnconfigoverride)> | no | `nil` | Configuration for turn detection |
 | `tts` | Optional<[TtsConversationalConfigOverride](#ttsconversationalconfigoverride)> | no | `nil` | Configuration for conversational text to speech |
 | `conversation` | Optional<[ConversationConfigOverride](#conversationconfigoverride)> | no | `nil` | Configuration for conversational events |
 | `agent` | Optional<[AgentConfigOverrideOutput](#agentconfigoverrideoutput)> | no | `nil` | Agent specific configuration |
+
+### ConversationConfigInput
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `text_only` | Optional<bool> | no | `nil` | If enabled audio will not be processed and only text will be used, use to avoid audio pricing. |
+| `max_duration_seconds` | Optional<int> | no | `nil` | The maximum duration of a conversation in seconds |
+| `client_events` | Optional<Array<[ClientEvent](#clientevent)>> | no | `nil` | The events that will be sent to the client |
+| `file_input` | Optional<[FileInputConfig](#fileinputconfig)> | no | `nil` | Configuration for file input (image/PDF uploads) during conversations. |
+| `monitoring_enabled` | Optional<bool> | no | `nil` | Enable real-time monitoring of conversations via WebSocket |
+| `monitoring_events` | Optional<Array<[ClientEvent](#clientevent)>> | no | `nil` | The events that will be sent to monitoring connections. |
+| `source_attribution` | Optional<bool> | no | `nil` | When enabled and knowledge base content is present, the LLM is instructed to report which sources it used. |
+
+### ConversationConfigOutput
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `text_only` | Optional<bool> | no | `nil` | If enabled audio will not be processed and only text will be used, use to avoid audio pricing. |
+| `max_duration_seconds` | Optional<int> | no | `nil` | The maximum duration of a conversation in seconds |
+| `client_events` | Optional<Array<[ClientEvent](#clientevent)>> | no | `nil` | The events that will be sent to the client |
+| `file_input` | Optional<[FileInputConfig](#fileinputconfig)> | no | `nil` | Configuration for file input (image/PDF uploads) during conversations. |
+| `monitoring_enabled` | Optional<bool> | no | `nil` | Enable real-time monitoring of conversations via WebSocket |
+| `monitoring_events` | Optional<Array<[ClientEvent](#clientevent)>> | no | `nil` | The events that will be sent to monitoring connections. |
+| `source_attribution` | Optional<bool> | no | `nil` | When enabled and knowledge base content is present, the LLM is instructed to report which sources it used. |
 
 ### ConversationConfigOverride
 
@@ -2302,7 +2602,7 @@ _(no fields)_
 | --- | --- | --- | --- | --- |
 | `text_only` | Optional<bool> | no | `nil` | Whether to allow overriding the text_only field. |
 
-### ConversationConfigWorkflowOverride
+### ConversationConfigWorkflowOverrideInput
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
@@ -2312,6 +2612,19 @@ _(no fields)_
 | `file_input` | Optional<[FileInputConfigWorkflowOverride](#fileinputconfigworkflowoverride)> | no | `nil` | Configuration for file input (image/PDF uploads) during conversations. |
 | `monitoring_enabled` | Optional<bool> | no | `nil` | Enable real-time monitoring of conversations via WebSocket |
 | `monitoring_events` | Optional<Array<[ClientEvent](#clientevent)>> | no | `nil` | The events that will be sent to monitoring connections. |
+| `source_attribution` | Optional<bool> | no | `nil` | When enabled and knowledge base content is present, the LLM is instructed to report which sources it used. |
+
+### ConversationConfigWorkflowOverrideOutput
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `text_only` | Optional<bool> | no | `nil` | If enabled audio will not be processed and only text will be used, use to avoid audio pricing. |
+| `max_duration_seconds` | Optional<int> | no | `nil` | The maximum duration of a conversation in seconds |
+| `client_events` | Optional<Array<[ClientEvent](#clientevent)>> | no | `nil` | The events that will be sent to the client |
+| `file_input` | Optional<[FileInputConfigWorkflowOverride](#fileinputconfigworkflowoverride)> | no | `nil` | Configuration for file input (image/PDF uploads) during conversations. |
+| `monitoring_enabled` | Optional<bool> | no | `nil` | Enable real-time monitoring of conversations via WebSocket |
+| `monitoring_events` | Optional<Array<[ClientEvent](#clientevent)>> | no | `nil` | The events that will be sent to monitoring connections. |
+| `source_attribution` | Optional<bool> | no | `nil` | When enabled and knowledge base content is present, the LLM is instructed to report which sources it used. |
 
 ### ConversationDeletionSettings
 
@@ -2365,6 +2678,17 @@ _(no fields)_
 | `result` | [EvaluationSuccessResult](#evaluationsuccessresult) | **yes** | **required** |  |
 | `rationale` | str | **yes** | **required** |  |
 
+### ConversationHistoryExotelPhoneCallModel
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `direction` | [TelephonyDirection](#telephonydirection) | **yes** | **required** |  |
+| `phone_number_id` | str | **yes** | **required** |  |
+| `agent_number` | str | **yes** | **required** |  |
+| `external_number` | str | **yes** | **required** |  |
+| `stream_sid` | str | **yes** | **required** |  |
+| `call_sid` | str | **yes** | **required** |  |
+
 ### ConversationHistoryFeedbackCommonModel
 
 | Field | Type | Required | Default | Notes |
@@ -2404,8 +2728,10 @@ _(no fields)_
 | `timezone` | Optional<str> | no | `nil` |  |
 | `async_metadata` | Optional<[AsyncConversationMetadata](#asyncconversationmetadata)> | no | `nil` |  |
 | `whatsapp` | Optional<[WhatsAppConversationInfo](#whatsappconversationinfo)> | no | `nil` |  |
+| `sms` | Optional<[SmsConversationInfo](#smsconversationinfo)> | no | `nil` |  |
 | `agent_created_from` | Optional<[AgentDefinitionSource](#agentdefinitionsource)> | no | `nil` |  |
 | `agent_last_updated_from` | Optional<[AgentDefinitionSource](#agentdefinitionsource)> | no | `nil` |  |
+| `voice_rewards` | Optional<Array<[ConversationVoiceRewardModel](#conversationvoicerewardmodel)>> | no | `nil` |  |
 
 ### ConversationHistoryMultivoiceMessageModel
 
@@ -2443,6 +2769,7 @@ _(no fields)_
 | `phone_number_id` | str | **yes** | **required** |  |
 | `agent_number` | str | **yes** | **required** |  |
 | `external_number` | str | **yes** | **required** |  |
+| `call_id` | Optional<str> | no | `nil` |  |
 | `call_sid` | str | **yes** | **required** |  |
 | `sip_header_dynamic_variables` | Optional<Hash<str, str>> | no | `nil` |  |
 
@@ -2504,6 +2831,7 @@ _(no fields)_
 | `original_message` | Optional<str> | no | `nil` |  |
 | `source_medium` | Optional<[ChatSourceMedium](#chatsourcemedium)> | no | `nil` |  |
 | `source_event_id` | Optional<int> | no | `nil` |  |
+| `used_static_kb_document_ids` | Optional<Array<str>> | no | `nil` |  |
 
 ### ConversationHistoryTranscriptCommonModelOutput
 
@@ -2525,6 +2853,7 @@ _(no fields)_
 | `original_message` | Optional<str> | no | `nil` |  |
 | `source_medium` | Optional<[ChatSourceMedium](#chatsourcemedium)> | no | `nil` |  |
 | `source_event_id` | Optional<int> | no | `nil` |  |
+| `used_static_kb_document_ids` | Optional<Array<str>> | no | `nil` |  |
 
 ### ConversationHistoryTranscriptFileInputResponseModel
 
@@ -2571,7 +2900,9 @@ _(no fields)_
 | `original_message` | Optional<str> | no | `nil` |  |
 | `source_medium` | Optional<[ChatSourceMedium](#chatsourcemedium)> | no | `nil` |  |
 | `source_event_id` | Optional<int> | no | `nil` |  |
+| `used_static_kb_document_ids` | Optional<Array<str>> | no | `nil` |  |
 | `file_input` | Optional<[ConversationHistoryTranscriptFileInputResponseModel](#conversationhistorytranscriptfileinputresponsemodel)> | no | `nil` |  |
+| `contextual_update_info` | Optional<[ContextualUpdateInfo](#contextualupdateinfo)> | no | `nil` |  |
 
 ### ConversationHistoryTranscriptSystemToolResultCommonModelInput
 
@@ -2752,7 +3083,7 @@ _(no fields)_
 | `branch_id` | Optional<str> | no | `nil` | ID of the agent branch to use for this conversation |
 | `environment` | Optional<str> | no | `nil` | Environment to use for resolving environment variables |
 | `starting_workflow_node_id` | Optional<str> | no | `nil` | If set, start the workflow at this node id instead of the default entry |
-| `dynamic_variables` | Optional<Hash<str, Optional<ConversationInitiationClientDataInternalDynamicVariablesValue>>> | no | `nil` |  |
+| `dynamic_variables` | Optional<Hash<str, Optional<DynamicVariableValueTypeOutput>>> | no | `nil` |  |
 | `tool_mock_config` | Optional<[OrchestratorToolMockBehaviorConfig](#orchestratortoolmockbehaviorconfig)> | no | `nil` | Configuration for which tools to mock and fallback behavior |
 
 ### ConversationInitiationClientDataRequestInput
@@ -2766,7 +3097,7 @@ _(no fields)_
 | `branch_id` | Optional<str> | no | `nil` | ID of the agent branch to use for this conversation |
 | `environment` | Optional<str> | no | `nil` | Environment to use for resolving environment variables |
 | `starting_workflow_node_id` | Optional<str> | no | `nil` | If set, start the workflow at this node id instead of the default entry |
-| `dynamic_variables` | Optional<Hash<str, Optional<ConversationInitiationClientDataRequestInputDynamicVariablesValue>>> | no | `nil` |  |
+| `dynamic_variables` | Optional<Hash<str, Optional<DynamicVariableValueTypeInput>>> | no | `nil` |  |
 
 ### ConversationInitiationClientDataRequestOutput
 
@@ -2779,7 +3110,7 @@ _(no fields)_
 | `branch_id` | Optional<str> | no | `nil` | ID of the agent branch to use for this conversation |
 | `environment` | Optional<str> | no | `nil` | Environment to use for resolving environment variables |
 | `starting_workflow_node_id` | Optional<str> | no | `nil` | If set, start the workflow at this node id instead of the default entry |
-| `dynamic_variables` | Optional<Hash<str, Optional<ConversationInitiationClientDataRequestOutputDynamicVariablesValue>>> | no | `nil` |  |
+| `dynamic_variables` | Optional<Hash<str, Optional<DynamicVariableValueTypeOutput>>> | no | `nil` |  |
 
 ### ConversationInitiationClientDataWebhook
 
@@ -2795,6 +3126,17 @@ _(no fields)_
 | `source` | Optional<[ConversationInitiationSource](#conversationinitiationsource)> | no | `nil` | Source of the conversation initiation |
 | `version` | Optional<str> | no | `nil` | The SDK version number |
 
+### ConversationSentimentAnalysis
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `overall_label` | [ConversationSentimentAnalysisOverallLabel](#conversationsentimentanalysisoveralllabel) | **yes** | **required** |  |
+| `overall_sentiment_score` | float | **yes** | **required** |  |
+| `overall_frustration_score` | float | **yes** | **required** |  |
+| `min_user_sentiment_score` | float | **yes** | **required** |  |
+| `max_user_frustration_score` | float | **yes** | **required** |  |
+| `num_scored_user_turns` | int | **yes** | **required** |  |
+
 ### ConversationSignedUrlResponseModel
 
 | Field | Type | Required | Default | Notes |
@@ -2808,7 +3150,14 @@ _(no fields)_
 | `simulated_user_config` | [AgentConfig](#agentconfig) | **yes** | **required** |  |
 | `tool_mock_config` | Optional<Hash<str, [ToolMockConfig](#toolmockconfig)>> | no | `nil` |  |
 | `partial_conversation_history` | Optional<Array<[ConversationHistoryTranscriptCommonModelInput](#conversationhistorytranscriptcommonmodelinput)>> | no | `nil` | A partial conversation history to start the simulation from. If empty, simulation starts fresh. |
-| `dynamic_variables` | Optional<Hash<str, Optional<ConversationSimulationSpecificationDynamicVariablesValue>>> | no | `nil` |  |
+| `dynamic_variables` | Optional<Hash<str, Optional<DynamicVariableValueTypeInput>>> | no | `nil` |  |
+
+### ConversationSource
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `type` | Optional<Literal<'conversation'>> | no | `nil` |  |
+| `conversation_id` | str | **yes** | **required** |  |
 
 ### ConversationSummaryResponseModel
 
@@ -2833,7 +3182,18 @@ _(no fields)_
 | `direction` | Optional<[TelephonyDirection](#telephonydirection)> | no | `nil` |  |
 | `rating` | Optional<float> | no | `nil` |  |
 
-### ConversationTokenDbModel
+### ConversationTagResponseModel
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `tag_id` | str | **yes** | **required** |  |
+| `workspace_id` | str | **yes** | **required** |  |
+| `owner_user_id` | str | **yes** | **required** |  |
+| `title` | str | **yes** | **required** |  |
+| `description` | Optional<str> | no | `nil` |  |
+| `created_at_unix_secs` | int | **yes** | **required** |  |
+
+### ConversationTokenResponseModel
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
@@ -2841,8 +3201,17 @@ _(no fields)_
 | `conversation_token` | str | **yes** | **required** | The token for the agent |
 | `expiration_time_unix_secs` | Optional<int> | no | `nil` | The expiration time of the token in unix seconds |
 | `conversation_id` | Optional<str> | no | `nil` | The ID of the conversation |
-| `purpose` | Optional<[ConversationTokenPurpose](#conversationtokenpurpose)> | no | `nil` | The purpose of the token |
+| `purpose` | [ConversationTokenPurpose](#conversationtokenpurpose) | **yes** | **required** | The purpose of the token |
 | `token_requester_user_id` | Optional<str> | no | `nil` | The user ID of the entity who requested the token |
+
+### ConversationTtsUsageModel
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `primary_tts_model` | Optional<str> | no | `nil` |  |
+| `total_audio_output_seconds` | Optional<float> | no | `nil` |  |
+| `total_characters` | Optional<int> | no | `nil` |  |
+| `per_voice_usage` | Optional<Array<[ConversationVoiceUsageModel](#conversationvoiceusagemodel)>> | no | `nil` |  |
 
 ### ConversationTurnMetrics
 
@@ -2865,6 +3234,20 @@ _(no fields)_
 | `last_contact_conversation_id` | str | **yes** | **required** |  |
 | `last_contact_agent_name` | Optional<str> | no | `nil` |  |
 
+### ConversationVoiceRewardModel
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `voice_id` | str | **yes** | **required** |  |
+| `reward_usd_cents` | float | **yes** | **required** |  |
+
+### ConversationVoiceUsageModel
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `voice_id` | str | **yes** | **required** |  |
+| `audio_output_seconds` | Optional<float> | no | `nil` |  |
+
 ### ConversationalConfig
 
 | Field | Type | Required | Default | Notes |
@@ -2872,7 +3255,7 @@ _(no fields)_
 | `asr` | Optional<[AsrConversationalConfig](#asrconversationalconfig)> | no | `nil` | Configuration for conversational transcription |
 | `turn` | Optional<[TurnConfig](#turnconfig)> | no | `nil` | Configuration for turn detection |
 | `tts` | Optional<[TtsConversationalConfigOutput](#ttsconversationalconfigoutput)> | no | `nil` | Configuration for conversational text to speech |
-| `conversation` | Optional<[ConversationConfig](#conversationconfig)> | no | `nil` | Configuration for conversational events |
+| `conversation` | Optional<[ConversationConfigOutput](#conversationconfigoutput)> | no | `nil` | Configuration for conversational events |
 | `language_presets` | Optional<Hash<str, [LanguagePresetOutput](#languagepresetoutput)>> | no | `nil` | Language presets for conversations |
 | `vad` | Optional<[VadConfig](#vadconfig)> | no | `nil` | Configuration for voice activity detection |
 | `agent` | Optional<[AgentConfig](#agentconfig)> | no | `nil` | Agent specific configuration |
@@ -2884,7 +3267,7 @@ _(no fields)_
 | `asr` | Optional<[AsrConversationalConfigWorkflowOverride](#asrconversationalconfigworkflowoverride)> | no | `nil` | Configuration for conversational transcription |
 | `turn` | Optional<[TurnConfigWorkflowOverride](#turnconfigworkflowoverride)> | no | `nil` | Configuration for turn detection |
 | `tts` | Optional<[TtsConversationalConfigWorkflowOverrideInput](#ttsconversationalconfigworkflowoverrideinput)> | no | `nil` | Configuration for conversational text to speech |
-| `conversation` | Optional<[ConversationConfigWorkflowOverride](#conversationconfigworkflowoverride)> | no | `nil` | Configuration for conversational events |
+| `conversation` | Optional<[ConversationConfigWorkflowOverrideInput](#conversationconfigworkflowoverrideinput)> | no | `nil` | Configuration for conversational events |
 | `language_presets` | Optional<Hash<str, Optional<[LanguagePresetInput](#languagepresetinput)>>> | no | `nil` | Language presets for conversations |
 | `vad` | Optional<[VadConfigWorkflowOverride](#vadconfigworkflowoverride)> | no | `nil` | Configuration for voice activity detection |
 | `agent` | Optional<[AgentConfigApiModelWorkflowOverrideInput](#agentconfigapimodelworkflowoverrideinput)> | no | `nil` | Agent specific configuration |
@@ -2896,7 +3279,7 @@ _(no fields)_
 | `asr` | Optional<[AsrConversationalConfigWorkflowOverride](#asrconversationalconfigworkflowoverride)> | no | `nil` | Configuration for conversational transcription |
 | `turn` | Optional<[TurnConfigWorkflowOverride](#turnconfigworkflowoverride)> | no | `nil` | Configuration for turn detection |
 | `tts` | Optional<[TtsConversationalConfigWorkflowOverrideOutput](#ttsconversationalconfigworkflowoverrideoutput)> | no | `nil` | Configuration for conversational text to speech |
-| `conversation` | Optional<[ConversationConfigWorkflowOverride](#conversationconfigworkflowoverride)> | no | `nil` | Configuration for conversational events |
+| `conversation` | Optional<[ConversationConfigWorkflowOverrideOutput](#conversationconfigworkflowoverrideoutput)> | no | `nil` | Configuration for conversational events |
 | `language_presets` | Optional<Hash<str, Optional<[LanguagePresetOutput](#languagepresetoutput)>>> | no | `nil` | Language presets for conversations |
 | `vad` | Optional<[VadConfigWorkflowOverride](#vadconfigworkflowoverride)> | no | `nil` | Configuration for voice activity detection |
 | `agent` | Optional<[AgentConfigApiModelWorkflowOverrideOutput](#agentconfigapimodelworkflowoverrideoutput)> | no | `nil` | Agent specific configuration |
@@ -2967,6 +3350,14 @@ _(no fields)_
 | `username` | str | **yes** | **required** |  |
 | `password` | str | **yes** | **required** |  |
 
+### CreateBearerAuthRequest
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `name` | str | **yes** | **required** |  |
+| `provider` | str | **yes** | **required** |  |
+| `token` | str | **yes** | **required** |  |
+
 ### CreateClientAppointmentParams
 
 | Field | Type | Required | Default | Notes |
@@ -2993,6 +3384,21 @@ _(no fields)_
 | `provider` | str | **yes** | **required** |  |
 | `header_name` | str | **yes** | **required** | The name of the header to use for authentication (e.g., 'x-api-key') |
 | `token` | str | **yes** | **required** |  |
+
+### CreateExotelPhoneNumberRequest
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `phone_number` | str | **yes** | **required** | Phone number |
+| `label` | str | **yes** | **required** | Label for the phone number |
+| `supports_inbound` | Optional<bool> | no | `nil` | This field is deprecated and will be removed in the future. Whether this phone number supports inbound calls |
+| `supports_outbound` | Optional<bool> | no | `nil` | This field is deprecated and will be removed in the future. Whether this phone number supports outbound calls |
+| `account_sid` | str | **yes** | **required** | Exotel Account SID |
+| `api_key` | str | **yes** | **required** | Exotel API Key |
+| `api_token` | str | **yes** | **required** | Exotel API Token |
+| `api_subdomain` | [ExotelApiSubdomain](#exotelapisubdomain) | **yes** | **required** | Exotel region-specific API host |
+| `app_id` | str | **yes** | **required** | Exotel applet identifier used in Calls/connect |
+| `applet_url` | Optional<str> | no | `nil` | Optional full applet URL override. Defaults to Exotel start_voice URL derived from account SID and app ID. |
 
 ### CreateHolidayParams
 
@@ -3046,7 +3452,21 @@ _(no fields)_
 | `extra_params` | Optional<Hash<str, str>> | no | `nil` | Additional custom claims to include in the JWT |
 | `token_url` | str | **yes** | **required** | Token endpoint URL for exchanging JWT for access token |
 | `scopes` | Optional<Array<str>> | no | `nil` | OAuth2 scopes to request when exchanging JWT for access token |
+| `token_response_field` | Optional<[CreateOAuth2JwtRequestTokenResponseField](#createoauth2jwtrequesttokenresponsefield)> | no | `nil` | Token field to extract from the token endpoint response. |
 | `secret_key` | str | **yes** | **required** |  |
+
+### CreateOrderRequest
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `sandbox` | Optional<bool> | no | `nil` | When true, creates a sandbox order that auto-progresses without producer intervention. |
+
+### CreateOrderResponse
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `order_id` | OrderId | **yes** | **required** | The ID of the newly created order. |
+| `sandbox` | Optional<bool> | no | `nil` | Whether this is a sandbox order. |
 
 ### CreatePhoneNumberResponseModel
 
@@ -3081,25 +3501,14 @@ _(no fields)_
 | --- | --- | --- | --- | --- |
 | `status` | str | **yes** | **required** | The status of the create pronunciation dictionary request. If the request was successful, the status will be 'ok'. Otherwise an error message with status 500 will be returned. |
 
-### CreateRentalBookingParams
-
-| Field | Type | Required | Default | Notes |
-| --- | --- | --- | --- | --- |
-| `smb_tool_type` | Optional<Literal<'create_rental_booking'>> | no | `nil` |  |
-
-### CreateRentalServiceParams
-
-| Field | Type | Required | Default | Notes |
-| --- | --- | --- | --- | --- |
-| `smb_tool_type` | Optional<Literal<'create_rental_service'>> | no | `nil` |  |
-
 ### CreateResponseUnitTestRequest
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `from_conversation_metadata` | Optional<[TestFromConversationMetadataInput](#testfromconversationmetadatainput)> | no | `nil` | Metadata of a conversation this test was created from (if applicable). |
-| `dynamic_variables` | Optional<Hash<str, Optional<CreateResponseUnitTestRequestDynamicVariablesValue>>> | no | `nil` | Dynamic variables to replace in the agent config during testing |
+| `dynamic_variables` | Optional<Hash<str, Optional<DynamicVariableValueTypeInput>>> | no | `nil` | Dynamic variables to replace in the agent config during testing |
 | `chat_history` | Optional<Array<[ConversationHistoryTranscriptCommonModelInput](#conversationhistorytranscriptcommonmodelinput)>> | no | `nil` |  |
+| `conversation_initiation_source` | Optional<[ConversationInitiationSource](#conversationinitiationsource)> | no | `nil` | Simulate the test as if the conversation originated from this channel. |
 | `success_condition` | Optional<str> | no | `nil` | A prompt that evaluates whether the agent's response is successful. Should return True or False. |
 | `success_examples` | Optional<Array<[AgentSuccessfulResponseExample](#agentsuccessfulresponseexample)>> | no | `nil` | Non-empty list of example responses that should be considered successful |
 | `failure_examples` | Optional<Array<[AgentFailureResponseExample](#agentfailureresponseexample)>> | no | `nil` | Non-empty list of example responses that should be considered failures |
@@ -3124,13 +3533,16 @@ _(no fields)_
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `from_conversation_metadata` | Optional<[TestFromConversationMetadataInput](#testfromconversationmetadatainput)> | no | `nil` | Metadata of a conversation this test was created from (if applicable). |
-| `dynamic_variables` | Optional<Hash<str, Optional<CreateSimulationTestRequestDynamicVariablesValue>>> | no | `nil` | Dynamic variables to replace in the agent config during testing |
+| `dynamic_variables` | Optional<Hash<str, Optional<DynamicVariableValueTypeInput>>> | no | `nil` | Dynamic variables to replace in the agent config during testing |
 | `chat_history` | Optional<Array<[ConversationHistoryTranscriptCommonModelInput](#conversationhistorytranscriptcommonmodelinput)>> | no | `nil` |  |
+| `conversation_initiation_source` | Optional<[ConversationInitiationSource](#conversationinitiationsource)> | no | `nil` | Simulate the test as if the conversation originated from this channel. |
 | `success_condition` | Optional<str> | no | `nil` | A prompt that evaluates whether the agent's response is successful. Should return True or False. |
 | `simulation_scenario` | Optional<str> | no | `nil` | Description of the simulation scenario and user persona for simulation tests. |
 | `simulation_max_turns` | Optional<int> | no | `nil` | Maximum number of conversation turns for simulation tests. |
 | `simulation_environment` | Optional<str> | no | `nil` | The environment to use when running this simulation test. If not provided, defaults to 'production'. |
 | `tool_mock_config` | Optional<[SimulationToolMockBehaviorConfig](#simulationtoolmockbehaviorconfig)> | no | `nil` | Configuration for which tools to mock and fallback behavior. |
+| `evaluation_model` | Optional<[Llm](#llm)> | no | `nil` | LLM model to use for evaluating simulation results. Defaults to Claude Sonnet 4.6. |
+| `simulated_user_model` | Optional<[Llm](#llm)> | no | `nil` | LLM model for the simulated user. Defaults to Claude Sonnet 4.6. |
 | `name` | str | **yes** | **required** |  |
 | `parent_folder_id` | Optional<str> | no | `nil` | The ID of the parent folder. If not provided, the test will be created at the root level. |
 
@@ -3163,8 +3575,9 @@ _(no fields)_
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `from_conversation_metadata` | Optional<[TestFromConversationMetadataInput](#testfromconversationmetadatainput)> | no | `nil` | Metadata of a conversation this test was created from (if applicable). |
-| `dynamic_variables` | Optional<Hash<str, Optional<CreateToolCallUnitTestRequestDynamicVariablesValue>>> | no | `nil` | Dynamic variables to replace in the agent config during testing |
+| `dynamic_variables` | Optional<Hash<str, Optional<DynamicVariableValueTypeInput>>> | no | `nil` | Dynamic variables to replace in the agent config during testing |
 | `chat_history` | Optional<Array<[ConversationHistoryTranscriptCommonModelInput](#conversationhistorytranscriptcommonmodelinput)>> | no | `nil` |  |
+| `conversation_initiation_source` | Optional<[ConversationInitiationSource](#conversationinitiationsource)> | no | `nil` | Simulate the test as if the conversation originated from this channel. |
 | `tool_call_parameters` | Optional<[UnitTestToolCallEvaluationModelInput](#unittesttoolcallevaluationmodelinput)> | no | `nil` | How to evaluate the agent's tool call (if any). If empty, the tool call is not evaluated. |
 | `check_any_tool_matches` | Optional<bool> | no | `nil` | If set to True this test will pass if any tool call returned by the LLM matches the criteria. Otherwise it will fail if more than one tool is returned by the agent. |
 | `name` | str | **yes** | **required** |  |
@@ -3182,6 +3595,17 @@ _(no fields)_
 | `token` | str | **yes** | **required** | Twilio Auth Token |
 | `region_config` | Optional<[RegionConfigRequest](#regionconfigrequest)> | no | `nil` | Twilio Additional Region Configuration |
 
+### CueOptionsRequest
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `min_duration_ms` | Optional<int> | no | `nil` | Minimum duration of each cue in milliseconds. |
+| `max_duration_ms` | Optional<int> | no | `nil` | Maximum duration of each cue in milliseconds. |
+| `max_lines_per_cue` | Optional<int> | no | `nil` | Maximum number of lines per cue. |
+| `max_chars_per_line` | Optional<int> | no | `nil` | Maximum number of characters per line in a cue. |
+| `max_chars_per_s` | Optional<int> | no | `nil` | Maximum characters per second reading speed. If not set, no reading speed limit is applied. |
+| `min_gap_between_cues_frames` | Optional<int> | no | `nil` | Minimum gap between consecutive cues in frames. If not set, no minimum gap is enforced. |
+
 ### CustomGuardrailConfig
 
 | Field | Type | Required | Default | Notes |
@@ -3190,6 +3614,8 @@ _(no fields)_
 | `name` | str | **yes** | **required** | User-facing name for this guardrail |
 | `prompt` | str | **yes** | **required** | Instruction describing what to block, e.g. 'don't talk about politics' |
 | `execution_mode` | Optional<[GuardrailExecutionMode](#guardrailexecutionmode)> | no | `nil` |  |
+| `model` | Optional<[CustomGuardrailConfigModel](#customguardrailconfigmodel)> | no | `nil` | LLM model to use for custom guardrail evaluation |
+| `history_message_count` | Optional<int> | no | `nil` | How many recent customer messages to include in the guardrail's history, plus the messages that follow them. Only customer messages count toward the limit. 0 (default) shows none; 1 shows the customer's latest message onward. When > 0, the guardrail prompt can refer to this history as <conversation_history>; the reply under evaluation appears as <agent_message> and may repeat at the end of the history. |
 | `trigger_action` | Optional<[CustomGuardrailConfigTriggerAction](#customguardrailconfigtriggeraction)> | no | `nil` |  |
 
 ### CustomGuardrailInput
@@ -3233,6 +3659,7 @@ _(no fields)_
 | `url` | str | **yes** | **required** | The URL of the Chat Completions compatible endpoint |
 | `model_id` | Optional<str> | no | `nil` | The model ID to be used if URL serves multiple models |
 | `api_key` | Optional<CustomLlmApiKey> | no | `nil` | The API key for authentication. Either a workspace secret reference {'secret_id': '...'} or an environment variable reference {'env_var_label': '...'}. |
+| `auth_connection` | Optional<CustomLlmAuthConnection> | no | `nil` | Optional workspace auth connection for authentication. Only auth connections that produce an Authorization Bearer token are supported; Basic auth, mTLS, custom header, and URL secret auth connections are not supported. |
 | `request_headers` | Optional<Hash<str, CustomLlmRequestHeadersValue>> | no | `nil` | Headers that should be included in the request |
 | `api_version` | Optional<str> | no | `nil` | The API version to use for the request |
 | `api_type` | Optional<[CustomLlmapiType](#customllmapitype)> | no | `nil` | The API type to use (chat_completions or responses) |
@@ -3329,6 +3756,12 @@ _(no fields)_
 | --- | --- | --- | --- | --- |
 | `status` | str | **yes** | **required** | The status of the dubbing project. If the request was successful, the status will be 'ok'. Otherwise an error message with status 500 will be returned. |
 
+### DeleteGroupSessionParams
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `smb_tool_type` | Optional<Literal<'delete_group_session'>> | no | `nil` |  |
+
 ### DeleteHistoryItemResponse
 
 | Field | Type | Required | Default | Notes |
@@ -3358,12 +3791,6 @@ _(no fields)_
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `status` | str | **yes** | **required** | The status of the studio project deletion request. If the request was successful, the status will be 'ok'. Otherwise an error message with status 500 will be returned. |
-
-### DeleteRentalServiceParams
-
-| Field | Type | Required | Default | Notes |
-| --- | --- | --- | --- | --- |
-| `smb_tool_type` | Optional<Literal<'delete_rental_service'>> | no | `nil` |  |
 
 ### DeleteSampleResponse
 
@@ -3412,6 +3839,15 @@ _(no fields)_
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `status` | str | **yes** | **required** | The status of the workspace webhook deletion request. If the request was successful, the status will be 'ok'. Otherwise an error message with status 500 will be returned. |
+
+### DeliverableInfo
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `signed_url` | str | **yes** | **required** | A time-limited URL to download the delivered file. |
+| `content_type` | str | **yes** | **required** | The MIME type of the delivered file (e.g. 'video/mp4'). |
+| `name` | str | **yes** | **required** | The name of the delivered file. |
+| `version` | Optional<int> | no | `nil` | The version number of the deliverable. |
 
 ### DependentAvailableAgentIdentifier
 
@@ -3490,7 +3926,7 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `composition_plan` | [MusicPrompt](#musicprompt) | **yes** | **required** | The composition plan used to generate the song |
+| `composition_plan` | DetailedMusicResponseCompositionPlan | **yes** | **required** | The composition plan used to generate the song |
 | `song_metadata` | [SongMetadata](#songmetadata) | **yes** | **required** | The metadata of the generated song |
 | `words_timestamps` | Optional<Array<[WordTimestamp](#wordtimestamp)>> | no | `nil` | The timestamps of the words in the generated song |
 
@@ -3502,6 +3938,14 @@ _(no fields)_
 | `entity_type` | str | **yes** | **required** | The type of entity detected (e.g., 'credit_card', 'email_address', 'person_name'). |
 | `start_char` | int | **yes** | **required** | Start character position in the transcript text. |
 | `end_char` | int | **yes** | **required** | End character position in the transcript text. |
+
+### DeviceModel
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `ip` | Optional<str> | no | `nil` | IP address |
+| `hostname` | Optional<str> | no | `nil` | Device hostname |
+| `type_id` | Optional<int> | no | `nil` | Device type ID (99 = Unknown) |
 
 ### DialogueInput
 
@@ -3517,6 +3961,14 @@ _(no fields)_
 | `text` | str | **yes** | **required** | The text of the dialogue input line. |
 | `voice_id` | str | **yes** | **required** | The ID of the voice used for this dialogue input line. |
 | `voice_name` | str | **yes** | **required** | The name of the voice used for this dialogue input line. |
+
+### DialogueTextAlignment
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `chars` | Optional<Array<str>> | no | `nil` |  |
+| `char_start_times_ms` | Optional<Array<int>> | no | `nil` |  |
+| `char_durations_ms` | Optional<Array<int>> | no | `nil` |  |
 
 ### DirectPublishingReadResponseModel
 
@@ -3541,6 +3993,7 @@ _(no fields)_
 | `original_file_type` | Optional<str> | no | `nil` |  |
 | `target_audience` | Optional<[DirectPublishingReadResponseModelTargetAudience](#directpublishingreadresponsemodeltargetaudience)> | no | `nil` |  |
 | `mature_content` | Optional<bool> | no | `nil` |  |
+| `safesearch_adult` | Optional<bool> | no | `nil` |  |
 | `origin` | Optional<str> | no | `nil` |  |
 | `publication_date` | Optional<str> | no | `nil` |  |
 | `isbn` | Optional<str> | no | `nil` |  |
@@ -3572,6 +4025,7 @@ _(no fields)_
 | `review` | Optional<[ReviewResponseModel](#reviewresponsemodel)> | no | `nil` |  |
 | `voice_id` | Optional<str> | no | `nil` |  |
 | `can_use_assistant` | Optional<bool> | no | `nil` |  |
+| `is_voice_changer_on` | Optional<bool> | no | `nil` |  |
 
 ### DiscountResponseModel
 
@@ -3603,6 +4057,18 @@ _(no fields)_
 | --- | --- | --- | --- | --- |
 | `dtmf_input_timeout` | Optional<float> | no | `nil` | Timeout in seconds to wait for additional DTMF digits |
 | `hash_terminator` | Optional<bool> | no | `nil` | If true, pressing # immediately completes DTMF input |
+
+### DubOrderItemRequest
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `media_id` | MediaId | **yes** | **required** | The ID of the uploaded media file to dub. |
+| `source_language` | str | **yes** | **required** | The language code of the source media (e.g. 'en', 'es'). |
+| `destination_languages` | Array<str> | **yes** | **required** | List of target language codes to dub the media into. |
+| `include_captions` | bool | **yes** | **required** | Whether to generate captions for the dubbed outputs. |
+| `include_source_captions` | bool | **yes** | **required** | Whether to generate captions for the source language. |
+| `instructions` | Optional<str> | no | `nil` | Optional free-text instructions for the dubbing team. |
+| `captions_sdh` | Optional<bool> | no | `nil` | Whether captions should use SDH format, which includes descriptions for deaf and hard-of-hearing viewers. |
 
 ### DubbedSegment
 
@@ -3760,25 +4226,25 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `dynamic_variable_placeholders` | Optional<Hash<str, DynamicVariablesConfigInputDynamicVariablePlaceholdersValue>> | no | `nil` | A dictionary of dynamic variable placeholders and their values |
+| `dynamic_variable_placeholders` | Optional<Hash<str, Optional<DynamicVariableValueTypeInput>>> | no | `nil` | A dictionary of dynamic variable placeholders and their values |
 
 ### DynamicVariablesConfigOutput
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `dynamic_variable_placeholders` | Optional<Hash<str, DynamicVariablesConfigOutputDynamicVariablePlaceholdersValue>> | no | `nil` | A dictionary of dynamic variable placeholders and their values |
+| `dynamic_variable_placeholders` | Optional<Hash<str, Optional<DynamicVariableValueTypeOutput>>> | no | `nil` | A dictionary of dynamic variable placeholders and their values |
 
 ### DynamicVariablesConfigWorkflowOverrideInput
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `dynamic_variable_placeholders` | Optional<Hash<str, Optional<DynamicVariablesConfigWorkflowOverrideInputDynamicVariablePlaceholdersValue>>> | no | `nil` | A dictionary of dynamic variable placeholders and their values |
+| `dynamic_variable_placeholders` | Optional<Hash<str, Optional<DynamicVariableValueTypeInput>>> | no | `nil` | A dictionary of dynamic variable placeholders and their values |
 
 ### DynamicVariablesConfigWorkflowOverrideOutput
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `dynamic_variable_placeholders` | Optional<Hash<str, Optional<DynamicVariablesConfigWorkflowOverrideOutputDynamicVariablePlaceholdersValue>>> | no | `nil` | A dictionary of dynamic variable placeholders and their values |
+| `dynamic_variable_placeholders` | Optional<Hash<str, Optional<DynamicVariableValueTypeOutput>>> | no | `nil` | A dictionary of dynamic variable placeholders and their values |
 
 ### EditChapterResponseModel
 
@@ -3819,6 +4285,18 @@ _(no fields)_
 ### EndCallTriggerAction
 
 _(no fields)_
+
+### EndProcedureToolConfigInput
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `procedures` | Optional<Hash<str, [ProcedureAtVersionInput](#procedureatversioninput)>> | no | `nil` |  |
+
+### EndProcedureToolConfigOutput
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `procedures` | Optional<Hash<str, [ProcedureAtVersionOutput](#procedureatversionoutput)>> | no | `nil` |  |
 
 ### EnvironmentAuthConnectionLocator
 
@@ -3871,6 +4349,13 @@ _(no fields)_
 | `next_cursor` | Optional<str> | no | `nil` |  |
 | `has_more` | bool | **yes** | **required** |  |
 
+### ErrorPayload
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `type` | Literal<'error'> | no | `'error'` | The message type identifier. |
+| `message` | str | **yes** | **required** | Human-readable description of the error. |
+
 ### EvaluationSettingsInput
 
 | Field | Type | Required | Default | Notes |
@@ -3888,6 +4373,38 @@ _(no fields)_
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `expected_value` | str | **yes** | **required** | The exact string value that the parameter must match. |
+
+### ExotelOutboundCallResponse
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `success` | bool | **yes** | **required** |  |
+| `message` | str | **yes** | **required** |  |
+| `conversation_id` | Optional<str> | no | `nil` |  |
+| `call_sid` | Annotated[Optional<str>, FieldMetadata(alias='callSid')> | no | `nil` | Exotel CallSid for the originated call |
+
+### ExternalFileSyncInfo
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `type` | ExternalSyncType | no | `'google_drive'` | Provider identifier |
+| `source_entity_id` | str | **yes** | **required** | Entity ID in the external system |
+| `integration_connection_id` | str | **yes** | **required** | Integration connection instance ID |
+| `source_parent_entity_id` | str | **yes** | **required** | Folder ID in the external system this file was synced from |
+| `source_mime_type` | str | **yes** | **required** | Original MIME type in the external system |
+| `source_modified_time` | dt.datetime | **yes** | **required** | Last modified time from the external system |
+| `root_folder_id` | Optional<str> | no | `nil` | KB folder ID of the sync root, used to query all entities under a sync tree |
+
+### ExternalFolderSyncInfo
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `type` | ExternalSyncType | no | `'google_drive'` | Provider identifier |
+| `source_entity_id` | str | **yes** | **required** | Entity ID in the external system |
+| `integration_connection_id` | str | **yes** | **required** | Integration connection instance ID |
+| `root_folder_id` | Optional<str> | no | `nil` | KB folder ID of the sync root. None means this folder is the root. |
+| `sync_cursor` | Optional<str> | no | `nil` | Opaque cursor for incremental sync, interpreted by the provider |
+| `last_sync_at` | Optional<int> | no | `nil` | Unix timestamp of last completed sync |
 
 ### FeatureStatusCommonModel
 
@@ -4016,6 +4533,18 @@ _(no fields)_
 | `end` | float | **yes** | **required** | The end time of the word in seconds. |
 | `loss` | float | **yes** | **required** | The average alignment loss/confidence score for this word, calculated from its constituent characters. |
 
+### GenerationChunk
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `text` | str | **yes** | **required** | The text config to be generated for this chunk. Can contain section name in square brackets, e.g. [Verse 1], lyrics lines, and inline directions in curly braces, e.g. {scratching}. |
+| `duration_ms` | int | **yes** | **required** | The duration of the chunk in milliseconds. Must be between 3000ms and 120000ms. |
+| `positive_styles` | Array<str> | **yes** | **required** | The styles and musical directions that should be present in this chunk. Use English language for best results. The styles for the first chunk are the most important as they set the overall tone and genre. Styles for subsequent chunks can be used to add nuance, progression, emphasis, or change the direction of the song. Aim to have at least 6-7 styles in early chunks until the direction is established. Generic styles like 'great production quality' are good default styles to append to the list. |
+| `negative_styles` | Optional<Array<str>> | no | `nil` | The styles and musical directions that should not be present in this chunk. Use English language for best results. Leaving empty is a good default, only use this field if you want to explicitly avoid a particular style or direction. |
+| `context_adherence` | Optional<[GenerationChunkContextAdherence](#generationchunkcontextadherence)> | no | `nil` | How much the model adheres to the context of its surrounding chunks. Low adherence means the model can deviate from the context and be more creative. High adherence means the model will be more consistent with the context. |
+| `conditioning_ref` | Optional<[AudioRefChunk](#audiorefchunk)> | no | `nil` | The audio reference to condition the generation on. The first chunk is the most important as it will influence the generation of all subsequent chunks. Thus, if you want to apply conditioning to the entire song, start conditioning from the first chunk. |
+| `condition_strength` | Optional<[GenerationChunkConditionStrength](#generationchunkconditionstrength)> | no | `nil` | How strongly the model adheres to the conditioning reference. Low strength means the model will be more creative and deviate from the reference. High strength means the model will be more consistent with the reference. |
+
 ### GenerationConfig
 
 | Field | Type | Required | Default | Notes |
@@ -4033,7 +4562,6 @@ _(no fields)_
 | `model_provider` | Optional<str> | no | `nil` |  |
 | `generation_session_id` | Optional<str> | no | `nil` |  |
 | `session_iteration_id` | Optional<str> | no | `nil` |  |
-| `altered_prompt` | Optional<str> | no | `nil` | Modified/enhanced prompt if different from original |
 | `model_parameters` | Optional<Hash<str, Any>> | no | `nil` |  |
 | `extend_video` | Optional<[ReferenceVideo](#referencevideo)> | no | `nil` |  |
 
@@ -4055,7 +4583,7 @@ _(no fields)_
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `agent_id` | str | **yes** | **required** | The ID of the agent |
-| `token` | Optional<[ConversationTokenDbModel](#conversationtokendbmodel)> | no | `nil` | The token data for the agent |
+| `token` | Optional<[ConversationTokenResponseModel](#conversationtokenresponsemodel)> | no | `nil` | The token data for the agent |
 
 ### GetAgentResponseModel
 
@@ -4106,6 +4634,19 @@ _(no fields)_
 | --- | --- | --- | --- | --- |
 | `smb_tool_type` | Optional<Literal<'get_analytics_summary'>> | no | `nil` |  |
 
+### GetAppointmentByConfirmationNumberParams
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `smb_tool_type` | Optional<Literal<'get_appointment_by_confirmation_number'>> | no | `nil` |  |
+
+### GetAudioIsolationHistoryResponseModel
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `items` | Array<[AudioIsolationHistoryItemResponseModel](#audioisolationhistoryitemresponsemodel)> | **yes** | **required** |  |
+| `has_more` | bool | **yes** | **required** |  |
+
 ### GetAudioNativeProjectSettingsResponseModel
 
 | Field | Type | Required | Default | Notes |
@@ -4137,6 +4678,7 @@ _(no fields)_
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `smb_tool_type` | Optional<Literal<'get_client_appointments'>> | no | `nil` |  |
+| `include_cancelled` | Optional<bool> | no | `nil` |  |
 
 ### GetClientByPhoneParams
 
@@ -4167,6 +4709,7 @@ _(no fields)_
 | --- | --- | --- | --- | --- |
 | `agent_id` | str | **yes** | **required** |  |
 | `agent_name` | Optional<str> | no | `nil` |  |
+| `conversation_product` | Optional<str> | no | `nil` |  |
 | `status` | [GetConversationResponseModelStatus](#getconversationresponsemodelstatus) | **yes** | **required** |  |
 | `user_id` | Optional<str> | no | `nil` |  |
 | `branch_id` | Optional<str> | no | `nil` |  |
@@ -4181,6 +4724,16 @@ _(no fields)_
 | `has_user_audio` | bool | **yes** | **required** |  |
 | `has_response_audio` | bool | **yes** | **required** |  |
 | `transcript` | Array<[ConversationHistoryTranscriptResponseModel](#conversationhistorytranscriptresponsemodel)> | **yes** | **required** |  |
+| `tag_ids` | Optional<Array<str>> | no | `nil` | Conversation tag ids assigned to this conversation. |
+| `otlp_traces` | Optional<Hash<str, Any>> | no | `nil` | OpenTelemetry trace payload when the request uses format=opentelemetry; otherwise omitted. |
+
+### GetConversationTagsPageResponseModel
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `conversation_tags` | Array<[ConversationTagResponseModel](#conversationtagresponsemodel)> | **yes** | **required** |  |
+| `next_cursor` | Optional<str> | no | `nil` |  |
+| `has_more` | bool | **yes** | **required** |  |
 
 ### GetConversationUsersPageResponseModel
 
@@ -4220,6 +4773,8 @@ _(no fields)_
 | `folder_path` | Optional<Array<[KnowledgeBaseFolderPathSegmentResponseModel](#knowledgebasefolderpathsegmentresponsemodel)>> | no | `nil` | The folder path segments leading to this entity, from root to parent folder. |
 | `extracted_inner_html` | str | **yes** | **required** |  |
 | `filename` | str | **yes** | **required** |  |
+| `external_sync_info` | Optional<[ExternalFileSyncInfo](#externalfilesyncinfo)> | no | `nil` |  |
+| `is_frozen` | Optional<bool> | no | `nil` |  |
 
 ### GetKnowledgeBaseFolderResponseModel
 
@@ -4234,6 +4789,8 @@ _(no fields)_
 | `folder_path` | Optional<Array<[KnowledgeBaseFolderPathSegmentResponseModel](#knowledgebasefolderpathsegmentresponsemodel)>> | no | `nil` | The folder path segments leading to this entity, from root to parent folder. |
 | `children_count` | int | **yes** | **required** |  |
 | `auto_sync_info` | Optional<[AutoSyncInfo](#autosyncinfo)> | no | `nil` |  |
+| `external_sync_info` | Optional<[ExternalFolderSyncInfo](#externalfoldersyncinfo)> | no | `nil` |  |
+| `is_frozen` | Optional<bool> | no | `nil` |  |
 
 ### GetKnowledgeBaseListResponseModel
 
@@ -4255,6 +4812,8 @@ _(no fields)_
 | `folder_parent_id` | Optional<str> | no | `nil` | The ID of the parent folder, or null if the document is at the root level. |
 | `folder_path` | Optional<Array<[KnowledgeBaseFolderPathSegmentSummaryResponseModel](#knowledgebasefolderpathsegmentsummaryresponsemodel)>> | no | `nil` | The folder path segments leading to this entity, from root to parent folder. |
 | `dependent_agents` | Array<[GetKnowledgeBaseSummaryFileResponseModelDependentAgentsItem](#getknowledgebasesummaryfileresponsemodeldependentagentsitem)> | **yes** | **required** | This field is deprecated and will be removed in the future, use the separate endpoint to get dependent agents instead. |
+| `external_sync_info` | Optional<[ExternalFileSyncInfo](#externalfilesyncinfo)> | no | `nil` |  |
+| `is_frozen` | Optional<bool> | no | `nil` |  |
 
 ### GetKnowledgeBaseSummaryFolderResponseModel
 
@@ -4270,6 +4829,8 @@ _(no fields)_
 | `dependent_agents` | Array<[GetKnowledgeBaseSummaryFolderResponseModelDependentAgentsItem](#getknowledgebasesummaryfolderresponsemodeldependentagentsitem)> | **yes** | **required** | This field is deprecated and will be removed in the future, use the separate endpoint to get dependent agents instead. |
 | `children_count` | int | **yes** | **required** |  |
 | `auto_sync_info` | Optional<[AutoSyncInfo](#autosyncinfo)> | no | `nil` |  |
+| `external_sync_info` | Optional<[ExternalFolderSyncInfo](#externalfoldersyncinfo)> | no | `nil` |  |
+| `is_frozen` | Optional<bool> | no | `nil` |  |
 
 ### GetKnowledgeBaseSummaryTextResponseModel
 
@@ -4350,6 +4911,17 @@ _(no fields)_
 | `create_if_missing` | bool | **yes** | **required** | Whether to create the RAG index if it does not exist |
 | `model` | [EmbeddingModelEnum](#embeddingmodelenum) | **yes** | **required** | Embedding model to use for the RAG index |
 
+### GetPhoneNumberExotelResponseModel
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `phone_number` | str | **yes** | **required** | Phone number |
+| `label` | str | **yes** | **required** | Label for the phone number |
+| `supports_inbound` | Optional<bool> | no | `nil` | This field is deprecated and will be removed in the future. Whether this phone number supports inbound calls |
+| `supports_outbound` | Optional<bool> | no | `nil` | This field is deprecated and will be removed in the future. Whether this phone number supports outbound calls |
+| `phone_number_id` | str | **yes** | **required** | The ID of the phone number |
+| `assigned_agent` | Optional<[PhoneNumberAgentInfo](#phonenumberagentinfo)> | no | `nil` | The agent that is assigned to the phone number |
+
 ### GetPhoneNumberInboundSipTrunkConfigResponseModel
 
 | Field | Type | Required | Default | Notes |
@@ -4360,6 +4932,7 @@ _(no fields)_
 | `has_auth_credentials` | bool | **yes** | **required** | Whether authentication credentials are configured |
 | `username` | Optional<str> | no | `nil` | SIP trunk username (if available) |
 | `remote_domains` | Optional<Array<str>> | no | `nil` | Domains of remote SIP servers used to validate TLS certificates. |
+| `attributes_to_headers` | Optional<Hash<str, str>> | no | `nil` | Map of dynamic variable name to header name for attributes_to_headers |
 
 ### GetPhoneNumberOutboundSipTrunkConfigResponseModel
 
@@ -4369,9 +4942,11 @@ _(no fields)_
 | `transport` | [SipTrunkTransportEnum](#siptrunktransportenum) | **yes** | **required** | Protocol to use for SIP transport |
 | `media_encryption` | [SipMediaEncryptionEnum](#sipmediaencryptionenum) | **yes** | **required** | Whether or not to encrypt media (data layer). |
 | `headers` | Optional<Hash<str, str>> | no | `nil` | SIP headers for INVITE request |
+| `attributes_to_headers` | Optional<Hash<str, str>> | no | `nil` | Map of dynamic variable name to header name for attributes_to_headers |
 | `has_auth_credentials` | bool | **yes** | **required** | Whether authentication credentials are configured |
 | `username` | Optional<str> | no | `nil` | SIP trunk username (if available) |
 | `has_outbound_trunk` | Optional<bool> | no | `nil` | Whether a LiveKit SIP outbound trunk is configured |
+| `enabled_codecs` | Optional<Array<[MediaCodec](#mediacodec)>> | no | `nil` | Media codecs that are offered in the SDP for outbound calls. If empty, all supported codecs are offered. |
 
 ### GetPhoneNumberSipTrunkResponseModel
 
@@ -4387,6 +4962,7 @@ _(no fields)_
 | `outbound_trunk` | Optional<[GetPhoneNumberOutboundSipTrunkConfigResponseModel](#getphonenumberoutboundsiptrunkconfigresponsemodel)> | no | `nil` | Configuration of the Outbound SIP trunk - if configured. |
 | `inbound_trunk` | Optional<[GetPhoneNumberInboundSipTrunkConfigResponseModel](#getphonenumberinboundsiptrunkconfigresponsemodel)> | no | `nil` | Configuration of the Inbound SIP trunk - if configured. |
 | `livekit_stack` | [LivekitStackType](#livekitstacktype) | **yes** | **required** | Type of Livekit stack used for this number. |
+| `store_sip_messages` | Optional<bool> | no | `nil` | Whether to store SIP messages for this phone number. |
 
 ### GetPhoneNumberTwilioResponseModel
 
@@ -4447,8 +5023,9 @@ _(no fields)_
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `from_conversation_metadata` | Optional<[TestFromConversationMetadataOutput](#testfromconversationmetadataoutput)> | no | `nil` | Metadata of a conversation this test was created from (if applicable). |
-| `dynamic_variables` | Optional<Hash<str, Optional<GetResponseUnitTestResponseModelDynamicVariablesValue>>> | no | `nil` | Dynamic variables to replace in the agent config during testing |
+| `dynamic_variables` | Optional<Hash<str, Optional<DynamicVariableValueTypeOutput>>> | no | `nil` | Dynamic variables to replace in the agent config during testing |
 | `chat_history` | Optional<Array<[ConversationHistoryTranscriptCommonModelOutput](#conversationhistorytranscriptcommonmodeloutput)>> | no | `nil` |  |
+| `conversation_initiation_source` | Optional<[ConversationInitiationSource](#conversationinitiationsource)> | no | `nil` | Simulate the test as if the conversation originated from this channel. |
 | `success_condition` | Optional<str> | no | `nil` | A prompt that evaluates whether the agent's response is successful. Should return True or False. |
 | `success_examples` | Optional<Array<[AgentSuccessfulResponseExample](#agentsuccessfulresponseexample)>> | no | `nil` | Non-empty list of example responses that should be considered successful |
 | `failure_examples` | Optional<Array<[AgentFailureResponseExample](#agentfailureresponseexample)>> | no | `nil` | Non-empty list of example responses that should be considered failures |
@@ -4474,15 +5051,26 @@ _(no fields)_
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `from_conversation_metadata` | Optional<[TestFromConversationMetadataOutput](#testfromconversationmetadataoutput)> | no | `nil` | Metadata of a conversation this test was created from (if applicable). |
-| `dynamic_variables` | Optional<Hash<str, Optional<GetSimulationTestResponseModelDynamicVariablesValue>>> | no | `nil` | Dynamic variables to replace in the agent config during testing |
+| `dynamic_variables` | Optional<Hash<str, Optional<DynamicVariableValueTypeOutput>>> | no | `nil` | Dynamic variables to replace in the agent config during testing |
 | `chat_history` | Optional<Array<[ConversationHistoryTranscriptCommonModelOutput](#conversationhistorytranscriptcommonmodeloutput)>> | no | `nil` |  |
+| `conversation_initiation_source` | Optional<[ConversationInitiationSource](#conversationinitiationsource)> | no | `nil` | Simulate the test as if the conversation originated from this channel. |
 | `success_condition` | Optional<str> | no | `nil` | A prompt that evaluates whether the agent's response is successful. Should return True or False. |
 | `simulation_scenario` | Optional<str> | no | `nil` | Description of the simulation scenario and user persona for simulation tests. |
 | `simulation_max_turns` | Optional<int> | no | `nil` | Maximum number of conversation turns for simulation tests. |
 | `simulation_environment` | Optional<str> | no | `nil` | The environment to use when running this simulation test. If not provided, defaults to 'production'. |
 | `tool_mock_config` | Optional<[SimulationToolMockBehaviorConfig](#simulationtoolmockbehaviorconfig)> | no | `nil` | Configuration for which tools to mock and fallback behavior. |
+| `evaluation_model` | Optional<[Llm](#llm)> | no | `nil` | LLM model to use for evaluating simulation results. Defaults to Claude Sonnet 4.6. |
+| `simulated_user_model` | Optional<[Llm](#llm)> | no | `nil` | LLM model for the simulated user. Defaults to Claude Sonnet 4.6. |
 | `id` | str | **yes** | **required** |  |
 | `name` | str | **yes** | **required** |  |
+
+### GetSipLogMessagesResponse
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `sip_messages` | Array<[SipLogMessage](#siplogmessage)> | **yes** | **required** |  |
+| `next_cursor` | Optional<str> | no | `nil` |  |
+| `has_more` | Optional<bool> | no | `nil` |  |
 
 ### GetSpeechHistoryResponse
 
@@ -4511,6 +5099,9 @@ _(no fields)_
 | `branch_id` | Optional<str> | no | `nil` |  |
 | `created_at` | Optional<int> | no | `nil` |  |
 | `folder_id` | Optional<str> | no | `nil` |  |
+| `repeat_count` | Optional<int> | no | `nil` |  |
+| `bucketing_status` | Optional<[BucketingStatus](#bucketingstatus)> | no | `nil` | None when repeat_count==1 (no bucketing). Otherwise tracks bucketing lifecycle. |
+| `result_groups` | Optional<Array<[TestRunResultSummary](#testrunresultsummary)>> | no | `nil` |  |
 | `test_runs` | Array<[UnitTestRunResponseModel](#unittestrunresponsemodel)> | **yes** | **required** |  |
 
 ### GetTestsPageResponseModel
@@ -4532,8 +5123,9 @@ _(no fields)_
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `from_conversation_metadata` | Optional<[TestFromConversationMetadataOutput](#testfromconversationmetadataoutput)> | no | `nil` | Metadata of a conversation this test was created from (if applicable). |
-| `dynamic_variables` | Optional<Hash<str, Optional<GetToolCallUnitTestResponseModelDynamicVariablesValue>>> | no | `nil` | Dynamic variables to replace in the agent config during testing |
+| `dynamic_variables` | Optional<Hash<str, Optional<DynamicVariableValueTypeOutput>>> | no | `nil` | Dynamic variables to replace in the agent config during testing |
 | `chat_history` | Optional<Array<[ConversationHistoryTranscriptCommonModelOutput](#conversationhistorytranscriptcommonmodeloutput)>> | no | `nil` |  |
+| `conversation_initiation_source` | Optional<[ConversationInitiationSource](#conversationinitiationsource)> | no | `nil` | Simulate the test as if the conversation originated from this channel. |
 | `tool_call_parameters` | Optional<[UnitTestToolCallEvaluationModelOutput](#unittesttoolcallevaluationmodeloutput)> | no | `nil` | How to evaluate the agent's tool call (if any). If empty, the tool call is not evaluated. |
 | `check_any_tool_matches` | Optional<bool> | no | `nil` | If set to True this test will pass if any tool call returned by the LLM matches the criteria. Otherwise it will fail if more than one tool is returned by the agent. |
 | `id` | str | **yes** | **required** |  |
@@ -4645,17 +5237,61 @@ _(no fields)_
 | `max_segment_duration_s` | Optional<float> | no | `nil` |  |
 | `max_segment_chars` | Optional<int> | no | `nil` |  |
 
+### HttpRequestModel
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `http_method` | str | **yes** | **required** | HTTP method (GET, POST, etc.) |
+| `url` | [UrlModel](#urlmodel) | **yes** | **required** | Request URL object |
+| `user_agent` | Optional<str> | no | `nil` | User agent string |
+| `x_forwarded_for` | Optional<Array<str>> | no | `nil` | X-Forwarded-For header as a list |
+
 ### HttpValidationError
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `detail` | Optional<Array<[ValidationError](#validationerror)>> | no | `nil` |  |
 
+### Icon
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `src` | str | **yes** | **required** |  |
+| `mime_type` | Annotated[Optional<str>, FieldMetadata(alias='mimeType')> | no | `nil` |  |
+| `sizes` | Optional<Array<str>> | no | `nil` |  |
+
+### ImageAnalysis
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `status` | [ImageAnalysisStatus](#imageanalysisstatus) | **yes** | **required** |  |
+| `data` | Optional<[ImageAnalysisResult](#imageanalysisresult)> | no | `nil` |  |
+| `updated_at_ms` | Optional<int> | no | `nil` |  |
+
+### ImageAnalysisResult
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `title` | str | **yes** | **required** |  |
+| `description` | str | **yes** | **required** |  |
+| `content_type` | Optional<str> | no | `nil` |  |
+| `mood_and_style` | Optional<str> | no | `nil` |  |
+| `composition_notes` | Optional<str> | no | `nil` |  |
+| `visible_text` | Optional<str> | no | `nil` | Readable text overlaid or shown in the image, if any. |
+| `subjects` | Optional<Array<[ImageSubject](#imagesubject)>> | no | `nil` |  |
+
 ### ImageAvatar
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `url` | Optional<str> | no | `nil` | The URL of the avatar |
+
+### ImageSubject
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `name` | str | **yes** | **required** |  |
+| `description` | str | **yes** | **required** |  |
 
 ### InboundSipTrunkConfigRequestModel
 
@@ -4666,6 +5302,14 @@ _(no fields)_
 | `media_encryption` | Optional<[SipMediaEncryptionEnum](#sipmediaencryptionenum)> | no | `nil` | Whether or not to encrypt media (data layer). |
 | `credentials` | Optional<[SipTrunkCredentialsRequestModel](#siptrunkcredentialsrequestmodel)> | no | `nil` | Optional digest authentication credentials (username/password). |
 | `remote_domains` | Optional<Array<str>> | no | `nil` | Domains of remote SIP servers used to validate TLS certificates. |
+| `attributes_to_headers` | Optional<Hash<str, str>> | no | `nil` | Map of dynamic variable name to header name for attributes_to_headers |
+
+### InitPayload
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `type` | Literal<'init'> | no | `'init'` | The message type identifier. |
+| `conversation_id` | str | **yes** | **required** | Unique identifier for this conversation session. |
 
 ### InitialiseContext
 
@@ -4756,6 +5400,13 @@ _(no fields)_
 | `name` | str | **yes** | **required** |  |
 | `content` | str | **yes** | **required** |  |
 
+### KnowledgeBaseDocumentChunksResponseModel
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `chunks` | Array<[KnowledgeBaseDocumentChunkResponseModel](#knowledgebasedocumentchunkresponsemodel)> | **yes** | **required** |  |
+| `next_cursor` | Optional<str> | no | `nil` |  |
+
 ### KnowledgeBaseDocumentMetadataResponseModel
 
 | Field | Type | Required | Default | Notes |
@@ -4785,6 +5436,18 @@ _(no fields)_
 | `name` | str | **yes** | **required** | The name of the knowledge base |
 | `id` | str | **yes** | **required** | The ID of the knowledge base |
 | `usage_mode` | Optional<[DocumentUsageModeEnum](#documentusagemodeenum)> | no | `nil` | The usage mode of the knowledge base |
+
+### KnowledgeBaseRagToolConfig
+
+_(no fields)_
+
+### KnowledgeBaseRagToolResultModel
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `status` | Optional<[KnowledgeBaseRagToolStatus](#knowledgebaseragtoolstatus)> | no | `nil` |  |
+| `chunk_count` | Optional<int> | no | `nil` | Number of relevant chunks retrieved |
+| `message` | Optional<str> | no | `nil` | Human-readable status for the LLM about the search results |
 
 ### KnowledgeBaseSourceFileUrlResponseModel
 
@@ -4816,6 +5479,20 @@ _(no fields)_
 | `reason` | Optional<str> | no | `nil` |  |
 | `language` | Optional<str> | no | `nil` |  |
 
+### LanguageInfo
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `code` | str | **yes** | **required** | The language code (e.g. 'en', 'fr', 'es-ES'). |
+| `label` | str | **yes** | **required** | The human-readable language name (e.g. 'English', 'French', 'Spanish (Spain)'). |
+
+### LanguagePairInfo
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `source_language` | [LanguageInfo](#languageinfo) | **yes** | **required** | The source language. |
+| `destination_languages` | Array<[LanguageInfo](#languageinfo)> | **yes** | **required** | The available destination languages for this source language. |
+
 ### LanguagePresetInput
 
 | Field | Type | Required | Default | Notes |
@@ -4845,6 +5522,12 @@ _(no fields)_
 | --- | --- | --- | --- | --- |
 | `language_id` | str | **yes** | **required** | The unique identifier of the language. |
 | `name` | str | **yes** | **required** | The name of the language. |
+
+### LeaveMessageParams
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `smb_tool_type` | Optional<Literal<'leave_message'>> | no | `nil` |  |
 
 ### LibraryVoiceResponse
 
@@ -4907,6 +5590,7 @@ _(no fields)_
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `smb_tool_type` | Optional<Literal<'list_calendar_events'>> | no | `nil` |  |
+| `include_cancelled` | Optional<bool> | no | `nil` |  |
 
 ### ListClientInteractionsParams
 
@@ -4919,6 +5603,18 @@ _(no fields)_
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `smb_tool_type` | Optional<Literal<'list_clients'>> | no | `nil` |  |
+
+### ListCustomerFacingAgentsParams
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `smb_tool_type` | Optional<Literal<'list_customer_facing_agents'>> | no | `nil` |  |
+
+### ListGroupSessionsParams
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `smb_tool_type` | Optional<Literal<'list_group_sessions'>> | no | `nil` |  |
 
 ### ListHolidaysParams
 
@@ -4940,19 +5636,18 @@ _(no fields)_
 | `tools` | Array<[Tool](#tool)> | **yes** | **required** | A list of tools available on the MCP server. |
 | `error_message` | Optional<str> | no | `nil` | Error message if the operation was not successful. |
 
+### ListOrdersResponse
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `orders` | Array<[OrderSummary](#ordersummary)> | **yes** | **required** | The list of orders matching the query. |
+
 ### ListProductsParams
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `list_kwargs` | Optional<Hash<str, Any>> | no | `nil` |  |
 | `smb_tool_type` | Optional<Literal<'list_products'>> | no | `nil` |  |
-
-### ListRentalServicesParams
-
-| Field | Type | Required | Default | Notes |
-| --- | --- | --- | --- | --- |
-| `list_kwargs` | Optional<Hash<str, Any>> | no | `nil` |  |
-| `smb_tool_type` | Optional<Literal<'list_rental_services'>> | no | `nil` |  |
 
 ### ListResponseAgentBranchSummary
 
@@ -4976,6 +5671,14 @@ _(no fields)_
 | `list_kwargs` | Optional<Hash<str, Any>> | no | `nil` |  |
 | `smb_tool_type` | Optional<Literal<'list_services'>> | no | `nil` |  |
 
+### ListSpeechEnginesResponse
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `speech_engines` | Array<[SpeechEngineSummaryResponse](#speechenginesummaryresponse)> | **yes** | **required** | The speech engines matching the query |
+| `next_cursor` | Optional<str> | no | `nil` | Cursor for fetching the next page |
+| `has_more` | bool | **yes** | **required** | Whether there are more results |
+
 ### ListStaffParams
 
 | Field | Type | Required | Default | Notes |
@@ -4994,11 +5697,12 @@ _(no fields)_
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `type` | [LiteralJsonSchemaPropertyType](#literaljsonschemapropertytype) | **yes** | **required** |  |
-| `description` | Optional<str> | no | `nil` | The description of the property. When set, the LLM will provide the value based on this description. Mutually exclusive with dynamic_variable, is_system_provided, and constant_value. |
+| `description` | Optional<str> | no | `nil` | The description of the property. When set, the LLM will provide the value based on this description. Mutually exclusive with dynamic_variable, is_system_provided, constant_value, and is_omitted. |
 | `enum` | Optional<Array<str>> | no | `nil` | List of allowed string values for string type parameters |
-| `is_system_provided` | Optional<bool> | no | `nil` | If true, the value will be populated by the system at runtime. Used by API Integration Webhook tools for templating. Mutually exclusive with description, dynamic_variable, and constant_value. |
-| `dynamic_variable` | Optional<str> | no | `nil` | The name of the dynamic variable to use for this property's value. Mutually exclusive with description, is_system_provided, and constant_value. |
-| `constant_value` | Optional<LiteralJsonSchemaPropertyConstantValue> | no | `nil` | A constant value to use for this property. Mutually exclusive with description, dynamic_variable, and is_system_provided. |
+| `is_system_provided` | Optional<bool> | no | `nil` | If true, the value will be populated by the system at runtime. Used by API Integration Webhook tools for templating. Mutually exclusive with description, dynamic_variable, constant_value, and is_omitted. |
+| `dynamic_variable` | Optional<str> | no | `nil` | The name of the dynamic variable to use for this property's value. Mutually exclusive with description, is_system_provided, constant_value, and is_omitted. |
+| `constant_value` | Optional<LiteralJsonSchemaPropertyConstantValue> | no | `nil` | A constant value to use for this property. Mutually exclusive with description, dynamic_variable, is_system_provided, and is_omitted. |
+| `is_omitted` | Optional<bool> | no | `nil` | If true, this parameter will be completely omitted from the request. Only valid for optional parameters. Mutually exclusive with description, dynamic_variable, is_system_provided, and constant_value. |
 
 ### LlmCategoryUsage
 
@@ -5043,6 +5747,7 @@ _(no fields)_
 | `supports_parallel_tool_calls` | bool | **yes** | **required** | Whether the model supports calling multiple tools in parallel. |
 | `available_reasoning_efforts` | Optional<Array<[LlmReasoningEffort](#llmreasoningeffort)>> | no | `nil` | Available reasoning effort levels for this model. Null if the model does not support configurable reasoning. |
 | `deprecation_info` | Optional<[LlmDeprecationInfoModel](#llmdeprecationinfomodel)> | no | `nil` | Deprecation information if this model is deprecated or scheduled for deprecation. Null if the model is not affected. |
+| `regional_processing_surcharge` | Optional<[RegionalProcessingSurchargeInfo](#regionalprocessingsurchargeinfo)> | no | `nil` | Regional processing surcharge details if this model has additional costs in the current deployment region. Null if no surcharge applies. |
 
 ### LlmInfoModelOutput
 
@@ -5057,6 +5762,7 @@ _(no fields)_
 | `supports_parallel_tool_calls` | bool | **yes** | **required** | Whether the model supports calling multiple tools in parallel. |
 | `available_reasoning_efforts` | Optional<Array<[LlmReasoningEffort](#llmreasoningeffort)>> | no | `nil` | Available reasoning effort levels for this model. Null if the model does not support configurable reasoning. |
 | `deprecation_info` | Optional<[LlmDeprecationInfoModel](#llmdeprecationinfomodel)> | no | `nil` | Deprecation information if this model is deprecated or scheduled for deprecation. Null if the model is not affected. |
+| `regional_processing_surcharge` | Optional<[RegionalProcessingSurchargeInfo](#regionalprocessingsurchargeinfo)> | no | `nil` | Regional processing surcharge details if this model has additional costs in the current deployment region. Null if no surcharge applies. |
 
 ### LlmInputOutputTokensUsage
 
@@ -5133,6 +5839,22 @@ _(no fields)_
 | --- | --- | --- | --- | --- |
 | `model_usage` | Optional<Hash<str, [LlmInputOutputTokensUsage](#llminputoutputtokensusage)>> | no | `nil` |  |
 
+### LoadableMemoryEntry
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `entry_id` | str | **yes** | **required** |  |
+| `summary` | str | **yes** | **required** |  |
+| `text` | str | **yes** | **required** |  |
+
+### ManualSource
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `type` | Optional<Literal<'manual'>> | no | `nil` |  |
+| `created_by_user_id` | str | **yes** | **required** |  |
+| `notes` | Optional<str> | no | `nil` |  |
+
 ### ManualVerificationFileResponse
 
 | Field | Type | Required | Default | Notes |
@@ -5168,11 +5890,13 @@ _(no fields)_
 | `auth_connection` | Optional<McpServerConfigInputAuthConnection> | no | `nil` | Optional auth connection to use for authentication with this MCP server |
 | `name` | str | **yes** | **required** |  |
 | `description` | Optional<str> | no | `nil` |  |
-| `force_pre_tool_speech` | Optional<bool> | no | `nil` | If true, all tools from this MCP server will require pre-tool execution speech |
+| `force_pre_tool_speech` | Optional<bool> | no | `nil` | DEPRECATED: use `pre_tool_speech` instead. If true, all tools from this MCP server will require pre-tool execution speech. |
+| `pre_tool_speech` | Optional<[PreToolSpeechMode](#pretoolspeechmode)> | no | `nil` | Controls whether the agent speaks before this tool is called. 'auto' (default) decides based on recent tool latency, 'force' always asks the agent to speak, 'off' fully opts out regardless of latency. Applies to every tool from this MCP server unless overridden per tool. |
 | `disable_interruptions` | Optional<bool> | no | `nil` | If true, the user will not be able to interrupt the agent while any tool from this MCP server is running. |
 | `tool_call_sound` | Optional<[ToolCallSoundType](#toolcallsoundtype)> | no | `nil` | Predefined tool call sound type to play during tool execution for all tools from this MCP server |
 | `tool_call_sound_behavior` | Optional<[ToolCallSoundBehavior](#toolcallsoundbehavior)> | no | `nil` | Determines when the tool call sound should play for all tools from this MCP server |
 | `execution_mode` | Optional<[ToolExecutionMode](#toolexecutionmode)> | no | `nil` | Determines when and how all tools from this MCP server execute: 'immediate' executes the tool right away when requested by the LLM, 'post_tool_speech' waits for the agent to finish speaking before executing, 'async' runs the tool in the background without blocking - best for long-running operations. |
+| `response_timeout_secs` | Optional<int> | no | `nil` | The maximum time in seconds to wait for each MCP tool call to complete. Must be between 5 and 300 seconds (inclusive). |
 | `tool_config_overrides` | Optional<Array<[McpToolConfigOverrideInput](#mcptoolconfigoverrideinput)>> | no | `nil` | List of per-tool configuration overrides that override the server-level defaults for specific tools |
 | `disable_compression` | Optional<bool> | no | `nil` | Whether to disable HTTP compression for this MCP server. Enable this if the server does not support compressed responses. |
 
@@ -5189,11 +5913,13 @@ _(no fields)_
 | `auth_connection` | Optional<McpServerConfigOutputAuthConnection> | no | `nil` | Optional auth connection to use for authentication with this MCP server |
 | `name` | str | **yes** | **required** |  |
 | `description` | Optional<str> | no | `nil` |  |
-| `force_pre_tool_speech` | Optional<bool> | no | `nil` | If true, all tools from this MCP server will require pre-tool execution speech |
+| `force_pre_tool_speech` | Optional<bool> | no | `nil` | DEPRECATED: use `pre_tool_speech` instead. If true, all tools from this MCP server will require pre-tool execution speech. |
+| `pre_tool_speech` | Optional<[PreToolSpeechMode](#pretoolspeechmode)> | no | `nil` | Controls whether the agent speaks before this tool is called. 'auto' (default) decides based on recent tool latency, 'force' always asks the agent to speak, 'off' fully opts out regardless of latency. Applies to every tool from this MCP server unless overridden per tool. |
 | `disable_interruptions` | Optional<bool> | no | `nil` | If true, the user will not be able to interrupt the agent while any tool from this MCP server is running. |
 | `tool_call_sound` | Optional<[ToolCallSoundType](#toolcallsoundtype)> | no | `nil` | Predefined tool call sound type to play during tool execution for all tools from this MCP server |
 | `tool_call_sound_behavior` | Optional<[ToolCallSoundBehavior](#toolcallsoundbehavior)> | no | `nil` | Determines when the tool call sound should play for all tools from this MCP server |
 | `execution_mode` | Optional<[ToolExecutionMode](#toolexecutionmode)> | no | `nil` | Determines when and how all tools from this MCP server execute: 'immediate' executes the tool right away when requested by the LLM, 'post_tool_speech' waits for the agent to finish speaking before executing, 'async' runs the tool in the background without blocking - best for long-running operations. |
+| `response_timeout_secs` | Optional<int> | no | `nil` | The maximum time in seconds to wait for each MCP tool call to complete. Must be between 5 and 300 seconds (inclusive). |
 | `tool_config_overrides` | Optional<Array<[McpToolConfigOverrideOutput](#mcptoolconfigoverrideoutput)>> | no | `nil` | List of per-tool configuration overrides that override the server-level defaults for specific tools |
 | `disable_compression` | Optional<bool> | no | `nil` | Whether to disable HTTP compression for this MCP server. Enable this if the server does not support compressed responses. |
 
@@ -5233,11 +5959,13 @@ _(no fields)_
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `tool_name` | str | **yes** | **required** | The name of the MCP tool |
-| `force_pre_tool_speech` | Optional<bool> | no | `nil` | If set, overrides the server's force_pre_tool_speech setting for this tool |
+| `force_pre_tool_speech` | Optional<bool> | no | `nil` | DEPRECATED: use `pre_tool_speech` instead. If set, overrides the server's force_pre_tool_speech setting for this tool. |
+| `pre_tool_speech` | Optional<[PreToolSpeechMode](#pretoolspeechmode)> | no | `nil` | If set, overrides the server's pre_tool_speech setting for this tool. |
 | `disable_interruptions` | Optional<bool> | no | `nil` | If set, overrides the server's disable_interruptions setting for this tool |
 | `tool_call_sound` | Optional<[ToolCallSoundType](#toolcallsoundtype)> | no | `nil` | If set, overrides the server's tool_call_sound setting for this tool |
 | `tool_call_sound_behavior` | Optional<[ToolCallSoundBehavior](#toolcallsoundbehavior)> | no | `nil` | If set, overrides the server's tool_call_sound_behavior setting for this tool |
 | `execution_mode` | Optional<[ToolExecutionMode](#toolexecutionmode)> | no | `nil` | If set, overrides the server's execution_mode setting for this tool |
+| `response_timeout_secs` | Optional<int> | no | `nil` | If set, overrides the server's response timeout for this MCP tool (seconds). |
 | `assignments` | Optional<Array<[DynamicVariableAssignment](#dynamicvariableassignment)>> | no | `nil` | Dynamic variable assignments for this MCP tool |
 | `input_overrides` | Optional<Hash<str, Optional<[McpToolConfigOverrideInputInputOverridesValue](#mcptoolconfigoverrideinputinputoverridesvalue)>>> | no | `nil` | Mapping of json path to input override configuration |
 | `response_mocks` | Optional<Array<[ToolResponseMockConfigInput](#toolresponsemockconfiginput)>> | no | `nil` | Mock responses with optional parameter conditions. Evaluated top-to-bottom; first match wins. |
@@ -5247,14 +5975,26 @@ _(no fields)_
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `tool_name` | str | **yes** | **required** | The name of the MCP tool |
-| `force_pre_tool_speech` | Optional<bool> | no | `nil` | If set, overrides the server's force_pre_tool_speech setting for this tool |
+| `force_pre_tool_speech` | Optional<bool> | no | `nil` | DEPRECATED: use `pre_tool_speech` instead. If set, overrides the server's force_pre_tool_speech setting for this tool. |
+| `pre_tool_speech` | Optional<[PreToolSpeechMode](#pretoolspeechmode)> | no | `nil` | If set, overrides the server's pre_tool_speech setting for this tool. |
 | `disable_interruptions` | Optional<bool> | no | `nil` | If set, overrides the server's disable_interruptions setting for this tool |
 | `tool_call_sound` | Optional<[ToolCallSoundType](#toolcallsoundtype)> | no | `nil` | If set, overrides the server's tool_call_sound setting for this tool |
 | `tool_call_sound_behavior` | Optional<[ToolCallSoundBehavior](#toolcallsoundbehavior)> | no | `nil` | If set, overrides the server's tool_call_sound_behavior setting for this tool |
 | `execution_mode` | Optional<[ToolExecutionMode](#toolexecutionmode)> | no | `nil` | If set, overrides the server's execution_mode setting for this tool |
+| `response_timeout_secs` | Optional<int> | no | `nil` | If set, overrides the server's response timeout for this MCP tool (seconds). |
 | `assignments` | Optional<Array<[DynamicVariableAssignment](#dynamicvariableassignment)>> | no | `nil` | Dynamic variable assignments for this MCP tool |
 | `input_overrides` | Optional<Hash<str, Optional<[McpToolConfigOverrideOutputInputOverridesValue](#mcptoolconfigoverrideoutputinputoverridesvalue)>>> | no | `nil` | Mapping of json path to input override configuration |
 | `response_mocks` | Optional<Array<[ToolResponseMockConfigOutput](#toolresponsemockconfigoutput)>> | no | `nil` | Mock responses with optional parameter conditions. Evaluated top-to-bottom; first match wins. |
+
+### MemoryEntrySearchResult
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `entry_id` | str | **yes** | **required** |  |
+| `version` | int | **yes** | **required** |  |
+| `summary` | Optional<str> | no | `nil` |  |
+| `text` | Optional<str> | no | `nil` |  |
+| `source` | Optional<MemoryEntrySearchResultSource> | no | `nil` |  |
 
 ### MessagesSearchResponse
 
@@ -5274,6 +6014,7 @@ _(no fields)_
 | `agent_name` | Optional<str> | no | `nil` |  |
 | `transcript_index` | int | **yes** | **required** |  |
 | `chunk_text` | str | **yes** | **required** |  |
+| `chunk_highlights` | Optional<Array<[SearchHighlightSegment](#searchhighlightsegment)>> | no | `nil` |  |
 | `score` | float | **yes** | **required** |  |
 | `conversation_start_time_unix_secs` | int | **yes** | **required** |  |
 
@@ -5357,18 +6098,6 @@ _(no fields)_
 | `id` | str | **yes** | **required** |  |
 | `used_by` | Optional<[AuthConnectionDependencies](#authconnectiondependencies)> | no | `nil` |  |
 
-### MultiSourceConfigJson
-
-| Field | Type | Required | Default | Notes |
-| --- | --- | --- | --- | --- |
-| `source_names` | Optional<Array<str>> | no | `nil` | List of source names to use (e.g., ['chunks', 'products']) |
-| `source_overrides` | Optional<Array<[SourceConfigJson](#sourceconfigjson)>> | no | `nil` | Per-source parameter overrides |
-| `merging_strategy` | Optional<[MergingStrategy](#mergingstrategy)> | no | `nil` | How to merge results from multiple sources |
-| `final_top_k` | Optional<int> | no | `nil` | Final number of chunks after merging |
-| `use_decomposition` | Optional<bool> | no | `nil` | Decompose complex queries |
-| `use_reformulation` | Optional<bool> | no | `nil` | LLM reformulates query |
-| `synthesize_response` | Optional<bool> | no | `nil` | LLM generates answer vs raw chunks |
-
 ### MultichannelSpeechToTextResponseModel
 
 | Field | Type | Required | Default | Notes |
@@ -5408,7 +6137,8 @@ _(no fields)_
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `song_id` | str | **yes** | **required** | Unique identifier for the uploaded song |
-| `composition_plan` | Optional<[MusicPrompt](#musicprompt)> | no | `nil` | The composition plan extracted from the uploaded song. Only present if `extract_composition_plan` was True in the request body |
+| `composition_plan` | Optional<MusicUploadResponseCompositionPlan> | no | `nil` | The composition plan extracted from the uploaded song. Only present if `extract_composition_plan` was provided in the request body. |
+| `words_timestamps` | Optional<Array<[WordTimestamp](#wordtimestamp)>> | no | `nil` | Word-level timestamps transcribed from the uploaded song. Only present if `with_timestamps` was True in the request body |
 
 ### NoCoachingSettings
 
@@ -5438,6 +6168,7 @@ _(no fields)_
 | `basic_auth_in_header` | Optional<bool> | no | `nil` | If True, send client credentials in Authorization header as Basic Auth instead of request body |
 | `id` | str | **yes** | **required** |  |
 | `used_by` | Optional<[AuthConnectionDependencies](#authconnectiondependencies)> | no | `nil` |  |
+| `custom_headers` | Optional<Hash<str, str>> | no | `nil` | Custom headers configured for OAuth2 token requests |
 
 ### OAuth2JwtResponse
 
@@ -5454,6 +6185,7 @@ _(no fields)_
 | `extra_params` | Optional<Hash<str, str>> | no | `nil` | Additional custom claims to include in the JWT |
 | `token_url` | str | **yes** | **required** | Token endpoint URL for exchanging JWT for access token |
 | `scopes` | Optional<Array<str>> | no | `nil` | OAuth2 scopes to request when exchanging JWT for access token |
+| `token_response_field` | Optional<[OAuth2JwtResponseTokenResponseField](#oauth2jwtresponsetokenresponsefield)> | no | `nil` | Token field to extract from the token endpoint response. |
 | `id` | str | **yes** | **required** |  |
 | `used_by` | Optional<[AuthConnectionDependencies](#authconnectiondependencies)> | no | `nil` |  |
 
@@ -5477,6 +6209,114 @@ _(no fields)_
 | `properties` | Optional<Hash<str, 'ObjectJsonSchemaPropertyOutputPropertiesValue'>> | no | `nil` |  |
 | `required_constraints` | Optional<[RequiredConstraints](#requiredconstraints)> | no | `nil` |  |
 
+### OmitSchemaOverride
+
+_(no fields)_
+
+### OpenAiAudioConfig
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `input` | Optional<[OpenAiAudioInputConfig](#openaiaudioinputconfig)> | no | `nil` |  |
+| `output` | Optional<[OpenAiAudioOutputConfig](#openaiaudiooutputconfig)> | no | `nil` |  |
+
+### OpenAiAudioInputConfig
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `format` | Optional<[OpenAiAudioInputFormat](#openaiaudioinputformat)> | no | `nil` |  |
+| `turn_detection` | Optional<[OpenAiTurnDetection](#openaiturndetection)> | no | `nil` |  |
+
+### OpenAiAudioInputFormat
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `type` | Optional<[OpenAiAudioFormat](#openaiaudioformat)> | no | `nil` |  |
+| `rate` | Optional<int> | no | `nil` |  |
+
+### OpenAiAudioOutputConfig
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `format` | Optional<[OpenAiAudioOutputFormat](#openaiaudiooutputformat)> | no | `nil` |  |
+| `voice` | Optional<str> | no | `nil` |  |
+
+### OpenAiAudioOutputFormat
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `type` | Optional<[OpenAiAudioFormat](#openaiaudioformat)> | no | `nil` |  |
+
+### OpenAiFunctionTool
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `name` | str | **yes** | **required** |  |
+| `description` | Optional<str> | no | `nil` |  |
+| `parameters` | Optional<Hash<str, Any>> | no | `nil` |  |
+
+### OpenAiSessionConfig
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `type` | Optional<Literal<'realtime'>> | no | `nil` |  |
+| `model` | Optional<str> | no | `nil` |  |
+| `instructions` | Optional<str> | no | `nil` |  |
+| `modalities` | Optional<Array<str>> | no | `nil` |  |
+| `audio` | Optional<[OpenAiAudioConfig](#openaiaudioconfig)> | no | `nil` |  |
+| `tools` | Optional<Array<[OpenAiSessionConfigToolsItem](#openaisessionconfigtoolsitem)>> | no | `nil` |  |
+| `tool_choice` | Optional<OpenAiSessionConfigToolChoice> | no | `nil` |  |
+| `temperature` | Optional<float> | no | `nil` |  |
+| `max_response_output_tokens` | Optional<OpenAiSessionConfigMaxResponseOutputTokens> | no | `nil` |  |
+| `output_modalities` | Optional<Array<str>> | no | `nil` |  |
+
+### OpenAiToolChoiceFunction
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `type` | Optional<Literal<'function'>> | no | `nil` |  |
+| `function` | [OpenAiToolChoiceFunctionInner](#openaitoolchoicefunctioninner) | **yes** | **required** |  |
+
+### OpenAiToolChoiceFunctionInner
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `name` | str | **yes** | **required** |  |
+
+### OpenAiTurnDetection
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `type` | Optional<[TurnDetectionType](#turndetectiontype)> | no | `nil` |  |
+| `eagerness` | Optional<[Eagerness](#eagerness)> | no | `nil` |  |
+| `create_response` | Optional<bool> | no | `nil` |  |
+| `interrupt_response` | Optional<bool> | no | `nil` |  |
+| `threshold` | Optional<float> | no | `nil` |  |
+| `prefix_padding_ms` | Optional<int> | no | `nil` |  |
+| `silence_duration_ms` | Optional<int> | no | `nil` |  |
+
+### OpenAimcpTool
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `server_label` | str | **yes** | **required** |  |
+| `server_url` | str | **yes** | **required** |  |
+| `authorization` | Optional<str> | no | `nil` |  |
+| `allowed_tools` | Optional<Array<str>> | no | `nil` |  |
+| `require_approval` | Optional<[OpenAimcpToolRequireApproval](#openaimcptoolrequireapproval)> | no | `nil` |  |
+
+### OptInSmsReminderParams
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `smb_tool_type` | Optional<Literal<'opt_in_sms_reminder'>> | no | `nil` |  |
+
+### OptOutSmsReminderParams
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `smb_tool_type` | Optional<Literal<'opt_out_sms_reminder'>> | no | `nil` |  |
+
 ### OrbAvatar
 
 | Field | Type | Required | Default | Notes |
@@ -5491,6 +6331,58 @@ _(no fields)_
 | `mocking_strategy` | Optional<[MockingStrategy](#mockingstrategy)> | no | `nil` | Which tools to mock: 'all' mocks every mockable tool, 'selected' mocks only those in mocked_tool_names/mocked_tool_ids, 'none' disables mocking. |
 | `fallback_strategy` | Optional<[MockNoMatchBehavior](#mocknomatchbehavior)> | no | `nil` | Behavior when no mock matches a tool call. |
 | `mocked_tool_names` | Optional<Array<str>> | no | `nil` | Tool names to mock. Only used when mocking_strategy is 'selected'. |
+
+### OrderDeliverablesResponse
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `deliverables` | Array<[DeliverableInfo](#deliverableinfo)> | **yes** | **required** | The list of delivered files for the order. Empty if the order is not yet completed. |
+
+### OrderItemInfo
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `item_id` | ItemId | **yes** | **required** | The ID of the order item. |
+| `item` | [OrderItemRequestOutput](#orderitemrequestoutput) | **yes** | **required** | The item configuration details. |
+| `quote` | Optional<[QuoteInfo](#quoteinfo)> | no | `nil` | The quoted price for this item. |
+
+### OrderMediaResponse
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `media_id` | MediaId | **yes** | **required** | The ID of the media file. |
+| `name` | str | **yes** | **required** | The original filename of the uploaded media. |
+| `content_type` | str | **yes** | **required** | The MIME type of the media file (e.g. 'video/mp4'). |
+| `language` | Optional<str> | no | `nil` | The detected or declared language of the media, if available. |
+| `signed_url` | str | **yes** | **required** | A time-limited URL to download the media file. |
+
+### OrderResponse
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `order_id` | OrderId | **yes** | **required** | The ID of the order. |
+| `name` | str | **yes** | **required** | The display name of the order. |
+| `state` | [OrderState](#orderstate) | **yes** | **required** | The current state of the order. |
+| `items` | Array<[OrderItemInfo](#orderiteminfo)> | **yes** | **required** | The list of items in this order with their quotes. |
+| `total_amount_usd` | Optional<float> | no | `nil` | The total price for all items in USD. Excluded from response until quotes are available. |
+| `sandbox` | Optional<bool> | no | `nil` | Whether this is a sandbox order that auto-progresses without producer intervention. |
+| `created_at` | dt.datetime | **yes** | **required** | The timestamp when the order was created. |
+| `submitted_at` | Optional<dt.datetime> | no | `nil` | The timestamp when the order was submitted, if applicable. |
+| `paid_at` | Optional<dt.datetime> | no | `nil` | The timestamp when payment was received, if applicable. |
+| `accepted_at` | Optional<dt.datetime> | no | `nil` | The timestamp when the order was accepted for production, if applicable. |
+| `completed_at` | Optional<dt.datetime> | no | `nil` | The timestamp when the order was completed, if applicable. |
+
+### OrderSummary
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `order_id` | OrderId | **yes** | **required** | The ID of the order. |
+| `name` | str | **yes** | **required** | The display name of the order. |
+| `state` | [OrderState](#orderstate) | **yes** | **required** | The current state of the order. |
+| `total_amount_usd` | Optional<float> | no | `nil` | The total price for all items in USD. Excluded from response until quotes are available. |
+| `sandbox` | Optional<bool> | no | `nil` | Whether this is a sandbox order that auto-progresses without producer intervention. |
+| `submitted_at` | Optional<dt.datetime> | no | `nil` | The timestamp when the order was submitted, if applicable. |
+| `updated_at` | Optional<dt.datetime> | no | `nil` | The timestamp when the order was last modified, if applicable. |
 
 ### OutboundCallRecipient
 
@@ -5522,7 +6414,15 @@ _(no fields)_
 | `transport` | Optional<[SipTrunkTransportEnum](#siptrunktransportenum)> | no | `nil` | Protocol to use for SIP transport (signalling layer). |
 | `media_encryption` | Optional<[SipMediaEncryptionEnum](#sipmediaencryptionenum)> | no | `nil` | Whether or not to encrypt media (data layer). |
 | `headers` | Optional<Hash<str, str>> | no | `nil` | SIP X-* headers for INVITE request. These headers are sent as-is and may help identify this call. |
+| `attributes_to_headers` | Optional<Hash<str, str>> | no | `nil` | Map of dynamic variable name to header name for attributes_to_headers |
 | `credentials` | Optional<[SipTrunkCredentialsRequestModel](#siptrunkcredentialsrequestmodel)> | no | `nil` | Optional digest authentication credentials (username/password). If not provided, ACL authentication is assumed. |
+| `enabled_codecs` | Optional<Array<[MediaCodec](#mediacodec)>> | no | `nil` | Media codecs that should be offered in the SDP for outbound calls. If empty, all supported codecs are offered. |
+
+### PairedLanguagesResponse
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `language_pairs` | Array<[LanguagePairInfo](#languagepairinfo)> | **yes** | **required** | The list of available source-to-destination language mappings. |
 
 ### PartialTranscriptPayload
 
@@ -5547,6 +6447,13 @@ _(no fields)_
 | `max_segment_duration_s` | Optional<float> | no | `nil` |  |
 | `max_segment_chars` | Optional<int> | no | `nil` |  |
 
+### PendingBlocksMetadataModel
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `target_global_offset_ms` | Optional<int> | no | `nil` |  |
+| `block_ids` | Array<str> | **yes** | **required** |  |
+
 ### PendingCancellationResponseModel
 
 | Field | Type | Required | Default | Notes |
@@ -5564,6 +6471,13 @@ _(no fields)_
 | `updated_at_ms` | Optional<int> | no | `nil` |  |
 | `metadata` | Optional<Hash<str, Any>> | no | `nil` |  |
 
+### PendingExternalAudiosMetadataModel
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `target_global_offset_ms` | Optional<int> | no | `nil` |  |
+| `external_audio_ids` | Array<str> | **yes** | **required** |  |
+
 ### PendingSubscriptionSwitchResponseModel
 
 | Field | Type | Required | Default | Notes |
@@ -5579,6 +6493,8 @@ _(no fields)_
 | --- | --- | --- | --- | --- |
 | `agent_id` | str | **yes** | **required** | The ID of the agent |
 | `agent_name` | str | **yes** | **required** | The name of the agent |
+| `environment` | Optional<str> | no | `nil` | Environment to use for resolving environment variables on calls to this number. |
+| `branch_id` | Optional<str> | no | `nil` | Agent branch to use for calls to this number. |
 
 ### PhoneNumberDynamicVariableTransferDestination
 
@@ -5603,6 +6519,12 @@ _(no fields)_
 | --- | --- | --- | --- | --- |
 | `phone_number` | str | **yes** | **required** |  |
 
+### PingPayload
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `type` | Literal<'ping'> | no | `'ping'` | The message type identifier. |
+
 ### PlayDtmfResultErrorModel
 
 | Field | Type | Required | Default | Notes |
@@ -5623,7 +6545,7 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `use_out_of_band_dtmf` | Optional<bool> | no | `nil` | If true, send DTMF tones out-of-band using RFC 4733 (useful for SIP calls only). If false, send DTMF as in-band audio tones (works for all call types). |
+| `use_out_of_band_dtmf` | Optional<bool> | no | `nil` | Send DTMF tones as out-of-band RTP events (RFC 4733) instead of in-band audio. Only effective for SIP trunk imported numbers. |
 | `suppress_turn_after_dtmf` | Optional<bool> | no | `nil` | If true, the agent will not generate further speech after playing DTMF tones. This prevents the agent's speech from interfering with IVR systems. |
 
 ### PodcastBulletinMode
@@ -5670,6 +6592,12 @@ _(no fields)_
 | --- | --- | --- | --- | --- |
 | `type` | Literal<'url'> | no | `'url'` | The type of source to create. |
 | `url` | str | **yes** | **required** | The URL to create the podcast from. |
+
+### PongPayload
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `type` | Literal<'pong'> | no | `'pong'` | The message type identifier. |
 
 ### PositionInput
 
@@ -5724,6 +6652,13 @@ _(no fields)_
 | `is_auto_generated` | Optional<bool> | no | `nil` |  |
 | `generated_at_unix` | Optional<int> | no | `nil` |  |
 
+### Price
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `amount` | str | **yes** | **required** |  |
+| `currency` | [Currency](#currency) | **yes** | **required** |  |
+
 ### PrivacyConfigInput
 
 | Field | Type | Required | Default | Notes |
@@ -5764,6 +6699,30 @@ _(no fields)_
 | `id` | str | **yes** | **required** |  |
 | `used_by` | Optional<[AuthConnectionDependencies](#authconnectiondependencies)> | no | `nil` |  |
 
+### ProcedureAtVersionInput
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `procedure_id` | str | **yes** | **required** | Procedure ID |
+| `name` | str | **yes** | **required** | Procedure name |
+| `content` | str | **yes** | **required** | Procedure content |
+| `type` | Optional<[ProcedureType](#proceduretype)> | no | `nil` |  |
+| `guardrails` | Optional<Array<[CustomGuardrailConfig](#customguardrailconfig)>> | no | `nil` |  |
+| `agent_id` | str | **yes** | **required** | Agent ID of the procedure |
+| `version_id` | Optional<str> | no | `nil` | Version ID of a version of the procedure. None for a procedure never versioned. |
+
+### ProcedureAtVersionOutput
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `procedure_id` | str | **yes** | **required** | Procedure ID |
+| `name` | str | **yes** | **required** | Procedure name |
+| `content` | str | **yes** | **required** | Procedure content |
+| `type` | Optional<[ProcedureType](#proceduretype)> | no | `nil` |  |
+| `guardrails` | Optional<Array<[CustomGuardrailConfig](#customguardrailconfig)>> | no | `nil` |  |
+| `agent_id` | str | **yes** | **required** | Agent ID of the procedure |
+| `version_id` | Optional<str> | no | `nil` | Version ID of a version of the procedure. None for a procedure never versioned. |
+
 ### ProcedureRefResponseModel
 
 | Field | Type | Required | Default | Notes |
@@ -5771,12 +6730,7 @@ _(no fields)_
 | `procedure_id` | str | **yes** | **required** | Procedure ID |
 | `version_id` | Optional<str> | no | `nil` | Version ID of a version of the procedure. None for a procedure never versioned. |
 | `name` | Optional<str> | no | `nil` | Procedure name |
-
-### ProcedureSettings
-
-| Field | Type | Required | Default | Notes |
-| --- | --- | --- | --- | --- |
-| `compiler_mode` | Optional<[ProcedureCompilerMode](#procedurecompilermode)> | no | `nil` |  |
+| `type` | Optional<[ProcedureType](#proceduretype)> | no | `nil` | Procedure type |
 
 ### ProjectCreationMetaResponseModel
 
@@ -5794,8 +6748,8 @@ _(no fields)_
 | `name` | str | **yes** | **required** | The name of the project. |
 | `create_date_unix` | int | **yes** | **required** | The creation date of the project. |
 | `created_by_user_id` | Optional<str> | no | `nil` | The user ID who created the project. |
-| `default_title_voice_id` | str | **yes** | **required** | The default title voice ID. |
-| `default_paragraph_voice_id` | str | **yes** | **required** | The default paragraph voice ID. |
+| `default_title_voice_ref_id` | str | **yes** | **required** | The default title project voice reference ID. |
+| `default_paragraph_voice_ref_id` | str | **yes** | **required** | The default paragraph project voice reference ID. |
 | `default_model_id` | str | **yes** | **required** | The default model ID. |
 | `last_conversion_date_unix` | Optional<int> | no | `nil` | The last conversion date of the project. |
 | `can_be_downloaded` | bool | **yes** | **required** | Whether the project can be downloaded. |
@@ -5835,6 +6789,8 @@ _(no fields)_
 | `voices` | Array<[ProjectVoiceResponseModel](#projectvoiceresponsemodel)> | **yes** | **required** | List of configured project voices. |
 | `base_voices` | Optional<Array<[Voice](#voice)>> | no | `nil` | List of voices used by the project. |
 | `publishing_read` | Optional<[DirectPublishingReadResponseModel](#directpublishingreadresponsemodel)> | no | `nil` | The ElevenReader data if the book was published. |
+| `default_title_voice_id` | Optional<str> | no | `nil` | The default title voice ID. |
+| `default_paragraph_voice_id` | Optional<str> | no | `nil` | The default paragraph voice ID. |
 
 ### ProjectExternalAudioResponseModel
 
@@ -5846,7 +6802,7 @@ _(no fields)_
 | `offset_ms` | int | **yes** | **required** |  |
 | `duration_ms` | int | **yes** | **required** |  |
 | `start_time_ms` | int | **yes** | **required** |  |
-| `end_time_ms` | int | **yes** | **required** |  |
+| `end_time_ms` | Optional<int> | no | `nil` |  |
 | `order` | str | **yes** | **required** |  |
 | `track_id` | str | **yes** | **required** |  |
 | `created_at_ms` | int | **yes** | **required** |  |
@@ -5857,14 +6813,16 @@ _(no fields)_
 | `fade_out_ms` | Optional<int> | no | `nil` |  |
 | `source_external_audio_id` | Optional<str> | no | `nil` |  |
 | `source_asset_id` | Optional<str> | no | `nil` |  |
-| `pending_block_ids` | Array<str> | **yes** | **required** |  |
-| `pending_external_audio_ids` | Array<str> | **yes** | **required** |  |
+| `source_platform_asset_id` | Optional<str> | no | `nil` |  |
+| `pending_blocks_metadata` | Optional<[PendingBlocksMetadataModel](#pendingblocksmetadatamodel)> | no | `nil` |  |
+| `pending_external_audios_metadata` | Optional<[PendingExternalAudiosMetadataModel](#pendingexternalaudiosmetadatamodel)> | no | `nil` |  |
 | `speech_imported` | Optional<bool> | no | `nil` |  |
 | `pending_task` | Optional<[PendingClipTask](#pendingcliptask)> | no | `nil` |  |
 | `error` | Optional<str> | no | `nil` |  |
 | `current_snapshot_id` | Optional<str> | no | `nil` |  |
 | `source_context` | Optional<[ProjectExternalAudioResponseModelSourceContext](#projectexternalaudioresponsemodelsourcecontext)> | no | `nil` |  |
 | `analysis` | Optional<[AudioAnalysis](#audioanalysis)> | no | `nil` |  |
+| `transcription` | Optional<[AssetTranscription](#assettranscription)> | no | `nil` |  |
 | `import_speech_progress` | Optional<float> | no | `nil` |  |
 
 ### ProjectImageResponseModel
@@ -5873,8 +6831,8 @@ _(no fields)_
 | --- | --- | --- | --- | --- |
 | `image_id` | str | **yes** | **required** |  |
 | `filename` | str | **yes** | **required** |  |
-| `signed_url` | str | **yes** | **required** |  |
-| `thumbnail_signed_url` | str | **yes** | **required** |  |
+| `signed_url` | Optional<str> | no | `nil` |  |
+| `thumbnail_signed_url` | Optional<str> | no | `nil` |  |
 | `source` | Optional<Literal<'upload'>> | no | `nil` |  |
 | `file_size_bytes` | int | **yes** | **required** |  |
 | `width` | int | **yes** | **required** |  |
@@ -5890,6 +6848,10 @@ _(no fields)_
 | `updated_at_ms` | int | **yes** | **required** |  |
 | `current_snapshot_id` | Optional<str> | no | `nil` |  |
 | `source_asset_id` | Optional<str> | no | `nil` |  |
+| `source_platform_asset_id` | Optional<str> | no | `nil` |  |
+| `error` | Optional<str> | no | `nil` |  |
+| `pending_task` | Optional<[PendingClipTask](#pendingcliptask)> | no | `nil` |  |
+| `analysis` | Optional<[ImageAnalysis](#imageanalysis)> | no | `nil` |  |
 
 ### ProjectMutedTracksResponseModel
 
@@ -5905,8 +6867,8 @@ _(no fields)_
 | `name` | str | **yes** | **required** | The name of the project. |
 | `create_date_unix` | int | **yes** | **required** | The creation date of the project. |
 | `created_by_user_id` | Optional<str> | no | `nil` | The user ID who created the project. |
-| `default_title_voice_id` | str | **yes** | **required** | The default title voice ID. |
-| `default_paragraph_voice_id` | str | **yes** | **required** | The default paragraph voice ID. |
+| `default_title_voice_ref_id` | str | **yes** | **required** | The default title project voice reference ID. |
+| `default_paragraph_voice_ref_id` | str | **yes** | **required** | The default paragraph project voice reference ID. |
 | `default_model_id` | str | **yes** | **required** | The default model ID. |
 | `last_conversion_date_unix` | Optional<int> | no | `nil` | The last conversion date of the project. |
 | `can_be_downloaded` | bool | **yes** | **required** | Whether the project can be downloaded. |
@@ -5936,6 +6898,8 @@ _(no fields)_
 | `public_share_id` | Optional<str> | no | `nil` | The public share ID of the project. |
 | `aspect_ratio` | Optional<[ProjectResponseModelAspectRatio](#projectresponsemodelaspectratio)> | no | `nil` | The aspect ratio of the project. |
 | `agent_settings` | Optional<[StudioAgentSettingsModel](#studioagentsettingsmodel)> | no | `nil` | Agent-related settings for the project |
+| `default_title_voice_id` | Optional<str> | no | `nil` | The default title voice ID. |
+| `default_paragraph_voice_id` | Optional<str> | no | `nil` | The default paragraph voice ID. |
 
 ### ProjectSnapshotExtendedResponseModel
 
@@ -5992,12 +6956,13 @@ _(no fields)_
 | `thumbnail_size` | Array<int> | **yes** | **required** |  |
 | `thumbnail_sheets` | Array<[ProjectVideoThumbnailSheetResponseModel](#projectvideothumbnailsheetresponsemodel)> | **yes** | **required** |  |
 | `start_time_ms` | int | **yes** | **required** |  |
-| `end_time_ms` | int | **yes** | **required** |  |
+| `end_time_ms` | Optional<int> | no | `nil` |  |
 | `asset_preview_signed_url` | Optional<str> | no | `nil` |  |
 | `source_video_id` | Optional<str> | no | `nil` |  |
 | `source_asset_id` | Optional<str> | no | `nil` |  |
-| `pending_block_ids` | Array<str> | **yes** | **required** |  |
-| `pending_external_audio_ids` | Array<str> | **yes** | **required** |  |
+| `source_platform_asset_id` | Optional<str> | no | `nil` |  |
+| `pending_blocks_metadata` | Optional<[PendingBlocksMetadataModel](#pendingblocksmetadatamodel)> | no | `nil` |  |
+| `pending_external_audios_metadata` | Optional<[PendingExternalAudiosMetadataModel](#pendingexternalaudiosmetadatamodel)> | no | `nil` |  |
 | `speech_imported` | Optional<bool> | no | `nil` |  |
 | `pending_task` | Optional<[PendingClipTask](#pendingcliptask)> | no | `nil` |  |
 | `audio_track_ready` | Optional<bool> | no | `nil` |  |
@@ -6005,6 +6970,7 @@ _(no fields)_
 | `current_snapshot_id` | Optional<str> | no | `nil` |  |
 | `source_context` | Optional<[GenerationSourceContext](#generationsourcecontext)> | no | `nil` |  |
 | `analysis` | Optional<[VideoAnalysis](#videoanalysis)> | no | `nil` |  |
+| `transcription` | Optional<[AssetTranscription](#assettranscription)> | no | `nil` |  |
 | `canvas_placement` | Optional<[CanvasPlacement](#canvasplacement)> | no | `nil` |  |
 | `animation` | Optional<[ClipAnimation](#clipanimation)> | no | `nil` |  |
 | `playback_speed` | Optional<float> | no | `nil` |  |
@@ -6025,6 +6991,7 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
+| `project_voice_ref_id` | str | **yes** | **required** |  |
 | `voice_id` | str | **yes** | **required** |  |
 | `alias` | str | **yes** | **required** |  |
 | `stability` | float | **yes** | **required** |  |
@@ -6043,7 +7010,7 @@ _(no fields)_
 | `llm` | Optional<[Llm](#llm)> | no | `nil` | The LLM to query with the prompt and the chat history. If using data residency, the LLM must be supported in the data residency environment |
 | `reasoning_effort` | Optional<[LlmReasoningEffort](#llmreasoningeffort)> | no | `nil` | Reasoning effort of the model. Only available for some models. |
 | `thinking_budget` | Optional<int> | no | `nil` | Max number of tokens used for thinking. Use 0 to turn off if supported by the model. |
-| `temperature` | Optional<float> | no | `nil` | The temperature for the LLM |
+| `temperature` | Optional<float> | no | `nil` | The temperature for the LLM. Defaults to 0. Set to null to omit the parameter from the LLM request entirely (useful for custom LLMs that reject the temperature field). |
 | `max_tokens` | Optional<int> | no | `nil` | If greater than 0, maximum number of tokens the LLM can predict |
 | `tool_ids` | Optional<Array<str>> | no | `nil` | A list of IDs of tools used by the agent |
 | `built_in_tools` | Optional<[BuiltInToolsInput](#builtintoolsinput)> | no | `nil` | Built-in system tools to be used by the agent |
@@ -6053,7 +7020,7 @@ _(no fields)_
 | `custom_llm` | Optional<[CustomLlm](#customllm)> | no | `nil` | Definition for a custom LLM if LLM field is set to 'CUSTOM_LLM' |
 | `ignore_default_personality` | Optional<bool> | no | `nil` | Whether to remove the default personality lines from the system prompt |
 | `rag` | Optional<[RagConfig](#ragconfig)> | no | `nil` | Configuration for RAG |
-| `timezone` | Optional<str> | no | `nil` | Timezone for displaying current time in system prompt. If set, the current time will be included in the system prompt using this timezone. Must be a valid timezone name (e.g., 'America/New_York', 'Europe/London', 'UTC'). |
+| `timezone` | Optional<str> | no | `nil` | Timezone for displaying current time in system prompt. If set, the current time will be included in the system prompt using this timezone. Must be a valid timezone name (e.g., 'America/New_York', 'Europe/London', 'UTC'). Recommended for accurate time-aware responses; without this, the agent has no knowledge of the current date/time unless you provide it via dynamic variables or tools, which can lead to incorrect or hallucinated time references. |
 | `backup_llm_config` | Optional<[PromptAgentApiModelInputBackupLlmConfig](#promptagentapimodelinputbackupllmconfig)> | no | `nil` | Configuration for backup LLM cascading. Can be disabled, use system defaults, or specify custom order. |
 | `cascade_timeout_seconds` | Optional<float> | no | `nil` | Time in seconds before cascading to backup LLM. Must be between 2 and 15 seconds. |
 | `tools` | Optional<Array<[PromptAgentApiModelInputToolsItem](#promptagentapimodelinputtoolsitem)>> | no | `nil` | A list of tools that the agent can use over the course of the conversation, use tool_ids instead |
@@ -6066,7 +7033,7 @@ _(no fields)_
 | `llm` | Optional<[Llm](#llm)> | no | `nil` | The LLM to query with the prompt and the chat history. If using data residency, the LLM must be supported in the data residency environment |
 | `reasoning_effort` | Optional<[LlmReasoningEffort](#llmreasoningeffort)> | no | `nil` | Reasoning effort of the model. Only available for some models. |
 | `thinking_budget` | Optional<int> | no | `nil` | Max number of tokens used for thinking. Use 0 to turn off if supported by the model. |
-| `temperature` | Optional<float> | no | `nil` | The temperature for the LLM |
+| `temperature` | Optional<float> | no | `nil` | The temperature for the LLM. Defaults to 0. Set to null to omit the parameter from the LLM request entirely (useful for custom LLMs that reject the temperature field). |
 | `max_tokens` | Optional<int> | no | `nil` | If greater than 0, maximum number of tokens the LLM can predict |
 | `tool_ids` | Optional<Array<str>> | no | `nil` | A list of IDs of tools used by the agent |
 | `built_in_tools` | Optional<[BuiltInToolsOutput](#builtintoolsoutput)> | no | `nil` | Built-in system tools to be used by the agent |
@@ -6076,7 +7043,7 @@ _(no fields)_
 | `custom_llm` | Optional<[CustomLlm](#customllm)> | no | `nil` | Definition for a custom LLM if LLM field is set to 'CUSTOM_LLM' |
 | `ignore_default_personality` | Optional<bool> | no | `nil` | Whether to remove the default personality lines from the system prompt |
 | `rag` | Optional<[RagConfig](#ragconfig)> | no | `nil` | Configuration for RAG |
-| `timezone` | Optional<str> | no | `nil` | Timezone for displaying current time in system prompt. If set, the current time will be included in the system prompt using this timezone. Must be a valid timezone name (e.g., 'America/New_York', 'Europe/London', 'UTC'). |
+| `timezone` | Optional<str> | no | `nil` | Timezone for displaying current time in system prompt. If set, the current time will be included in the system prompt using this timezone. Must be a valid timezone name (e.g., 'America/New_York', 'Europe/London', 'UTC'). Recommended for accurate time-aware responses; without this, the agent has no knowledge of the current date/time unless you provide it via dynamic variables or tools, which can lead to incorrect or hallucinated time references. |
 | `backup_llm_config` | Optional<[PromptAgentApiModelOutputBackupLlmConfig](#promptagentapimodeloutputbackupllmconfig)> | no | `nil` | Configuration for backup LLM cascading. Can be disabled, use system defaults, or specify custom order. |
 | `cascade_timeout_seconds` | Optional<float> | no | `nil` | Time in seconds before cascading to backup LLM. Must be between 2 and 15 seconds. |
 | `tools` | Optional<Array<[PromptAgentApiModelOutputToolsItem](#promptagentapimodeloutputtoolsitem)>> | no | `nil` | A list of tools that the agent can use over the course of the conversation, use tool_ids instead |
@@ -6119,7 +7086,7 @@ _(no fields)_
 | `llm` | Optional<[Llm](#llm)> | no | `nil` | The LLM to query with the prompt and the chat history. If using data residency, the LLM must be supported in the data residency environment |
 | `reasoning_effort` | Optional<[LlmReasoningEffort](#llmreasoningeffort)> | no | `nil` | Reasoning effort of the model. Only available for some models. |
 | `thinking_budget` | Optional<int> | no | `nil` | Max number of tokens used for thinking. Use 0 to turn off if supported by the model. |
-| `temperature` | Optional<float> | no | `nil` | The temperature for the LLM |
+| `temperature` | Optional<float> | no | `nil` | The temperature for the LLM. Defaults to 0. Set to null to omit the parameter from the LLM request entirely (useful for custom LLMs that reject the temperature field). |
 | `max_tokens` | Optional<int> | no | `nil` | If greater than 0, maximum number of tokens the LLM can predict |
 | `tool_ids` | Optional<Array<str>> | no | `nil` | A list of IDs of tools used by the agent |
 | `built_in_tools` | Optional<[BuiltInToolsWorkflowOverrideInput](#builtintoolsworkflowoverrideinput)> | no | `nil` | Built-in system tools to be used by the agent |
@@ -6129,7 +7096,7 @@ _(no fields)_
 | `custom_llm` | Optional<[CustomLlm](#customllm)> | no | `nil` | Definition for a custom LLM if LLM field is set to 'CUSTOM_LLM' |
 | `ignore_default_personality` | Optional<bool> | no | `nil` | Whether to remove the default personality lines from the system prompt |
 | `rag` | Optional<[RagConfigWorkflowOverride](#ragconfigworkflowoverride)> | no | `nil` | Configuration for RAG |
-| `timezone` | Optional<str> | no | `nil` | Timezone for displaying current time in system prompt. If set, the current time will be included in the system prompt using this timezone. Must be a valid timezone name (e.g., 'America/New_York', 'Europe/London', 'UTC'). |
+| `timezone` | Optional<str> | no | `nil` | Timezone for displaying current time in system prompt. If set, the current time will be included in the system prompt using this timezone. Must be a valid timezone name (e.g., 'America/New_York', 'Europe/London', 'UTC'). Recommended for accurate time-aware responses; without this, the agent has no knowledge of the current date/time unless you provide it via dynamic variables or tools, which can lead to incorrect or hallucinated time references. |
 | `backup_llm_config` | Optional<PromptAgentApiModelWorkflowOverrideInputBackupLlmConfig> | no | `nil` | Configuration for backup LLM cascading. Can be disabled, use system defaults, or specify custom order. |
 | `cascade_timeout_seconds` | Optional<float> | no | `nil` | Time in seconds before cascading to backup LLM. Must be between 2 and 15 seconds. |
 | `tools` | Optional<Array<[PromptAgentApiModelWorkflowOverrideInputToolsItem](#promptagentapimodelworkflowoverrideinputtoolsitem)>> | no | `nil` | A list of tools that the agent can use over the course of the conversation, use tool_ids instead |
@@ -6142,7 +7109,7 @@ _(no fields)_
 | `llm` | Optional<[Llm](#llm)> | no | `nil` | The LLM to query with the prompt and the chat history. If using data residency, the LLM must be supported in the data residency environment |
 | `reasoning_effort` | Optional<[LlmReasoningEffort](#llmreasoningeffort)> | no | `nil` | Reasoning effort of the model. Only available for some models. |
 | `thinking_budget` | Optional<int> | no | `nil` | Max number of tokens used for thinking. Use 0 to turn off if supported by the model. |
-| `temperature` | Optional<float> | no | `nil` | The temperature for the LLM |
+| `temperature` | Optional<float> | no | `nil` | The temperature for the LLM. Defaults to 0. Set to null to omit the parameter from the LLM request entirely (useful for custom LLMs that reject the temperature field). |
 | `max_tokens` | Optional<int> | no | `nil` | If greater than 0, maximum number of tokens the LLM can predict |
 | `tool_ids` | Optional<Array<str>> | no | `nil` | A list of IDs of tools used by the agent |
 | `built_in_tools` | Optional<[BuiltInToolsWorkflowOverrideOutput](#builtintoolsworkflowoverrideoutput)> | no | `nil` | Built-in system tools to be used by the agent |
@@ -6152,7 +7119,7 @@ _(no fields)_
 | `custom_llm` | Optional<[CustomLlm](#customllm)> | no | `nil` | Definition for a custom LLM if LLM field is set to 'CUSTOM_LLM' |
 | `ignore_default_personality` | Optional<bool> | no | `nil` | Whether to remove the default personality lines from the system prompt |
 | `rag` | Optional<[RagConfigWorkflowOverride](#ragconfigworkflowoverride)> | no | `nil` | Configuration for RAG |
-| `timezone` | Optional<str> | no | `nil` | Timezone for displaying current time in system prompt. If set, the current time will be included in the system prompt using this timezone. Must be a valid timezone name (e.g., 'America/New_York', 'Europe/London', 'UTC'). |
+| `timezone` | Optional<str> | no | `nil` | Timezone for displaying current time in system prompt. If set, the current time will be included in the system prompt using this timezone. Must be a valid timezone name (e.g., 'America/New_York', 'Europe/London', 'UTC'). Recommended for accurate time-aware responses; without this, the agent has no knowledge of the current date/time unless you provide it via dynamic variables or tools, which can lead to incorrect or hallucinated time references. |
 | `backup_llm_config` | Optional<PromptAgentApiModelWorkflowOverrideOutputBackupLlmConfig> | no | `nil` | Configuration for backup LLM cascading. Can be disabled, use system defaults, or specify custom order. |
 | `cascade_timeout_seconds` | Optional<float> | no | `nil` | Time in seconds before cascading to backup LLM. Must be between 2 and 15 seconds. |
 | `tools` | Optional<Array<[PromptAgentApiModelWorkflowOverrideOutputToolsItem](#promptagentapimodelworkflowoverrideoutputtoolsitem)>> | no | `nil` | A list of tools that the agent can use over the course of the conversation, use tool_ids instead |
@@ -6276,6 +7243,12 @@ _(no fields)_
 | `properties` | Hash<str, [LiteralJsonSchemaProperty](#literaljsonschemaproperty)> | **yes** | **required** |  |
 | `required` | Optional<Array<str>> | no | `nil` |  |
 
+### QuoteInfo
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `amount_usd` | float | **yes** | **required** | The quoted price for this item in USD. Use the order's total_amount_usd for the combined order total. |
+
 ### RagChunkMetadata
 
 | Field | Type | Required | Default | Notes |
@@ -6359,6 +7332,7 @@ _(no fields)_
 | `embedding_model` | [EmbeddingModelEnum](#embeddingmodelenum) | **yes** | **required** |  |
 | `retrieval_query` | str | **yes** | **required** |  |
 | `rag_latency_secs` | float | **yes** | **required** |  |
+| `used_chunk_ids` | Optional<Array<str>> | no | `nil` |  |
 
 ### ReadLegalTerms
 
@@ -6380,6 +7354,7 @@ _(no fields)_
 | `has_summary` | Optional<bool> | no | `nil` |  |
 | `duration_seconds` | Optional<float> | no | `nil` |  |
 | `file_number` | Optional<str> | no | `nil` |  |
+| `is_fallback_name` | Optional<bool> | no | `nil` |  |
 
 ### ReaderResourceResponseModel
 
@@ -6387,6 +7362,28 @@ _(no fields)_
 | --- | --- | --- | --- | --- |
 | `resource_type` | [ReaderResourceResponseModelResourceType](#readerresourceresponsemodelresourcetype) | **yes** | **required** | The type of resource. |
 | `resource_id` | str | **yes** | **required** | The ID of the resource. |
+
+### RealtimeConfigSnapshot
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `id` | Annotated[str, FieldMetadata(alias='_id')> | **yes** | **required** |  |
+| `workspace_id` | str | **yes** | **required** |  |
+| `conversation_id` | str | **yes** | **required** |  |
+| `seq_no` | int | **yes** | **required** |  |
+| `time_in_call_secs` | int | **yes** | **required** |  |
+| `time_committed_secs` | int | **yes** | **required** |  |
+| `source_event_id` | Optional<int> | no | `nil` |  |
+| `parents` | [RealtimeConfigSnapshotParents](#realtimeconfigsnapshotparents) | **yes** | **required** |  |
+| `session_config` | [OpenAiSessionConfig](#openaisessionconfig) | **yes** | **required** |  |
+| `safety` | [SafetyCommonModelOutput](#safetycommonmodeloutput) | **yes** | **required** |  |
+| `changed_paths` | Optional<Array<str>> | no | `nil` |  |
+
+### RealtimeConfigSnapshotParents
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `previous_snapshot_id` | Optional<str> | no | `nil` |  |
 
 ### RealtimeVoiceSettings
 
@@ -6438,6 +7435,30 @@ _(no fields)_
 | `token` | str | **yes** | **required** | Auth Token for this region |
 | `edge_location` | [TwilioEdgeLocation](#twilioedgelocation) | **yes** | **required** | Edge location for this region |
 
+### RegionalProcessingSurchargeInfo
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `multiplier` | float | **yes** | **required** | The surcharge multiplier applied to this model's pricing (e.g. 1.1 for a 10% surcharge). |
+
+### RegisterForGroupSessionParams
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `smb_tool_type` | Optional<Literal<'register_for_group_session'>> | no | `nil` |  |
+
+### RegisterMediaResponse
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `media_id` | MediaId | **yes** | **required** | The ID of the uploaded media file. |
+
+### RemoveOrderItemResponse
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `success` | bool | **yes** | **required** | Whether the item was successfully removed. |
+
 ### Render
 
 | Field | Type | Required | Default | Notes |
@@ -6448,6 +7469,12 @@ _(no fields)_
 | `type` | Optional<[RenderType](#rendertype)> | no | `nil` |  |
 | `media_ref` | Optional<[DubbingMediaReference](#dubbingmediareference)> | no | `nil` |  |
 | `status` | [RenderStatus](#renderstatus) | **yes** | **required** |  |
+
+### ReportKnowledgeGapParams
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `smb_tool_type` | Optional<Literal<'report_knowledge_gap'>> | no | `nil` |  |
 
 ### RequestPvcManualVerificationResponseModel
 
@@ -6476,6 +7503,8 @@ _(no fields)_
 | `creator_name` | str | **yes** | **required** | Name of the agent's creator |
 | `creator_email` | str | **yes** | **required** | Email of the agent's creator |
 | `role` | [ResourceAccessInfoRole](#resourceaccessinforole) | **yes** | **required** | The role of the user making the request |
+| `anonymous_access_level_override` | Optional<[ResourceAccessInfoAnonymousAccessLevelOverride](#resourceaccessinfoanonymousaccessleveloverride)> | no | `nil` | The access level for anonymous users. If None, the resource is not shared publicly. |
+| `access_source` | Optional<[ResourceAccessInfoAccessSource](#resourceaccessinfoaccesssource)> | no | `nil` | Why the requesting user has access to this resource. 'creator' = caller is the owner. 'explicit' = caller (or one of their workspace groups) is listed in role_to_group_ids beyond the workspace-wide everyone group. 'workspace_default' = the workspace-wide everyone group is listed in role_to_group_ids (every non-anon workspace member, including admins, sees this resource). 'workspace_admin' = caller is a workspace admin and the admin seat is the *only* path to access; reserved for docs nobody else can see. Lets the UI disclose why an admin-bypass viewer sees a doc that wasn't explicitly shared with them. |
 
 ### ResourceMetadataResponseModel
 
@@ -6502,11 +7531,18 @@ _(no fields)_
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `from_conversation_metadata` | Optional<[TestFromConversationMetadataOutput](#testfromconversationmetadataoutput)> | no | `nil` | Metadata of a conversation this test was created from (if applicable). |
-| `dynamic_variables` | Optional<Hash<str, Optional<ResponseUnitTestModelDynamicVariablesValue>>> | no | `nil` | Dynamic variables to replace in the agent config during testing |
+| `dynamic_variables` | Optional<Hash<str, Optional<DynamicVariableValueTypeOutput>>> | no | `nil` | Dynamic variables to replace in the agent config during testing |
 | `chat_history` | Optional<Array<[ConversationHistoryTranscriptCommonModelOutput](#conversationhistorytranscriptcommonmodeloutput)>> | no | `nil` |  |
+| `conversation_initiation_source` | Optional<[ConversationInitiationSource](#conversationinitiationsource)> | no | `nil` | Simulate the test as if the conversation originated from this channel. |
 | `success_condition` | Optional<str> | no | `nil` | A prompt that evaluates whether the agent's response is successful. Should return True or False. |
 | `success_examples` | Optional<Array<[AgentSuccessfulResponseExample](#agentsuccessfulresponseexample)>> | no | `nil` | Non-empty list of example responses that should be considered successful |
 | `failure_examples` | Optional<Array<[AgentFailureResponseExample](#agentfailureresponseexample)>> | no | `nil` | Non-empty list of example responses that should be considered failures |
+
+### RestoreCalendarEventParams
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `smb_tool_type` | Optional<Literal<'restore_calendar_event'>> | no | `nil` |  |
 
 ### RetryTriggerAction
 
@@ -6524,8 +7560,80 @@ _(no fields)_
 | `reject_reasons` | Optional<Array<[ReviewResponseModelRejectReasonsItem](#reviewresponsemodelrejectreasonsitem)>> | no | `nil` |  |
 | `scores_breakdown` | Optional<Hash<str, Optional<int>>> | no | `nil` |  |
 | `rejected_details` | Optional<str> | no | `nil` |  |
+| `explanation` | Optional<str> | no | `nil` |  |
 
-### SafetyCommonModel
+### RttAudioPayload
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `message_type` | Literal<'audio'> | no | `'audio'` | The message type identifier. |
+| `data` | str | **yes** | **required** | Base64-encoded audio data. |
+| `sample_rate` | int | **yes** | **required** | Sample rate of the audio in Hz. |
+
+### RttEndOfStreamPayload
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `message_type` | Literal<'end_of_stream'> | no | `'end_of_stream'` | The message type identifier. |
+
+### RttErrorPayload
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `message_type` | Literal<'error'> | no | `'error'` | The message type identifier. |
+| `error` | str | **yes** | **required** | Error message. |
+
+### RttFinalTranscriptPayload
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `message_type` | Literal<'final_transcript'> | no | `'final_transcript'` | The message type identifier. |
+| `text` | str | **yes** | **required** | Final transcription text. |
+
+### RttInputAudioChunkPayload
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `message_type` | Literal<'input_audio_chunk'> | no | `'input_audio_chunk'` | The message type identifier. |
+| `audio_base_64` | str | **yes** | **required** | Base64-encoded audio data. Recommended chunk size is around 100 ms of audio. |
+
+### RttPartialTranscriptPayload
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `message_type` | Literal<'partial_transcript'> | no | `'partial_transcript'` | The message type identifier. |
+| `text` | str | **yes** | **required** | Partial transcription text. |
+
+### RttSessionStartedPayload
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `message_type` | Literal<'session_started'> | no | `'session_started'` | The message type identifier. |
+| `session_id` | str | **yes** | **required** | Unique identifier for this session. |
+| `client_session_id` | Optional<str> | no | `nil` | Client-defined session identifier, if provided during connection. |
+
+### RttStatusPayload
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `message_type` | Literal<'status'> | no | `'status'` | The message type identifier. |
+| `status` | str | **yes** | **required** | Current session status (`started` or `stopped`). |
+
+### RttTranslationPayload
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `message_type` | Literal<'translation'> | no | `'translation'` | The message type identifier. |
+| `text` | str | **yes** | **required** | Translated text. |
+
+### SafetyCommonModelInput
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `ivc` | Optional<[SafetyEvaluation](#safetyevaluation)> | no | `nil` |  |
+| `non_ivc` | Optional<[SafetyEvaluation](#safetyevaluation)> | no | `nil` |  |
+
+### SafetyCommonModelOutput
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
@@ -6585,6 +7693,12 @@ _(no fields)_
 | --- | --- | --- | --- | --- |
 | `type` | Literal<'prompt'> | no | `'prompt'` |  |
 | `prompt` | str | **yes** | **required** | LLM prompt describing what message should be generated. |
+
+### ScheduleGroupSessionParams
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `smb_tool_type` | Optional<Literal<'schedule_group_session'>> | no | `nil` |  |
 
 ### ScopedAnalysisResult
 
@@ -6812,6 +7926,8 @@ _(no fields)_
 | `enable_logging` | Optional<bool> | no | `nil` | When enable_logging is set to false zero retention mode will be used for the request. This will mean history features are unavailable for this request. Zero retention mode may only be used by enterprise customers. |
 | `include_timestamps` | Optional<bool> | no | `nil` | Whether the session will include word-level timestamps in the committed transcript. |
 | `include_language_detection` | Optional<bool> | no | `nil` | Whether the session will include language detection in the committed transcript. |
+| `keyterms` | Optional<Array<str>> | no | `nil` | List of keyterms the model is biased towards. |
+| `no_verbatim` | Optional<bool> | no | `nil` | Whether filler words and disfluencies are removed from the transcript. |
 
 ### SetBookingSlugParams
 
@@ -6856,13 +7972,16 @@ _(no fields)_
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `from_conversation_metadata` | Optional<[TestFromConversationMetadataOutput](#testfromconversationmetadataoutput)> | no | `nil` | Metadata of a conversation this test was created from (if applicable). |
-| `dynamic_variables` | Optional<Hash<str, Optional<SimulationTestModelDynamicVariablesValue>>> | no | `nil` | Dynamic variables to replace in the agent config during testing |
+| `dynamic_variables` | Optional<Hash<str, Optional<DynamicVariableValueTypeOutput>>> | no | `nil` | Dynamic variables to replace in the agent config during testing |
 | `chat_history` | Optional<Array<[ConversationHistoryTranscriptCommonModelOutput](#conversationhistorytranscriptcommonmodeloutput)>> | no | `nil` |  |
+| `conversation_initiation_source` | Optional<[ConversationInitiationSource](#conversationinitiationsource)> | no | `nil` | Simulate the test as if the conversation originated from this channel. |
 | `success_condition` | Optional<str> | no | `nil` | A prompt that evaluates whether the agent's response is successful. Should return True or False. |
 | `simulation_scenario` | Optional<str> | no | `nil` | Description of the simulation scenario and user persona for simulation tests. |
 | `simulation_max_turns` | Optional<int> | no | `nil` | Maximum number of conversation turns for simulation tests. |
 | `simulation_environment` | Optional<str> | no | `nil` | The environment to use when running this simulation test. If not provided, defaults to 'production'. |
 | `tool_mock_config` | Optional<[SimulationToolMockBehaviorConfig](#simulationtoolmockbehaviorconfig)> | no | `nil` | Configuration for which tools to mock and fallback behavior. |
+| `evaluation_model` | Optional<[Llm](#llm)> | no | `nil` | LLM model to use for evaluating simulation results. Defaults to Claude Sonnet 4.6. |
+| `simulated_user_model` | Optional<[Llm](#llm)> | no | `nil` | LLM model for the simulated user. Defaults to Claude Sonnet 4.6. |
 
 ### SimulationToolMockBehaviorConfig
 
@@ -6871,6 +7990,12 @@ _(no fields)_
 | `mocking_strategy` | Optional<[MockingStrategy](#mockingstrategy)> | no | `nil` | Which tools to mock: 'all' mocks every mockable tool, 'selected' mocks only those in mocked_tool_names/mocked_tool_ids, 'none' disables mocking. |
 | `fallback_strategy` | Optional<[MockNoMatchBehavior](#mocknomatchbehavior)> | no | `nil` | Behavior when no mock matches a tool call. |
 | `mocked_tool_ids` | Optional<Array<str>> | no | `nil` | Tool IDs to mock. Resolved to tool names before being passed to the orchestrator. |
+
+### SingleLanguagesResponse
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `languages` | Array<[LanguageInfo](#languageinfo)> | **yes** | **required** | The list of available languages. |
 
 ### SingleTestRunRequestModel
 
@@ -6886,6 +8011,20 @@ _(no fields)_
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `token` | str | **yes** | **required** | A time bound single use token that expires after 15 minutes. Will be consumed on use. |
+
+### SipLogMessage
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `call_id` | str | **yes** | **required** |  |
+| `phone_numbers` | Array<str> | **yes** | **required** |  |
+| `local_address` | str | **yes** | **required** |  |
+| `remote_address` | str | **yes** | **required** |  |
+| `transport` | str | **yes** | **required** |  |
+| `raw_message` | str | **yes** | **required** |  |
+| `error_message` | str | **yes** | **required** |  |
+| `direction` | [SipLogMessageDirection](#siplogmessagedirection) | **yes** | **required** |  |
+| `created_at_unix_micro` | int | **yes** | **required** |  |
 
 ### SipTrunkCredentialsRequestModel
 
@@ -6926,19 +8065,40 @@ _(no fields)_
 | `status` | Optional<Literal<'success'>> | no | `nil` |  |
 | `reason` | Optional<str> | no | `nil` |  |
 
+### SlackBotAuthResponse
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `name` | str | **yes** | **required** |  |
+| `provider` | Optional<Literal<'Slack'>> | no | `nil` |  |
+| `id` | str | **yes** | **required** |  |
+| `used_by` | Optional<[AuthConnectionDependencies](#authconnectiondependencies)> | no | `nil` |  |
+
+### SmsConversationInfo
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `direction` | [SmsConversationInfoDirection](#smsconversationinfodirection) | **yes** | **required** |  |
+| `phone_number_id` | Optional<str> | no | `nil` |  |
+| `sms_user_phone_number` | str | **yes** | **required** |  |
+| `agent_phone_number` | Optional<str> | no | `nil` |  |
+
 ### SoftTimeoutConfig
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `timeout_seconds` | Optional<float> | no | `nil` | Time in seconds before showing the predefined message while waiting for LLM response. Set to -1 to disable. |
-| `message` | Optional<str> | no | `nil` | Message to show when soft timeout is reached while waiting for LLM response |
+| `message` | Optional<str> | no | `nil` | Message to show when the first soft timeout is reached while waiting for LLM response |
+| `additional_soft_timeout_messages` | Optional<Array<str>> | no | `nil` | Extra static filler messages for subsequent soft timeouts in the same LLM generation. The first timeout uses `message`. If fewer messages are configured than `max_soft_timeouts_per_generation`, the last configured message is repeated; otherwise a built-in filler is used. |
 | `use_llm_generated_message` | Optional<bool> | no | `nil` | If enabled, the soft timeout message will be generated dynamically instead of using the static message. |
+| `max_soft_timeouts_per_generation` | Optional<int> | no | `nil` | Maximum filler messages while waiting for a single LLM response. Fires every timeout_seconds until the LLM streams content or this limit is reached. |
+| `llm_generated_message_prompt_override` | Optional<str> | no | `nil` | Custom prompt for generating the soft timeout filler message when use_llm_generated_message is enabled. Recent conversation context is provided as a separate user message. If not set, the default prompt will be used. |
 
 ### SoftTimeoutConfigOverride
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `message` | Optional<str> | no | `nil` | Message to show when soft timeout is reached while waiting for LLM response |
+| `message` | Optional<str> | no | `nil` | Message to show when the first soft timeout is reached while waiting for LLM response |
 
 ### SoftTimeoutConfigOverrideConfig
 
@@ -6951,8 +8111,11 @@ _(no fields)_
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `timeout_seconds` | Optional<float> | no | `nil` | Time in seconds before showing the predefined message while waiting for LLM response. Set to -1 to disable. |
-| `message` | Optional<str> | no | `nil` | Message to show when soft timeout is reached while waiting for LLM response |
+| `message` | Optional<str> | no | `nil` | Message to show when the first soft timeout is reached while waiting for LLM response |
+| `additional_soft_timeout_messages` | Optional<Array<str>> | no | `nil` | Extra static filler messages for subsequent soft timeouts in the same LLM generation. The first timeout uses `message`. If fewer messages are configured than `max_soft_timeouts_per_generation`, the last configured message is repeated; otherwise a built-in filler is used. |
 | `use_llm_generated_message` | Optional<bool> | no | `nil` | If enabled, the soft timeout message will be generated dynamically instead of using the static message. |
+| `max_soft_timeouts_per_generation` | Optional<int> | no | `nil` | Maximum filler messages while waiting for a single LLM response. Fires every timeout_seconds until the LLM streams content or this limit is reached. |
+| `llm_generated_message_prompt_override` | Optional<str> | no | `nil` | Custom prompt for generating the soft timeout filler message when use_llm_generated_message is enabled. Recent conversation context is provided as a separate user message. If not set, the default prompt will be used. |
 
 ### SongMetadata
 
@@ -6980,6 +8143,7 @@ _(no fields)_
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `song_id` | str | **yes** | **required** |  |
+| `chat_id` | Optional<str> | no | `nil` |  |
 | `title` | Optional<str> | no | `nil` |  |
 | `description` | Optional<str> | no | `nil` |  |
 | `genres` | Optional<Array<str>> | no | `nil` |  |
@@ -6987,43 +8151,6 @@ _(no fields)_
 | `is_explicit` | Optional<bool> | no | `nil` |  |
 | `bpm` | Optional<int> | no | `nil` |  |
 | `generation_settings` | Optional<Hash<str, Any>> | no | `nil` |  |
-
-### SourceConfigJson
-
-| Field | Type | Required | Default | Notes |
-| --- | --- | --- | --- | --- |
-| `name` | str | **yes** | **required** | Source name (can be existing or new) |
-| `db_name` | Optional<str> | no | `nil` | MongoDB database name. Default: eleven_customer_support |
-| `collection_name` | Optional<str> | no | `nil` | MongoDB collection name. Required for new sources. |
-| `k_dense` | Optional<int> | no | `nil` | Number of chunks from vector search |
-| `k_keyword` | Optional<int> | no | `nil` | Number of chunks from BM25 search |
-| `dense_weight` | Optional<float> | no | `nil` | Weight for vector results |
-| `keyword_weight` | Optional<float> | no | `nil` | Weight for BM25 results |
-| `source_weight` | Optional<float> | no | `nil` | Weight for cross-source merging |
-| `vector_index_name` | Optional<str> | no | `nil` | Vector search index name. Default: 'default' |
-| `embedding_field` | Optional<str> | no | `nil` | Field containing embeddings. Default: 'embedding' |
-| `content_field` | Optional<str> | no | `nil` | Field containing text content. Default: 'content' |
-| `enabled` | Optional<bool> | no | `nil` | Whether this source is active |
-
-### SourceRetrievalConfig
-
-| Field | Type | Required | Default | Notes |
-| --- | --- | --- | --- | --- |
-| `name` | str | **yes** | **required** |  |
-| `collection_name` | str | **yes** | **required** |  |
-| `db_name` | Optional<str> | no | `nil` |  |
-| `enabled` | Optional<bool> | no | `nil` |  |
-| `k_dense` | Optional<int> | no | `nil` |  |
-| `k_keyword` | Optional<int> | no | `nil` |  |
-| `dense_weight` | Optional<float> | no | `nil` |  |
-| `keyword_weight` | Optional<float> | no | `nil` |  |
-| `source_weight` | Optional<float> | no | `nil` |  |
-| `vector_index_name` | Optional<str> | no | `nil` |  |
-| `embedding_field` | Optional<str> | no | `nil` |  |
-| `content_field` | Optional<str> | no | `nil` |  |
-| `filter_field` | Optional<str> | no | `nil` |  |
-| `num_candidates_multiplier` | Optional<int> | no | `nil` |  |
-| `result_fields` | Optional<Hash<str, Array<Any>>> | no | `nil` |  |
 
 ### SpeakerAudioResponseModel
 
@@ -7084,6 +8211,48 @@ _(no fields)_
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `version` | int | **yes** | **required** |  |
+
+### SpeechEngineConfig
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `ws_url` | str | **yes** | **required** | The WebSocket URL for the transcript server |
+| `request_headers` | Optional<Hash<str, SpeechEngineConfigRequestHeadersValue>> | no | `nil` | Headers to include in the WebSocket connection request |
+
+### SpeechEngineConversationInitiationClientDataConfig
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `first_message` | Optional<bool> | no | `nil` | Whether the first message can be overridden by the client |
+
+### SpeechEngineResponse
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `speech_engine_id` | str | **yes** | **required** | The speech engine resource ID |
+| `name` | str | **yes** | **required** | Human-readable name for the speech engine |
+| `speech_engine` | [SpeechEngineConfig](#speechengineconfig) | **yes** | **required** | WebSocket connection settings for the upstream transcript server |
+| `asr` | [AsrConversationalConfig](#asrconversationalconfig) | **yes** | **required** | Automatic speech recognition configuration |
+| `tts` | [TtsConversationalConfigOutput](#ttsconversationalconfigoutput) | **yes** | **required** | Text-to-speech output configuration |
+| `turn` | [BaseTurnConfig](#baseturnconfig) | **yes** | **required** | Turn detection configuration |
+| `conversation` | [ConversationConfigOutput](#conversationconfigoutput) | **yes** | **required** | Conversation-level settings including client events and duration limits |
+| `privacy` | [PrivacyConfigOutput](#privacyconfigoutput) | **yes** | **required** | Privacy settings controlling recording, retention, and PII handling |
+| `call_limits` | [AgentCallLimits](#agentcalllimits) | **yes** | **required** | Concurrency and daily conversation limits for this speech engine |
+| `language` | str | **yes** | **required** | ISO language code used by the speech engine (e.g. 'en') |
+| `tags` | Array<str> | **yes** | **required** | Arbitrary tags for categorization and filtering |
+| `overrides` | [SpeechEngineConversationInitiationClientDataConfig](#speechengineconversationinitiationclientdataconfig) | **yes** | **required** | Override settings the client may set during conversation initiation |
+| `metadata` | [AgentMetadataDbModel](#agentmetadatadbmodel) | **yes** | **required** | Creation and update timestamps with source information |
+| `access_info` | Optional<[ResourceAccessInfo](#resourceaccessinfo)> | no | `nil` | The access information of the speech engine for the user |
+
+### SpeechEngineSummaryResponse
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `speech_engine_id` | str | **yes** | **required** | The speech engine resource ID |
+| `name` | str | **yes** | **required** | Human-readable name for the speech engine |
+| `created_at_unix_secs` | int | **yes** | **required** | Creation time in Unix seconds |
+| `tags` | Array<str> | **yes** | **required** | Arbitrary tags for categorization and filtering |
+| `access_info` | [ResourceAccessInfo](#resourceaccessinfo) | **yes** | **required** | The access information of the speech engine for the user |
 
 ### SpeechHistoryItemResponse
 
@@ -7162,6 +8331,18 @@ _(no fields)_
 | `max_segment_duration_s` | Optional<float> | no | `nil` |  |
 | `max_segment_chars` | Optional<int> | no | `nil` |  |
 
+### StartProcedureToolConfigInput
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `procedures` | Optional<Hash<str, [ProcedureAtVersionInput](#procedureatversioninput)>> | no | `nil` |  |
+
+### StartProcedureToolConfigOutput
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `procedures` | Optional<Hash<str, [ProcedureAtVersionOutput](#procedureatversionoutput)>> | no | `nil` |  |
+
 ### StartPvcVoiceTrainingResponseModel
 
 | Field | Type | Required | Default | Notes |
@@ -7234,6 +8415,20 @@ _(no fields)_
 | `offset_x` | float | **yes** | **required** |  |
 | `offset_y` | float | **yes** | **required** |  |
 
+### SubmitBusinessInfoParams
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `smb_tool_type` | Optional<Literal<'submit_business_info'>> | no | `nil` |  |
+
+### SubmitOrderResponse
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `order_id` | OrderId | **yes** | **required** | The ID of the submitted order. |
+| `state` | [OrderState](#orderstate) | **yes** | **required** | The current state of the order after submission. |
+| `submitted_at` | dt.datetime | **yes** | **required** | The timestamp when the order was submitted. |
+
 ### Subscription
 
 | Field | Type | Required | Default | Notes |
@@ -7255,7 +8450,8 @@ _(no fields)_
 | `can_extend_voice_limit` | bool | **yes** | **required** | Whether the user can extend their voice limit. |
 | `can_use_instant_voice_cloning` | bool | **yes** | **required** | Whether the user can use instant voice cloning. |
 | `can_use_professional_voice_cloning` | bool | **yes** | **required** | Whether the user can use professional voice cloning. |
-| `currency` | Optional<[ExtendedSubscriptionResponseModelCurrency](#extendedsubscriptionresponsemodelcurrency)> | no | `nil` | The currency of the user's subscription. |
+| `currency` | Optional<[Currency](#currency)> | no | `nil` | The currency of the user's subscription. |
+| `current_overage` | [Price](#price) | **yes** | **required** | The current usage-based overage cost. |
 | `status` | [SubscriptionStatusType](#subscriptionstatustype) | **yes** | **required** | The status of the user's subscription. |
 | `billing_period` | Optional<[BillingPeriod](#billingperiod)> | no | `nil` | The billing period of the user's subscription. |
 | `character_refresh_period` | Optional<[CharacterRefreshPeriod](#characterrefreshperiod)> | no | `nil` | The character refresh period of the user's subscription. |
@@ -7287,10 +8483,22 @@ _(no fields)_
 | `can_extend_voice_limit` | bool | **yes** | **required** | Whether the user can extend their voice limit. |
 | `can_use_instant_voice_cloning` | bool | **yes** | **required** | Whether the user can use instant voice cloning. |
 | `can_use_professional_voice_cloning` | bool | **yes** | **required** | Whether the user can use professional voice cloning. |
-| `currency` | Optional<[SubscriptionResponseModelCurrency](#subscriptionresponsemodelcurrency)> | no | `nil` | The currency of the user's subscription. |
+| `currency` | Optional<[Currency](#currency)> | no | `nil` | The currency of the user's subscription. |
+| `current_overage` | [Price](#price) | **yes** | **required** | The current usage-based overage cost. |
 | `status` | [SubscriptionStatusType](#subscriptionstatustype) | **yes** | **required** | The status of the user's subscription. |
 | `billing_period` | Optional<[BillingPeriod](#billingperiod)> | no | `nil` | The billing period of the user's subscription. |
 | `character_refresh_period` | Optional<[CharacterRefreshPeriod](#characterrefreshperiod)> | no | `nil` | The character refresh period of the user's subscription. |
+
+### SubtitleOrderItemRequest
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `media_ids` | Array<MediaId> | **yes** | **required** | The IDs of the uploaded media files to generate subtitles for. |
+| `source_language` | str | **yes** | **required** | The language code of the source media (e.g. 'en', 'es'). |
+| `destination_languages` | Array<str> | **yes** | **required** | List of target language codes. Subtitles will be generated for each media file in each destination language. |
+| `cue_options` | Optional<[CueOptionsRequest](#cueoptionsrequest)> | no | `nil` | Formatting options for subtitle cues such as duration, line count, and character limits. |
+| `sdh` | Optional<bool> | no | `nil` | Whether subtitles should use SDH format, which includes descriptions for deaf and hard-of-hearing viewers. |
+| `instructions` | Optional<str> | no | `nil` | Optional free-text instructions for the subtitling team. |
 
 ### SuggestedAudioTag
 
@@ -7313,6 +8521,13 @@ _(no fields)_
 | `speed` | Optional<float> | no | `nil` |  |
 | `similarity_boost` | Optional<float> | no | `nil` |  |
 
+### SystemEvaluationCriteria
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `user_sentiment_score` | float | **yes** | **required** |  |
+| `user_frustration_score` | float | **yes** | **required** |  |
+
 ### SystemToolConfigInput
 
 | Field | Type | Required | Default | Notes |
@@ -7322,7 +8537,8 @@ _(no fields)_
 | `description` | Optional<str> | no | `nil` | Description of when the tool should be used and what it does. Leave empty to use the default description that's optimized for the specific tool type. |
 | `response_timeout_secs` | Optional<int> | no | `nil` | The maximum time in seconds to wait for the tool call to complete. |
 | `disable_interruptions` | Optional<bool> | no | `nil` | If true, the user will not be able to interrupt the agent while this tool is running. |
-| `force_pre_tool_speech` | Optional<bool> | no | `nil` | If true, the agent will speak before the tool call. |
+| `force_pre_tool_speech` | Optional<bool> | no | `nil` | DEPRECATED: use `pre_tool_speech` instead. If true, the agent will speak before the tool call. |
+| `pre_tool_speech` | Optional<[PreToolSpeechMode](#pretoolspeechmode)> | no | `nil` | Controls whether the agent speaks before this tool is called. 'auto' (default) decides based on recent tool latency, 'force' always asks the agent to speak, 'off' fully opts out regardless of latency. |
 | `assignments` | Optional<Array<[DynamicVariableAssignment](#dynamicvariableassignment)>> | no | `nil` | Configuration for extracting values from tool responses and assigning them to dynamic variables |
 | `tool_call_sound` | Optional<[ToolCallSoundType](#toolcallsoundtype)> | no | `nil` | Predefined tool call sound type to play during tool execution. If not specified, no tool call sound will be played. |
 | `tool_call_sound_behavior` | Optional<[ToolCallSoundBehavior](#toolcallsoundbehavior)> | no | `nil` | Determines when the tool call sound should play. 'auto' only plays when there's pre-tool speech, 'always' plays for every tool call. |
@@ -7338,7 +8554,8 @@ _(no fields)_
 | `description` | Optional<str> | no | `nil` | Description of when the tool should be used and what it does. Leave empty to use the default description that's optimized for the specific tool type. |
 | `response_timeout_secs` | Optional<int> | no | `nil` | The maximum time in seconds to wait for the tool call to complete. |
 | `disable_interruptions` | Optional<bool> | no | `nil` | If true, the user will not be able to interrupt the agent while this tool is running. |
-| `force_pre_tool_speech` | Optional<bool> | no | `nil` | If true, the agent will speak before the tool call. |
+| `force_pre_tool_speech` | Optional<bool> | no | `nil` | DEPRECATED: use `pre_tool_speech` instead. If true, the agent will speak before the tool call. |
+| `pre_tool_speech` | Optional<[PreToolSpeechMode](#pretoolspeechmode)> | no | `nil` | Controls whether the agent speaks before this tool is called. 'auto' (default) decides based on recent tool latency, 'force' always asks the agent to speak, 'off' fully opts out regardless of latency. |
 | `assignments` | Optional<Array<[DynamicVariableAssignment](#dynamicvariableassignment)>> | no | `nil` | Configuration for extracting values from tool responses and assigning them to dynamic variables |
 | `tool_call_sound` | Optional<[ToolCallSoundType](#toolcallsoundtype)> | no | `nil` | Predefined tool call sound type to play during tool execution. If not specified, no tool call sound will be played. |
 | `tool_call_sound_behavior` | Optional<[ToolCallSoundBehavior](#toolcallsoundbehavior)> | no | `nil` | Determines when the tool call sound should play. 'auto' only plays when there's pre-tool speech, 'always' plays for every tool call. |
@@ -7399,6 +8616,7 @@ _(no fields)_
 | `pending_count` | int | **yes** | **required** | Number of test runs that are pending |
 | `title` | str | **yes** | **required** | Title of the test invocation - either the single test name or count of tests |
 | `access_info` | Optional<[ResourceAccessInfo](#resourceaccessinfo)> | no | `nil` | The access information of the test invocation |
+| `repeat_count` | Optional<int> | no | `nil` | Number of times each test was repeated in this invocation |
 
 ### TestRunMetadata
 
@@ -7408,6 +8626,24 @@ _(no fields)_
 | `test_name` | str | **yes** | **required** |  |
 | `ran_by_user_email` | str | **yes** | **required** |  |
 | `test_type` | Optional<[TestRunMetadataTestType](#testrunmetadatatesttype)> | no | `nil` |  |
+
+### TestRunResultBucket
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `test_run_ids` | Array<str> | **yes** | **required** |  |
+| `title` | str | **yes** | **required** | Short one-line title for this bucket |
+| `reason` | str | **yes** | **required** | Short summary of why the test runs in this bucket passed or failed |
+| `status` | [TestRunStatus](#testrunstatus) | **yes** | **required** |  |
+
+### TestRunResultSummary
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `test_id` | str | **yes** | **required** |  |
+| `test_name` | str | **yes** | **required** |  |
+| `workflow_node_id` | Optional<str> | no | `nil` |  |
+| `buckets` | Array<[TestRunResultBucket](#testrunresultbucket)> | **yes** | **required** |  |
 
 ### TestToolResultModel
 
@@ -7423,6 +8659,64 @@ _(no fields)_
 | `enabled` | Optional<bool> | no | `nil` |  |
 | `tests_ran_after_last_modification` | Optional<bool> | no | `nil` |  |
 | `tests_ran_in_last_7_days` | Optional<bool> | no | `nil` |  |
+
+### TextToDialogueWebsocketAudioChunk
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `audio` | Optional<str> | no | `nil` | Base64-encoded audio bytes for the selected `output_format`. |
+| `alignment` | Optional<[DialogueTextAlignment](#dialoguetextalignment)> | no | `nil` | Present when `sync_alignment` query parameter is `true` and the model returned timing data for the chunk. |
+| `normalized_alignment` | Optional<[DialogueTextAlignment](#dialoguetextalignment)> | no | `nil` | Reserved for future use; currently unused by the server. |
+
+### TextToDialogueWebsocketClientMessage
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `inputs` | Optional<Array<[TextToDialogueWebsocketVoiceInput](#texttodialoguewebsocketvoiceinput)>> | no | `nil` | Dialogue lines to append for synthesis. |
+| `flush` | Optional<bool> | no | `nil` | Force generation of buffered text without closing the connection. |
+| `close_socket` | Optional<bool> | no | `nil` | Flush buffers, emit remaining audio, send `is_final`, and close the WebSocket. |
+| `keep_alive` | Optional<bool> | no | `nil` | Resets the 20s inactivity timer; performs no synthesis. |
+| `xi_api_key` | Optional<str> | no | `nil` | API key for the first message if not provided via the `xi-api-key` header. |
+| `authorization` | Optional<str> | no | `nil` | Bearer token for the first message if not provided via the `Authorization` header. |
+| `single_use_token` | Optional<str> | no | `nil` | Single-use token for the first message if not provided via the `single_use_token` query parameter. |
+| `voices` | Optional<Array<str>> | no | `nil` | Voice IDs to load for the session (first message only, required on first message). |
+| `voice_settings` | Optional<[TextToDialogueWebsocketVoiceSettings](#texttodialoguewebsocketvoicesettings)> | no | `nil` | Optional voice settings (first message only). |
+| `pronunciation_dictionary_locators` | Optional<Array<[PronunciationDictionaryLocator](#pronunciationdictionarylocator)>> | no | `nil` | Optional pronunciation dictionaries (first message only). |
+
+### TextToDialogueWebsocketError
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `message` | str | **yes** | **required** | Human-readable error description. |
+| `error` | str | **yes** | **required** | Machine-readable error identifier (for example `authentication_required`). |
+| `code` | int | **yes** | **required** | WebSocket close code that will follow this payload. |
+| `param` | Optional<str> | no | `nil` | Field name related to the error, when applicable. |
+
+### TextToDialogueWebsocketFinal
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `is_final` | Literal<True> | no | `True` | Marks the end of the closing flush sequence. |
+
+### TextToDialogueWebsocketFinalAudioForTurn
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `is_final_audio_for_turn` | Optional<bool> | no | `nil` | Indicates that the final audio for a given turn has been sent. |
+
+### TextToDialogueWebsocketVoiceInput
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `text` | str | **yes** | **required** | Text appended for this voice. Buffered with prior text until the server triggers generation. |
+| `voice_id` | str | **yes** | **required** | Must be one of the IDs from the initial `voices` array. |
+| `new_turn` | Optional<bool> | no | `nil` | When `true`, the server finalizes the current pending segment (as if the speaker finished their turn) before applying this input. |
+
+### TextToDialogueWebsocketVoiceSettings
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `stability` | Optional<float> | no | `nil` | Determines how stable the voice is and the randomness between each generation. Lower values introduce broader emotional range for the voice. Higher values can result in a monotonous voice with limited emotion. |
 
 ### ThresholdGuardrail
 
@@ -7460,8 +8754,10 @@ _(no fields)_
 | `description` | Optional<str> | no | `nil` |  |
 | `input_schema` | Annotated[Hash<str, Any>, FieldMetadata(alias='inputSchema')> | **yes** | **required** |  |
 | `output_schema` | Annotated[Optional<Hash<str, Any>>, FieldMetadata(alias='outputSchema')> | no | `nil` |  |
+| `icons` | Optional<Array<[Icon](#icon)>> | no | `nil` |  |
 | `annotations` | Optional<[ToolAnnotations](#toolannotations)> | no | `nil` |  |
 | `meta` | Annotated[Optional<Hash<str, Any>>, FieldMetadata(alias='_meta')> | no | `nil` |  |
+| `execution` | Optional<[ToolExecution](#toolexecution)> | no | `nil` |  |
 
 ### ToolAnnotations
 
@@ -7478,10 +8774,17 @@ _(no fields)_
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `from_conversation_metadata` | Optional<[TestFromConversationMetadataOutput](#testfromconversationmetadataoutput)> | no | `nil` | Metadata of a conversation this test was created from (if applicable). |
-| `dynamic_variables` | Optional<Hash<str, Optional<ToolCallUnitTestModelDynamicVariablesValue>>> | no | `nil` | Dynamic variables to replace in the agent config during testing |
+| `dynamic_variables` | Optional<Hash<str, Optional<DynamicVariableValueTypeOutput>>> | no | `nil` | Dynamic variables to replace in the agent config during testing |
 | `chat_history` | Optional<Array<[ConversationHistoryTranscriptCommonModelOutput](#conversationhistorytranscriptcommonmodeloutput)>> | no | `nil` |  |
+| `conversation_initiation_source` | Optional<[ConversationInitiationSource](#conversationinitiationsource)> | no | `nil` | Simulate the test as if the conversation originated from this channel. |
 | `tool_call_parameters` | Optional<[UnitTestToolCallEvaluationModelOutput](#unittesttoolcallevaluationmodeloutput)> | no | `nil` | How to evaluate the agent's tool call (if any). If empty, the tool call is not evaluated. |
 | `check_any_tool_matches` | Optional<bool> | no | `nil` | If set to True this test will pass if any tool call returned by the LLM matches the criteria. Otherwise it will fail if more than one tool is returned by the agent. |
+
+### ToolExecution
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `task_support` | Annotated[Optional<[ToolExecutionTaskSupport](#toolexecutiontasksupport)>, FieldMetadata(alias='taskSupport')> | no | `nil` |  |
 
 ### ToolExecutionResponseModel
 
@@ -7555,6 +8858,13 @@ _(no fields)_
 | `next_cursor` | Optional<str> | no | `nil` |  |
 | `has_more` | bool | **yes** | **required** |  |
 
+### TranscriptMessage
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `role` | [TranscriptMessageRole](#transcriptmessagerole) | **yes** | **required** | The speaker for this turn. |
+| `content` | str | **yes** | **required** | The transcript text for this turn. |
+
 ### TranscriptionWord
 
 | Field | Type | Required | Default | Notes |
@@ -7601,11 +8911,13 @@ _(no fields)_
 | `status` | Optional<Literal<'success'>> | no | `nil` |  |
 | `from_agent` | str | **yes** | **required** |  |
 | `to_agent` | str | **yes** | **required** |  |
+| `to_node` | Optional<str> | no | `nil` |  |
 | `condition` | str | **yes** | **required** |  |
 | `delay_ms` | Optional<int> | no | `nil` |  |
 | `transfer_message` | Optional<str> | no | `nil` |  |
 | `enable_transferred_agent_first_message` | Optional<bool> | no | `nil` |  |
 | `branch_info` | Optional<[TransferToAgentToolResultSuccessModelBranchInfo](#transfertoagenttoolresultsuccessmodelbranchinfo)> | no | `nil` |  |
+| `preserve_client_tts_overrides` | Optional<bool> | no | `nil` |  |
 
 ### TransferToNumberResultErrorModel
 
@@ -7614,6 +8926,16 @@ _(no fields)_
 | `status` | Optional<Literal<'error'>> | no | `nil` |  |
 | `error` | str | **yes** | **required** |  |
 | `details` | Optional<str> | no | `nil` |  |
+
+### TransferToNumberResultExotelSuccessModel
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `status` | Optional<Literal<'success'>> | no | `nil` |  |
+| `transfer_number` | str | **yes** | **required** |  |
+| `reason` | Optional<str> | no | `nil` |  |
+| `agent_message` | Optional<str> | no | `nil` |  |
+| `note` | Optional<str> | no | `nil` |  |
 
 ### TransferToNumberResultSipSuccessModel
 
@@ -7667,6 +8989,7 @@ _(no fields)_
 | `similarity_boost` | Optional<float> | no | `nil` | The similarity boost for generated speech |
 | `text_normalisation_type` | Optional<[TextNormalisationType](#textnormalisationtype)> | no | `nil` | Method for converting numbers to words before converting text to speech. If set to SYSTEM_PROMPT, the system prompt will be updated to include normalization instructions. If set to ELEVENLABS, the text will be normalized after generation, incurring slight additional latency. |
 | `pronunciation_dictionary_locators` | Optional<Array<[PydanticPronunciationDictionaryVersionLocator](#pydanticpronunciationdictionaryversionlocator)>> | no | `nil` | The pronunciation dictionary locators |
+| `enable_phoneme_tags` | Optional<bool> | no | `nil` | Opt-in to SSML phoneme tag handling for V3 models. When enabled, phoneme tags (inline and from pronunciation dictionaries) are parsed into inline IPA before being sent to the model. |
 
 ### TtsConversationalConfigOutput
 
@@ -7684,6 +9007,7 @@ _(no fields)_
 | `similarity_boost` | Optional<float> | no | `nil` | The similarity boost for generated speech |
 | `text_normalisation_type` | Optional<[TextNormalisationType](#textnormalisationtype)> | no | `nil` | Method for converting numbers to words before converting text to speech. If set to SYSTEM_PROMPT, the system prompt will be updated to include normalization instructions. If set to ELEVENLABS, the text will be normalized after generation, incurring slight additional latency. |
 | `pronunciation_dictionary_locators` | Optional<Array<[PydanticPronunciationDictionaryVersionLocator](#pydanticpronunciationdictionaryversionlocator)>> | no | `nil` | The pronunciation dictionary locators |
+| `enable_phoneme_tags` | Optional<bool> | no | `nil` | Opt-in to SSML phoneme tag handling for V3 models. When enabled, phoneme tags (inline and from pronunciation dictionaries) are parsed into inline IPA before being sent to the model. |
 
 ### TtsConversationalConfigOverride
 
@@ -7719,6 +9043,7 @@ _(no fields)_
 | `similarity_boost` | Optional<float> | no | `nil` | The similarity boost for generated speech |
 | `text_normalisation_type` | Optional<[TextNormalisationType](#textnormalisationtype)> | no | `nil` | Method for converting numbers to words before converting text to speech. If set to SYSTEM_PROMPT, the system prompt will be updated to include normalization instructions. If set to ELEVENLABS, the text will be normalized after generation, incurring slight additional latency. |
 | `pronunciation_dictionary_locators` | Optional<Array<[PydanticPronunciationDictionaryVersionLocator](#pydanticpronunciationdictionaryversionlocator)>> | no | `nil` | The pronunciation dictionary locators |
+| `enable_phoneme_tags` | Optional<bool> | no | `nil` | Opt-in to SSML phoneme tag handling for V3 models. When enabled, phoneme tags (inline and from pronunciation dictionaries) are parsed into inline IPA before being sent to the model. |
 
 ### TtsConversationalConfigWorkflowOverrideOutput
 
@@ -7736,6 +9061,7 @@ _(no fields)_
 | `similarity_boost` | Optional<float> | no | `nil` | The similarity boost for generated speech |
 | `text_normalisation_type` | Optional<[TextNormalisationType](#textnormalisationtype)> | no | `nil` | Method for converting numbers to words before converting text to speech. If set to SYSTEM_PROMPT, the system prompt will be updated to include normalization instructions. If set to ELEVENLABS, the text will be normalized after generation, incurring slight additional latency. |
 | `pronunciation_dictionary_locators` | Optional<Array<[PydanticPronunciationDictionaryVersionLocator](#pydanticpronunciationdictionaryversionlocator)>> | no | `nil` | The pronunciation dictionary locators |
+| `enable_phoneme_tags` | Optional<bool> | no | `nil` | Opt-in to SSML phoneme tag handling for V3 models. When enabled, phoneme tags (inline and from pronunciation dictionaries) are parsed into inline IPA before being sent to the model. |
 
 ### TurnConfig
 
@@ -7744,11 +9070,12 @@ _(no fields)_
 | `turn_timeout` | Optional<float> | no | `nil` | Maximum wait time for the user's reply before re-engaging the user |
 | `initial_wait_time` | Optional<float> | no | `nil` | How long the agent will wait for the user to start the conversation if the first message is empty. If not set, uses the regular turn_timeout. |
 | `silence_end_call_timeout` | Optional<float> | no | `nil` | Maximum wait time since the user last spoke before terminating the call |
-| `soft_timeout_config` | Optional<[SoftTimeoutConfig](#softtimeoutconfig)> | no | `nil` | Configuration for soft timeout functionality. Provides immediate feedback during longer LLM responses. |
 | `turn_eagerness` | Optional<[TurnEagerness](#turneagerness)> | no | `nil` | Controls how eager the agent is to respond. Low = less eager (waits longer), Standard = default eagerness, High = more eager (responds sooner) |
 | `spelling_patience` | Optional<[SpellingPatience](#spellingpatience)> | no | `nil` | Controls if the agent should be more patient when user is spelling numbers and named entities. Auto = model based, Off = never wait extra |
 | `speculative_turn` | Optional<bool> | no | `nil` | When enabled, starts generating LLM responses during silence before full turn confidence is reached, reducing perceived latency. May increase LLM costs. |
 | `retranscribe_on_turn_timeout` | Optional<bool> | no | `nil` | When enabled, if VAD detects no speech, attempts to re-transcribe accumulated audio at turn timeout. Disables silence discount billing for affected turns. |
+| `turn_model` | Optional<[TurnModel](#turnmodel)> | no | `nil` |  |
+| `soft_timeout_config` | Optional<[SoftTimeoutConfig](#softtimeoutconfig)> | no | `nil` | Configuration for soft timeout functionality. Provides immediate feedback during longer LLM responses. |
 
 ### TurnConfigOverride
 
@@ -7769,11 +9096,12 @@ _(no fields)_
 | `turn_timeout` | Optional<float> | no | `nil` | Maximum wait time for the user's reply before re-engaging the user |
 | `initial_wait_time` | Optional<float> | no | `nil` | How long the agent will wait for the user to start the conversation if the first message is empty. If not set, uses the regular turn_timeout. |
 | `silence_end_call_timeout` | Optional<float> | no | `nil` | Maximum wait time since the user last spoke before terminating the call |
-| `soft_timeout_config` | Optional<[SoftTimeoutConfigWorkflowOverride](#softtimeoutconfigworkflowoverride)> | no | `nil` | Configuration for soft timeout functionality. Provides immediate feedback during longer LLM responses. |
 | `turn_eagerness` | Optional<[TurnEagerness](#turneagerness)> | no | `nil` | Controls how eager the agent is to respond. Low = less eager (waits longer), Standard = default eagerness, High = more eager (responds sooner) |
 | `spelling_patience` | Optional<[SpellingPatience](#spellingpatience)> | no | `nil` | Controls if the agent should be more patient when user is spelling numbers and named entities. Auto = model based, Off = never wait extra |
 | `speculative_turn` | Optional<bool> | no | `nil` | When enabled, starts generating LLM responses during silence before full turn confidence is reached, reducing perceived latency. May increase LLM costs. |
 | `retranscribe_on_turn_timeout` | Optional<bool> | no | `nil` | When enabled, if VAD detects no speech, attempts to re-transcribe accumulated audio at turn timeout. Disables silence discount billing for affected turns. |
+| `turn_model` | Optional<[TurnModel](#turnmodel)> | no | `nil` | Version of the turn detection model to use. |
+| `soft_timeout_config` | Optional<[SoftTimeoutConfigWorkflowOverride](#softtimeoutconfigworkflowoverride)> | no | `nil` | Configuration for soft timeout functionality. Provides immediate feedback during longer LLM responses. |
 
 ### TwilioOutboundCallResponse
 
@@ -7830,6 +9158,7 @@ _(no fields)_
 | `folder_parent_id` | Optional<str> | no | `nil` | The ID of the parent folder |
 | `folder_path` | Optional<Array<[AgentTestFolderPathSegmentResponseModel](#agenttestfolderpathsegmentresponsemodel)>> | no | `nil` | The folder path segments from root to this entity |
 | `children_count` | Optional<int> | no | `nil` | Number of direct children (tests and subfolders) for folders only |
+| `conversation_initiation_source` | Optional<[ConversationInitiationSource](#conversationinitiationsource)> | no | `nil` | Channel the test simulates the conversation as. Null for folders or default behavior. |
 
 ### UnitTestToolCallEvaluationModelInput
 
@@ -7876,6 +9205,20 @@ _(no fields)_
 | --- | --- | --- | --- | --- |
 | `smb_tool_type` | Optional<Literal<'update_asset'>> | no | `nil` |  |
 
+### UpdateBasicAuthRequest
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `provider` | Optional<str> | no | `nil` |  |
+| `username` | Optional<str> | no | `nil` |  |
+| `password` | Optional<str> | no | `nil` |  |
+
+### UpdateBookingPageAppearanceParams
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `smb_tool_type` | Optional<Literal<'update_booking_page_appearance'>> | no | `nil` |  |
+
 ### UpdateBookingPageSettingsParams
 
 | Field | Type | Required | Default | Notes |
@@ -7906,6 +9249,12 @@ _(no fields)_
 | --- | --- | --- | --- | --- |
 | `smb_tool_type` | Optional<Literal<'update_customer_facing_config'>> | no | `nil` |  |
 
+### UpdateGroupSessionSeatsParams
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `smb_tool_type` | Optional<Literal<'update_group_session_seats'>> | no | `nil` |  |
+
 ### UpdateHolidayParams
 
 | Field | Type | Required | Default | Notes |
@@ -7918,25 +9267,60 @@ _(no fields)_
 | --- | --- | --- | --- | --- |
 | `smb_tool_type` | Optional<Literal<'update_location'>> | no | `nil` |  |
 
+### UpdateOAuth2ClientCredsRequest
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `provider` | Optional<str> | no | `nil` |  |
+| `client_id` | Optional<str> | no | `nil` |  |
+| `scopes` | Optional<Array<str>> | no | `nil` |  |
+| `extra_params` | Optional<Hash<str, Optional<str>>> | no | `nil` |  |
+| `basic_auth_in_header` | Optional<bool> | no | `nil` |  |
+| `client_secret` | Optional<str> | no | `nil` |  |
+| `custom_headers` | Optional<Hash<str, Optional<str>>> | no | `nil` |  |
+
+### UpdateOAuth2JwtRequest
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `provider` | Optional<str> | no | `nil` |  |
+| `algorithm` | Optional<[UpdateOAuth2JwtRequestAlgorithm](#updateoauth2jwtrequestalgorithm)> | no | `nil` |  |
+| `key_id` | Optional<str> | no | `nil` |  |
+| `issuer` | Optional<str> | no | `nil` |  |
+| `audience` | Optional<str> | no | `nil` |  |
+| `subject` | Optional<str> | no | `nil` |  |
+| `expiration_seconds` | Optional<int> | no | `nil` |  |
+| `extra_params` | Optional<Hash<str, Optional<str>>> | no | `nil` |  |
+| `scopes` | Optional<Array<str>> | no | `nil` |  |
+| `token_response_field` | Optional<[UpdateOAuth2JwtRequestTokenResponseField](#updateoauth2jwtrequesttokenresponsefield)> | no | `nil` |  |
+| `secret_key` | Optional<str> | no | `nil` |  |
+
+### UpdateOrderRequest
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `name` | str | **yes** | **required** | The new name for the order. |
+
+### UpdateOrderResponse
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `name` | str | **yes** | **required** | The updated order name. |
+
 ### UpdateProductParams
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `smb_tool_type` | Optional<Literal<'update_product'>> | no | `nil` |  |
 
-### UpdateRentalServiceParams
-
-| Field | Type | Required | Default | Notes |
-| --- | --- | --- | --- | --- |
-| `smb_tool_type` | Optional<Literal<'update_rental_service'>> | no | `nil` |  |
-
 ### UpdateResponseUnitTestRequest
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `from_conversation_metadata` | Optional<[TestFromConversationMetadataInput](#testfromconversationmetadatainput)> | no | `nil` | Metadata of a conversation this test was created from (if applicable). |
-| `dynamic_variables` | Optional<Hash<str, Optional<UpdateResponseUnitTestRequestDynamicVariablesValue>>> | no | `nil` | Dynamic variables to replace in the agent config during testing |
+| `dynamic_variables` | Optional<Hash<str, Optional<DynamicVariableValueTypeInput>>> | no | `nil` | Dynamic variables to replace in the agent config during testing |
 | `chat_history` | Optional<Array<[ConversationHistoryTranscriptCommonModelInput](#conversationhistorytranscriptcommonmodelinput)>> | no | `nil` |  |
+| `conversation_initiation_source` | Optional<[ConversationInitiationSource](#conversationinitiationsource)> | no | `nil` | Simulate the test as if the conversation originated from this channel. |
 | `success_condition` | Optional<str> | no | `nil` | A prompt that evaluates whether the agent's response is successful. Should return True or False. |
 | `success_examples` | Optional<Array<[AgentSuccessfulResponseExample](#agentsuccessfulresponseexample)>> | no | `nil` | Non-empty list of example responses that should be considered successful |
 | `failure_examples` | Optional<Array<[AgentFailureResponseExample](#agentfailureresponseexample)>> | no | `nil` | Non-empty list of example responses that should be considered failures |
@@ -7954,13 +9338,16 @@ _(no fields)_
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `from_conversation_metadata` | Optional<[TestFromConversationMetadataInput](#testfromconversationmetadatainput)> | no | `nil` | Metadata of a conversation this test was created from (if applicable). |
-| `dynamic_variables` | Optional<Hash<str, Optional<UpdateSimulationTestRequestDynamicVariablesValue>>> | no | `nil` | Dynamic variables to replace in the agent config during testing |
+| `dynamic_variables` | Optional<Hash<str, Optional<DynamicVariableValueTypeInput>>> | no | `nil` | Dynamic variables to replace in the agent config during testing |
 | `chat_history` | Optional<Array<[ConversationHistoryTranscriptCommonModelInput](#conversationhistorytranscriptcommonmodelinput)>> | no | `nil` |  |
+| `conversation_initiation_source` | Optional<[ConversationInitiationSource](#conversationinitiationsource)> | no | `nil` | Simulate the test as if the conversation originated from this channel. |
 | `success_condition` | Optional<str> | no | `nil` | A prompt that evaluates whether the agent's response is successful. Should return True or False. |
 | `simulation_scenario` | Optional<str> | no | `nil` | Description of the simulation scenario and user persona for simulation tests. |
 | `simulation_max_turns` | Optional<int> | no | `nil` | Maximum number of conversation turns for simulation tests. |
 | `simulation_environment` | Optional<str> | no | `nil` | The environment to use when running this simulation test. If not provided, defaults to 'production'. |
 | `tool_mock_config` | Optional<[SimulationToolMockBehaviorConfig](#simulationtoolmockbehaviorconfig)> | no | `nil` | Configuration for which tools to mock and fallback behavior. |
+| `evaluation_model` | Optional<[Llm](#llm)> | no | `nil` | LLM model to use for evaluating simulation results. Defaults to Claude Sonnet 4.6. |
+| `simulated_user_model` | Optional<[Llm](#llm)> | no | `nil` | LLM model for the simulated user. Defaults to Claude Sonnet 4.6. |
 | `name` | str | **yes** | **required** |  |
 | `parent_folder_id` | Optional<str> | no | `nil` | The ID of the parent folder. If not provided, the test will be moved to the root level. |
 
@@ -7975,8 +9362,9 @@ _(no fields)_
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `from_conversation_metadata` | Optional<[TestFromConversationMetadataInput](#testfromconversationmetadatainput)> | no | `nil` | Metadata of a conversation this test was created from (if applicable). |
-| `dynamic_variables` | Optional<Hash<str, Optional<UpdateToolCallUnitTestRequestDynamicVariablesValue>>> | no | `nil` | Dynamic variables to replace in the agent config during testing |
+| `dynamic_variables` | Optional<Hash<str, Optional<DynamicVariableValueTypeInput>>> | no | `nil` | Dynamic variables to replace in the agent config during testing |
 | `chat_history` | Optional<Array<[ConversationHistoryTranscriptCommonModelInput](#conversationhistorytranscriptcommonmodelinput)>> | no | `nil` |  |
+| `conversation_initiation_source` | Optional<[ConversationInitiationSource](#conversationinitiationsource)> | no | `nil` | Simulate the test as if the conversation originated from this channel. |
 | `tool_call_parameters` | Optional<[UnitTestToolCallEvaluationModelInput](#unittesttoolcallevaluationmodelinput)> | no | `nil` | How to evaluate the agent's tool call (if any). If empty, the tool call is not evaluated. |
 | `check_any_tool_matches` | Optional<bool> | no | `nil` | If set to True this test will pass if any tool call returned by the LLM matches the criteria. Otherwise it will fail if more than one tool is returned by the agent. |
 | `name` | str | **yes** | **required** |  |
@@ -7988,11 +9376,45 @@ _(no fields)_
 | --- | --- | --- | --- | --- |
 | `status` | str | **yes** | **required** | The status of the workspace member update request. If the request was successful, the status will be 'ok'. Otherwise an error message with status 500 will be returned. |
 
+### UpsertOrderItemRequest
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `item` | [OrderItemRequestInput](#orderitemrequestinput) | **yes** | **required** | The order item to add or update. |
+| `item_id` | Optional<ItemId> | no | `nil` | The ID of an existing item to update. Omit to create a new item. |
+
+### UpsertOrderItemResponse
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `item_id` | ItemId | **yes** | **required** | The ID of the upserted order item. |
+| `quote` | Optional<[QuoteInfo](#quoteinfo)> | no | `nil` | The quoted price for this item. |
+
 ### UrlAvatar
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `custom_url` | Optional<str> | no | `nil` | The custom URL of the avatar |
+
+### UrlModel
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `url_string` | Optional<str> | no | `nil` | Full URL string |
+| `scheme` | Optional<str> | no | `nil` | URL scheme (e.g., https) |
+| `hostname` | Optional<str> | no | `nil` | URL hostname |
+| `port` | Optional<int> | no | `nil` | URL port |
+| `path` | Optional<str> | no | `nil` | URL path |
+| `query_string` | Optional<str> | no | `nil` | URL query string |
+
+### UrlSecretAuthResponse
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `name` | str | **yes** | **required** |  |
+| `provider` | str | **yes** | **required** |  |
+| `id` | str | **yes** | **required** |  |
+| `used_by` | Optional<[AuthConnectionDependencies](#authconnectiondependencies)> | no | `nil` |  |
 
 ### UsageCharactersResponseModel
 
@@ -8027,6 +9449,26 @@ _(no fields)_
 | --- | --- | --- | --- | --- |
 | `score` | [UserFeedbackScore](#userfeedbackscore) | **yes** | **required** |  |
 | `time_in_call_secs` | int | **yes** | **required** |  |
+
+### UserModel
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `name` | Optional<str> | no | `nil` | Username |
+| `uid` | Optional<str> | no | `nil` | Unique user identifier |
+| `type_id` | Optional<UserTypeId> | no | `nil` | Account type identifier |
+| `type` | Optional<str> | no | `nil` | Account type description |
+| `email_addr` | Optional<str> | no | `nil` | User email address |
+| `full_name` | Optional<str> | no | `nil` | Full name of the user |
+| `domain` | Optional<str> | no | `nil` | User's domain |
+
+### UserTranscriptPayload
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `type` | Literal<'user_transcript'> | no | `'user_transcript'` | The message type identifier. |
+| `user_transcript` | Array<[TranscriptMessage](#transcriptmessage)> | **yes** | **required** | Full conversation history up to and including the latest user turn, ordered     chronologically. Contains both `user` and `agent` turns. |
+| `event_id` | Optional<int> | no | `nil` | Monotonically increasing identifier for this transcript event. Pass this value     back in every `agent_response` message so ElevenLabs can correlate responses and     discard any that belong to an interrupted turn. |
 
 ### UtteranceResponseModel
 
@@ -8302,9 +9744,11 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `voice_id` | str | **yes** | **required** | The voice ID. |
+| `project_voice_ref_id` | str | **yes** | **required** | The project voice reference ID. |
 | `characters_unconverted` | int | **yes** | **required** | The number of unconverted characters for this voice. |
 | `characters_converted` | int | **yes** | **required** | The number of converted characters for this voice. |
+| `credits_needed_to_convert` | Optional<int> | no | `nil` | The number of credits needed to convert the remaining audio for this voice. |
+| `voice_id` | Optional<str> | no | `nil` | The voice ID. |
 
 ### VoiceVerificationResponse
 
@@ -8330,6 +9774,7 @@ _(no fields)_
 | `auth_type` | Literal<'hmac'> | no | `'hmac'` | The authentication type for this webhook |
 | `name` | str | **yes** | **required** | The display name for this webhook |
 | `webhook_url` | str | **yes** | **required** | The HTTPS callback URL that will be called when this webhook is triggered |
+| `request_headers` | Optional<Hash<str, Optional<str>>> | no | `nil` | Optional custom request headers to include with each webhook delivery |
 
 ### WebhookToolApiSchemaConfigInput
 
@@ -8341,7 +9786,9 @@ _(no fields)_
 | `path_params_schema` | Optional<Hash<str, [LiteralJsonSchemaProperty](#literaljsonschemaproperty)>> | no | `nil` | Schema for path parameters, if any. The keys should match the placeholders in the URL. |
 | `query_params_schema` | Optional<[QueryParamsJsonSchema](#queryparamsjsonschema)> | no | `nil` | Schema for any query params, if any. These will be added to end of the URL as query params. Note: properties in a query param must all be literal types |
 | `request_body_schema` | Optional<'[ObjectJsonSchemaPropertyInput](#objectjsonschemapropertyinput)'> | no | `nil` | Schema for the body parameters, if any. Used for POST/PATCH/PUT requests. The schema should be an object which will be sent as the json body |
+| `response_body_schema` | Optional<'[ObjectJsonSchemaPropertyInput](#objectjsonschemapropertyinput)'> | no | `nil` | Schema describing the expected response body structure. For documentation only; not surfaced to the LLM. |
 | `content_type` | Optional<[WebhookToolApiSchemaConfigInputContentType](#webhooktoolapischemaconfiginputcontenttype)> | no | `nil` | Content type for the request body. Only applies to POST/PUT/PATCH requests. |
+| `auth_resolved_params` | Optional<Array<str>> | no | `nil` | URL placeholders resolved from the auth connection (e.g. secrets injected via UrlSecretAuthConnection) rather than from path_params_schema. |
 | `auth_connection` | Optional<WebhookToolApiSchemaConfigInputAuthConnection> | no | `nil` | Optional auth connection to use for authentication with this webhook |
 
 ### WebhookToolApiSchemaConfigOutput
@@ -8354,7 +9801,9 @@ _(no fields)_
 | `path_params_schema` | Optional<Hash<str, [LiteralJsonSchemaProperty](#literaljsonschemaproperty)>> | no | `nil` | Schema for path parameters, if any. The keys should match the placeholders in the URL. |
 | `query_params_schema` | Optional<[QueryParamsJsonSchema](#queryparamsjsonschema)> | no | `nil` | Schema for any query params, if any. These will be added to end of the URL as query params. Note: properties in a query param must all be literal types |
 | `request_body_schema` | Optional<'[ObjectJsonSchemaPropertyOutput](#objectjsonschemapropertyoutput)'> | no | `nil` | Schema for the body parameters, if any. Used for POST/PATCH/PUT requests. The schema should be an object which will be sent as the json body |
+| `response_body_schema` | Optional<'[ObjectJsonSchemaPropertyOutput](#objectjsonschemapropertyoutput)'> | no | `nil` | Schema describing the expected response body structure. For documentation only; not surfaced to the LLM. |
 | `content_type` | Optional<[WebhookToolApiSchemaConfigOutputContentType](#webhooktoolapischemaconfigoutputcontenttype)> | no | `nil` | Content type for the request body. Only applies to POST/PUT/PATCH requests. |
+| `auth_resolved_params` | Optional<Array<str>> | no | `nil` | URL placeholders resolved from the auth connection (e.g. secrets injected via UrlSecretAuthConnection) rather than from path_params_schema. |
 | `auth_connection` | Optional<WebhookToolApiSchemaConfigOutputAuthConnection> | no | `nil` | Optional auth connection to use for authentication with this webhook |
 
 ### WebhookToolConfigInput
@@ -8365,7 +9814,8 @@ _(no fields)_
 | `description` | str | **yes** | **required** | Description of when the tool should be used and what it does. |
 | `response_timeout_secs` | Optional<int> | no | `nil` | The maximum time in seconds to wait for the tool call to complete. Must be between 5 and 120 seconds (inclusive). |
 | `disable_interruptions` | Optional<bool> | no | `nil` | If true, the user will not be able to interrupt the agent while this tool is running. |
-| `force_pre_tool_speech` | Optional<bool> | no | `nil` | If true, the agent will speak before the tool call. |
+| `force_pre_tool_speech` | Optional<bool> | no | `nil` | DEPRECATED: use `pre_tool_speech` instead. If true, the agent will speak before the tool call. |
+| `pre_tool_speech` | Optional<[PreToolSpeechMode](#pretoolspeechmode)> | no | `nil` | Controls whether the agent speaks before this tool is called. 'auto' (default) decides based on recent tool latency, 'force' always asks the agent to speak, 'off' fully opts out regardless of latency. |
 | `assignments` | Optional<Array<[DynamicVariableAssignment](#dynamicvariableassignment)>> | no | `nil` | Configuration for extracting values from tool responses and assigning them to dynamic variables |
 | `tool_call_sound` | Optional<[ToolCallSoundType](#toolcallsoundtype)> | no | `nil` | Predefined tool call sound type to play during tool execution. If not specified, no tool call sound will be played. |
 | `tool_call_sound_behavior` | Optional<[ToolCallSoundBehavior](#toolcallsoundbehavior)> | no | `nil` | Determines when the tool call sound should play. 'auto' only plays when there's pre-tool speech, 'always' plays for every tool call. |
@@ -8382,7 +9832,8 @@ _(no fields)_
 | `description` | str | **yes** | **required** | Description of when the tool should be used and what it does. |
 | `response_timeout_secs` | Optional<int> | no | `nil` | The maximum time in seconds to wait for the tool call to complete. Must be between 5 and 120 seconds (inclusive). |
 | `disable_interruptions` | Optional<bool> | no | `nil` | If true, the user will not be able to interrupt the agent while this tool is running. |
-| `force_pre_tool_speech` | Optional<bool> | no | `nil` | If true, the agent will speak before the tool call. |
+| `force_pre_tool_speech` | Optional<bool> | no | `nil` | DEPRECATED: use `pre_tool_speech` instead. If true, the agent will speak before the tool call. |
+| `pre_tool_speech` | Optional<[PreToolSpeechMode](#pretoolspeechmode)> | no | `nil` | Controls whether the agent speaks before this tool is called. 'auto' (default) decides based on recent tool latency, 'force' always asks the agent to speak, 'off' fully opts out regardless of latency. |
 | `assignments` | Optional<Array<[DynamicVariableAssignment](#dynamicvariableassignment)>> | no | `nil` | Configuration for extracting values from tool responses and assigning them to dynamic variables |
 | `tool_call_sound` | Optional<[ToolCallSoundType](#toolcallsoundtype)> | no | `nil` | Predefined tool call sound type to play during tool execution. If not specified, no tool call sound will be played. |
 | `tool_call_sound_behavior` | Optional<[ToolCallSoundBehavior](#toolcallsoundbehavior)> | no | `nil` | Determines when the tool call sound should play. 'auto' only plays when there's pre-tool speech, 'always' plays for every tool call. |
@@ -8625,6 +10076,7 @@ _(no fields)_
 | `supports_text_only` | Optional<bool> | no | `nil` | Whether the agent can be switched to text-only mode |
 | `first_message` | Optional<str> | no | `nil` |  |
 | `use_rtc` | Optional<bool> | no | `nil` | Whether to use WebRTC for conversation connections |
+| `file_input_config` | Optional<[FileInputConfig](#fileinputconfig)> | no | `nil` | Configuration for file upload in the widget |
 
 ### WidgetEndFeedbackConfig
 
@@ -8821,6 +10273,7 @@ _(no fields)_
 | `position` | Optional<[PositionInput](#positioninput)> | no | `nil` | Position of the node in the workflow. |
 | `edge_order` | Optional<Array<str>> | no | `nil` | The ids of outgoing edges in the order they should be evaluated. |
 | `label` | str | **yes** | **required** | Human-readable label for the node used throughout the UI. |
+| `entry_behavior` | Optional<[EntryBehavior](#entrybehavior)> | no | `nil` | Dictates whether this node should immediately generate a response upon entry or wait for the user input. When set to "auto", the behavior will be decided based on the type of the preceding node: "wait_for_user" after the "say" and "start" nodes and "generate_immediately" otherwise. |
 
 ### WorkflowOverrideAgentNodeModelOutput
 
@@ -8833,6 +10286,7 @@ _(no fields)_
 | `position` | [PositionOutput](#positionoutput) | **yes** | **required** | Position of the node in the workflow. |
 | `edge_order` | Array<str> | **yes** | **required** | The ids of outgoing edges in the order they should be evaluated. |
 | `label` | str | **yes** | **required** | Human-readable label for the node used throughout the UI. |
+| `entry_behavior` | [EntryBehavior](#entrybehavior) | **yes** | **required** | Dictates whether this node should immediately generate a response upon entry or wait for the user input. When set to "auto", the behavior will be decided based on the type of the preceding node: "wait_for_user" after the "say" and "start" nodes and "generate_immediately" otherwise. |
 
 ### WorkflowPhoneNumberNodeModelInput
 
@@ -8876,10 +10330,12 @@ _(no fields)_
 | --- | --- | --- | --- | --- |
 | `position` | Optional<[PositionInput](#positioninput)> | no | `nil` | Position of the node in the workflow. |
 | `edge_order` | Optional<Array<str>> | no | `nil` | The ids of outgoing edges in the order they should be evaluated. |
-| `agent_id` | str | **yes** | **required** | The ID of the agent to transfer the conversation to. |
+| `agent_id` | Optional<str> | no | `nil` | The ID of the agent to transfer the conversation to. None means transfer within the current agent. |
+| `node_id` | Optional<str> | no | `nil` | Optional target node ID in the destination agent's workflow. When set, the transfer starts at this node instead of the default entry node. |
 | `delay_ms` | Optional<int> | no | `nil` | Artificial delay in milliseconds applied before transferring the conversation. |
 | `transfer_message` | Optional<str> | no | `nil` | Optional message sent to the user before the transfer is initiated. |
 | `enable_transferred_agent_first_message` | Optional<bool> | no | `nil` | Whether to enable the transferred agent to send its configured first message after the transfer. |
+| `preserve_client_tts_overrides` | Optional<bool> | no | `nil` | Defines whether TTS client overrides should be carried over to the transferred agent. |
 
 ### WorkflowStandaloneAgentNodeModelOutput
 
@@ -8887,10 +10343,12 @@ _(no fields)_
 | --- | --- | --- | --- | --- |
 | `position` | [PositionOutput](#positionoutput) | **yes** | **required** | Position of the node in the workflow. |
 | `edge_order` | Array<str> | **yes** | **required** | The ids of outgoing edges in the order they should be evaluated. |
-| `agent_id` | str | **yes** | **required** | The ID of the agent to transfer the conversation to. |
+| `agent_id` | Optional<str> | no | `nil` | The ID of the agent to transfer the conversation to. None means transfer within the current agent. |
+| `node_id` | Optional<str> | no | `nil` | Optional target node ID in the destination agent's workflow. When set, the transfer starts at this node instead of the default entry node. |
 | `delay_ms` | int | **yes** | **required** | Artificial delay in milliseconds applied before transferring the conversation. |
 | `transfer_message` | Optional<str> | no | `nil` | Optional message sent to the user before the transfer is initiated. |
 | `enable_transferred_agent_first_message` | bool | **yes** | **required** | Whether to enable the transferred agent to send its configured first message after the transfer. |
+| `preserve_client_tts_overrides` | bool | **yes** | **required** | Defines whether TTS client overrides should be carried over to the transferred agent. |
 
 ### WorkflowStartNodeModelInput
 
@@ -9013,9 +10471,42 @@ _(no fields)_
 | `created_at_unix` | Optional<int> | no | `nil` |  |
 | `is_disabled` | Optional<bool> | no | `nil` |  |
 | `permissions` | Optional<Array<[PermissionType](#permissiontype)>> | no | `nil` |  |
-| `character_limit` | Optional<int> | no | `nil` |  |
-| `character_count` | Optional<int> | no | `nil` |  |
+| `character_limit` | Optional<int> | no | `nil` | Maximum number of credits allowed in the current billing period. |
+| `character_count` | Optional<int> | no | `nil` | Credits already used in the current billing period. |
 | `hashed_xi_api_key` | str | **yes** | **required** |  |
+| `allowed_ips` | Optional<Array<str>> | no | `nil` |  |
+
+### WorkspaceAuditLogEntryResponse
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `metadata` | Optional<Hash<str, Any>> | no | `nil` | Event metadata |
+| `time` | Optional<int> | no | `nil` | Event time in milliseconds since epoch |
+| `activity_id` | WorkspaceAuditLogEntryResponseActivityId | **yes** | **required** | Activity ID |
+| `activity_name` | str | **yes** | **required** | Activity name |
+| `category_name` | Optional<str> | no | `nil` | Event category |
+| `category_uid` | Optional<int> | no | `nil` | Category UID for IAM |
+| `class_name` | Optional<str> | no | `nil` | Event class name |
+| `class_uid` | Optional<int> | no | `nil` | Event class UID |
+| `severity_id` | Optional<SeverityId> | no | `nil` | Severity level |
+| `status_id` | StatusId | **yes** | **required** | Status of the action |
+| `actor` | [ActorModel](#actormodel) | **yes** | **required** | Actor performing the action |
+| `device` | Optional<[DeviceModel](#devicemodel)> | no | `nil` | Device information |
+| `http_request` | Optional<[HttpRequestModel](#httprequestmodel)> | no | `nil` | HTTP request details |
+| `message` | str | **yes** | **required** | Human-readable event description |
+| `unmapped` | Optional<Hash<str, Any>> | no | `nil` | Attributes not mapped to OCSF |
+| `id` | str | **yes** | **required** | Firestore document ID |
+| `time_dt` | Optional<str> | no | `nil` | Event time in human-readable RFC 3339 format, derived from 'time'. |
+| `type_uid` | Optional<int> | no | `nil` | OCSF type_uid is class_uid * 100 + activity_id. |
+| `type_name` | Optional<str> | no | `nil` | OCSF type_name combines class_name and activity_name. |
+
+### WorkspaceAuditLogsPageResponse
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `entries` | Array<[WorkspaceAuditLogEntryResponse](#workspaceauditlogentryresponse)> | **yes** | **required** |  |
+| `has_more` | bool | **yes** | **required** |  |
+| `next_cursor` | Optional<str> | no | `nil` |  |
 
 ### WorkspaceBatchCallsResponse
 
@@ -9059,6 +10550,7 @@ _(no fields)_
 | `group_pvc_limit` | Optional<WorkspaceGroupResponseModelGroupPvcLimit> | no | `nil` |  |
 | `character_count` | Optional<int> | no | `nil` |  |
 | `scim_external_id` | Optional<str> | no | `nil` |  |
+| `is_scim_synced` | Optional<bool> | no | `nil` |  |
 
 ### WorkspaceServiceAccountListResponseModel
 
@@ -9131,6 +10623,7 @@ Variant of [AgentWorkflowRequestModelNodesValue](#agentworkflowrequestmodelnodes
 | `position` | Optional<[PositionInput](#positioninput)> | no | `nil` |  |
 | `edge_order` | Optional<Array<str>> | no | `nil` |  |
 | `label` | str | **yes** | **required** |  |
+| `entry_behavior` | Optional<[EntryBehavior](#entrybehavior)> | no | `nil` |  |
 
 ### AgentWorkflowRequestModelNodesValue_PhoneNumber
 
@@ -9155,10 +10648,12 @@ Variant of [AgentWorkflowRequestModelNodesValue](#agentworkflowrequestmodelnodes
 | `type` | Literal<'standalone_agent'> | no | `'standalone_agent'` |  |
 | `position` | Optional<[PositionInput](#positioninput)> | no | `nil` |  |
 | `edge_order` | Optional<Array<str>> | no | `nil` |  |
-| `agent_id` | str | **yes** | **required** |  |
+| `agent_id` | Optional<str> | no | `nil` |  |
+| `node_id` | Optional<str> | no | `nil` |  |
 | `delay_ms` | Optional<int> | no | `nil` |  |
 | `transfer_message` | Optional<str> | no | `nil` |  |
 | `enable_transferred_agent_first_message` | Optional<bool> | no | `nil` |  |
+| `preserve_client_tts_overrides` | Optional<bool> | no | `nil` |  |
 
 ### AgentWorkflowRequestModelNodesValue_Start
 
@@ -9205,6 +10700,7 @@ Variant of [AgentWorkflowResponseModelNodesValue](#agentworkflowresponsemodelnod
 | `position` | [PositionOutput](#positionoutput) | **yes** | **required** |  |
 | `edge_order` | Array<str> | **yes** | **required** |  |
 | `label` | str | **yes** | **required** |  |
+| `entry_behavior` | [EntryBehavior](#entrybehavior) | **yes** | **required** |  |
 
 ### AgentWorkflowResponseModelNodesValue_PhoneNumber
 
@@ -9229,10 +10725,12 @@ Variant of [AgentWorkflowResponseModelNodesValue](#agentworkflowresponsemodelnod
 | `type` | Literal<'standalone_agent'> | no | `'standalone_agent'` |  |
 | `position` | [PositionOutput](#positionoutput) | **yes** | **required** |  |
 | `edge_order` | Array<str> | **yes** | **required** |  |
-| `agent_id` | str | **yes** | **required** |  |
+| `agent_id` | Optional<str> | no | `nil` |  |
+| `node_id` | Optional<str> | no | `nil` |  |
 | `delay_ms` | int | **yes** | **required** |  |
 | `transfer_message` | Optional<str> | no | `nil` |  |
 | `enable_transferred_agent_first_message` | bool | **yes** | **required** |  |
+| `preserve_client_tts_overrides` | bool | **yes** | **required** |  |
 
 ### AgentWorkflowResponseModelNodesValue_Start
 
@@ -9281,6 +10779,14 @@ Variant of [ApiIntegrationWebhookOverridesSchemaOverridesValue](#apiintegrationw
 | --- | --- | --- | --- | --- |
 | `source` | Literal<'llm'> | no | `'llm'` |  |
 | `prompt` | Optional<str> | no | `nil` |  |
+
+### ApiIntegrationWebhookOverridesSchemaOverridesValue_Omit
+
+Variant of [ApiIntegrationWebhookOverridesSchemaOverridesValue](#apiintegrationwebhookoverridesschemaoverridesvalue) with `type: 'None'`.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `source` | Literal<'omit'> | no | `'omit'` |  |
 
 ### AstNodeInput_AddOperator
 
@@ -9704,8 +11210,9 @@ Variant of [ChapterContentBlockResponseModelNodesItem](#chaptercontentblockrespo
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `type` | Literal<'tts_node'> | no | `'tts_node'` |  |
-| `voice_id` | str | **yes** | **required** |  |
+| `project_voice_ref_id` | str | **yes** | **required** |  |
 | `text` | str | **yes** | **required** |  |
+| `voice_id` | Optional<str> | no | `nil` |  |
 
 ### ContentGuardrailInputTriggerAction_EndCall
 
@@ -9806,6 +11313,20 @@ Variant of [ConvAiStoredSecretDependenciesToolsItem](#convaistoredsecretdependen
 | `type` | Literal<'unknown'> | no | `'unknown'` |  |
 | `id` | str | **yes** | **required** |  |
 
+### ConversationHistoryMetadataCommonModelPhoneCall_Exotel
+
+Variant of [ConversationHistoryMetadataCommonModelPhoneCall](#conversationhistorymetadatacommonmodelphonecall) with `type: 'exotel'`.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `type` | Literal<'exotel'> | no | `'exotel'` |  |
+| `direction` | [TelephonyDirection](#telephonydirection) | **yes** | **required** |  |
+| `phone_number_id` | str | **yes** | **required** |  |
+| `agent_number` | str | **yes** | **required** |  |
+| `external_number` | str | **yes** | **required** |  |
+| `stream_sid` | str | **yes** | **required** |  |
+| `call_sid` | str | **yes** | **required** |  |
+
 ### ConversationHistoryMetadataCommonModelPhoneCall_SipTrunking
 
 Variant of [ConversationHistoryMetadataCommonModelPhoneCall](#conversationhistorymetadatacommonmodelphonecall) with `type: 'sip_trunking'`.
@@ -9817,6 +11338,7 @@ Variant of [ConversationHistoryMetadataCommonModelPhoneCall](#conversationhistor
 | `phone_number_id` | str | **yes** | **required** |  |
 | `agent_number` | str | **yes** | **required** |  |
 | `external_number` | str | **yes** | **required** |  |
+| `call_id` | Optional<str> | no | `nil` |  |
 | `call_sid` | str | **yes** | **required** |  |
 | `sip_header_dynamic_variables` | Optional<Hash<str, str>> | no | `nil` |  |
 
@@ -9843,6 +11365,17 @@ Variant of [ConversationHistoryTranscriptSystemToolResultCommonModelInputResult]
 | `result_type` | Literal<'end_call_success'> | no | `'end_call_success'` |  |
 | `status` | Optional<Literal<'success'>> | no | `nil` |  |
 | `reason` | Optional<str> | no | `nil` |  |
+| `message` | Optional<str> | no | `nil` |  |
+
+### ConversationHistoryTranscriptSystemToolResultCommonModelInputResult_KnowledgeBaseRagSuccess
+
+Variant of [ConversationHistoryTranscriptSystemToolResultCommonModelInputResult](#conversationhistorytranscriptsystemtoolresultcommonmodelinputresult) with `type: 'None'`.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `result_type` | Literal<'knowledge_base_rag_success'> | no | `'knowledge_base_rag_success'` |  |
+| `status` | Optional<[KnowledgeBaseRagToolStatus](#knowledgebaseragtoolstatus)> | no | `nil` |  |
+| `chunk_count` | Optional<int> | no | `nil` |  |
 | `message` | Optional<str> | no | `nil` |  |
 
 ### ConversationHistoryTranscriptSystemToolResultCommonModelInputResult_LanguageDetectionSuccess
@@ -9919,11 +11452,13 @@ Variant of [ConversationHistoryTranscriptSystemToolResultCommonModelInputResult]
 | `status` | Optional<Literal<'success'>> | no | `nil` |  |
 | `from_agent` | str | **yes** | **required** |  |
 | `to_agent` | str | **yes** | **required** |  |
+| `to_node` | Optional<str> | no | `nil` |  |
 | `condition` | str | **yes** | **required** |  |
 | `delay_ms` | Optional<int> | no | `nil` |  |
 | `transfer_message` | Optional<str> | no | `nil` |  |
 | `enable_transferred_agent_first_message` | Optional<bool> | no | `nil` |  |
 | `branch_info` | Optional<[TransferToAgentToolResultSuccessModelBranchInfo](#transfertoagenttoolresultsuccessmodelbranchinfo)> | no | `nil` |  |
+| `preserve_client_tts_overrides` | Optional<bool> | no | `nil` |  |
 
 ### ConversationHistoryTranscriptSystemToolResultCommonModelInputResult_TransferToNumberError
 
@@ -9935,6 +11470,19 @@ Variant of [ConversationHistoryTranscriptSystemToolResultCommonModelInputResult]
 | `status` | Optional<Literal<'error'>> | no | `nil` |  |
 | `error` | str | **yes** | **required** |  |
 | `details` | Optional<str> | no | `nil` |  |
+
+### ConversationHistoryTranscriptSystemToolResultCommonModelInputResult_TransferToNumberExotelSuccess
+
+Variant of [ConversationHistoryTranscriptSystemToolResultCommonModelInputResult](#conversationhistorytranscriptsystemtoolresultcommonmodelinputresult) with `type: 'None'`.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `result_type` | Literal<'transfer_to_number_exotel_success'> | no | `'transfer_to_number_exotel_success'` |  |
+| `status` | Optional<Literal<'success'>> | no | `nil` |  |
+| `transfer_number` | str | **yes** | **required** |  |
+| `reason` | Optional<str> | no | `nil` |  |
+| `agent_message` | Optional<str> | no | `nil` |  |
+| `note` | Optional<str> | no | `nil` |  |
 
 ### ConversationHistoryTranscriptSystemToolResultCommonModelInputResult_TransferToNumberSipSuccess
 
@@ -9984,6 +11532,17 @@ Variant of [ConversationHistoryTranscriptSystemToolResultCommonModelOutputResult
 | `result_type` | Literal<'end_call_success'> | no | `'end_call_success'` |  |
 | `status` | Optional<Literal<'success'>> | no | `nil` |  |
 | `reason` | Optional<str> | no | `nil` |  |
+| `message` | Optional<str> | no | `nil` |  |
+
+### ConversationHistoryTranscriptSystemToolResultCommonModelOutputResult_KnowledgeBaseRagSuccess
+
+Variant of [ConversationHistoryTranscriptSystemToolResultCommonModelOutputResult](#conversationhistorytranscriptsystemtoolresultcommonmodeloutputresult) with `type: 'None'`.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `result_type` | Literal<'knowledge_base_rag_success'> | no | `'knowledge_base_rag_success'` |  |
+| `status` | Optional<[KnowledgeBaseRagToolStatus](#knowledgebaseragtoolstatus)> | no | `nil` |  |
+| `chunk_count` | Optional<int> | no | `nil` |  |
 | `message` | Optional<str> | no | `nil` |  |
 
 ### ConversationHistoryTranscriptSystemToolResultCommonModelOutputResult_LanguageDetectionSuccess
@@ -10060,11 +11619,13 @@ Variant of [ConversationHistoryTranscriptSystemToolResultCommonModelOutputResult
 | `status` | Optional<Literal<'success'>> | no | `nil` |  |
 | `from_agent` | str | **yes** | **required** |  |
 | `to_agent` | str | **yes** | **required** |  |
+| `to_node` | Optional<str> | no | `nil` |  |
 | `condition` | str | **yes** | **required** |  |
 | `delay_ms` | Optional<int> | no | `nil` |  |
 | `transfer_message` | Optional<str> | no | `nil` |  |
 | `enable_transferred_agent_first_message` | Optional<bool> | no | `nil` |  |
 | `branch_info` | Optional<[TransferToAgentToolResultSuccessModelBranchInfo](#transfertoagenttoolresultsuccessmodelbranchinfo)> | no | `nil` |  |
+| `preserve_client_tts_overrides` | Optional<bool> | no | `nil` |  |
 
 ### ConversationHistoryTranscriptSystemToolResultCommonModelOutputResult_TransferToNumberError
 
@@ -10076,6 +11637,19 @@ Variant of [ConversationHistoryTranscriptSystemToolResultCommonModelOutputResult
 | `status` | Optional<Literal<'error'>> | no | `nil` |  |
 | `error` | str | **yes** | **required** |  |
 | `details` | Optional<str> | no | `nil` |  |
+
+### ConversationHistoryTranscriptSystemToolResultCommonModelOutputResult_TransferToNumberExotelSuccess
+
+Variant of [ConversationHistoryTranscriptSystemToolResultCommonModelOutputResult](#conversationhistorytranscriptsystemtoolresultcommonmodeloutputresult) with `type: 'None'`.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `result_type` | Literal<'transfer_to_number_exotel_success'> | no | `'transfer_to_number_exotel_success'` |  |
+| `status` | Optional<Literal<'success'>> | no | `nil` |  |
+| `transfer_number` | str | **yes** | **required** |  |
+| `reason` | Optional<str> | no | `nil` |  |
+| `agent_message` | Optional<str> | no | `nil` |  |
+| `note` | Optional<str> | no | `nil` |  |
 
 ### ConversationHistoryTranscriptSystemToolResultCommonModelOutputResult_TransferToNumberSipSuccess
 
@@ -10315,6 +11889,20 @@ Variant of [ExportOptions](#exportoptions) with `type: 'None'`.
 | `max_segment_duration_s` | Optional<float> | no | `nil` |  |
 | `max_segment_chars` | Optional<int> | no | `nil` |  |
 
+### GetAgentResponseModelPhoneNumbersItem_Exotel
+
+Variant of [GetAgentResponseModelPhoneNumbersItem](#getagentresponsemodelphonenumbersitem) with `type: 'None'`.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `provider` | Literal<'exotel'> | no | `'exotel'` |  |
+| `phone_number` | str | **yes** | **required** |  |
+| `label` | str | **yes** | **required** |  |
+| `supports_inbound` | Optional<bool> | no | `nil` |  |
+| `supports_outbound` | Optional<bool> | no | `nil` |  |
+| `phone_number_id` | str | **yes** | **required** |  |
+| `assigned_agent` | Optional<[PhoneNumberAgentInfo](#phonenumberagentinfo)> | no | `nil` |  |
+
 ### GetAgentResponseModelPhoneNumbersItem_SipTrunk
 
 Variant of [GetAgentResponseModelPhoneNumbersItem](#getagentresponsemodelphonenumbersitem) with `type: 'None'`.
@@ -10332,6 +11920,7 @@ Variant of [GetAgentResponseModelPhoneNumbersItem](#getagentresponsemodelphonenu
 | `outbound_trunk` | Optional<[GetPhoneNumberOutboundSipTrunkConfigResponseModel](#getphonenumberoutboundsiptrunkconfigresponsemodel)> | no | `nil` |  |
 | `inbound_trunk` | Optional<[GetPhoneNumberInboundSipTrunkConfigResponseModel](#getphonenumberinboundsiptrunkconfigresponsemodel)> | no | `nil` |  |
 | `livekit_stack` | [LivekitStackType](#livekitstacktype) | **yes** | **required** |  |
+| `store_sip_messages` | Optional<bool> | no | `nil` |  |
 
 ### GetAgentResponseModelPhoneNumbersItem_Twilio
 
@@ -10414,6 +12003,8 @@ Variant of [GetKnowledgeBaseListResponseModelDocumentsItem](#getknowledgebaselis
 | `folder_parent_id` | Optional<str> | no | `nil` |  |
 | `folder_path` | Optional<Array<[KnowledgeBaseFolderPathSegmentSummaryResponseModel](#knowledgebasefolderpathsegmentsummaryresponsemodel)>> | no | `nil` |  |
 | `dependent_agents` | Array<[GetKnowledgeBaseSummaryFileResponseModelDependentAgentsItem](#getknowledgebasesummaryfileresponsemodeldependentagentsitem)> | **yes** | **required** |  |
+| `external_sync_info` | Optional<[ExternalFileSyncInfo](#externalfilesyncinfo)> | no | `nil` |  |
+| `is_frozen` | Optional<bool> | no | `nil` |  |
 
 ### GetKnowledgeBaseListResponseModelDocumentsItem_Folder
 
@@ -10432,6 +12023,8 @@ Variant of [GetKnowledgeBaseListResponseModelDocumentsItem](#getknowledgebaselis
 | `dependent_agents` | Array<[GetKnowledgeBaseSummaryFolderResponseModelDependentAgentsItem](#getknowledgebasesummaryfolderresponsemodeldependentagentsitem)> | **yes** | **required** |  |
 | `children_count` | int | **yes** | **required** |  |
 | `auto_sync_info` | Optional<[AutoSyncInfo](#autosyncinfo)> | no | `nil` |  |
+| `external_sync_info` | Optional<[ExternalFolderSyncInfo](#externalfoldersyncinfo)> | no | `nil` |  |
+| `is_frozen` | Optional<bool> | no | `nil` |  |
 
 ### GetKnowledgeBaseListResponseModelDocumentsItem_Text
 
@@ -10666,6 +12259,8 @@ Variant of [KnowledgeBaseContentSearchResultDocument](#knowledgebasecontentsearc
 | `folder_parent_id` | Optional<str> | no | `nil` |  |
 | `folder_path` | Optional<Array<[KnowledgeBaseFolderPathSegmentSummaryResponseModel](#knowledgebasefolderpathsegmentsummaryresponsemodel)>> | no | `nil` |  |
 | `dependent_agents` | Array<[GetKnowledgeBaseSummaryFileResponseModelDependentAgentsItem](#getknowledgebasesummaryfileresponsemodeldependentagentsitem)> | **yes** | **required** |  |
+| `external_sync_info` | Optional<[ExternalFileSyncInfo](#externalfilesyncinfo)> | no | `nil` |  |
+| `is_frozen` | Optional<bool> | no | `nil` |  |
 
 ### KnowledgeBaseContentSearchResultDocument_Folder
 
@@ -10684,6 +12279,8 @@ Variant of [KnowledgeBaseContentSearchResultDocument](#knowledgebasecontentsearc
 | `dependent_agents` | Array<[GetKnowledgeBaseSummaryFolderResponseModelDependentAgentsItem](#getknowledgebasesummaryfolderresponsemodeldependentagentsitem)> | **yes** | **required** |  |
 | `children_count` | int | **yes** | **required** |  |
 | `auto_sync_info` | Optional<[AutoSyncInfo](#autosyncinfo)> | no | `nil` |  |
+| `external_sync_info` | Optional<[ExternalFolderSyncInfo](#externalfoldersyncinfo)> | no | `nil` |  |
+| `is_frozen` | Optional<bool> | no | `nil` |  |
 
 ### KnowledgeBaseContentSearchResultDocument_Text
 
@@ -10734,6 +12331,8 @@ Variant of [KnowledgeBaseSummaryBatchSuccessfulResponseModelData](#knowledgebase
 | `folder_parent_id` | Optional<str> | no | `nil` |  |
 | `folder_path` | Optional<Array<[KnowledgeBaseFolderPathSegmentSummaryResponseModel](#knowledgebasefolderpathsegmentsummaryresponsemodel)>> | no | `nil` |  |
 | `dependent_agents` | Array<[GetKnowledgeBaseSummaryFileResponseModelDependentAgentsItem](#getknowledgebasesummaryfileresponsemodeldependentagentsitem)> | **yes** | **required** |  |
+| `external_sync_info` | Optional<[ExternalFileSyncInfo](#externalfilesyncinfo)> | no | `nil` |  |
+| `is_frozen` | Optional<bool> | no | `nil` |  |
 
 ### KnowledgeBaseSummaryBatchSuccessfulResponseModelData_Folder
 
@@ -10752,6 +12351,8 @@ Variant of [KnowledgeBaseSummaryBatchSuccessfulResponseModelData](#knowledgebase
 | `dependent_agents` | Array<[GetKnowledgeBaseSummaryFolderResponseModelDependentAgentsItem](#getknowledgebasesummaryfolderresponsemodeldependentagentsitem)> | **yes** | **required** |  |
 | `children_count` | int | **yes** | **required** |  |
 | `auto_sync_info` | Optional<[AutoSyncInfo](#autosyncinfo)> | no | `nil` |  |
+| `external_sync_info` | Optional<[ExternalFolderSyncInfo](#externalfoldersyncinfo)> | no | `nil` |  |
+| `is_frozen` | Optional<bool> | no | `nil` |  |
 
 ### KnowledgeBaseSummaryBatchSuccessfulResponseModelData_Text
 
@@ -10787,6 +12388,24 @@ Variant of [KnowledgeBaseSummaryBatchSuccessfulResponseModelData](#knowledgebase
 | `url` | str | **yes** | **required** |  |
 | `auto_sync_info` | Optional<[AutoSyncInfo](#autosyncinfo)> | no | `nil` |  |
 
+### LanguagesResponse_Pair
+
+Variant of [LanguagesResponse](#languagesresponse) with `type: 'None'`.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `kind` | Literal<'pair'> | no | `'pair'` |  |
+| `language_pairs` | Array<[LanguagePairInfo](#languagepairinfo)> | **yes** | **required** |  |
+
+### LanguagesResponse_Single
+
+Variant of [LanguagesResponse](#languagesresponse) with `type: 'None'`.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `kind` | Literal<'single'> | no | `'single'` |  |
+| `languages` | Array<[LanguageInfo](#languageinfo)> | **yes** | **required** |  |
+
 ### ListAuthConnectionsResponseAuthConnectionsItem_ApiIntegrationOauth2AuthCode
 
 Variant of [ListAuthConnectionsResponseAuthConnectionsItem](#listauthconnectionsresponseauthconnectionsitem) with `type: 'None'`.
@@ -10805,6 +12424,28 @@ Variant of [ListAuthConnectionsResponseAuthConnectionsItem](#listauthconnections
 | `status` | Optional<[OAuthConnectionStatus](#oauthconnectionstatus)> | no | `nil` |  |
 | `status_detail` | Optional<str> | no | `nil` |  |
 | `status_updated_at` | Optional<str> | no | `nil` |  |
+| `id` | str | **yes** | **required** |  |
+| `used_by` | Optional<[AuthConnectionDependencies](#authconnectiondependencies)> | no | `nil` |  |
+
+### ListAuthConnectionsResponseAuthConnectionsItem_ApiIntegrationOauth2CustomApp
+
+Variant of [ListAuthConnectionsResponseAuthConnectionsItem](#listauthconnectionsresponseauthconnectionsitem) with `type: 'None'`.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `auth_type` | Literal<'api_integration_oauth2_custom_app'> | no | `'api_integration_oauth2_custom_app'` |  |
+| `name` | str | **yes** | **required** |  |
+| `provider` | str | **yes** | **required** |  |
+| `token_url` | str | **yes** | **required** |  |
+| `scopes` | Optional<Array<str>> | no | `nil` |  |
+| `scope_separator` | Optional<[ApiIntegrationOAuth2CustomAppResponseScopeSeparator](#apiintegrationoauth2customappresponsescopeseparator)> | no | `nil` |  |
+| `expires_at` | str | **yes** | **required** |  |
+| `integration_id` | str | **yes** | **required** |  |
+| `credential_id` | str | **yes** | **required** |  |
+| `status` | Optional<[OAuthConnectionStatus](#oauthconnectionstatus)> | no | `nil` |  |
+| `status_detail` | Optional<str> | no | `nil` |  |
+| `status_updated_at` | Optional<str> | no | `nil` |  |
+| `client_id` | str | **yes** | **required** |  |
 | `id` | str | **yes** | **required** |  |
 | `used_by` | Optional<[AuthConnectionDependencies](#authconnectiondependencies)> | no | `nil` |  |
 
@@ -10874,6 +12515,7 @@ Variant of [ListAuthConnectionsResponseAuthConnectionsItem](#listauthconnections
 | `basic_auth_in_header` | Optional<bool> | no | `nil` |  |
 | `id` | str | **yes** | **required** |  |
 | `used_by` | Optional<[AuthConnectionDependencies](#authconnectiondependencies)> | no | `nil` |  |
+| `custom_headers` | Optional<Hash<str, str>> | no | `nil` |  |
 
 ### ListAuthConnectionsResponseAuthConnectionsItem_Oauth2Jwt
 
@@ -10893,6 +12535,7 @@ Variant of [ListAuthConnectionsResponseAuthConnectionsItem](#listauthconnections
 | `extra_params` | Optional<Hash<str, str>> | no | `nil` |  |
 | `token_url` | str | **yes** | **required** |  |
 | `scopes` | Optional<Array<str>> | no | `nil` |  |
+| `token_response_field` | Optional<[OAuth2JwtResponseTokenResponseField](#oauth2jwtresponsetokenresponsefield)> | no | `nil` |  |
 | `id` | str | **yes** | **required** |  |
 | `used_by` | Optional<[AuthConnectionDependencies](#authconnectiondependencies)> | no | `nil` |  |
 
@@ -10912,6 +12555,30 @@ Variant of [ListAuthConnectionsResponseAuthConnectionsItem](#listauthconnections
 | `subject` | str | **yes** | **required** |  |
 | `expiration_seconds` | Optional<int> | no | `nil` |  |
 | `extra_params` | Optional<Hash<str, str>> | no | `nil` |  |
+| `id` | str | **yes** | **required** |  |
+| `used_by` | Optional<[AuthConnectionDependencies](#authconnectiondependencies)> | no | `nil` |  |
+
+### ListAuthConnectionsResponseAuthConnectionsItem_SlackBotAuth
+
+Variant of [ListAuthConnectionsResponseAuthConnectionsItem](#listauthconnectionsresponseauthconnectionsitem) with `type: 'None'`.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `auth_type` | Literal<'slack_bot_auth'> | no | `'slack_bot_auth'` |  |
+| `name` | str | **yes** | **required** |  |
+| `provider` | Optional<Literal<'Slack'>> | no | `nil` |  |
+| `id` | str | **yes** | **required** |  |
+| `used_by` | Optional<[AuthConnectionDependencies](#authconnectiondependencies)> | no | `nil` |  |
+
+### ListAuthConnectionsResponseAuthConnectionsItem_UrlSecret
+
+Variant of [ListAuthConnectionsResponseAuthConnectionsItem](#listauthconnectionsresponseauthconnectionsitem) with `type: 'None'`.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `auth_type` | Literal<'url_secret'> | no | `'url_secret'` |  |
+| `name` | str | **yes** | **required** |  |
+| `provider` | str | **yes** | **required** |  |
 | `id` | str | **yes** | **required** |  |
 | `used_by` | Optional<[AuthConnectionDependencies](#authconnectiondependencies)> | no | `nil` |  |
 
@@ -10978,6 +12645,14 @@ Variant of [McpToolConfigOverrideInputInputOverridesValue](#mcptoolconfigoverrid
 | `source` | Literal<'llm'> | no | `'llm'` |  |
 | `prompt` | Optional<str> | no | `nil` |  |
 
+### McpToolConfigOverrideInputInputOverridesValue_Omit
+
+Variant of [McpToolConfigOverrideInputInputOverridesValue](#mcptoolconfigoverrideinputinputoverridesvalue) with `type: 'None'`.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `source` | Literal<'omit'> | no | `'omit'` |  |
+
 ### McpToolConfigOverrideOutputInputOverridesValue_Constant
 
 Variant of [McpToolConfigOverrideOutputInputOverridesValue](#mcptoolconfigoverrideoutputinputoverridesvalue) with `type: 'None'`.
@@ -11004,6 +12679,96 @@ Variant of [McpToolConfigOverrideOutputInputOverridesValue](#mcptoolconfigoverri
 | --- | --- | --- | --- | --- |
 | `source` | Literal<'llm'> | no | `'llm'` |  |
 | `prompt` | Optional<str> | no | `nil` |  |
+
+### McpToolConfigOverrideOutputInputOverridesValue_Omit
+
+Variant of [McpToolConfigOverrideOutputInputOverridesValue](#mcptoolconfigoverrideoutputinputoverridesvalue) with `type: 'None'`.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `source` | Literal<'omit'> | no | `'omit'` |  |
+
+### OpenAiSessionConfigToolsItem_Function
+
+Variant of [OpenAiSessionConfigToolsItem](#openaisessionconfigtoolsitem) with `type: 'function'`.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `type` | Literal<'function'> | no | `'function'` |  |
+| `name` | str | **yes** | **required** |  |
+| `description` | Optional<str> | no | `nil` |  |
+| `parameters` | Optional<Hash<str, Any>> | no | `nil` |  |
+
+### OpenAiSessionConfigToolsItem_Mcp
+
+Variant of [OpenAiSessionConfigToolsItem](#openaisessionconfigtoolsitem) with `type: 'mcp'`.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `type` | Literal<'mcp'> | no | `'mcp'` |  |
+| `server_label` | str | **yes** | **required** |  |
+| `server_url` | str | **yes** | **required** |  |
+| `authorization` | Optional<str> | no | `nil` |  |
+| `allowed_tools` | Optional<Array<str>> | no | `nil` |  |
+| `require_approval` | Optional<[OpenAimcpToolRequireApproval](#openaimcptoolrequireapproval)> | no | `nil` |  |
+
+### OrderItemRequestInput_Dub
+
+Variant of [OrderItemRequestInput](#orderitemrequestinput) with `type: 'None'`.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `kind` | Literal<'dub'> | no | `'dub'` |  |
+| `media_id` | MediaId | **yes** | **required** |  |
+| `source_language` | str | **yes** | **required** |  |
+| `destination_languages` | Array<str> | **yes** | **required** |  |
+| `include_captions` | bool | **yes** | **required** |  |
+| `include_source_captions` | bool | **yes** | **required** |  |
+| `instructions` | Optional<str> | no | `nil` |  |
+| `captions_sdh` | Optional<bool> | no | `nil` |  |
+
+### OrderItemRequestInput_Subtitles
+
+Variant of [OrderItemRequestInput](#orderitemrequestinput) with `type: 'None'`.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `kind` | Literal<'subtitles'> | no | `'subtitles'` |  |
+| `media_ids` | Array<MediaId> | **yes** | **required** |  |
+| `source_language` | str | **yes** | **required** |  |
+| `destination_languages` | Array<str> | **yes** | **required** |  |
+| `cue_options` | Optional<[CueOptionsRequest](#cueoptionsrequest)> | no | `nil` |  |
+| `sdh` | Optional<bool> | no | `nil` |  |
+| `instructions` | Optional<str> | no | `nil` |  |
+
+### OrderItemRequestOutput_Dub
+
+Variant of [OrderItemRequestOutput](#orderitemrequestoutput) with `type: 'None'`.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `kind` | Literal<'dub'> | no | `'dub'` |  |
+| `media_id` | MediaId | **yes** | **required** |  |
+| `source_language` | str | **yes** | **required** |  |
+| `destination_languages` | Array<str> | **yes** | **required** |  |
+| `include_captions` | bool | **yes** | **required** |  |
+| `include_source_captions` | bool | **yes** | **required** |  |
+| `instructions` | Optional<str> | no | `nil` |  |
+| `captions_sdh` | Optional<bool> | no | `nil` |  |
+
+### OrderItemRequestOutput_Subtitles
+
+Variant of [OrderItemRequestOutput](#orderitemrequestoutput) with `type: 'None'`.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `kind` | Literal<'subtitles'> | no | `'subtitles'` |  |
+| `media_ids` | Array<MediaId> | **yes** | **required** |  |
+| `source_language` | str | **yes** | **required** |  |
+| `destination_languages` | Array<str> | **yes** | **required** |  |
+| `cue_options` | Optional<[CueOptionsRequest](#cueoptionsrequest)> | no | `nil` |  |
+| `sdh` | Optional<bool> | no | `nil` |  |
+| `instructions` | Optional<str> | no | `nil` |  |
 
 ### PhoneNumberTransferCustomSipHeadersItem_Dynamic
 
@@ -11092,7 +12857,7 @@ Variant of [ProjectExtendedResponseModelAssetsItem](#projectextendedresponsemode
 | `offset_ms` | int | **yes** | **required** |  |
 | `duration_ms` | int | **yes** | **required** |  |
 | `start_time_ms` | int | **yes** | **required** |  |
-| `end_time_ms` | int | **yes** | **required** |  |
+| `end_time_ms` | Optional<int> | no | `nil` |  |
 | `order` | str | **yes** | **required** |  |
 | `track_id` | str | **yes** | **required** |  |
 | `created_at_ms` | int | **yes** | **required** |  |
@@ -11103,14 +12868,16 @@ Variant of [ProjectExtendedResponseModelAssetsItem](#projectextendedresponsemode
 | `fade_out_ms` | Optional<int> | no | `nil` |  |
 | `source_external_audio_id` | Optional<str> | no | `nil` |  |
 | `source_asset_id` | Optional<str> | no | `nil` |  |
-| `pending_block_ids` | Array<str> | **yes** | **required** |  |
-| `pending_external_audio_ids` | Array<str> | **yes** | **required** |  |
+| `source_platform_asset_id` | Optional<str> | no | `nil` |  |
+| `pending_blocks_metadata` | Optional<[PendingBlocksMetadataModel](#pendingblocksmetadatamodel)> | no | `nil` |  |
+| `pending_external_audios_metadata` | Optional<[PendingExternalAudiosMetadataModel](#pendingexternalaudiosmetadatamodel)> | no | `nil` |  |
 | `speech_imported` | Optional<bool> | no | `nil` |  |
 | `pending_task` | Optional<[PendingClipTask](#pendingcliptask)> | no | `nil` |  |
 | `error` | Optional<str> | no | `nil` |  |
 | `current_snapshot_id` | Optional<str> | no | `nil` |  |
 | `source_context` | Optional<[ProjectExternalAudioResponseModelSourceContext](#projectexternalaudioresponsemodelsourcecontext)> | no | `nil` |  |
 | `analysis` | Optional<[AudioAnalysis](#audioanalysis)> | no | `nil` |  |
+| `transcription` | Optional<[AssetTranscription](#assettranscription)> | no | `nil` |  |
 | `import_speech_progress` | Optional<float> | no | `nil` |  |
 
 ### ProjectExtendedResponseModelAssetsItem_Image
@@ -11122,8 +12889,8 @@ Variant of [ProjectExtendedResponseModelAssetsItem](#projectextendedresponsemode
 | `type` | Literal<'image'> | no | `'image'` |  |
 | `image_id` | str | **yes** | **required** |  |
 | `filename` | str | **yes** | **required** |  |
-| `signed_url` | str | **yes** | **required** |  |
-| `thumbnail_signed_url` | str | **yes** | **required** |  |
+| `signed_url` | Optional<str> | no | `nil` |  |
+| `thumbnail_signed_url` | Optional<str> | no | `nil` |  |
 | `source` | Optional<Literal<'upload'>> | no | `nil` |  |
 | `file_size_bytes` | int | **yes** | **required** |  |
 | `width` | int | **yes** | **required** |  |
@@ -11139,6 +12906,10 @@ Variant of [ProjectExtendedResponseModelAssetsItem](#projectextendedresponsemode
 | `updated_at_ms` | int | **yes** | **required** |  |
 | `current_snapshot_id` | Optional<str> | no | `nil` |  |
 | `source_asset_id` | Optional<str> | no | `nil` |  |
+| `source_platform_asset_id` | Optional<str> | no | `nil` |  |
+| `error` | Optional<str> | no | `nil` |  |
+| `pending_task` | Optional<[PendingClipTask](#pendingcliptask)> | no | `nil` |  |
+| `analysis` | Optional<[ImageAnalysis](#imageanalysis)> | no | `nil` |  |
 
 ### ProjectExtendedResponseModelAssetsItem_Video
 
@@ -11168,12 +12939,13 @@ Variant of [ProjectExtendedResponseModelAssetsItem](#projectextendedresponsemode
 | `thumbnail_size` | Array<int> | **yes** | **required** |  |
 | `thumbnail_sheets` | Array<[ProjectVideoThumbnailSheetResponseModel](#projectvideothumbnailsheetresponsemodel)> | **yes** | **required** |  |
 | `start_time_ms` | int | **yes** | **required** |  |
-| `end_time_ms` | int | **yes** | **required** |  |
+| `end_time_ms` | Optional<int> | no | `nil` |  |
 | `asset_preview_signed_url` | Optional<str> | no | `nil` |  |
 | `source_video_id` | Optional<str> | no | `nil` |  |
 | `source_asset_id` | Optional<str> | no | `nil` |  |
-| `pending_block_ids` | Array<str> | **yes** | **required** |  |
-| `pending_external_audio_ids` | Array<str> | **yes** | **required** |  |
+| `source_platform_asset_id` | Optional<str> | no | `nil` |  |
+| `pending_blocks_metadata` | Optional<[PendingBlocksMetadataModel](#pendingblocksmetadatamodel)> | no | `nil` |  |
+| `pending_external_audios_metadata` | Optional<[PendingExternalAudiosMetadataModel](#pendingexternalaudiosmetadatamodel)> | no | `nil` |  |
 | `speech_imported` | Optional<bool> | no | `nil` |  |
 | `pending_task` | Optional<[PendingClipTask](#pendingcliptask)> | no | `nil` |  |
 | `audio_track_ready` | Optional<bool> | no | `nil` |  |
@@ -11181,6 +12953,7 @@ Variant of [ProjectExtendedResponseModelAssetsItem](#projectextendedresponsemode
 | `current_snapshot_id` | Optional<str> | no | `nil` |  |
 | `source_context` | Optional<[GenerationSourceContext](#generationsourcecontext)> | no | `nil` |  |
 | `analysis` | Optional<[VideoAnalysis](#videoanalysis)> | no | `nil` |  |
+| `transcription` | Optional<[AssetTranscription](#assettranscription)> | no | `nil` |  |
 | `canvas_placement` | Optional<[CanvasPlacement](#canvasplacement)> | no | `nil` |  |
 | `animation` | Optional<[ClipAnimation](#clipanimation)> | no | `nil` |  |
 | `playback_speed` | Optional<float> | no | `nil` |  |
@@ -11222,6 +12995,7 @@ Variant of [ProjectExternalAudioResponseModelSourceContext](#projectexternalaudi
 | --- | --- | --- | --- | --- |
 | `source_type` | Literal<'song'> | no | `'song'` |  |
 | `song_id` | str | **yes** | **required** |  |
+| `chat_id` | Optional<str> | no | `nil` |  |
 | `title` | Optional<str> | no | `nil` |  |
 | `description` | Optional<str> | no | `nil` |  |
 | `genres` | Optional<Array<str>> | no | `nil` |  |
@@ -11267,6 +13041,7 @@ Variant of [PromptAgentApiModelInputToolsItem](#promptagentapimodelinputtoolsite
 | `response_timeout_secs` | Optional<int> | no | `nil` |  |
 | `disable_interruptions` | Optional<bool> | no | `nil` |  |
 | `force_pre_tool_speech` | Optional<bool> | no | `nil` |  |
+| `pre_tool_speech` | Optional<[PreToolSpeechMode](#pretoolspeechmode)> | no | `nil` |  |
 | `assignments` | Optional<Array<[DynamicVariableAssignment](#dynamicvariableassignment)>> | no | `nil` |  |
 | `tool_call_sound` | Optional<[ToolCallSoundType](#toolcallsoundtype)> | no | `nil` |  |
 | `tool_call_sound_behavior` | Optional<[ToolCallSoundBehavior](#toolcallsoundbehavior)> | no | `nil` |  |
@@ -11290,6 +13065,7 @@ Variant of [PromptAgentApiModelInputToolsItem](#promptagentapimodelinputtoolsite
 | `response_timeout_secs` | Optional<int> | no | `nil` |  |
 | `disable_interruptions` | Optional<bool> | no | `nil` |  |
 | `force_pre_tool_speech` | Optional<bool> | no | `nil` |  |
+| `pre_tool_speech` | Optional<[PreToolSpeechMode](#pretoolspeechmode)> | no | `nil` |  |
 | `assignments` | Optional<Array<[DynamicVariableAssignment](#dynamicvariableassignment)>> | no | `nil` |  |
 | `tool_call_sound` | Optional<[ToolCallSoundType](#toolcallsoundtype)> | no | `nil` |  |
 | `tool_call_sound_behavior` | Optional<[ToolCallSoundBehavior](#toolcallsoundbehavior)> | no | `nil` |  |
@@ -11329,6 +13105,7 @@ Variant of [PromptAgentApiModelInputToolsItem](#promptagentapimodelinputtoolsite
 | `response_timeout_secs` | Optional<int> | no | `nil` |  |
 | `disable_interruptions` | Optional<bool> | no | `nil` |  |
 | `force_pre_tool_speech` | Optional<bool> | no | `nil` |  |
+| `pre_tool_speech` | Optional<[PreToolSpeechMode](#pretoolspeechmode)> | no | `nil` |  |
 | `assignments` | Optional<Array<[DynamicVariableAssignment](#dynamicvariableassignment)>> | no | `nil` |  |
 | `tool_call_sound` | Optional<[ToolCallSoundType](#toolcallsoundtype)> | no | `nil` |  |
 | `tool_call_sound_behavior` | Optional<[ToolCallSoundBehavior](#toolcallsoundbehavior)> | no | `nil` |  |
@@ -11347,6 +13124,7 @@ Variant of [PromptAgentApiModelInputToolsItem](#promptagentapimodelinputtoolsite
 | `response_timeout_secs` | Optional<int> | no | `nil` |  |
 | `disable_interruptions` | Optional<bool> | no | `nil` |  |
 | `force_pre_tool_speech` | Optional<bool> | no | `nil` |  |
+| `pre_tool_speech` | Optional<[PreToolSpeechMode](#pretoolspeechmode)> | no | `nil` |  |
 | `assignments` | Optional<Array<[DynamicVariableAssignment](#dynamicvariableassignment)>> | no | `nil` |  |
 | `tool_call_sound` | Optional<[ToolCallSoundType](#toolcallsoundtype)> | no | `nil` |  |
 | `tool_call_sound_behavior` | Optional<[ToolCallSoundBehavior](#toolcallsoundbehavior)> | no | `nil` |  |
@@ -11392,6 +13170,7 @@ Variant of [PromptAgentApiModelOutputToolsItem](#promptagentapimodeloutputtoolsi
 | `response_timeout_secs` | int | **yes** | **required** |  |
 | `disable_interruptions` | bool | **yes** | **required** |  |
 | `force_pre_tool_speech` | bool | **yes** | **required** |  |
+| `pre_tool_speech` | [PreToolSpeechMode](#pretoolspeechmode) | **yes** | **required** |  |
 | `assignments` | Array<[DynamicVariableAssignment](#dynamicvariableassignment)> | **yes** | **required** |  |
 | `tool_call_sound` | Optional<[ToolCallSoundType](#toolcallsoundtype)> | no | `nil` |  |
 | `tool_call_sound_behavior` | [ToolCallSoundBehavior](#toolcallsoundbehavior) | **yes** | **required** |  |
@@ -11415,6 +13194,7 @@ Variant of [PromptAgentApiModelOutputToolsItem](#promptagentapimodeloutputtoolsi
 | `response_timeout_secs` | Optional<int> | no | `nil` |  |
 | `disable_interruptions` | Optional<bool> | no | `nil` |  |
 | `force_pre_tool_speech` | Optional<bool> | no | `nil` |  |
+| `pre_tool_speech` | Optional<[PreToolSpeechMode](#pretoolspeechmode)> | no | `nil` |  |
 | `assignments` | Optional<Array<[DynamicVariableAssignment](#dynamicvariableassignment)>> | no | `nil` |  |
 | `tool_call_sound` | Optional<[ToolCallSoundType](#toolcallsoundtype)> | no | `nil` |  |
 | `tool_call_sound_behavior` | Optional<[ToolCallSoundBehavior](#toolcallsoundbehavior)> | no | `nil` |  |
@@ -11454,6 +13234,7 @@ Variant of [PromptAgentApiModelOutputToolsItem](#promptagentapimodeloutputtoolsi
 | `response_timeout_secs` | Optional<int> | no | `nil` |  |
 | `disable_interruptions` | Optional<bool> | no | `nil` |  |
 | `force_pre_tool_speech` | Optional<bool> | no | `nil` |  |
+| `pre_tool_speech` | Optional<[PreToolSpeechMode](#pretoolspeechmode)> | no | `nil` |  |
 | `assignments` | Optional<Array<[DynamicVariableAssignment](#dynamicvariableassignment)>> | no | `nil` |  |
 | `tool_call_sound` | Optional<[ToolCallSoundType](#toolcallsoundtype)> | no | `nil` |  |
 | `tool_call_sound_behavior` | Optional<[ToolCallSoundBehavior](#toolcallsoundbehavior)> | no | `nil` |  |
@@ -11472,6 +13253,7 @@ Variant of [PromptAgentApiModelOutputToolsItem](#promptagentapimodeloutputtoolsi
 | `response_timeout_secs` | Optional<int> | no | `nil` |  |
 | `disable_interruptions` | Optional<bool> | no | `nil` |  |
 | `force_pre_tool_speech` | Optional<bool> | no | `nil` |  |
+| `pre_tool_speech` | Optional<[PreToolSpeechMode](#pretoolspeechmode)> | no | `nil` |  |
 | `assignments` | Optional<Array<[DynamicVariableAssignment](#dynamicvariableassignment)>> | no | `nil` |  |
 | `tool_call_sound` | Optional<[ToolCallSoundType](#toolcallsoundtype)> | no | `nil` |  |
 | `tool_call_sound_behavior` | Optional<[ToolCallSoundBehavior](#toolcallsoundbehavior)> | no | `nil` |  |
@@ -11492,6 +13274,7 @@ Variant of [PromptAgentApiModelWorkflowOverrideInputToolsItem](#promptagentapimo
 | `response_timeout_secs` | Optional<int> | no | `nil` |  |
 | `disable_interruptions` | Optional<bool> | no | `nil` |  |
 | `force_pre_tool_speech` | Optional<bool> | no | `nil` |  |
+| `pre_tool_speech` | Optional<[PreToolSpeechMode](#pretoolspeechmode)> | no | `nil` |  |
 | `assignments` | Optional<Array<[DynamicVariableAssignment](#dynamicvariableassignment)>> | no | `nil` |  |
 | `tool_call_sound` | Optional<[ToolCallSoundType](#toolcallsoundtype)> | no | `nil` |  |
 | `tool_call_sound_behavior` | Optional<[ToolCallSoundBehavior](#toolcallsoundbehavior)> | no | `nil` |  |
@@ -11515,6 +13298,7 @@ Variant of [PromptAgentApiModelWorkflowOverrideInputToolsItem](#promptagentapimo
 | `response_timeout_secs` | Optional<int> | no | `nil` |  |
 | `disable_interruptions` | Optional<bool> | no | `nil` |  |
 | `force_pre_tool_speech` | Optional<bool> | no | `nil` |  |
+| `pre_tool_speech` | Optional<[PreToolSpeechMode](#pretoolspeechmode)> | no | `nil` |  |
 | `assignments` | Optional<Array<[DynamicVariableAssignment](#dynamicvariableassignment)>> | no | `nil` |  |
 | `tool_call_sound` | Optional<[ToolCallSoundType](#toolcallsoundtype)> | no | `nil` |  |
 | `tool_call_sound_behavior` | Optional<[ToolCallSoundBehavior](#toolcallsoundbehavior)> | no | `nil` |  |
@@ -11554,6 +13338,7 @@ Variant of [PromptAgentApiModelWorkflowOverrideInputToolsItem](#promptagentapimo
 | `response_timeout_secs` | Optional<int> | no | `nil` |  |
 | `disable_interruptions` | Optional<bool> | no | `nil` |  |
 | `force_pre_tool_speech` | Optional<bool> | no | `nil` |  |
+| `pre_tool_speech` | Optional<[PreToolSpeechMode](#pretoolspeechmode)> | no | `nil` |  |
 | `assignments` | Optional<Array<[DynamicVariableAssignment](#dynamicvariableassignment)>> | no | `nil` |  |
 | `tool_call_sound` | Optional<[ToolCallSoundType](#toolcallsoundtype)> | no | `nil` |  |
 | `tool_call_sound_behavior` | Optional<[ToolCallSoundBehavior](#toolcallsoundbehavior)> | no | `nil` |  |
@@ -11572,6 +13357,7 @@ Variant of [PromptAgentApiModelWorkflowOverrideInputToolsItem](#promptagentapimo
 | `response_timeout_secs` | Optional<int> | no | `nil` |  |
 | `disable_interruptions` | Optional<bool> | no | `nil` |  |
 | `force_pre_tool_speech` | Optional<bool> | no | `nil` |  |
+| `pre_tool_speech` | Optional<[PreToolSpeechMode](#pretoolspeechmode)> | no | `nil` |  |
 | `assignments` | Optional<Array<[DynamicVariableAssignment](#dynamicvariableassignment)>> | no | `nil` |  |
 | `tool_call_sound` | Optional<[ToolCallSoundType](#toolcallsoundtype)> | no | `nil` |  |
 | `tool_call_sound_behavior` | Optional<[ToolCallSoundBehavior](#toolcallsoundbehavior)> | no | `nil` |  |
@@ -11592,6 +13378,7 @@ Variant of [PromptAgentApiModelWorkflowOverrideOutputToolsItem](#promptagentapim
 | `response_timeout_secs` | int | **yes** | **required** |  |
 | `disable_interruptions` | bool | **yes** | **required** |  |
 | `force_pre_tool_speech` | bool | **yes** | **required** |  |
+| `pre_tool_speech` | [PreToolSpeechMode](#pretoolspeechmode) | **yes** | **required** |  |
 | `assignments` | Array<[DynamicVariableAssignment](#dynamicvariableassignment)> | **yes** | **required** |  |
 | `tool_call_sound` | Optional<[ToolCallSoundType](#toolcallsoundtype)> | no | `nil` |  |
 | `tool_call_sound_behavior` | [ToolCallSoundBehavior](#toolcallsoundbehavior) | **yes** | **required** |  |
@@ -11615,6 +13402,7 @@ Variant of [PromptAgentApiModelWorkflowOverrideOutputToolsItem](#promptagentapim
 | `response_timeout_secs` | Optional<int> | no | `nil` |  |
 | `disable_interruptions` | Optional<bool> | no | `nil` |  |
 | `force_pre_tool_speech` | Optional<bool> | no | `nil` |  |
+| `pre_tool_speech` | Optional<[PreToolSpeechMode](#pretoolspeechmode)> | no | `nil` |  |
 | `assignments` | Optional<Array<[DynamicVariableAssignment](#dynamicvariableassignment)>> | no | `nil` |  |
 | `tool_call_sound` | Optional<[ToolCallSoundType](#toolcallsoundtype)> | no | `nil` |  |
 | `tool_call_sound_behavior` | Optional<[ToolCallSoundBehavior](#toolcallsoundbehavior)> | no | `nil` |  |
@@ -11654,6 +13442,7 @@ Variant of [PromptAgentApiModelWorkflowOverrideOutputToolsItem](#promptagentapim
 | `response_timeout_secs` | Optional<int> | no | `nil` |  |
 | `disable_interruptions` | Optional<bool> | no | `nil` |  |
 | `force_pre_tool_speech` | Optional<bool> | no | `nil` |  |
+| `pre_tool_speech` | Optional<[PreToolSpeechMode](#pretoolspeechmode)> | no | `nil` |  |
 | `assignments` | Optional<Array<[DynamicVariableAssignment](#dynamicvariableassignment)>> | no | `nil` |  |
 | `tool_call_sound` | Optional<[ToolCallSoundType](#toolcallsoundtype)> | no | `nil` |  |
 | `tool_call_sound_behavior` | Optional<[ToolCallSoundBehavior](#toolcallsoundbehavior)> | no | `nil` |  |
@@ -11672,6 +13461,7 @@ Variant of [PromptAgentApiModelWorkflowOverrideOutputToolsItem](#promptagentapim
 | `response_timeout_secs` | Optional<int> | no | `nil` |  |
 | `disable_interruptions` | Optional<bool> | no | `nil` |  |
 | `force_pre_tool_speech` | Optional<bool> | no | `nil` |  |
+| `pre_tool_speech` | Optional<[PreToolSpeechMode](#pretoolspeechmode)> | no | `nil` |  |
 | `assignments` | Optional<Array<[DynamicVariableAssignment](#dynamicvariableassignment)>> | no | `nil` |  |
 | `tool_call_sound` | Optional<[ToolCallSoundType](#toolcallsoundtype)> | no | `nil` |  |
 | `tool_call_sound_behavior` | Optional<[ToolCallSoundBehavior](#toolcallsoundbehavior)> | no | `nil` |  |
@@ -11687,6 +13477,23 @@ Variant of [SystemToolConfigInputParams](#systemtoolconfiginputparams) with `typ
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `system_tool_type` | Literal<'end_call'> | no | `'end_call'` |  |
+
+### SystemToolConfigInputParams_EndProcedure
+
+Variant of [SystemToolConfigInputParams](#systemtoolconfiginputparams) with `type: 'None'`.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `system_tool_type` | Literal<'end_procedure'> | no | `'end_procedure'` |  |
+| `procedures` | Optional<Hash<str, [ProcedureAtVersionInput](#procedureatversioninput)>> | no | `nil` |  |
+
+### SystemToolConfigInputParams_KnowledgeBaseRag
+
+Variant of [SystemToolConfigInputParams](#systemtoolconfiginputparams) with `type: 'None'`.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `system_tool_type` | Literal<'knowledge_base_rag'> | no | `'knowledge_base_rag'` |  |
 
 ### SystemToolConfigInputParams_LanguageDetection
 
@@ -11713,6 +13520,15 @@ Variant of [SystemToolConfigInputParams](#systemtoolconfiginputparams) with `typ
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `system_tool_type` | Literal<'skip_turn'> | no | `'skip_turn'` |  |
+
+### SystemToolConfigInputParams_StartProcedure
+
+Variant of [SystemToolConfigInputParams](#systemtoolconfiginputparams) with `type: 'None'`.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `system_tool_type` | Literal<'start_procedure'> | no | `'start_procedure'` |  |
+| `procedures` | Optional<Hash<str, [ProcedureAtVersionInput](#procedureatversioninput)>> | no | `nil` |  |
 
 ### SystemToolConfigInputParams_TransferToAgent
 
@@ -11750,6 +13566,23 @@ Variant of [SystemToolConfigOutputParams](#systemtoolconfigoutputparams) with `t
 | --- | --- | --- | --- | --- |
 | `system_tool_type` | Literal<'end_call'> | no | `'end_call'` |  |
 
+### SystemToolConfigOutputParams_EndProcedure
+
+Variant of [SystemToolConfigOutputParams](#systemtoolconfigoutputparams) with `type: 'None'`.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `system_tool_type` | Literal<'end_procedure'> | no | `'end_procedure'` |  |
+| `procedures` | Optional<Hash<str, [ProcedureAtVersionOutput](#procedureatversionoutput)>> | no | `nil` |  |
+
+### SystemToolConfigOutputParams_KnowledgeBaseRag
+
+Variant of [SystemToolConfigOutputParams](#systemtoolconfigoutputparams) with `type: 'None'`.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `system_tool_type` | Literal<'knowledge_base_rag'> | no | `'knowledge_base_rag'` |  |
+
 ### SystemToolConfigOutputParams_LanguageDetection
 
 Variant of [SystemToolConfigOutputParams](#systemtoolconfigoutputparams) with `type: 'None'`.
@@ -11775,6 +13608,15 @@ Variant of [SystemToolConfigOutputParams](#systemtoolconfigoutputparams) with `t
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `system_tool_type` | Literal<'skip_turn'> | no | `'skip_turn'` |  |
+
+### SystemToolConfigOutputParams_StartProcedure
+
+Variant of [SystemToolConfigOutputParams](#systemtoolconfigoutputparams) with `type: 'None'`.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `system_tool_type` | Literal<'start_procedure'> | no | `'start_procedure'` |  |
+| `procedures` | Optional<Hash<str, [ProcedureAtVersionOutput](#procedureatversionoutput)>> | no | `nil` |  |
 
 ### SystemToolConfigOutputParams_TransferToAgent
 
@@ -11867,6 +13709,7 @@ Variant of [ToolRequestModelToolConfig](#toolrequestmodeltoolconfig) with `type:
 | `response_timeout_secs` | Optional<int> | no | `nil` |  |
 | `disable_interruptions` | Optional<bool> | no | `nil` |  |
 | `force_pre_tool_speech` | Optional<bool> | no | `nil` |  |
+| `pre_tool_speech` | Optional<[PreToolSpeechMode](#pretoolspeechmode)> | no | `nil` |  |
 | `assignments` | Optional<Array<[DynamicVariableAssignment](#dynamicvariableassignment)>> | no | `nil` |  |
 | `tool_call_sound` | Optional<[ToolCallSoundType](#toolcallsoundtype)> | no | `nil` |  |
 | `tool_call_sound_behavior` | Optional<[ToolCallSoundBehavior](#toolcallsoundbehavior)> | no | `nil` |  |
@@ -11897,6 +13740,7 @@ Variant of [ToolRequestModelToolConfig](#toolrequestmodeltoolconfig) with `type:
 | `response_timeout_secs` | Optional<int> | no | `nil` |  |
 | `disable_interruptions` | Optional<bool> | no | `nil` |  |
 | `force_pre_tool_speech` | Optional<bool> | no | `nil` |  |
+| `pre_tool_speech` | Optional<[PreToolSpeechMode](#pretoolspeechmode)> | no | `nil` |  |
 | `assignments` | Optional<Array<[DynamicVariableAssignment](#dynamicvariableassignment)>> | no | `nil` |  |
 | `tool_call_sound` | Optional<[ToolCallSoundType](#toolcallsoundtype)> | no | `nil` |  |
 | `tool_call_sound_behavior` | Optional<[ToolCallSoundBehavior](#toolcallsoundbehavior)> | no | `nil` |  |
@@ -11915,6 +13759,7 @@ Variant of [ToolRequestModelToolConfig](#toolrequestmodeltoolconfig) with `type:
 | `response_timeout_secs` | Optional<int> | no | `nil` |  |
 | `disable_interruptions` | Optional<bool> | no | `nil` |  |
 | `force_pre_tool_speech` | Optional<bool> | no | `nil` |  |
+| `pre_tool_speech` | Optional<[PreToolSpeechMode](#pretoolspeechmode)> | no | `nil` |  |
 | `assignments` | Optional<Array<[DynamicVariableAssignment](#dynamicvariableassignment)>> | no | `nil` |  |
 | `tool_call_sound` | Optional<[ToolCallSoundType](#toolcallsoundtype)> | no | `nil` |  |
 | `tool_call_sound_behavior` | Optional<[ToolCallSoundBehavior](#toolcallsoundbehavior)> | no | `nil` |  |
@@ -11935,6 +13780,7 @@ Variant of [ToolResponseModelToolConfig](#toolresponsemodeltoolconfig) with `typ
 | `response_timeout_secs` | Optional<int> | no | `nil` |  |
 | `disable_interruptions` | Optional<bool> | no | `nil` |  |
 | `force_pre_tool_speech` | Optional<bool> | no | `nil` |  |
+| `pre_tool_speech` | Optional<[PreToolSpeechMode](#pretoolspeechmode)> | no | `nil` |  |
 | `assignments` | Optional<Array<[DynamicVariableAssignment](#dynamicvariableassignment)>> | no | `nil` |  |
 | `tool_call_sound` | Optional<[ToolCallSoundType](#toolcallsoundtype)> | no | `nil` |  |
 | `tool_call_sound_behavior` | Optional<[ToolCallSoundBehavior](#toolcallsoundbehavior)> | no | `nil` |  |
@@ -11965,6 +13811,7 @@ Variant of [ToolResponseModelToolConfig](#toolresponsemodeltoolconfig) with `typ
 | `response_timeout_secs` | Optional<int> | no | `nil` |  |
 | `disable_interruptions` | Optional<bool> | no | `nil` |  |
 | `force_pre_tool_speech` | Optional<bool> | no | `nil` |  |
+| `pre_tool_speech` | Optional<[PreToolSpeechMode](#pretoolspeechmode)> | no | `nil` |  |
 | `assignments` | Optional<Array<[DynamicVariableAssignment](#dynamicvariableassignment)>> | no | `nil` |  |
 | `tool_call_sound` | Optional<[ToolCallSoundType](#toolcallsoundtype)> | no | `nil` |  |
 | `tool_call_sound_behavior` | Optional<[ToolCallSoundBehavior](#toolcallsoundbehavior)> | no | `nil` |  |
@@ -11983,6 +13830,7 @@ Variant of [ToolResponseModelToolConfig](#toolresponsemodeltoolconfig) with `typ
 | `response_timeout_secs` | Optional<int> | no | `nil` |  |
 | `disable_interruptions` | Optional<bool> | no | `nil` |  |
 | `force_pre_tool_speech` | Optional<bool> | no | `nil` |  |
+| `pre_tool_speech` | Optional<[PreToolSpeechMode](#pretoolspeechmode)> | no | `nil` |  |
 | `assignments` | Optional<Array<[DynamicVariableAssignment](#dynamicvariableassignment)>> | no | `nil` |  |
 | `tool_call_sound` | Optional<[ToolCallSoundType](#toolcallsoundtype)> | no | `nil` |  |
 | `tool_call_sound_behavior` | Optional<[ToolCallSoundBehavior](#toolcallsoundbehavior)> | no | `nil` |  |
@@ -12018,8 +13866,9 @@ Variant of [UnitTestRunResponseModelTestInfo](#unittestrunresponsemodeltestinfo)
 | --- | --- | --- | --- | --- |
 | `type` | Literal<'llm'> | no | `'llm'` |  |
 | `from_conversation_metadata` | Optional<[TestFromConversationMetadataOutput](#testfromconversationmetadataoutput)> | no | `nil` |  |
-| `dynamic_variables` | Optional<Hash<str, Optional<ResponseUnitTestModelDynamicVariablesValue>>> | no | `nil` |  |
+| `dynamic_variables` | Optional<Hash<str, Optional<DynamicVariableValueTypeOutput>>> | no | `nil` |  |
 | `chat_history` | Optional<Array<[ConversationHistoryTranscriptCommonModelOutput](#conversationhistorytranscriptcommonmodeloutput)>> | no | `nil` |  |
+| `conversation_initiation_source` | Optional<[ConversationInitiationSource](#conversationinitiationsource)> | no | `nil` |  |
 | `success_condition` | Optional<str> | no | `nil` |  |
 | `success_examples` | Optional<Array<[AgentSuccessfulResponseExample](#agentsuccessfulresponseexample)>> | no | `nil` |  |
 | `failure_examples` | Optional<Array<[AgentFailureResponseExample](#agentfailureresponseexample)>> | no | `nil` |  |
@@ -12032,13 +13881,16 @@ Variant of [UnitTestRunResponseModelTestInfo](#unittestrunresponsemodeltestinfo)
 | --- | --- | --- | --- | --- |
 | `type` | Literal<'simulation'> | no | `'simulation'` |  |
 | `from_conversation_metadata` | Optional<[TestFromConversationMetadataOutput](#testfromconversationmetadataoutput)> | no | `nil` |  |
-| `dynamic_variables` | Optional<Hash<str, Optional<SimulationTestModelDynamicVariablesValue>>> | no | `nil` |  |
+| `dynamic_variables` | Optional<Hash<str, Optional<DynamicVariableValueTypeOutput>>> | no | `nil` |  |
 | `chat_history` | Optional<Array<[ConversationHistoryTranscriptCommonModelOutput](#conversationhistorytranscriptcommonmodeloutput)>> | no | `nil` |  |
+| `conversation_initiation_source` | Optional<[ConversationInitiationSource](#conversationinitiationsource)> | no | `nil` |  |
 | `success_condition` | Optional<str> | no | `nil` |  |
 | `simulation_scenario` | Optional<str> | no | `nil` |  |
 | `simulation_max_turns` | Optional<int> | no | `nil` |  |
 | `simulation_environment` | Optional<str> | no | `nil` |  |
 | `tool_mock_config` | Optional<[SimulationToolMockBehaviorConfig](#simulationtoolmockbehaviorconfig)> | no | `nil` |  |
+| `evaluation_model` | Optional<[Llm](#llm)> | no | `nil` |  |
+| `simulated_user_model` | Optional<[Llm](#llm)> | no | `nil` |  |
 
 ### UnitTestRunResponseModelTestInfo_Tool
 
@@ -12048,8 +13900,9 @@ Variant of [UnitTestRunResponseModelTestInfo](#unittestrunresponsemodeltestinfo)
 | --- | --- | --- | --- | --- |
 | `type` | Literal<'tool'> | no | `'tool'` |  |
 | `from_conversation_metadata` | Optional<[TestFromConversationMetadataOutput](#testfromconversationmetadataoutput)> | no | `nil` |  |
-| `dynamic_variables` | Optional<Hash<str, Optional<ToolCallUnitTestModelDynamicVariablesValue>>> | no | `nil` |  |
+| `dynamic_variables` | Optional<Hash<str, Optional<DynamicVariableValueTypeOutput>>> | no | `nil` |  |
 | `chat_history` | Optional<Array<[ConversationHistoryTranscriptCommonModelOutput](#conversationhistorytranscriptcommonmodeloutput)>> | no | `nil` |  |
+| `conversation_initiation_source` | Optional<[ConversationInitiationSource](#conversationinitiationsource)> | no | `nil` |  |
 | `tool_call_parameters` | Optional<[UnitTestToolCallEvaluationModelOutput](#unittesttoolcallevaluationmodeloutput)> | no | `nil` |  |
 | `check_any_tool_matches` | Optional<bool> | no | `nil` |  |
 
@@ -12617,6 +14470,14 @@ One of:
 - `'test'`
 - `'folder'`
 
+### AgentTrustContext
+
+One of:
+
+- `'unknown'`
+- `'low'`
+- `'high'`
+
 ### AllowedOutputFormats
 
 One of:
@@ -12666,6 +14527,13 @@ One of:
 - `' '`
 - `','`
 
+### ApiIntegrationOAuth2CustomAppResponseScopeSeparator
+
+One of:
+
+- `' '`
+- `','`
+
 ### AsrInputFormat
 
 One of:
@@ -12684,6 +14552,14 @@ One of:
 
 - `'elevenlabs'`
 - `'scribe_realtime'`
+
+### AssetTranscriptionStatus
+
+One of:
+
+- `'processing'`
+- `'completed'`
+- `'failed'`
 
 ### AsyncConversationMetadataDeliveryStatus
 
@@ -12733,6 +14609,21 @@ One of:
 - `'livekit_token_website'`
 - `'genesys_api_key'`
 - `'whatsapp'`
+- `'sms'`
+
+### BackgroundSoundPresetId
+
+One of:
+
+- `'office2'`
+- `'office1'`
+- `'restaurant'`
+- `'city'`
+- `'typing'`
+- `'elevator1'`
+- `'elevator2'`
+- `'elevator3'`
+- `'elevator4'`
 
 ### BatchCallRecipientStatus
 
@@ -12793,6 +14684,14 @@ One of:
 - `'reporting_workspace_id'`
 - `'has_api_key'`
 - `'request_source'`
+
+### BucketingStatus
+
+One of:
+
+- `'pending'`
+- `'completed'`
+- `'failed'`
 
 ### CaptionStyleCharacterAnimationModelEnterType
 
@@ -12953,12 +14852,14 @@ One of:
 - `'mcp_connection_status'`
 - `'agent_tool_request'`
 - `'agent_tool_response'`
+- `'agent_tool_response_full_payload'`
 - `'agent_response_metadata'`
 - `'vad_score'`
 - `'agent_chat_response_part'`
 - `'client_error'`
 - `'guardrail_triggered'`
 - `'dtmf_request'`
+- `'agent_response_complete'`
 - `'internal_turn_probability'`
 - `'internal_tentative_agent_response'`
 
@@ -13025,6 +14926,7 @@ One of:
 - `'usd'`
 - `'eur'`
 - `'inr'`
+- `'pln'`
 - `'ratio'`
 - `'rating'`
 
@@ -13116,6 +15018,7 @@ One of:
 - `'client'`
 - `'webhook'`
 - `'mcp'`
+- `'code'`
 
 ### ConversationHistoryTranscriptResponseModelRole
 
@@ -13138,13 +15041,27 @@ One of:
 - `'widget'`
 - `'sip_trunk'`
 - `'twilio'`
+- `'exotel'`
 - `'genesys'`
 - `'swift_sdk'`
 - `'whatsapp'`
+- `'twilio_sms'`
 - `'flutter_sdk'`
 - `'zendesk_integration'`
 - `'slack_integration'`
+- `'telegram_integration'`
+- `'intercom_integration'`
+- `'freshdesk_integration'`
 - `'template_preview'`
+- `'genesys_bot_connector'`
+
+### ConversationSentimentAnalysisOverallLabel
+
+One of:
+
+- `'positive'`
+- `'neutral'`
+- `'negative'`
 
 ### ConversationSummaryResponseModelStatus
 
@@ -13174,6 +15091,13 @@ One of:
 - `'RS384'`
 - `'RS512'`
 
+### CreateOAuth2JwtRequestTokenResponseField
+
+One of:
+
+- `'access_token'`
+- `'id_token'`
+
 ### CreatePrivateKeyJwtRequestAlgorithm
 
 One of:
@@ -13184,6 +15108,28 @@ One of:
 - `'RS256'`
 - `'RS384'`
 - `'RS512'`
+
+### Currency
+
+One of:
+
+- `'usd'`
+- `'eur'`
+- `'inr'`
+- `'pln'`
+
+### CustomGuardrailConfigModel
+
+One of:
+
+- `'gemini-2.5-flash-lite'`
+- `'gemini-2.5-flash'`
+- `'gemini-3.1-flash-lite'`
+- `'gemini-3.5-flash'`
+- `'claude-haiku-4-5'`
+- `'claude-sonnet-4-6'`
+- `'gpt-5.4-nano'`
+- `'gpt-5.4-mini'`
 
 ### CustomLlmapiType
 
@@ -13296,15 +15242,6 @@ One of:
 - `'prompt'`
 - `'auto'`
 
-### DubbingModel
-
-One of:
-
-- `'dubbing_v1_tts_v3'`
-- `'dubbing_v2'`
-- `'dubbing_v3'`
-- `'dubbing_e2e_v1'`
-
 ### DubbingTranscriptsResponseModelTranscriptFormat
 
 One of:
@@ -13312,6 +15249,14 @@ One of:
 - `'srt'`
 - `'webvtt'`
 - `'json'`
+
+### Eagerness
+
+One of:
+
+- `'low'`
+- `'medium'`
+- `'high'`
 
 ### EmbedVariant
 
@@ -13329,6 +15274,21 @@ One of:
 - `'e5_mistral_7b_instruct'`
 - `'multilingual_e5_large_instruct'`
 
+### EndProcedureToolErrorStatus
+
+One of:
+
+- `'not_found'`
+- `'invalid_id'`
+
+### EntryBehavior
+
+One of:
+
+- `'generate_immediately'`
+- `'wait_for_user'`
+- `'auto'`
+
 ### EnvironmentVariableResponseType
 
 One of:
@@ -13345,13 +15305,12 @@ One of:
 - `'failure'`
 - `'unknown'`
 
-### ExtendedSubscriptionResponseModelCurrency
+### ExotelApiSubdomain
 
 One of:
 
-- `'usd'`
-- `'eur'`
-- `'inr'`
+- `'api.in.exotel.com'`
+- `'api.exotel.com'`
 
 ### FineTuningResponseModelStateValue
 
@@ -13363,6 +15322,23 @@ One of:
 - `'fine_tuned'`
 - `'failed'`
 - `'delayed'`
+
+### GenerationChunkConditionStrength
+
+One of:
+
+- `'low'`
+- `'medium'`
+- `'high'`
+- `'xhigh'`
+
+### GenerationChunkContextAdherence
+
+One of:
+
+- `'low'`
+- `'medium'`
+- `'high'`
 
 ### GenesysRegion
 
@@ -13421,12 +15397,29 @@ One of:
 - `'streaming'`
 - `'blocking'`
 
+### ImageAnalysisStatus
+
+One of:
+
+- `'processing'`
+- `'completed'`
+- `'failed'`
+
 ### IntegrationType
 
 One of:
 
 - `'mcp_server'`
 - `'mcp_integration'`
+
+### InteractionBudget
+
+One of:
+
+- `'realtime'`
+- `'5_minutes'`
+- `'10_minutes'`
+- `'1_hour'`
 
 ### InvoiceResponseModelPaymentIntentStatus
 
@@ -13468,6 +15461,14 @@ One of:
 - `'url'`
 - `'text'`
 - `'folder'`
+
+### KnowledgeBaseRagToolStatus
+
+One of:
+
+- `'success'`
+- `'no_documents'`
+- `'no_results'`
 
 ### KnowledgeBaseSortBy
 
@@ -13521,6 +15522,9 @@ One of:
 - `'gpt-5.2'`
 - `'gpt-5.2-chat-latest'`
 - `'gpt-5.4'`
+- `'gpt-5.4-mini'`
+- `'gpt-5.4-nano'`
+- `'gpt-5.5'`
 - `'gpt-5-mini'`
 - `'gpt-5-nano'`
 - `'gpt-3.5-turbo'`
@@ -13534,7 +15538,10 @@ One of:
 - `'gemini-3-flash-preview'`
 - `'gemini-3.1-pro-preview'`
 - `'gemini-3.1-flash-lite-preview'`
+- `'gemini-3.1-flash-lite'`
+- `'gemini-3.5-flash'`
 - `'claude-sonnet-4-5'`
+- `'claude-opus-4-7'`
 - `'claude-sonnet-4-6'`
 - `'claude-sonnet-4'`
 - `'claude-haiku-4-5'`
@@ -13546,6 +15553,8 @@ One of:
 - `'custom-llm'`
 - `'qwen3-4b'`
 - `'qwen3-30b-a3b'`
+- `'qwen36-35b-a3b'`
+- `'qwen35-397b-a17b'`
 - `'gpt-oss-20b'`
 - `'gpt-oss-120b'`
 - `'glm-45-air-fp8'`
@@ -13571,6 +15580,9 @@ One of:
 - `'gpt-5.1-2025-11-13'`
 - `'gpt-5.2-2025-12-11'`
 - `'gpt-5.4-2026-03-05'`
+- `'gpt-5.4-mini-2026-03-17'`
+- `'gpt-5.4-nano-2026-03-17'`
+- `'gpt-5.5-2026-04-23'`
 - `'gpt-5-mini-2025-08-07'`
 - `'gpt-5-nano-2025-08-07'`
 - `'gpt-4.1-2025-04-14'`
@@ -13608,6 +15620,13 @@ One of:
 - `'high'`
 - `'xhigh'`
 
+### LoadMemoryEntryToolErrorStatus
+
+One of:
+
+- `'not_found'`
+- `'invalid_id'`
+
 ### McpApprovalPolicy
 
 One of:
@@ -13630,13 +15649,13 @@ One of:
 - `'auto_approved'`
 - `'requires_approval'`
 
-### MergingStrategy
+### MediaCodec
 
 One of:
 
-- `'rank_fusion'`
-- `'top_k_per_source'`
-- `'weighted_interleave'`
+- `'G722/8000'`
+- `'PCMU/8000'`
+- `'PCMA/8000'`
 
 ### MessageSearchSortBy
 
@@ -13674,6 +15693,15 @@ One of:
 - `'selected'`
 - `'none'`
 
+### MusicGenerationMode
+
+One of:
+
+- `'track'`
+- `'loop'`
+- `'ambience'`
+- `'video_to_music'`
+
 ### NonStreamingOutputFormats
 
 One of:
@@ -13697,6 +15725,13 @@ One of:
 - `'RS384'`
 - `'RS512'`
 
+### OAuth2JwtResponseTokenResponseField
+
+One of:
+
+- `'access_token'`
+- `'id_token'`
+
 ### OAuthConnectionStatus
 
 One of:
@@ -13704,6 +15739,50 @@ One of:
 - `'active'`
 - `'refresh_failed'`
 - `'revoked'`
+
+### OpenAiAudioFormat
+
+One of:
+
+- `'audio/pcm'`
+- `'audio/pcmu'`
+- `'audio/pcma'`
+
+### OpenAimcpToolRequireApproval
+
+One of:
+
+- `'never'`
+- `'always'`
+
+### OrderItemKind
+
+One of:
+
+- `'dub'`
+- `'subtitles'`
+
+### OrderRequestState
+
+One of:
+
+- `'open'`
+- `'submitted'`
+- `'paid'`
+- `'accepted'`
+- `'rejected'`
+- `'done'`
+
+### OrderState
+
+One of:
+
+- `'open'`
+- `'submitted'`
+- `'paid'`
+- `'accepted'`
+- `'rejected'`
+- `'done'`
 
 ### OutputFormat
 
@@ -13796,6 +15875,14 @@ One of:
 - `'audit_log_read'`
 - `'copy_resources_cross_workspace'`
 
+### PreToolSpeechMode
+
+One of:
+
+- `'auto'`
+- `'force'`
+- `'off'`
+
 ### PrivateKeyJwtResponseAlgorithm
 
 One of:
@@ -13807,13 +15894,12 @@ One of:
 - `'RS384'`
 - `'RS512'`
 
-### ProcedureCompilerMode
+### ProcedureType
 
 One of:
 
-- `'llm'`
+- `'free_form'`
 - `'deterministic'`
-- `'append'`
 
 ### ProjectCreationMetaResponseModelStatus
 
@@ -13990,6 +16076,7 @@ One of:
 - `'workflow'`
 - `'api_integration_webhook'`
 - `'mcp'`
+- `'code'`
 
 ### RenderStatus
 
@@ -14010,6 +16097,25 @@ One of:
 - `'aaf'`
 - `'tracks_zip'`
 - `'clips_zip'`
+- `'zip'`
+
+### ResourceAccessInfoAccessSource
+
+One of:
+
+- `'creator'`
+- `'explicit'`
+- `'workspace_admin'`
+- `'workspace_default'`
+
+### ResourceAccessInfoAnonymousAccessLevelOverride
+
+One of:
+
+- `'admin'`
+- `'editor'`
+- `'commenter'`
+- `'viewer'`
 
 ### ResourceAccessInfoRole
 
@@ -14078,6 +16184,34 @@ One of:
 - `'allowed'`
 - `'allowed_with_changes'`
 
+### RttInputFormatEnum
+
+One of:
+
+- `'pcm_8000'`
+- `'pcm_16000'`
+- `'pcm_22050'`
+- `'pcm_24000'`
+- `'pcm_44100'`
+- `'pcm_48000'`
+- `'ulaw_8000'`
+
+### RttOutputFormatEnum
+
+One of:
+
+- `'mp3_22050_32'`
+- `'mp3_44100_32'`
+- `'mp3_44100_64'`
+- `'mp3_44100_96'`
+- `'mp3_44100_128'`
+- `'mp3_44100_192'`
+- `'pcm_16000'`
+- `'pcm_22050'`
+- `'pcm_24000'`
+- `'pcm_44100'`
+- `'ulaw_8000'`
+
 ### SafetyRule
 
 One of:
@@ -14137,6 +16271,13 @@ One of:
 - `'realtime_scribe'`
 - `'tts_websocket'`
 
+### SipLogMessageDirection
+
+One of:
+
+- `'in'`
+- `'out'`
+
 ### SipMediaEncryptionEnum
 
 One of:
@@ -14153,6 +16294,13 @@ One of:
 - `'udp'`
 - `'tcp'`
 - `'tls'`
+
+### SmsConversationInfoDirection
+
+One of:
+
+- `'inbound'`
+- `'outbound'`
 
 ### SortDirection
 
@@ -14183,6 +16331,8 @@ One of:
 - `'PlayAPI'`
 - `'ConvAI'`
 - `'VoiceGeneration'`
+- `'InVPC'`
+- `'Flows'`
 
 ### SpeechHistoryItemResponseModelVoiceCategory
 
@@ -14208,6 +16358,14 @@ One of:
 - `'auto'`
 - `'off'`
 
+### StartProcedureToolErrorStatus
+
+One of:
+
+- `'not_found'`
+- `'invalid_name'`
+- `'already_active'`
+
 ### StudioClipReferenceClipType
 
 One of:
@@ -14216,14 +16374,6 @@ One of:
 - `'image'`
 - `'external_audio'`
 - `'tts_node'`
-
-### SubscriptionResponseModelCurrency
-
-One of:
-
-- `'usd'`
-- `'eur'`
-- `'inr'`
 
 ### SubscriptionStatusType
 
@@ -14249,6 +16399,7 @@ One of:
 
 - `'twilio'`
 - `'sip_trunk'`
+- `'exotel'`
 
 ### TestRunMetadataTestType
 
@@ -14288,6 +16439,39 @@ One of:
 
 - `'system_prompt'`
 - `'elevenlabs'`
+
+### TextToDialogueWebsocketApplyTextNormalizationEnum
+
+One of:
+
+- `'on'`
+- `'off'`
+
+### TextToDialogueWebsocketOutputFormatEnum
+
+One of:
+
+- `'mp3_22050_32'`
+- `'mp3_24000_48'`
+- `'mp3_44100_32'`
+- `'mp3_44100_64'`
+- `'mp3_44100_96'`
+- `'mp3_44100_128'`
+- `'mp3_44100_192'`
+- `'pcm_8000'`
+- `'pcm_16000'`
+- `'pcm_22050'`
+- `'pcm_24000'`
+- `'pcm_32000'`
+- `'pcm_44100'`
+- `'pcm_48000'`
+- `'ulaw_8000'`
+- `'alaw_8000'`
+- `'opus_48000_32'`
+- `'opus_48000_64'`
+- `'opus_48000_96'`
+- `'opus_48000_128'`
+- `'opus_48000_192'`
 
 ### TextToSpeechApplyTextNormalizationEnum
 
@@ -14354,6 +16538,14 @@ One of:
 - `'post_tool_speech'`
 - `'async'`
 
+### ToolExecutionTaskSupport
+
+One of:
+
+- `'forbidden'`
+- `'optional'`
+- `'required'`
+
 ### ToolSortBy
 
 One of:
@@ -14381,6 +16573,13 @@ One of:
 - `'webhook'`
 - `'client'`
 - `'api_integration_webhook'`
+
+### TranscriptMessageRole
+
+One of:
+
+- `'user'`
+- `'agent'`
 
 ### TranscriptionWordType
 
@@ -14429,6 +16628,13 @@ One of:
 - `'pcm_48000'`
 - `'ulaw_8000'`
 
+### TurnDetectionType
+
+One of:
+
+- `'semantic_vad'`
+- `'server_vad'`
+
 ### TurnEagerness
 
 One of:
@@ -14473,6 +16679,24 @@ One of:
 - `'ie1'`
 - `'au1'`
 
+### UpdateOAuth2JwtRequestAlgorithm
+
+One of:
+
+- `'HS256'`
+- `'HS384'`
+- `'HS512'`
+- `'RS256'`
+- `'RS384'`
+- `'RS512'`
+
+### UpdateOAuth2JwtRequestTokenResponseField
+
+One of:
+
+- `'access_token'`
+- `'id_token'`
+
 ### UsageAggregationInterval
 
 One of:
@@ -14496,6 +16720,14 @@ One of:
 
 - `'last_contact_unix_secs'`
 - `'conversation_count'`
+
+### Verbosity
+
+One of:
+
+- `'auto'`
+- `'concise'`
+- `'thorough'`
 
 ### VideoAnalysisStatus
 
@@ -14623,6 +16855,13 @@ One of:
 - `'PATCH'`
 - `'DELETE'`
 
+### WebhookTranscriptFormat
+
+One of:
+
+- `'json'`
+- `'opentelemetry'`
+
 ### WebhookUsageType
 
 One of:
@@ -14631,6 +16870,7 @@ One of:
 - `'ConvAI Settings'`
 - `'Voice Library Removal Notices'`
 - `'Speech to Text'`
+- `'Agent QA Evaluations'`
 
 ### WhatsAppConversationInfoDirection
 
@@ -14715,6 +16955,7 @@ One of:
 - `'dubbing'`
 - `'audio_native'`
 - `'conversational_ai'`
+- `'conversational_ai_read'`
 - `'voice_isolator'`
 - `'ai_speech_classifier'`
 - `'add_voice_from_voice_library'`
@@ -14736,6 +16977,7 @@ One of:
 - `'terms_of_service_accept'`
 - `'audit_log_read'`
 - `'copy_resources_cross_workspace'`
+- `'voice_design'`
 
 ### WorkspaceResourceType
 
@@ -14767,6 +17009,7 @@ One of:
 - `'convai_agent_versions_deployments'`
 - `'convai_memory_entries'`
 - `'convai_coaching_proposals'`
+- `'convai_templates'`
 - `'dashboard'`
 - `'dashboard_configuration'`
 - `'convai_agent_drafts'`
@@ -14775,5 +17018,8 @@ One of:
 - `'content_generations'`
 - `'content_templates'`
 - `'songs'`
+- `'transcription_tasks'`
 - `'avatars'`
 - `'avatar_video_generations'`
+- `'resource_collection'`
+- `'studio_projects'`

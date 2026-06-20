@@ -1,9 +1,9 @@
 # ElevenLabs Ruby SDK — API Coverage Report
 
-**Generated:** 2026-04-23
-**Ruby SDK Version:** 0.6.0
-**Python SDK Version:** 2.44.0 (upstream source)
-**Endpoints in Ruby SDK:** 279
+**Generated:** 2026-06-20
+**Ruby SDK Version:** 0.8.0
+**Python SDK Version:** 2.53.0 (upstream source)
+**Endpoints in Ruby SDK:** 315
 **Streaming Endpoints:** 26
 
 ---
@@ -12,30 +12,55 @@
 
 The Ruby SDK dynamically generates all resource classes and methods from `spec.json`, which is extracted from the upstream Python SDK. **Every operation in the spec is automatically implemented** — there is no selective or hand-written endpoint code. Coverage of the upstream Python SDK is therefore always 100%.
 
-- **279 endpoints implemented** (up from 268 in v0.5.0; +11 new in v0.6.0)
+- **315 endpoints implemented** (up from 279 in v0.6.0; +36 new in v0.8.0)
 - **26 endpoints support streaming responses**
 - **1 endpoint exists in the SDK but not the public OpenAPI spec** (`save_a_voice_preview`)
 - **0 endpoints missing relative to the upstream Python SDK**
 
-### New in v0.6.0 (vs v0.5.0)
+### New in v0.8.0 (vs v0.6.0)
 
-- `conversational_ai.conversations.topics.get`
-- `conversational_ai.knowledge_base.search`
-- `conversational_ai.secrets.get`
-- `conversational_ai.secrets.get_dependencies`
-- `conversational_ai.tests.move`
-- `conversational_ai.tests.folders.create`
-- `conversational_ai.tests.folders.get`
-- `conversational_ai.tests.folders.update`
-- `conversational_ai.tests.folders.delete`
-- `conversational_ai.tools.executions.get`
-- `workspace.usage.get_usage_by_product_over_time`
+Three new top-level namespaces — `productions`, `speech_engine`, `workspaces` — plus new operations on existing namespaces:
 
-Previously-missing category (ConvAI test folder management) is now fully covered.
+- `audio_isolation.delete`
+- `audio_isolation.list`
+- `conversational_ai.agents.versions.get`
+- `conversational_ai.conversations.analysis.run_evaluation`
+- `conversational_ai.conversations.get_sip_messages`
+- `conversational_ai.conversations.tags.assign`
+- `conversational_ai.conversations.tags.create`
+- `conversational_ai.conversations.tags.delete`
+- `conversational_ai.conversations.tags.get`
+- `conversational_ai.conversations.tags.list`
+- `conversational_ai.conversations.tags.unassign`
+- `conversational_ai.conversations.tags.update`
+- `conversational_ai.exotel.outbound_call`
+- `conversational_ai.knowledge_base.document.update_file`
+- `conversational_ai.knowledge_base.documents.chunks.list`
+- `conversational_ai.phone_numbers.get_sip_messages`
+- `productions.orders.create`
+- `productions.orders.deliverables.list`
+- `productions.orders.get`
+- `productions.orders.items.remove`
+- `productions.orders.items.upsert`
+- `productions.orders.languages.list`
+- `productions.orders.list`
+- `productions.orders.media.get`
+- `productions.orders.media.register`
+- `productions.orders.submit`
+- `productions.orders.update`
+- `speech_engine.create`
+- `speech_engine.delete`
+- `speech_engine.get`
+- `speech_engine.list`
+- `speech_engine.update`
+- `workspace.analytics.requests.get`
+- `workspace.audit_logs.list`
+- `workspace.auth_connections.update`
+- `workspaces.api_keys.disable`
 
 ---
 
-## Implemented Endpoints (279 total)
+## Implemented Endpoints (315 total)
 
 ### Top-Level Operations (1)
 
@@ -43,11 +68,13 @@ Previously-missing category (ConvAI test folder management) is now fully covered
 |-----------|--------|------|:---------:|
 | `save_a_voice_preview` | POST | `/v1/text-to-voice/create-voice-from-preview` |  |
 
-### audio_isolation (2)
+### audio_isolation (4)
 
 | Operation | Method | Path | Streaming |
 |-----------|--------|------|:---------:|
 | `audio_isolation.convert` | POST | `/v1/audio-isolation` | Yes |
+| `audio_isolation.list` | GET | `/v1/audio-isolation/history` |  |
+| `audio_isolation.delete` | DELETE | `/v1/audio-isolation/history/{history_item_id}` |  |
 | `audio_isolation.stream` | POST | `/v1/audio-isolation/stream` | Yes |
 
 ### audio_native (4)
@@ -59,7 +86,7 @@ Previously-missing category (ConvAI test folder management) is now fully covered
 | `audio_native.update` | POST | `/v1/audio-native/{project_id}/content` |  |
 | `audio_native.update_content_from_url` | POST | `/v1/audio-native/content` |  |
 
-### conversational_ai (127)
+### conversational_ai (141)
 
 | Operation | Method | Path | Streaming |
 |-----------|--------|------|:---------:|
@@ -129,6 +156,12 @@ Previously-missing category (ConvAI test folder management) is now fully covered
 |-----------|--------|------|:---------:|
 | `agents.summaries.get` | GET | `/v1/convai/agents/summaries` |  |
 
+#### conversational_ai.agents.versions (1)
+
+| Operation | Method | Path | Streaming |
+|-----------|--------|------|:---------:|
+| `agents.versions.get` | GET | `/v1/convai/agents/{agent_id}/versions/{version_id}` |  |
+
 #### conversational_ai.agents.widget (1)
 
 | Operation | Method | Path | Streaming |
@@ -158,7 +191,7 @@ Previously-missing category (ConvAI test folder management) is now fully covered
 | `batch_calls.cancel` | POST | `/v1/convai/batch-calling/{batch_id}/cancel` |  |
 | `batch_calls.retry` | POST | `/v1/convai/batch-calling/{batch_id}/retry` |  |
 
-#### conversational_ai.conversations (5)
+#### conversational_ai.conversations (6)
 
 | Operation | Method | Path | Streaming |
 |-----------|--------|------|:---------:|
@@ -167,12 +200,14 @@ Previously-missing category (ConvAI test folder management) is now fully covered
 | `conversations.list` | GET | `/v1/convai/conversations` |  |
 | `conversations.get` | GET | `/v1/convai/conversations/{conversation_id}` |  |
 | `conversations.delete` | DELETE | `/v1/convai/conversations/{conversation_id}` |  |
+| `conversations.get_sip_messages` | GET | `/v1/convai/conversations/{conversation_id}/sip-messages` |  |
 
-#### conversational_ai.conversations.analysis (1)
+#### conversational_ai.conversations.analysis (2)
 
 | Operation | Method | Path | Streaming |
 |-----------|--------|------|:---------:|
 | `conversations.analysis.run` | POST | `/v1/convai/conversations/{conversation_id}/analysis/run` |  |
+| `conversations.analysis.run_evaluation` | POST | `/v1/convai/conversations/{conversation_id}/analysis/evaluations/run` |  |
 
 #### conversational_ai.conversations.audio (1)
 
@@ -200,6 +235,18 @@ Previously-missing category (ConvAI test folder management) is now fully covered
 | `conversations.messages.text_search` | GET | `/v1/convai/conversations/messages/text-search` |  |
 | `conversations.messages.search` | GET | `/v1/convai/conversations/messages/smart-search` |  |
 
+#### conversational_ai.conversations.tags (7)
+
+| Operation | Method | Path | Streaming |
+|-----------|--------|------|:---------:|
+| `conversations.tags.assign` | POST | `/v1/convai/conversations/{conversation_id}/tags` |  |
+| `conversations.tags.unassign` | DELETE | `/v1/convai/conversations/{conversation_id}/tags/{tag_id}` |  |
+| `conversations.tags.list` | GET | `/v1/convai/tags` |  |
+| `conversations.tags.create` | POST | `/v1/convai/tags` |  |
+| `conversations.tags.get` | GET | `/v1/convai/tags/{tag_id}` |  |
+| `conversations.tags.delete` | DELETE | `/v1/convai/tags/{tag_id}` |  |
+| `conversations.tags.update` | PATCH | `/v1/convai/tags/{tag_id}` |  |
+
 #### conversational_ai.conversations.topics (1)
 
 | Operation | Method | Path | Streaming |
@@ -213,6 +260,12 @@ Previously-missing category (ConvAI test folder management) is now fully covered
 | `dashboard.settings.get` | GET | `/v1/convai/settings/dashboard` |  |
 | `dashboard.settings.update` | PATCH | `/v1/convai/settings/dashboard` |  |
 
+#### conversational_ai.exotel (1)
+
+| Operation | Method | Path | Streaming |
+|-----------|--------|------|:---------:|
+| `exotel.outbound_call` | POST | `/v1/convai/exotel/outbound-call` |  |
+
 #### conversational_ai.knowledge_base (3)
 
 | Operation | Method | Path | Streaming |
@@ -221,10 +274,11 @@ Previously-missing category (ConvAI test folder management) is now fully covered
 | `knowledge_base.get_or_create_rag_indexes` | POST | `/v1/convai/knowledge-base/rag-index` |  |
 | `knowledge_base.search` | GET | `/v1/convai/knowledge-base/search` |  |
 
-#### conversational_ai.knowledge_base.document (2)
+#### conversational_ai.knowledge_base.document (3)
 
 | Operation | Method | Path | Streaming |
 |-----------|--------|------|:---------:|
+| `knowledge_base.document.update_file` | PATCH | `/v1/convai/knowledge-base/{documentation_id}/update-file` |  |
 | `knowledge_base.document.refresh` | POST | `/v1/convai/knowledge-base/{documentation_id}/refresh` |  |
 | `knowledge_base.document.compute_rag_index` | POST | `/v1/convai/knowledge-base/{documentation_id}/rag-index` |  |
 
@@ -250,6 +304,12 @@ Previously-missing category (ConvAI test folder management) is now fully covered
 | Operation | Method | Path | Streaming |
 |-----------|--------|------|:---------:|
 | `knowledge_base.documents.chunk.get` | GET | `/v1/convai/knowledge-base/{documentation_id}/chunk/{chunk_id}` |  |
+
+#### conversational_ai.knowledge_base.documents.chunks (1)
+
+| Operation | Method | Path | Streaming |
+|-----------|--------|------|:---------:|
+| `knowledge_base.documents.chunks.list` | GET | `/v1/convai/knowledge-base/{documentation_id}/chunks` |  |
 
 #### conversational_ai.knowledge_base.documents.summaries (1)
 
@@ -307,7 +367,7 @@ Previously-missing category (ConvAI test folder management) is now fully covered
 |-----------|--------|------|:---------:|
 | `mcp_servers.tools.list` | GET | `/v1/convai/mcp-servers/{mcp_server_id}/tools` |  |
 
-#### conversational_ai.phone_numbers (5)
+#### conversational_ai.phone_numbers (6)
 
 | Operation | Method | Path | Streaming |
 |-----------|--------|------|:---------:|
@@ -316,6 +376,7 @@ Previously-missing category (ConvAI test folder management) is now fully covered
 | `phone_numbers.get` | GET | `/v1/convai/phone-numbers/{phone_number_id}` |  |
 | `phone_numbers.delete` | DELETE | `/v1/convai/phone-numbers/{phone_number_id}` |  |
 | `phone_numbers.update` | PATCH | `/v1/convai/phone-numbers/{phone_number_id}` |  |
+| `phone_numbers.get_sip_messages` | GET | `/v1/convai/phone-numbers/{phone_number_id}/sip-messages` |  |
 
 #### conversational_ai.secrets (6)
 
@@ -529,6 +590,44 @@ Previously-missing category (ConvAI test folder management) is now fully covered
 |-----------|--------|------|:---------:|
 | `composition_plan.create` | POST | `/v1/music/plan` |  |
 
+### productions (11)
+
+#### productions.orders (5)
+
+| Operation | Method | Path | Streaming |
+|-----------|--------|------|:---------:|
+| `orders.list` | GET | `/v1/productions/orders` |  |
+| `orders.create` | POST | `/v1/productions/orders` |  |
+| `orders.get` | GET | `/v1/productions/orders/{order_id}` |  |
+| `orders.update` | PATCH | `/v1/productions/orders/{order_id}` |  |
+| `orders.submit` | POST | `/v1/productions/orders/{order_id}/submit` |  |
+
+#### productions.orders.deliverables (1)
+
+| Operation | Method | Path | Streaming |
+|-----------|--------|------|:---------:|
+| `orders.deliverables.list` | GET | `/v1/productions/orders/{order_id}/deliverables` |  |
+
+#### productions.orders.items (2)
+
+| Operation | Method | Path | Streaming |
+|-----------|--------|------|:---------:|
+| `orders.items.upsert` | POST | `/v1/productions/orders/{order_id}/items` |  |
+| `orders.items.remove` | DELETE | `/v1/productions/orders/{order_id}/items/{item_id}` |  |
+
+#### productions.orders.languages (1)
+
+| Operation | Method | Path | Streaming |
+|-----------|--------|------|:---------:|
+| `orders.languages.list` | GET | `/v1/productions/orders/languages/{order_item_kind}` |  |
+
+#### productions.orders.media (2)
+
+| Operation | Method | Path | Streaming |
+|-----------|--------|------|:---------:|
+| `orders.media.register` | POST | `/v1/productions/orders/{order_id}/media` |  |
+| `orders.media.get` | GET | `/v1/productions/orders/{order_id}/media/{media_id}` |  |
+
 ### pronunciation_dictionaries (9)
 
 | Operation | Method | Path | Streaming |
@@ -568,6 +667,16 @@ Previously-missing category (ConvAI test folder management) is now fully covered
 | `api_keys.create` | POST | `/v1/service-accounts/{service_account_user_id}/api-keys` |  |
 | `api_keys.delete` | DELETE | `/v1/service-accounts/{service_account_user_id}/api-keys/{api_key_id}` |  |
 | `api_keys.update` | PATCH | `/v1/service-accounts/{service_account_user_id}/api-keys/{api_key_id}` |  |
+
+### speech_engine (5)
+
+| Operation | Method | Path | Streaming |
+|-----------|--------|------|:---------:|
+| `speech_engine.list` | GET | `/v1/speech-engine` |  |
+| `speech_engine.create` | POST | `/v1/speech-engine` |  |
+| `speech_engine.get` | GET | `/v1/speech-engine/{speech_engine_id}` |  |
+| `speech_engine.delete` | DELETE | `/v1/speech-engine/{speech_engine_id}` |  |
+| `speech_engine.update` | PATCH | `/v1/speech-engine/{speech_engine_id}` |  |
 
 ### speech_to_speech (2)
 
@@ -716,10 +825,10 @@ Previously-missing category (ConvAI test folder management) is now fully covered
 
 | Operation | Method | Path | Streaming |
 |-----------|--------|------|:---------:|
-| `voices.get_all` | GET | `/v1/voices` |  |
-| `voices.search` | GET | `/v2/voices` |  |
 | `voices.get` | GET | `/v1/voices/{voice_id}` |  |
 | `voices.delete` | DELETE | `/v1/voices/{voice_id}` |  |
+| `voices.get_all` | GET | `/v1/voices` |  |
+| `voices.search` | GET | `/v2/voices` |  |
 | `voices.update` | POST | `/v1/voices/{voice_id}/edit` |  |
 | `voices.share` | POST | `/v1/voices/add/{public_user_id}/{voice_id}` |  |
 | `voices.get_shared` | GET | `/v1/shared-voices` |  |
@@ -808,15 +917,28 @@ Previously-missing category (ConvAI test folder management) is now fully covered
 | `webhooks.delete` | DELETE | `/v1/workspace/webhooks/{webhook_id}` |  |
 | `webhooks.update` | PATCH | `/v1/workspace/webhooks/{webhook_id}` |  |
 
-### workspace (15)
+### workspace (18)
 
-#### workspace.auth_connections (3)
+#### workspace.analytics.requests (1)
+
+| Operation | Method | Path | Streaming |
+|-----------|--------|------|:---------:|
+| `analytics.requests.get` | POST | `/v1/workspace/analytics/requests` |  |
+
+#### workspace.audit_logs (1)
+
+| Operation | Method | Path | Streaming |
+|-----------|--------|------|:---------:|
+| `audit_logs.list` | GET | `/v1/workspace/audit-logs` |  |
+
+#### workspace.auth_connections (4)
 
 | Operation | Method | Path | Streaming |
 |-----------|--------|------|:---------:|
 | `auth_connections.list` | GET | `/v1/workspace/auth-connections` |  |
 | `auth_connections.create` | POST | `/v1/workspace/auth-connections` |  |
 | `auth_connections.delete` | DELETE | `/v1/workspace/auth-connections/{auth_connection_id}` |  |
+| `auth_connections.update` | PATCH | `/v1/workspace/auth-connections/{auth_connection_id}` |  |
 
 #### workspace.groups (2)
 
@@ -859,6 +981,14 @@ Previously-missing category (ConvAI test folder management) is now fully covered
 | Operation | Method | Path | Streaming |
 |-----------|--------|------|:---------:|
 | `usage.get_usage_by_product_over_time` | POST | `/v1/workspace/analytics/query/usage-by-product-over-time` |  |
+
+### workspaces (1)
+
+#### workspaces.api_keys (1)
+
+| Operation | Method | Path | Streaming |
+|-----------|--------|------|:---------:|
+| `api_keys.disable` | POST | `/v1/workspaces/api-keys/disable` |  |
 
 ---
 

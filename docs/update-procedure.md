@@ -160,6 +160,7 @@ ELEVENLABS_API_KEY=your_key ruby scripts/verify_api.rb
 - Ensure Python 3.8+ is installed
 - Check that `tmp-elevenlabs-python/src/elevenlabs/` exists and is up to date
 - The script parses AST; if the Python SDK changes its code generation pattern significantly, the extractor may need updating
+- **`TypeError: Object of type Dummy is not JSON serializable`** — the SDK wrapped a request param in a helper call the extractor doesn't recognize (e.g. `serialize_datetime(start_date) if start_date is not None else None`). Unknown names resolve to a `Dummy` placeholder, which then leaks into a query/json literal. Fix: register the helper as a pass-through identity in `EVAL_GLOBALS` (see `serialize_datetime` / `jsonable_encoder` in `scripts/extract_spec.py`) so the param placeholder survives. Find the offending op by walking every `raw_client.py` method through `parse_method` and checking the result for a `Dummy` instance.
 
 ### Tests fail after spec update
 

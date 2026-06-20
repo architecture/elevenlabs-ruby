@@ -10,7 +10,7 @@ This gem is published to **GitHub Packages** (not RubyGems.org). Add the GitHub 
 
 ```ruby
 source "https://rubygems.pkg.github.com/architecture" do
-  gem "elevenlabs", "0.7.1"
+  gem "elevenlabs", "0.8.0"
 end
 ```
 
@@ -31,7 +31,7 @@ Bundler can pull the gem straight from the git repository. This works for public
 
 ```ruby
 # Pin to a release tag (recommended for production)
-gem "elevenlabs", git: "https://github.com/architecture/elevenlabs-ruby", tag: "v0.7.1"
+gem "elevenlabs", git: "https://github.com/architecture/elevenlabs-ruby", tag: "v0.8.0"
 
 # Or track the latest main branch
 gem "elevenlabs", git: "https://github.com/architecture/elevenlabs-ruby", branch: "main"
@@ -68,7 +68,7 @@ Optional parameters default to the `ElevenLabs::OMIT` sentinel. Pass `nil` to se
 
 Every top-level namespace described in `lib/elevenlabs/spec.json` is available under `client`. That includes:
 
-`audio_isolation`, `audio_native`, `conversational_ai`, `dubbing`, `environment_variables`, `forced_alignment`, `history`, `models`, `music`, `pronunciation_dictionaries`, `samples`, `service_accounts`, `speech_to_speech`, `speech_to_text`, `studio`, `text_to_dialogue`, `text_to_sound_effects`, `text_to_speech`, `text_to_voice`, `tokens`, `usage`, `user`, `voices`, `webhooks`, `workspace`.
+`audio_isolation`, `audio_native`, `conversational_ai`, `dubbing`, `environment_variables`, `forced_alignment`, `history`, `models`, `music`, `productions`, `pronunciation_dictionaries`, `samples`, `service_accounts`, `speech_engine`, `speech_to_speech`, `speech_to_text`, `studio`, `text_to_dialogue`, `text_to_sound_effects`, `text_to_speech`, `text_to_voice`, `tokens`, `usage`, `user`, `voices`, `webhooks`, `workspace`, `workspaces`.
 
 Below are example snippets that demonstrate each namespace. Substitute IDs and payloads with real values from your account.
 
@@ -171,6 +171,18 @@ client.webhooks.list
 client.workspace.members.list
 client.workspace.auth_connections.list
 client.workspace.auth_connections.create(request: { "type" => "oauth2", "label" => "My OAuth" })
+client.workspace.audit_logs.list(limit: 100)
+
+# workspaces
+client.workspaces.api_keys.disable(api_key_name: "ci-bot")
+
+# productions
+order = client.productions.orders.create(request: { "name" => "My Order" })
+client.productions.orders.submit(order["order_id"])
+
+# speech_engine
+client.speech_engine.list(page_size: 10)
+client.speech_engine.create(name: "My Engine")
 ```
 
 Each namespace exposes the full set of nested resources (for example `client.conversational_ai.knowledge_base.documents.create`) exactly as defined in the Python SDK.
@@ -433,6 +445,31 @@ gem "elevenlabs", path: "/path/to/elevenlabs-ruby"
 ```
 
 ## Recent Updates
+
+### 2026-06-20: v0.8.0 — Updated API Spec from elevenlabs-python v2.53.0
+
+Updated `lib/elevenlabs/spec.json` (and the `types.json` / `docs/types.md` artifacts) by running the extraction scripts against elevenlabs-python v2.53.0 (up from v2.44.0). 36 new operations across 3 new top-level namespaces and several existing ones; nothing removed.
+
+**New top-level namespaces:**
+- `productions` — Productions orders workflow (`orders.list/create/get/update/submit`, plus `orders.items`, `orders.media`, `orders.languages`, `orders.deliverables` sub-resources)
+- `speech_engine` — manage Speech Engine configurations (`list/create/get/update/delete`)
+- `workspaces` — workspace-level API key controls (`api_keys.disable`)
+
+**New operations on existing namespaces:**
+- `audio_isolation.list` / `audio_isolation.delete` — audio isolation history
+- `conversational_ai.conversations.tags` — full tag CRUD plus `assign` / `unassign` to conversations
+- `conversational_ai.conversations.get_sip_messages` and `phone_numbers.get_sip_messages`
+- `conversational_ai.conversations.analysis.run_evaluation`
+- `conversational_ai.agents.versions.get`
+- `conversational_ai.knowledge_base.documents.chunks.list` and `knowledge_base.document.update_file`
+- `conversational_ai.exotel.outbound_call`
+- `workspace.audit_logs.list`, `workspace.analytics.requests.get`, `workspace.auth_connections.update`
+
+**Extractor fix:** `scripts/extract_spec.py` now registers `serialize_datetime` / `serialize_date` as pass-through helpers. The new `productions.orders.list` endpoint wraps datetime query params as `serialize_datetime(x) if x is not None else None`; without the stub the extractor resolved them to an un-serializable `Dummy` and the spec build failed.
+
+Type artifacts regenerated: 1,682 schemas (1,360 models, 77 discriminated unions, 245 enums).
+
+Test suite: 237 runs, 671 assertions, 0 failures (45 new tests — full serialization coverage of every new operation).
 
 ### 2026-04-23: v0.7.1 — Workflow validator quirks documented + sharper missing-discriminator error
 

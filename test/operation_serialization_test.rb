@@ -620,4 +620,339 @@ class OperationSerializationTest < Minitest::Test
     assert_equal "v1/convai/conversations", request[:path]
     assert_equal ["t1", "t2"], request[:query]["topic_ids"]
   end
+
+  # --- New in v2.53.0 ---
+
+  def test_productions_orders_list
+    @client.productions.orders.list(page_size: 25, status: "open")
+
+    request = @http.requests.last
+    assert_equal "GET", request[:method]
+    assert_equal "v1/productions/orders", request[:path]
+    assert_equal({ "page_size" => 25, "status" => "open" }, request[:query])
+  end
+
+  def test_productions_orders_create
+    @client.productions.orders.create(request: { "name" => "My Order" })
+
+    request = @http.requests.last
+    assert_equal "POST", request[:method]
+    assert_equal "v1/productions/orders", request[:path]
+    assert_equal({ "name" => "My Order" }, request[:json])
+  end
+
+  def test_productions_orders_update_nests_under_request_key
+    @client.productions.orders.update("order_123", request: { "name" => "Renamed" })
+
+    request = @http.requests.last
+    assert_equal "PATCH", request[:method]
+    assert_equal "v1/productions/orders/order_123", request[:path]
+    assert_equal({ "request" => { "name" => "Renamed" } }, request[:json])
+  end
+
+  def test_productions_orders_submit
+    @client.productions.orders.submit("order_123")
+
+    request = @http.requests.last
+    assert_equal "POST", request[:method]
+    assert_equal "v1/productions/orders/order_123/submit", request[:path]
+  end
+
+  def test_productions_orders_items_remove
+    @client.productions.orders.items.remove("order_123", "item_456")
+
+    request = @http.requests.last
+    assert_equal "DELETE", request[:method]
+    assert_equal "v1/productions/orders/order_123/items/item_456", request[:path]
+  end
+
+  def test_productions_orders_media_register_multipart
+    media = ElevenLabs::Upload.from_io(StringIO.new("clip-bytes"), filename: "clip.wav", content_type: "audio/wav")
+
+    @client.productions.orders.media.register("order_123", declared_language: "en", media: media)
+
+    request = @http.requests.last
+    assert_equal "POST", request[:method]
+    assert_equal "v1/productions/orders/order_123/media", request[:path]
+    assert_equal({ "declared_language" => "en" }, request[:form])
+    entry = request[:files].find { |f| f[:name] == "media" }
+    assert entry, "expected a media file entry"
+    assert_equal media, entry[:value]
+  end
+
+  def test_productions_orders_languages_list
+    @client.productions.orders.languages.list("dubbing")
+
+    request = @http.requests.last
+    assert_equal "GET", request[:method]
+    assert_equal "v1/productions/orders/languages/dubbing", request[:path]
+  end
+
+  def test_speech_engine_list
+    @client.speech_engine.list(page_size: 10, search: "demo")
+
+    request = @http.requests.last
+    assert_equal "GET", request[:method]
+    assert_equal "v1/speech-engine", request[:path]
+    assert_equal({ "page_size" => 10, "search" => "demo" }, request[:query])
+  end
+
+  def test_speech_engine_create
+    @client.speech_engine.create(name: "My Engine", tags: ["beta"])
+
+    request = @http.requests.last
+    assert_equal "POST", request[:method]
+    assert_equal "v1/speech-engine", request[:path]
+    assert_equal({ "name" => "My Engine", "tags" => ["beta"] }, request[:json])
+  end
+
+  def test_speech_engine_get_and_delete
+    @client.speech_engine.get("eng_123")
+    get_request = @http.requests.last
+    assert_equal "GET", get_request[:method]
+    assert_equal "v1/speech-engine/eng_123", get_request[:path]
+
+    @client.speech_engine.delete("eng_123")
+    del_request = @http.requests.last
+    assert_equal "DELETE", del_request[:method]
+    assert_equal "v1/speech-engine/eng_123", del_request[:path]
+  end
+
+  def test_workspaces_api_keys_disable
+    @client.workspaces.api_keys.disable(api_key_name: "ci-bot")
+
+    request = @http.requests.last
+    assert_equal "POST", request[:method]
+    assert_equal "v1/workspaces/api-keys/disable", request[:path]
+    assert_equal({ "api_key_name" => "ci-bot" }, request[:query])
+  end
+
+  def test_audio_isolation_history_list
+    @client.audio_isolation.list(page_size: 5, search: "noise")
+
+    request = @http.requests.last
+    assert_equal "GET", request[:method]
+    assert_equal "v1/audio-isolation/history", request[:path]
+    assert_equal({ "page_size" => 5, "search" => "noise" }, request[:query])
+  end
+
+  def test_audio_isolation_history_delete
+    @client.audio_isolation.delete("hist_123")
+
+    request = @http.requests.last
+    assert_equal "DELETE", request[:method]
+    assert_equal "v1/audio-isolation/history/hist_123", request[:path]
+  end
+
+  def test_conversations_tags_create
+    @client.conversational_ai.conversations.tags.create(title: "VIP", description: "High-value callers")
+
+    request = @http.requests.last
+    assert_equal "POST", request[:method]
+    assert_equal "v1/convai/tags", request[:path]
+    assert_equal({ "title" => "VIP", "description" => "High-value callers" }, request[:json])
+  end
+
+  def test_conversations_tags_assign
+    @client.conversational_ai.conversations.tags.assign("conv_123", tag_ids: ["tag_a", "tag_b"])
+
+    request = @http.requests.last
+    assert_equal "POST", request[:method]
+    assert_equal "v1/convai/conversations/conv_123/tags", request[:path]
+    assert_equal({ "tag_ids" => ["tag_a", "tag_b"] }, request[:json])
+  end
+
+  def test_conversations_tags_unassign
+    @client.conversational_ai.conversations.tags.unassign("conv_123", "tag_a")
+
+    request = @http.requests.last
+    assert_equal "DELETE", request[:method]
+    assert_equal "v1/convai/conversations/conv_123/tags/tag_a", request[:path]
+  end
+
+  def test_conversations_get_sip_messages
+    @client.conversational_ai.conversations.get_sip_messages("conv_123", page_size: 50)
+
+    request = @http.requests.last
+    assert_equal "GET", request[:method]
+    assert_equal "v1/convai/conversations/conv_123/sip-messages", request[:path]
+    assert_equal({ "page_size" => 50 }, request[:query])
+  end
+
+  def test_conversations_analysis_run_evaluation
+    @client.conversational_ai.conversations.analysis.run_evaluation(
+      "conv_123",
+      evaluation_id: "eval_456",
+      scope: "conversation"
+    )
+
+    request = @http.requests.last
+    assert_equal "POST", request[:method]
+    assert_equal "v1/convai/conversations/conv_123/analysis/evaluations/run", request[:path]
+    assert_equal({ "evaluation_id" => "eval_456", "scope" => "conversation" }, request[:json])
+  end
+
+  def test_agents_versions_get
+    @client.conversational_ai.agents.versions.get("agent_123", "ver_456")
+
+    request = @http.requests.last
+    assert_equal "GET", request[:method]
+    assert_equal "v1/convai/agents/agent_123/versions/ver_456", request[:path]
+  end
+
+  def test_knowledge_base_documents_chunks_list
+    @client.conversational_ai.knowledge_base.documents.chunks.list("doc_123", page_size: 30)
+
+    request = @http.requests.last
+    assert_equal "GET", request[:method]
+    assert_equal "v1/convai/knowledge-base/doc_123/chunks", request[:path]
+    assert_equal({ "page_size" => 30 }, request[:query])
+  end
+
+  def test_knowledge_base_document_update_file_multipart
+    file = ElevenLabs::Upload.from_io(StringIO.new("doc-bytes"), filename: "doc.pdf", content_type: "application/pdf")
+
+    @client.conversational_ai.knowledge_base.document.update_file("doc_123", file: file)
+
+    request = @http.requests.last
+    assert_equal "PATCH", request[:method]
+    assert_equal "v1/convai/knowledge-base/doc_123/update-file", request[:path]
+    entry = request[:files].find { |f| f[:name] == "file" }
+    assert entry, "expected a file entry"
+    assert_equal file, entry[:value]
+  end
+
+  def test_phone_numbers_get_sip_messages
+    @client.conversational_ai.phone_numbers.get_sip_messages("phone_123", cursor: "abc")
+
+    request = @http.requests.last
+    assert_equal "GET", request[:method]
+    assert_equal "v1/convai/phone-numbers/phone_123/sip-messages", request[:path]
+    assert_equal({ "cursor" => "abc" }, request[:query])
+  end
+
+  def test_exotel_outbound_call
+    @client.conversational_ai.exotel.outbound_call(
+      agent_id: "agent_123",
+      agent_phone_number_id: "pn_456",
+      to_number: "+15551234567"
+    )
+
+    request = @http.requests.last
+    assert_equal "POST", request[:method]
+    assert_equal "v1/convai/exotel/outbound-call", request[:path]
+    assert_equal(
+      {
+        "agent_id" => "agent_123",
+        "agent_phone_number_id" => "pn_456",
+        "to_number" => "+15551234567"
+      },
+      request[:json]
+    )
+  end
+
+  def test_workspace_audit_logs_list
+    @client.workspace.audit_logs.list(limit: 100, class_name: "Voice")
+
+    request = @http.requests.last
+    assert_equal "GET", request[:method]
+    assert_equal "v1/workspace/audit-logs", request[:path]
+    assert_equal({ "limit" => 100, "class_name" => "Voice" }, request[:query])
+  end
+
+  def test_workspace_analytics_requests_get
+    @client.workspace.analytics.requests.get(start_time: 1700000000, end_time: 1700100000, limit: 50)
+
+    request = @http.requests.last
+    assert_equal "POST", request[:method]
+    assert_equal "v1/workspace/analytics/requests", request[:path]
+    assert_equal({ "start_time" => 1700000000, "end_time" => 1700100000, "limit" => 50 }, request[:json])
+  end
+
+  def test_workspace_auth_connections_update
+    @client.workspace.auth_connections.update("conn_123", request: { "enabled" => false })
+
+    request = @http.requests.last
+    assert_equal "PATCH", request[:method]
+    assert_equal "v1/workspace/auth-connections/conn_123", request[:path]
+    assert_equal({ "enabled" => false }, request[:json])
+  end
+
+  # --- New in v2.53.0 (per-operation serialization completeness) ---
+
+  def test_conversations_tags_list
+    @client.conversational_ai.conversations.tags.list(page_size: 20, cursor: "abc")
+
+    request = @http.requests.last
+    assert_equal "GET", request[:method]
+    assert_equal "v1/convai/tags", request[:path]
+    assert_equal({ "page_size" => 20, "cursor" => "abc" }, request[:query])
+  end
+
+  def test_conversations_tags_get
+    @client.conversational_ai.conversations.tags.get("tag_123")
+
+    request = @http.requests.last
+    assert_equal "GET", request[:method]
+    assert_equal "v1/convai/tags/tag_123", request[:path]
+  end
+
+  def test_conversations_tags_update
+    @client.conversational_ai.conversations.tags.update("tag_123", title: "Renamed", description: "Updated")
+
+    request = @http.requests.last
+    assert_equal "PATCH", request[:method]
+    assert_equal "v1/convai/tags/tag_123", request[:path]
+    assert_equal({ "title" => "Renamed", "description" => "Updated" }, request[:json])
+  end
+
+  def test_conversations_tags_delete
+    @client.conversational_ai.conversations.tags.delete("tag_123")
+
+    request = @http.requests.last
+    assert_equal "DELETE", request[:method]
+    assert_equal "v1/convai/tags/tag_123", request[:path]
+  end
+
+  def test_productions_orders_get
+    @client.productions.orders.get("order_123")
+
+    request = @http.requests.last
+    assert_equal "GET", request[:method]
+    assert_equal "v1/productions/orders/order_123", request[:path]
+  end
+
+  def test_productions_orders_deliverables_list
+    @client.productions.orders.deliverables.list("order_123")
+
+    request = @http.requests.last
+    assert_equal "GET", request[:method]
+    assert_equal "v1/productions/orders/order_123/deliverables", request[:path]
+  end
+
+  def test_productions_orders_items_upsert_nests_under_request_key
+    @client.productions.orders.items.upsert("order_123", request: { "items" => [{ "kind" => "dubbing" }] })
+
+    request = @http.requests.last
+    assert_equal "POST", request[:method]
+    assert_equal "v1/productions/orders/order_123/items", request[:path]
+    assert_equal({ "request" => { "items" => [{ "kind" => "dubbing" }] } }, request[:json])
+  end
+
+  def test_productions_orders_media_get
+    @client.productions.orders.media.get("order_123", "media_456")
+
+    request = @http.requests.last
+    assert_equal "GET", request[:method]
+    assert_equal "v1/productions/orders/order_123/media/media_456", request[:path]
+  end
+
+  def test_speech_engine_update
+    @client.speech_engine.update("eng_123", name: "Renamed", tags: ["prod"])
+
+    request = @http.requests.last
+    assert_equal "PATCH", request[:method]
+    assert_equal "v1/speech-engine/eng_123", request[:path]
+    assert_equal({ "name" => "Renamed", "tags" => ["prod"] }, request[:json])
+  end
 end

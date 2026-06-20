@@ -70,9 +70,17 @@ def construct_type(*args: Any, **kwargs: Any) -> Any:  # pragma: no cover - help
     return args[1] if len(args) > 1 else (args[0] if args else None)
 
 
+def serialize_datetime(value: Any = None, *_: Any, **__: Any) -> Any:  # pragma: no cover - helper for evaluation compatibility
+    # The SDK wraps datetime query/body params as `serialize_datetime(x) if x is not None else None`.
+    # During extraction `x` is a placeholder string, so return it unchanged to keep the param wiring intact.
+    return value
+
+
 EVAL_GLOBALS["jsonable_encoder"] = jsonable_encoder
 EVAL_GLOBALS["convert_and_respect_annotation_metadata"] = convert_and_respect_annotation_metadata
 EVAL_GLOBALS["construct_type"] = construct_type
+EVAL_GLOBALS["serialize_datetime"] = serialize_datetime
+EVAL_GLOBALS["serialize_date"] = serialize_datetime
 EVAL_GLOBALS["OMIT"] = object()
 
 

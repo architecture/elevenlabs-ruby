@@ -156,10 +156,10 @@ class ClientIntegrationTest < Minitest::Test
     expected = %w[
       audio_isolation audio_native conversational_ai dubbing
       environment_variables forced_alignment history models music
-      pronunciation_dictionaries samples service_accounts speech_to_speech
-      speech_to_text studio text_to_dialogue text_to_sound_effects
-      text_to_speech text_to_voice tokens usage user voices webhooks
-      workspace
+      productions pronunciation_dictionaries samples service_accounts
+      speech_engine speech_to_speech speech_to_text studio text_to_dialogue
+      text_to_sound_effects text_to_speech text_to_voice tokens usage user
+      voices webhooks workspace workspaces
     ]
 
     expected.each do |name|
@@ -279,5 +279,103 @@ class ClientIntegrationTest < Minitest::Test
     usage_klass = ElevenLabs::Resources.class_for(["workspace", "usage"])
     assert usage_klass.method_defined?(:get_usage_by_product_over_time),
            "expected workspace.usage to have get_usage_by_product_over_time method"
+  end
+
+  # --- New in v2.53.0 ---
+
+  def test_productions_orders_child_accessible_with_crud
+    klass = ElevenLabs::Resources.class_for(["productions"])
+    fake_http = Object.new
+    instance = klass.new(fake_http)
+    assert_respond_to instance, :orders
+
+    orders_klass = ElevenLabs::Resources.class_for(["productions", "orders"])
+    %i[list create get update submit].each do |m|
+      assert orders_klass.method_defined?(m), "expected productions.orders to have #{m} method"
+    end
+  end
+
+  def test_productions_orders_grandchildren_accessible
+    klass = ElevenLabs::Resources.class_for(["productions", "orders"])
+    fake_http = Object.new
+    instance = klass.new(fake_http)
+    %i[items media languages deliverables].each do |child|
+      assert_respond_to instance, child
+    end
+
+    items_klass = ElevenLabs::Resources.class_for(["productions", "orders", "items"])
+    %i[upsert remove].each do |m|
+      assert items_klass.method_defined?(m), "expected productions.orders.items to have #{m} method"
+    end
+
+    media_klass = ElevenLabs::Resources.class_for(["productions", "orders", "media"])
+    %i[register get].each do |m|
+      assert media_klass.method_defined?(m), "expected productions.orders.media to have #{m} method"
+    end
+  end
+
+  def test_speech_engine_class_has_crud
+    klass = ElevenLabs::Resources.class_for(["speech_engine"])
+    assert klass, "expected class_for(['speech_engine']) to return a class"
+    %i[list create get delete update].each do |m|
+      assert klass.method_defined?(m), "expected speech_engine to have #{m} method"
+    end
+  end
+
+  def test_workspaces_api_keys_child_accessible
+    klass = ElevenLabs::Resources.class_for(["workspaces"])
+    fake_http = Object.new
+    instance = klass.new(fake_http)
+    assert_respond_to instance, :api_keys
+
+    api_keys_klass = ElevenLabs::Resources.class_for(["workspaces", "api_keys"])
+    assert api_keys_klass.method_defined?(:disable), "expected workspaces.api_keys to have disable method"
+  end
+
+  def test_audio_isolation_history_methods
+    klass = ElevenLabs::Resources.class_for(["audio_isolation"])
+    %i[list delete].each do |m|
+      assert klass.method_defined?(m), "expected audio_isolation to have #{m} method"
+    end
+  end
+
+  def test_conversations_tags_child_accessible_with_crud
+    klass = ElevenLabs::Resources.class_for(["conversational_ai", "conversations"])
+    fake_http = Object.new
+    instance = klass.new(fake_http)
+    assert_respond_to instance, :tags
+
+    tags_klass = ElevenLabs::Resources.class_for(["conversational_ai", "conversations", "tags"])
+    %i[list create get update delete assign unassign].each do |m|
+      assert tags_klass.method_defined?(m), "expected conversations.tags to have #{m} method"
+    end
+  end
+
+  def test_agents_versions_child_accessible
+    klass = ElevenLabs::Resources.class_for(["conversational_ai", "agents", "versions"])
+    assert klass, "expected agents.versions resource class to exist"
+    assert klass.method_defined?(:get), "expected agents.versions to have get method"
+  end
+
+  def test_knowledge_base_documents_chunks_child_accessible
+    klass = ElevenLabs::Resources.class_for(["conversational_ai", "knowledge_base", "documents", "chunks"])
+    assert klass, "expected knowledge_base.documents.chunks resource class to exist"
+    assert klass.method_defined?(:list), "expected knowledge_base.documents.chunks to have list method"
+  end
+
+  def test_exotel_child_accessible
+    klass = ElevenLabs::Resources.class_for(["conversational_ai", "exotel"])
+    assert klass, "expected conversational_ai.exotel resource class to exist"
+    assert klass.method_defined?(:outbound_call), "expected exotel to have outbound_call method"
+  end
+
+  def test_workspace_audit_logs_child_accessible
+    klass = ElevenLabs::Resources.class_for(["workspace"])
+    fake_http = Object.new
+    instance = klass.new(fake_http)
+    assert_respond_to instance, :audit_logs
+
+    audit_klass = ElevenLabs::Resources.class_for(["workspace", "audit_logs"])
+    assert audit_klass.method_defined?(:list), "expected workspace.audit_logs to have list method"
   end
 end
