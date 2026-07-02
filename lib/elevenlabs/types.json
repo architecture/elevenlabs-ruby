@@ -1,6 +1,6 @@
 {
-  "count": 1682,
-  "source_commit": "df576b47f3898ddea8d51339fe2af8f0965f97ee",
+  "count": 1708,
+  "source_commit": "1b45413e916fda868341ad48225c4b7211017849",
   "types": {
     "ActorModel": {
       "kind": "model",
@@ -470,6 +470,13 @@
           "optional": true,
           "default": null,
           "doc": "Whether a draft exists for the branch"
+        },
+        {
+          "name": "calls_7_d",
+          "annotation": "typing_extensions.Annotated[typing.Optional[int], FieldMetadata(alias='calls_7d')]",
+          "optional": false,
+          "default": null,
+          "doc": "Number of calls in the last 7 days"
         }
       ]
     },
@@ -1066,6 +1073,13 @@
           "optional": true,
           "default": null,
           "doc": "Default LLM model for post-call analysis (evaluation and data collection)"
+        },
+        {
+          "name": "topic_discovery",
+          "annotation": "typing.Optional[TopicDiscoverySettings]",
+          "optional": true,
+          "default": null,
+          "doc": "Per-agent topic discovery configuration"
         }
       ]
     },
@@ -1176,6 +1190,13 @@
           "optional": true,
           "default": null,
           "doc": "Default LLM model for post-call analysis (evaluation and data collection)"
+        },
+        {
+          "name": "topic_discovery",
+          "annotation": "typing.Optional[TopicDiscoverySettings]",
+          "optional": true,
+          "default": null,
+          "doc": "Per-agent topic discovery configuration"
         },
         {
           "name": "safety",
@@ -1594,6 +1615,13 @@
           "optional": true,
           "default": null,
           "doc": null
+        },
+        {
+          "name": "rebased_from_version_id",
+          "annotation": "typing.Optional[str]",
+          "optional": true,
+          "default": null,
+          "doc": null
         }
       ]
     },
@@ -1677,6 +1705,20 @@
           "literal_value": "override_agent"
         },
         {
+          "name": "position",
+          "annotation": "typing.Optional[PositionInput]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "edge_order",
+          "annotation": "typing.Optional[typing.List[str]]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
           "name": "conversation_config",
           "annotation": "typing.Optional[ConversationalConfigApiModelWorkflowOverrideInput]",
           "optional": true,
@@ -1699,20 +1741,6 @@
         },
         {
           "name": "additional_tool_ids",
-          "annotation": "typing.Optional[typing.List[str]]",
-          "optional": true,
-          "default": null,
-          "doc": null
-        },
-        {
-          "name": "position",
-          "annotation": "typing.Optional[PositionInput]",
-          "optional": true,
-          "default": null,
-          "doc": null
-        },
-        {
-          "name": "edge_order",
           "annotation": "typing.Optional[typing.List[str]]",
           "optional": true,
           "default": null,
@@ -1765,6 +1793,13 @@
         {
           "name": "transfer_type",
           "annotation": "typing.Optional[TransferTypeEnum]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "uui",
+          "annotation": "typing.Optional[UuiTransferConfig]",
           "optional": true,
           "default": null,
           "doc": null
@@ -2014,6 +2049,20 @@
           "literal_value": "override_agent"
         },
         {
+          "name": "position",
+          "annotation": "PositionOutput",
+          "optional": false,
+          "default": "__REQUIRED__",
+          "doc": null
+        },
+        {
+          "name": "edge_order",
+          "annotation": "typing.List[str]",
+          "optional": false,
+          "default": "__REQUIRED__",
+          "doc": null
+        },
+        {
           "name": "conversation_config",
           "annotation": "ConversationalConfigApiModelWorkflowOverrideOutput",
           "optional": false,
@@ -2036,20 +2085,6 @@
         },
         {
           "name": "additional_tool_ids",
-          "annotation": "typing.List[str]",
-          "optional": false,
-          "default": "__REQUIRED__",
-          "doc": null
-        },
-        {
-          "name": "position",
-          "annotation": "PositionOutput",
-          "optional": false,
-          "default": "__REQUIRED__",
-          "doc": null
-        },
-        {
-          "name": "edge_order",
           "annotation": "typing.List[str]",
           "optional": false,
           "default": "__REQUIRED__",
@@ -2104,6 +2139,13 @@
           "annotation": "TransferTypeEnum",
           "optional": false,
           "default": "__REQUIRED__",
+          "doc": null
+        },
+        {
+          "name": "uui",
+          "annotation": "typing.Optional[UuiTransferConfig]",
+          "optional": true,
+          "default": null,
           "doc": null
         },
         {
@@ -2476,6 +2518,13 @@
           "doc": "The name of the dynamic variable to use for this property's value. Mutually exclusive with description, is_system_provided, constant_value, and is_omitted."
         },
         {
+          "name": "allowed_values_dynamic_variable",
+          "annotation": "typing.Optional[str]",
+          "optional": true,
+          "default": null,
+          "doc": "When set, the LLM provides the value but the runtime rejects any value not present in the list held by this dynamic variable. Use to let the LLM pick from a server-verified set (e.g. the IDs the current user is allowed to access). Requires description; mutually exclusive with dynamic_variable, is_system_provided, constant_value, and is_omitted."
+        },
+        {
           "name": "constant_value",
           "annotation": "typing.Optional[AnalysisPropertyConstantValue]",
           "optional": true,
@@ -2574,27 +2623,6 @@
           "doc": null
         },
         {
-          "name": "status",
-          "annotation": "typing.Optional[OAuthConnectionStatus]",
-          "optional": true,
-          "default": null,
-          "doc": "Current health status of the OAuth connection"
-        },
-        {
-          "name": "status_detail",
-          "annotation": "typing.Optional[str]",
-          "optional": true,
-          "default": null,
-          "doc": "Human-readable detail about the current status, e.g. the error message on refresh failure"
-        },
-        {
-          "name": "status_updated_at",
-          "annotation": "typing.Optional[str]",
-          "optional": true,
-          "default": null,
-          "doc": "ISO 8601 timestamp of the last status change"
-        },
-        {
           "name": "id",
           "annotation": "str",
           "optional": false,
@@ -2604,6 +2632,27 @@
         {
           "name": "used_by",
           "annotation": "typing.Optional[AuthConnectionDependencies]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "status",
+          "annotation": "typing.Optional[AuthConnectionStatus]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "status_detail",
+          "annotation": "typing.Optional[str]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "status_updated_at",
+          "annotation": "typing.Optional[str]",
           "optional": true,
           "default": null,
           "doc": null
@@ -2677,27 +2726,6 @@
           "doc": null
         },
         {
-          "name": "status",
-          "annotation": "typing.Optional[OAuthConnectionStatus]",
-          "optional": true,
-          "default": null,
-          "doc": "Current health status of the OAuth connection"
-        },
-        {
-          "name": "status_detail",
-          "annotation": "typing.Optional[str]",
-          "optional": true,
-          "default": null,
-          "doc": "Human-readable detail about the current status, e.g. the error message on refresh failure"
-        },
-        {
-          "name": "status_updated_at",
-          "annotation": "typing.Optional[str]",
-          "optional": true,
-          "default": null,
-          "doc": "ISO 8601 timestamp of the last status change"
-        },
-        {
           "name": "client_id",
           "annotation": "str",
           "optional": false,
@@ -2714,6 +2742,27 @@
         {
           "name": "used_by",
           "annotation": "typing.Optional[AuthConnectionDependencies]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "status",
+          "annotation": "typing.Optional[AuthConnectionStatus]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "status_detail",
+          "annotation": "typing.Optional[str]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "status_updated_at",
+          "annotation": "typing.Optional[str]",
           "optional": true,
           "default": null,
           "doc": null
@@ -5271,6 +5320,14 @@
         "failed"
       ]
     },
+    "AudioFilterId": {
+      "kind": "enum",
+      "values": [
+        "phone",
+        "low_quality_phone",
+        "bright_phone"
+      ]
+    },
     "AudioFormatEnum": {
       "kind": "enum",
       "values": [
@@ -5918,6 +5975,15 @@
         }
       ]
     },
+    "AuthConnectionStatus": {
+      "kind": "enum",
+      "values": [
+        "active",
+        "refresh_failed",
+        "revoked",
+        "credential_invalid"
+      ]
+    },
     "AuthSettings": {
       "kind": "model",
       "fields": [
@@ -6199,6 +6265,20 @@
           "optional": true,
           "default": null,
           "doc": null
+        },
+        {
+          "name": "interruption_ignore_terms",
+          "annotation": "typing.Optional[typing.List[str]]",
+          "optional": true,
+          "default": null,
+          "doc": "List of terms that should not trigger an interruption when spoken by the user (e.g. 'gotcha', 'understood'). Uses case-insensitive exact matching."
+        },
+        {
+          "name": "transcribe_on_disabled_interruptions",
+          "annotation": "typing.Optional[bool]",
+          "optional": true,
+          "default": null,
+          "doc": "When interruptions are disabled, still transcribe what the user says so it can carry into the next turn. When off, user speech during a non-interruptible turn is ignored and won't trigger a turn."
         }
       ]
     },
@@ -6236,6 +6316,27 @@
         {
           "name": "used_by",
           "annotation": "typing.Optional[AuthConnectionDependencies]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "status",
+          "annotation": "typing.Optional[AuthConnectionStatus]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "status_detail",
+          "annotation": "typing.Optional[str]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "status_updated_at",
+          "annotation": "typing.Optional[str]",
           "optional": true,
           "default": null,
           "doc": null
@@ -6655,6 +6756,27 @@
         {
           "name": "used_by",
           "annotation": "typing.Optional[AuthConnectionDependencies]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "status",
+          "annotation": "typing.Optional[AuthConnectionStatus]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "status_detail",
+          "annotation": "typing.Optional[str]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "status_updated_at",
+          "annotation": "typing.Optional[str]",
           "optional": true,
           "default": null,
           "doc": null
@@ -7249,6 +7371,20 @@
           "doc": null
         },
         {
+          "name": "background_blur",
+          "annotation": "typing.Optional[float]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "background_border_radius",
+          "annotation": "typing.Optional[float]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
           "name": "word_highlights_enabled",
           "annotation": "typing.Optional[bool]",
           "optional": true,
@@ -7271,6 +7407,20 @@
         },
         {
           "name": "word_highlights_opacity",
+          "annotation": "typing.Optional[float]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "word_highlights_border_radius",
+          "annotation": "typing.Optional[float]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "word_highlights_blur",
           "annotation": "typing.Optional[float]",
           "optional": true,
           "default": null,
@@ -7403,7 +7553,13 @@
       "values": [
         "none",
         "fade",
-        "scale"
+        "scale",
+        "pop",
+        "slide_up",
+        "slide_down",
+        "slam",
+        "scale_down",
+        "slide_in"
       ]
     },
     "CaptionStyleSectionAnimationModelExitType": {
@@ -7411,7 +7567,13 @@
       "values": [
         "none",
         "fade",
-        "scale"
+        "scale",
+        "pop",
+        "slide_up",
+        "slide_down",
+        "slam",
+        "scale_down",
+        "slide_in"
       ]
     },
     "CaptionStyleTemplateModel": {
@@ -7491,7 +7653,13 @@
       "values": [
         "none",
         "fade",
-        "scale"
+        "scale",
+        "pop",
+        "slide_up",
+        "slide_down",
+        "slam",
+        "scale_down",
+        "slide_in"
       ]
     },
     "CaptionStyleWordAnimationModelExitType": {
@@ -7499,7 +7667,13 @@
       "values": [
         "none",
         "fade",
-        "scale"
+        "scale",
+        "pop",
+        "slide_up",
+        "slide_down",
+        "slam",
+        "scale_down",
+        "slide_in"
       ]
     },
     "ChapterContentBlockExtendableNodeResponseModel": {
@@ -8030,6 +8204,14 @@
         "converting"
       ]
     },
+    "CharacterAge": {
+      "kind": "enum",
+      "values": [
+        "young",
+        "middle-aged",
+        "old"
+      ]
+    },
     "CharacterAlignmentModel": {
       "kind": "model",
       "fields": [
@@ -8082,6 +8264,54 @@
         }
       ]
     },
+    "CharacterGender": {
+      "kind": "enum",
+      "values": [
+        "male",
+        "female",
+        "neutral"
+      ]
+    },
+    "CharacterMetadataResponseModel": {
+      "kind": "model",
+      "fields": [
+        {
+          "name": "description",
+          "annotation": "typing.Optional[str]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "sample_message",
+          "annotation": "typing.Optional[str]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "gender",
+          "annotation": "typing.Optional[CharacterGender]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "age",
+          "annotation": "typing.Optional[CharacterAge]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "accent",
+          "annotation": "typing.Optional[str]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        }
+      ]
+    },
     "CharacterRefreshPeriod": {
       "kind": "enum",
       "values": [
@@ -8089,6 +8319,32 @@
         "3_month_period",
         "6_month_period",
         "annual_period"
+      ]
+    },
+    "CharacterResponseModel": {
+      "kind": "model",
+      "fields": [
+        {
+          "name": "character_id",
+          "annotation": "str",
+          "optional": false,
+          "default": "__REQUIRED__",
+          "doc": null
+        },
+        {
+          "name": "name",
+          "annotation": "str",
+          "optional": false,
+          "default": "__REQUIRED__",
+          "doc": null
+        },
+        {
+          "name": "metadata",
+          "annotation": "typing.Optional[CharacterMetadataResponseModel]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        }
       ]
     },
     "ChatSourceMedium": {
@@ -8473,89 +8729,6 @@
           "optional": true,
           "default": null,
           "doc": "If true, closes all contexts and closes the entire WebSocket connection. Any context that was previously set to flush will wait to flush before closing."
-        }
-      ]
-    },
-    "CoachedAgentSettings": {
-      "kind": "model",
-      "fields": [
-        {
-          "name": "type",
-          "annotation": "typing.Optional[typing.Literal['coached']]",
-          "optional": true,
-          "default": null,
-          "doc": null
-        },
-        {
-          "name": "memory_base_id",
-          "annotation": "typing.Optional[str]",
-          "optional": true,
-          "default": null,
-          "doc": null
-        }
-      ]
-    },
-    "CoachingAgentSettings": {
-      "kind": "model",
-      "fields": [
-        {
-          "name": "type",
-          "annotation": "typing.Optional[typing.Literal['coaching']]",
-          "optional": true,
-          "default": null,
-          "doc": null
-        },
-        {
-          "name": "coached_agent_id",
-          "annotation": "str",
-          "optional": false,
-          "default": "__REQUIRED__",
-          "doc": null
-        },
-        {
-          "name": "memory_base_id",
-          "annotation": "typing.Optional[str]",
-          "optional": true,
-          "default": null,
-          "doc": null
-        }
-      ]
-    },
-    "CodeToolAllowedDomain": {
-      "kind": "model",
-      "fields": [
-        {
-          "name": "domain",
-          "annotation": "str",
-          "optional": false,
-          "default": "__REQUIRED__",
-          "doc": "Domain pattern that code tools can access. Must be a valid domain (e.g. api.github.com), optionally with a subdomain wildcard (*.example.com) or path glob (api.example.com/v1/*)."
-        },
-        {
-          "name": "name",
-          "annotation": "str",
-          "optional": false,
-          "default": "__REQUIRED__",
-          "doc": "Human-readable label for this domain entry"
-        }
-      ]
-    },
-    "CodeToolContextVariable": {
-      "kind": "model",
-      "fields": [
-        {
-          "name": "name",
-          "annotation": "str",
-          "optional": false,
-          "default": "__REQUIRED__",
-          "doc": null
-        },
-        {
-          "name": "env_var_label",
-          "annotation": "str",
-          "optional": false,
-          "default": "__REQUIRED__",
-          "doc": null
         }
       ]
     },
@@ -9419,7 +9592,7 @@
           "annotation": "typing.Optional[typing.List[WebhookEventType]]",
           "optional": true,
           "default": null,
-          "doc": "List of event types to send via webhook. Options: transcript, audio, call_initiation_failure."
+          "doc": "List of event types to send via webhook. Options: transcript, audio, call_initiation_failure, unredacted_transcript, unredacted_audio."
         },
         {
           "name": "transcript_format",
@@ -9786,6 +9959,13 @@
           "doc": "The events that will be sent to monitoring connections."
         },
         {
+          "name": "background_sound",
+          "annotation": "typing.Optional[BackgroundSoundConfig]",
+          "optional": true,
+          "default": null,
+          "doc": "Configuration for background sound during conversations."
+        },
+        {
           "name": "source_attribution",
           "annotation": "typing.Optional[bool]",
           "optional": true,
@@ -9838,6 +10018,13 @@
           "optional": true,
           "default": null,
           "doc": "The events that will be sent to monitoring connections."
+        },
+        {
+          "name": "background_sound",
+          "annotation": "typing.Optional[BackgroundSoundConfig]",
+          "optional": true,
+          "default": null,
+          "doc": "Configuration for background sound during conversations."
         },
         {
           "name": "source_attribution",
@@ -9918,6 +10105,13 @@
           "doc": "The events that will be sent to monitoring connections."
         },
         {
+          "name": "background_sound",
+          "annotation": "typing.Optional[BackgroundSoundConfigWorkflowOverride]",
+          "optional": true,
+          "default": null,
+          "doc": "Configuration for background sound during conversations."
+        },
+        {
           "name": "source_attribution",
           "annotation": "typing.Optional[bool]",
           "optional": true,
@@ -9970,6 +10164,13 @@
           "optional": true,
           "default": null,
           "doc": "The events that will be sent to monitoring connections."
+        },
+        {
+          "name": "background_sound",
+          "annotation": "typing.Optional[BackgroundSoundConfigWorkflowOverride]",
+          "optional": true,
+          "default": null,
+          "doc": "Configuration for background sound during conversations."
         },
         {
           "name": "source_attribution",
@@ -10073,6 +10274,13 @@
           "doc": null
         },
         {
+          "name": "call_success_score",
+          "annotation": "typing.Optional[float]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
           "name": "transcript_summary",
           "annotation": "str",
           "optional": false,
@@ -10167,6 +10375,27 @@
           "annotation": "str",
           "optional": false,
           "default": "__REQUIRED__",
+          "doc": null
+        },
+        {
+          "name": "scoring_mode",
+          "annotation": "typing.Optional[CriteriaScoringMode]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "score",
+          "annotation": "typing.Optional[int]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "max_score",
+          "annotation": "typing.Optional[int]",
+          "optional": true,
+          "default": null,
           "doc": null
         }
       ]
@@ -11098,6 +11327,13 @@
           "doc": null
         },
         {
+          "name": "reasoning",
+          "annotation": "typing.Optional[typing.List[ConversationReasoningModel]]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
           "name": "source_medium",
           "annotation": "typing.Optional[ChatSourceMedium]",
           "optional": true,
@@ -11114,6 +11350,13 @@
         {
           "name": "used_static_kb_document_ids",
           "annotation": "typing.Optional[typing.List[str]]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "user_identifier",
+          "annotation": "typing.Optional[str]",
           "optional": true,
           "default": null,
           "doc": null
@@ -11229,6 +11472,13 @@
           "doc": null
         },
         {
+          "name": "reasoning",
+          "annotation": "typing.Optional[typing.List[ConversationReasoningModel]]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
           "name": "source_medium",
           "annotation": "typing.Optional[ChatSourceMedium]",
           "optional": true,
@@ -11245,6 +11495,13 @@
         {
           "name": "used_static_kb_document_ids",
           "annotation": "typing.Optional[typing.List[str]]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "user_identifier",
+          "annotation": "typing.Optional[str]",
           "optional": true,
           "default": null,
           "doc": null
@@ -11484,6 +11741,13 @@
           "doc": null
         },
         {
+          "name": "reasoning",
+          "annotation": "typing.Optional[typing.List[ConversationReasoningModel]]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
           "name": "source_medium",
           "annotation": "typing.Optional[ChatSourceMedium]",
           "optional": true,
@@ -11505,6 +11769,13 @@
           "doc": null
         },
         {
+          "name": "user_identifier",
+          "annotation": "typing.Optional[str]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
           "name": "file_input",
           "annotation": "typing.Optional[ConversationHistoryTranscriptFileInputResponseModel]",
           "optional": true,
@@ -11514,6 +11785,13 @@
         {
           "name": "contextual_update_info",
           "annotation": "typing.Optional[ContextualUpdateInfo]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "reasoned",
+          "annotation": "typing.Optional[bool]",
           "optional": true,
           "default": null,
           "doc": null
@@ -14191,6 +14469,32 @@
         }
       ]
     },
+    "ConversationProduct": {
+      "kind": "enum",
+      "values": [
+        "agents",
+        "speech_engine"
+      ]
+    },
+    "ConversationReasoningModel": {
+      "kind": "model",
+      "fields": [
+        {
+          "name": "summary",
+          "annotation": "typing.Optional[str]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "provider_redact",
+          "annotation": "typing.Optional[bool]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        }
+      ]
+    },
     "ConversationSentimentAnalysis": {
       "kind": "model",
       "fields": [
@@ -14391,6 +14695,13 @@
           "doc": null
         },
         {
+          "name": "call_success_score",
+          "annotation": "typing.Optional[float]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
           "name": "transcript_summary",
           "annotation": "typing.Optional[str]",
           "optional": true,
@@ -14435,6 +14746,13 @@
         {
           "name": "rating",
           "annotation": "typing.Optional[float]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "sentiment_analysis",
+          "annotation": "typing.Optional[ConversationSentimentAnalysis]",
           "optional": true,
           "default": null,
           "doc": null
@@ -14666,6 +14984,20 @@
         {
           "name": "last_contact_agent_name",
           "annotation": "typing.Optional[str]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "sentiment",
+          "annotation": "SentimentAggregate",
+          "optional": false,
+          "default": "__REQUIRED__",
+          "doc": null
+        },
+        {
+          "name": "most_frustrated_conversations",
+          "annotation": "typing.Optional[typing.List[FrustratedConversationRef]]",
           "optional": true,
           "default": null,
           "doc": null
@@ -14915,6 +15247,18 @@
         }
       ]
     },
+    "CreateAgentProcedureParams": {
+      "kind": "model",
+      "fields": [
+        {
+          "name": "smb_tool_type",
+          "annotation": "typing.Optional[typing.Literal['create_agent_procedure']]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        }
+      ]
+    },
     "CreateAgentResponseModel": {
       "kind": "model",
       "fields": [
@@ -15159,6 +15503,13 @@
           "optional": true,
           "default": null,
           "doc": "This field is deprecated and will be removed in the future. Whether this phone number supports outbound calls"
+        },
+        {
+          "name": "agent_id",
+          "annotation": "typing.Optional[str]",
+          "optional": true,
+          "default": null,
+          "doc": "Agent ID to assign the phone number to"
         },
         {
           "name": "account_sid",
@@ -15745,7 +16096,14 @@
           "annotation": "typing.Optional[str]",
           "optional": true,
           "default": null,
-          "doc": "A prompt that evaluates whether the agent's response is successful. Should return True or False."
+          "doc": "Deprecated legacy single success criterion. Use success_conditions instead. At least one of success_condition or success_conditions is required."
+        },
+        {
+          "name": "success_conditions",
+          "annotation": "typing.Optional[typing.List[str]]",
+          "optional": true,
+          "default": null,
+          "doc": "List of prompts that evaluate whether the simulation was successful. If provided, all criteria are evaluated and merged into a final result. Capped at the maximum number of evaluation criteria."
         },
         {
           "name": "simulation_scenario",
@@ -15835,6 +16193,13 @@
           "optional": true,
           "default": null,
           "doc": "This field is deprecated and will be removed in the future. Whether this phone number supports outbound calls"
+        },
+        {
+          "name": "agent_id",
+          "annotation": "typing.Optional[str]",
+          "optional": true,
+          "default": null,
+          "doc": "Agent ID to assign the phone number to"
         },
         {
           "name": "inbound_trunk_config",
@@ -15976,6 +16341,13 @@
           "doc": "This field is deprecated and will be removed in the future. Whether this phone number supports outbound calls"
         },
         {
+          "name": "agent_id",
+          "annotation": "typing.Optional[str]",
+          "optional": true,
+          "default": null,
+          "doc": "Agent ID to assign the phone number to"
+        },
+        {
           "name": "sid",
           "annotation": "str",
           "optional": false,
@@ -15996,6 +16368,13 @@
           "default": null,
           "doc": "Twilio Additional Region Configuration"
         }
+      ]
+    },
+    "CriteriaScoringMode": {
+      "kind": "enum",
+      "values": [
+        "binary",
+        "numeric_uniform"
       ]
     },
     "CueOptionsRequest": {
@@ -16097,7 +16476,7 @@
           "annotation": "typing.Optional[int]",
           "optional": true,
           "default": null,
-          "doc": "How many recent customer messages to include in the guardrail's history, plus the messages that follow them. Only customer messages count toward the limit. 0 (default) shows none; 1 shows the customer's latest message onward. When > 0, the guardrail prompt can refer to this history as <conversation_history>; the reply under evaluation appears as <agent_message> and may repeat at the end of the history."
+          "doc": "How many recent customer messages to include in the guardrail's history, plus the agent replies that follow them (and tool calls and results when history_include_tool_calls is enabled). Only customer messages count toward the limit. 0 (default) shows none; 1 shows the customer's latest message onward. When > 0, the guardrail prompt can refer to this history as <conversation_history>; the reply under evaluation appears as <agent_message> and may repeat at the end of the history."
         },
         {
           "name": "trigger_action",
@@ -16250,6 +16629,27 @@
         {
           "name": "used_by",
           "annotation": "typing.Optional[AuthConnectionDependencies]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "status",
+          "annotation": "typing.Optional[AuthConnectionStatus]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "status_detail",
+          "annotation": "typing.Optional[str]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "status_updated_at",
+          "annotation": "typing.Optional[str]",
           "optional": true,
           "default": null,
           "doc": null
@@ -16463,6 +16863,18 @@
         "admin",
         "editor",
         "viewer"
+      ]
+    },
+    "DeleteAgentProcedureParams": {
+      "kind": "model",
+      "fields": [
+        {
+          "name": "smb_tool_type",
+          "annotation": "typing.Optional[typing.Literal['delete_agent_procedure']]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        }
       ]
     },
     "DeleteAgentRuleParams": {
@@ -19745,7 +20157,62 @@
         }
       ]
     },
-    "GenerationChunk": {
+    "FrustratedConversationRef": {
+      "kind": "model",
+      "fields": [
+        {
+          "name": "conversation_id",
+          "annotation": "str",
+          "optional": false,
+          "default": "__REQUIRED__",
+          "doc": null
+        },
+        {
+          "name": "agent_id",
+          "annotation": "str",
+          "optional": false,
+          "default": "__REQUIRED__",
+          "doc": null
+        },
+        {
+          "name": "start_time_unix_secs",
+          "annotation": "int",
+          "optional": false,
+          "default": "__REQUIRED__",
+          "doc": null
+        },
+        {
+          "name": "overall_label",
+          "annotation": "FrustratedConversationRefOverallLabel",
+          "optional": false,
+          "default": "__REQUIRED__",
+          "doc": null
+        },
+        {
+          "name": "overall_sentiment_score",
+          "annotation": "float",
+          "optional": false,
+          "default": "__REQUIRED__",
+          "doc": null
+        },
+        {
+          "name": "overall_frustration_score",
+          "annotation": "float",
+          "optional": false,
+          "default": "__REQUIRED__",
+          "doc": null
+        }
+      ]
+    },
+    "FrustratedConversationRefOverallLabel": {
+      "kind": "enum",
+      "values": [
+        "positive",
+        "neutral",
+        "negative"
+      ]
+    },
+    "GenerationChunkInput": {
       "kind": "model",
       "fields": [
         {
@@ -19778,7 +20245,7 @@
         },
         {
           "name": "context_adherence",
-          "annotation": "typing.Optional[GenerationChunkContextAdherence]",
+          "annotation": "typing.Optional[GenerationChunkInputContextAdherence]",
           "optional": true,
           "default": null,
           "doc": "How much the model adheres to the context of its surrounding chunks. Low adherence means the model can deviate from the context and be more creative. High adherence means the model will be more consistent with the context."
@@ -19792,14 +20259,14 @@
         },
         {
           "name": "condition_strength",
-          "annotation": "typing.Optional[GenerationChunkConditionStrength]",
+          "annotation": "typing.Optional[GenerationChunkInputConditionStrength]",
           "optional": true,
           "default": null,
           "doc": "How strongly the model adheres to the conditioning reference. Low strength means the model will be more creative and deviate from the reference. High strength means the model will be more consistent with the reference."
         }
       ]
     },
-    "GenerationChunkConditionStrength": {
+    "GenerationChunkInputConditionStrength": {
       "kind": "enum",
       "values": [
         "low",
@@ -19808,7 +20275,78 @@
         "xhigh"
       ]
     },
-    "GenerationChunkContextAdherence": {
+    "GenerationChunkInputContextAdherence": {
+      "kind": "enum",
+      "values": [
+        "low",
+        "medium",
+        "high"
+      ]
+    },
+    "GenerationChunkOutput": {
+      "kind": "model",
+      "fields": [
+        {
+          "name": "text",
+          "annotation": "str",
+          "optional": false,
+          "default": "__REQUIRED__",
+          "doc": "The text config to be generated for this chunk. Can contain section name in square brackets, e.g. [Verse 1], lyrics lines, and inline directions in curly braces, e.g. {scratching}."
+        },
+        {
+          "name": "duration_ms",
+          "annotation": "int",
+          "optional": false,
+          "default": "__REQUIRED__",
+          "doc": "The duration of the chunk in milliseconds. Must be between 3000ms and 120000ms."
+        },
+        {
+          "name": "positive_styles",
+          "annotation": "typing.List[str]",
+          "optional": false,
+          "default": "__REQUIRED__",
+          "doc": "The styles and musical directions that should be present in this chunk. Use English language for best results. The styles for the first chunk are the most important as they set the overall tone and genre. Styles for subsequent chunks can be used to add nuance, progression, emphasis, or change the direction of the song. Aim to have at least 6-7 styles in early chunks until the direction is established. Generic styles like 'great production quality' are good default styles to append to the list."
+        },
+        {
+          "name": "negative_styles",
+          "annotation": "typing.Optional[typing.List[str]]",
+          "optional": true,
+          "default": null,
+          "doc": "The styles and musical directions that should not be present in this chunk. Use English language for best results. Leaving empty is a good default, only use this field if you want to explicitly avoid a particular style or direction."
+        },
+        {
+          "name": "context_adherence",
+          "annotation": "typing.Optional[GenerationChunkOutputContextAdherence]",
+          "optional": true,
+          "default": null,
+          "doc": "How much the model adheres to the context of its surrounding chunks. Low adherence means the model can deviate from the context and be more creative. High adherence means the model will be more consistent with the context."
+        },
+        {
+          "name": "conditioning_ref",
+          "annotation": "typing.Optional[AudioRefChunk]",
+          "optional": true,
+          "default": null,
+          "doc": "The audio reference to condition the generation on. The first chunk is the most important as it will influence the generation of all subsequent chunks. Thus, if you want to apply conditioning to the entire song, start conditioning from the first chunk."
+        },
+        {
+          "name": "condition_strength",
+          "annotation": "typing.Optional[GenerationChunkOutputConditionStrength]",
+          "optional": true,
+          "default": null,
+          "doc": "How strongly the model adheres to the conditioning reference. Low strength means the model will be more creative and deviate from the reference. High strength means the model will be more consistent with the reference."
+        }
+      ]
+    },
+    "GenerationChunkOutputConditionStrength": {
+      "kind": "enum",
+      "values": [
+        "low",
+        "medium",
+        "high",
+        "xhigh"
+      ]
+    },
+    "GenerationChunkOutputContextAdherence": {
       "kind": "enum",
       "values": [
         "low",
@@ -23312,7 +23850,14 @@
           "annotation": "typing.Optional[str]",
           "optional": true,
           "default": null,
-          "doc": "A prompt that evaluates whether the agent's response is successful. Should return True or False."
+          "doc": "Deprecated legacy single success criterion. Use success_conditions instead. At least one of success_condition or success_conditions is required."
+        },
+        {
+          "name": "success_conditions",
+          "annotation": "typing.Optional[typing.List[str]]",
+          "optional": true,
+          "default": null,
+          "doc": "List of prompts that evaluate whether the simulation was successful. If provided, all criteria are evaluated and merged into a final result. Capped at the maximum number of evaluation criteria."
         },
         {
           "name": "simulation_scenario",
@@ -26143,6 +26688,30 @@
         "high_quality"
       ]
     },
+    "ListAgentProceduresParams": {
+      "kind": "model",
+      "fields": [
+        {
+          "name": "smb_tool_type",
+          "annotation": "typing.Optional[typing.Literal['list_agent_procedures']]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        }
+      ]
+    },
+    "ListAgentReferencesParams": {
+      "kind": "model",
+      "fields": [
+        {
+          "name": "smb_tool_type",
+          "annotation": "typing.Optional[typing.Literal['list_agent_references']]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        }
+      ]
+    },
     "ListAgentRulesParams": {
       "kind": "model",
       "fields": [
@@ -26272,8 +26841,22 @@
           "doc": null
         },
         {
+          "name": "id",
+          "annotation": "str",
+          "optional": false,
+          "default": "__REQUIRED__",
+          "doc": null
+        },
+        {
+          "name": "used_by",
+          "annotation": "typing.Optional[AuthConnectionDependencies]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
           "name": "status",
-          "annotation": "typing.Optional[OAuthConnectionStatus]",
+          "annotation": "typing.Optional[AuthConnectionStatus]",
           "optional": true,
           "default": null,
           "doc": null
@@ -26288,20 +26871,6 @@
         {
           "name": "status_updated_at",
           "annotation": "typing.Optional[str]",
-          "optional": true,
-          "default": null,
-          "doc": null
-        },
-        {
-          "name": "id",
-          "annotation": "str",
-          "optional": false,
-          "default": "__REQUIRED__",
-          "doc": null
-        },
-        {
-          "name": "used_by",
-          "annotation": "typing.Optional[AuthConnectionDependencies]",
           "optional": true,
           "default": null,
           "doc": null
@@ -26378,27 +26947,6 @@
           "doc": null
         },
         {
-          "name": "status",
-          "annotation": "typing.Optional[OAuthConnectionStatus]",
-          "optional": true,
-          "default": null,
-          "doc": null
-        },
-        {
-          "name": "status_detail",
-          "annotation": "typing.Optional[str]",
-          "optional": true,
-          "default": null,
-          "doc": null
-        },
-        {
-          "name": "status_updated_at",
-          "annotation": "typing.Optional[str]",
-          "optional": true,
-          "default": null,
-          "doc": null
-        },
-        {
           "name": "client_id",
           "annotation": "str",
           "optional": false,
@@ -26415,6 +26963,27 @@
         {
           "name": "used_by",
           "annotation": "typing.Optional[AuthConnectionDependencies]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "status",
+          "annotation": "typing.Optional[AuthConnectionStatus]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "status_detail",
+          "annotation": "typing.Optional[str]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "status_updated_at",
+          "annotation": "typing.Optional[str]",
           "optional": true,
           "default": null,
           "doc": null
@@ -26468,6 +27037,27 @@
           "optional": true,
           "default": null,
           "doc": null
+        },
+        {
+          "name": "status",
+          "annotation": "typing.Optional[AuthConnectionStatus]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "status_detail",
+          "annotation": "typing.Optional[str]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "status_updated_at",
+          "annotation": "typing.Optional[str]",
+          "optional": true,
+          "default": null,
+          "doc": null
         }
       ],
       "variant_class": true,
@@ -26508,6 +27098,27 @@
         {
           "name": "used_by",
           "annotation": "typing.Optional[AuthConnectionDependencies]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "status",
+          "annotation": "typing.Optional[AuthConnectionStatus]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "status_detail",
+          "annotation": "typing.Optional[str]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "status_updated_at",
+          "annotation": "typing.Optional[str]",
           "optional": true,
           "default": null,
           "doc": null
@@ -26561,6 +27172,27 @@
           "optional": true,
           "default": null,
           "doc": null
+        },
+        {
+          "name": "status",
+          "annotation": "typing.Optional[AuthConnectionStatus]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "status_detail",
+          "annotation": "typing.Optional[str]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "status_updated_at",
+          "annotation": "typing.Optional[str]",
+          "optional": true,
+          "default": null,
+          "doc": null
         }
       ],
       "variant_class": true,
@@ -26601,6 +27233,27 @@
         {
           "name": "used_by",
           "annotation": "typing.Optional[AuthConnectionDependencies]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "status",
+          "annotation": "typing.Optional[AuthConnectionStatus]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "status_detail",
+          "annotation": "typing.Optional[str]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "status_updated_at",
+          "annotation": "typing.Optional[str]",
           "optional": true,
           "default": null,
           "doc": null
@@ -26679,6 +27332,27 @@
         {
           "name": "used_by",
           "annotation": "typing.Optional[AuthConnectionDependencies]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "status",
+          "annotation": "typing.Optional[AuthConnectionStatus]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "status_detail",
+          "annotation": "typing.Optional[str]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "status_updated_at",
+          "annotation": "typing.Optional[str]",
           "optional": true,
           "default": null,
           "doc": null
@@ -26802,6 +27476,27 @@
           "optional": true,
           "default": null,
           "doc": null
+        },
+        {
+          "name": "status",
+          "annotation": "typing.Optional[AuthConnectionStatus]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "status_detail",
+          "annotation": "typing.Optional[str]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "status_updated_at",
+          "annotation": "typing.Optional[str]",
+          "optional": true,
+          "default": null,
+          "doc": null
         }
       ],
       "variant_class": true,
@@ -26894,6 +27589,27 @@
           "optional": true,
           "default": null,
           "doc": null
+        },
+        {
+          "name": "status",
+          "annotation": "typing.Optional[AuthConnectionStatus]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "status_detail",
+          "annotation": "typing.Optional[str]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "status_updated_at",
+          "annotation": "typing.Optional[str]",
+          "optional": true,
+          "default": null,
+          "doc": null
         }
       ],
       "variant_class": true,
@@ -26937,6 +27653,27 @@
           "optional": true,
           "default": null,
           "doc": null
+        },
+        {
+          "name": "status",
+          "annotation": "typing.Optional[AuthConnectionStatus]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "status_detail",
+          "annotation": "typing.Optional[str]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "status_updated_at",
+          "annotation": "typing.Optional[str]",
+          "optional": true,
+          "default": null,
+          "doc": null
         }
       ],
       "variant_class": true,
@@ -26977,6 +27714,27 @@
         {
           "name": "used_by",
           "annotation": "typing.Optional[AuthConnectionDependencies]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "status",
+          "annotation": "typing.Optional[AuthConnectionStatus]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "status_detail",
+          "annotation": "typing.Optional[str]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "status_updated_at",
+          "annotation": "typing.Optional[str]",
           "optional": true,
           "default": null,
           "doc": null
@@ -27027,6 +27785,27 @@
         {
           "name": "used_by",
           "annotation": "typing.Optional[AuthConnectionDependencies]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "status",
+          "annotation": "typing.Optional[AuthConnectionStatus]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "status_detail",
+          "annotation": "typing.Optional[str]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "status_updated_at",
+          "annotation": "typing.Optional[str]",
           "optional": true,
           "default": null,
           "doc": null
@@ -27343,6 +28122,13 @@
           "doc": "The name of the dynamic variable to use for this property's value. Mutually exclusive with description, is_system_provided, constant_value, and is_omitted."
         },
         {
+          "name": "allowed_values_dynamic_variable",
+          "annotation": "typing.Optional[str]",
+          "optional": true,
+          "default": null,
+          "doc": "When set, the LLM provides the value but the runtime rejects any value not present in the list held by this dynamic variable. Use to let the LLM pick from a server-verified set (e.g. the IDs the current user is allowed to access). Requires description; mutually exclusive with dynamic_variable, is_system_provided, constant_value, and is_omitted."
+        },
+        {
           "name": "constant_value",
           "annotation": "typing.Optional[LiteralJsonSchemaPropertyConstantValue]",
           "optional": true,
@@ -27361,10 +28147,7 @@
     "LiteralJsonSchemaPropertyType": {
       "kind": "enum",
       "values": [
-        "boolean",
-        "string",
-        "integer",
-        "number"
+        "boolean"
       ]
     },
     "LivekitStackType": {
@@ -27838,10 +28621,7 @@
     "LlmLiteralJsonSchemaPropertyType": {
       "kind": "enum",
       "values": [
-        "boolean",
-        "string",
-        "integer",
-        "number"
+        "boolean"
       ]
     },
     "LlmParameterEvaluationStrategy": {
@@ -27984,6 +28764,15 @@
           "default": "__REQUIRED__",
           "doc": null
         }
+      ]
+    },
+    "LockReason": {
+      "kind": "enum",
+      "values": [
+        "trial_ended",
+        "subscription_downgrade",
+        "exposed_publicly",
+        "self_disabled"
       ]
     },
     "ManualSource": {
@@ -28946,6 +29735,331 @@
         }
       ]
     },
+    "MergePreviewResponseModel": {
+      "kind": "model",
+      "fields": [
+        {
+          "name": "agent_id",
+          "annotation": "str",
+          "optional": false,
+          "default": "__REQUIRED__",
+          "doc": "The ID of the agent"
+        },
+        {
+          "name": "name",
+          "annotation": "str",
+          "optional": false,
+          "default": "__REQUIRED__",
+          "doc": "The name of the agent"
+        },
+        {
+          "name": "conversation_config",
+          "annotation": "ConversationalConfig",
+          "optional": false,
+          "default": "__REQUIRED__",
+          "doc": "The conversation configuration of the agent"
+        },
+        {
+          "name": "metadata",
+          "annotation": "AgentMetadataResponseModel",
+          "optional": false,
+          "default": "__REQUIRED__",
+          "doc": "The metadata of the agent"
+        },
+        {
+          "name": "platform_settings",
+          "annotation": "typing.Optional[AgentPlatformSettingsResponseModel]",
+          "optional": true,
+          "default": null,
+          "doc": "The platform settings of the agent"
+        },
+        {
+          "name": "phone_numbers",
+          "annotation": "typing.Optional[typing.List[MergePreviewResponseModelPhoneNumbersItem]]",
+          "optional": true,
+          "default": null,
+          "doc": "The phone numbers of the agent"
+        },
+        {
+          "name": "whatsapp_accounts",
+          "annotation": "typing.Optional[typing.List[GetWhatsAppAccountResponse]]",
+          "optional": true,
+          "default": null,
+          "doc": "WhatsApp accounts assigned to the agent"
+        },
+        {
+          "name": "workflow",
+          "annotation": "typing.Optional[AgentWorkflowResponseModel]",
+          "optional": true,
+          "default": null,
+          "doc": "The workflow of the agent"
+        },
+        {
+          "name": "access_info",
+          "annotation": "typing.Optional[ResourceAccessInfo]",
+          "optional": true,
+          "default": null,
+          "doc": "The access information of the agent for the user"
+        },
+        {
+          "name": "tags",
+          "annotation": "typing.Optional[typing.List[str]]",
+          "optional": true,
+          "default": null,
+          "doc": "Agent tags used to categorize the agent"
+        },
+        {
+          "name": "version_id",
+          "annotation": "typing.Optional[str]",
+          "optional": true,
+          "default": null,
+          "doc": "The ID of the version the agent is on"
+        },
+        {
+          "name": "branch_id",
+          "annotation": "typing.Optional[str]",
+          "optional": true,
+          "default": null,
+          "doc": "The ID of the branch the agent is on"
+        },
+        {
+          "name": "main_branch_id",
+          "annotation": "typing.Optional[str]",
+          "optional": true,
+          "default": null,
+          "doc": "The ID of the main branch for this agent"
+        },
+        {
+          "name": "overridden_fields",
+          "annotation": "typing.Optional[typing.List[str]]",
+          "optional": true,
+          "default": null,
+          "doc": "Dot-paths of config fields where both branches modified the same field relative to their common ancestor (conflicts). Present regardless of which side wins the conflict."
+        },
+        {
+          "name": "source_identical_to_target",
+          "annotation": "typing.Optional[bool]",
+          "optional": true,
+          "default": null,
+          "doc": "True when the merge/rebase would be a no-op, i.e. the merged result is identical to the source branch tip. The rebase endpoint rejects in this case."
+        }
+      ]
+    },
+    "MergePreviewResponseModelPhoneNumbersItem": {
+      "kind": "union",
+      "discriminant": "provider",
+      "variants": [
+        "MergePreviewResponseModelPhoneNumbersItem_Exotel",
+        "MergePreviewResponseModelPhoneNumbersItem_SipTrunk",
+        "MergePreviewResponseModelPhoneNumbersItem_Twilio"
+      ]
+    },
+    "MergePreviewResponseModelPhoneNumbersItem_Exotel": {
+      "kind": "model",
+      "fields": [
+        {
+          "name": "provider",
+          "annotation": "typing.Literal['exotel']",
+          "optional": false,
+          "default": "exotel",
+          "doc": null,
+          "literal_value": "exotel"
+        },
+        {
+          "name": "phone_number",
+          "annotation": "str",
+          "optional": false,
+          "default": "__REQUIRED__",
+          "doc": null
+        },
+        {
+          "name": "label",
+          "annotation": "str",
+          "optional": false,
+          "default": "__REQUIRED__",
+          "doc": null
+        },
+        {
+          "name": "supports_inbound",
+          "annotation": "typing.Optional[bool]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "supports_outbound",
+          "annotation": "typing.Optional[bool]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "phone_number_id",
+          "annotation": "str",
+          "optional": false,
+          "default": "__REQUIRED__",
+          "doc": null
+        },
+        {
+          "name": "assigned_agent",
+          "annotation": "typing.Optional[PhoneNumberAgentInfo]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        }
+      ],
+      "variant_class": true,
+      "variant_of": "MergePreviewResponseModelPhoneNumbersItem"
+    },
+    "MergePreviewResponseModelPhoneNumbersItem_SipTrunk": {
+      "kind": "model",
+      "fields": [
+        {
+          "name": "provider",
+          "annotation": "typing.Literal['sip_trunk']",
+          "optional": false,
+          "default": "sip_trunk",
+          "doc": null,
+          "literal_value": "sip_trunk"
+        },
+        {
+          "name": "phone_number",
+          "annotation": "str",
+          "optional": false,
+          "default": "__REQUIRED__",
+          "doc": null
+        },
+        {
+          "name": "label",
+          "annotation": "str",
+          "optional": false,
+          "default": "__REQUIRED__",
+          "doc": null
+        },
+        {
+          "name": "supports_inbound",
+          "annotation": "typing.Optional[bool]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "supports_outbound",
+          "annotation": "typing.Optional[bool]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "phone_number_id",
+          "annotation": "str",
+          "optional": false,
+          "default": "__REQUIRED__",
+          "doc": null
+        },
+        {
+          "name": "assigned_agent",
+          "annotation": "typing.Optional[PhoneNumberAgentInfo]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "provider_config",
+          "annotation": "typing.Optional[GetPhoneNumberOutboundSipTrunkConfigResponseModel]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "outbound_trunk",
+          "annotation": "typing.Optional[GetPhoneNumberOutboundSipTrunkConfigResponseModel]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "inbound_trunk",
+          "annotation": "typing.Optional[GetPhoneNumberInboundSipTrunkConfigResponseModel]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "livekit_stack",
+          "annotation": "LivekitStackType",
+          "optional": false,
+          "default": "__REQUIRED__",
+          "doc": null
+        },
+        {
+          "name": "store_sip_messages",
+          "annotation": "typing.Optional[bool]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        }
+      ],
+      "variant_class": true,
+      "variant_of": "MergePreviewResponseModelPhoneNumbersItem"
+    },
+    "MergePreviewResponseModelPhoneNumbersItem_Twilio": {
+      "kind": "model",
+      "fields": [
+        {
+          "name": "provider",
+          "annotation": "typing.Literal['twilio']",
+          "optional": false,
+          "default": "twilio",
+          "doc": null,
+          "literal_value": "twilio"
+        },
+        {
+          "name": "phone_number",
+          "annotation": "str",
+          "optional": false,
+          "default": "__REQUIRED__",
+          "doc": null
+        },
+        {
+          "name": "label",
+          "annotation": "str",
+          "optional": false,
+          "default": "__REQUIRED__",
+          "doc": null
+        },
+        {
+          "name": "supports_inbound",
+          "annotation": "typing.Optional[bool]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "supports_outbound",
+          "annotation": "typing.Optional[bool]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "phone_number_id",
+          "annotation": "str",
+          "optional": false,
+          "default": "__REQUIRED__",
+          "doc": null
+        },
+        {
+          "name": "assigned_agent",
+          "annotation": "typing.Optional[PhoneNumberAgentInfo]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        }
+      ],
+      "variant_class": true,
+      "variant_of": "MergePreviewResponseModelPhoneNumbersItem"
+    },
     "MessageSearchSortBy": {
       "kind": "enum",
       "values": [
@@ -29393,6 +30507,27 @@
           "optional": true,
           "default": null,
           "doc": null
+        },
+        {
+          "name": "status",
+          "annotation": "typing.Optional[AuthConnectionStatus]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "status_detail",
+          "annotation": "typing.Optional[str]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "status_updated_at",
+          "annotation": "typing.Optional[str]",
+          "optional": true,
+          "default": null,
+          "doc": null
         }
       ]
     },
@@ -29497,6 +30632,15 @@
         "video_to_music"
       ]
     },
+    "MusicOnlyOutputFormats": {
+      "kind": "enum",
+      "values": [
+        "mp3_48000_128",
+        "mp3_48000_192",
+        "mp3_48000_240",
+        "mp3_48000_320"
+      ]
+    },
     "MusicPrompt": {
       "kind": "model",
       "fields": [
@@ -29546,25 +30690,6 @@
           "optional": true,
           "default": null,
           "doc": "Word-level timestamps transcribed from the uploaded song. Only present if `with_timestamps` was True in the request body"
-        }
-      ]
-    },
-    "NoCoachingSettings": {
-      "kind": "model",
-      "fields": [
-        {
-          "name": "type",
-          "annotation": "typing.Optional[typing.Literal['none']]",
-          "optional": true,
-          "default": null,
-          "doc": null
-        },
-        {
-          "name": "memory_base_id",
-          "annotation": "typing.Optional[str]",
-          "optional": true,
-          "default": null,
-          "doc": null
         }
       ]
     },
@@ -29668,6 +30793,27 @@
         {
           "name": "used_by",
           "annotation": "typing.Optional[AuthConnectionDependencies]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "status",
+          "annotation": "typing.Optional[AuthConnectionStatus]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "status_detail",
+          "annotation": "typing.Optional[str]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "status_updated_at",
+          "annotation": "typing.Optional[str]",
           "optional": true,
           "default": null,
           "doc": null
@@ -29781,6 +30927,27 @@
           "optional": true,
           "default": null,
           "doc": null
+        },
+        {
+          "name": "status",
+          "annotation": "typing.Optional[AuthConnectionStatus]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "status_detail",
+          "annotation": "typing.Optional[str]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "status_updated_at",
+          "annotation": "typing.Optional[str]",
+          "optional": true,
+          "default": null,
+          "doc": null
         }
       ]
     },
@@ -29800,14 +30967,6 @@
       "values": [
         "access_token",
         "id_token"
-      ]
-    },
-    "OAuthConnectionStatus": {
-      "kind": "enum",
-      "values": [
-        "active",
-        "refresh_failed",
-        "revoked"
       ]
     },
     "ObjectJsonSchemaPropertyInput": {
@@ -31339,7 +32498,9 @@
         "workspace_members_remove",
         "terms_of_service_accept",
         "audit_log_read",
-        "copy_resources_cross_workspace"
+        "conversation_privacy_manage",
+        "copy_resources_cross_workspace",
+        "synthid_detector"
       ]
     },
     "PhoneNumberAgentInfo": {
@@ -31410,6 +32571,13 @@
           "optional": true,
           "default": null,
           "doc": null
+        },
+        {
+          "name": "uui",
+          "annotation": "typing.Optional[UuiTransferConfig]",
+          "optional": true,
+          "default": null,
+          "doc": "User-to-User Information (RFC 7433) to attach to SIP REFER transfers. Carries call context such as CRM identifiers or escalation reason across the transfer boundary."
         },
         {
           "name": "post_dial_digits",
@@ -32255,6 +33423,27 @@
           "optional": true,
           "default": null,
           "doc": null
+        },
+        {
+          "name": "status",
+          "annotation": "typing.Optional[AuthConnectionStatus]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "status_detail",
+          "annotation": "typing.Optional[str]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "status_updated_at",
+          "annotation": "typing.Optional[str]",
+          "optional": true,
+          "default": null,
+          "doc": null
         }
       ]
     },
@@ -32287,18 +33476,18 @@
           "doc": "Procedure name"
         },
         {
-          "name": "content",
-          "annotation": "str",
-          "optional": false,
-          "default": "__REQUIRED__",
-          "doc": "Procedure content"
-        },
-        {
           "name": "type",
           "annotation": "typing.Optional[ProcedureType]",
           "optional": true,
           "default": null,
           "doc": null
+        },
+        {
+          "name": "content",
+          "annotation": "str",
+          "optional": false,
+          "default": "__REQUIRED__",
+          "doc": "Procedure content"
         },
         {
           "name": "guardrails",
@@ -32341,18 +33530,18 @@
           "doc": "Procedure name"
         },
         {
-          "name": "content",
-          "annotation": "str",
-          "optional": false,
-          "default": "__REQUIRED__",
-          "doc": "Procedure content"
-        },
-        {
           "name": "type",
           "annotation": "typing.Optional[ProcedureType]",
           "optional": true,
           "default": null,
           "doc": null
+        },
+        {
+          "name": "content",
+          "annotation": "str",
+          "optional": false,
+          "default": "__REQUIRED__",
+          "doc": "Procedure content"
         },
         {
           "name": "guardrails",
@@ -35001,6 +36190,13 @@
           "doc": "Max number of tokens used for thinking. Use 0 to turn off if supported by the model."
         },
         {
+          "name": "enable_reasoning_summary",
+          "annotation": "typing.Optional[bool]",
+          "optional": true,
+          "default": null,
+          "doc": "Enable model reasoning summaries. When disabled, we do not request summaries from provider if possible for faster TTFB. Not ZRM compatible."
+        },
+        {
           "name": "temperature",
           "annotation": "typing.Optional[float]",
           "optional": true,
@@ -35691,6 +36887,13 @@
           "optional": true,
           "default": null,
           "doc": "Max number of tokens used for thinking. Use 0 to turn off if supported by the model."
+        },
+        {
+          "name": "enable_reasoning_summary",
+          "annotation": "typing.Optional[bool]",
+          "optional": true,
+          "default": null,
+          "doc": "Enable model reasoning summaries. When disabled, we do not request summaries from provider if possible for faster TTFB. Not ZRM compatible."
         },
         {
           "name": "temperature",
@@ -36505,6 +37708,13 @@
           "doc": "Max number of tokens used for thinking. Use 0 to turn off if supported by the model."
         },
         {
+          "name": "enable_reasoning_summary",
+          "annotation": "typing.Optional[bool]",
+          "optional": true,
+          "default": null,
+          "doc": "Enable model reasoning summaries. When disabled, we do not request summaries from provider if possible for faster TTFB. Not ZRM compatible."
+        },
+        {
           "name": "temperature",
           "annotation": "typing.Optional[float]",
           "optional": true,
@@ -37134,6 +38344,13 @@
           "optional": true,
           "default": null,
           "doc": "Max number of tokens used for thinking. Use 0 to turn off if supported by the model."
+        },
+        {
+          "name": "enable_reasoning_summary",
+          "annotation": "typing.Optional[bool]",
+          "optional": true,
+          "default": null,
+          "doc": "Enable model reasoning summaries. When disabled, we do not request summaries from provider if possible for faster TTFB. Not ZRM compatible."
         },
         {
           "name": "temperature",
@@ -37798,6 +39015,27 @@
           "optional": true,
           "default": null,
           "doc": "LLM model to use for this evaluation criteria. If not set, uses agent's analysis_llm default."
+        },
+        {
+          "name": "scoring_mode",
+          "annotation": "typing.Optional[CriteriaScoringMode]",
+          "optional": true,
+          "default": null,
+          "doc": "How this criterion is scored. 'binary' resolves to success/failure/unknown. 'numeric_uniform' returns a number on the [0, max_score] scale which is normalized into the aggregate conversation success percentage."
+        },
+        {
+          "name": "max_score",
+          "annotation": "typing.Optional[int]",
+          "optional": true,
+          "default": null,
+          "doc": "Maximum value of the numeric score scale (minimum is always 0). Only used when scoring_mode is 'numeric_uniform'."
+        },
+        {
+          "name": "score_instructions",
+          "annotation": "typing.Optional[str]",
+          "optional": true,
+          "default": null,
+          "doc": "Optional free-text instructions describing how to assign values on the numeric scale. Only used when scoring_mode is 'numeric_uniform'."
         }
       ]
     },
@@ -39855,6 +41093,46 @@
         }
       ]
     },
+    "ScimGroupResponseModel": {
+      "kind": "model",
+      "fields": [
+        {
+          "name": "scim_external_id",
+          "annotation": "typing.Optional[str]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "display_name",
+          "annotation": "str",
+          "optional": false,
+          "default": "__REQUIRED__",
+          "doc": null
+        },
+        {
+          "name": "created_at_unix",
+          "annotation": "typing.Optional[int]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "updated_at_unix",
+          "annotation": "typing.Optional[int]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "seat_type",
+          "annotation": "typing.Optional[SeatType]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        }
+      ]
+    },
     "ScopedAnalysisResult": {
       "kind": "model",
       "fields": [
@@ -39898,6 +41176,13 @@
           "annotation": "EvaluationSuccessResult",
           "optional": false,
           "default": "__REQUIRED__",
+          "doc": null
+        },
+        {
+          "name": "success_score",
+          "annotation": "typing.Optional[float]",
+          "optional": true,
+          "default": null,
           "doc": null
         }
       ]
@@ -40458,6 +41743,53 @@
         }
       ]
     },
+    "SentimentAggregate": {
+      "kind": "model",
+      "fields": [
+        {
+          "name": "scored_conversation_count",
+          "annotation": "int",
+          "optional": false,
+          "default": "__REQUIRED__",
+          "doc": null
+        },
+        {
+          "name": "positive_count",
+          "annotation": "int",
+          "optional": false,
+          "default": "__REQUIRED__",
+          "doc": null
+        },
+        {
+          "name": "neutral_count",
+          "annotation": "int",
+          "optional": false,
+          "default": "__REQUIRED__",
+          "doc": null
+        },
+        {
+          "name": "negative_count",
+          "annotation": "int",
+          "optional": false,
+          "default": "__REQUIRED__",
+          "doc": null
+        },
+        {
+          "name": "average_sentiment_score",
+          "annotation": "typing.Optional[float]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "average_frustration_score",
+          "annotation": "typing.Optional[float]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        }
+      ]
+    },
     "SessionStartedPayload": {
       "kind": "model",
       "fields": [
@@ -40755,7 +42087,14 @@
           "annotation": "typing.Optional[str]",
           "optional": true,
           "default": null,
-          "doc": "A prompt that evaluates whether the agent's response is successful. Should return True or False."
+          "doc": "Deprecated legacy single success criterion. Use success_conditions instead. At least one of success_condition or success_conditions is required."
+        },
+        {
+          "name": "success_conditions",
+          "annotation": "typing.Optional[typing.List[str]]",
+          "optional": true,
+          "default": null,
+          "doc": "List of prompts that evaluate whether the simulation was successful. If provided, all criteria are evaluated and merged into a final result. Capped at the maximum number of evaluation criteria."
         },
         {
           "name": "simulation_scenario",
@@ -41112,6 +42451,27 @@
           "optional": true,
           "default": null,
           "doc": null
+        },
+        {
+          "name": "status",
+          "annotation": "typing.Optional[AuthConnectionStatus]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "status_detail",
+          "annotation": "typing.Optional[str]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "status_updated_at",
+          "annotation": "typing.Optional[str]",
+          "optional": true,
+          "default": null,
+          "doc": null
         }
       ]
     },
@@ -41170,7 +42530,7 @@
           "annotation": "typing.Optional[str]",
           "optional": true,
           "default": null,
-          "doc": "Message to show when the first soft timeout is reached while waiting for LLM response"
+          "doc": "Message to show when the first soft timeout is reached while waiting for LLM response. Supports dynamic variables (e.g., {{system__time}}, {{custom_variable}})."
         },
         {
           "name": "additional_soft_timeout_messages",
@@ -41187,6 +42547,13 @@
           "doc": "If enabled, the soft timeout message will be generated dynamically instead of using the static message."
         },
         {
+          "name": "randomize_fillers",
+          "annotation": "typing.Optional[bool]",
+          "optional": true,
+          "default": null,
+          "doc": "If enabled, shuffle the order of static soft timeout messages once at the start of each turn. Only applies when use_llm_generated_message is false."
+        },
+        {
           "name": "max_soft_timeouts_per_generation",
           "annotation": "typing.Optional[int]",
           "optional": true,
@@ -41198,7 +42565,7 @@
           "annotation": "typing.Optional[str]",
           "optional": true,
           "default": null,
-          "doc": "Custom prompt for generating the soft timeout filler message when use_llm_generated_message is enabled. Recent conversation context is provided as a separate user message. If not set, the default prompt will be used."
+          "doc": "Custom prompt for generating the soft timeout filler message when use_llm_generated_message is enabled. Recent conversation context is provided as a separate user message. If not set, the default prompt will be used. Supports dynamic variables (e.g., {{system__time}}, {{custom_variable}})."
         }
       ]
     },
@@ -41210,7 +42577,7 @@
           "annotation": "typing.Optional[str]",
           "optional": true,
           "default": null,
-          "doc": "Message to show when the first soft timeout is reached while waiting for LLM response"
+          "doc": "Message to show when the first soft timeout is reached while waiting for LLM response. Supports dynamic variables (e.g., {{system__time}}, {{custom_variable}})."
         }
       ]
     },
@@ -41241,7 +42608,7 @@
           "annotation": "typing.Optional[str]",
           "optional": true,
           "default": null,
-          "doc": "Message to show when the first soft timeout is reached while waiting for LLM response"
+          "doc": "Message to show when the first soft timeout is reached while waiting for LLM response. Supports dynamic variables (e.g., {{system__time}}, {{custom_variable}})."
         },
         {
           "name": "additional_soft_timeout_messages",
@@ -41258,6 +42625,13 @@
           "doc": "If enabled, the soft timeout message will be generated dynamically instead of using the static message."
         },
         {
+          "name": "randomize_fillers",
+          "annotation": "typing.Optional[bool]",
+          "optional": true,
+          "default": null,
+          "doc": "If enabled, shuffle the order of static soft timeout messages once at the start of each turn. Only applies when use_llm_generated_message is false."
+        },
+        {
           "name": "max_soft_timeouts_per_generation",
           "annotation": "typing.Optional[int]",
           "optional": true,
@@ -41269,7 +42643,7 @@
           "annotation": "typing.Optional[str]",
           "optional": true,
           "default": null,
-          "doc": "Custom prompt for generating the soft timeout filler message when use_llm_generated_message is enabled. Recent conversation context is provided as a separate user message. If not set, the default prompt will be used."
+          "doc": "Custom prompt for generating the soft timeout filler message when use_llm_generated_message is enabled. Recent conversation context is provided as a separate user message. If not set, the default prompt will be used. Supports dynamic variables (e.g., {{system__time}}, {{custom_variable}})."
         }
       ]
     },
@@ -41349,14 +42723,14 @@
           "annotation": "typing.List[str]",
           "optional": false,
           "default": "__REQUIRED__",
-          "doc": "The lyrics of the section. Max 200 characters per line."
+          "doc": "The lyrics of the section. Max 30 lines per section and max 200 characters per line."
         },
         {
           "name": "source_from",
           "annotation": "typing.Optional[SectionSource]",
           "optional": true,
           "default": null,
-          "doc": "Optional source to extract the section from. Used for inpainting. Only available to enterprise clients with access to the inpainting feature."
+          "doc": "Optional source to extract the section from. Used for inpainting."
         }
       ]
     },
@@ -42162,6 +43536,13 @@
           "optional": true,
           "default": null,
           "doc": "The characters that make up the word and their timing information."
+        },
+        {
+          "name": "channel_index",
+          "annotation": "typing.Optional[int]",
+          "optional": true,
+          "default": null,
+          "doc": "The channel this word was spoken on (for multichannel audio). Null for single-channel transcriptions."
         }
       ]
     },
@@ -45828,6 +47209,10 @@
         }
       ]
     },
+    "TopicDiscoverySettings": {
+      "kind": "model",
+      "fields": []
+    },
     "TranscriptMessage": {
       "kind": "model",
       "fields": [
@@ -46866,6 +48251,20 @@
           "doc": null
         },
         {
+          "name": "interruption_ignore_terms",
+          "annotation": "typing.Optional[typing.List[str]]",
+          "optional": true,
+          "default": null,
+          "doc": "List of terms that should not trigger an interruption when spoken by the user (e.g. 'gotcha', 'understood'). Uses case-insensitive exact matching."
+        },
+        {
+          "name": "transcribe_on_disabled_interruptions",
+          "annotation": "typing.Optional[bool]",
+          "optional": true,
+          "default": null,
+          "doc": "When interruptions are disabled, still transcribe what the user says so it can carry into the next turn. When off, user speech during a non-interruptible turn is ignored and won't trigger a turn."
+        },
+        {
           "name": "soft_timeout_config",
           "annotation": "typing.Optional[SoftTimeoutConfig]",
           "optional": true,
@@ -46956,6 +48355,20 @@
           "optional": true,
           "default": null,
           "doc": "Version of the turn detection model to use."
+        },
+        {
+          "name": "interruption_ignore_terms",
+          "annotation": "typing.Optional[typing.List[str]]",
+          "optional": true,
+          "default": null,
+          "doc": "List of terms that should not trigger an interruption when spoken by the user (e.g. 'gotcha', 'understood'). Uses case-insensitive exact matching."
+        },
+        {
+          "name": "transcribe_on_disabled_interruptions",
+          "annotation": "typing.Optional[bool]",
+          "optional": true,
+          "default": null,
+          "doc": "When interruptions are disabled, still transcribe what the user says so it can carry into the next turn. When off, user speech during a non-interruptible turn is ignored and won't trigger a turn."
         },
         {
           "name": "soft_timeout_config",
@@ -47330,6 +48743,13 @@
         {
           "name": "success_condition",
           "annotation": "typing.Optional[str]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "success_conditions",
+          "annotation": "typing.Optional[typing.List[str]]",
           "optional": true,
           "default": null,
           "doc": null
@@ -47727,6 +49147,18 @@
         }
       ]
     },
+    "UpdateAgentProcedureParams": {
+      "kind": "model",
+      "fields": [
+        {
+          "name": "smb_tool_type",
+          "annotation": "typing.Optional[typing.Literal['update_agent_procedure']]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        }
+      ]
+    },
     "UpdateAgentRuleParams": {
       "kind": "model",
       "fields": [
@@ -47770,6 +49202,25 @@
         },
         {
           "name": "password",
+          "annotation": "typing.Optional[str]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        }
+      ]
+    },
+    "UpdateBearerAuthRequest": {
+      "kind": "model",
+      "fields": [
+        {
+          "name": "provider",
+          "annotation": "typing.Optional[str]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "token",
           "annotation": "typing.Optional[str]",
           "optional": true,
           "default": null,
@@ -48191,7 +49642,14 @@
           "annotation": "typing.Optional[str]",
           "optional": true,
           "default": null,
-          "doc": "A prompt that evaluates whether the agent's response is successful. Should return True or False."
+          "doc": "Deprecated legacy single success criterion. Use success_conditions instead. At least one of success_condition or success_conditions is required."
+        },
+        {
+          "name": "success_conditions",
+          "annotation": "typing.Optional[typing.List[str]]",
+          "optional": true,
+          "default": null,
+          "doc": "List of prompts that evaluate whether the simulation was successful. If provided, all criteria are evaluated and merged into a final result. Capped at the maximum number of evaluation criteria."
         },
         {
           "name": "simulation_scenario",
@@ -48460,6 +49918,27 @@
         {
           "name": "used_by",
           "annotation": "typing.Optional[AuthConnectionDependencies]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "status",
+          "annotation": "typing.Optional[AuthConnectionStatus]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "status_detail",
+          "annotation": "typing.Optional[str]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "status_updated_at",
+          "annotation": "typing.Optional[str]",
           "optional": true,
           "default": null,
           "doc": null
@@ -48737,6 +50216,39 @@
           "default": "__REQUIRED__",
           "doc": "The end time of the utterance in seconds."
         }
+      ]
+    },
+    "UuiTransferConfig": {
+      "kind": "model",
+      "fields": [
+        {
+          "name": "data",
+          "annotation": "str",
+          "optional": false,
+          "default": "__REQUIRED__",
+          "doc": "UUI payload to send on SIP REFER transfers. Supports inline dynamic variables and is hex-encoded at transfer time."
+        },
+        {
+          "name": "protocol_discriminator",
+          "annotation": "typing.Optional[str]",
+          "optional": true,
+          "default": null,
+          "doc": "Optional one-octet protocol discriminator (two hex digits, e.g. '00'). Required by platforms such as Genesys Cloud, which otherwise strip the first octet of the payload. Leave unset for platforms like Talkdesk that expect a bare hex payload."
+        },
+        {
+          "name": "protocol_discriminator_mode",
+          "annotation": "typing.Optional[UuiTransferConfigProtocolDiscriminatorMode]",
+          "optional": true,
+          "default": null,
+          "doc": "How to attach protocol_discriminator. 'prefix' prepends the octet to the hex payload (User-to-User=XX<hex>;encoding=hex). 'pd_parameter' sends it as a separate parameter (User-to-User=<hex>;pd=XX;encoding=hex). Ignored when protocol_discriminator is unset."
+        }
+      ]
+    },
+    "UuiTransferConfigProtocolDiscriminatorMode": {
+      "kind": "enum",
+      "values": [
+        "prefix",
+        "pd_parameter"
       ]
     },
     "VadConfig": {
@@ -50098,7 +51610,9 @@
       "values": [
         "transcript",
         "audio",
-        "call_initiation_failure"
+        "call_initiation_failure",
+        "unredacted_transcript",
+        "unredacted_audio"
       ]
     },
     "WebhookHmacSettings": {
@@ -50186,6 +51700,13 @@
           "optional": true,
           "default": null,
           "doc": "Schema describing the expected response body structure. For documentation only; not surfaced to the LLM."
+        },
+        {
+          "name": "response_filter",
+          "annotation": "typing.Optional[ResponseFilter]",
+          "optional": true,
+          "default": null,
+          "doc": "Optional allow-list filter applied to the response before the LLM sees it, so large responses don't pollute the context. Defaults to the full response."
         },
         {
           "name": "content_type",
@@ -50278,6 +51799,13 @@
           "optional": true,
           "default": null,
           "doc": "Schema describing the expected response body structure. For documentation only; not surfaced to the LLM."
+        },
+        {
+          "name": "response_filter",
+          "annotation": "typing.Optional[ResponseFilter]",
+          "optional": true,
+          "default": null,
+          "doc": "Optional allow-list filter applied to the response before the LLM sees it, so large responses don't pollute the context. Defaults to the full response."
         },
         {
           "name": "content_type",
@@ -50677,6 +52205,27 @@
         {
           "name": "used_by",
           "annotation": "typing.Optional[AuthConnectionDependencies]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "status",
+          "annotation": "typing.Optional[AuthConnectionStatus]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "status_detail",
+          "annotation": "typing.Optional[str]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "status_updated_at",
+          "annotation": "typing.Optional[str]",
           "optional": true,
           "default": null,
           "doc": null
@@ -53365,6 +54914,20 @@
       "kind": "model",
       "fields": [
         {
+          "name": "position",
+          "annotation": "typing.Optional[PositionInput]",
+          "optional": true,
+          "default": null,
+          "doc": "Position of the node in the workflow."
+        },
+        {
+          "name": "edge_order",
+          "annotation": "typing.Optional[typing.List[str]]",
+          "optional": true,
+          "default": null,
+          "doc": "The ids of outgoing edges in the order they should be evaluated."
+        },
+        {
           "name": "conversation_config",
           "annotation": "typing.Optional[ConversationalConfigApiModelWorkflowOverrideInput]",
           "optional": true,
@@ -53393,20 +54956,6 @@
           "doc": "IDs of additional tools that the subagent has access to. These will be used in addition to the main agent's tools."
         },
         {
-          "name": "position",
-          "annotation": "typing.Optional[PositionInput]",
-          "optional": true,
-          "default": null,
-          "doc": "Position of the node in the workflow."
-        },
-        {
-          "name": "edge_order",
-          "annotation": "typing.Optional[typing.List[str]]",
-          "optional": true,
-          "default": null,
-          "doc": "The ids of outgoing edges in the order they should be evaluated."
-        },
-        {
           "name": "label",
           "annotation": "str",
           "optional": false,
@@ -53425,6 +54974,20 @@
     "WorkflowOverrideAgentNodeModelOutput": {
       "kind": "model",
       "fields": [
+        {
+          "name": "position",
+          "annotation": "PositionOutput",
+          "optional": false,
+          "default": "__REQUIRED__",
+          "doc": "Position of the node in the workflow."
+        },
+        {
+          "name": "edge_order",
+          "annotation": "typing.List[str]",
+          "optional": false,
+          "default": "__REQUIRED__",
+          "doc": "The ids of outgoing edges in the order they should be evaluated."
+        },
         {
           "name": "conversation_config",
           "annotation": "ConversationalConfigApiModelWorkflowOverrideOutput",
@@ -53452,20 +55015,6 @@
           "optional": false,
           "default": "__REQUIRED__",
           "doc": "IDs of additional tools that the subagent has access to. These will be used in addition to the main agent's tools."
-        },
-        {
-          "name": "position",
-          "annotation": "PositionOutput",
-          "optional": false,
-          "default": "__REQUIRED__",
-          "doc": "Position of the node in the workflow."
-        },
-        {
-          "name": "edge_order",
-          "annotation": "typing.List[str]",
-          "optional": false,
-          "default": "__REQUIRED__",
-          "doc": "The ids of outgoing edges in the order they should be evaluated."
         },
         {
           "name": "label",
@@ -53506,6 +55055,13 @@
           "optional": true,
           "default": null,
           "doc": null
+        },
+        {
+          "name": "uui",
+          "annotation": "typing.Optional[UuiTransferConfig]",
+          "optional": true,
+          "default": null,
+          "doc": "User-to-User Information (RFC 7433) to attach to SIP REFER transfers. Carries call context such as CRM identifiers or escalation reason across the transfer boundary."
         },
         {
           "name": "post_dial_digits",
@@ -53777,6 +55333,13 @@
           "optional": false,
           "default": "__REQUIRED__",
           "doc": null
+        },
+        {
+          "name": "uui",
+          "annotation": "typing.Optional[UuiTransferConfig]",
+          "optional": true,
+          "default": null,
+          "doc": "User-to-User Information (RFC 7433) to attach to SIP REFER transfers. Carries call context such as CRM identifiers or escalation reason across the transfer boundary."
         },
         {
           "name": "post_dial_digits",
@@ -54824,6 +56387,13 @@
           "doc": null
         },
         {
+          "name": "disable_reason",
+          "annotation": "typing.Optional[LockReason]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
           "name": "character_limit",
           "annotation": "typing.Optional[int]",
           "optional": true,
@@ -54847,6 +56417,13 @@
         {
           "name": "allowed_ips",
           "annotation": "typing.Optional[typing.List[str]]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "third_party_disable_allowed",
+          "annotation": "typing.Optional[bool]",
           "optional": true,
           "default": null,
           "doc": null
@@ -55123,6 +56700,7 @@
         "conversational_ai_read",
         "voice_isolator",
         "ai_speech_classifier",
+        "synthid_detector",
         "add_voice_from_voice_library",
         "create_instant_voice_clone",
         "create_professional_voice_clone",
@@ -55141,6 +56719,7 @@
         "workspace_members_remove",
         "terms_of_service_accept",
         "audit_log_read",
+        "conversation_privacy_manage",
         "copy_resources_cross_workspace",
         "voice_design"
       ]
@@ -55206,6 +56785,20 @@
         },
         {
           "name": "is_scim_synced",
+          "annotation": "typing.Optional[bool]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "scim_group",
+          "annotation": "typing.Optional[ScimGroupResponseModel]",
+          "optional": true,
+          "default": null,
+          "doc": null
+        },
+        {
+          "name": "scim_frozen",
           "annotation": "typing.Optional[bool]",
           "optional": true,
           "default": null,

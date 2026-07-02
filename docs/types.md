@@ -2,7 +2,7 @@
 
 Auto-generated from `lib/elevenlabs/types.json` by `scripts/render_types_doc.py`. Describes the nested Hash shapes expected by operation parameters the gem otherwise treats as opaque (`workflow`, `conversation_config`, `platform_settings`, etc.).
 
-Source: `tmp-elevenlabs-python` @ `df576b47f3898ddea8d51339fe2af8f0965f97ee` · 1682 types (1041 models, 77 unions, 319 variant classes, 245 enums).
+Source: `tmp-elevenlabs-python` @ `1b45413e916fda868341ad48225c4b7211017849` · 1708 types (1052 models, 78 unions, 322 variant classes, 256 enums).
 
 ## Contents
 
@@ -384,6 +384,14 @@ Discriminated union on `source`. Variants:
 - [McpToolConfigOverrideOutputInputOverridesValue_DynamicVariable](#mcptoolconfigoverrideoutputinputoverridesvalue_dynamicvariable)
 - [McpToolConfigOverrideOutputInputOverridesValue_Llm](#mcptoolconfigoverrideoutputinputoverridesvalue_llm)
 - [McpToolConfigOverrideOutputInputOverridesValue_Omit](#mcptoolconfigoverrideoutputinputoverridesvalue_omit)
+
+### MergePreviewResponseModelPhoneNumbersItem
+
+Discriminated union on `provider`. Variants:
+
+- [MergePreviewResponseModelPhoneNumbersItem_Exotel](#mergepreviewresponsemodelphonenumbersitem_exotel)
+- [MergePreviewResponseModelPhoneNumbersItem_SipTrunk](#mergepreviewresponsemodelphonenumbersitem_siptrunk)
+- [MergePreviewResponseModelPhoneNumbersItem_Twilio](#mergepreviewresponsemodelphonenumbersitem_twilio)
 
 ### OpenAiSessionConfigToolsItem
 
@@ -844,6 +852,7 @@ Discriminated union on `type`. Variants:
 | `current_live_percentage` | Optional<float> | no | `nil` | Percentage of traffic live on the branch |
 | `parent_branch_id` | Optional<str> | no | `nil` | ID of the parent branch |
 | `draft_exists` | Optional<bool> | no | `nil` | Whether a draft exists for the branch |
+| `calls_7_d` | Annotated[Optional<int>, FieldMetadata(alias='calls_7d')> | no | `nil` | Number of calls in the last 7 days |
 
 ### AgentCallLimits
 
@@ -996,6 +1005,7 @@ Discriminated union on `type`. Variants:
 | `privacy` | Optional<[PrivacyConfigInput](#privacyconfiginput)> | no | `nil` | Privacy settings for the agent |
 | `trust_context` | Optional<[AgentTrustContext](#agenttrustcontext)> | no | `nil` | The trust context in which the agent operates. |
 | `analysis_llm` | Optional<[Llm](#llm)> | no | `nil` | Default LLM model for post-call analysis (evaluation and data collection) |
+| `topic_discovery` | Optional<[TopicDiscoverySettings](#topicdiscoverysettings)> | no | `nil` | Per-agent topic discovery configuration |
 
 ### AgentPlatformSettingsResponseModel
 
@@ -1016,6 +1026,7 @@ Discriminated union on `type`. Variants:
 | `privacy` | Optional<[PrivacyConfigOutput](#privacyconfigoutput)> | no | `nil` | Privacy settings for the agent |
 | `trust_context` | Optional<[AgentTrustContext](#agenttrustcontext)> | no | `nil` | The trust context in which the agent operates. |
 | `analysis_llm` | Optional<[Llm](#llm)> | no | `nil` | Default LLM model for post-call analysis (evaluation and data collection) |
+| `topic_discovery` | Optional<[TopicDiscoverySettings](#topicdiscoverysettings)> | no | `nil` | Per-agent topic discovery configuration |
 | `safety` | Optional<[SafetyResponseModel](#safetyresponsemodel)> | no | `nil` |  |
 
 ### AgentResponsePayload
@@ -1119,6 +1130,7 @@ Discriminated union on `type`. Variants:
 | `merged_into_branch_id` | Optional<str> | no | `nil` |  |
 | `merged_from_branch_id` | Optional<str> | no | `nil` |  |
 | `merged_from_version_id` | Optional<str> | no | `nil` |  |
+| `rebased_from_version_id` | Optional<str> | no | `nil` |  |
 
 ### AgentWorkflowRequestModel
 
@@ -1195,6 +1207,7 @@ Discriminated union on `type`. Variants:
 | `enum` | Optional<Array<str>> | no | `nil` | List of allowed string values for string type parameters |
 | `is_system_provided` | Optional<bool> | no | `nil` | If true, the value will be populated by the system at runtime. Used by API Integration Webhook tools for templating. Mutually exclusive with description, dynamic_variable, constant_value, and is_omitted. |
 | `dynamic_variable` | Optional<str> | no | `nil` | The name of the dynamic variable to use for this property's value. Mutually exclusive with description, is_system_provided, constant_value, and is_omitted. |
+| `allowed_values_dynamic_variable` | Optional<str> | no | `nil` | When set, the LLM provides the value but the runtime rejects any value not present in the list held by this dynamic variable. Use to let the LLM pick from a server-verified set (e.g. the IDs the current user is allowed to access). Requires description; mutually exclusive with dynamic_variable, is_system_provided, constant_value, and is_omitted. |
 | `constant_value` | Optional<AnalysisPropertyConstantValue> | no | `nil` | A constant value to use for this property. Mutually exclusive with description, dynamic_variable, is_system_provided, and is_omitted. |
 | `is_omitted` | Optional<bool> | no | `nil` | If true, this parameter will be completely omitted from the request. Only valid for optional parameters. Mutually exclusive with description, dynamic_variable, is_system_provided, and constant_value. |
 | `llm` | Optional<[Llm](#llm)> | no | `nil` | LLM model to use for this analysis item. If not set, uses agent's analysis_llm default. |
@@ -1211,11 +1224,11 @@ Discriminated union on `type`. Variants:
 | `expires_at` | str | **yes** | **required** | ISO 8601 timestamp of when the access token expires |
 | `integration_id` | str | **yes** | **required** |  |
 | `credential_id` | str | **yes** | **required** |  |
-| `status` | Optional<[OAuthConnectionStatus](#oauthconnectionstatus)> | no | `nil` | Current health status of the OAuth connection |
-| `status_detail` | Optional<str> | no | `nil` | Human-readable detail about the current status, e.g. the error message on refresh failure |
-| `status_updated_at` | Optional<str> | no | `nil` | ISO 8601 timestamp of the last status change |
 | `id` | str | **yes** | **required** |  |
 | `used_by` | Optional<[AuthConnectionDependencies](#authconnectiondependencies)> | no | `nil` |  |
+| `status` | Optional<[AuthConnectionStatus](#authconnectionstatus)> | no | `nil` |  |
+| `status_detail` | Optional<str> | no | `nil` |  |
+| `status_updated_at` | Optional<str> | no | `nil` |  |
 
 ### ApiIntegrationOAuth2CustomAppResponse
 
@@ -1229,12 +1242,12 @@ Discriminated union on `type`. Variants:
 | `expires_at` | str | **yes** | **required** | ISO 8601 timestamp of when the access token expires |
 | `integration_id` | str | **yes** | **required** |  |
 | `credential_id` | str | **yes** | **required** |  |
-| `status` | Optional<[OAuthConnectionStatus](#oauthconnectionstatus)> | no | `nil` | Current health status of the OAuth connection |
-| `status_detail` | Optional<str> | no | `nil` | Human-readable detail about the current status, e.g. the error message on refresh failure |
-| `status_updated_at` | Optional<str> | no | `nil` | ISO 8601 timestamp of the last status change |
 | `client_id` | str | **yes** | **required** | OAuth client ID (rendered from template if credential uses templated credentials, None for legacy connections) |
 | `id` | str | **yes** | **required** |  |
 | `used_by` | Optional<[AuthConnectionDependencies](#authconnectiondependencies)> | no | `nil` |  |
+| `status` | Optional<[AuthConnectionStatus](#authconnectionstatus)> | no | `nil` |  |
+| `status_detail` | Optional<str> | no | `nil` |  |
+| `status_updated_at` | Optional<str> | no | `nil` |  |
 
 ### ApiIntegrationWebhookOverrides
 
@@ -1853,6 +1866,8 @@ _(no fields)_
 | `speculative_turn` | Optional<bool> | no | `nil` | When enabled, starts generating LLM responses during silence before full turn confidence is reached, reducing perceived latency. May increase LLM costs. |
 | `retranscribe_on_turn_timeout` | Optional<bool> | no | `nil` | When enabled, if VAD detects no speech, attempts to re-transcribe accumulated audio at turn timeout. Disables silence discount billing for affected turns. |
 | `turn_model` | Optional<[TurnModel](#turnmodel)> | no | `nil` |  |
+| `interruption_ignore_terms` | Optional<Array<str>> | no | `nil` | List of terms that should not trigger an interruption when spoken by the user (e.g. 'gotcha', 'understood'). Uses case-insensitive exact matching. |
+| `transcribe_on_disabled_interruptions` | Optional<bool> | no | `nil` | When interruptions are disabled, still transcribe what the user says so it can carry into the next turn. When off, user speech during a non-interruptible turn is ignored and won't trigger a turn. |
 
 ### BasicAuthResponse
 
@@ -1863,6 +1878,9 @@ _(no fields)_
 | `username` | str | **yes** | **required** |  |
 | `id` | str | **yes** | **required** |  |
 | `used_by` | Optional<[AuthConnectionDependencies](#authconnectiondependencies)> | no | `nil` |  |
+| `status` | Optional<[AuthConnectionStatus](#authconnectionstatus)> | no | `nil` |  |
+| `status_detail` | Optional<str> | no | `nil` |  |
+| `status_updated_at` | Optional<str> | no | `nil` |  |
 
 ### BatchCallDetailedResponse
 
@@ -1941,6 +1959,9 @@ _(no fields)_
 | `provider` | str | **yes** | **required** |  |
 | `id` | str | **yes** | **required** |  |
 | `used_by` | Optional<[AuthConnectionDependencies](#authconnectiondependencies)> | no | `nil` |  |
+| `status` | Optional<[AuthConnectionStatus](#authconnectionstatus)> | no | `nil` |  |
+| `status_detail` | Optional<str> | no | `nil` |  |
+| `status_updated_at` | Optional<str> | no | `nil` |  |
 
 ### BehaviorOverride
 
@@ -2067,10 +2088,14 @@ _(no fields)_
 | `background_enabled` | Optional<bool> | no | `nil` |  |
 | `background_color` | Optional<str> | no | `nil` |  |
 | `background_opacity` | Optional<float> | no | `nil` |  |
+| `background_blur` | Optional<float> | no | `nil` |  |
+| `background_border_radius` | Optional<float> | no | `nil` |  |
 | `word_highlights_enabled` | Optional<bool> | no | `nil` |  |
 | `word_highlights_color` | Optional<str> | no | `nil` |  |
 | `word_highlights_background_color` | Optional<str> | no | `nil` |  |
 | `word_highlights_opacity` | Optional<float> | no | `nil` |  |
+| `word_highlights_border_radius` | Optional<float> | no | `nil` |  |
+| `word_highlights_blur` | Optional<float> | no | `nil` |  |
 | `section_animation` | Optional<[CaptionStyleSectionAnimationModel](#captionstylesectionanimationmodel)> | no | `nil` |  |
 | `word_animation` | Optional<[CaptionStyleWordAnimationModel](#captionstylewordanimationmodel)> | no | `nil` |  |
 | `character_animation` | Optional<[CaptionStyleCharacterAnimationModel](#captionstylecharacteranimationmodel)> | no | `nil` |  |
@@ -2244,6 +2269,24 @@ _(no fields)_
 | `character_start_times_seconds` | Array<float> | **yes** | **required** |  |
 | `character_end_times_seconds` | Array<float> | **yes** | **required** |  |
 
+### CharacterMetadataResponseModel
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `description` | Optional<str> | no | `nil` |  |
+| `sample_message` | Optional<str> | no | `nil` |  |
+| `gender` | Optional<[CharacterGender](#charactergender)> | no | `nil` |  |
+| `age` | Optional<[CharacterAge](#characterage)> | no | `nil` |  |
+| `accent` | Optional<str> | no | `nil` |  |
+
+### CharacterResponseModel
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `character_id` | str | **yes** | **required** |  |
+| `name` | str | **yes** | **required** |  |
+| `metadata` | Optional<[CharacterMetadataResponseModel](#charactermetadataresponsemodel)> | no | `nil` |  |
+
 ### CheckServiceAvailabilityParams
 
 | Field | Type | Required | Default | Notes |
@@ -2321,35 +2364,6 @@ _(no fields)_
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `close_socket` | Optional<bool> | no | `nil` | If true, closes all contexts and closes the entire WebSocket connection. Any context that was previously set to flush will wait to flush before closing. |
-
-### CoachedAgentSettings
-
-| Field | Type | Required | Default | Notes |
-| --- | --- | --- | --- | --- |
-| `type` | Optional<Literal<'coached'>> | no | `nil` |  |
-| `memory_base_id` | Optional<str> | no | `nil` |  |
-
-### CoachingAgentSettings
-
-| Field | Type | Required | Default | Notes |
-| --- | --- | --- | --- | --- |
-| `type` | Optional<Literal<'coaching'>> | no | `nil` |  |
-| `coached_agent_id` | str | **yes** | **required** |  |
-| `memory_base_id` | Optional<str> | no | `nil` |  |
-
-### CodeToolAllowedDomain
-
-| Field | Type | Required | Default | Notes |
-| --- | --- | --- | --- | --- |
-| `domain` | str | **yes** | **required** | Domain pattern that code tools can access. Must be a valid domain (e.g. api.github.com), optionally with a subdomain wildcard (*.example.com) or path glob (api.example.com/v1/*). |
-| `name` | str | **yes** | **required** | Human-readable label for this domain entry |
-
-### CodeToolContextVariable
-
-| Field | Type | Required | Default | Notes |
-| --- | --- | --- | --- | --- |
-| `name` | str | **yes** | **required** |  |
-| `env_var_label` | str | **yes** | **required** |  |
 
 ### ColumnFilter
 
@@ -2489,7 +2503,7 @@ _(no fields)_
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `post_call_webhook_id` | Optional<str> | no | `nil` |  |
-| `events` | Optional<Array<[WebhookEventType](#webhookeventtype)>> | no | `nil` | List of event types to send via webhook. Options: transcript, audio, call_initiation_failure. |
+| `events` | Optional<Array<[WebhookEventType](#webhookeventtype)>> | no | `nil` | List of event types to send via webhook. Options: transcript, audio, call_initiation_failure, unredacted_transcript, unredacted_audio. |
 | `transcript_format` | Optional<[WebhookTranscriptFormat](#webhooktranscriptformat)> | no | `nil` | Format for transcript webhooks. |
 | `send_audio` | Optional<bool> | no | `nil` | DEPRECATED: Use 'events' field instead. Whether to send audio data with post-call webhooks for ConvAI conversations |
 
@@ -2576,6 +2590,7 @@ _(no fields)_
 | `file_input` | Optional<[FileInputConfig](#fileinputconfig)> | no | `nil` | Configuration for file input (image/PDF uploads) during conversations. |
 | `monitoring_enabled` | Optional<bool> | no | `nil` | Enable real-time monitoring of conversations via WebSocket |
 | `monitoring_events` | Optional<Array<[ClientEvent](#clientevent)>> | no | `nil` | The events that will be sent to monitoring connections. |
+| `background_sound` | Optional<[BackgroundSoundConfig](#backgroundsoundconfig)> | no | `nil` | Configuration for background sound during conversations. |
 | `source_attribution` | Optional<bool> | no | `nil` | When enabled and knowledge base content is present, the LLM is instructed to report which sources it used. |
 
 ### ConversationConfigOutput
@@ -2588,6 +2603,7 @@ _(no fields)_
 | `file_input` | Optional<[FileInputConfig](#fileinputconfig)> | no | `nil` | Configuration for file input (image/PDF uploads) during conversations. |
 | `monitoring_enabled` | Optional<bool> | no | `nil` | Enable real-time monitoring of conversations via WebSocket |
 | `monitoring_events` | Optional<Array<[ClientEvent](#clientevent)>> | no | `nil` | The events that will be sent to monitoring connections. |
+| `background_sound` | Optional<[BackgroundSoundConfig](#backgroundsoundconfig)> | no | `nil` | Configuration for background sound during conversations. |
 | `source_attribution` | Optional<bool> | no | `nil` | When enabled and knowledge base content is present, the LLM is instructed to report which sources it used. |
 
 ### ConversationConfigOverride
@@ -2612,6 +2628,7 @@ _(no fields)_
 | `file_input` | Optional<[FileInputConfigWorkflowOverride](#fileinputconfigworkflowoverride)> | no | `nil` | Configuration for file input (image/PDF uploads) during conversations. |
 | `monitoring_enabled` | Optional<bool> | no | `nil` | Enable real-time monitoring of conversations via WebSocket |
 | `monitoring_events` | Optional<Array<[ClientEvent](#clientevent)>> | no | `nil` | The events that will be sent to monitoring connections. |
+| `background_sound` | Optional<[BackgroundSoundConfigWorkflowOverride](#backgroundsoundconfigworkflowoverride)> | no | `nil` | Configuration for background sound during conversations. |
 | `source_attribution` | Optional<bool> | no | `nil` | When enabled and knowledge base content is present, the LLM is instructed to report which sources it used. |
 
 ### ConversationConfigWorkflowOverrideOutput
@@ -2624,6 +2641,7 @@ _(no fields)_
 | `file_input` | Optional<[FileInputConfigWorkflowOverride](#fileinputconfigworkflowoverride)> | no | `nil` | Configuration for file input (image/PDF uploads) during conversations. |
 | `monitoring_enabled` | Optional<bool> | no | `nil` | Enable real-time monitoring of conversations via WebSocket |
 | `monitoring_events` | Optional<Array<[ClientEvent](#clientevent)>> | no | `nil` | The events that will be sent to monitoring connections. |
+| `background_sound` | Optional<[BackgroundSoundConfigWorkflowOverride](#backgroundsoundconfigworkflowoverride)> | no | `nil` | Configuration for background sound during conversations. |
 | `source_attribution` | Optional<bool> | no | `nil` | When enabled and knowledge base content is present, the LLM is instructed to report which sources it used. |
 
 ### ConversationDeletionSettings
@@ -2646,6 +2664,7 @@ _(no fields)_
 | `evaluation_criteria_results_list` | Optional<Array<[ConversationHistoryEvaluationCriteriaResultCommonModel](#conversationhistoryevaluationcriteriaresultcommonmodel)>> | no | `nil` |  |
 | `data_collection_results_list` | Optional<Array<[DataCollectionResultCommonModel](#datacollectionresultcommonmodel)>> | no | `nil` |  |
 | `call_successful` | [EvaluationSuccessResult](#evaluationsuccessresult) | **yes** | **required** |  |
+| `call_success_score` | Optional<float> | no | `nil` |  |
 | `transcript_summary` | str | **yes** | **required** |  |
 | `call_summary_title` | Optional<str> | no | `nil` |  |
 | `scoped` | Optional<Array<[ScopedAnalysisResult](#scopedanalysisresult)>> | no | `nil` |  |
@@ -2677,6 +2696,9 @@ _(no fields)_
 | `criteria_id` | str | **yes** | **required** |  |
 | `result` | [EvaluationSuccessResult](#evaluationsuccessresult) | **yes** | **required** |  |
 | `rationale` | str | **yes** | **required** |  |
+| `scoring_mode` | Optional<[CriteriaScoringMode](#criteriascoringmode)> | no | `nil` |  |
+| `score` | Optional<int> | no | `nil` |  |
+| `max_score` | Optional<int> | no | `nil` |  |
 
 ### ConversationHistoryExotelPhoneCallModel
 
@@ -2829,9 +2851,11 @@ _(no fields)_
 | `llm_usage` | Optional<[LlmUsageInput](#llmusageinput)> | no | `nil` |  |
 | `interrupted` | Optional<bool> | no | `nil` |  |
 | `original_message` | Optional<str> | no | `nil` |  |
+| `reasoning` | Optional<Array<[ConversationReasoningModel](#conversationreasoningmodel)>> | no | `nil` |  |
 | `source_medium` | Optional<[ChatSourceMedium](#chatsourcemedium)> | no | `nil` |  |
 | `source_event_id` | Optional<int> | no | `nil` |  |
 | `used_static_kb_document_ids` | Optional<Array<str>> | no | `nil` |  |
+| `user_identifier` | Optional<str> | no | `nil` |  |
 
 ### ConversationHistoryTranscriptCommonModelOutput
 
@@ -2851,9 +2875,11 @@ _(no fields)_
 | `llm_usage` | Optional<[LlmUsageOutput](#llmusageoutput)> | no | `nil` |  |
 | `interrupted` | Optional<bool> | no | `nil` |  |
 | `original_message` | Optional<str> | no | `nil` |  |
+| `reasoning` | Optional<Array<[ConversationReasoningModel](#conversationreasoningmodel)>> | no | `nil` |  |
 | `source_medium` | Optional<[ChatSourceMedium](#chatsourcemedium)> | no | `nil` |  |
 | `source_event_id` | Optional<int> | no | `nil` |  |
 | `used_static_kb_document_ids` | Optional<Array<str>> | no | `nil` |  |
+| `user_identifier` | Optional<str> | no | `nil` |  |
 
 ### ConversationHistoryTranscriptFileInputResponseModel
 
@@ -2898,11 +2924,14 @@ _(no fields)_
 | `llm_usage` | Optional<[LlmUsageOutput](#llmusageoutput)> | no | `nil` |  |
 | `interrupted` | Optional<bool> | no | `nil` |  |
 | `original_message` | Optional<str> | no | `nil` |  |
+| `reasoning` | Optional<Array<[ConversationReasoningModel](#conversationreasoningmodel)>> | no | `nil` |  |
 | `source_medium` | Optional<[ChatSourceMedium](#chatsourcemedium)> | no | `nil` |  |
 | `source_event_id` | Optional<int> | no | `nil` |  |
 | `used_static_kb_document_ids` | Optional<Array<str>> | no | `nil` |  |
+| `user_identifier` | Optional<str> | no | `nil` |  |
 | `file_input` | Optional<[ConversationHistoryTranscriptFileInputResponseModel](#conversationhistorytranscriptfileinputresponsemodel)> | no | `nil` |  |
 | `contextual_update_info` | Optional<[ContextualUpdateInfo](#contextualupdateinfo)> | no | `nil` |  |
+| `reasoned` | Optional<bool> | no | `nil` |  |
 
 ### ConversationHistoryTranscriptSystemToolResultCommonModelInput
 
@@ -3126,6 +3155,13 @@ _(no fields)_
 | `source` | Optional<[ConversationInitiationSource](#conversationinitiationsource)> | no | `nil` | Source of the conversation initiation |
 | `version` | Optional<str> | no | `nil` | The SDK version number |
 
+### ConversationReasoningModel
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `summary` | Optional<str> | no | `nil` |  |
+| `provider_redact` | Optional<bool> | no | `nil` |  |
+
 ### ConversationSentimentAnalysis
 
 | Field | Type | Required | Default | Notes |
@@ -3174,6 +3210,7 @@ _(no fields)_
 | `status` | [ConversationSummaryResponseModelStatus](#conversationsummaryresponsemodelstatus) | **yes** | **required** |  |
 | `termination_reason` | Optional<str> | no | `nil` |  |
 | `call_successful` | [EvaluationSuccessResult](#evaluationsuccessresult) | **yes** | **required** |  |
+| `call_success_score` | Optional<float> | no | `nil` |  |
 | `transcript_summary` | Optional<str> | no | `nil` |  |
 | `call_summary_title` | Optional<str> | no | `nil` |  |
 | `main_language` | Optional<str> | no | `nil` |  |
@@ -3181,6 +3218,7 @@ _(no fields)_
 | `tool_names` | Optional<Array<str>> | no | `nil` |  |
 | `direction` | Optional<[TelephonyDirection](#telephonydirection)> | no | `nil` |  |
 | `rating` | Optional<float> | no | `nil` |  |
+| `sentiment_analysis` | Optional<[ConversationSentimentAnalysis](#conversationsentimentanalysis)> | no | `nil` |  |
 
 ### ConversationTagResponseModel
 
@@ -3233,6 +3271,8 @@ _(no fields)_
 | `last_contact_agent_id` | Optional<str> | no | `nil` |  |
 | `last_contact_conversation_id` | str | **yes** | **required** |  |
 | `last_contact_agent_name` | Optional<str> | no | `nil` |  |
+| `sentiment` | [SentimentAggregate](#sentimentaggregate) | **yes** | **required** |  |
+| `most_frustrated_conversations` | Optional<Array<[FrustratedConversationRef](#frustratedconversationref)>> | no | `nil` |  |
 
 ### ConversationVoiceRewardModel
 
@@ -3302,6 +3342,12 @@ _(no fields)_
 | --- | --- | --- | --- | --- |
 | `created_branch_id` | str | **yes** | **required** | ID of the created branch |
 | `created_version_id` | str | **yes** | **required** | ID of the first version on the created branch |
+
+### CreateAgentProcedureParams
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `smb_tool_type` | Optional<Literal<'create_agent_procedure'>> | no | `nil` |  |
 
 ### CreateAgentResponseModel
 
@@ -3393,6 +3439,7 @@ _(no fields)_
 | `label` | str | **yes** | **required** | Label for the phone number |
 | `supports_inbound` | Optional<bool> | no | `nil` | This field is deprecated and will be removed in the future. Whether this phone number supports inbound calls |
 | `supports_outbound` | Optional<bool> | no | `nil` | This field is deprecated and will be removed in the future. Whether this phone number supports outbound calls |
+| `agent_id` | Optional<str> | no | `nil` | Agent ID to assign the phone number to |
 | `account_sid` | str | **yes** | **required** | Exotel Account SID |
 | `api_key` | str | **yes** | **required** | Exotel API Key |
 | `api_token` | str | **yes** | **required** | Exotel API Token |
@@ -3536,7 +3583,8 @@ _(no fields)_
 | `dynamic_variables` | Optional<Hash<str, Optional<DynamicVariableValueTypeInput>>> | no | `nil` | Dynamic variables to replace in the agent config during testing |
 | `chat_history` | Optional<Array<[ConversationHistoryTranscriptCommonModelInput](#conversationhistorytranscriptcommonmodelinput)>> | no | `nil` |  |
 | `conversation_initiation_source` | Optional<[ConversationInitiationSource](#conversationinitiationsource)> | no | `nil` | Simulate the test as if the conversation originated from this channel. |
-| `success_condition` | Optional<str> | no | `nil` | A prompt that evaluates whether the agent's response is successful. Should return True or False. |
+| `success_condition` | Optional<str> | no | `nil` | Deprecated legacy single success criterion. Use success_conditions instead. At least one of success_condition or success_conditions is required. |
+| `success_conditions` | Optional<Array<str>> | no | `nil` | List of prompts that evaluate whether the simulation was successful. If provided, all criteria are evaluated and merged into a final result. Capped at the maximum number of evaluation criteria. |
 | `simulation_scenario` | Optional<str> | no | `nil` | Description of the simulation scenario and user persona for simulation tests. |
 | `simulation_max_turns` | Optional<int> | no | `nil` | Maximum number of conversation turns for simulation tests. |
 | `simulation_environment` | Optional<str> | no | `nil` | The environment to use when running this simulation test. If not provided, defaults to 'production'. |
@@ -3554,6 +3602,7 @@ _(no fields)_
 | `label` | str | **yes** | **required** | Label for the phone number |
 | `supports_inbound` | Optional<bool> | no | `nil` | This field is deprecated and will be removed in the future. Whether this phone number supports inbound calls |
 | `supports_outbound` | Optional<bool> | no | `nil` | This field is deprecated and will be removed in the future. Whether this phone number supports outbound calls |
+| `agent_id` | Optional<str> | no | `nil` | Agent ID to assign the phone number to |
 | `inbound_trunk_config` | Optional<[InboundSipTrunkConfigRequestModel](#inboundsiptrunkconfigrequestmodel)> | no | `nil` |  |
 | `outbound_trunk_config` | Optional<[OutboundSipTrunkConfigRequestModel](#outboundsiptrunkconfigrequestmodel)> | no | `nil` |  |
 
@@ -3591,6 +3640,7 @@ _(no fields)_
 | `label` | str | **yes** | **required** | Label for the phone number |
 | `supports_inbound` | Optional<bool> | no | `nil` | This field is deprecated and will be removed in the future. Whether this phone number supports inbound calls |
 | `supports_outbound` | Optional<bool> | no | `nil` | This field is deprecated and will be removed in the future. Whether this phone number supports outbound calls |
+| `agent_id` | Optional<str> | no | `nil` | Agent ID to assign the phone number to |
 | `sid` | str | **yes** | **required** | Twilio Account SID |
 | `token` | str | **yes** | **required** | Twilio Auth Token |
 | `region_config` | Optional<[RegionConfigRequest](#regionconfigrequest)> | no | `nil` | Twilio Additional Region Configuration |
@@ -3615,7 +3665,7 @@ _(no fields)_
 | `prompt` | str | **yes** | **required** | Instruction describing what to block, e.g. 'don't talk about politics' |
 | `execution_mode` | Optional<[GuardrailExecutionMode](#guardrailexecutionmode)> | no | `nil` |  |
 | `model` | Optional<[CustomGuardrailConfigModel](#customguardrailconfigmodel)> | no | `nil` | LLM model to use for custom guardrail evaluation |
-| `history_message_count` | Optional<int> | no | `nil` | How many recent customer messages to include in the guardrail's history, plus the messages that follow them. Only customer messages count toward the limit. 0 (default) shows none; 1 shows the customer's latest message onward. When > 0, the guardrail prompt can refer to this history as <conversation_history>; the reply under evaluation appears as <agent_message> and may repeat at the end of the history. |
+| `history_message_count` | Optional<int> | no | `nil` | How many recent customer messages to include in the guardrail's history, plus the agent replies that follow them (and tool calls and results when history_include_tool_calls is enabled). Only customer messages count toward the limit. 0 (default) shows none; 1 shows the customer's latest message onward. When > 0, the guardrail prompt can refer to this history as <conversation_history>; the reply under evaluation appears as <agent_message> and may repeat at the end of the history. |
 | `trigger_action` | Optional<[CustomGuardrailConfigTriggerAction](#customguardrailconfigtriggeraction)> | no | `nil` |  |
 
 ### CustomGuardrailInput
@@ -3651,6 +3701,9 @@ _(no fields)_
 | `header_name` | str | **yes** | **required** | The name of the header to use for authentication (e.g., 'x-api-key') |
 | `id` | str | **yes** | **required** |  |
 | `used_by` | Optional<[AuthConnectionDependencies](#authconnectiondependencies)> | no | `nil` |  |
+| `status` | Optional<[AuthConnectionStatus](#authconnectionstatus)> | no | `nil` |  |
+| `status_detail` | Optional<str> | no | `nil` |  |
+| `status_updated_at` | Optional<str> | no | `nil` |  |
 
 ### CustomLlm
 
@@ -3713,6 +3766,12 @@ _(no fields)_
 | --- | --- | --- | --- | --- |
 | `group` | [WorkspaceGroupResponseModel](#workspacegroupresponsemodel) | **yes** | **required** | The group to share with by default |
 | `permission_level` | [DefaultSharingGroupResponseModelPermissionLevel](#defaultsharinggroupresponsemodelpermissionlevel) | **yes** | **required** | The permission level to grant to the group |
+
+### DeleteAgentProcedureParams
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `smb_tool_type` | Optional<Literal<'delete_agent_procedure'>> | no | `nil` |  |
 
 ### DeleteAgentRuleParams
 
@@ -4533,7 +4592,18 @@ _(no fields)_
 | `end` | float | **yes** | **required** | The end time of the word in seconds. |
 | `loss` | float | **yes** | **required** | The average alignment loss/confidence score for this word, calculated from its constituent characters. |
 
-### GenerationChunk
+### FrustratedConversationRef
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `conversation_id` | str | **yes** | **required** |  |
+| `agent_id` | str | **yes** | **required** |  |
+| `start_time_unix_secs` | int | **yes** | **required** |  |
+| `overall_label` | [FrustratedConversationRefOverallLabel](#frustratedconversationrefoveralllabel) | **yes** | **required** |  |
+| `overall_sentiment_score` | float | **yes** | **required** |  |
+| `overall_frustration_score` | float | **yes** | **required** |  |
+
+### GenerationChunkInput
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
@@ -4541,9 +4611,21 @@ _(no fields)_
 | `duration_ms` | int | **yes** | **required** | The duration of the chunk in milliseconds. Must be between 3000ms and 120000ms. |
 | `positive_styles` | Array<str> | **yes** | **required** | The styles and musical directions that should be present in this chunk. Use English language for best results. The styles for the first chunk are the most important as they set the overall tone and genre. Styles for subsequent chunks can be used to add nuance, progression, emphasis, or change the direction of the song. Aim to have at least 6-7 styles in early chunks until the direction is established. Generic styles like 'great production quality' are good default styles to append to the list. |
 | `negative_styles` | Optional<Array<str>> | no | `nil` | The styles and musical directions that should not be present in this chunk. Use English language for best results. Leaving empty is a good default, only use this field if you want to explicitly avoid a particular style or direction. |
-| `context_adherence` | Optional<[GenerationChunkContextAdherence](#generationchunkcontextadherence)> | no | `nil` | How much the model adheres to the context of its surrounding chunks. Low adherence means the model can deviate from the context and be more creative. High adherence means the model will be more consistent with the context. |
+| `context_adherence` | Optional<[GenerationChunkInputContextAdherence](#generationchunkinputcontextadherence)> | no | `nil` | How much the model adheres to the context of its surrounding chunks. Low adherence means the model can deviate from the context and be more creative. High adherence means the model will be more consistent with the context. |
 | `conditioning_ref` | Optional<[AudioRefChunk](#audiorefchunk)> | no | `nil` | The audio reference to condition the generation on. The first chunk is the most important as it will influence the generation of all subsequent chunks. Thus, if you want to apply conditioning to the entire song, start conditioning from the first chunk. |
-| `condition_strength` | Optional<[GenerationChunkConditionStrength](#generationchunkconditionstrength)> | no | `nil` | How strongly the model adheres to the conditioning reference. Low strength means the model will be more creative and deviate from the reference. High strength means the model will be more consistent with the reference. |
+| `condition_strength` | Optional<[GenerationChunkInputConditionStrength](#generationchunkinputconditionstrength)> | no | `nil` | How strongly the model adheres to the conditioning reference. Low strength means the model will be more creative and deviate from the reference. High strength means the model will be more consistent with the reference. |
+
+### GenerationChunkOutput
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `text` | str | **yes** | **required** | The text config to be generated for this chunk. Can contain section name in square brackets, e.g. [Verse 1], lyrics lines, and inline directions in curly braces, e.g. {scratching}. |
+| `duration_ms` | int | **yes** | **required** | The duration of the chunk in milliseconds. Must be between 3000ms and 120000ms. |
+| `positive_styles` | Array<str> | **yes** | **required** | The styles and musical directions that should be present in this chunk. Use English language for best results. The styles for the first chunk are the most important as they set the overall tone and genre. Styles for subsequent chunks can be used to add nuance, progression, emphasis, or change the direction of the song. Aim to have at least 6-7 styles in early chunks until the direction is established. Generic styles like 'great production quality' are good default styles to append to the list. |
+| `negative_styles` | Optional<Array<str>> | no | `nil` | The styles and musical directions that should not be present in this chunk. Use English language for best results. Leaving empty is a good default, only use this field if you want to explicitly avoid a particular style or direction. |
+| `context_adherence` | Optional<[GenerationChunkOutputContextAdherence](#generationchunkoutputcontextadherence)> | no | `nil` | How much the model adheres to the context of its surrounding chunks. Low adherence means the model can deviate from the context and be more creative. High adherence means the model will be more consistent with the context. |
+| `conditioning_ref` | Optional<[AudioRefChunk](#audiorefchunk)> | no | `nil` | The audio reference to condition the generation on. The first chunk is the most important as it will influence the generation of all subsequent chunks. Thus, if you want to apply conditioning to the entire song, start conditioning from the first chunk. |
+| `condition_strength` | Optional<[GenerationChunkOutputConditionStrength](#generationchunkoutputconditionstrength)> | no | `nil` | How strongly the model adheres to the conditioning reference. Low strength means the model will be more creative and deviate from the reference. High strength means the model will be more consistent with the reference. |
 
 ### GenerationConfig
 
@@ -5054,7 +5136,8 @@ _(no fields)_
 | `dynamic_variables` | Optional<Hash<str, Optional<DynamicVariableValueTypeOutput>>> | no | `nil` | Dynamic variables to replace in the agent config during testing |
 | `chat_history` | Optional<Array<[ConversationHistoryTranscriptCommonModelOutput](#conversationhistorytranscriptcommonmodeloutput)>> | no | `nil` |  |
 | `conversation_initiation_source` | Optional<[ConversationInitiationSource](#conversationinitiationsource)> | no | `nil` | Simulate the test as if the conversation originated from this channel. |
-| `success_condition` | Optional<str> | no | `nil` | A prompt that evaluates whether the agent's response is successful. Should return True or False. |
+| `success_condition` | Optional<str> | no | `nil` | Deprecated legacy single success criterion. Use success_conditions instead. At least one of success_condition or success_conditions is required. |
+| `success_conditions` | Optional<Array<str>> | no | `nil` | List of prompts that evaluate whether the simulation was successful. If provided, all criteria are evaluated and merged into a final result. Capped at the maximum number of evaluation criteria. |
 | `simulation_scenario` | Optional<str> | no | `nil` | Description of the simulation scenario and user persona for simulation tests. |
 | `simulation_max_turns` | Optional<int> | no | `nil` | Maximum number of conversation turns for simulation tests. |
 | `simulation_environment` | Optional<str> | no | `nil` | The environment to use when running this simulation test. If not provided, defaults to 'production'. |
@@ -5566,6 +5649,18 @@ _(no fields)_
 | `is_added_by_user` | Optional<bool> | no | `nil` | Whether the voice was added by the user. |
 | `is_bookmarked` | Optional<bool> | no | `nil` | Whether the voice is bookmarked by the current user. Only relevant when is_added_by_user is True. |
 
+### ListAgentProceduresParams
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `smb_tool_type` | Optional<Literal<'list_agent_procedures'>> | no | `nil` |  |
+
+### ListAgentReferencesParams
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `smb_tool_type` | Optional<Literal<'list_agent_references'>> | no | `nil` |  |
+
 ### ListAgentRulesParams
 
 | Field | Type | Required | Default | Notes |
@@ -5701,6 +5796,7 @@ _(no fields)_
 | `enum` | Optional<Array<str>> | no | `nil` | List of allowed string values for string type parameters |
 | `is_system_provided` | Optional<bool> | no | `nil` | If true, the value will be populated by the system at runtime. Used by API Integration Webhook tools for templating. Mutually exclusive with description, dynamic_variable, constant_value, and is_omitted. |
 | `dynamic_variable` | Optional<str> | no | `nil` | The name of the dynamic variable to use for this property's value. Mutually exclusive with description, is_system_provided, constant_value, and is_omitted. |
+| `allowed_values_dynamic_variable` | Optional<str> | no | `nil` | When set, the LLM provides the value but the runtime rejects any value not present in the list held by this dynamic variable. Use to let the LLM pick from a server-verified set (e.g. the IDs the current user is allowed to access). Requires description; mutually exclusive with dynamic_variable, is_system_provided, constant_value, and is_omitted. |
 | `constant_value` | Optional<LiteralJsonSchemaPropertyConstantValue> | no | `nil` | A constant value to use for this property. Mutually exclusive with description, dynamic_variable, is_system_provided, and is_omitted. |
 | `is_omitted` | Optional<bool> | no | `nil` | If true, this parameter will be completely omitted from the request. Only valid for optional parameters. Mutually exclusive with description, dynamic_variable, is_system_provided, and constant_value. |
 
@@ -5996,6 +6092,26 @@ _(no fields)_
 | `text` | Optional<str> | no | `nil` |  |
 | `source` | Optional<MemoryEntrySearchResultSource> | no | `nil` |  |
 
+### MergePreviewResponseModel
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `agent_id` | str | **yes** | **required** | The ID of the agent |
+| `name` | str | **yes** | **required** | The name of the agent |
+| `conversation_config` | [ConversationalConfig](#conversationalconfig) | **yes** | **required** | The conversation configuration of the agent |
+| `metadata` | [AgentMetadataResponseModel](#agentmetadataresponsemodel) | **yes** | **required** | The metadata of the agent |
+| `platform_settings` | Optional<[AgentPlatformSettingsResponseModel](#agentplatformsettingsresponsemodel)> | no | `nil` | The platform settings of the agent |
+| `phone_numbers` | Optional<Array<[MergePreviewResponseModelPhoneNumbersItem](#mergepreviewresponsemodelphonenumbersitem)>> | no | `nil` | The phone numbers of the agent |
+| `whatsapp_accounts` | Optional<Array<[GetWhatsAppAccountResponse](#getwhatsappaccountresponse)>> | no | `nil` | WhatsApp accounts assigned to the agent |
+| `workflow` | Optional<[AgentWorkflowResponseModel](#agentworkflowresponsemodel)> | no | `nil` | The workflow of the agent |
+| `access_info` | Optional<[ResourceAccessInfo](#resourceaccessinfo)> | no | `nil` | The access information of the agent for the user |
+| `tags` | Optional<Array<str>> | no | `nil` | Agent tags used to categorize the agent |
+| `version_id` | Optional<str> | no | `nil` | The ID of the version the agent is on |
+| `branch_id` | Optional<str> | no | `nil` | The ID of the branch the agent is on |
+| `main_branch_id` | Optional<str> | no | `nil` | The ID of the main branch for this agent |
+| `overridden_fields` | Optional<Array<str>> | no | `nil` | Dot-paths of config fields where both branches modified the same field relative to their common ancestor (conflicts). Present regardless of which side wins the conflict. |
+| `source_identical_to_target` | Optional<bool> | no | `nil` | True when the merge/rebase would be a no-op, i.e. the merged result is identical to the source branch tip. The rebase endpoint rejects in this case. |
+
 ### MessagesSearchResponse
 
 | Field | Type | Required | Default | Notes |
@@ -6097,6 +6213,9 @@ _(no fields)_
 | `provider` | str | **yes** | **required** |  |
 | `id` | str | **yes** | **required** |  |
 | `used_by` | Optional<[AuthConnectionDependencies](#authconnectiondependencies)> | no | `nil` |  |
+| `status` | Optional<[AuthConnectionStatus](#authconnectionstatus)> | no | `nil` |  |
+| `status_detail` | Optional<str> | no | `nil` |  |
+| `status_updated_at` | Optional<str> | no | `nil` |  |
 
 ### MultichannelSpeechToTextResponseModel
 
@@ -6140,13 +6259,6 @@ _(no fields)_
 | `composition_plan` | Optional<MusicUploadResponseCompositionPlan> | no | `nil` | The composition plan extracted from the uploaded song. Only present if `extract_composition_plan` was provided in the request body. |
 | `words_timestamps` | Optional<Array<[WordTimestamp](#wordtimestamp)>> | no | `nil` | Word-level timestamps transcribed from the uploaded song. Only present if `with_timestamps` was True in the request body |
 
-### NoCoachingSettings
-
-| Field | Type | Required | Default | Notes |
-| --- | --- | --- | --- | --- |
-| `type` | Optional<Literal<'none'>> | no | `nil` |  |
-| `memory_base_id` | Optional<str> | no | `nil` |  |
-
 ### NormalizedAlignment
 
 | Field | Type | Required | Default | Notes |
@@ -6168,6 +6280,9 @@ _(no fields)_
 | `basic_auth_in_header` | Optional<bool> | no | `nil` | If True, send client credentials in Authorization header as Basic Auth instead of request body |
 | `id` | str | **yes** | **required** |  |
 | `used_by` | Optional<[AuthConnectionDependencies](#authconnectiondependencies)> | no | `nil` |  |
+| `status` | Optional<[AuthConnectionStatus](#authconnectionstatus)> | no | `nil` |  |
+| `status_detail` | Optional<str> | no | `nil` |  |
+| `status_updated_at` | Optional<str> | no | `nil` |  |
 | `custom_headers` | Optional<Hash<str, str>> | no | `nil` | Custom headers configured for OAuth2 token requests |
 
 ### OAuth2JwtResponse
@@ -6188,6 +6303,9 @@ _(no fields)_
 | `token_response_field` | Optional<[OAuth2JwtResponseTokenResponseField](#oauth2jwtresponsetokenresponsefield)> | no | `nil` | Token field to extract from the token endpoint response. |
 | `id` | str | **yes** | **required** |  |
 | `used_by` | Optional<[AuthConnectionDependencies](#authconnectiondependencies)> | no | `nil` |  |
+| `status` | Optional<[AuthConnectionStatus](#authconnectionstatus)> | no | `nil` |  |
+| `status_detail` | Optional<str> | no | `nil` |  |
+| `status_updated_at` | Optional<str> | no | `nil` |  |
 
 ### ObjectJsonSchemaPropertyInput
 
@@ -6509,6 +6627,7 @@ _(no fields)_
 | `custom_sip_headers` | Optional<Array<[PhoneNumberTransferCustomSipHeadersItem](#phonenumbertransfercustomsipheadersitem)>> | no | `nil` | Custom SIP headers to include when transferring the call. Each header can be either a static value or a dynamic variable reference. |
 | `transfer_destination` | [PhoneNumberTransferTransferDestination](#phonenumbertransfertransferdestination) | **yes** | **required** |  |
 | `transfer_type` | Optional<[TransferTypeEnum](#transfertypeenum)> | no | `nil` |  |
+| `uui` | Optional<[UuiTransferConfig](#uuitransferconfig)> | no | `nil` | User-to-User Information (RFC 7433) to attach to SIP REFER transfers. Carries call context such as CRM identifiers or escalation reason across the transfer boundary. |
 | `post_dial_digits` | Optional<[PhoneNumberTransferPostDialDigits](#phonenumbertransferpostdialdigits)> | no | `nil` | DTMF digits to send after call connects (e.g., 'ww1234' for extension). Can be either a static value or a dynamic variable reference. Use 'w' for 0.5s pause. Only supported for Twilio transfers. |
 | `phone_number` | Optional<str> | no | `nil` |  |
 | `condition` | str | **yes** | **required** |  |
@@ -6698,6 +6817,9 @@ _(no fields)_
 | `extra_params` | Optional<Hash<str, str>> | no | `nil` | Additional custom claims to include in the JWT |
 | `id` | str | **yes** | **required** |  |
 | `used_by` | Optional<[AuthConnectionDependencies](#authconnectiondependencies)> | no | `nil` |  |
+| `status` | Optional<[AuthConnectionStatus](#authconnectionstatus)> | no | `nil` |  |
+| `status_detail` | Optional<str> | no | `nil` |  |
+| `status_updated_at` | Optional<str> | no | `nil` |  |
 
 ### ProcedureAtVersionInput
 
@@ -6705,8 +6827,8 @@ _(no fields)_
 | --- | --- | --- | --- | --- |
 | `procedure_id` | str | **yes** | **required** | Procedure ID |
 | `name` | str | **yes** | **required** | Procedure name |
-| `content` | str | **yes** | **required** | Procedure content |
 | `type` | Optional<[ProcedureType](#proceduretype)> | no | `nil` |  |
+| `content` | str | **yes** | **required** | Procedure content |
 | `guardrails` | Optional<Array<[CustomGuardrailConfig](#customguardrailconfig)>> | no | `nil` |  |
 | `agent_id` | str | **yes** | **required** | Agent ID of the procedure |
 | `version_id` | Optional<str> | no | `nil` | Version ID of a version of the procedure. None for a procedure never versioned. |
@@ -6717,8 +6839,8 @@ _(no fields)_
 | --- | --- | --- | --- | --- |
 | `procedure_id` | str | **yes** | **required** | Procedure ID |
 | `name` | str | **yes** | **required** | Procedure name |
-| `content` | str | **yes** | **required** | Procedure content |
 | `type` | Optional<[ProcedureType](#proceduretype)> | no | `nil` |  |
+| `content` | str | **yes** | **required** | Procedure content |
 | `guardrails` | Optional<Array<[CustomGuardrailConfig](#customguardrailconfig)>> | no | `nil` |  |
 | `agent_id` | str | **yes** | **required** | Agent ID of the procedure |
 | `version_id` | Optional<str> | no | `nil` | Version ID of a version of the procedure. None for a procedure never versioned. |
@@ -7010,6 +7132,7 @@ _(no fields)_
 | `llm` | Optional<[Llm](#llm)> | no | `nil` | The LLM to query with the prompt and the chat history. If using data residency, the LLM must be supported in the data residency environment |
 | `reasoning_effort` | Optional<[LlmReasoningEffort](#llmreasoningeffort)> | no | `nil` | Reasoning effort of the model. Only available for some models. |
 | `thinking_budget` | Optional<int> | no | `nil` | Max number of tokens used for thinking. Use 0 to turn off if supported by the model. |
+| `enable_reasoning_summary` | Optional<bool> | no | `nil` | Enable model reasoning summaries. When disabled, we do not request summaries from provider if possible for faster TTFB. Not ZRM compatible. |
 | `temperature` | Optional<float> | no | `nil` | The temperature for the LLM. Defaults to 0. Set to null to omit the parameter from the LLM request entirely (useful for custom LLMs that reject the temperature field). |
 | `max_tokens` | Optional<int> | no | `nil` | If greater than 0, maximum number of tokens the LLM can predict |
 | `tool_ids` | Optional<Array<str>> | no | `nil` | A list of IDs of tools used by the agent |
@@ -7033,6 +7156,7 @@ _(no fields)_
 | `llm` | Optional<[Llm](#llm)> | no | `nil` | The LLM to query with the prompt and the chat history. If using data residency, the LLM must be supported in the data residency environment |
 | `reasoning_effort` | Optional<[LlmReasoningEffort](#llmreasoningeffort)> | no | `nil` | Reasoning effort of the model. Only available for some models. |
 | `thinking_budget` | Optional<int> | no | `nil` | Max number of tokens used for thinking. Use 0 to turn off if supported by the model. |
+| `enable_reasoning_summary` | Optional<bool> | no | `nil` | Enable model reasoning summaries. When disabled, we do not request summaries from provider if possible for faster TTFB. Not ZRM compatible. |
 | `temperature` | Optional<float> | no | `nil` | The temperature for the LLM. Defaults to 0. Set to null to omit the parameter from the LLM request entirely (useful for custom LLMs that reject the temperature field). |
 | `max_tokens` | Optional<int> | no | `nil` | If greater than 0, maximum number of tokens the LLM can predict |
 | `tool_ids` | Optional<Array<str>> | no | `nil` | A list of IDs of tools used by the agent |
@@ -7086,6 +7210,7 @@ _(no fields)_
 | `llm` | Optional<[Llm](#llm)> | no | `nil` | The LLM to query with the prompt and the chat history. If using data residency, the LLM must be supported in the data residency environment |
 | `reasoning_effort` | Optional<[LlmReasoningEffort](#llmreasoningeffort)> | no | `nil` | Reasoning effort of the model. Only available for some models. |
 | `thinking_budget` | Optional<int> | no | `nil` | Max number of tokens used for thinking. Use 0 to turn off if supported by the model. |
+| `enable_reasoning_summary` | Optional<bool> | no | `nil` | Enable model reasoning summaries. When disabled, we do not request summaries from provider if possible for faster TTFB. Not ZRM compatible. |
 | `temperature` | Optional<float> | no | `nil` | The temperature for the LLM. Defaults to 0. Set to null to omit the parameter from the LLM request entirely (useful for custom LLMs that reject the temperature field). |
 | `max_tokens` | Optional<int> | no | `nil` | If greater than 0, maximum number of tokens the LLM can predict |
 | `tool_ids` | Optional<Array<str>> | no | `nil` | A list of IDs of tools used by the agent |
@@ -7109,6 +7234,7 @@ _(no fields)_
 | `llm` | Optional<[Llm](#llm)> | no | `nil` | The LLM to query with the prompt and the chat history. If using data residency, the LLM must be supported in the data residency environment |
 | `reasoning_effort` | Optional<[LlmReasoningEffort](#llmreasoningeffort)> | no | `nil` | Reasoning effort of the model. Only available for some models. |
 | `thinking_budget` | Optional<int> | no | `nil` | Max number of tokens used for thinking. Use 0 to turn off if supported by the model. |
+| `enable_reasoning_summary` | Optional<bool> | no | `nil` | Enable model reasoning summaries. When disabled, we do not request summaries from provider if possible for faster TTFB. Not ZRM compatible. |
 | `temperature` | Optional<float> | no | `nil` | The temperature for the LLM. Defaults to 0. Set to null to omit the parameter from the LLM request entirely (useful for custom LLMs that reject the temperature field). |
 | `max_tokens` | Optional<int> | no | `nil` | If greater than 0, maximum number of tokens the LLM can predict |
 | `tool_ids` | Optional<Array<str>> | no | `nil` | A list of IDs of tools used by the agent |
@@ -7141,6 +7267,9 @@ _(no fields)_
 | `use_knowledge_base` | Optional<bool> | no | `nil` | When evaluating the prompt, should the agent's knowledge base be used. |
 | `scope` | Optional<[AnalysisScope](#analysisscope)> | no | `nil` | The scope of transcript context used when evaluating this criterion. 'conversation' uses the full transcript; 'agent' uses only the portion where the defining agent was active. |
 | `llm` | Optional<[Llm](#llm)> | no | `nil` | LLM model to use for this evaluation criteria. If not set, uses agent's analysis_llm default. |
+| `scoring_mode` | Optional<[CriteriaScoringMode](#criteriascoringmode)> | no | `nil` | How this criterion is scored. 'binary' resolves to success/failure/unknown. 'numeric_uniform' returns a number on the [0, max_score] scale which is normalized into the aggregate conversation success percentage. |
+| `max_score` | Optional<int> | no | `nil` | Maximum value of the numeric score scale (minimum is always 0). Only used when scoring_mode is 'numeric_uniform'. |
+| `score_instructions` | Optional<str> | no | `nil` | Optional free-text instructions describing how to assign values on the numeric scale. Only used when scoring_mode is 'numeric_uniform'. |
 
 ### PromptInjectionGuardrail
 
@@ -7700,6 +7829,16 @@ _(no fields)_
 | --- | --- | --- | --- | --- |
 | `smb_tool_type` | Optional<Literal<'schedule_group_session'>> | no | `nil` |  |
 
+### ScimGroupResponseModel
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `scim_external_id` | Optional<str> | no | `nil` |  |
+| `display_name` | str | **yes** | **required** |  |
+| `created_at_unix` | Optional<int> | no | `nil` |  |
+| `updated_at_unix` | Optional<int> | no | `nil` |  |
+| `seat_type` | Optional<[SeatType](#seattype)> | no | `nil` |  |
+
 ### ScopedAnalysisResult
 
 | Field | Type | Required | Default | Notes |
@@ -7710,6 +7849,7 @@ _(no fields)_
 | `evaluation_criteria_results` | Optional<Hash<str, [ConversationHistoryEvaluationCriteriaResultCommonModel](#conversationhistoryevaluationcriteriaresultcommonmodel)>> | no | `nil` |  |
 | `data_collection_results` | Optional<Hash<str, [DataCollectionResultCommonModel](#datacollectionresultcommonmodel)>> | no | `nil` |  |
 | `successful` | [EvaluationSuccessResult](#evaluationsuccessresult) | **yes** | **required** |  |
+| `success_score` | Optional<float> | no | `nil` |  |
 
 ### ScribeAuthErrorPayload
 
@@ -7902,6 +8042,17 @@ _(no fields)_
 | `context_id` | Optional<str> | no | `nil` | The target context_id for this text. |
 | `flush` | Optional<bool> | no | `nil` | If true, flushes the audio buffer for the specified context. If false, the text will be appended to the buffer to be generated. |
 
+### SentimentAggregate
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `scored_conversation_count` | int | **yes** | **required** |  |
+| `positive_count` | int | **yes** | **required** |  |
+| `neutral_count` | int | **yes** | **required** |  |
+| `negative_count` | int | **yes** | **required** |  |
+| `average_sentiment_score` | Optional<float> | no | `nil` |  |
+| `average_frustration_score` | Optional<float> | no | `nil` |  |
+
 ### SessionStartedPayload
 
 | Field | Type | Required | Default | Notes |
@@ -7975,7 +8126,8 @@ _(no fields)_
 | `dynamic_variables` | Optional<Hash<str, Optional<DynamicVariableValueTypeOutput>>> | no | `nil` | Dynamic variables to replace in the agent config during testing |
 | `chat_history` | Optional<Array<[ConversationHistoryTranscriptCommonModelOutput](#conversationhistorytranscriptcommonmodeloutput)>> | no | `nil` |  |
 | `conversation_initiation_source` | Optional<[ConversationInitiationSource](#conversationinitiationsource)> | no | `nil` | Simulate the test as if the conversation originated from this channel. |
-| `success_condition` | Optional<str> | no | `nil` | A prompt that evaluates whether the agent's response is successful. Should return True or False. |
+| `success_condition` | Optional<str> | no | `nil` | Deprecated legacy single success criterion. Use success_conditions instead. At least one of success_condition or success_conditions is required. |
+| `success_conditions` | Optional<Array<str>> | no | `nil` | List of prompts that evaluate whether the simulation was successful. If provided, all criteria are evaluated and merged into a final result. Capped at the maximum number of evaluation criteria. |
 | `simulation_scenario` | Optional<str> | no | `nil` | Description of the simulation scenario and user persona for simulation tests. |
 | `simulation_max_turns` | Optional<int> | no | `nil` | Maximum number of conversation turns for simulation tests. |
 | `simulation_environment` | Optional<str> | no | `nil` | The environment to use when running this simulation test. If not provided, defaults to 'production'. |
@@ -8073,6 +8225,9 @@ _(no fields)_
 | `provider` | Optional<Literal<'Slack'>> | no | `nil` |  |
 | `id` | str | **yes** | **required** |  |
 | `used_by` | Optional<[AuthConnectionDependencies](#authconnectiondependencies)> | no | `nil` |  |
+| `status` | Optional<[AuthConnectionStatus](#authconnectionstatus)> | no | `nil` |  |
+| `status_detail` | Optional<str> | no | `nil` |  |
+| `status_updated_at` | Optional<str> | no | `nil` |  |
 
 ### SmsConversationInfo
 
@@ -8088,17 +8243,18 @@ _(no fields)_
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `timeout_seconds` | Optional<float> | no | `nil` | Time in seconds before showing the predefined message while waiting for LLM response. Set to -1 to disable. |
-| `message` | Optional<str> | no | `nil` | Message to show when the first soft timeout is reached while waiting for LLM response |
+| `message` | Optional<str> | no | `nil` | Message to show when the first soft timeout is reached while waiting for LLM response. Supports dynamic variables (e.g., {{system__time}}, {{custom_variable}}). |
 | `additional_soft_timeout_messages` | Optional<Array<str>> | no | `nil` | Extra static filler messages for subsequent soft timeouts in the same LLM generation. The first timeout uses `message`. If fewer messages are configured than `max_soft_timeouts_per_generation`, the last configured message is repeated; otherwise a built-in filler is used. |
 | `use_llm_generated_message` | Optional<bool> | no | `nil` | If enabled, the soft timeout message will be generated dynamically instead of using the static message. |
+| `randomize_fillers` | Optional<bool> | no | `nil` | If enabled, shuffle the order of static soft timeout messages once at the start of each turn. Only applies when use_llm_generated_message is false. |
 | `max_soft_timeouts_per_generation` | Optional<int> | no | `nil` | Maximum filler messages while waiting for a single LLM response. Fires every timeout_seconds until the LLM streams content or this limit is reached. |
-| `llm_generated_message_prompt_override` | Optional<str> | no | `nil` | Custom prompt for generating the soft timeout filler message when use_llm_generated_message is enabled. Recent conversation context is provided as a separate user message. If not set, the default prompt will be used. |
+| `llm_generated_message_prompt_override` | Optional<str> | no | `nil` | Custom prompt for generating the soft timeout filler message when use_llm_generated_message is enabled. Recent conversation context is provided as a separate user message. If not set, the default prompt will be used. Supports dynamic variables (e.g., {{system__time}}, {{custom_variable}}). |
 
 ### SoftTimeoutConfigOverride
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `message` | Optional<str> | no | `nil` | Message to show when the first soft timeout is reached while waiting for LLM response |
+| `message` | Optional<str> | no | `nil` | Message to show when the first soft timeout is reached while waiting for LLM response. Supports dynamic variables (e.g., {{system__time}}, {{custom_variable}}). |
 
 ### SoftTimeoutConfigOverrideConfig
 
@@ -8111,11 +8267,12 @@ _(no fields)_
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `timeout_seconds` | Optional<float> | no | `nil` | Time in seconds before showing the predefined message while waiting for LLM response. Set to -1 to disable. |
-| `message` | Optional<str> | no | `nil` | Message to show when the first soft timeout is reached while waiting for LLM response |
+| `message` | Optional<str> | no | `nil` | Message to show when the first soft timeout is reached while waiting for LLM response. Supports dynamic variables (e.g., {{system__time}}, {{custom_variable}}). |
 | `additional_soft_timeout_messages` | Optional<Array<str>> | no | `nil` | Extra static filler messages for subsequent soft timeouts in the same LLM generation. The first timeout uses `message`. If fewer messages are configured than `max_soft_timeouts_per_generation`, the last configured message is repeated; otherwise a built-in filler is used. |
 | `use_llm_generated_message` | Optional<bool> | no | `nil` | If enabled, the soft timeout message will be generated dynamically instead of using the static message. |
+| `randomize_fillers` | Optional<bool> | no | `nil` | If enabled, shuffle the order of static soft timeout messages once at the start of each turn. Only applies when use_llm_generated_message is false. |
 | `max_soft_timeouts_per_generation` | Optional<int> | no | `nil` | Maximum filler messages while waiting for a single LLM response. Fires every timeout_seconds until the LLM streams content or this limit is reached. |
-| `llm_generated_message_prompt_override` | Optional<str> | no | `nil` | Custom prompt for generating the soft timeout filler message when use_llm_generated_message is enabled. Recent conversation context is provided as a separate user message. If not set, the default prompt will be used. |
+| `llm_generated_message_prompt_override` | Optional<str> | no | `nil` | Custom prompt for generating the soft timeout filler message when use_llm_generated_message is enabled. Recent conversation context is provided as a separate user message. If not set, the default prompt will be used. Supports dynamic variables (e.g., {{system__time}}, {{custom_variable}}). |
 
 ### SongMetadata
 
@@ -8135,8 +8292,8 @@ _(no fields)_
 | `positive_local_styles` | Array<str> | **yes** | **required** | The styles and musical directions that should be present in this section. Use English language for best result. |
 | `negative_local_styles` | Array<str> | **yes** | **required** | The styles and musical directions that should not be present in this section. Use English language for best result. |
 | `duration_ms` | int | **yes** | **required** | The duration of the section in milliseconds. Must be between 3000ms and 120000ms. |
-| `lines` | Array<str> | **yes** | **required** | The lyrics of the section. Max 200 characters per line. |
-| `source_from` | Optional<[SectionSource](#sectionsource)> | no | `nil` | Optional source to extract the section from. Used for inpainting. Only available to enterprise clients with access to the inpainting feature. |
+| `lines` | Array<str> | **yes** | **required** | The lyrics of the section. Max 30 lines per section and max 200 characters per line. |
+| `source_from` | Optional<[SectionSource](#sectionsource)> | no | `nil` | Optional source to extract the section from. Used for inpainting. |
 
 ### SongSourceContext
 
@@ -8319,6 +8476,7 @@ _(no fields)_
 | `speaker_id` | Optional<str> | no | `nil` | Unique identifier for the speaker of this word. |
 | `logprob` | float | **yes** | **required** | The log of the probability with which this word was predicted. Logprobs are in range [-infinity, 0], higher logprobs indicate a higher confidence the model has in its predictions. |
 | `characters` | Optional<Array<[SpeechToTextCharacterResponseModel](#speechtotextcharacterresponsemodel)>> | no | `nil` | The characters that make up the word and their timing information. |
+| `channel_index` | Optional<int> | no | `nil` | The channel this word was spoken on (for multichannel audio). Null for single-channel transcriptions. |
 
 ### SrtExportOptions
 
@@ -8858,6 +9016,10 @@ _(no fields)_
 | `next_cursor` | Optional<str> | no | `nil` |  |
 | `has_more` | bool | **yes** | **required** |  |
 
+### TopicDiscoverySettings
+
+_(no fields)_
+
 ### TranscriptMessage
 
 | Field | Type | Required | Default | Notes |
@@ -9075,6 +9237,8 @@ _(no fields)_
 | `speculative_turn` | Optional<bool> | no | `nil` | When enabled, starts generating LLM responses during silence before full turn confidence is reached, reducing perceived latency. May increase LLM costs. |
 | `retranscribe_on_turn_timeout` | Optional<bool> | no | `nil` | When enabled, if VAD detects no speech, attempts to re-transcribe accumulated audio at turn timeout. Disables silence discount billing for affected turns. |
 | `turn_model` | Optional<[TurnModel](#turnmodel)> | no | `nil` |  |
+| `interruption_ignore_terms` | Optional<Array<str>> | no | `nil` | List of terms that should not trigger an interruption when spoken by the user (e.g. 'gotcha', 'understood'). Uses case-insensitive exact matching. |
+| `transcribe_on_disabled_interruptions` | Optional<bool> | no | `nil` | When interruptions are disabled, still transcribe what the user says so it can carry into the next turn. When off, user speech during a non-interruptible turn is ignored and won't trigger a turn. |
 | `soft_timeout_config` | Optional<[SoftTimeoutConfig](#softtimeoutconfig)> | no | `nil` | Configuration for soft timeout functionality. Provides immediate feedback during longer LLM responses. |
 
 ### TurnConfigOverride
@@ -9101,6 +9265,8 @@ _(no fields)_
 | `speculative_turn` | Optional<bool> | no | `nil` | When enabled, starts generating LLM responses during silence before full turn confidence is reached, reducing perceived latency. May increase LLM costs. |
 | `retranscribe_on_turn_timeout` | Optional<bool> | no | `nil` | When enabled, if VAD detects no speech, attempts to re-transcribe accumulated audio at turn timeout. Disables silence discount billing for affected turns. |
 | `turn_model` | Optional<[TurnModel](#turnmodel)> | no | `nil` | Version of the turn detection model to use. |
+| `interruption_ignore_terms` | Optional<Array<str>> | no | `nil` | List of terms that should not trigger an interruption when spoken by the user (e.g. 'gotcha', 'understood'). Uses case-insensitive exact matching. |
+| `transcribe_on_disabled_interruptions` | Optional<bool> | no | `nil` | When interruptions are disabled, still transcribe what the user says so it can carry into the next turn. When off, user speech during a non-interruptible turn is ignored and won't trigger a turn. |
 | `soft_timeout_config` | Optional<[SoftTimeoutConfigWorkflowOverride](#softtimeoutconfigworkflowoverride)> | no | `nil` | Configuration for soft timeout functionality. Provides immediate feedback during longer LLM responses. |
 
 ### TwilioOutboundCallResponse
@@ -9193,6 +9359,12 @@ _(no fields)_
 | `agent_id` | str | **yes** | **required** | The ID of the agent whose workflow contains the target node. |
 | `target_node_id` | str | **yes** | **required** | The ID of the workflow node that the agent should transition to. |
 
+### UpdateAgentProcedureParams
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `smb_tool_type` | Optional<Literal<'update_agent_procedure'>> | no | `nil` |  |
+
 ### UpdateAgentRuleParams
 
 | Field | Type | Required | Default | Notes |
@@ -9212,6 +9384,13 @@ _(no fields)_
 | `provider` | Optional<str> | no | `nil` |  |
 | `username` | Optional<str> | no | `nil` |  |
 | `password` | Optional<str> | no | `nil` |  |
+
+### UpdateBearerAuthRequest
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `provider` | Optional<str> | no | `nil` |  |
+| `token` | Optional<str> | no | `nil` |  |
 
 ### UpdateBookingPageAppearanceParams
 
@@ -9341,7 +9520,8 @@ _(no fields)_
 | `dynamic_variables` | Optional<Hash<str, Optional<DynamicVariableValueTypeInput>>> | no | `nil` | Dynamic variables to replace in the agent config during testing |
 | `chat_history` | Optional<Array<[ConversationHistoryTranscriptCommonModelInput](#conversationhistorytranscriptcommonmodelinput)>> | no | `nil` |  |
 | `conversation_initiation_source` | Optional<[ConversationInitiationSource](#conversationinitiationsource)> | no | `nil` | Simulate the test as if the conversation originated from this channel. |
-| `success_condition` | Optional<str> | no | `nil` | A prompt that evaluates whether the agent's response is successful. Should return True or False. |
+| `success_condition` | Optional<str> | no | `nil` | Deprecated legacy single success criterion. Use success_conditions instead. At least one of success_condition or success_conditions is required. |
+| `success_conditions` | Optional<Array<str>> | no | `nil` | List of prompts that evaluate whether the simulation was successful. If provided, all criteria are evaluated and merged into a final result. Capped at the maximum number of evaluation criteria. |
 | `simulation_scenario` | Optional<str> | no | `nil` | Description of the simulation scenario and user persona for simulation tests. |
 | `simulation_max_turns` | Optional<int> | no | `nil` | Maximum number of conversation turns for simulation tests. |
 | `simulation_environment` | Optional<str> | no | `nil` | The environment to use when running this simulation test. If not provided, defaults to 'production'. |
@@ -9415,6 +9595,9 @@ _(no fields)_
 | `provider` | str | **yes** | **required** |  |
 | `id` | str | **yes** | **required** |  |
 | `used_by` | Optional<[AuthConnectionDependencies](#authconnectiondependencies)> | no | `nil` |  |
+| `status` | Optional<[AuthConnectionStatus](#authconnectionstatus)> | no | `nil` |  |
+| `status_detail` | Optional<str> | no | `nil` |  |
+| `status_updated_at` | Optional<str> | no | `nil` |  |
 
 ### UsageCharactersResponseModel
 
@@ -9476,6 +9659,14 @@ _(no fields)_
 | --- | --- | --- | --- | --- |
 | `start` | float | **yes** | **required** | The start time of the utterance in seconds. |
 | `end` | float | **yes** | **required** | The end time of the utterance in seconds. |
+
+### UuiTransferConfig
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `data` | str | **yes** | **required** | UUI payload to send on SIP REFER transfers. Supports inline dynamic variables and is hex-encoded at transfer time. |
+| `protocol_discriminator` | Optional<str> | no | `nil` | Optional one-octet protocol discriminator (two hex digits, e.g. '00'). Required by platforms such as Genesys Cloud, which otherwise strip the first octet of the payload. Leave unset for platforms like Talkdesk that expect a bare hex payload. |
+| `protocol_discriminator_mode` | Optional<[UuiTransferConfigProtocolDiscriminatorMode](#uuitransferconfigprotocoldiscriminatormode)> | no | `nil` | How to attach protocol_discriminator. 'prefix' prepends the octet to the hex payload (User-to-User=XX<hex>;encoding=hex). 'pd_parameter' sends it as a separate parameter (User-to-User=<hex>;pd=XX;encoding=hex). Ignored when protocol_discriminator is unset. |
 
 ### VadConfig
 
@@ -9787,6 +9978,7 @@ _(no fields)_
 | `query_params_schema` | Optional<[QueryParamsJsonSchema](#queryparamsjsonschema)> | no | `nil` | Schema for any query params, if any. These will be added to end of the URL as query params. Note: properties in a query param must all be literal types |
 | `request_body_schema` | Optional<'[ObjectJsonSchemaPropertyInput](#objectjsonschemapropertyinput)'> | no | `nil` | Schema for the body parameters, if any. Used for POST/PATCH/PUT requests. The schema should be an object which will be sent as the json body |
 | `response_body_schema` | Optional<'[ObjectJsonSchemaPropertyInput](#objectjsonschemapropertyinput)'> | no | `nil` | Schema describing the expected response body structure. For documentation only; not surfaced to the LLM. |
+| `response_filter` | Optional<[ResponseFilter](#responsefilter)> | no | `nil` | Optional allow-list filter applied to the response before the LLM sees it, so large responses don't pollute the context. Defaults to the full response. |
 | `content_type` | Optional<[WebhookToolApiSchemaConfigInputContentType](#webhooktoolapischemaconfiginputcontenttype)> | no | `nil` | Content type for the request body. Only applies to POST/PUT/PATCH requests. |
 | `auth_resolved_params` | Optional<Array<str>> | no | `nil` | URL placeholders resolved from the auth connection (e.g. secrets injected via UrlSecretAuthConnection) rather than from path_params_schema. |
 | `auth_connection` | Optional<WebhookToolApiSchemaConfigInputAuthConnection> | no | `nil` | Optional auth connection to use for authentication with this webhook |
@@ -9802,6 +9994,7 @@ _(no fields)_
 | `query_params_schema` | Optional<[QueryParamsJsonSchema](#queryparamsjsonschema)> | no | `nil` | Schema for any query params, if any. These will be added to end of the URL as query params. Note: properties in a query param must all be literal types |
 | `request_body_schema` | Optional<'[ObjectJsonSchemaPropertyOutput](#objectjsonschemapropertyoutput)'> | no | `nil` | Schema for the body parameters, if any. Used for POST/PATCH/PUT requests. The schema should be an object which will be sent as the json body |
 | `response_body_schema` | Optional<'[ObjectJsonSchemaPropertyOutput](#objectjsonschemapropertyoutput)'> | no | `nil` | Schema describing the expected response body structure. For documentation only; not surfaced to the LLM. |
+| `response_filter` | Optional<[ResponseFilter](#responsefilter)> | no | `nil` | Optional allow-list filter applied to the response before the LLM sees it, so large responses don't pollute the context. Defaults to the full response. |
 | `content_type` | Optional<[WebhookToolApiSchemaConfigOutputContentType](#webhooktoolapischemaconfigoutputcontenttype)> | no | `nil` | Content type for the request body. Only applies to POST/PUT/PATCH requests. |
 | `auth_resolved_params` | Optional<Array<str>> | no | `nil` | URL placeholders resolved from the auth connection (e.g. secrets injected via UrlSecretAuthConnection) rather than from path_params_schema. |
 | `auth_connection` | Optional<WebhookToolApiSchemaConfigOutputAuthConnection> | no | `nil` | Optional auth connection to use for authentication with this webhook |
@@ -9876,6 +10069,9 @@ _(no fields)_
 | `phone_number_id` | str | **yes** | **required** |  |
 | `id` | str | **yes** | **required** |  |
 | `used_by` | Optional<[AuthConnectionDependencies](#authconnectiondependencies)> | no | `nil` |  |
+| `status` | Optional<[AuthConnectionStatus](#authconnectionstatus)> | no | `nil` |  |
+| `status_detail` | Optional<str> | no | `nil` |  |
+| `status_updated_at` | Optional<str> | no | `nil` |  |
 
 ### WhatsAppConversationInfo
 
@@ -10266,12 +10462,12 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
+| `position` | Optional<[PositionInput](#positioninput)> | no | `nil` | Position of the node in the workflow. |
+| `edge_order` | Optional<Array<str>> | no | `nil` | The ids of outgoing edges in the order they should be evaluated. |
 | `conversation_config` | Optional<[ConversationalConfigApiModelWorkflowOverrideInput](#conversationalconfigapimodelworkflowoverrideinput)> | no | `nil` | Configuration overrides applied while the subagent is conducting the conversation. |
 | `additional_prompt` | Optional<str> | no | `nil` | Specific goal for this subagent. It will be added to the system prompt and can be used to further refine the agent's behavior in this specific context. |
 | `additional_knowledge_base` | Optional<Array<[KnowledgeBaseLocator](#knowledgebaselocator)>> | no | `nil` | Additional knowledge base documents that the subagent has access to. These will be used in addition to the main agent's documents. |
 | `additional_tool_ids` | Optional<Array<str>> | no | `nil` | IDs of additional tools that the subagent has access to. These will be used in addition to the main agent's tools. |
-| `position` | Optional<[PositionInput](#positioninput)> | no | `nil` | Position of the node in the workflow. |
-| `edge_order` | Optional<Array<str>> | no | `nil` | The ids of outgoing edges in the order they should be evaluated. |
 | `label` | str | **yes** | **required** | Human-readable label for the node used throughout the UI. |
 | `entry_behavior` | Optional<[EntryBehavior](#entrybehavior)> | no | `nil` | Dictates whether this node should immediately generate a response upon entry or wait for the user input. When set to "auto", the behavior will be decided based on the type of the preceding node: "wait_for_user" after the "say" and "start" nodes and "generate_immediately" otherwise. |
 
@@ -10279,12 +10475,12 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
+| `position` | [PositionOutput](#positionoutput) | **yes** | **required** | Position of the node in the workflow. |
+| `edge_order` | Array<str> | **yes** | **required** | The ids of outgoing edges in the order they should be evaluated. |
 | `conversation_config` | [ConversationalConfigApiModelWorkflowOverrideOutput](#conversationalconfigapimodelworkflowoverrideoutput) | **yes** | **required** | Configuration overrides applied while the subagent is conducting the conversation. |
 | `additional_prompt` | str | **yes** | **required** | Specific goal for this subagent. It will be added to the system prompt and can be used to further refine the agent's behavior in this specific context. |
 | `additional_knowledge_base` | Array<[KnowledgeBaseLocator](#knowledgebaselocator)> | **yes** | **required** | Additional knowledge base documents that the subagent has access to. These will be used in addition to the main agent's documents. |
 | `additional_tool_ids` | Array<str> | **yes** | **required** | IDs of additional tools that the subagent has access to. These will be used in addition to the main agent's tools. |
-| `position` | [PositionOutput](#positionoutput) | **yes** | **required** | Position of the node in the workflow. |
-| `edge_order` | Array<str> | **yes** | **required** | The ids of outgoing edges in the order they should be evaluated. |
 | `label` | str | **yes** | **required** | Human-readable label for the node used throughout the UI. |
 | `entry_behavior` | [EntryBehavior](#entrybehavior) | **yes** | **required** | Dictates whether this node should immediately generate a response upon entry or wait for the user input. When set to "auto", the behavior will be decided based on the type of the preceding node: "wait_for_user" after the "say" and "start" nodes and "generate_immediately" otherwise. |
 
@@ -10295,6 +10491,7 @@ _(no fields)_
 | `custom_sip_headers` | Optional<Array<[WorkflowPhoneNumberNodeModelInputCustomSipHeadersItem](#workflowphonenumbernodemodelinputcustomsipheadersitem)>> | no | `nil` | Custom SIP headers to include when transferring the call. Each header can be either a static value or a dynamic variable reference. |
 | `transfer_destination` | [WorkflowPhoneNumberNodeModelInputTransferDestination](#workflowphonenumbernodemodelinputtransferdestination) | **yes** | **required** |  |
 | `transfer_type` | Optional<[TransferTypeEnum](#transfertypeenum)> | no | `nil` |  |
+| `uui` | Optional<[UuiTransferConfig](#uuitransferconfig)> | no | `nil` | User-to-User Information (RFC 7433) to attach to SIP REFER transfers. Carries call context such as CRM identifiers or escalation reason across the transfer boundary. |
 | `post_dial_digits` | Optional<[WorkflowPhoneNumberNodeModelInputPostDialDigits](#workflowphonenumbernodemodelinputpostdialdigits)> | no | `nil` | DTMF digits to send after call connects (e.g., 'ww1234' for extension). Can be either a static value or a dynamic variable reference. Use 'w' for 0.5s pause. Only supported for Twilio transfers. |
 | `position` | Optional<[PositionInput](#positioninput)> | no | `nil` | Position of the node in the workflow. |
 | `edge_order` | Optional<Array<str>> | no | `nil` | The ids of outgoing edges in the order they should be evaluated. |
@@ -10306,6 +10503,7 @@ _(no fields)_
 | `custom_sip_headers` | Array<[WorkflowPhoneNumberNodeModelOutputCustomSipHeadersItem](#workflowphonenumbernodemodeloutputcustomsipheadersitem)> | **yes** | **required** | Custom SIP headers to include when transferring the call. Each header can be either a static value or a dynamic variable reference. |
 | `transfer_destination` | [WorkflowPhoneNumberNodeModelOutputTransferDestination](#workflowphonenumbernodemodeloutputtransferdestination) | **yes** | **required** |  |
 | `transfer_type` | [TransferTypeEnum](#transfertypeenum) | **yes** | **required** |  |
+| `uui` | Optional<[UuiTransferConfig](#uuitransferconfig)> | no | `nil` | User-to-User Information (RFC 7433) to attach to SIP REFER transfers. Carries call context such as CRM identifiers or escalation reason across the transfer boundary. |
 | `post_dial_digits` | Optional<[WorkflowPhoneNumberNodeModelOutputPostDialDigits](#workflowphonenumbernodemodeloutputpostdialdigits)> | no | `nil` | DTMF digits to send after call connects (e.g., 'ww1234' for extension). Can be either a static value or a dynamic variable reference. Use 'w' for 0.5s pause. Only supported for Twilio transfers. |
 | `position` | [PositionOutput](#positionoutput) | **yes** | **required** | Position of the node in the workflow. |
 | `edge_order` | Array<str> | **yes** | **required** | The ids of outgoing edges in the order they should be evaluated. |
@@ -10471,10 +10669,12 @@ _(no fields)_
 | `created_at_unix` | Optional<int> | no | `nil` |  |
 | `is_disabled` | Optional<bool> | no | `nil` |  |
 | `permissions` | Optional<Array<[PermissionType](#permissiontype)>> | no | `nil` |  |
+| `disable_reason` | Optional<[LockReason](#lockreason)> | no | `nil` |  |
 | `character_limit` | Optional<int> | no | `nil` | Maximum number of credits allowed in the current billing period. |
 | `character_count` | Optional<int> | no | `nil` | Credits already used in the current billing period. |
 | `hashed_xi_api_key` | str | **yes** | **required** |  |
 | `allowed_ips` | Optional<Array<str>> | no | `nil` |  |
+| `third_party_disable_allowed` | Optional<bool> | no | `nil` |  |
 
 ### WorkspaceAuditLogEntryResponse
 
@@ -10551,6 +10751,8 @@ _(no fields)_
 | `character_count` | Optional<int> | no | `nil` |  |
 | `scim_external_id` | Optional<str> | no | `nil` |  |
 | `is_scim_synced` | Optional<bool> | no | `nil` |  |
+| `scim_group` | Optional<[ScimGroupResponseModel](#scimgroupresponsemodel)> | no | `nil` |  |
+| `scim_frozen` | Optional<bool> | no | `nil` |  |
 
 ### WorkspaceServiceAccountListResponseModel
 
@@ -10616,12 +10818,12 @@ Variant of [AgentWorkflowRequestModelNodesValue](#agentworkflowrequestmodelnodes
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `type` | Literal<'override_agent'> | no | `'override_agent'` |  |
+| `position` | Optional<[PositionInput](#positioninput)> | no | `nil` |  |
+| `edge_order` | Optional<Array<str>> | no | `nil` |  |
 | `conversation_config` | Optional<[ConversationalConfigApiModelWorkflowOverrideInput](#conversationalconfigapimodelworkflowoverrideinput)> | no | `nil` |  |
 | `additional_prompt` | Optional<str> | no | `nil` |  |
 | `additional_knowledge_base` | Optional<Array<[KnowledgeBaseLocator](#knowledgebaselocator)>> | no | `nil` |  |
 | `additional_tool_ids` | Optional<Array<str>> | no | `nil` |  |
-| `position` | Optional<[PositionInput](#positioninput)> | no | `nil` |  |
-| `edge_order` | Optional<Array<str>> | no | `nil` |  |
 | `label` | str | **yes** | **required** |  |
 | `entry_behavior` | Optional<[EntryBehavior](#entrybehavior)> | no | `nil` |  |
 
@@ -10635,6 +10837,7 @@ Variant of [AgentWorkflowRequestModelNodesValue](#agentworkflowrequestmodelnodes
 | `custom_sip_headers` | Optional<Array<[WorkflowPhoneNumberNodeModelInputCustomSipHeadersItem](#workflowphonenumbernodemodelinputcustomsipheadersitem)>> | no | `nil` |  |
 | `transfer_destination` | [WorkflowPhoneNumberNodeModelInputTransferDestination](#workflowphonenumbernodemodelinputtransferdestination) | **yes** | **required** |  |
 | `transfer_type` | Optional<[TransferTypeEnum](#transfertypeenum)> | no | `nil` |  |
+| `uui` | Optional<[UuiTransferConfig](#uuitransferconfig)> | no | `nil` |  |
 | `post_dial_digits` | Optional<[WorkflowPhoneNumberNodeModelInputPostDialDigits](#workflowphonenumbernodemodelinputpostdialdigits)> | no | `nil` |  |
 | `position` | Optional<[PositionInput](#positioninput)> | no | `nil` |  |
 | `edge_order` | Optional<Array<str>> | no | `nil` |  |
@@ -10693,12 +10896,12 @@ Variant of [AgentWorkflowResponseModelNodesValue](#agentworkflowresponsemodelnod
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `type` | Literal<'override_agent'> | no | `'override_agent'` |  |
+| `position` | [PositionOutput](#positionoutput) | **yes** | **required** |  |
+| `edge_order` | Array<str> | **yes** | **required** |  |
 | `conversation_config` | [ConversationalConfigApiModelWorkflowOverrideOutput](#conversationalconfigapimodelworkflowoverrideoutput) | **yes** | **required** |  |
 | `additional_prompt` | str | **yes** | **required** |  |
 | `additional_knowledge_base` | Array<[KnowledgeBaseLocator](#knowledgebaselocator)> | **yes** | **required** |  |
 | `additional_tool_ids` | Array<str> | **yes** | **required** |  |
-| `position` | [PositionOutput](#positionoutput) | **yes** | **required** |  |
-| `edge_order` | Array<str> | **yes** | **required** |  |
 | `label` | str | **yes** | **required** |  |
 | `entry_behavior` | [EntryBehavior](#entrybehavior) | **yes** | **required** |  |
 
@@ -10712,6 +10915,7 @@ Variant of [AgentWorkflowResponseModelNodesValue](#agentworkflowresponsemodelnod
 | `custom_sip_headers` | Array<[WorkflowPhoneNumberNodeModelOutputCustomSipHeadersItem](#workflowphonenumbernodemodeloutputcustomsipheadersitem)> | **yes** | **required** |  |
 | `transfer_destination` | [WorkflowPhoneNumberNodeModelOutputTransferDestination](#workflowphonenumbernodemodeloutputtransferdestination) | **yes** | **required** |  |
 | `transfer_type` | [TransferTypeEnum](#transfertypeenum) | **yes** | **required** |  |
+| `uui` | Optional<[UuiTransferConfig](#uuitransferconfig)> | no | `nil` |  |
 | `post_dial_digits` | Optional<[WorkflowPhoneNumberNodeModelOutputPostDialDigits](#workflowphonenumbernodemodeloutputpostdialdigits)> | no | `nil` |  |
 | `position` | [PositionOutput](#positionoutput) | **yes** | **required** |  |
 | `edge_order` | Array<str> | **yes** | **required** |  |
@@ -12421,11 +12625,11 @@ Variant of [ListAuthConnectionsResponseAuthConnectionsItem](#listauthconnections
 | `expires_at` | str | **yes** | **required** |  |
 | `integration_id` | str | **yes** | **required** |  |
 | `credential_id` | str | **yes** | **required** |  |
-| `status` | Optional<[OAuthConnectionStatus](#oauthconnectionstatus)> | no | `nil` |  |
-| `status_detail` | Optional<str> | no | `nil` |  |
-| `status_updated_at` | Optional<str> | no | `nil` |  |
 | `id` | str | **yes** | **required** |  |
 | `used_by` | Optional<[AuthConnectionDependencies](#authconnectiondependencies)> | no | `nil` |  |
+| `status` | Optional<[AuthConnectionStatus](#authconnectionstatus)> | no | `nil` |  |
+| `status_detail` | Optional<str> | no | `nil` |  |
+| `status_updated_at` | Optional<str> | no | `nil` |  |
 
 ### ListAuthConnectionsResponseAuthConnectionsItem_ApiIntegrationOauth2CustomApp
 
@@ -12442,12 +12646,12 @@ Variant of [ListAuthConnectionsResponseAuthConnectionsItem](#listauthconnections
 | `expires_at` | str | **yes** | **required** |  |
 | `integration_id` | str | **yes** | **required** |  |
 | `credential_id` | str | **yes** | **required** |  |
-| `status` | Optional<[OAuthConnectionStatus](#oauthconnectionstatus)> | no | `nil` |  |
-| `status_detail` | Optional<str> | no | `nil` |  |
-| `status_updated_at` | Optional<str> | no | `nil` |  |
 | `client_id` | str | **yes** | **required** |  |
 | `id` | str | **yes** | **required** |  |
 | `used_by` | Optional<[AuthConnectionDependencies](#authconnectiondependencies)> | no | `nil` |  |
+| `status` | Optional<[AuthConnectionStatus](#authconnectionstatus)> | no | `nil` |  |
+| `status_detail` | Optional<str> | no | `nil` |  |
+| `status_updated_at` | Optional<str> | no | `nil` |  |
 
 ### ListAuthConnectionsResponseAuthConnectionsItem_BasicAuth
 
@@ -12461,6 +12665,9 @@ Variant of [ListAuthConnectionsResponseAuthConnectionsItem](#listauthconnections
 | `username` | str | **yes** | **required** |  |
 | `id` | str | **yes** | **required** |  |
 | `used_by` | Optional<[AuthConnectionDependencies](#authconnectiondependencies)> | no | `nil` |  |
+| `status` | Optional<[AuthConnectionStatus](#authconnectionstatus)> | no | `nil` |  |
+| `status_detail` | Optional<str> | no | `nil` |  |
+| `status_updated_at` | Optional<str> | no | `nil` |  |
 
 ### ListAuthConnectionsResponseAuthConnectionsItem_BearerAuth
 
@@ -12473,6 +12680,9 @@ Variant of [ListAuthConnectionsResponseAuthConnectionsItem](#listauthconnections
 | `provider` | str | **yes** | **required** |  |
 | `id` | str | **yes** | **required** |  |
 | `used_by` | Optional<[AuthConnectionDependencies](#authconnectiondependencies)> | no | `nil` |  |
+| `status` | Optional<[AuthConnectionStatus](#authconnectionstatus)> | no | `nil` |  |
+| `status_detail` | Optional<str> | no | `nil` |  |
+| `status_updated_at` | Optional<str> | no | `nil` |  |
 
 ### ListAuthConnectionsResponseAuthConnectionsItem_CustomHeaderAuth
 
@@ -12486,6 +12696,9 @@ Variant of [ListAuthConnectionsResponseAuthConnectionsItem](#listauthconnections
 | `header_name` | str | **yes** | **required** |  |
 | `id` | str | **yes** | **required** |  |
 | `used_by` | Optional<[AuthConnectionDependencies](#authconnectiondependencies)> | no | `nil` |  |
+| `status` | Optional<[AuthConnectionStatus](#authconnectionstatus)> | no | `nil` |  |
+| `status_detail` | Optional<str> | no | `nil` |  |
+| `status_updated_at` | Optional<str> | no | `nil` |  |
 
 ### ListAuthConnectionsResponseAuthConnectionsItem_Mtls
 
@@ -12498,6 +12711,9 @@ Variant of [ListAuthConnectionsResponseAuthConnectionsItem](#listauthconnections
 | `provider` | str | **yes** | **required** |  |
 | `id` | str | **yes** | **required** |  |
 | `used_by` | Optional<[AuthConnectionDependencies](#authconnectiondependencies)> | no | `nil` |  |
+| `status` | Optional<[AuthConnectionStatus](#authconnectionstatus)> | no | `nil` |  |
+| `status_detail` | Optional<str> | no | `nil` |  |
+| `status_updated_at` | Optional<str> | no | `nil` |  |
 
 ### ListAuthConnectionsResponseAuthConnectionsItem_Oauth2ClientCredentials
 
@@ -12515,6 +12731,9 @@ Variant of [ListAuthConnectionsResponseAuthConnectionsItem](#listauthconnections
 | `basic_auth_in_header` | Optional<bool> | no | `nil` |  |
 | `id` | str | **yes** | **required** |  |
 | `used_by` | Optional<[AuthConnectionDependencies](#authconnectiondependencies)> | no | `nil` |  |
+| `status` | Optional<[AuthConnectionStatus](#authconnectionstatus)> | no | `nil` |  |
+| `status_detail` | Optional<str> | no | `nil` |  |
+| `status_updated_at` | Optional<str> | no | `nil` |  |
 | `custom_headers` | Optional<Hash<str, str>> | no | `nil` |  |
 
 ### ListAuthConnectionsResponseAuthConnectionsItem_Oauth2Jwt
@@ -12538,6 +12757,9 @@ Variant of [ListAuthConnectionsResponseAuthConnectionsItem](#listauthconnections
 | `token_response_field` | Optional<[OAuth2JwtResponseTokenResponseField](#oauth2jwtresponsetokenresponsefield)> | no | `nil` |  |
 | `id` | str | **yes** | **required** |  |
 | `used_by` | Optional<[AuthConnectionDependencies](#authconnectiondependencies)> | no | `nil` |  |
+| `status` | Optional<[AuthConnectionStatus](#authconnectionstatus)> | no | `nil` |  |
+| `status_detail` | Optional<str> | no | `nil` |  |
+| `status_updated_at` | Optional<str> | no | `nil` |  |
 
 ### ListAuthConnectionsResponseAuthConnectionsItem_PrivateKeyJwt
 
@@ -12557,6 +12779,9 @@ Variant of [ListAuthConnectionsResponseAuthConnectionsItem](#listauthconnections
 | `extra_params` | Optional<Hash<str, str>> | no | `nil` |  |
 | `id` | str | **yes** | **required** |  |
 | `used_by` | Optional<[AuthConnectionDependencies](#authconnectiondependencies)> | no | `nil` |  |
+| `status` | Optional<[AuthConnectionStatus](#authconnectionstatus)> | no | `nil` |  |
+| `status_detail` | Optional<str> | no | `nil` |  |
+| `status_updated_at` | Optional<str> | no | `nil` |  |
 
 ### ListAuthConnectionsResponseAuthConnectionsItem_SlackBotAuth
 
@@ -12569,6 +12794,9 @@ Variant of [ListAuthConnectionsResponseAuthConnectionsItem](#listauthconnections
 | `provider` | Optional<Literal<'Slack'>> | no | `nil` |  |
 | `id` | str | **yes** | **required** |  |
 | `used_by` | Optional<[AuthConnectionDependencies](#authconnectiondependencies)> | no | `nil` |  |
+| `status` | Optional<[AuthConnectionStatus](#authconnectionstatus)> | no | `nil` |  |
+| `status_detail` | Optional<str> | no | `nil` |  |
+| `status_updated_at` | Optional<str> | no | `nil` |  |
 
 ### ListAuthConnectionsResponseAuthConnectionsItem_UrlSecret
 
@@ -12581,6 +12809,9 @@ Variant of [ListAuthConnectionsResponseAuthConnectionsItem](#listauthconnections
 | `provider` | str | **yes** | **required** |  |
 | `id` | str | **yes** | **required** |  |
 | `used_by` | Optional<[AuthConnectionDependencies](#authconnectiondependencies)> | no | `nil` |  |
+| `status` | Optional<[AuthConnectionStatus](#authconnectionstatus)> | no | `nil` |  |
+| `status_detail` | Optional<str> | no | `nil` |  |
+| `status_updated_at` | Optional<str> | no | `nil` |  |
 
 ### ListAuthConnectionsResponseAuthConnectionsItem_WhatsappAuth
 
@@ -12594,6 +12825,9 @@ Variant of [ListAuthConnectionsResponseAuthConnectionsItem](#listauthconnections
 | `phone_number_id` | str | **yes** | **required** |  |
 | `id` | str | **yes** | **required** |  |
 | `used_by` | Optional<[AuthConnectionDependencies](#authconnectiondependencies)> | no | `nil` |  |
+| `status` | Optional<[AuthConnectionStatus](#authconnectionstatus)> | no | `nil` |  |
+| `status_detail` | Optional<str> | no | `nil` |  |
+| `status_updated_at` | Optional<str> | no | `nil` |  |
 
 ### McpServerResponseModelDependentAgentsItem_Available
 
@@ -12687,6 +12921,53 @@ Variant of [McpToolConfigOverrideOutputInputOverridesValue](#mcptoolconfigoverri
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `source` | Literal<'omit'> | no | `'omit'` |  |
+
+### MergePreviewResponseModelPhoneNumbersItem_Exotel
+
+Variant of [MergePreviewResponseModelPhoneNumbersItem](#mergepreviewresponsemodelphonenumbersitem) with `type: 'None'`.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `provider` | Literal<'exotel'> | no | `'exotel'` |  |
+| `phone_number` | str | **yes** | **required** |  |
+| `label` | str | **yes** | **required** |  |
+| `supports_inbound` | Optional<bool> | no | `nil` |  |
+| `supports_outbound` | Optional<bool> | no | `nil` |  |
+| `phone_number_id` | str | **yes** | **required** |  |
+| `assigned_agent` | Optional<[PhoneNumberAgentInfo](#phonenumberagentinfo)> | no | `nil` |  |
+
+### MergePreviewResponseModelPhoneNumbersItem_SipTrunk
+
+Variant of [MergePreviewResponseModelPhoneNumbersItem](#mergepreviewresponsemodelphonenumbersitem) with `type: 'None'`.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `provider` | Literal<'sip_trunk'> | no | `'sip_trunk'` |  |
+| `phone_number` | str | **yes** | **required** |  |
+| `label` | str | **yes** | **required** |  |
+| `supports_inbound` | Optional<bool> | no | `nil` |  |
+| `supports_outbound` | Optional<bool> | no | `nil` |  |
+| `phone_number_id` | str | **yes** | **required** |  |
+| `assigned_agent` | Optional<[PhoneNumberAgentInfo](#phonenumberagentinfo)> | no | `nil` |  |
+| `provider_config` | Optional<[GetPhoneNumberOutboundSipTrunkConfigResponseModel](#getphonenumberoutboundsiptrunkconfigresponsemodel)> | no | `nil` |  |
+| `outbound_trunk` | Optional<[GetPhoneNumberOutboundSipTrunkConfigResponseModel](#getphonenumberoutboundsiptrunkconfigresponsemodel)> | no | `nil` |  |
+| `inbound_trunk` | Optional<[GetPhoneNumberInboundSipTrunkConfigResponseModel](#getphonenumberinboundsiptrunkconfigresponsemodel)> | no | `nil` |  |
+| `livekit_stack` | [LivekitStackType](#livekitstacktype) | **yes** | **required** |  |
+| `store_sip_messages` | Optional<bool> | no | `nil` |  |
+
+### MergePreviewResponseModelPhoneNumbersItem_Twilio
+
+Variant of [MergePreviewResponseModelPhoneNumbersItem](#mergepreviewresponsemodelphonenumbersitem) with `type: 'None'`.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `provider` | Literal<'twilio'> | no | `'twilio'` |  |
+| `phone_number` | str | **yes** | **required** |  |
+| `label` | str | **yes** | **required** |  |
+| `supports_inbound` | Optional<bool> | no | `nil` |  |
+| `supports_outbound` | Optional<bool> | no | `nil` |  |
+| `phone_number_id` | str | **yes** | **required** |  |
+| `assigned_agent` | Optional<[PhoneNumberAgentInfo](#phonenumberagentinfo)> | no | `nil` |  |
 
 ### OpenAiSessionConfigToolsItem_Function
 
@@ -13885,6 +14166,7 @@ Variant of [UnitTestRunResponseModelTestInfo](#unittestrunresponsemodeltestinfo)
 | `chat_history` | Optional<Array<[ConversationHistoryTranscriptCommonModelOutput](#conversationhistorytranscriptcommonmodeloutput)>> | no | `nil` |  |
 | `conversation_initiation_source` | Optional<[ConversationInitiationSource](#conversationinitiationsource)> | no | `nil` |  |
 | `success_condition` | Optional<str> | no | `nil` |  |
+| `success_conditions` | Optional<Array<str>> | no | `nil` |  |
 | `simulation_scenario` | Optional<str> | no | `nil` |  |
 | `simulation_max_turns` | Optional<int> | no | `nil` |  |
 | `simulation_environment` | Optional<str> | no | `nil` |  |
@@ -14577,6 +14859,14 @@ One of:
 - `'completed'`
 - `'failed'`
 
+### AudioFilterId
+
+One of:
+
+- `'phone'`
+- `'low_quality_phone'`
+- `'bright_phone'`
+
 ### AudioFormatEnum
 
 One of:
@@ -14595,6 +14885,15 @@ One of:
 
 - `'processing'`
 - `'ready'`
+
+### AuthConnectionStatus
+
+One of:
+
+- `'active'`
+- `'refresh_failed'`
+- `'revoked'`
+- `'credential_invalid'`
 
 ### AuthorizationMethod
 
@@ -14760,6 +15059,12 @@ One of:
 - `'none'`
 - `'fade'`
 - `'scale'`
+- `'pop'`
+- `'slide_up'`
+- `'slide_down'`
+- `'slam'`
+- `'scale_down'`
+- `'slide_in'`
 
 ### CaptionStyleSectionAnimationModelExitType
 
@@ -14768,6 +15073,12 @@ One of:
 - `'none'`
 - `'fade'`
 - `'scale'`
+- `'pop'`
+- `'slide_up'`
+- `'slide_down'`
+- `'slam'`
+- `'scale_down'`
+- `'slide_in'`
 
 ### CaptionStyleVerticalPlacementModelAlign
 
@@ -14784,6 +15095,12 @@ One of:
 - `'none'`
 - `'fade'`
 - `'scale'`
+- `'pop'`
+- `'slide_up'`
+- `'slide_down'`
+- `'slam'`
+- `'scale_down'`
+- `'slide_in'`
 
 ### CaptionStyleWordAnimationModelExitType
 
@@ -14792,6 +15109,12 @@ One of:
 - `'none'`
 - `'fade'`
 - `'scale'`
+- `'pop'`
+- `'slide_up'`
+- `'slide_down'`
+- `'slam'`
+- `'scale_down'`
+- `'slide_in'`
 
 ### ChapterContentBlockInputModelSubType
 
@@ -14815,6 +15138,22 @@ One of:
 
 - `'default'`
 - `'converting'`
+
+### CharacterAge
+
+One of:
+
+- `'young'`
+- `'middle-aged'`
+- `'old'`
+
+### CharacterGender
+
+One of:
+
+- `'male'`
+- `'female'`
+- `'neutral'`
 
 ### CharacterRefreshPeriod
 
@@ -15055,6 +15394,13 @@ One of:
 - `'template_preview'`
 - `'genesys_bot_connector'`
 
+### ConversationProduct
+
+One of:
+
+- `'agents'`
+- `'speech_engine'`
+
 ### ConversationSentimentAnalysisOverallLabel
 
 One of:
@@ -15108,6 +15454,13 @@ One of:
 - `'RS256'`
 - `'RS384'`
 - `'RS512'`
+
+### CriteriaScoringMode
+
+One of:
+
+- `'binary'`
+- `'numeric_uniform'`
 
 ### Currency
 
@@ -15323,7 +15676,15 @@ One of:
 - `'failed'`
 - `'delayed'`
 
-### GenerationChunkConditionStrength
+### FrustratedConversationRefOverallLabel
+
+One of:
+
+- `'positive'`
+- `'neutral'`
+- `'negative'`
+
+### GenerationChunkInputConditionStrength
 
 One of:
 
@@ -15332,7 +15693,24 @@ One of:
 - `'high'`
 - `'xhigh'`
 
-### GenerationChunkContextAdherence
+### GenerationChunkInputContextAdherence
+
+One of:
+
+- `'low'`
+- `'medium'`
+- `'high'`
+
+### GenerationChunkOutputConditionStrength
+
+One of:
+
+- `'low'`
+- `'medium'`
+- `'high'`
+- `'xhigh'`
+
+### GenerationChunkOutputContextAdherence
 
 One of:
 
@@ -15495,9 +15873,6 @@ One of:
 One of:
 
 - `'boolean'`
-- `'string'`
-- `'integer'`
-- `'number'`
 
 ### LivekitStackType
 
@@ -15605,9 +15980,6 @@ One of:
 One of:
 
 - `'boolean'`
-- `'string'`
-- `'integer'`
-- `'number'`
 
 ### LlmReasoningEffort
 
@@ -15626,6 +15998,15 @@ One of:
 
 - `'not_found'`
 - `'invalid_id'`
+
+### LockReason
+
+One of:
+
+- `'trial_ended'`
+- `'subscription_downgrade'`
+- `'exposed_publicly'`
+- `'self_disabled'`
 
 ### McpApprovalPolicy
 
@@ -15702,6 +16083,15 @@ One of:
 - `'ambience'`
 - `'video_to_music'`
 
+### MusicOnlyOutputFormats
+
+One of:
+
+- `'mp3_48000_128'`
+- `'mp3_48000_192'`
+- `'mp3_48000_240'`
+- `'mp3_48000_320'`
+
 ### NonStreamingOutputFormats
 
 One of:
@@ -15731,14 +16121,6 @@ One of:
 
 - `'access_token'`
 - `'id_token'`
-
-### OAuthConnectionStatus
-
-One of:
-
-- `'active'`
-- `'refresh_failed'`
-- `'revoked'`
 
 ### OpenAiAudioFormat
 
@@ -15873,7 +16255,9 @@ One of:
 - `'workspace_members_remove'`
 - `'terms_of_service_accept'`
 - `'audit_log_read'`
+- `'conversation_privacy_manage'`
 - `'copy_resources_cross_workspace'`
+- `'synthid_detector'`
 
 ### PreToolSpeechMode
 
@@ -16721,6 +17105,13 @@ One of:
 - `'last_contact_unix_secs'`
 - `'conversation_count'`
 
+### UuiTransferConfigProtocolDiscriminatorMode
+
+One of:
+
+- `'prefix'`
+- `'pd_parameter'`
+
 ### Verbosity
 
 One of:
@@ -16820,6 +17211,8 @@ One of:
 - `'transcript'`
 - `'audio'`
 - `'call_initiation_failure'`
+- `'unredacted_transcript'`
+- `'unredacted_audio'`
 
 ### WebhookToolApiSchemaConfigInputContentType
 
@@ -16958,6 +17351,7 @@ One of:
 - `'conversational_ai_read'`
 - `'voice_isolator'`
 - `'ai_speech_classifier'`
+- `'synthid_detector'`
 - `'add_voice_from_voice_library'`
 - `'create_instant_voice_clone'`
 - `'create_professional_voice_clone'`
@@ -16976,6 +17370,7 @@ One of:
 - `'workspace_members_remove'`
 - `'terms_of_service_accept'`
 - `'audit_log_read'`
+- `'conversation_privacy_manage'`
 - `'copy_resources_cross_workspace'`
 - `'voice_design'`
 

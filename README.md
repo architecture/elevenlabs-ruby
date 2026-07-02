@@ -10,7 +10,7 @@ This gem is published to **GitHub Packages** (not RubyGems.org). Add the GitHub 
 
 ```ruby
 source "https://rubygems.pkg.github.com/architecture" do
-  gem "elevenlabs", "0.8.0"
+  gem "elevenlabs", "0.8.1"
 end
 ```
 
@@ -31,7 +31,7 @@ Bundler can pull the gem straight from the git repository. This works for public
 
 ```ruby
 # Pin to a release tag (recommended for production)
-gem "elevenlabs", git: "https://github.com/architecture/elevenlabs-ruby", tag: "v0.8.0"
+gem "elevenlabs", git: "https://github.com/architecture/elevenlabs-ruby", tag: "v0.8.1"
 
 # Or track the latest main branch
 gem "elevenlabs", git: "https://github.com/architecture/elevenlabs-ruby", branch: "main"
@@ -445,6 +445,16 @@ gem "elevenlabs", path: "/path/to/elevenlabs-ruby"
 ```
 
 ## Recent Updates
+
+### 2026-07-02: v0.8.1 — Updated API Spec from elevenlabs-python v2.56.0
+
+Refreshed `lib/elevenlabs/spec.json` (and the `types.json` / `docs/types.md` artifacts) by running the extraction scripts against elevenlabs-python v2.56.0 (up from v2.53.0). No new namespaces or sub-resources; four new operations added to existing resources, nothing removed.
+
+**New operations on existing namespaces:**
+- `conversational_ai.agents.branches.preview_merge` — preview a branch merge diff without applying it (`GET .../branches/{source_branch_id}/merge-preview`)
+- `conversational_ai.agents.branches.preview_rebase` — preview a rebase onto main without applying it (`GET .../branches/{branch_id}/rebase-preview`)
+- `conversational_ai.agents.branches.rebase` — rebase a branch onto the latest main (`POST .../branches/{branch_id}/rebase`)
+- `workspace.set_third_party_disabling_policy` — set the workspace third-party API-key disabling policy (`POST v1/workspaces/api-keys/third-party-disabling`)
 
 ### 2026-06-20: v0.8.0 — Updated API Spec from elevenlabs-python v2.53.0
 

@@ -956,6 +956,47 @@ class OperationSerializationTest < Minitest::Test
     assert_equal({ "name" => "Renamed", "tags" => ["prod"] }, request[:json])
   end
 
+  # --- New in v2.56.0 ---
+
+  def test_agents_branches_preview_merge
+    @client.conversational_ai.agents.branches.preview_merge(
+      "agent_123",
+      "src_branch",
+      target_branch_id: "dst_branch",
+      force: true
+    )
+
+    request = @http.requests.last
+    assert_equal "GET", request[:method]
+    assert_equal "v1/convai/agents/agent_123/branches/src_branch/merge-preview", request[:path]
+    assert_equal({ "target_branch_id" => "dst_branch", "force" => true }, request[:query])
+  end
+
+  def test_agents_branches_preview_rebase
+    @client.conversational_ai.agents.branches.preview_rebase("agent_123", "branch_456")
+
+    request = @http.requests.last
+    assert_equal "GET", request[:method]
+    assert_equal "v1/convai/agents/agent_123/branches/branch_456/rebase-preview", request[:path]
+  end
+
+  def test_agents_branches_rebase
+    @client.conversational_ai.agents.branches.rebase("agent_123", "branch_456")
+
+    request = @http.requests.last
+    assert_equal "POST", request[:method]
+    assert_equal "v1/convai/agents/agent_123/branches/branch_456/rebase", request[:path]
+  end
+
+  def test_workspace_set_third_party_disabling_policy
+    @client.workspace.set_third_party_disabling_policy(third_party_disable_allowed: true)
+
+    request = @http.requests.last
+    assert_equal "POST", request[:method]
+    assert_equal "v1/workspaces/api-keys/third-party-disabling", request[:path]
+    assert_equal({ "third_party_disable_allowed" => true }, request[:json])
+  end
+
   # Regression: phone_numbers.list returns a bare top-level array from the API.
   # The gem performs no response typing, so the executor must hand that array
   # back to the caller unchanged (object-identical) — it must not wrap it in a
