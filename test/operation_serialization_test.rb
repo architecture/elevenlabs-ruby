@@ -249,8 +249,9 @@ class OperationSerializationTest < Minitest::Test
     assert_equal "v1/speech-to-text", request[:path]
     assert_equal "scribe_v2", request[:form]["model_id"]
     assert_equal true, request[:form]["no_verbatim"]
-    # files includes both 'file' and 'additional_formats' entries
-    assert_equal 2, request[:files].length
+    # `additional_formats` is a multipart part only when the caller supplies it;
+    # omitted, it must not be sent at all.
+    assert_equal 1, request[:files].length
     assert_equal "file", request[:files].first[:name]
   end
 
@@ -375,7 +376,10 @@ class OperationSerializationTest < Minitest::Test
     assert_equal "POST", request[:method]
     assert_equal "v1/speech-to-text", request[:path]
     assert_equal "scribe_v2", request[:form]["model_id"]
-    assert_equal "pii", request[:form]["entity_redaction"]
+    # entity_redaction accepts a category string or a list of entity types, so
+    # upstream JSON-encodes it — "pii" ships as the JSON text "\"pii\"".
+    assert_equal '"pii"', request[:form]["entity_redaction"]
+    # entity_redaction_mode is a plain string field, left unencoded.
     assert_equal "redact", request[:form]["entity_redaction_mode"]
   end
 
@@ -398,7 +402,7 @@ class OperationSerializationTest < Minitest::Test
       videos: [video],
       output_format: "mp3_44100_128",
       description: "upbeat background music",
-      tags: "pop,energetic",
+      tags: ["pop", "energetic"],
       sign_with_c_2_pa: true
     )
 
@@ -408,9 +412,11 @@ class OperationSerializationTest < Minitest::Test
     assert_equal "POST", request[:method]
     assert_equal "v1/music/video-to-music", request[:path]
     assert_equal({ "output_format" => "mp3_44100_128" }, request[:query])
+    # `tags` is sent JSON-encoded (upstream wraps it in json.dumps), so the
+    # list goes on the wire as JSON text rather than a Ruby-inspected array.
     assert_equal({
       "description" => "upbeat background music",
-      "tags" => "pop,energetic",
+      "tags" => '["pop","energetic"]',
       "sign_with_c2pa" => true
     }, request[:form])
     assert_equal 1, request[:files].length
@@ -1015,5 +1021,161 @@ class OperationSerializationTest < Minitest::Test
     result = client.conversational_ai.phone_numbers.list
 
     assert_same array_response, result, "expected the bare array response to pass through untouched"
+  end
+
+  # --- New in v2.59.0 ---
+
+  def test_dubbing_project_create
+    file = ElevenLabs::Upload.from_io(StringIO.new("video-bytes"), filename: "ep1.mp4", content_type: "video/mp4")
+
+    @client.dubbing.project.create(
+      file: file,
+      source_language: "en",
+      target_language: "es",
+      keyterms: ["ElevenLabs", "dubbing"]
+    )
+
+    request = @http.requests.last
+    assert_equal "POST", request[:method]
+    assert_equal "v1/dubbing/project", request[:path]
+    assert_equal "en", request[:form]["source_language"]
+    assert_equal "es", request[:form]["target_language"]
+    # keyterms is JSON-encoded on the wire (upstream wraps it in json.dumps)
+    assert_equal '["ElevenLabs","dubbing"]', request[:form]["keyterms"]
+    assert_equal 1, request[:files].length
+    assert_equal "file", request[:files].first[:name]
+  end
+
+  def test_dubbing_project_list_query_params
+    @client.dubbing.project.list(page_size: 25, status: "complete", sort_direction: "desc")
+
+    request = @http.requests.last
+    assert_equal "GET", request[:method]
+    assert_equal "v1/dubbing/project", request[:path]
+    assert_equal({ "page_size" => 25, "status" => "complete", "sort_direction" => "desc" }, request[:query])
+  end
+
+  def test_dubbing_project_language_transcript_update_segment
+    @client.dubbing.project.language.transcript.update_segment(
+      "proj_1", "es", "seg_7", translation: "Hola mundo"
+    )
+
+    request = @http.requests.last
+    assert_equal "PATCH", request[:method]
+    assert_equal "v1/dubbing/project/proj_1/language/es/transcript/segment/seg_7", request[:path]
+    assert_equal({ "translation" => "Hola mundo" }, request[:json])
+  end
+
+  def test_music_finetunes_create
+    sample = ElevenLabs::Upload.from_io(StringIO.new("audio"), filename: "a.mp3", content_type: "audio/mpeg")
+
+    @client.music.finetunes.create(
+      name: "Synthwave",
+      primary_genre: "electronic",
+      files: [sample],
+      tags: ["retro", "80s"]
+    )
+
+    request = @http.requests.last
+    assert_equal "POST", request[:method]
+    assert_equal "v1/music/finetunes", request[:path]
+    assert_equal "Synthwave", request[:form]["name"]
+    assert_equal '["retro","80s"]', request[:form]["tags"]
+  end
+
+  def test_music_compose_with_finetune_params
+    @client.music.compose(prompt: "lofi beat", finetune_id: "ft_1", finetune_strength: 0.7)
+
+    request = @http.requests.last
+    assert_equal "POST", request[:method]
+    assert_equal "ft_1", request[:json]["finetune_id"]
+    assert_in_delta 0.7, request[:json]["finetune_strength"]
+  end
+
+  def test_service_accounts_create
+    @client.service_accounts.create(name: "ci-bot", default_sharing_groups: ["grp_1"])
+
+    request = @http.requests.last
+    assert_equal "POST", request[:method]
+    assert_equal "v1/service-accounts", request[:path]
+    assert_equal({ "name" => "ci-bot", "default_sharing_groups" => ["grp_1"] }, request[:json])
+  end
+
+  def test_workspace_members_list
+    @client.workspace.members.list
+
+    request = @http.requests.last
+    assert_equal "GET", request[:method]
+    assert_equal "v1/workspace/members", request[:path]
+  end
+
+  def test_conversations_resolve
+    @client.conversational_ai.conversations.resolve(agent_id: "agent_1", reference: "ref_9")
+
+    request = @http.requests.last
+    assert_equal "GET", request[:method]
+    assert_equal "v1/convai/conversations/resolve", request[:path]
+    assert_equal({ "agent_id" => "agent_1", "reference" => "ref_9" }, request[:query])
+  end
+
+  # --- Regressions: params the upstream SDK wraps in json.dumps ---
+  #
+  # These fields must be sent as JSON *text*, not as the raw value and not as
+  # the extractor's placeholder baked in as a literal. Prior to v0.9.0 the
+  # placeholder leaked, so e.g. every speech_to_text.convert call shipped the
+  # string "__param__additional_formats__" to the API.
+
+  def test_speech_to_text_convert_json_encoded_fields
+    file = ElevenLabs::Upload.from_io(StringIO.new("audio"), filename: "a.mp3", content_type: "audio/mpeg")
+
+    @client.speech_to_text.convert(
+      model_id: "scribe_v2",
+      file: file,
+      keyterms: ["ElevenLabs", "SDK"],
+      entity_detection: ["pii"],
+      webhook_metadata: { "request_id" => "abc" }
+    )
+
+    form = @http.requests.last[:form]
+    assert_equal '["ElevenLabs","SDK"]', form["keyterms"]
+    assert_equal '["pii"]', form["entity_detection"]
+    assert_equal '{"request_id":"abc"}', form["webhook_metadata"]
+    refute_includes form.values.map(&:to_s).join, "__param__",
+                    "no extractor placeholder may reach the wire"
+  end
+
+  def test_speech_to_text_additional_formats_sent_only_when_given
+    file = ElevenLabs::Upload.from_io(StringIO.new("audio"), filename: "a.mp3", content_type: "audio/mpeg")
+
+    @client.speech_to_text.convert(
+      model_id: "scribe_v2",
+      file: file,
+      additional_formats: [{ "format" => "srt" }]
+    )
+
+    files = @http.requests.last[:files]
+    entry = files.find { |f| f[:name] == "additional_formats" }
+    assert entry, "expected additional_formats multipart entry when supplied"
+    assert_equal "application/json", entry[:content_type]
+    assert_equal [{ "format" => "srt" }], entry[:value]
+  end
+
+  # Regression: `safety-identifier` is built from a param, not a constant. The
+  # spec models it as { param: ... }; the executor must substitute the caller's
+  # value and omit the header entirely when none is given.
+  def test_studio_create_podcast_param_header
+    args = {
+      model_id: "eleven_v3",
+      mode: { type: "conversation" },
+      source: { type: "text", text: "hello" }
+    }
+
+    @client.studio.create_podcast(**args, safety_identifier: "user-42")
+    assert_equal "user-42", @http.requests.last[:headers]["safety-identifier"]
+
+    @client.studio.create_podcast(**args)
+    headers = @http.requests.last[:headers]
+    refute headers.key?("safety-identifier"),
+           "expected safety-identifier to be absent when the param is unset"
   end
 end

@@ -1,38 +1,11 @@
 {
-  "operations": [
-    {
-      "name": "save_a_voice_preview",
-      "doc": "Add a generated voice to the voice library.\n\nParameters\n----------\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[None]",
-      "positional_params": [],
-      "keyword_params": [
-        {
-          "name": "request_options",
-          "kind": "keyword",
-          "default": null
-        }
-      ],
-      "request": {
-        "method": "POST",
-        "path": {
-          "template": "v1/text-to-voice/create-voice-from-preview",
-          "params": []
-        },
-        "query": [],
-        "json": null,
-        "form": null,
-        "files": [],
-        "headers": {},
-        "force_multipart": false,
-        "streaming": false
-      }
-    }
-  ],
+  "operations": [],
   "children": {
     "audio_isolation": {
       "operations": [
         {
           "name": "convert",
-          "doc": "Removes background noise from audio.\n\nParameters\n----------\naudio : core.File\n    See core.File for more documentation\n\nfile_format : typing.Optional[AudioIsolationConvertRequestFileFormat]\n    The format of input audio. Options are 'pcm_s16le_16' or 'other' For `pcm_s16le_16`, the input audio must be 16-bit PCM at a 16kHz sample rate, single channel (mono), and little-endian byte order. Latency will be lower than with passing an encoded waveform.\n\npreview_b_64 : typing.Optional[str]\n    Optional preview image base64 for tracking this generation.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration. You can pass in configuration such as `chunk_size`, and more to customize the request and response.\n\nReturns\n-------\ntyping.Iterator[HttpResponse[typing.Iterator[bytes]]]\n    Successful Response",
+          "doc": "Removes background noise from audio.\n\nParameters\n----------\naudio : core.File\n    See core.File for more documentation\n\nfile_format : typing.Optional[AudioIsolationRequestFileFormat]\n    The format of input audio. Options are 'pcm_s16le_16' or 'other' For `pcm_s16le_16`, the input audio must be 16-bit PCM at a 16kHz sample rate, single channel (mono), and little-endian byte order. Latency will be lower than with passing an encoded waveform.\n\npreview_b_64 : typing.Optional[str]\n    Optional preview image base64 for tracking this generation.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration. You can pass in configuration such as `chunk_size`, and more to customize the request and response.\n\nReturns\n-------\ntyping.Iterator[HttpResponse[typing.Iterator[bytes]]]\n    Successful Response",
           "positional_params": [],
           "keyword_params": [
             {
@@ -410,7 +383,8 @@
                   "path": [
                     "pronunciation_dictionary_locators"
                   ],
-                  "param": "pronunciation_dictionary_locators"
+                  "param": "pronunciation_dictionary_locators",
+                  "encode": "json"
                 }
               ]
             },
@@ -1391,7 +1365,7 @@
             },
             {
               "name": "run_tests",
-              "doc": "Run selected tests on the agent with provided configuration. If the agent configuration is provided, it will be used to override default agent configuration.\n\nParameters\n----------\nagent_id : str\n    The id of an agent. This is returned on agent creation.\n\ntests : typing.Sequence[SingleTestRunRequestModel]\n    List of tests to run on the agent\n\nagent_config_override : typing.Optional[AdhocAgentConfigOverrideForTestRequestModel]\n    Configuration overrides to use for testing. If not provided, the agent's default configuration will be used.\n\nbranch_id : typing.Optional[str]\n    ID of the branch to run the tests on. If not provided, the tests will be run on the agent default configuration.\n\nrepeat_count : typing.Optional[int]\n    Number of times to run each test. When greater than 1, results are grouped and summarized.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[GetTestSuiteInvocationResponseModel]\n    Successful Response",
+              "doc": "Run selected tests on the agent with provided configuration. If the agent configuration is provided, it will be used to override default agent configuration.\n\nParameters\n----------\nagent_id : str\n    The id of an agent. This is returned on agent creation.\n\ntests : typing.Sequence[SingleTestRunRequestModel]\n    List of tests to run on the agent\n\nagent_config_override : typing.Optional[AdhocAgentConfigOverrideForTestRequestModel]\n    Configuration overrides to use for testing. If not provided, the agent's default configuration will be used.\n\nbranch_id : typing.Optional[str]\n    ID of the branch to run the tests on. If not provided, the tests will be run on the agent's main branch.\n\nrepeat_count : typing.Optional[int]\n    Number of times to run each test. When greater than 1, results are grouped and summarized.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[GetTestSuiteInvocationResponseModel]\n    Successful Response",
               "positional_params": [
                 {
                   "name": "agent_id",
@@ -3334,6 +3308,51 @@
                   {
                     "name": "termination_reasons",
                     "param": "termination_reasons"
+                  }
+                ],
+                "json": null,
+                "form": null,
+                "files": [],
+                "headers": {},
+                "force_multipart": false,
+                "streaming": false
+              }
+            },
+            {
+              "name": "resolve",
+              "doc": "Resolve a conversation URL (a Slack message URL or a Zendesk ticket URL) to the deterministic conversation ID for the given agent, then confirm the conversation exists.\n\nParameters\n----------\nagent_id : str\n    Agent id (agent_\u2026) or speech engine external id (seng_), resolved to the same underlying resource.\n\nreference : str\n    A Slack message URL or a Zendesk ticket URL.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[GetConversationResponseModel]\n    Successful Response",
+              "positional_params": [],
+              "keyword_params": [
+                {
+                  "name": "agent_id",
+                  "kind": "keyword",
+                  "default": null
+                },
+                {
+                  "name": "reference",
+                  "kind": "keyword",
+                  "default": null
+                },
+                {
+                  "name": "request_options",
+                  "kind": "keyword",
+                  "default": null
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "path": {
+                  "template": "v1/convai/conversations/resolve",
+                  "params": []
+                },
+                "query": [
+                  {
+                    "name": "agent_id",
+                    "param": "agent_id"
+                  },
+                  {
+                    "name": "reference",
+                    "param": "reference"
                   }
                 ],
                 "json": null,
@@ -6120,7 +6139,7 @@
             },
             {
               "name": "update",
-              "doc": "Update the configuration settings for an MCP server.\n\nParameters\n----------\nmcp_server_id : str\n    ID of the MCP Server.\n\napproval_policy : typing.Optional[McpApprovalPolicy]\n    The approval mode to set for the MCP server\n\nforce_pre_tool_speech : typing.Optional[bool]\n    DEPRECATED: use `pre_tool_speech` instead. If set, overrides the server's force_pre_tool_speech setting for this tool.\n\npre_tool_speech : typing.Optional[PreToolSpeechMode]\n    If set, overrides the server's pre_tool_speech setting for this tool.\n\ndisable_interruptions : typing.Optional[bool]\n    If set, overrides the server's disable_interruptions setting for this tool\n\ntool_call_sound : typing.Optional[ToolCallSoundType]\n    Predefined tool call sound type to play during tool execution for all tools from this MCP server\n\ntool_call_sound_behavior : typing.Optional[ToolCallSoundBehavior]\n    Determines when the tool call sound should play for all tools from this MCP server\n\nexecution_mode : typing.Optional[ToolExecutionMode]\n    If set, overrides the server's execution_mode setting for this tool\n\nresponse_timeout_secs : typing.Optional[int]\n    The maximum time in seconds to wait for each MCP tool call to complete.\n\nrequest_headers : typing.Optional[typing.Dict[str, typing.Optional[McpServerConfigUpdateRequestModelRequestHeadersValue]]]\n    The headers to include in requests to the MCP server\n\ndisable_compression : typing.Optional[bool]\n    Whether to disable HTTP compression for this MCP server\n\nsecret_token : typing.Optional[ConvAiSecretLocator]\n    Optional secret token for authentication with this MCP server\n\nauth_connection : typing.Optional[McpServerConfigUpdateRequestModelAuthConnection]\n    Optional auth connection to use for authentication with this MCP server\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[McpServerResponseModel]\n    Successful Response",
+              "doc": "Update the configuration settings for an MCP server.\n\nParameters\n----------\nmcp_server_id : str\n    ID of the MCP Server.\n\napproval_policy : typing.Optional[McpApprovalPolicy]\n    The approval mode to set for the MCP server\n\nforce_pre_tool_speech : typing.Optional[bool]\n    DEPRECATED: use `pre_tool_speech` instead. If set, overrides the server's force_pre_tool_speech setting for this tool.\n\npre_tool_speech : typing.Optional[PreToolSpeechMode]\n    If set, overrides the server's pre_tool_speech setting for this tool.\n\ndisable_interruptions : typing.Optional[bool]\n    DEPRECATED: use `interruption_mode` instead. If set, overrides the server's disable_interruptions setting for this tool.\n\ninterruption_mode : typing.Optional[ToolInterruptionMode]\n    If set, overrides the server's interruption_mode setting for this tool.\n\ntool_call_sound : typing.Optional[ToolCallSoundType]\n    Predefined tool call sound type to play during tool execution for all tools from this MCP server\n\ntool_call_sound_behavior : typing.Optional[ToolCallSoundBehavior]\n    Determines when the tool call sound should play for all tools from this MCP server\n\nexecution_mode : typing.Optional[ToolExecutionMode]\n    If set, overrides the server's execution_mode setting for this tool\n\nresponse_timeout_secs : typing.Optional[int]\n    The maximum time in seconds to wait for each MCP tool call to complete.\n\nrequest_headers : typing.Optional[typing.Dict[str, typing.Optional[McpServerConfigUpdateRequestModelRequestHeadersValue]]]\n    The headers to include in requests to the MCP server\n\ndisable_compression : typing.Optional[bool]\n    Whether to disable HTTP compression for this MCP server\n\nsecret_token : typing.Optional[ConvAiSecretLocator]\n    Optional secret token for authentication with this MCP server\n\nauth_connection : typing.Optional[McpServerConfigUpdateRequestModelAuthConnection]\n    Optional auth connection to use for authentication with this MCP server\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[McpServerResponseModel]\n    Successful Response",
               "positional_params": [
                 {
                   "name": "mcp_server_id",
@@ -6146,6 +6165,11 @@
                 },
                 {
                   "name": "disable_interruptions",
+                  "kind": "keyword",
+                  "default": "__OMIT__"
+                },
+                {
+                  "name": "interruption_mode",
                   "kind": "keyword",
                   "default": "__OMIT__"
                 },
@@ -6230,6 +6254,12 @@
                         "disable_interruptions"
                       ],
                       "param": "disable_interruptions"
+                    },
+                    {
+                      "path": [
+                        "interruption_mode"
+                      ],
+                      "param": "interruption_mode"
                     },
                     {
                       "path": [
@@ -6481,7 +6511,7 @@
               "operations": [
                 {
                   "name": "create",
-                  "doc": "Create configuration overrides for a specific MCP tool.\n\nParameters\n----------\nmcp_server_id : str\n    ID of the MCP Server.\n\ntool_name : str\n    The name of the MCP tool\n\nforce_pre_tool_speech : typing.Optional[bool]\n    DEPRECATED: use `pre_tool_speech` instead. If set, overrides the server's force_pre_tool_speech setting for this tool.\n\npre_tool_speech : typing.Optional[PreToolSpeechMode]\n    If set, overrides the server's pre_tool_speech setting for this tool.\n\ndisable_interruptions : typing.Optional[bool]\n    If set, overrides the server's disable_interruptions setting for this tool\n\ntool_call_sound : typing.Optional[ToolCallSoundType]\n    If set, overrides the server's tool_call_sound setting for this tool\n\ntool_call_sound_behavior : typing.Optional[ToolCallSoundBehavior]\n    If set, overrides the server's tool_call_sound_behavior setting for this tool\n\nexecution_mode : typing.Optional[ToolExecutionMode]\n    If set, overrides the server's execution_mode setting for this tool\n\nresponse_timeout_secs : typing.Optional[int]\n    If set, overrides the server's response timeout for this MCP tool.\n\nassignments : typing.Optional[typing.Sequence[DynamicVariableAssignment]]\n    Dynamic variable assignments for this MCP tool\n\ninput_overrides : typing.Optional[typing.Dict[str, typing.Optional[McpToolConfigOverrideCreateRequestModelInputOverridesValue]]]\n    Mapping of json path to input override configuration\n\nresponse_mocks : typing.Optional[typing.Sequence[ToolResponseMockConfigInput]]\n    Mock responses with optional parameter conditions. Evaluated top-to-bottom; first match wins.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[McpServerResponseModel]\n    Successful Response",
+                  "doc": "Create configuration overrides for a specific MCP tool.\n\nParameters\n----------\nmcp_server_id : str\n    ID of the MCP Server.\n\ntool_name : str\n    The name of the MCP tool\n\nenvironment : typing.Optional[str]\n    Environment whose values are used when the MCP server URL, headers, or auth connection reference environment variables. Mirrors the environment a conversation would run in; defaults to production.\n\nforce_pre_tool_speech : typing.Optional[bool]\n    DEPRECATED: use `pre_tool_speech` instead. If set, overrides the server's force_pre_tool_speech setting for this tool.\n\npre_tool_speech : typing.Optional[PreToolSpeechMode]\n    If set, overrides the server's pre_tool_speech setting for this tool.\n\ndisable_interruptions : typing.Optional[bool]\n    DEPRECATED: use `interruption_mode` instead. If set, overrides the server's disable_interruptions setting for this tool.\n\ninterruption_mode : typing.Optional[ToolInterruptionMode]\n    If set, overrides the server's interruption_mode setting for this tool.\n\ntool_call_sound : typing.Optional[McpToolConfigOverrideCreateRequestModelToolCallSound]\n    Overrides the server's tool_call_sound setting for this tool. A sound name plays that sound; 'off' overrides to no sound (silence); null means do not override (inherit the server default).\n\ntool_call_sound_behavior : typing.Optional[ToolCallSoundBehavior]\n    If set, overrides the server's tool_call_sound_behavior setting for this tool\n\nexecution_mode : typing.Optional[ToolExecutionMode]\n    If set, overrides the server's execution_mode setting for this tool\n\nresponse_timeout_secs : typing.Optional[int]\n    If set, overrides the server's response timeout for this MCP tool.\n\nassignments : typing.Optional[typing.Sequence[DynamicVariableAssignment]]\n    Dynamic variable assignments for this MCP tool\n\ninput_overrides : typing.Optional[typing.Dict[str, typing.Optional[McpToolConfigOverrideCreateRequestModelInputOverridesValue]]]\n    Mapping of json path to input override configuration\n\nresponse_mocks : typing.Optional[typing.Sequence[ToolResponseMockConfigInput]]\n    Mock responses with optional parameter conditions. Evaluated top-to-bottom; first match wins.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[McpServerResponseModel]\n    Successful Response",
                   "positional_params": [
                     {
                       "name": "mcp_server_id",
@@ -6492,6 +6522,11 @@
                   "keyword_params": [
                     {
                       "name": "tool_name",
+                      "kind": "keyword",
+                      "default": null
+                    },
+                    {
+                      "name": "environment",
                       "kind": "keyword",
                       "default": null
                     },
@@ -6507,6 +6542,11 @@
                     },
                     {
                       "name": "disable_interruptions",
+                      "kind": "keyword",
+                      "default": "__OMIT__"
+                    },
+                    {
+                      "name": "interruption_mode",
                       "kind": "keyword",
                       "default": "__OMIT__"
                     },
@@ -6559,7 +6599,12 @@
                         "mcp_server_id"
                       ]
                     },
-                    "query": [],
+                    "query": [
+                      {
+                        "name": "environment",
+                        "param": "environment"
+                      }
+                    ],
                     "json": {
                       "literal": null,
                       "assignments": [
@@ -6580,6 +6625,12 @@
                             "disable_interruptions"
                           ],
                           "param": "disable_interruptions"
+                        },
+                        {
+                          "path": [
+                            "interruption_mode"
+                          ],
+                          "param": "interruption_mode"
                         },
                         {
                           "path": [
@@ -6722,7 +6773,7 @@
                 },
                 {
                   "name": "update",
-                  "doc": "Update configuration overrides for a specific MCP tool.\n\nParameters\n----------\nmcp_server_id : str\n    ID of the MCP Server.\n\ntool_name : str\n    Name of the MCP tool to update config overrides for.\n\nforce_pre_tool_speech : typing.Optional[bool]\n    DEPRECATED: use `pre_tool_speech` instead. If set, overrides the server's force_pre_tool_speech setting for this tool.\n\npre_tool_speech : typing.Optional[PreToolSpeechMode]\n    If set, overrides the server's pre_tool_speech setting for this tool.\n\ndisable_interruptions : typing.Optional[bool]\n    If set, overrides the server's disable_interruptions setting for this tool\n\ntool_call_sound : typing.Optional[ToolCallSoundType]\n    If set, overrides the server's tool_call_sound setting for this tool\n\ntool_call_sound_behavior : typing.Optional[ToolCallSoundBehavior]\n    If set, overrides the server's tool_call_sound_behavior setting for this tool\n\nexecution_mode : typing.Optional[ToolExecutionMode]\n    If set, overrides the server's execution_mode setting for this tool\n\nresponse_timeout_secs : typing.Optional[int]\n    If set, overrides the server's response timeout for this MCP tool.\n\nassignments : typing.Optional[typing.Sequence[DynamicVariableAssignment]]\n    Dynamic variable assignments for this MCP tool\n\ninput_overrides : typing.Optional[typing.Dict[str, typing.Optional[McpToolConfigOverrideUpdateRequestModelInputOverridesValue]]]\n    Mapping of json path to input override configuration\n\nresponse_mocks : typing.Optional[typing.Sequence[ToolResponseMockConfigInput]]\n    Mock responses with optional parameter conditions. Evaluated top-to-bottom; first match wins.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[McpServerResponseModel]\n    Successful Response",
+                  "doc": "Update configuration overrides for a specific MCP tool.\n\nParameters\n----------\nmcp_server_id : str\n    ID of the MCP Server.\n\ntool_name : str\n    Name of the MCP tool to update config overrides for.\n\nenvironment : typing.Optional[str]\n    Environment whose values are used when the MCP server URL, headers, or auth connection reference environment variables. Mirrors the environment a conversation would run in; defaults to production.\n\nforce_pre_tool_speech : typing.Optional[bool]\n    DEPRECATED: use `pre_tool_speech` instead. If set, overrides the server's force_pre_tool_speech setting for this tool.\n\npre_tool_speech : typing.Optional[PreToolSpeechMode]\n    If set, overrides the server's pre_tool_speech setting for this tool.\n\ndisable_interruptions : typing.Optional[bool]\n    DEPRECATED: use `interruption_mode` instead. If set, overrides the server's disable_interruptions setting for this tool.\n\ninterruption_mode : typing.Optional[ToolInterruptionMode]\n    If set, overrides the server's interruption_mode setting for this tool.\n\ntool_call_sound : typing.Optional[McpToolConfigOverrideUpdateRequestModelToolCallSound]\n    Overrides the server's tool_call_sound setting for this tool. A sound name plays that sound; 'off' overrides to no sound (silence); null means do not override (inherit the server default).\n\ntool_call_sound_behavior : typing.Optional[ToolCallSoundBehavior]\n    If set, overrides the server's tool_call_sound_behavior setting for this tool\n\nexecution_mode : typing.Optional[ToolExecutionMode]\n    If set, overrides the server's execution_mode setting for this tool\n\nresponse_timeout_secs : typing.Optional[int]\n    If set, overrides the server's response timeout for this MCP tool.\n\nassignments : typing.Optional[typing.Sequence[DynamicVariableAssignment]]\n    Dynamic variable assignments for this MCP tool\n\ninput_overrides : typing.Optional[typing.Dict[str, typing.Optional[McpToolConfigOverrideUpdateRequestModelInputOverridesValue]]]\n    Mapping of json path to input override configuration\n\nresponse_mocks : typing.Optional[typing.Sequence[ToolResponseMockConfigInput]]\n    Mock responses with optional parameter conditions. Evaluated top-to-bottom; first match wins.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[McpServerResponseModel]\n    Successful Response",
                   "positional_params": [
                     {
                       "name": "mcp_server_id",
@@ -6737,6 +6788,11 @@
                   ],
                   "keyword_params": [
                     {
+                      "name": "environment",
+                      "kind": "keyword",
+                      "default": null
+                    },
+                    {
                       "name": "force_pre_tool_speech",
                       "kind": "keyword",
                       "default": "__OMIT__"
@@ -6748,6 +6804,11 @@
                     },
                     {
                       "name": "disable_interruptions",
+                      "kind": "keyword",
+                      "default": "__OMIT__"
+                    },
+                    {
+                      "name": "interruption_mode",
                       "kind": "keyword",
                       "default": "__OMIT__"
                     },
@@ -6801,7 +6862,12 @@
                         "tool_name"
                       ]
                     },
-                    "query": [],
+                    "query": [
+                      {
+                        "name": "environment",
+                        "param": "environment"
+                      }
+                    ],
                     "json": {
                       "literal": null,
                       "assignments": [
@@ -6822,6 +6888,12 @@
                             "disable_interruptions"
                           ],
                           "param": "disable_interruptions"
+                        },
+                        {
+                          "path": [
+                            "interruption_mode"
+                          ],
+                          "param": "interruption_mode"
                         },
                         {
                           "path": [
@@ -6883,7 +6955,7 @@
               "operations": [
                 {
                   "name": "list",
-                  "doc": "Retrieve all tools available for a specific MCP server configuration.\n\nParameters\n----------\nmcp_server_id : str\n    ID of the MCP Server.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[ListMcpToolsResponseModel]\n    Successful Response",
+                  "doc": "Retrieve all tools available for a specific MCP server configuration.\n\nParameters\n----------\nmcp_server_id : str\n    ID of the MCP Server.\n\nenvironment : typing.Optional[str]\n    Environment whose values are used when the MCP server URL, headers, or auth connection reference environment variables. Mirrors the environment a conversation would run in; defaults to production.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[ListMcpToolsResponseModel]\n    Successful Response",
                   "positional_params": [
                     {
                       "name": "mcp_server_id",
@@ -6892,6 +6964,11 @@
                     }
                   ],
                   "keyword_params": [
+                    {
+                      "name": "environment",
+                      "kind": "keyword",
+                      "default": null
+                    },
                     {
                       "name": "request_options",
                       "kind": "keyword",
@@ -6906,7 +6983,12 @@
                         "mcp_server_id"
                       ]
                     },
-                    "query": [],
+                    "query": [
+                      {
+                        "name": "environment",
+                        "param": "environment"
+                      }
+                    ],
                     "json": null,
                     "form": null,
                     "files": [],
@@ -8443,7 +8525,7 @@
                 },
                 {
                   "name": "resubmit",
-                  "doc": "Resubmits specific test runs from a test invocation.\n\nParameters\n----------\ntest_invocation_id : str\n    The id of a test invocation. This is returned when tests are run.\n\ntest_run_ids : typing.Sequence[str]\n    List of test run IDs to resubmit\n\nagent_id : str\n    Agent ID to resubmit tests for\n\nagent_config_override : typing.Optional[AdhocAgentConfigOverrideForTestRequestModel]\n    Configuration overrides to use for testing. If not provided, the agent's default configuration will be used.\n\nbranch_id : typing.Optional[str]\n    ID of the branch to run the tests on. If not provided, the tests will be run on the agent default configuration.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[typing.Any]\n    Successful Response",
+                  "doc": "Resubmits specific test runs from a test invocation.\n\nParameters\n----------\ntest_invocation_id : str\n    The id of a test invocation. This is returned when tests are run.\n\ntest_run_ids : typing.Sequence[str]\n    List of test run IDs to resubmit\n\nagent_id : str\n    Agent ID to resubmit tests for\n\nagent_config_override : typing.Optional[AdhocAgentConfigOverrideForTestRequestModel]\n    Configuration overrides to use for testing. If not provided, the agent's default configuration will be used.\n\nbranch_id : typing.Optional[str]\n    ID of the branch to run the tests on. If not provided, the tests will be run on the agent's main branch.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[typing.Any]\n    Successful Response",
                   "positional_params": [
                     {
                       "name": "test_invocation_id",
@@ -8674,7 +8756,7 @@
             },
             {
               "name": "get",
-              "doc": "Get tool that is available in the workspace.\n\nParameters\n----------\ntool_id : str\n    ID of the requested tool.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[ToolResponseModel]\n    Successful Response",
+              "doc": "Get tool that is available in the workspace.\n\nParameters\n----------\ntool_id : str\n    ID of the requested tool.\n\nenvironment : typing.Optional[str]\n    Environment whose values are used when the MCP server URL, headers, or auth connection reference environment variables. Mirrors the environment a conversation would run in; defaults to production.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[ToolResponseModel]\n    Successful Response",
               "positional_params": [
                 {
                   "name": "tool_id",
@@ -8683,6 +8765,11 @@
                 }
               ],
               "keyword_params": [
+                {
+                  "name": "environment",
+                  "kind": "keyword",
+                  "default": null
+                },
                 {
                   "name": "request_options",
                   "kind": "keyword",
@@ -8697,7 +8784,12 @@
                     "tool_id"
                   ]
                 },
-                "query": [],
+                "query": [
+                  {
+                    "name": "environment",
+                    "param": "environment"
+                  }
+                ],
                 "json": null,
                 "form": null,
                 "files": [],
@@ -9153,7 +9245,7 @@
           "operations": [
             {
               "name": "list",
-              "doc": "Get distinct users from conversations with pagination.\n\nParameters\n----------\nagent_id : typing.Optional[str]\n    Agent id (agent_\u2026) or speech engine external id (seng_), resolved to the same underlying resource.\n\nbranch_id : typing.Optional[str]\n    Filter conversations by branch ID.\n\ncall_start_before_unix : typing.Optional[int]\n    Unix timestamp (in seconds) to filter conversations up to this start date.\n\ncall_start_after_unix : typing.Optional[int]\n    Unix timestamp (in seconds) to filter conversations after to this start date.\n\nsearch : typing.Optional[str]\n    Search/filter by user ID (exact match).\n\npage_size : typing.Optional[int]\n    How many users to return at maximum. Defaults to 30.\n\nsort_by : typing.Optional[UsersSortBy]\n    The field to sort the results by. Defaults to last_contact_unix_secs.\n\ncursor : typing.Optional[str]\n    Used for fetching next page. Cursor is returned in the response.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[GetConversationUsersPageResponseModel]\n    Successful Response",
+              "doc": "Get distinct users from conversations with pagination.\n\nParameters\n----------\nagent_id : typing.Optional[str]\n    Agent id (agent_\u2026) or speech engine external id (seng_), resolved to the same underlying resource.\n\nbranch_id : typing.Optional[str]\n    Filter conversations by branch ID.\n\ncall_start_before_unix : typing.Optional[int]\n    Unix timestamp (in seconds) to filter conversations up to this start date.\n\ncall_start_after_unix : typing.Optional[int]\n    Unix timestamp (in seconds) to filter conversations after to this start date.\n\nsearch : typing.Optional[str]\n    Search/filter by user ID (exact match).\n\npage_size : typing.Optional[int]\n    How many users to return at maximum. Defaults to 30.\n\nsort_by : typing.Optional[UsersSortBy]\n    The field to sort the results by. Defaults to last_contact_unix_secs.\n\nsort_direction : typing.Optional[SortDirection]\n    The direction to sort the results\n\ncursor : typing.Optional[str]\n    Used for fetching next page. Cursor is returned in the response.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[GetConversationUsersPageResponseModel]\n    Successful Response",
               "positional_params": [],
               "keyword_params": [
                 {
@@ -9188,6 +9280,11 @@
                 },
                 {
                   "name": "sort_by",
+                  "kind": "keyword",
+                  "default": null
+                },
+                {
+                  "name": "sort_direction",
                   "kind": "keyword",
                   "default": null
                 },
@@ -9236,6 +9333,10 @@
                   {
                     "name": "sort_by",
                     "param": "sort_by"
+                  },
+                  {
+                    "name": "sort_direction",
+                    "param": "sort_direction"
                   },
                   {
                     "name": "cursor",
@@ -9537,7 +9638,7 @@
             },
             {
               "name": "update",
-              "doc": "Update a WhatsApp account\n\nParameters\n----------\nphone_number_id : str\n\nassigned_agent_id : typing.Optional[str]\n\nenable_messaging : typing.Optional[bool]\n\nenable_audio_message_response : typing.Optional[bool]\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[typing.Any]\n    Successful Response",
+              "doc": "Update a WhatsApp account\n\nParameters\n----------\nphone_number_id : str\n\nassigned_agent_id : typing.Optional[str]\n\nenable_messaging : typing.Optional[bool]\n\nenable_audio_message_response : typing.Optional[bool]\n\nenable_typing_indicator : typing.Optional[bool]\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[typing.Any]\n    Successful Response",
               "positional_params": [
                 {
                   "name": "phone_number_id",
@@ -9558,6 +9659,11 @@
                 },
                 {
                   "name": "enable_audio_message_response",
+                  "kind": "keyword",
+                  "default": "__OMIT__"
+                },
+                {
+                  "name": "enable_typing_indicator",
                   "kind": "keyword",
                   "default": "__OMIT__"
                 },
@@ -9596,6 +9702,12 @@
                         "enable_audio_message_response"
                       ],
                       "param": "enable_audio_message_response"
+                    },
+                    {
+                      "path": [
+                        "enable_typing_indicator"
+                      ],
+                      "param": "enable_typing_indicator"
                     }
                   ]
                 },
@@ -9770,7 +9882,7 @@
         },
         {
           "name": "create",
-          "doc": "Dubs a provided audio or video file into given language.\n\nParameters\n----------\nfile : typing.Optional[core.File]\n    See core.File for more documentation\n\ncsv_file : typing.Optional[core.File]\n    See core.File for more documentation\n\nforeground_audio_file : typing.Optional[core.File]\n    See core.File for more documentation\n\nbackground_audio_file : typing.Optional[core.File]\n    See core.File for more documentation\n\nname : typing.Optional[str]\n    Name of the dubbing project.\n\nsource_url : typing.Optional[str]\n    URL of the source video/audio file.\n\nsource_lang : typing.Optional[str]\n    Source language. Expects a valid iso639-1 or iso639-3 language code.\n\ntarget_lang : typing.Optional[str]\n    The Target language to dub the content into. Expects a valid iso639-1 or iso639-3 language code.\n\ntarget_accent : typing.Optional[str]\n    [Experimental] An accent to apply when selecting voices from the library and to use to inform translation of the dialect to prefer.\n\nnum_speakers : typing.Optional[int]\n    Number of speakers to use for the dubbing. Set to 0 to automatically detect the number of speakers\n\nwatermark : typing.Optional[bool]\n    Whether to apply watermark to the output video.\n\nstart_time : typing.Optional[int]\n    Start time of the source video/audio file.\n\nend_time : typing.Optional[int]\n    End time of the source video/audio file.\n\nhighest_resolution : typing.Optional[bool]\n    Whether to use the highest resolution available.\n\ndrop_background_audio : typing.Optional[bool]\n    An advanced setting. Whether to drop background audio from the final dub. This can improve dub quality where it's known that audio shouldn't have a background track such as for speeches or monologues.\n\nuse_profanity_filter : typing.Optional[bool]\n    [BETA] Whether transcripts should have profanities censored with the words '[censored]'\n\ndubbing_studio : typing.Optional[bool]\n    Whether to prepare dub for edits in dubbing studio or edits as a dubbing resource.\n\ndisable_voice_cloning : typing.Optional[bool]\n    Instead of using a voice clone in dubbing, use a similar voice from the ElevenLabs Voice Library. Voices used from the library will contribute towards a workspace's custom voices limit, and if there aren't enough available slots the dub will fail. Using this feature requires the caller to have the 'add_voice_from_voice_library' permission on their workspace to access new voices.\n\nmode : typing.Optional[DubbingCreateRequestMode]\n    The mode in which to run this Dubbing job. Defaults to automatic, use manual if specifically providing a CSV transcript to use. Note that manual mode is experimental and production use is strongly discouraged.\n\ncsv_fps : typing.Optional[float]\n    Frames per second to use when parsing a CSV file for dubbing. If not provided, FPS will be inferred from timecodes.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[DoDubbingResponse]\n    Successful Response",
+          "doc": "Dubs a provided audio or video file into given language.\n\nParameters\n----------\nfile : typing.Optional[core.File]\n    See core.File for more documentation\n\ncsv_file : typing.Optional[core.File]\n    See core.File for more documentation\n\nforeground_audio_file : typing.Optional[core.File]\n    See core.File for more documentation\n\nbackground_audio_file : typing.Optional[core.File]\n    See core.File for more documentation\n\nname : typing.Optional[str]\n    Name of the dubbing project.\n\nsource_url : typing.Optional[str]\n    URL of the source video/audio file.\n\nsource_lang : typing.Optional[str]\n    Source language. Expects a valid iso639-1 or iso639-3 language code.\n\ntarget_lang : typing.Optional[str]\n    The Target language to dub the content into. Expects a valid iso639-1 or iso639-3 language code.\n\ntarget_accent : typing.Optional[str]\n    [Experimental] An accent to apply when selecting voices from the library and to use to inform translation of the dialect to prefer.\n\nnum_speakers : typing.Optional[int]\n    Number of speakers to use for the dubbing. Set to 0 to automatically detect the number of speakers\n\nwatermark : typing.Optional[bool]\n    Whether to apply watermark to the output video.\n\nstart_time : typing.Optional[int]\n    Start time of the source video/audio file.\n\nend_time : typing.Optional[int]\n    End time of the source video/audio file.\n\nhighest_resolution : typing.Optional[bool]\n    Whether to use the highest resolution available.\n\ndrop_background_audio : typing.Optional[bool]\n    An advanced setting. Whether to drop background audio from the final dub. This can improve dub quality where it's known that audio shouldn't have a background track such as for speeches or monologues.\n\nuse_profanity_filter : typing.Optional[bool]\n    [BETA] Whether transcripts should have profanities censored with the words '[censored]'\n\ndubbing_studio : typing.Optional[bool]\n    Whether to prepare dub for edits in dubbing studio or edits as a dubbing resource.\n\ndisable_voice_cloning : typing.Optional[bool]\n    Instead of using a voice clone in dubbing, use a similar voice from the ElevenLabs Voice Library. Voices used from the library will contribute towards a workspace's custom voices limit, and if there aren't enough available slots the dub will fail. Using this feature requires the caller to have the 'add_voice_from_voice_library' permission on their workspace to access new voices.\n\nmode : typing.Optional[DubRequestMode]\n    The mode in which to run this Dubbing job. Defaults to automatic, use manual if specifically providing a CSV transcript to use. Note that manual mode is experimental and production use is strongly discouraged.\n\ncsv_fps : typing.Optional[float]\n    Frames per second to use when parsing a CSV file for dubbing. If not provided, FPS will be inferred from timecodes.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[DoDubbingResponse]\n    Successful Response",
           "positional_params": [],
           "keyword_params": [
             {
@@ -10137,6 +10249,875 @@
             }
           ],
           "children": {}
+        },
+        "project": {
+          "operations": [
+            {
+              "name": "list",
+              "doc": "List the workspace's dubbing projects (cursor-paginated).\n\nParameters\n----------\ncursor : typing.Optional[str]\n    Pagination cursor from a previous response's next_cursor.\n\npage_size : typing.Optional[int]\n    Number of projects per page (max 100).\n\nstatus : typing.Optional[str]\n    Filter to projects in this status (preparing, ready, failed).\n\nsort_direction : typing.Optional[ProjectListRequestSortDirection]\n    Sort by creation time (default 'DESCENDING').\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[DubbingProjectListResponse]\n    Successful Response",
+              "positional_params": [],
+              "keyword_params": [
+                {
+                  "name": "cursor",
+                  "kind": "keyword",
+                  "default": null
+                },
+                {
+                  "name": "page_size",
+                  "kind": "keyword",
+                  "default": null
+                },
+                {
+                  "name": "status",
+                  "kind": "keyword",
+                  "default": null
+                },
+                {
+                  "name": "sort_direction",
+                  "kind": "keyword",
+                  "default": null
+                },
+                {
+                  "name": "request_options",
+                  "kind": "keyword",
+                  "default": null
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "path": {
+                  "template": "v1/dubbing/project",
+                  "params": []
+                },
+                "query": [
+                  {
+                    "name": "cursor",
+                    "param": "cursor"
+                  },
+                  {
+                    "name": "page_size",
+                    "param": "page_size"
+                  },
+                  {
+                    "name": "status",
+                    "param": "status"
+                  },
+                  {
+                    "name": "sort_direction",
+                    "param": "sort_direction"
+                  }
+                ],
+                "json": null,
+                "form": null,
+                "files": [],
+                "headers": {},
+                "force_multipart": false,
+                "streaming": false
+              }
+            },
+            {
+              "name": "create",
+              "doc": "Create a dubbing project from an uploaded file or a source URL.\n\nParameters\n----------\nfile : typing.Optional[core.File]\n    See core.File for more documentation\n\nsource_url : typing.Optional[str]\n    Public URL to fetch the source media from. Provide this or file.\n\nreference : typing.Optional[str]\n    Optional free-form string (max 500 characters) to identify the project on your end.\n\nsource_language : typing.Optional[str]\n    BCP-47 language tag of the source media. Omit to auto-detect.\n\nmodel_id : typing.Optional[typing.Literal[\"dubbing_v2\"]]\n    Default dubbing model id for the project's language targets; a target may override it. Omit to use the system default.\n\nkeyterms : typing.Optional[typing.List[str]]\n    Key terms to bias transcription/translation toward (e.g. product or brand names). At most 1000 terms; each term at most 50 characters and 5 words; the characters `<>{}[]\\` are not allowed.\n\ntarget_language : typing.Optional[str]\n    Optional shortcut: also create a language target in this BCP-47 language, queued to start once the project is ready.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[DubbingProjectResponse]\n    Successful Response",
+              "positional_params": [],
+              "keyword_params": [
+                {
+                  "name": "file",
+                  "kind": "keyword",
+                  "default": "__OMIT__"
+                },
+                {
+                  "name": "source_url",
+                  "kind": "keyword",
+                  "default": "__OMIT__"
+                },
+                {
+                  "name": "reference",
+                  "kind": "keyword",
+                  "default": "__OMIT__"
+                },
+                {
+                  "name": "source_language",
+                  "kind": "keyword",
+                  "default": "__OMIT__"
+                },
+                {
+                  "name": "model_id",
+                  "kind": "keyword",
+                  "default": "__OMIT__"
+                },
+                {
+                  "name": "keyterms",
+                  "kind": "keyword",
+                  "default": "__OMIT__"
+                },
+                {
+                  "name": "target_language",
+                  "kind": "keyword",
+                  "default": "__OMIT__"
+                },
+                {
+                  "name": "request_options",
+                  "kind": "keyword",
+                  "default": null
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "path": {
+                  "template": "v1/dubbing/project",
+                  "params": []
+                },
+                "query": [],
+                "json": null,
+                "form": {
+                  "literal": null,
+                  "assignments": [
+                    {
+                      "path": [
+                        "source_url"
+                      ],
+                      "param": "source_url"
+                    },
+                    {
+                      "path": [
+                        "reference"
+                      ],
+                      "param": "reference"
+                    },
+                    {
+                      "path": [
+                        "source_language"
+                      ],
+                      "param": "source_language"
+                    },
+                    {
+                      "path": [
+                        "model_id"
+                      ],
+                      "param": "model_id"
+                    },
+                    {
+                      "path": [
+                        "keyterms"
+                      ],
+                      "param": "keyterms",
+                      "encode": "json"
+                    },
+                    {
+                      "path": [
+                        "target_language"
+                      ],
+                      "param": "target_language"
+                    }
+                  ]
+                },
+                "files": [
+                  {
+                    "name": "file",
+                    "value": {
+                      "type": "param",
+                      "name": "file"
+                    }
+                  }
+                ],
+                "headers": {},
+                "force_multipart": true,
+                "streaming": false
+              }
+            },
+            {
+              "name": "get",
+              "doc": "Full project detail, including its language target ids.\n\nParameters\n----------\nproject_id : str\n    Identifier of the dubbing project to fetch.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[DubbingProjectResponse]\n    Successful Response",
+              "positional_params": [
+                {
+                  "name": "project_id",
+                  "kind": "positional",
+                  "default": null
+                }
+              ],
+              "keyword_params": [
+                {
+                  "name": "request_options",
+                  "kind": "keyword",
+                  "default": null
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "path": {
+                  "template": "v1/dubbing/project/{project_id}",
+                  "params": [
+                    "project_id"
+                  ]
+                },
+                "query": [],
+                "json": null,
+                "form": null,
+                "files": [],
+                "headers": {},
+                "force_multipart": false,
+                "streaming": false
+              }
+            },
+            {
+              "name": "delete",
+              "doc": "Delete a project and its language targets.\n\nParameters\n----------\nproject_id : str\n    Identifier of the dubbing project to delete.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[None]",
+              "positional_params": [
+                {
+                  "name": "project_id",
+                  "kind": "positional",
+                  "default": null
+                }
+              ],
+              "keyword_params": [
+                {
+                  "name": "request_options",
+                  "kind": "keyword",
+                  "default": null
+                }
+              ],
+              "request": {
+                "method": "DELETE",
+                "path": {
+                  "template": "v1/dubbing/project/{project_id}",
+                  "params": [
+                    "project_id"
+                  ]
+                },
+                "query": [],
+                "json": null,
+                "form": null,
+                "files": [],
+                "headers": {},
+                "force_multipart": false,
+                "streaming": false
+              }
+            }
+          ],
+          "children": {
+            "language": {
+              "operations": [
+                {
+                  "name": "list",
+                  "doc": "List a project's language targets (cursor-paginated).\n\nParameters\n----------\nproject_id : str\n    Identifier of the parent dubbing project.\n\ncursor : typing.Optional[str]\n    Pagination cursor from a previous response's next_cursor.\n\npage_size : typing.Optional[int]\n    Number of language targets per page (max 100).\n\nstatus : typing.Optional[str]\n    Filter to targets in this status (queued, processing, completed, stale, failed).\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[DubbingLanguageListResponse]\n    Successful Response",
+                  "positional_params": [
+                    {
+                      "name": "project_id",
+                      "kind": "positional",
+                      "default": null
+                    }
+                  ],
+                  "keyword_params": [
+                    {
+                      "name": "cursor",
+                      "kind": "keyword",
+                      "default": null
+                    },
+                    {
+                      "name": "page_size",
+                      "kind": "keyword",
+                      "default": null
+                    },
+                    {
+                      "name": "status",
+                      "kind": "keyword",
+                      "default": null
+                    },
+                    {
+                      "name": "request_options",
+                      "kind": "keyword",
+                      "default": null
+                    }
+                  ],
+                  "request": {
+                    "method": "GET",
+                    "path": {
+                      "template": "v1/dubbing/project/{project_id}/language",
+                      "params": [
+                        "project_id"
+                      ]
+                    },
+                    "query": [
+                      {
+                        "name": "cursor",
+                        "param": "cursor"
+                      },
+                      {
+                        "name": "page_size",
+                        "param": "page_size"
+                      },
+                      {
+                        "name": "status",
+                        "param": "status"
+                      }
+                    ],
+                    "json": null,
+                    "form": null,
+                    "files": [],
+                    "headers": {},
+                    "force_multipart": false,
+                    "streaming": false
+                  }
+                },
+                {
+                  "name": "create",
+                  "doc": "Queue a language target for a project (starts once the project is ready).\n\nParameters\n----------\nproject_id : str\n    Identifier of the parent dubbing project.\n\ntarget_language : str\n    BCP-47 language tag to dub the project into (e.g. 'fr', 'es-419').\n\nmodel_id : typing.Optional[typing.Literal[\"dubbing_v2\"]]\n    Dubbing model id for this target; omit to use the project default.\n\nvoice_settings : typing.Optional[VoiceSettings]\n    Voice settings applied to the whole language (e.g. cloning strength).\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[DubbingLanguageResponse]\n    Successful Response",
+                  "positional_params": [
+                    {
+                      "name": "project_id",
+                      "kind": "positional",
+                      "default": null
+                    }
+                  ],
+                  "keyword_params": [
+                    {
+                      "name": "target_language",
+                      "kind": "keyword",
+                      "default": null
+                    },
+                    {
+                      "name": "model_id",
+                      "kind": "keyword",
+                      "default": "__OMIT__"
+                    },
+                    {
+                      "name": "voice_settings",
+                      "kind": "keyword",
+                      "default": "__OMIT__"
+                    },
+                    {
+                      "name": "request_options",
+                      "kind": "keyword",
+                      "default": null
+                    }
+                  ],
+                  "request": {
+                    "method": "POST",
+                    "path": {
+                      "template": "v1/dubbing/project/{project_id}/language",
+                      "params": [
+                        "project_id"
+                      ]
+                    },
+                    "query": [],
+                    "json": {
+                      "literal": null,
+                      "assignments": [
+                        {
+                          "path": [
+                            "target_language"
+                          ],
+                          "param": "target_language"
+                        },
+                        {
+                          "path": [
+                            "model_id"
+                          ],
+                          "param": "model_id"
+                        },
+                        {
+                          "path": [
+                            "voice_settings"
+                          ],
+                          "param": "voice_settings"
+                        }
+                      ]
+                    },
+                    "form": null,
+                    "files": [],
+                    "headers": {
+                      "content-type": "application/json"
+                    },
+                    "force_multipart": false,
+                    "streaming": false
+                  }
+                },
+                {
+                  "name": "get",
+                  "doc": "Full language-target detail.\n\nParameters\n----------\nproject_id : str\n    Identifier of the parent dubbing project.\n\nlanguage_id : str\n    Identifier of the language target to fetch.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[DubbingLanguageResponse]\n    Successful Response",
+                  "positional_params": [
+                    {
+                      "name": "project_id",
+                      "kind": "positional",
+                      "default": null
+                    },
+                    {
+                      "name": "language_id",
+                      "kind": "positional",
+                      "default": null
+                    }
+                  ],
+                  "keyword_params": [
+                    {
+                      "name": "request_options",
+                      "kind": "keyword",
+                      "default": null
+                    }
+                  ],
+                  "request": {
+                    "method": "GET",
+                    "path": {
+                      "template": "v1/dubbing/project/{project_id}/language/{language_id}",
+                      "params": [
+                        "project_id",
+                        "language_id"
+                      ]
+                    },
+                    "query": [],
+                    "json": null,
+                    "form": null,
+                    "files": [],
+                    "headers": {},
+                    "force_multipart": false,
+                    "streaming": false
+                  }
+                },
+                {
+                  "name": "delete",
+                  "doc": "Delete a language target.\n\nParameters\n----------\nproject_id : str\n    Identifier of the parent dubbing project.\n\nlanguage_id : str\n    Identifier of the language target to delete.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[None]",
+                  "positional_params": [
+                    {
+                      "name": "project_id",
+                      "kind": "positional",
+                      "default": null
+                    },
+                    {
+                      "name": "language_id",
+                      "kind": "positional",
+                      "default": null
+                    }
+                  ],
+                  "keyword_params": [
+                    {
+                      "name": "request_options",
+                      "kind": "keyword",
+                      "default": null
+                    }
+                  ],
+                  "request": {
+                    "method": "DELETE",
+                    "path": {
+                      "template": "v1/dubbing/project/{project_id}/language/{language_id}",
+                      "params": [
+                        "project_id",
+                        "language_id"
+                      ]
+                    },
+                    "query": [],
+                    "json": null,
+                    "form": null,
+                    "files": [],
+                    "headers": {},
+                    "force_multipart": false,
+                    "streaming": false
+                  }
+                }
+              ],
+              "children": {
+                "transcript": {
+                  "operations": [
+                    {
+                      "name": "get",
+                      "doc": "A language target's transcript: source segments with their translations.\n\nParameters\n----------\nproject_id : str\n    Identifier of the dubbing project.\n\nlanguage_id : str\n    Identifier of the language target.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[DubbingTargetTranscriptResponse]\n    Successful Response",
+                      "positional_params": [
+                        {
+                          "name": "project_id",
+                          "kind": "positional",
+                          "default": null
+                        },
+                        {
+                          "name": "language_id",
+                          "kind": "positional",
+                          "default": null
+                        }
+                      ],
+                      "keyword_params": [
+                        {
+                          "name": "request_options",
+                          "kind": "keyword",
+                          "default": null
+                        }
+                      ],
+                      "request": {
+                        "method": "GET",
+                        "path": {
+                          "template": "v1/dubbing/project/{project_id}/language/{language_id}/transcript",
+                          "params": [
+                            "project_id",
+                            "language_id"
+                          ]
+                        },
+                        "query": [],
+                        "json": null,
+                        "form": null,
+                        "files": [],
+                        "headers": {},
+                        "force_multipart": false,
+                        "streaming": false
+                      }
+                    },
+                    {
+                      "name": "update_segment",
+                      "doc": "Edit a segment's translation for a language target.\n\nParameters\n----------\nproject_id : str\n    Identifier of the dubbing project.\n\nlanguage_id : str\n    Identifier of the language target.\n\nsegment_id : str\n    Identifier of the segment to edit.\n\ntranslation : typing.Optional[str]\n    New translated text, or null to mark the segment for re-translation.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[DubbingTargetSegmentUpdateResponse]\n    Successful Response",
+                      "positional_params": [
+                        {
+                          "name": "project_id",
+                          "kind": "positional",
+                          "default": null
+                        },
+                        {
+                          "name": "language_id",
+                          "kind": "positional",
+                          "default": null
+                        },
+                        {
+                          "name": "segment_id",
+                          "kind": "positional",
+                          "default": null
+                        }
+                      ],
+                      "keyword_params": [
+                        {
+                          "name": "translation",
+                          "kind": "keyword",
+                          "default": "__OMIT__"
+                        },
+                        {
+                          "name": "request_options",
+                          "kind": "keyword",
+                          "default": null
+                        }
+                      ],
+                      "request": {
+                        "method": "PATCH",
+                        "path": {
+                          "template": "v1/dubbing/project/{project_id}/language/{language_id}/transcript/segment/{segment_id}",
+                          "params": [
+                            "project_id",
+                            "language_id",
+                            "segment_id"
+                          ]
+                        },
+                        "query": [],
+                        "json": {
+                          "literal": null,
+                          "assignments": [
+                            {
+                              "path": [
+                                "translation"
+                              ],
+                              "param": "translation"
+                            }
+                          ]
+                        },
+                        "form": null,
+                        "files": [],
+                        "headers": {
+                          "content-type": "application/json"
+                        },
+                        "force_multipart": false,
+                        "streaming": false
+                      }
+                    },
+                    {
+                      "name": "regenerate",
+                      "doc": "Re-dub a target from its edited transcript (charged like a generation).\n\nParameters\n----------\nproject_id : str\n    Identifier of the dubbing project.\n\nlanguage_id : str\n    Identifier of the language target.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[DubbingLanguageResponse]\n    Successful Response",
+                      "positional_params": [
+                        {
+                          "name": "project_id",
+                          "kind": "positional",
+                          "default": null
+                        },
+                        {
+                          "name": "language_id",
+                          "kind": "positional",
+                          "default": null
+                        }
+                      ],
+                      "keyword_params": [
+                        {
+                          "name": "request_options",
+                          "kind": "keyword",
+                          "default": null
+                        }
+                      ],
+                      "request": {
+                        "method": "POST",
+                        "path": {
+                          "template": "v1/dubbing/project/{project_id}/language/{language_id}/transcript/regenerate",
+                          "params": [
+                            "project_id",
+                            "language_id"
+                          ]
+                        },
+                        "query": [],
+                        "json": null,
+                        "form": null,
+                        "files": [],
+                        "headers": {},
+                        "force_multipart": false,
+                        "streaming": false
+                      }
+                    }
+                  ],
+                  "children": {}
+                }
+              }
+            },
+            "transcript": {
+              "operations": [
+                {
+                  "name": "get",
+                  "doc": "The project's source transcript, as editable segments.\n\nParameters\n----------\nproject_id : str\n    Identifier of the dubbing project.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[DubbingSourceTranscriptResponse]\n    Successful Response",
+                  "positional_params": [
+                    {
+                      "name": "project_id",
+                      "kind": "positional",
+                      "default": null
+                    }
+                  ],
+                  "keyword_params": [
+                    {
+                      "name": "request_options",
+                      "kind": "keyword",
+                      "default": null
+                    }
+                  ],
+                  "request": {
+                    "method": "GET",
+                    "path": {
+                      "template": "v1/dubbing/project/{project_id}/transcript",
+                      "params": [
+                        "project_id"
+                      ]
+                    },
+                    "query": [],
+                    "json": null,
+                    "form": null,
+                    "files": [],
+                    "headers": {},
+                    "force_multipart": false,
+                    "streaming": false
+                  }
+                },
+                {
+                  "name": "delete_segment",
+                  "doc": "Remove a source segment from the transcript.\n\nParameters\n----------\nproject_id : str\n    Identifier of the dubbing project.\n\nsegment_id : str\n    Identifier of the segment to remove.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[DubbingTranscriptRevisionResponse]\n    Successful Response",
+                  "positional_params": [
+                    {
+                      "name": "project_id",
+                      "kind": "positional",
+                      "default": null
+                    },
+                    {
+                      "name": "segment_id",
+                      "kind": "positional",
+                      "default": null
+                    }
+                  ],
+                  "keyword_params": [
+                    {
+                      "name": "request_options",
+                      "kind": "keyword",
+                      "default": null
+                    }
+                  ],
+                  "request": {
+                    "method": "DELETE",
+                    "path": {
+                      "template": "v1/dubbing/project/{project_id}/transcript/segment/{segment_id}",
+                      "params": [
+                        "project_id",
+                        "segment_id"
+                      ]
+                    },
+                    "query": [],
+                    "json": null,
+                    "form": null,
+                    "files": [],
+                    "headers": {},
+                    "force_multipart": false,
+                    "streaming": false
+                  }
+                },
+                {
+                  "name": "update_segment",
+                  "doc": "Edit a source segment's text, speaker, or timing.\n\nParameters\n----------\nproject_id : str\n    Identifier of the dubbing project.\n\nsegment_id : str\n    Identifier of the segment to edit.\n\ntext : typing.Optional[str]\n    New text for the segment.\n\nspeaker_id : typing.Optional[str]\n    New speaker id for the segment.\n\nstart_s : typing.Optional[float]\n    New start time, in seconds.\n\nend_s : typing.Optional[float]\n    New end time, in seconds.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[DubbingSourceSegmentUpdateResponse]\n    Successful Response",
+                  "positional_params": [
+                    {
+                      "name": "project_id",
+                      "kind": "positional",
+                      "default": null
+                    },
+                    {
+                      "name": "segment_id",
+                      "kind": "positional",
+                      "default": null
+                    }
+                  ],
+                  "keyword_params": [
+                    {
+                      "name": "text",
+                      "kind": "keyword",
+                      "default": "__OMIT__"
+                    },
+                    {
+                      "name": "speaker_id",
+                      "kind": "keyword",
+                      "default": "__OMIT__"
+                    },
+                    {
+                      "name": "start_s",
+                      "kind": "keyword",
+                      "default": "__OMIT__"
+                    },
+                    {
+                      "name": "end_s",
+                      "kind": "keyword",
+                      "default": "__OMIT__"
+                    },
+                    {
+                      "name": "request_options",
+                      "kind": "keyword",
+                      "default": null
+                    }
+                  ],
+                  "request": {
+                    "method": "PATCH",
+                    "path": {
+                      "template": "v1/dubbing/project/{project_id}/transcript/segment/{segment_id}",
+                      "params": [
+                        "project_id",
+                        "segment_id"
+                      ]
+                    },
+                    "query": [],
+                    "json": {
+                      "literal": null,
+                      "assignments": [
+                        {
+                          "path": [
+                            "text"
+                          ],
+                          "param": "text"
+                        },
+                        {
+                          "path": [
+                            "speaker_id"
+                          ],
+                          "param": "speaker_id"
+                        },
+                        {
+                          "path": [
+                            "start_s"
+                          ],
+                          "param": "start_s"
+                        },
+                        {
+                          "path": [
+                            "end_s"
+                          ],
+                          "param": "end_s"
+                        }
+                      ]
+                    },
+                    "form": null,
+                    "files": [],
+                    "headers": {
+                      "content-type": "application/json"
+                    },
+                    "force_multipart": false,
+                    "streaming": false
+                  }
+                },
+                {
+                  "name": "create_segment",
+                  "doc": "Add a new source segment to the transcript.\n\nParameters\n----------\nproject_id : str\n    Identifier of the dubbing project.\n\ntext : str\n    The text of the new segment.\n\nspeaker_id : str\n    Identifier of the segment's speaker.\n\nstart_s : float\n    Start time of the segment, in seconds.\n\nend_s : float\n    End time of the segment, in seconds.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[DubbingSourceSegmentUpdateResponse]\n    Successful Response",
+                  "positional_params": [
+                    {
+                      "name": "project_id",
+                      "kind": "positional",
+                      "default": null
+                    }
+                  ],
+                  "keyword_params": [
+                    {
+                      "name": "text",
+                      "kind": "keyword",
+                      "default": null
+                    },
+                    {
+                      "name": "speaker_id",
+                      "kind": "keyword",
+                      "default": null
+                    },
+                    {
+                      "name": "start_s",
+                      "kind": "keyword",
+                      "default": null
+                    },
+                    {
+                      "name": "end_s",
+                      "kind": "keyword",
+                      "default": null
+                    },
+                    {
+                      "name": "request_options",
+                      "kind": "keyword",
+                      "default": null
+                    }
+                  ],
+                  "request": {
+                    "method": "POST",
+                    "path": {
+                      "template": "v1/dubbing/project/{project_id}/transcript/segment",
+                      "params": [
+                        "project_id"
+                      ]
+                    },
+                    "query": [],
+                    "json": {
+                      "literal": null,
+                      "assignments": [
+                        {
+                          "path": [
+                            "text"
+                          ],
+                          "param": "text"
+                        },
+                        {
+                          "path": [
+                            "speaker_id"
+                          ],
+                          "param": "speaker_id"
+                        },
+                        {
+                          "path": [
+                            "start_s"
+                          ],
+                          "param": "start_s"
+                        },
+                        {
+                          "path": [
+                            "end_s"
+                          ],
+                          "param": "end_s"
+                        }
+                      ]
+                    },
+                    "form": null,
+                    "files": [],
+                    "headers": {
+                      "content-type": "application/json"
+                    },
+                    "force_multipart": false,
+                    "streaming": false
+                  }
+                }
+              ],
+              "children": {}
+            }
+          }
         },
         "resource": {
           "operations": [
@@ -10783,7 +11764,7 @@
                 },
                 {
                   "name": "create",
-                  "doc": "Parameters\n----------\ndubbing_id : str\n    ID of the dubbing project.\n\nspeaker_name : typing.Optional[str]\n    Name to attribute to this speaker.\n\nvoice_id : typing.Optional[str]\n    Either the identifier of a voice from the ElevenLabs voice library, or one of ['track-clone', 'clip-clone'].\n\nvoice_stability : typing.Optional[float]\n    For models that support it, the voice similarity value to use. This will default to 0.65, with a valid range of [0.0, 1.0].\n\nvoice_similarity : typing.Optional[float]\n    For models that support it, the voice similarity value to use. This will default to 1.0, with a valid range of [0.0, 1.0].\n\nvoice_style : typing.Optional[float]\n    For models that support it, the voice style value to use. This will default to 1.0, with a valid range of [0.0, 1.0].\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[SpeakerCreatedResponse]\n    Successful Response",
+                  "doc": "Creates a new speaker in a dubbing resource. The speaker is added to every available language and can optionally be associated with an ElevenLabs voice and voice settings.\n\nParameters\n----------\ndubbing_id : str\n    ID of the dubbing project.\n\nspeaker_name : typing.Optional[str]\n    Name to attribute to this speaker.\n\nvoice_id : typing.Optional[str]\n    Either the identifier of a voice from the ElevenLabs voice library, or one of ['track-clone', 'clip-clone'].\n\nvoice_stability : typing.Optional[float]\n    For models that support it, the voice similarity value to use. This will default to 0.65, with a valid range of [0.0, 1.0].\n\nvoice_similarity : typing.Optional[float]\n    For models that support it, the voice similarity value to use. This will default to 1.0, with a valid range of [0.0, 1.0].\n\nvoice_style : typing.Optional[float]\n    For models that support it, the voice style value to use. This will default to 1.0, with a valid range of [0.0, 1.0].\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[SpeakerCreatedResponse]\n    Successful Response",
                   "positional_params": [
                     {
                       "name": "dubbing_id",
@@ -11391,7 +12372,7 @@
       "operations": [
         {
           "name": "list",
-          "doc": "Returns a list of your generated audio.\n\nParameters\n----------\npage_size : typing.Optional[int]\n    How many history items to return at maximum. Can not exceed 1000, defaults to 100.\n\nstart_after_history_item_id : typing.Optional[str]\n    After which ID to start fetching, use this parameter to paginate across a large collection of history items. In case this parameter is not provided history items will be fetched starting from the most recently created one ordered descending by their creation date.\n\nvoice_id : typing.Optional[str]\n    ID of the voice to be filtered for. You can use the [Get voices](/docs/api-reference/voices/search) endpoint list all the available voices.\n\nmodel_id : typing.Optional[str]\n    Search term used for filtering history items. If provided, source becomes required.\n\ndate_before_unix : typing.Optional[int]\n    Unix timestamp to filter history items before this date (exclusive).\n\ndate_after_unix : typing.Optional[int]\n    Unix timestamp to filter history items after this date (inclusive).\n\nsort_direction : typing.Optional[HistoryListRequestSortDirection]\n    Sort direction for the results.\n\nsearch : typing.Optional[str]\n    search term used for filtering\n\nsource : typing.Optional[HistoryListRequestSource]\n    Source of the generated history item\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[GetSpeechHistoryResponse]\n    Successful Response",
+          "doc": "Returns a list of your generated audio (e.g. text to speech, speech to speech, Studio, dubbing). Music and SFX generations are not included and cannot currently be retrieved via the API.\n\nParameters\n----------\npage_size : typing.Optional[int]\n    How many history items to return at maximum. Can not exceed 1000, defaults to 100.\n\nstart_after_history_item_id : typing.Optional[str]\n    After which ID to start fetching, use this parameter to paginate across a large collection of history items. In case this parameter is not provided history items will be fetched starting from the most recently created one ordered descending by their creation date.\n\nvoice_id : typing.Optional[str]\n    ID of the voice to be filtered for. You can use the [Get voices](/docs/api-reference/voices/search) endpoint list all the available voices.\n\nmodel_id : typing.Optional[str]\n    Search term used for filtering history items. If provided, source becomes required.\n\ndate_before_unix : typing.Optional[int]\n    Unix timestamp to filter history items before this date (exclusive).\n\ndate_after_unix : typing.Optional[int]\n    Unix timestamp to filter history items after this date (inclusive).\n\nsort_direction : typing.Optional[HistoryListRequestSortDirection]\n    Sort direction for the results.\n\nsearch : typing.Optional[str]\n    search term used for filtering\n\nsource : typing.Optional[HistoryListRequestSource]\n    Source of the generated history item\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[GetSpeechHistoryResponse]\n    Successful Response",
           "positional_params": [],
           "keyword_params": [
             {
@@ -11756,7 +12737,8 @@
                   "path": [
                     "tags"
                   ],
-                  "param": "tags"
+                  "param": "tags",
+                  "encode": "json"
                 },
                 {
                   "path": [
@@ -11788,7 +12770,7 @@
         },
         {
           "name": "compose",
-          "doc": "Compose a song from a prompt or a composition plan.\n\nParameters\n----------\noutput_format : typing.Optional[MusicComposeRequestOutputFormat]\n    Output format of the generated audio. Formatted as codec_sample_rate_bitrate. Use \"auto\" (the default) to let the API pick the best format for the selected model: mp3_44100_128 for v1 models and mp3_48000_192 for v2 models.\n\nprompt : typing.Optional[str]\n    A simple text prompt to generate a song from. Cannot be used in conjunction with `composition_plan`.\n\ncomposition_plan : typing.Optional[BodyComposeMusicV1MusicPostCompositionPlan]\n    A detailed composition plan to guide music generation. Cannot be used in conjunction with `prompt`.\n\nmusic_length_ms : typing.Optional[int]\n    The length of the song to generate in milliseconds. Used only in conjunction with `prompt`. Must be between 3000ms and 600000ms. Optional - if not provided, the model will choose a length based on the prompt.\n\nmodel_id : typing.Optional[BodyComposeMusicV1MusicPostModelId]\n    The model to use for the generation.\n\nseed : typing.Optional[int]\n    Random seed to initialize the music generation process. Providing the same seed with the same parameters can help achieve more consistent results, but exact reproducibility is not guaranteed and outputs may change across system updates. Cannot be used in conjunction with prompt.\n\nforce_instrumental : typing.Optional[bool]\n    If true, guarantees that the generated song will be instrumental. If false, the song may or may not be instrumental depending on the `prompt`. Can only be used with `prompt`.\n\nrespect_sections_durations : typing.Optional[bool]\n    Controls how strictly section durations in the `composition_plan` are enforced. Only used with `composition_plan` and only applies to `music_v1`; for `music_v2` section durations are always enforced and this is ignored. When false for `music_v1`, the model may adjust individual section durations for better quality and latency, while preserving the total song duration from the plan.\n\nstore_for_inpainting : typing.Optional[bool]\n    Whether to store the generated song for inpainting.\n\nsign_with_c_2_pa : typing.Optional[bool]\n    Whether to sign the generated song with C2PA. Applicable only for mp3 files.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration. You can pass in configuration such as `chunk_size`, and more to customize the request and response.\n\nReturns\n-------\ntyping.Iterator[HttpResponse[typing.Iterator[bytes]]]\n    The generated audio file in the format specified",
+          "doc": "Compose a song from a prompt or a composition plan.\n\nParameters\n----------\noutput_format : typing.Optional[MusicComposeRequestOutputFormat]\n    Output format of the generated audio. Formatted as codec_sample_rate_bitrate. Use \"auto\" (the default) to let the API pick the best format for the selected model: mp3_44100_128 for v1 models and mp3_48000_192 for v2 models.\n\nprompt : typing.Optional[str]\n    A simple text prompt to generate a song from. Cannot be used in conjunction with `composition_plan`.\n\ncomposition_plan : typing.Optional[BodyComposeMusicV1MusicPostCompositionPlan]\n    A detailed composition plan to guide music generation. Cannot be used in conjunction with `prompt`.\n\nmusic_length_ms : typing.Optional[int]\n    The length of the song to generate in milliseconds. Used only in conjunction with `prompt`. Must be between 3000ms and 600000ms. Optional - if not provided, the model will choose a length based on the prompt.\n\nmodel_id : typing.Optional[BodyComposeMusicV1MusicPostModelId]\n    The model to use for the generation.\n\nseed : typing.Optional[int]\n    Random seed to initialize the music generation process. Providing the same seed with the same parameters can help achieve more consistent results, but exact reproducibility is not guaranteed and outputs may change across system updates. Cannot be used in conjunction with prompt.\n\nforce_instrumental : typing.Optional[bool]\n    If true, guarantees that the generated song will be instrumental. If false, the song may or may not be instrumental depending on the `prompt`. Can only be used with `prompt`.\n\nfinetune_id : typing.Optional[str]\n    The ID of the finetune to use for the generation\n\nfinetune_strength : typing.Optional[float]\n    How strongly the finetune influences the generation. Defaults to 1.0 (full strength). Lower values soften the influence of the finetune, leaving more room for prompt-level steering. Only meaningful when `finetune_id` is also provided.\n\nrespect_sections_durations : typing.Optional[bool]\n    Controls how strictly section durations in the `composition_plan` are enforced. Only used with `composition_plan` and only applies to `music_v1`; for `music_v2` section durations are always enforced and this is ignored. When false for `music_v1`, the model may adjust individual section durations for better quality and latency, while preserving the total song duration from the plan.\n\nstore_for_inpainting : typing.Optional[bool]\n    Whether to store the generated song for inpainting.\n\nsign_with_c_2_pa : typing.Optional[bool]\n    Whether to sign the generated song with C2PA. Applicable only for mp3 files.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration. You can pass in configuration such as `chunk_size`, and more to customize the request and response.\n\nReturns\n-------\ntyping.Iterator[HttpResponse[typing.Iterator[bytes]]]\n    The generated audio file in the format specified",
           "positional_params": [],
           "keyword_params": [
             {
@@ -11823,6 +12805,16 @@
             },
             {
               "name": "force_instrumental",
+              "kind": "keyword",
+              "default": "__OMIT__"
+            },
+            {
+              "name": "finetune_id",
+              "kind": "keyword",
+              "default": "__OMIT__"
+            },
+            {
+              "name": "finetune_strength",
               "kind": "keyword",
               "default": "__OMIT__"
             },
@@ -11900,6 +12892,18 @@
                 },
                 {
                   "path": [
+                    "finetune_id"
+                  ],
+                  "param": "finetune_id"
+                },
+                {
+                  "path": [
+                    "finetune_strength"
+                  ],
+                  "param": "finetune_strength"
+                },
+                {
+                  "path": [
                     "respect_sections_durations"
                   ],
                   "param": "respect_sections_durations"
@@ -11929,7 +12933,7 @@
         },
         {
           "name": "compose_detailed",
-          "doc": "Compose a song from a prompt or a composition plan.\n\nParameters\n----------\noutput_format : typing.Optional[MusicComposeDetailedRequestOutputFormat]\n    Output format of the generated audio. Formatted as codec_sample_rate_bitrate. Use \"auto\" (the default) to let the API pick the best format for the selected model: mp3_44100_128 for v1 models and mp3_48000_192 for v2 models.\n\nprompt : typing.Optional[str]\n    A simple text prompt to generate a song from. Cannot be used in conjunction with `composition_plan`.\n\ncomposition_plan : typing.Optional[BodyComposeMusicWithADetailedResponseV1MusicDetailedPostCompositionPlan]\n    A detailed composition plan to guide music generation. Cannot be used in conjunction with `prompt`.\n\nmusic_length_ms : typing.Optional[int]\n    The length of the song to generate in milliseconds. Used only in conjunction with `prompt`. Must be between 3000ms and 600000ms. Optional - if not provided, the model will choose a length based on the prompt.\n\nmodel_id : typing.Optional[BodyComposeMusicWithADetailedResponseV1MusicDetailedPostModelId]\n    The model to use for the generation.\n\nseed : typing.Optional[int]\n    Random seed to initialize the music generation process. Providing the same seed with the same parameters can help achieve more consistent results, but exact reproducibility is not guaranteed and outputs may change across system updates. Cannot be used in conjunction with prompt.\n\nforce_instrumental : typing.Optional[bool]\n    If true, guarantees that the generated song will be instrumental. If false, the song may or may not be instrumental depending on the `prompt`. Can only be used with `prompt`.\n\nrespect_sections_durations : typing.Optional[bool]\n    Controls how strictly section durations in the `composition_plan` are enforced. Only used with `composition_plan` and only applies to `music_v1`; for `music_v2` section durations are always enforced and this is ignored. When false for `music_v1`, the model may adjust individual section durations for better quality and latency, while preserving the total song duration from the plan.\n\nstore_for_inpainting : typing.Optional[bool]\n    Whether to store the generated song for inpainting.\n\nwith_timestamps : typing.Optional[bool]\n    Whether to return the timestamps of the words in the generated song.\n\nsign_with_c_2_pa : typing.Optional[bool]\n    Whether to sign the generated song with C2PA. Applicable only for mp3 files.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration. You can pass in configuration such as `chunk_size`, and more to customize the request and response.\n\nReturns\n-------\ntyping.Iterator[HttpResponse[typing.Iterator[bytes]]]\n    Multipart/mixed response with JSON metadata and binary audio file",
+          "doc": "Compose a song from a prompt or a composition plan.\n\nParameters\n----------\noutput_format : typing.Optional[MusicComposeDetailedRequestOutputFormat]\n    Output format of the generated audio. Formatted as codec_sample_rate_bitrate. Use \"auto\" (the default) to let the API pick the best format for the selected model: mp3_44100_128 for v1 models and mp3_48000_192 for v2 models.\n\nprompt : typing.Optional[str]\n    A simple text prompt to generate a song from. Cannot be used in conjunction with `composition_plan`.\n\ncomposition_plan : typing.Optional[BodyComposeMusicWithADetailedResponseV1MusicDetailedPostCompositionPlan]\n    A detailed composition plan to guide music generation. Cannot be used in conjunction with `prompt`.\n\nmusic_length_ms : typing.Optional[int]\n    The length of the song to generate in milliseconds. Used only in conjunction with `prompt`. Must be between 3000ms and 600000ms. Optional - if not provided, the model will choose a length based on the prompt.\n\nmodel_id : typing.Optional[BodyComposeMusicWithADetailedResponseV1MusicDetailedPostModelId]\n    The model to use for the generation.\n\nseed : typing.Optional[int]\n    Random seed to initialize the music generation process. Providing the same seed with the same parameters can help achieve more consistent results, but exact reproducibility is not guaranteed and outputs may change across system updates. Cannot be used in conjunction with prompt.\n\nforce_instrumental : typing.Optional[bool]\n    If true, guarantees that the generated song will be instrumental. If false, the song may or may not be instrumental depending on the `prompt`. Can only be used with `prompt`.\n\nfinetune_id : typing.Optional[str]\n    The ID of the finetune to use for the generation\n\nfinetune_strength : typing.Optional[float]\n    How strongly the finetune influences the generation. Defaults to 1.0 (full strength). Lower values soften the influence of the finetune, leaving more room for prompt-level steering. Only meaningful when `finetune_id` is also provided.\n\nrespect_sections_durations : typing.Optional[bool]\n    Controls how strictly section durations in the `composition_plan` are enforced. Only used with `composition_plan` and only applies to `music_v1`; for `music_v2` section durations are always enforced and this is ignored. When false for `music_v1`, the model may adjust individual section durations for better quality and latency, while preserving the total song duration from the plan.\n\nstore_for_inpainting : typing.Optional[bool]\n    Whether to store the generated song for inpainting.\n\nwith_timestamps : typing.Optional[bool]\n    Whether to return the timestamps of the words in the generated song.\n\nsign_with_c_2_pa : typing.Optional[bool]\n    Whether to sign the generated song with C2PA. Applicable only for mp3 files.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration. You can pass in configuration such as `chunk_size`, and more to customize the request and response.\n\nReturns\n-------\ntyping.Iterator[HttpResponse[typing.Iterator[bytes]]]\n    Multipart/mixed response with JSON metadata and binary audio file",
           "positional_params": [],
           "keyword_params": [
             {
@@ -11964,6 +12968,16 @@
             },
             {
               "name": "force_instrumental",
+              "kind": "keyword",
+              "default": "__OMIT__"
+            },
+            {
+              "name": "finetune_id",
+              "kind": "keyword",
+              "default": "__OMIT__"
+            },
+            {
+              "name": "finetune_strength",
               "kind": "keyword",
               "default": "__OMIT__"
             },
@@ -12046,6 +13060,18 @@
                 },
                 {
                   "path": [
+                    "finetune_id"
+                  ],
+                  "param": "finetune_id"
+                },
+                {
+                  "path": [
+                    "finetune_strength"
+                  ],
+                  "param": "finetune_strength"
+                },
+                {
+                  "path": [
                     "respect_sections_durations"
                   ],
                   "param": "respect_sections_durations"
@@ -12080,8 +13106,8 @@
           }
         },
         {
-          "name": "stream",
-          "doc": "Stream a composed song from a prompt or a composition plan.\n\nParameters\n----------\noutput_format : typing.Optional[MusicStreamRequestOutputFormat]\n    Output format of the generated audio. Formatted as codec_sample_rate_bitrate. Use \"auto\" (the default) to let the API pick the best format for the selected model: mp3_44100_128 for v1 models and mp3_48000_192 for v2 models.\n\nprompt : typing.Optional[str]\n    A simple text prompt to generate a song from. Cannot be used in conjunction with `composition_plan`.\n\ncomposition_plan : typing.Optional[BodyStreamComposedMusicV1MusicStreamPostCompositionPlan]\n    A detailed composition plan to guide music generation. Cannot be used in conjunction with `prompt`.\n\nmusic_length_ms : typing.Optional[int]\n    The length of the song to generate in milliseconds. Used only in conjunction with `prompt`. Must be between 3000ms and 600000ms. Optional - if not provided, the model will choose a length based on the prompt.\n\nmodel_id : typing.Optional[BodyStreamComposedMusicV1MusicStreamPostModelId]\n    The model to use for the generation.\n\nseed : typing.Optional[int]\n    Random seed to initialize the music generation process. Providing the same seed with the same parameters can help achieve more consistent results, but exact reproducibility is not guaranteed and outputs may change across system updates. Cannot be used in conjunction with prompt.\n\nforce_instrumental : typing.Optional[bool]\n    If true, guarantees that the generated song will be instrumental. If false, the song may or may not be instrumental depending on the `prompt`. Can only be used with `prompt`.\n\nstore_for_inpainting : typing.Optional[bool]\n    Whether to store the generated song for inpainting.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration. You can pass in configuration such as `chunk_size`, and more to customize the request and response.\n\nReturns\n-------\ntyping.Iterator[HttpResponse[typing.Iterator[bytes]]]\n    Streaming audio data in the format specified",
+          "name": "compose_detailed_stream",
+          "doc": "Stream a song and its detailed metadata using Server-Sent Events (SSE).\n\nParameters\n----------\noutput_format : typing.Optional[MusicComposeDetailedStreamRequestOutputFormat]\n    Output format of the generated audio. Formatted as codec_sample_rate_bitrate. Use \"auto\" (the default) to let the API pick the best format for the selected model: mp3_44100_128 for v1 models and mp3_48000_192 for v2 models.\n\nprompt : typing.Optional[str]\n    A simple text prompt to generate a song from. Cannot be used in conjunction with `composition_plan`.\n\ncomposition_plan : typing.Optional[BodyStreamComposedMusicWithADetailedResponseV1MusicDetailedStreamPostCompositionPlan]\n    A detailed composition plan to guide music generation. Cannot be used in conjunction with `prompt`.\n\nmusic_length_ms : typing.Optional[int]\n    The length of the song to generate in milliseconds. Used only in conjunction with `prompt`. Must be between 3000ms and 600000ms. Optional - if not provided, the model will choose a length based on the prompt.\n\nmodel_id : typing.Optional[BodyStreamComposedMusicWithADetailedResponseV1MusicDetailedStreamPostModelId]\n    The model to use for the generation.\n\nseed : typing.Optional[int]\n    Random seed to initialize the music generation process. Providing the same seed with the same parameters can help achieve more consistent results, but exact reproducibility is not guaranteed and outputs may change across system updates. Cannot be used in conjunction with prompt.\n\nforce_instrumental : typing.Optional[bool]\n    If true, guarantees that the generated song will be instrumental. If false, the song may or may not be instrumental depending on the `prompt`. Can only be used with `prompt`.\n\nfinetune_id : typing.Optional[str]\n    The ID of the finetune to use for the generation\n\nfinetune_strength : typing.Optional[float]\n    How strongly the finetune influences the generation. Defaults to 1.0 (full strength). Lower values soften the influence of the finetune, leaving more room for prompt-level steering. Only meaningful when `finetune_id` is also provided.\n\nstore_for_inpainting : typing.Optional[bool]\n    Whether to store the generated song for inpainting.\n\nwith_timestamps : typing.Optional[bool]\n    Whether to return the timestamps of the words in the generated song.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nYields\n------\ntyping.Iterator[HttpResponse[typing.Iterator[str]]]\n    Server-Sent Events for composition plan, song metadata, audio chunks with optional word timestamps, and completion.",
           "positional_params": [],
           "keyword_params": [
             {
@@ -12116,6 +13142,168 @@
             },
             {
               "name": "force_instrumental",
+              "kind": "keyword",
+              "default": "__OMIT__"
+            },
+            {
+              "name": "finetune_id",
+              "kind": "keyword",
+              "default": "__OMIT__"
+            },
+            {
+              "name": "finetune_strength",
+              "kind": "keyword",
+              "default": "__OMIT__"
+            },
+            {
+              "name": "store_for_inpainting",
+              "kind": "keyword",
+              "default": "__OMIT__"
+            },
+            {
+              "name": "with_timestamps",
+              "kind": "keyword",
+              "default": "__OMIT__"
+            },
+            {
+              "name": "request_options",
+              "kind": "keyword",
+              "default": null
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "path": {
+              "template": "v1/music/detailed/stream",
+              "params": []
+            },
+            "query": [
+              {
+                "name": "output_format",
+                "param": "output_format"
+              }
+            ],
+            "json": {
+              "literal": null,
+              "assignments": [
+                {
+                  "path": [
+                    "prompt"
+                  ],
+                  "param": "prompt"
+                },
+                {
+                  "path": [
+                    "composition_plan"
+                  ],
+                  "param": "composition_plan"
+                },
+                {
+                  "path": [
+                    "music_length_ms"
+                  ],
+                  "param": "music_length_ms"
+                },
+                {
+                  "path": [
+                    "model_id"
+                  ],
+                  "param": "model_id"
+                },
+                {
+                  "path": [
+                    "seed"
+                  ],
+                  "param": "seed"
+                },
+                {
+                  "path": [
+                    "force_instrumental"
+                  ],
+                  "param": "force_instrumental"
+                },
+                {
+                  "path": [
+                    "finetune_id"
+                  ],
+                  "param": "finetune_id"
+                },
+                {
+                  "path": [
+                    "finetune_strength"
+                  ],
+                  "param": "finetune_strength"
+                },
+                {
+                  "path": [
+                    "store_for_inpainting"
+                  ],
+                  "param": "store_for_inpainting"
+                },
+                {
+                  "path": [
+                    "with_timestamps"
+                  ],
+                  "param": "with_timestamps"
+                }
+              ]
+            },
+            "form": null,
+            "files": [],
+            "headers": {
+              "content-type": "application/json"
+            },
+            "force_multipart": false,
+            "streaming": true
+          }
+        },
+        {
+          "name": "stream",
+          "doc": "Stream a composed song from a prompt or a composition plan.\n\nParameters\n----------\noutput_format : typing.Optional[MusicStreamRequestOutputFormat]\n    Output format of the generated audio. Formatted as codec_sample_rate_bitrate. Use \"auto\" (the default) to let the API pick the best format for the selected model: mp3_44100_128 for v1 models and mp3_48000_192 for v2 models.\n\nprompt : typing.Optional[str]\n    A simple text prompt to generate a song from. Cannot be used in conjunction with `composition_plan`.\n\ncomposition_plan : typing.Optional[BodyStreamComposedMusicV1MusicStreamPostCompositionPlan]\n    A detailed composition plan to guide music generation. Cannot be used in conjunction with `prompt`.\n\nmusic_length_ms : typing.Optional[int]\n    The length of the song to generate in milliseconds. Used only in conjunction with `prompt`. Must be between 3000ms and 600000ms. Optional - if not provided, the model will choose a length based on the prompt.\n\nmodel_id : typing.Optional[BodyStreamComposedMusicV1MusicStreamPostModelId]\n    The model to use for the generation.\n\nseed : typing.Optional[int]\n    Random seed to initialize the music generation process. Providing the same seed with the same parameters can help achieve more consistent results, but exact reproducibility is not guaranteed and outputs may change across system updates. Cannot be used in conjunction with prompt.\n\nforce_instrumental : typing.Optional[bool]\n    If true, guarantees that the generated song will be instrumental. If false, the song may or may not be instrumental depending on the `prompt`. Can only be used with `prompt`.\n\nfinetune_id : typing.Optional[str]\n    The ID of the finetune to use for the generation\n\nfinetune_strength : typing.Optional[float]\n    How strongly the finetune influences the generation. Defaults to 1.0 (full strength). Lower values soften the influence of the finetune, leaving more room for prompt-level steering. Only meaningful when `finetune_id` is also provided.\n\nstore_for_inpainting : typing.Optional[bool]\n    Whether to store the generated song for inpainting.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration. You can pass in configuration such as `chunk_size`, and more to customize the request and response.\n\nReturns\n-------\ntyping.Iterator[HttpResponse[typing.Iterator[bytes]]]\n    Streaming audio data in the format specified",
+          "positional_params": [],
+          "keyword_params": [
+            {
+              "name": "output_format",
+              "kind": "keyword",
+              "default": null
+            },
+            {
+              "name": "prompt",
+              "kind": "keyword",
+              "default": "__OMIT__"
+            },
+            {
+              "name": "composition_plan",
+              "kind": "keyword",
+              "default": "__OMIT__"
+            },
+            {
+              "name": "music_length_ms",
+              "kind": "keyword",
+              "default": "__OMIT__"
+            },
+            {
+              "name": "model_id",
+              "kind": "keyword",
+              "default": "__OMIT__"
+            },
+            {
+              "name": "seed",
+              "kind": "keyword",
+              "default": "__OMIT__"
+            },
+            {
+              "name": "force_instrumental",
+              "kind": "keyword",
+              "default": "__OMIT__"
+            },
+            {
+              "name": "finetune_id",
+              "kind": "keyword",
+              "default": "__OMIT__"
+            },
+            {
+              "name": "finetune_strength",
               "kind": "keyword",
               "default": "__OMIT__"
             },
@@ -12180,6 +13368,18 @@
                     "force_instrumental"
                   ],
                   "param": "force_instrumental"
+                },
+                {
+                  "path": [
+                    "finetune_id"
+                  ],
+                  "param": "finetune_id"
+                },
+                {
+                  "path": [
+                    "finetune_strength"
+                  ],
+                  "param": "finetune_strength"
                 },
                 {
                   "path": [
@@ -12406,6 +13606,343 @@
                         "model_id"
                       ],
                       "param": "model_id"
+                    }
+                  ]
+                },
+                "form": null,
+                "files": [],
+                "headers": {
+                  "content-type": "application/json"
+                },
+                "force_multipart": false,
+                "streaming": false
+              }
+            }
+          ],
+          "children": {}
+        },
+        "finetunes": {
+          "operations": [
+            {
+              "name": "list",
+              "doc": "List music finetunes accessible to you (your own, workspace-shared, and ElevenLabs-curated), with optional filtering, sorting, and cursor pagination.\n\nParameters\n----------\ncursor : typing.Optional[str]\n    Used for fetching the next page. Cursor is returned in the response.\n\npage_size : typing.Optional[int]\n    How many finetunes to return. Max 100, default 50.\n\nvisibility : typing.Optional[FinetuneVisibility]\n    Filter by visibility. 'private' returns private finetunes; 'workspace' returns workspace-shared finetunes; 'public' returns public finetunes, which are currently ElevenLabs curated finetunes. Omit to return all accessible finetunes.\n\ncreated_by : typing.Optional[FinetuneCreatedBy]\n    Filter by creator. 'self' returns finetunes you created; 'workspace' returns finetunes created by workspace teammates; 'elevenlabs' returns ElevenLabs curated finetunes. Omit to return finetunes from all creators.\n\nsort : typing.Optional[FinetunesListRequestSort]\n    Sort by field (created_at or name)\n\nsort_direction : typing.Optional[FinetunesListRequestSortDirection]\n    Sort direction (asc or desc)\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[MusicFinetunePageResponseModel]\n    Successful Response",
+              "positional_params": [],
+              "keyword_params": [
+                {
+                  "name": "cursor",
+                  "kind": "keyword",
+                  "default": null
+                },
+                {
+                  "name": "page_size",
+                  "kind": "keyword",
+                  "default": null
+                },
+                {
+                  "name": "visibility",
+                  "kind": "keyword",
+                  "default": null
+                },
+                {
+                  "name": "created_by",
+                  "kind": "keyword",
+                  "default": null
+                },
+                {
+                  "name": "sort",
+                  "kind": "keyword",
+                  "default": null
+                },
+                {
+                  "name": "sort_direction",
+                  "kind": "keyword",
+                  "default": null
+                },
+                {
+                  "name": "request_options",
+                  "kind": "keyword",
+                  "default": null
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "path": {
+                  "template": "v1/music/finetunes",
+                  "params": []
+                },
+                "query": [
+                  {
+                    "name": "cursor",
+                    "param": "cursor"
+                  },
+                  {
+                    "name": "page_size",
+                    "param": "page_size"
+                  },
+                  {
+                    "name": "visibility",
+                    "param": "visibility"
+                  },
+                  {
+                    "name": "created_by",
+                    "param": "created_by"
+                  },
+                  {
+                    "name": "sort",
+                    "param": "sort"
+                  },
+                  {
+                    "name": "sort_direction",
+                    "param": "sort_direction"
+                  }
+                ],
+                "json": null,
+                "form": null,
+                "files": [],
+                "headers": {},
+                "force_multipart": false,
+                "streaming": false
+              }
+            },
+            {
+              "name": "create",
+              "doc": "Create a new music finetune\n\nParameters\n----------\nname : str\n    Name for the finetune (5-200 characters).\n\nprimary_genre : str\n    Primary musical genre of the finetune.\n\nfiles : typing.Optional[typing.List[core.File]]\n    See core.File for more documentation\n\ntags : typing.Optional[typing.List[str]]\n    Tags to associate with the finetune.\n\nvisibility : typing.Optional[FinetunesCreateRequestVisibility]\n    Finetune visibility. Only 'private' and 'workspace' can be set.\n\nmodel_id : typing.Optional[FinetunesCreateRequestModelId]\n    The model to create a finetune for.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[MusicFinetuneResponseModel]\n    Successful Response",
+              "positional_params": [],
+              "keyword_params": [
+                {
+                  "name": "name",
+                  "kind": "keyword",
+                  "default": null
+                },
+                {
+                  "name": "primary_genre",
+                  "kind": "keyword",
+                  "default": null
+                },
+                {
+                  "name": "files",
+                  "kind": "keyword",
+                  "default": "__OMIT__"
+                },
+                {
+                  "name": "tags",
+                  "kind": "keyword",
+                  "default": "__OMIT__"
+                },
+                {
+                  "name": "visibility",
+                  "kind": "keyword",
+                  "default": "__OMIT__"
+                },
+                {
+                  "name": "model_id",
+                  "kind": "keyword",
+                  "default": "__OMIT__"
+                },
+                {
+                  "name": "request_options",
+                  "kind": "keyword",
+                  "default": null
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "path": {
+                  "template": "v1/music/finetunes",
+                  "params": []
+                },
+                "query": [],
+                "json": null,
+                "form": {
+                  "literal": null,
+                  "assignments": [
+                    {
+                      "path": [
+                        "name"
+                      ],
+                      "param": "name"
+                    },
+                    {
+                      "path": [
+                        "primary_genre"
+                      ],
+                      "param": "primary_genre"
+                    },
+                    {
+                      "path": [
+                        "tags"
+                      ],
+                      "param": "tags",
+                      "encode": "json"
+                    },
+                    {
+                      "path": [
+                        "visibility"
+                      ],
+                      "param": "visibility"
+                    },
+                    {
+                      "path": [
+                        "model_id"
+                      ],
+                      "param": "model_id"
+                    }
+                  ]
+                },
+                "files": [
+                  {
+                    "name": "files",
+                    "value": {
+                      "type": "param",
+                      "name": "files"
+                    }
+                  }
+                ],
+                "headers": {},
+                "force_multipart": true,
+                "streaming": false
+              }
+            },
+            {
+              "name": "get",
+              "doc": "Get a music finetune.\n\nParameters\n----------\nfinetune_id : str\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[MusicFinetuneResponseModel]\n    Successful Response",
+              "positional_params": [
+                {
+                  "name": "finetune_id",
+                  "kind": "positional",
+                  "default": null
+                }
+              ],
+              "keyword_params": [
+                {
+                  "name": "request_options",
+                  "kind": "keyword",
+                  "default": null
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "path": {
+                  "template": "v1/music/finetunes/{finetune_id}",
+                  "params": [
+                    "finetune_id"
+                  ]
+                },
+                "query": [],
+                "json": null,
+                "form": null,
+                "files": [],
+                "headers": {},
+                "force_multipart": false,
+                "streaming": false
+              }
+            },
+            {
+              "name": "delete",
+              "doc": "Delete a music finetune\n\nParameters\n----------\nfinetune_id : str\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[MusicFinetuneResponseModel]\n    Successful Response",
+              "positional_params": [
+                {
+                  "name": "finetune_id",
+                  "kind": "positional",
+                  "default": null
+                }
+              ],
+              "keyword_params": [
+                {
+                  "name": "request_options",
+                  "kind": "keyword",
+                  "default": null
+                }
+              ],
+              "request": {
+                "method": "DELETE",
+                "path": {
+                  "template": "v1/music/finetunes/{finetune_id}",
+                  "params": [
+                    "finetune_id"
+                  ]
+                },
+                "query": [],
+                "json": null,
+                "form": null,
+                "files": [],
+                "headers": {},
+                "force_multipart": false,
+                "streaming": false
+              }
+            },
+            {
+              "name": "update",
+              "doc": "Update a music finetune.\n\nParameters\n----------\nfinetune_id : str\n\nname : typing.Optional[str]\n    Updated name for the finetune.\n\ntags : typing.Optional[typing.Sequence[str]]\n    Replacement set of tags.\n\nprimary_genre : typing.Optional[str]\n    Updated primary musical genre.\n\nvisibility : typing.Optional[UpdateMusicFinetuneRequestModelVisibility]\n    Finetune visibility. Only 'private' and 'workspace' can be set.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[MusicFinetuneResponseModel]\n    Successful Response",
+              "positional_params": [
+                {
+                  "name": "finetune_id",
+                  "kind": "positional",
+                  "default": null
+                }
+              ],
+              "keyword_params": [
+                {
+                  "name": "name",
+                  "kind": "keyword",
+                  "default": "__OMIT__"
+                },
+                {
+                  "name": "tags",
+                  "kind": "keyword",
+                  "default": "__OMIT__"
+                },
+                {
+                  "name": "primary_genre",
+                  "kind": "keyword",
+                  "default": "__OMIT__"
+                },
+                {
+                  "name": "visibility",
+                  "kind": "keyword",
+                  "default": "__OMIT__"
+                },
+                {
+                  "name": "request_options",
+                  "kind": "keyword",
+                  "default": null
+                }
+              ],
+              "request": {
+                "method": "PATCH",
+                "path": {
+                  "template": "v1/music/finetunes/{finetune_id}",
+                  "params": [
+                    "finetune_id"
+                  ]
+                },
+                "query": [],
+                "json": {
+                  "literal": null,
+                  "assignments": [
+                    {
+                      "path": [
+                        "name"
+                      ],
+                      "param": "name"
+                    },
+                    {
+                      "path": [
+                        "tags"
+                      ],
+                      "param": "tags"
+                    },
+                    {
+                      "path": [
+                        "primary_genre"
+                      ],
+                      "param": "primary_genre"
+                    },
+                    {
+                      "path": [
+                        "visibility"
+                      ],
+                      "param": "visibility"
                     }
                   ]
                 },
@@ -12982,7 +14519,7 @@
       "operations": [
         {
           "name": "create_from_file",
-          "doc": "Creates a new pronunciation dictionary from a lexicon .PLS file\n\nParameters\n----------\nname : str\n    The name of the pronunciation dictionary, used for identification only.\n\nfile : typing.Optional[core.File]\n    See core.File for more documentation\n\ndescription : typing.Optional[str]\n    A description of the pronunciation dictionary, used for identification only.\n\nworkspace_access : typing.Optional[PronunciationDictionariesCreateFromFileRequestWorkspaceAccess]\n    Should be one of 'admin', 'editor' or 'viewer'. If not provided, defaults to no access.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[AddPronunciationDictionaryResponseModel]\n    Successful Response",
+          "doc": "Creates a new pronunciation dictionary from a lexicon .PLS file\n\nParameters\n----------\nname : str\n    The name of the pronunciation dictionary, used for identification only.\n\nfile : typing.Optional[core.File]\n    See core.File for more documentation\n\ndescription : typing.Optional[str]\n    A description of the pronunciation dictionary, used for identification only.\n\nworkspace_access : typing.Optional[AddPronunciationDictionaryRequestWorkspaceAccess]\n    Should be one of 'admin', 'editor' or 'viewer'. If not provided, defaults to no access.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[AddPronunciationDictionaryResponseModel]\n    Successful Response",
           "positional_params": [],
           "keyword_params": [
             {
@@ -13270,7 +14807,7 @@
         },
         {
           "name": "list",
-          "doc": "Get a list of the pronunciation dictionaries you have access to and their metadata\n\nParameters\n----------\ncursor : typing.Optional[str]\n    Used for fetching next page. Cursor is returned in the response.\n\npage_size : typing.Optional[int]\n    How many pronunciation dictionaries to return at maximum. Can not exceed 100, defaults to 30.\n\nsort : typing.Optional[PronunciationDictionariesListRequestSort]\n    Which field to sort by, one of 'created_at_unix' or 'name'.\n\nsort_direction : typing.Optional[str]\n    Which direction to sort the voices in. 'ascending' or 'descending'.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[GetPronunciationDictionariesMetadataResponseModel]\n    Successful Response",
+          "doc": "Get a list of the pronunciation dictionaries you have access to and their metadata\n\nParameters\n----------\ncursor : typing.Optional[str]\n    Used for fetching next page. Cursor is returned in the response.\n\npage_size : typing.Optional[int]\n    How many pronunciation dictionaries to return at maximum. Can not exceed 100, defaults to 30.\n\nsort : typing.Optional[PronunciationDictionariesListRequestSort]\n    Which field to sort by, one of 'created_at_unix' or 'name'.\n\nsort_direction : typing.Optional[str]\n    Which direction to sort the voices in. 'ascending' or 'descending'.\n\ninclude_archived : typing.Optional[bool]\n    Whether to include archived pronunciation dictionaries in the response.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[GetPronunciationDictionariesMetadataResponseModel]\n    Successful Response",
           "positional_params": [],
           "keyword_params": [
             {
@@ -13290,6 +14827,11 @@
             },
             {
               "name": "sort_direction",
+              "kind": "keyword",
+              "default": null
+            },
+            {
+              "name": "include_archived",
               "kind": "keyword",
               "default": null
             },
@@ -13321,6 +14863,10 @@
               {
                 "name": "sort_direction",
                 "param": "sort_direction"
+              },
+              {
+                "name": "include_archived",
+                "param": "include_archived"
               }
             ],
             "json": null,
@@ -13565,6 +15111,60 @@
             "force_multipart": false,
             "streaming": false
           }
+        },
+        {
+          "name": "create",
+          "doc": "Create a new service account in the workspace. By default, a workspace can have up to 20 service accounts. Enterprise customers may request an increase to this limit, up to 100.\n\nParameters\n----------\nname : str\n\ndefault_sharing_groups : typing.Optional[typing.Sequence[DefaultSharingGroupConfig]]\n    List of groups with their permission levels to share with by default. Each entry should specify a group_id and a permission_level (admin, editor, or viewer).\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[WorkspaceCreateServiceAccountResponseModel]\n    Successful Response",
+          "positional_params": [],
+          "keyword_params": [
+            {
+              "name": "name",
+              "kind": "keyword",
+              "default": null
+            },
+            {
+              "name": "default_sharing_groups",
+              "kind": "keyword",
+              "default": "__OMIT__"
+            },
+            {
+              "name": "request_options",
+              "kind": "keyword",
+              "default": null
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "path": {
+              "template": "v1/service-accounts",
+              "params": []
+            },
+            "query": [],
+            "json": {
+              "literal": null,
+              "assignments": [
+                {
+                  "path": [
+                    "name"
+                  ],
+                  "param": "name"
+                },
+                {
+                  "path": [
+                    "default_sharing_groups"
+                  ],
+                  "param": "default_sharing_groups"
+                }
+              ]
+            },
+            "form": null,
+            "files": [],
+            "headers": {
+              "content-type": "application/json"
+            },
+            "force_multipart": false,
+            "streaming": false
+          }
         }
       ],
       "children": {
@@ -13606,7 +15206,7 @@
             },
             {
               "name": "create",
-              "doc": "Create a new API key for a service account\n\nParameters\n----------\nservice_account_user_id : str\n\nname : str\n\npermissions : BodyCreateServiceAccountApiKeyV1ServiceAccountsServiceAccountUserIdApiKeysPostPermissions\n    The permissions of the XI API.\n\ncharacter_limit : typing.Optional[int]\n    The character limit of the XI API key. If provided this will limit the usage of this api key to n characters per month where n is the chosen value. Requests that incur charges will fail after reaching this monthly limit.\n\nallowed_ips : typing.Optional[typing.Sequence[str]]\n    List of IP addresses or CIDR ranges allowed to use this API key. Each entry may be a CIDR range (e.g. '10.0.0.0/24') or a bare IP address (normalized to /32 or /128). On create, omit or pass null to allow all IPs. On update, omit to leave the whitelist unchanged, or pass \"clear\" to remove it.\n\nthird_party_disable_allowed : typing.Optional[bool]\n    Whether the holder of this key may disable it via the self-disable endpoint. On create, omit or pass null to use the workspace's default (enabled for non-Enterprise plans, disabled for Enterprise plans). On update, omit to leave it unchanged, or pass \"clear\" to reset it to the workspace default. Only honored for workspaces with self-disable access enabled.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[WorkspaceCreateApiKeyResponseModel]\n    Successful Response",
+              "doc": "Create a new API key for a service account\n\nParameters\n----------\nservice_account_user_id : str\n\nname : str\n\npermissions : BodyCreateServiceAccountApiKeyV1ServiceAccountsServiceAccountUserIdApiKeysPostPermissions\n    The permissions of the XI API.\n\ncharacter_limit : typing.Optional[int]\n    The character limit of the XI API key. If provided this will limit the usage of this api key to n characters per month where n is the chosen value. Requests that incur charges will fail after reaching this monthly limit.\n\nallowed_ips : typing.Optional[typing.Sequence[str]]\n    List of IP addresses or CIDR ranges allowed to use this API key. Each entry may be a CIDR range (e.g. '10.0.0.0/24') or a bare IP address (normalized to /32 or /128). On create, omit or pass null to allow all IPs. On update, omit to leave the allowlist unchanged, or pass \"clear\" to remove it.\n\nthird_party_disable_allowed : typing.Optional[bool]\n    Whether the holder of this key may disable it via the self-disable endpoint. On create, omit or pass null to use the workspace's default (enabled for non-Enterprise plans, disabled for Enterprise plans). On update, omit to leave it unchanged, or pass \"clear\" to reset it to the workspace default. Only honored for workspaces with self-disable access enabled.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[WorkspaceCreateApiKeyResponseModel]\n    Successful Response",
               "positional_params": [
                 {
                   "name": "service_account_user_id",
@@ -13741,7 +15341,7 @@
             },
             {
               "name": "update",
-              "doc": "Update an existing API key for a service account\n\nParameters\n----------\nservice_account_user_id : str\n\napi_key_id : str\n\nis_enabled : typing.Optional[BodyEditServiceAccountApiKeyV1ServiceAccountsServiceAccountUserIdApiKeysApiKeyIdPatchIsEnabled]\n    Whether to enable or disable the API key.\n\nname : typing.Optional[str]\n    The name of the XI API key to use (used for identification purposes only).\n\npermissions : typing.Optional[BodyEditServiceAccountApiKeyV1ServiceAccountsServiceAccountUserIdApiKeysApiKeyIdPatchPermissions]\n    The permissions of the XI API.\n\ncharacter_limit : typing.Optional[BodyEditServiceAccountApiKeyV1ServiceAccountsServiceAccountUserIdApiKeysApiKeyIdPatchCharacterLimit]\n    The character limit of the XI API key. If provided this will limit the usage of this api key to n characters per month where n is the chosen value. Requests that incur charges will fail after reaching this monthly limit.\n\nallowed_ips : typing.Optional[BodyEditServiceAccountApiKeyV1ServiceAccountsServiceAccountUserIdApiKeysApiKeyIdPatchAllowedIps]\n    List of IP addresses or CIDR ranges allowed to use this API key. Each entry may be a CIDR range (e.g. '10.0.0.0/24') or a bare IP address (normalized to /32 or /128). On create, omit or pass null to allow all IPs. On update, omit to leave the whitelist unchanged, or pass \"clear\" to remove it.\n\nthird_party_disable_allowed : typing.Optional[BodyEditServiceAccountApiKeyV1ServiceAccountsServiceAccountUserIdApiKeysApiKeyIdPatchThirdPartyDisableAllowed]\n    Whether the holder of this key may disable it via the self-disable endpoint. On create, omit or pass null to use the workspace's default (enabled for non-Enterprise plans, disabled for Enterprise plans). On update, omit to leave it unchanged, or pass \"clear\" to reset it to the workspace default. Only honored for workspaces with self-disable access enabled.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[typing.Any]\n    Successful Response",
+              "doc": "Update an existing API key for a service account\n\nParameters\n----------\nservice_account_user_id : str\n\napi_key_id : str\n\nis_enabled : typing.Optional[BodyEditServiceAccountApiKeyV1ServiceAccountsServiceAccountUserIdApiKeysApiKeyIdPatchIsEnabled]\n    Whether to enable or disable the API key.\n\nname : typing.Optional[str]\n    The name of the XI API key to use (used for identification purposes only).\n\npermissions : typing.Optional[BodyEditServiceAccountApiKeyV1ServiceAccountsServiceAccountUserIdApiKeysApiKeyIdPatchPermissions]\n    The permissions of the XI API.\n\ncharacter_limit : typing.Optional[BodyEditServiceAccountApiKeyV1ServiceAccountsServiceAccountUserIdApiKeysApiKeyIdPatchCharacterLimit]\n    The character limit of the XI API key. If provided this will limit the usage of this api key to n characters per month where n is the chosen value. Requests that incur charges will fail after reaching this monthly limit.\n\nallowed_ips : typing.Optional[BodyEditServiceAccountApiKeyV1ServiceAccountsServiceAccountUserIdApiKeysApiKeyIdPatchAllowedIps]\n    List of IP addresses or CIDR ranges allowed to use this API key. Each entry may be a CIDR range (e.g. '10.0.0.0/24') or a bare IP address (normalized to /32 or /128). On create, omit or pass null to allow all IPs. On update, omit to leave the allowlist unchanged, or pass \"clear\" to remove it.\n\nthird_party_disable_allowed : typing.Optional[BodyEditServiceAccountApiKeyV1ServiceAccountsServiceAccountUserIdApiKeysApiKeyIdPatchThirdPartyDisableAllowed]\n    Whether the holder of this key may disable it via the self-disable endpoint. On create, omit or pass null to use the workspace's default (enabled for non-Enterprise plans, disabled for Enterprise plans). On update, omit to leave it unchanged, or pass \"clear\" to reset it to the workspace default. Only honored for workspaces with self-disable access enabled.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[typing.Any]\n    Successful Response",
               "positional_params": [
                 {
                   "name": "service_account_user_id",
@@ -14308,7 +15908,7 @@
       "operations": [
         {
           "name": "convert",
-          "doc": "Transform audio from one voice to another. Maintain full control over emotion, timing and delivery.\n\nParameters\n----------\nvoice_id : str\n    ID of the voice to be used. Use the [Get voices](/docs/api-reference/voices/search) endpoint list all the available voices.\n\naudio : core.File\n    See core.File for more documentation\n\nenable_logging : typing.Optional[bool]\n    When enable_logging is set to false zero retention mode will be used for the request. This will mean history features are unavailable for this request, including request stitching. Zero retention mode may only be used by enterprise customers.\n\noptimize_streaming_latency : typing.Optional[int]\n    You can turn on latency optimizations at some cost of quality. The best possible final latency varies by model. Possible values:\n    0 - default mode (no latency optimizations)\n    1 - normal latency optimizations (about 50% of possible latency improvement of option 3)\n    2 - strong latency optimizations (about 75% of possible latency improvement of option 3)\n    3 - max latency optimizations\n    4 - max latency optimizations, but also with text normalizer turned off for even more latency savings (best latency, but can mispronounce eg numbers and dates).\n\n    Defaults to None.\n\noutput_format : typing.Optional[SpeechToSpeechConvertRequestOutputFormat]\n    Output format of the generated audio. Formatted as codec_sample_rate_bitrate. So an mp3 with 22.05kHz sample rate at 32kbs is represented as mp3_22050_32. MP3 with 192kbps bitrate requires you to be subscribed to Creator tier or above. PCM and WAV formats with 44.1kHz sample rate requires you to be subscribed to Pro tier or above. Note that the \u03bc-law format (sometimes written mu-law, often approximated as u-law) is commonly used for Twilio audio inputs.\n\nmodel_id : typing.Optional[str]\n    Identifier of the model that will be used, you can query them using GET /v1/models. The model needs to have support for speech to speech, you can check this using the can_do_voice_conversion property.\n\nvoice_settings : typing.Optional[str]\n    Voice settings overriding stored settings for the given voice. They are applied only on the given request. Needs to be send as a JSON encoded string.\n\nseed : typing.Optional[int]\n    If specified, our system will make a best effort to sample deterministically, such that repeated requests with the same seed and parameters should return the same result. Determinism is not guaranteed. Must be integer between 0 and 4294967295.\n\nremove_background_noise : typing.Optional[bool]\n    If set, will remove the background noise from your audio input using our audio isolation model. Only applies to Voice Changer.\n\nfile_format : typing.Optional[SpeechToSpeechConvertRequestFileFormat]\n    The format of input audio. Options are 'pcm_s16le_16' or 'other' For `pcm_s16le_16`, the input audio must be 16-bit PCM at a 16kHz sample rate, single channel (mono), and little-endian byte order. Latency will be lower than with passing an encoded waveform.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration. You can pass in configuration such as `chunk_size`, and more to customize the request and response.\n\nReturns\n-------\ntyping.Iterator[HttpResponse[typing.Iterator[bytes]]]\n    The generated audio file",
+          "doc": "Transform audio from one voice to another. Maintain full control over emotion, timing and delivery.\n\nParameters\n----------\nvoice_id : str\n    ID of the voice to be used. Use the [Get voices](/docs/api-reference/voices/search) endpoint list all the available voices.\n\naudio : core.File\n    See core.File for more documentation\n\nenable_logging : typing.Optional[bool]\n    When enable_logging is set to false zero retention mode will be used for the request. This will mean history features are unavailable for this request, including request stitching. Zero retention mode may only be used by enterprise customers.\n\noptimize_streaming_latency : typing.Optional[int]\n    You can turn on latency optimizations at some cost of quality. The best possible final latency varies by model. Possible values:\n    0 - default mode (no latency optimizations)\n    1 - normal latency optimizations (about 50% of possible latency improvement of option 3)\n    2 - strong latency optimizations (about 75% of possible latency improvement of option 3)\n    3 - max latency optimizations\n    4 - max latency optimizations, but also with text normalizer turned off for even more latency savings (best latency, but can mispronounce eg numbers and dates).\n\n    Defaults to None.\n\noutput_format : typing.Optional[SpeechToSpeechConvertRequestOutputFormat]\n    Output format of the generated audio. Formatted as codec_sample_rate_bitrate. So an mp3 with 22.05kHz sample rate at 32kbs is represented as mp3_22050_32. MP3 with 192kbps bitrate requires you to be subscribed to Creator tier or above. PCM and WAV formats with 44.1kHz sample rate requires you to be subscribed to Pro tier or above. Note that the \u03bc-law format (sometimes written mu-law, often approximated as u-law) is commonly used for Twilio audio inputs.\n\nmodel_id : typing.Optional[str]\n    Identifier of the model that will be used, you can query them using GET /v1/models. The model needs to have support for speech to speech, you can check this using the can_do_voice_conversion property.\n\nvoice_settings : typing.Optional[str]\n    Voice settings overriding stored settings for the given voice. They are applied only on the given request. Needs to be send as a JSON encoded string.\n\nseed : typing.Optional[int]\n    If specified, our system will make a best effort to sample deterministically, such that repeated requests with the same seed and parameters should return the same result. Determinism is not guaranteed. Must be integer between 0 and 4294967295.\n\nremove_background_noise : typing.Optional[bool]\n    If set, will remove the background noise from your audio input using our audio isolation model. Only applies to Voice Changer.\n\nfile_format : typing.Optional[SpeechToSpeechRequestFileFormat]\n    The format of input audio. Options are 'pcm_s16le_16' or 'other' For `pcm_s16le_16`, the input audio must be 16-bit PCM at a 16kHz sample rate, single channel (mono), and little-endian byte order. Latency will be lower than with passing an encoded waveform.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration. You can pass in configuration such as `chunk_size`, and more to customize the request and response.\n\nReturns\n-------\ntyping.Iterator[HttpResponse[typing.Iterator[bytes]]]\n    The generated audio file",
           "positional_params": [
             {
               "name": "voice_id",
@@ -14581,11 +16181,16 @@
       "operations": [
         {
           "name": "convert",
-          "doc": "Transcribe an audio or video file. If webhook is set to true, the request will be processed asynchronously and results sent to configured webhooks. When use_multi_channel is true and the provided audio has multiple channels, a 'transcripts' object with separate transcripts for each channel is returned; set multichannel_output_style='combined' to instead receive a single transcript with all channels merged and sorted by time. Otherwise, returns a single transcript. The optional webhook_metadata parameter allows you to attach custom data that will be included in webhook responses for request correlation and tracking.\n\nParameters\n----------\nmodel_id : SpeechToTextConvertRequestModelId\n    The ID of the model to use for transcription.\n\nenable_logging : typing.Optional[bool]\n    When enable_logging is set to false zero retention mode will be used for the request. This will mean log and transcript storage features are unavailable for this request. Zero retention mode may only be used by enterprise customers.\n\nfile : typing.Optional[core.File]\n    See core.File for more documentation\n\nlanguage_code : typing.Optional[str]\n    An ISO-639-1 or ISO-639-3 language_code corresponding to the language of the audio file. Can sometimes improve transcription performance if known beforehand. Defaults to null, in this case the language is predicted automatically.\n\ntag_audio_events : typing.Optional[bool]\n    Whether to tag audio events like (laughter), (footsteps), etc. in the transcription.\n\nnum_speakers : typing.Optional[int]\n    The maximum amount of speakers talking in the uploaded file. Can help with predicting who speaks when. The maximum amount of speakers that can be predicted is 32. Defaults to null, in this case the amount of speakers is set to the maximum value the model supports.\n\ntimestamps_granularity : typing.Optional[SpeechToTextConvertRequestTimestampsGranularity]\n    The granularity of the timestamps in the transcription. 'word' provides word-level timestamps and 'character' provides character-level timestamps per word.\n\ndiarize : typing.Optional[bool]\n    Whether to annotate which speaker is currently talking in the uploaded file.\n\ndiarization_threshold : typing.Optional[float]\n    Diarization threshold to apply during speaker diarization. A higher value means there will be a lower chance of one speaker being diarized as two different speakers but also a higher chance of two different speakers being diarized as one speaker (less total speakers predicted). A low value means there will be a higher chance of one speaker being diarized as two different speakers but also a lower chance of two different speakers being diarized as one speaker (more total speakers predicted). Can only be set when diarize=True and num_speakers=None. Defaults to None, in which case we will choose a threshold based on the model_id (0.22 usually).\n\nadditional_formats : typing.Optional[AdditionalFormats]\n    A list of additional formats to export the transcript to.\n\nfile_format : typing.Optional[SpeechToTextConvertRequestFileFormat]\n    The format of input audio. Options are 'pcm_s16le_16' or 'other' For `pcm_s16le_16`, the input audio must be 16-bit PCM at a 16kHz sample rate, single channel (mono), and little-endian byte order. Latency will be lower than with passing an encoded waveform.\n\ncloud_storage_url : typing.Optional[str]\n    [Deprecated] This parameter is deprecated and will be removed in the future. Use 'source_url' instead.The HTTPS URL of the file to transcribe. Exactly one of the file or cloud_storage_url parameters must be provided. The file must be accessible via HTTPS and the file size must be less than 2GB. Any valid HTTPS URL is accepted, including URLs from cloud storage providers (AWS S3, Google Cloud Storage, Cloudflare R2, etc.), CDNs, or any other HTTPS source. URLs can be pre-signed or include authentication tokens in query parameters.\n\nsource_url : typing.Optional[str]\n    The URL of an audio or video file to transcribe. Supports hosted video or audio files, YouTube video URLs, TikTok video URLs, and other video hosting services.\n\nwebhook : typing.Optional[bool]\n    Whether to send the transcription result to configured speech-to-text webhooks.  If set the request will return early without the transcription, which will be delivered later via webhook.\n\nwebhook_id : typing.Optional[str]\n    Optional specific webhook ID to send the transcription result to. Only valid when webhook is set to true. If not provided, transcription will be sent to all configured speech-to-text webhooks.\n\ntemperature : typing.Optional[float]\n    Controls the randomness of the transcription output. Accepts values between 0.0 and 2.0, where higher values result in more diverse and less deterministic results. If omitted, we will use a temperature based on the model you selected which is usually 0.\n\nseed : typing.Optional[int]\n    If specified, our system will make a best effort to sample deterministically, such that repeated requests with the same seed and parameters should return the same result. Determinism is not guaranteed. Must be an integer between 0 and 2147483647.\n\nuse_multi_channel : typing.Optional[bool]\n    Whether the audio file contains multiple channels where each channel contains a single speaker. When enabled, each channel is transcribed independently. By default a separate transcript is returned per channel; set multichannel_output_style='combined' to instead receive a single transcript with all channels merged and sorted by time. Each word in the response includes a 'channel_index' field indicating which channel it was spoken on. A maximum of 5 channels is supported. Each channel is billed independently at the full audio duration, so cost scales linearly with the number of channels.\n\nmultichannel_output_style : typing.Optional[SpeechToTextConvertRequestMultichannelOutputStyle]\n    Controls the response shape when use_multi_channel is enabled. 'separate' (default) returns one transcript per channel under 'transcripts'. 'combined' merges all channels into a single transcript whose words are sorted by start time, each carrying a 'channel_index' - matching the single-channel response shape. 'combined' requires timestamps (timestamps_granularity must not be 'none') and does not support entity detection or redaction.\n\nwebhook_metadata : typing.Optional[SpeechToTextConvertRequestWebhookMetadata]\n    Optional metadata to be included in the webhook response. This should be a JSON string representing an object with a maximum depth of 2 levels and maximum size of 16KB. Useful for tracking internal IDs, job references, or other contextual information.\n\nentity_detection : typing.Optional[SpeechToTextConvertRequestEntityDetection]\n    Detect entities in the transcript. Can be 'all' to detect all entities, a single entity type or category string, or a list of entity types/categories. Categories include 'pii', 'phi', 'pci', 'other', 'offensive_language'. When enabled, detected entities will be returned in the 'entities' field with their text, type, and character positions. Usage of this parameter will incur an additional 30% surcharge on the base transcription cost.\n\nno_verbatim : typing.Optional[bool]\n    If true, the transcription will not have any filler words, false starts and non-speech sounds. Only supported with scribe_v2 model.\n\nuse_speaker_library : typing.Optional[bool]\n    Whether to use the speaker library for identifying known speakers during diarization. When enabled and diarize is true, detected speakers will be matched against registered speakers in the workspace's speaker library.\n\ndetect_speaker_roles : typing.Optional[bool]\n    Whether to detect speaker roles (agent vs customer). Requires diarize=true. Cannot be used with use_multi_channel=true. When enabled, speaker_id values will be 'agent' and 'customer' instead of 'speaker_0', 'speaker_1', etc. Usage incurs an additional 10% surcharge on base transcription cost.\n\nentity_redaction : typing.Optional[SpeechToTextConvertRequestEntityRedaction]\n    Redact entities from the transcript text. Accepts the same format as entity_detection: 'all', a category ('pii', 'phi'), or specific entity types. Must be a subset of entity_detection. When redaction is enabled, the entities field will not be returned. Usage of this parameter will incur an additional 30% surcharge on the base transcription cost.\n\nentity_redaction_mode : typing.Optional[str]\n    How to format redacted entities. 'redacted' replaces with {REDACTED}, 'entity_type' replaces with {ENTITY_TYPE}, 'enumerated_entity_type' replaces with {ENTITY_TYPE_N} where N enumerates each occurrence. Only used when entity_redaction is set.\n\nkeyterms : typing.Optional[typing.List[str]]\n    A list of keyterms to bias the transcription towards.           The keyterms are words or phrases you want the model to recognise more accurately.           The number of keyterms cannot exceed 1000.           The length of each keyterm must be less than 50 characters.           Keyterms can contain at most 5 words (after normalisation).           For example [\"hello\", \"world\", \"technical term\"].           The following characters are not supported: `<`, `>`, `{`, `}`, `[`, `]`, `\\`.           Usage of this parameter will incur an additional 20% surcharge on the base transcription cost.           When more than 100 keyterms are provided, a minimum billable duration of 20 seconds applies per request.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[SpeechToTextConvertResponse]\n    Synchronous transcription result",
+          "doc": "Transcribe an audio or video file. If webhook is set to true, the request will be processed asynchronously and results sent to configured webhooks. When use_multi_channel is true and the provided audio has multiple channels, a 'transcripts' object with separate transcripts for each channel is returned; set multichannel_output_style='combined' to instead receive a single transcript with all channels merged and sorted by time. Otherwise, returns a single transcript. The optional webhook_metadata parameter allows you to attach custom data that will be included in webhook responses for request correlation and tracking.\n\nParameters\n----------\nmodel_id : SpeechToTextConvertRequestModelId\n    The ID of the model to use for transcription.\n\ntoken : typing.Optional[str]\n    A single-use authentication token created via POST /v1/single-use-token/batch_scribe. This token can only be used once and expires after 15 minutes. Alternative to API key or bearer token authentication for frontend clients.\n\nenable_logging : typing.Optional[bool]\n    When enable_logging is set to false zero retention mode will be used for the request. This will mean log and transcript storage features are unavailable for this request. Zero retention mode may only be used by enterprise customers.\n\nfile : typing.Optional[core.File]\n    See core.File for more documentation\n\nlanguage_code : typing.Optional[str]\n    An ISO-639-1 or ISO-639-3 language_code corresponding to the language of the audio file. Can sometimes improve transcription performance if known beforehand. Defaults to null, in this case the language is predicted automatically.\n\ntag_audio_events : typing.Optional[bool]\n    Whether to tag audio events like (laughter), (footsteps), etc. in the transcription.\n\nnum_speakers : typing.Optional[int]\n    The maximum amount of speakers talking in the uploaded file. Can help with predicting who speaks when. The maximum amount of speakers that can be predicted is 32. Defaults to null, in this case the amount of speakers is set to the maximum value the model supports.\n\ntimestamps_granularity : typing.Optional[SpeechToTextConvertRequestTimestampsGranularity]\n    The granularity of the timestamps in the transcription. 'word' provides word-level timestamps and 'character' provides character-level timestamps per word.\n\ndiarize : typing.Optional[bool]\n    Whether to annotate which speaker is currently talking in the uploaded file.\n\ndiarization_threshold : typing.Optional[float]\n    Diarization threshold to apply during speaker diarization. A higher value means there will be a lower chance of one speaker being diarized as two different speakers but also a higher chance of two different speakers being diarized as one speaker (less total speakers predicted). A low value means there will be a higher chance of one speaker being diarized as two different speakers but also a lower chance of two different speakers being diarized as one speaker (more total speakers predicted). Can only be set when diarize=True and num_speakers=None. Defaults to None, in which case we will choose a threshold based on the model_id (0.22 usually).\n\nadditional_formats : typing.Optional[AdditionalFormats]\n    A list of additional formats to export the transcript to.\n\nfile_format : typing.Optional[SpeechToTextConvertRequestFileFormat]\n    The format of input audio. Options are 'pcm_s16le_16' or 'other' For `pcm_s16le_16`, the input audio must be 16-bit PCM at a 16kHz sample rate, single channel (mono), and little-endian byte order. Latency will be lower than with passing an encoded waveform.\n\ncloud_storage_url : typing.Optional[str]\n    [Deprecated] This parameter is deprecated and will be removed in the future. Use 'source_url' instead.The HTTPS URL of the file to transcribe. Exactly one of the file or cloud_storage_url parameters must be provided. The file must be accessible via HTTPS and the file size must be less than 2GB. Any valid HTTPS URL is accepted, including URLs from cloud storage providers (AWS S3, Google Cloud Storage, Cloudflare R2, etc.), CDNs, or any other HTTPS source. URLs can be pre-signed or include authentication tokens in query parameters.\n\nsource_url : typing.Optional[str]\n    The URL of an audio or video file to transcribe. Supports hosted video or audio files, YouTube video URLs, TikTok video URLs, and other video hosting services.\n\nwebhook : typing.Optional[bool]\n    Whether to send the transcription result to configured speech-to-text webhooks.  If set the request will return early without the transcription, which will be delivered later via webhook.\n\nwebhook_id : typing.Optional[str]\n    Optional specific webhook ID to send the transcription result to. Only valid when webhook is set to true. If not provided, transcription will be sent to all configured speech-to-text webhooks.\n\ntemperature : typing.Optional[float]\n    Controls the randomness of the transcription output. Accepts values between 0.0 and 2.0, where higher values result in more diverse and less deterministic results. If omitted, we will use a temperature based on the model you selected which is usually 0.\n\nseed : typing.Optional[int]\n    If specified, our system will make a best effort to sample deterministically, such that repeated requests with the same seed and parameters should return the same result. Determinism is not guaranteed. Must be an integer between 0 and 2147483647.\n\nuse_multi_channel : typing.Optional[bool]\n    Whether the audio file contains multiple channels where each channel contains a single speaker. When enabled, each channel is transcribed independently. By default a separate transcript is returned per channel; set multichannel_output_style='combined' to instead receive a single transcript with all channels merged and sorted by time. Each word in the response includes a 'channel_index' field indicating which channel it was spoken on. A maximum of 5 channels is supported. Each channel is billed independently at the full audio duration, so cost scales linearly with the number of channels.\n\nmultichannel_output_style : typing.Optional[SpeechToTextConvertRequestMultichannelOutputStyle]\n    Controls the response shape when use_multi_channel is enabled. 'separate' (default) returns one transcript per channel under 'transcripts'. 'combined' merges all channels into a single transcript whose words are sorted by start time, each carrying a 'channel_index' - matching the single-channel response shape. 'combined' requires timestamps (timestamps_granularity must not be 'none') and does not support entity detection or redaction.\n\nwebhook_metadata : typing.Optional[SpeechToTextConvertRequestWebhookMetadata]\n    Optional metadata to be included in the webhook response. This should be a JSON string representing an object with a maximum depth of 2 levels and maximum size of 16KB. Useful for tracking internal IDs, job references, or other contextual information.\n\nentity_detection : typing.Optional[SpeechToTextConvertRequestEntityDetection]\n    Detect entities in the transcript. Can be 'all' to detect all entities, a single entity type or category string, or a list of entity types/categories. Categories include 'pii', 'phi', 'pci', 'other', 'offensive_language'. When enabled, detected entities will be returned in the 'entities' field with their text, type, and character positions. Usage of this parameter will incur an additional 30% surcharge on the base transcription cost.\n\nno_verbatim : typing.Optional[bool]\n    If true, the transcription will not have any filler words, false starts and non-speech sounds. Only supported with scribe_v2 model.\n\nuse_speaker_library : typing.Optional[bool]\n    Whether to use the speaker library for identifying known speakers during diarization. When enabled and diarize is true, detected speakers will be matched against registered speakers in the workspace's speaker library.\n\ndetect_speaker_roles : typing.Optional[bool]\n    Whether to detect speaker roles (agent vs customer). Requires diarize=true. Cannot be used with use_multi_channel=true. When enabled, speaker_id values will be 'agent' and 'customer' instead of 'speaker_0', 'speaker_1', etc. Usage incurs an additional 10% surcharge on base transcription cost.\n\nentity_redaction : typing.Optional[SpeechToTextConvertRequestEntityRedaction]\n    Redact entities from the transcript text. Accepts the same format as entity_detection: 'all', a category ('pii', 'phi'), or specific entity types. Must be a subset of entity_detection. When redaction is enabled, the entities field will not be returned. Usage of this parameter will incur an additional 30% surcharge on the base transcription cost.\n\nentity_redaction_mode : typing.Optional[str]\n    How to format redacted entities. 'redacted' replaces with {REDACTED}, 'entity_type' replaces with {ENTITY_TYPE}, 'enumerated_entity_type' replaces with {ENTITY_TYPE_N} where N enumerates each occurrence. Only used when entity_redaction is set.\n\nkeyterms : typing.Optional[typing.List[str]]\n    A list of keyterms to bias the transcription towards.           The keyterms are words or phrases you want the model to recognise more accurately.           The number of keyterms cannot exceed 1000.           The length of each keyterm must be less than 50 characters.           Keyterms can contain at most 5 words (after normalisation).           For example [\"hello\", \"world\", \"technical term\"].           The following characters are not supported: `<`, `>`, `{`, `}`, `[`, `]`, `\\`.           Usage of this parameter will incur an additional 20% surcharge on the base transcription cost.           When more than 100 keyterms are provided, a minimum billable duration of 20 seconds applies per request.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[SpeechToTextConvertResponse]\n    Synchronous transcription result",
           "positional_params": [],
           "keyword_params": [
             {
               "name": "model_id",
+              "kind": "keyword",
+              "default": null
+            },
+            {
+              "name": "token",
               "kind": "keyword",
               "default": null
             },
@@ -14733,6 +16338,10 @@
             },
             "query": [
               {
+                "name": "token",
+                "param": "token"
+              },
+              {
                 "name": "enable_logging",
                 "param": "enable_logging"
               }
@@ -14841,13 +16450,15 @@
                   "path": [
                     "webhook_metadata"
                   ],
-                  "param": "webhook_metadata"
+                  "param": "webhook_metadata",
+                  "encode": "json"
                 },
                 {
                   "path": [
                     "entity_detection"
                   ],
-                  "param": "entity_detection"
+                  "param": "entity_detection",
+                  "encode": "json"
                 },
                 {
                   "path": [
@@ -14871,7 +16482,8 @@
                   "path": [
                     "entity_redaction"
                   ],
-                  "param": "entity_redaction"
+                  "param": "entity_redaction",
+                  "encode": "json"
                 },
                 {
                   "path": [
@@ -14883,7 +16495,8 @@
                   "path": [
                     "keyterms"
                   ],
-                  "param": "keyterms"
+                  "param": "keyterms",
+                  "encode": "json"
                 }
               ]
             },
@@ -14901,8 +16514,8 @@
                   "type": "tuple",
                   "filename": null,
                   "content": {
-                    "type": "literal",
-                    "value": "\"__param__additional_formats__\""
+                    "type": "param",
+                    "name": "additional_formats"
                   },
                   "content_type": "application/json"
                 }
@@ -15156,7 +16769,9 @@
             "files": [],
             "headers": {
               "content-type": "application/json",
-              "safety-identifier": "__param__safety_identifier__"
+              "safety-identifier": {
+                "param": "safety_identifier"
+              }
             },
             "force_multipart": false,
             "streaming": false
@@ -15423,7 +17038,8 @@
                       "path": [
                         "genres"
                       ],
-                      "param": "genres"
+                      "param": "genres",
+                      "encode": "json"
                     },
                     {
                       "path": [
@@ -15477,7 +17093,8 @@
                       "path": [
                         "pronunciation_dictionary_locators"
                       ],
-                      "param": "pronunciation_dictionary_locators"
+                      "param": "pronunciation_dictionary_locators",
+                      "encode": "json"
                     },
                     {
                       "path": [
@@ -15519,7 +17136,8 @@
                       "path": [
                         "voice_settings"
                       ],
-                      "param": "voice_settings"
+                      "param": "voice_settings",
+                      "encode": "json"
                     },
                     {
                       "path": [
@@ -18993,6 +20611,113 @@
           }
         },
         {
+          "name": "update",
+          "doc": "Edit a voice created by you.\n\nParameters\n----------\nvoice_id : str\n    ID of the voice to be used. You can use the [Get voices](/docs/api-reference/voices/search) endpoint list all the available voices.\n\nname : str\n    The name that identifies this voice. This will be displayed in the dropdown of the website.\n\nfiles : typing.Optional[typing.List[core.File]]\n    See core.File for more documentation\n\nremove_background_noise : typing.Optional[bool]\n    If set will remove background noise for voice samples using our audio isolation model. If the samples do not include background noise, it can make the quality worse.\n\ndescription : typing.Optional[str]\n    A description of the voice.\n\nlabels : typing.Optional[EditVoiceRequestLabels]\n    Labels for the voice. Keys can be language, accent, gender, or age.\n\nmoderate_metadata : typing.Optional[bool]\n    Run synchronous LLM moderation over the voice name and description when they change. Has no effect unless the voice_library_metadata_moderation feature flag is enabled for the user.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[EditVoiceResponseModel]\n    Successful Response",
+          "positional_params": [
+            {
+              "name": "voice_id",
+              "kind": "positional",
+              "default": null
+            }
+          ],
+          "keyword_params": [
+            {
+              "name": "name",
+              "kind": "keyword",
+              "default": null
+            },
+            {
+              "name": "files",
+              "kind": "keyword",
+              "default": "__OMIT__"
+            },
+            {
+              "name": "remove_background_noise",
+              "kind": "keyword",
+              "default": "__OMIT__"
+            },
+            {
+              "name": "description",
+              "kind": "keyword",
+              "default": "__OMIT__"
+            },
+            {
+              "name": "labels",
+              "kind": "keyword",
+              "default": "__OMIT__"
+            },
+            {
+              "name": "moderate_metadata",
+              "kind": "keyword",
+              "default": "__OMIT__"
+            },
+            {
+              "name": "request_options",
+              "kind": "keyword",
+              "default": null
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "path": {
+              "template": "v1/voices/{voice_id}/edit",
+              "params": [
+                "voice_id"
+              ]
+            },
+            "query": [],
+            "json": null,
+            "form": {
+              "literal": null,
+              "assignments": [
+                {
+                  "path": [
+                    "name"
+                  ],
+                  "param": "name"
+                },
+                {
+                  "path": [
+                    "remove_background_noise"
+                  ],
+                  "param": "remove_background_noise"
+                },
+                {
+                  "path": [
+                    "description"
+                  ],
+                  "param": "description"
+                },
+                {
+                  "path": [
+                    "labels"
+                  ],
+                  "param": "labels",
+                  "encode": "json"
+                },
+                {
+                  "path": [
+                    "moderate_metadata"
+                  ],
+                  "param": "moderate_metadata"
+                }
+              ]
+            },
+            "files": [
+              {
+                "name": "files",
+                "value": {
+                  "type": "param",
+                  "name": "files"
+                }
+              }
+            ],
+            "headers": {},
+            "force_multipart": true,
+            "streaming": false
+          }
+        },
+        {
           "name": "search",
           "doc": "Gets a list of all available voices for a user with search, filtering and pagination.\n\nParameters\n----------\nnext_page_token : typing.Optional[str]\n    The next page token to use for pagination. Returned from the previous request. Use this in combination with the has_more flag for reliable pagination.\n\npage_size : typing.Optional[int]\n    How many voices to return at maximum. Can not exceed 100, defaults to 10. Page 0 may include more voices due to default voices being included.\n\nsearch : typing.Optional[str]\n    Search term to filter voices by. Searches in name, description, labels, category.\n\nsort : typing.Optional[str]\n    Which field to sort by, one of 'created_at_unix' or 'name'. 'created_at_unix' may not be available for older voices.\n\nsort_direction : typing.Optional[str]\n    Which direction to sort the voices in. 'asc' or 'desc'.\n\nvoice_type : typing.Optional[str]\n    Type of the voice to filter by. One of 'personal', 'community', 'default', 'workspace', 'non-default', 'non-community', 'saved'. 'non-default' is equal to all but 'default'. 'non-community' is equal to 'personal' and 'workspace' combined (excludes library copies). 'saved' is equal to non-default, but includes default voices if they have been added to a collection.\n\ncategory : typing.Optional[str]\n    Category of the voice to filter by. One of 'premade', 'cloned', 'generated', 'professional'\n\nfine_tuning_state : typing.Optional[str]\n    State of the voice's fine tuning to filter by. Applicable only to professional voices clones. One of 'draft', 'not_verified', 'not_started', 'queued', 'fine_tuning', 'fine_tuned', 'failed', 'delayed'\n\ncollection_id : typing.Optional[str]\n    Collection ID to filter voices by.\n\ninclude_total_count : typing.Optional[bool]\n    Whether to include the total count of voices found in the response. NOTE: The total_count value is a live snapshot and may change between requests as users create, modify, or delete voices. For pagination, rely on the has_more flag instead. Only enable this when you actually need the total count (e.g., for display purposes), as it incurs a performance cost.\n\nvoice_ids : typing.Optional[typing.Union[str, typing.Sequence[str]]]\n    Voice IDs to lookup by. Maximum 100 voice IDs.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[GetVoicesV2Response]\n    Successful Response",
           "positional_params": [],
@@ -19115,112 +20840,6 @@
             "files": [],
             "headers": {},
             "force_multipart": false,
-            "streaming": false
-          }
-        },
-        {
-          "name": "update",
-          "doc": "Edit a voice created by you.\n\nParameters\n----------\nvoice_id : str\n    ID of the voice to be used. You can use the [Get voices](/docs/api-reference/voices/search) endpoint list all the available voices.\n\nname : str\n    The name that identifies this voice. This will be displayed in the dropdown of the website.\n\nfiles : typing.Optional[typing.List[core.File]]\n    See core.File for more documentation\n\nremove_background_noise : typing.Optional[bool]\n    If set will remove background noise for voice samples using our audio isolation model. If the samples do not include background noise, it can make the quality worse.\n\ndescription : typing.Optional[str]\n    A description of the voice.\n\nlabels : typing.Optional[VoicesUpdateRequestLabels]\n    Labels for the voice. Keys can be language, accent, gender, or age.\n\nmoderate_metadata : typing.Optional[bool]\n    Run synchronous LLM moderation over the voice name and description when they change. Has no effect unless the voice_library_metadata_moderation feature flag is enabled for the user.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[EditVoiceResponseModel]\n    Successful Response",
-          "positional_params": [
-            {
-              "name": "voice_id",
-              "kind": "positional",
-              "default": null
-            }
-          ],
-          "keyword_params": [
-            {
-              "name": "name",
-              "kind": "keyword",
-              "default": null
-            },
-            {
-              "name": "files",
-              "kind": "keyword",
-              "default": "__OMIT__"
-            },
-            {
-              "name": "remove_background_noise",
-              "kind": "keyword",
-              "default": "__OMIT__"
-            },
-            {
-              "name": "description",
-              "kind": "keyword",
-              "default": "__OMIT__"
-            },
-            {
-              "name": "labels",
-              "kind": "keyword",
-              "default": "__OMIT__"
-            },
-            {
-              "name": "moderate_metadata",
-              "kind": "keyword",
-              "default": "__OMIT__"
-            },
-            {
-              "name": "request_options",
-              "kind": "keyword",
-              "default": null
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "path": {
-              "template": "v1/voices/{voice_id}/edit",
-              "params": [
-                "voice_id"
-              ]
-            },
-            "query": [],
-            "json": null,
-            "form": {
-              "literal": null,
-              "assignments": [
-                {
-                  "path": [
-                    "name"
-                  ],
-                  "param": "name"
-                },
-                {
-                  "path": [
-                    "remove_background_noise"
-                  ],
-                  "param": "remove_background_noise"
-                },
-                {
-                  "path": [
-                    "description"
-                  ],
-                  "param": "description"
-                },
-                {
-                  "path": [
-                    "labels"
-                  ],
-                  "param": "labels"
-                },
-                {
-                  "path": [
-                    "moderate_metadata"
-                  ],
-                  "param": "moderate_metadata"
-                }
-              ]
-            },
-            "files": [
-              {
-                "name": "files",
-                "value": {
-                  "type": "param",
-                  "name": "files"
-                }
-              }
-            ],
-            "headers": {},
-            "force_multipart": true,
             "streaming": false
           }
         },
@@ -19552,7 +21171,7 @@
           "operations": [
             {
               "name": "create",
-              "doc": "Create a voice clone and add it to your Voices\n\nParameters\n----------\nname : str\n    The name that identifies this voice. This will be displayed in the dropdown of the website.\n\nfiles : typing.List[core.File]\n    See core.File for more documentation\n\nremove_background_noise : typing.Optional[bool]\n    If set will remove background noise for voice samples using our audio isolation model. If the samples do not include background noise, it can make the quality worse.\n\ndescription : typing.Optional[str]\n    A description of the voice.\n\nlabels : typing.Optional[IvcCreateRequestLabels]\n    Labels for the voice. Keys can be language, accent, gender, or age.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[AddVoiceIvcResponseModel]\n    Successful Response",
+              "doc": "Create a voice clone and add it to your Voices\n\nParameters\n----------\nname : str\n    The name that identifies this voice. This will be displayed in the dropdown of the website.\n\nfiles : typing.List[core.File]\n    See core.File for more documentation\n\nremove_background_noise : typing.Optional[bool]\n    If set will remove background noise for voice samples using our audio isolation model. If the samples do not include background noise, it can make the quality worse.\n\ndescription : typing.Optional[str]\n    A description of the voice.\n\nlabels : typing.Optional[AddVoiceRequestLabels]\n    Labels for the voice. Keys can be language, accent, gender, or age.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[AddVoiceIvcResponseModel]\n    Successful Response",
               "positional_params": [],
               "keyword_params": [
                 {
@@ -19619,7 +21238,8 @@
                       "path": [
                         "labels"
                       ],
-                      "param": "labels"
+                      "param": "labels",
+                      "encode": "json"
                     }
                   ]
                 },
@@ -20743,7 +22363,7 @@
         },
         {
           "name": "update",
-          "doc": "Update the specified workspace webhook\n\nParameters\n----------\nwebhook_id : str\n    The unique ID for the webhook\n\nis_disabled : bool\n    Whether to disable or enable the webhook\n\nname : str\n    The display name of the webhook (used for display purposes only).\n\nretry_enabled : typing.Optional[bool]\n    Whether to enable automatic retries for transient failures (5xx, 429, timeout)\n\nrequest_headers : typing.Optional[typing.Dict[str, typing.Optional[str]]]\n    A list of request headers to include with the webhook delivery (optional)\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[PatchWorkspaceWebhookResponseModel]\n    Successful Response",
+          "doc": "Update the specified workspace webhook\n\nParameters\n----------\nwebhook_id : str\n    The unique ID for the webhook\n\nis_disabled : bool\n    Whether to disable or enable the webhook\n\nname : str\n    The display name of the webhook (used for display purposes only).\n\nretry_enabled : typing.Optional[bool]\n    Whether to enable automatic retries for transient failures (5xx, 429, timeout)\n\nrequest_headers : typing.Optional[typing.Dict[str, typing.Optional[str]]]\n    A list of request headers to include with the webhook delivery (optional)\n\nevents : typing.Optional[typing.Sequence[WorkspaceWebhookEventType]]\n    The complete set of workspace-level events this webhook should be subscribed to. The webhook is added to the events in the list and removed from any not in the list. Omit to leave the current event subscriptions unchanged.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[PatchWorkspaceWebhookResponseModel]\n    Successful Response",
           "positional_params": [
             {
               "name": "webhook_id",
@@ -20769,6 +22389,11 @@
             },
             {
               "name": "request_headers",
+              "kind": "keyword",
+              "default": "__OMIT__"
+            },
+            {
+              "name": "events",
               "kind": "keyword",
               "default": "__OMIT__"
             },
@@ -20813,6 +22438,12 @@
                     "request_headers"
                   ],
                   "param": "request_headers"
+                },
+                {
+                  "path": [
+                    "events"
+                  ],
+                  "param": "events"
                 }
               ]
             },
@@ -20832,7 +22463,7 @@
       "operations": [
         {
           "name": "set_third_party_disabling_policy",
-          "doc": "Set the workspace-wide Third-Party Disabling policy. When set, it forces, for every API key in the workspace, whether the holder of a key (potentially a third party who found it) may disable it via the self-disable endpoint or when it leaks publicly \u2014 overriding each key's own setting. Pass `true` to allow it for all keys, `false` to forbid it for all keys, or `null` to clear the override so per-key values and the plan default apply again. Workspace admins only; requires self-disable access.\n\nParameters\n----------\nthird_party_disable_allowed : typing.Optional[bool]\n    `true` forces every key in the workspace to be disable-able by its holder; `false` forbids it for every key; `null` clears the override (per-key values and the plan default apply).\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[typing.Any]\n    Successful Response",
+          "doc": "Set the workspace-wide Third-Party Disabling policy. When set, it forces, for every API key in the workspace, whether the holder of a key (potentially a third party who found it) may disable it via the self-disable endpoint or when it leaks publicly \u2014 overriding each key's own setting. Pass `true` to allow it for all keys, `false` to forbid it for all keys, or `null` to clear the override so per-key values and the plan default apply again. Workspace admins only.\n\nParameters\n----------\nthird_party_disable_allowed : typing.Optional[bool]\n    `true` forces every key in the workspace to be disable-able by its holder; `false` forbids it for every key; `null` clears the override (per-key values and the plan default apply).\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[typing.Any]\n    Successful Response",
           "positional_params": [],
           "keyword_params": [
             {
@@ -21412,7 +23043,7 @@
           "operations": [
             {
               "name": "create",
-              "doc": "Sends an email invitation to join your workspace to the provided email. If the user doesn't have an account they will be prompted to create one. If the user accepts this invite they will be added as a user to your workspace and your subscription using one of your seats. This endpoint may only be called by workspace members with the WORKSPACE_MEMBERS_INVITE permission. If the user is already in the workspace a 400 error will be returned.\n\nParameters\n----------\nemail : str\n    The email of the customer\n\nworkspace_permission : typing.Optional[str]\n    The workspace permission of the user. This is deprecated, use `seat_type` instead.\n\nseat_type : typing.Optional[SeatType]\n    The seat type of the user\n\ngroup_ids : typing.Optional[typing.Sequence[str]]\n    The group ids of the user\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[AddWorkspaceInviteResponseModel]\n    Successful Response",
+              "doc": "Sends an email invitation to join your workspace to the provided email. If the user doesn't have an account they will be prompted to create one. If the user accepts this invite they will be added as a user to your workspace and your subscription using one of your seats. This endpoint may only be called by workspace members with the WORKSPACE_MEMBERS_INVITE permission. If the user is already in the workspace a 400 error will be returned.\n\nParameters\n----------\nemail : str\n    The email of the customer\n\nworkspace_permission : typing.Optional[str]\n    The workspace permission of the user. This is deprecated, use `seat_type` instead.\n\nseat_type : typing.Optional[SeatType]\n    The seat type of the user\n\ngroup_ids : typing.Optional[typing.Sequence[str]]\n    The group ids of the user\n\nusage_limit : typing.Optional[int]\n    Monthly credit usage limit for the invitee. Omit or set to null for no custom cap.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[AddWorkspaceInviteResponseModel]\n    Successful Response",
               "positional_params": [],
               "keyword_params": [
                 {
@@ -21432,6 +23063,11 @@
                 },
                 {
                   "name": "group_ids",
+                  "kind": "keyword",
+                  "default": "__OMIT__"
+                },
+                {
+                  "name": "usage_limit",
                   "kind": "keyword",
                   "default": "__OMIT__"
                 },
@@ -21474,6 +23110,12 @@
                         "group_ids"
                       ],
                       "param": "group_ids"
+                    },
+                    {
+                      "path": [
+                        "usage_limit"
+                      ],
+                      "param": "usage_limit"
                     }
                   ]
                 },
@@ -21488,7 +23130,7 @@
             },
             {
               "name": "create_batch",
-              "doc": "Sends email invitations to join your workspace to the provided emails. Requires all email addresses to be part of a verified domain. If the users don't have an account they will be prompted to create one. If the users accept these invites they will be added as users to your workspace and your subscription using one of your seats. This endpoint may only be called by workspace members with the WORKSPACE_MEMBERS_INVITE permission.\n\nParameters\n----------\nemails : typing.Sequence[str]\n    The email of the customer\n\nseat_type : typing.Optional[SeatType]\n    The seat type of the user\n\ngroup_ids : typing.Optional[typing.Sequence[str]]\n    The group ids of the user\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[AddWorkspaceInviteResponseModel]\n    Successful Response",
+              "doc": "Sends email invitations to join your workspace to the provided emails. Requires all email addresses to be part of a verified domain. If the users don't have an account they will be prompted to create one. If the users accept these invites they will be added as users to your workspace and your subscription using one of your seats. This endpoint may only be called by workspace members with the WORKSPACE_MEMBERS_INVITE permission.\n\nParameters\n----------\nemails : typing.Sequence[str]\n    The email of the customer\n\nseat_type : typing.Optional[SeatType]\n    The seat type of the user\n\ngroup_ids : typing.Optional[typing.Sequence[str]]\n    The group ids of the user\n\nusage_limit : typing.Optional[int]\n    Monthly credit usage limit for the invitee. Omit or set to null for no custom cap.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[AddWorkspaceInviteResponseModel]\n    Successful Response",
               "positional_params": [],
               "keyword_params": [
                 {
@@ -21503,6 +23145,11 @@
                 },
                 {
                   "name": "group_ids",
+                  "kind": "keyword",
+                  "default": "__OMIT__"
+                },
+                {
+                  "name": "usage_limit",
                   "kind": "keyword",
                   "default": "__OMIT__"
                 },
@@ -21539,6 +23186,12 @@
                         "group_ids"
                       ],
                       "param": "group_ids"
+                    },
+                    {
+                      "path": [
+                        "usage_limit"
+                      ],
+                      "param": "usage_limit"
                     }
                   ]
                 },
@@ -21599,6 +23252,32 @@
         },
         "members": {
           "operations": [
+            {
+              "name": "list",
+              "doc": "Gets a list of all members of the workspace, including locked members. Service accounts are excluded. Requires the workspace_members_read permission.\n\nParameters\n----------\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[typing.List[WorkspaceMemberResponseModel]]\n    Successful Response",
+              "positional_params": [],
+              "keyword_params": [
+                {
+                  "name": "request_options",
+                  "kind": "keyword",
+                  "default": null
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "path": {
+                  "template": "v1/workspace/members",
+                  "params": []
+                },
+                "query": [],
+                "json": null,
+                "form": null,
+                "files": [],
+                "headers": {},
+                "force_multipart": false,
+                "streaming": false
+              }
+            },
             {
               "name": "update",
               "doc": "Updates attributes of a workspace member. Apart from the email identifier, all parameters will remain unchanged unless specified. This endpoint may only be called by workspace administrators.\n\nParameters\n----------\nemail : str\n    Email of the target user.\n\nis_locked : typing.Optional[bool]\n    Whether to lock or unlock the user account.\n\nworkspace_role : typing.Optional[SeatType]\n    The workspace role of the user. This is deprecated, use `workspace_seat_type` instead.\n\nworkspace_seat_type : typing.Optional[SeatType]\n    The workspace seat type\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[UpdateWorkspaceMemberResponseModel]\n    Successful Response",
@@ -22018,7 +23697,7 @@
           "operations": [
             {
               "name": "disable",
-              "doc": "Disable the API key used to authenticate this request. Requires the query parameter `api_key_name=self` as an explicit confirmation. This endpoint requires additional permissions and is not enabled by default. Reach out to your ElevenLabs contact to request access.\n\nParameters\n----------\napi_key_name : str\n    Must be set to `self` to disable the API key used to authenticate this request. Required as an explicit confirmation to avoid accidentally disabling the wrong key.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[typing.Any]\n    Successful Response",
+              "doc": "Disable the API key used to authenticate this request. Requires the query parameter `api_key_name=self` as an explicit confirmation.\n\nParameters\n----------\napi_key_name : str\n    Must be set to `self` to disable the API key used to authenticate this request. Required as an explicit confirmation to avoid accidentally disabling the wrong key.\n\nrequest_options : typing.Optional[RequestOptions]\n    Request-specific configuration.\n\nReturns\n-------\nHttpResponse[typing.Any]\n    Successful Response",
               "positional_params": [],
               "keyword_params": [
                 {

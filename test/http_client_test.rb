@@ -49,6 +49,29 @@ class HttpClientTest < Minitest::Test
     [client, connection]
   end
 
+  # Regression: a non-file multipart value carrying an explicit content type
+  # (speech_to_text.convert's `additional_formats`) must become a typed form
+  # part. This previously referenced Faraday::Multipart::Param — a constant
+  # that does not exist — so every such request raised NameError before
+  # reaching the network.
+  def test_typed_non_file_multipart_value_becomes_param_part
+    client, connection = make_client_with_connection(FakeResponse.new(200, "{}", {}))
+
+    client.request(
+      method: "POST",
+      path: "/v1/speech-to-text",
+      form: { "model_id" => "scribe_v2" },
+      files: [{ name: "additional_formats", value: [{ "format" => "srt" }], content_type: "application/json" }],
+      headers: {}
+    )
+
+    part = connection.requests.last[:body]["additional_formats"]
+    assert_instance_of Faraday::Multipart::ParamPart, part
+    assert_equal "application/json", part.content_type
+    # The value is JSON-encoded on the way in, not Ruby-inspected.
+    assert_equal '[{"format":"srt"}]', part.value
+  end
+
   def test_upload_from_io_auto_closes_when_requested
     io = StringIO.new("sample-data")
     upload = ElevenLabs::Upload.from_io(io, filename: "sample.txt", auto_close: true)

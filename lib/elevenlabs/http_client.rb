@@ -134,7 +134,11 @@ module ElevenLabs
       name = entry[:name]
       value = entry[:value]
       return body if value.nil?
-      if value.is_a?(Array)
+      # An entry with an explicit content type is a single typed part — its
+      # content type describes one body, so an Array value is serialized whole
+      # (matching upstream's `json.dumps(...)`) rather than fanned out into one
+      # part per element. Untyped array values are genuine multi-file uploads.
+      if value.is_a?(Array) && entry[:content_type].nil?
         body[name] = value.map { |item| prepare_file_value(name, item, entry, cleanups) }
       else
         body[name] = prepare_file_value(name, value, entry, cleanups)
@@ -142,14 +146,20 @@ module ElevenLabs
       body
     end
 
-    def prepare_file_value(field_name, value, entry, cleanups)
+    def prepare_file_value(_field_name, value, entry, cleanups)
       content_type = entry[:content_type]
       filename = entry[:filename]
       headers = entry[:headers] || {}
       if content_type == "application/json" && !value.is_a?(String)
         value = JSON.generate(value)
       end
-      return Faraday::Multipart::Param.new(field_name, value, content_type, headers) if content_type && !file_like?(value)
+      # A non-file value with an explicit content type becomes a typed form
+      # part. ParamPart takes (value, content_type, content_id) — the field
+      # name is supplied by the enclosing hash key, and Content-ID is the only
+      # extra header it models.
+      if content_type && !file_like?(value)
+        return Faraday::Multipart::ParamPart.new(value.to_s, content_type, headers["Content-ID"] || headers["content-id"])
+      end
 
       if value.is_a?(ElevenLabs::Upload)
         return build_upload_from_helper(value, cleanups)

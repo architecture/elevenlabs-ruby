@@ -15,7 +15,7 @@ module ElevenLabs
       json_body = build_body(request_spec[:json], params, request_options)
       form_body = build_body(request_spec[:form], params, request_options)
       files = build_files(request_spec[:files], params)
-      headers = stringify_keys(request_spec[:headers] || {})
+      headers = build_headers(request_spec[:headers], params)
       if request_spec[:streaming]
         @http.stream(
           method: request_spec[:method],
@@ -81,6 +81,7 @@ module ElevenLabs
         body ||= {}
         spec[:assignments].each do |assignment|
           param_value = params[assignment[:param].to_sym]
+          param_value = encode_assignment_value(assignment, param_value)
           if assignment[:path].nil? || assignment[:path].empty?
             # Empty path means the param value IS the body (spread onto it if hash)
             if param_value.is_a?(Hash)
@@ -97,6 +98,17 @@ module ElevenLabs
       additional = request_options[:additional_body_parameters]
       body = (body || {}).merge(additional) if additional
       body
+    end
+
+    # Some form fields are sent JSON-encoded rather than as raw values — the
+    # upstream SDK wraps them in `json.dumps(...)`, so `keyterms: ["a", "b"]`
+    # goes on the wire as the text `["a","b"]` and `entity_redaction: "pii"`
+    # as `"pii"` (quotes included). Absent values are left untouched so
+    # deep_compact still strips them instead of sending the text "null".
+    def encode_assignment_value(assignment, value)
+      return value unless assignment[:encode] == "json"
+      return value if value.nil? || value.equal?(ElevenLabs::Utils::OMIT)
+      JSON.generate(value)
     end
 
     def build_files(entries, params)
@@ -135,8 +147,20 @@ module ElevenLabs
       end
     end
 
-    def stringify_keys(hash)
-      hash.each_with_object({}) { |(key, value), acc| acc[key.to_s] = value }
+    # Header values are usually static strings, but a spec value of
+    # `{ param: "x" }` means the header is built from that argument — emit it
+    # only when the caller supplied one, so an unset optional header is absent
+    # rather than sent empty.
+    def build_headers(spec, params)
+      (spec || {}).each_with_object({}) do |(key, value), acc|
+        if value.is_a?(Hash) && value[:param]
+          resolved = params[value[:param].to_sym]
+          next if resolved.nil? || resolved.equal?(ElevenLabs::Utils::OMIT)
+          acc[key.to_s] = resolved.to_s
+        else
+          acc[key.to_s] = value
+        end
+      end
     end
   end
 end

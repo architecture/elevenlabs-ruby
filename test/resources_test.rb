@@ -378,4 +378,74 @@ class ClientIntegrationTest < Minitest::Test
     audit_klass = ElevenLabs::Resources.class_for(["workspace", "audit_logs"])
     assert audit_klass.method_defined?(:list), "expected workspace.audit_logs to have list method"
   end
+
+  # --- New in v2.59.0 ---
+
+  def test_dubbing_project_child_accessible
+    klass = ElevenLabs::Resources.class_for(["dubbing"])
+    instance = klass.new(Object.new)
+    assert_respond_to instance, :project
+
+    project = ElevenLabs::Resources.class_for(["dubbing", "project"])
+    assert project, "expected dubbing.project resource class to exist"
+    %i[create list get delete].each do |m|
+      assert project.method_defined?(m), "expected dubbing.project to have #{m} method"
+    end
+  end
+
+  def test_dubbing_project_nested_transcript_resources
+    language = ElevenLabs::Resources.class_for(["dubbing", "project", "language"])
+    assert language, "expected dubbing.project.language resource class to exist"
+    %i[create list get delete].each do |m|
+      assert language.method_defined?(m), "expected dubbing.project.language to have #{m} method"
+    end
+
+    lang_transcript = ElevenLabs::Resources.class_for(["dubbing", "project", "language", "transcript"])
+    assert lang_transcript, "expected dubbing.project.language.transcript resource class to exist"
+    %i[get regenerate update_segment].each do |m|
+      assert lang_transcript.method_defined?(m), "expected language.transcript to have #{m} method"
+    end
+
+    transcript = ElevenLabs::Resources.class_for(["dubbing", "project", "transcript"])
+    assert transcript, "expected dubbing.project.transcript resource class to exist"
+    %i[get create_segment update_segment delete_segment].each do |m|
+      assert transcript.method_defined?(m), "expected project.transcript to have #{m} method"
+    end
+  end
+
+  def test_music_finetunes_child_accessible
+    instance = ElevenLabs::Resources.class_for(["music"]).new(Object.new)
+    assert_respond_to instance, :finetunes
+
+    klass = ElevenLabs::Resources.class_for(["music", "finetunes"])
+    assert klass, "expected music.finetunes resource class to exist"
+    %i[create list get update delete].each do |m|
+      assert klass.method_defined?(m), "expected music.finetunes to have #{m} method"
+    end
+  end
+
+  def test_music_has_compose_detailed_stream_method
+    klass = ElevenLabs::Resources.class_for(["music"])
+    assert klass.method_defined?(:compose_detailed_stream),
+           "expected Music resource to have compose_detailed_stream method"
+  end
+
+  def test_workspace_members_and_service_accounts_operations
+    members = ElevenLabs::Resources.class_for(["workspace", "members"])
+    assert members.method_defined?(:list), "expected workspace.members to have list method"
+
+    service_accounts = ElevenLabs::Resources.class_for(["service_accounts"])
+    assert service_accounts.method_defined?(:create), "expected service_accounts to have create method"
+  end
+
+  def test_conversations_has_resolve_method
+    klass = ElevenLabs::Resources.class_for(["conversational_ai", "conversations"])
+    assert klass.method_defined?(:resolve), "expected conversations to have resolve method"
+  end
+
+  # Removed upstream in v2.59.0 — the root operation should no longer exist.
+  def test_save_a_voice_preview_removed
+    refute_respond_to @client, :save_a_voice_preview,
+                      "expected save_a_voice_preview to be gone after the v2.59.0 spec refresh"
+  end
 end

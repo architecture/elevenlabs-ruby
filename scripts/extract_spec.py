@@ -33,6 +33,27 @@ def placeholder_name(value: str) -> str:
     return value[len(PLACEHOLDER_PREFIX) : -len(PLACEHOLDER_SUFFIX)]
 
 
+def json_encoded_placeholder_name(value: Any) -> Optional[str]:
+    """Recover the param name from a placeholder that survived `json.dumps`.
+
+    The SDK wraps some multipart/form params as `json.dumps(jsonable_encoder(x))`
+    so the server receives a JSON-encoded field. `json` is a real module in
+    EVAL_GLOBALS, so during extraction it faithfully encodes the placeholder
+    *string* into `'"__param__x__"'` — a plain str that is no longer recognised
+    by `is_placeholder`, and would otherwise be baked in as a literal (silently
+    shipping that text to the API on every call).
+
+    Detect that quoted form and recover the name so callers can emit a real
+    param assignment carrying a `json` encoding marker instead.
+    """
+    if not isinstance(value, str) or len(value) < 2:
+        return None
+    if not (value.startswith('"') and value.endswith('"')):
+        return None
+    inner = value[1:-1]
+    return placeholder_name(inner) if is_placeholder(inner) else None
+
+
 class Dummy:
     def __init__(self, name: str):
         self._name = name
@@ -144,7 +165,7 @@ def extract_literal_and_assignments(value: Any):
 
 
 def extract_literal(value: Any):
-    if is_placeholder(value):
+    if is_placeholder(value) or json_encoded_placeholder_name(value) is not None:
         return None
     if isinstance(value, dict):
         literal_dict = {}
@@ -173,6 +194,10 @@ def collect_assignments(value: Any, path: List[Any], out: List[Dict[str, Any]]):
     if is_placeholder(value):
         out.append({"path": list(path), "param": placeholder_name(value)})
         return
+    encoded = json_encoded_placeholder_name(value)
+    if encoded is not None:
+        out.append({"path": list(path), "param": encoded, "encode": "json"})
+        return
     if isinstance(value, dict):
         for key, val in value.items():
             collect_assignments(val, path + [key], out)
@@ -196,6 +221,24 @@ def flatten_dict(value: Optional[Dict[str, Any]]) -> List[Dict[str, Any]]:
     return out
 
 
+def parse_headers(value: Optional[Dict[str, Any]]):
+    """Headers are mostly static, but a few are built from a param, e.g.
+    `"safety-identifier": str(safety_identifier) if ... else None`.
+
+    Static values stay plain strings (the executor passes them straight
+    through). A param-driven value becomes `{"param": "<name>"}` so the
+    executor can substitute it at call time and drop it when unset —
+    otherwise the placeholder text ships as the header value on every request.
+    """
+    out: Dict[str, Any] = {}
+    for key, val in (value or {}).items():
+        if is_placeholder(val):
+            out[key] = {"param": placeholder_name(val)}
+        else:
+            out[key] = val
+    return out
+
+
 def parse_files(value: Optional[Dict[str, Any]]):
     if not value:
         return []
@@ -208,6 +251,14 @@ def parse_files(value: Optional[Dict[str, Any]]):
 def parse_file_value(value: Any):
     if is_placeholder(value):
         return {"type": "param", "name": placeholder_name(value)}
+    encoded = json_encoded_placeholder_name(value)
+    if encoded is not None:
+        # A `json.dumps(...)`-wrapped param used as multipart content. These
+        # entries already carry content_type "application/json", and the HTTP
+        # client JSON-encodes non-String values for that content type, so a
+        # plain param reference produces the right wire format — and an omitted
+        # value drops the part entirely instead of sending baked-in placeholder text.
+        return {"type": "param", "name": encoded}
     if isinstance(value, tuple):
         tuple_list = list(value)
         payload = {"type": "tuple"}
@@ -309,7 +360,7 @@ def parse_method(node: ast.FunctionDef, file_path: Path):
             "json": {"literal": json_literal, "assignments": json_assignments} if json_node is not None else None,
             "form": {"literal": data_literal, "assignments": data_assignments} if data_node is not None else None,
             "files": parse_files(files_node),
-            "headers": headers_node or {},
+            "headers": parse_headers(headers_node),
             "force_multipart": force_multipart,
             "streaming": streaming,
         },

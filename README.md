@@ -10,7 +10,7 @@ This gem is published to **GitHub Packages** (not RubyGems.org). Add the GitHub 
 
 ```ruby
 source "https://rubygems.pkg.github.com/architecture" do
-  gem "elevenlabs", "0.8.1"
+  gem "elevenlabs", "0.9.0"
 end
 ```
 
@@ -31,7 +31,7 @@ Bundler can pull the gem straight from the git repository. This works for public
 
 ```ruby
 # Pin to a release tag (recommended for production)
-gem "elevenlabs", git: "https://github.com/architecture/elevenlabs-ruby", tag: "v0.8.1"
+gem "elevenlabs", git: "https://github.com/architecture/elevenlabs-ruby", tag: "v0.9.0"
 
 # Or track the latest main branch
 gem "elevenlabs", git: "https://github.com/architecture/elevenlabs-ruby", branch: "main"
@@ -92,6 +92,16 @@ client.dubbing.transcript.create(
   source_language: "en",
   target_languages: ["es"]
 )
+client.dubbing.project.create(
+  file: ElevenLabs::Upload.from_path("episode.mp4"),
+  source_language: "en",
+  target_language: "es",
+  keyterms: ["ElevenLabs"]
+)
+client.dubbing.project.list(page_size: 25)
+client.dubbing.project.language.transcript.update_segment(
+  "proj_123", "es", "seg_7", translation: "Hola mundo"
+)
 
 # forced_alignment
 client.forced_alignment.jobs.create(audio: ElevenLabs::Upload.from_path("clip.wav"))
@@ -106,6 +116,13 @@ client.models.list
 client.music.composition_plan.create(prompt: "lofi chill beats")
 client.music.upload(file: ElevenLabs::Upload.from_path("track.mp3"))
 client.music.video_to_music(videos: [ElevenLabs::Upload.from_path("clip.mp4")], description: "upbeat")
+client.music.finetunes.create(
+  name: "Synthwave",
+  primary_genre: "electronic",
+  files: [ElevenLabs::Upload.from_path("sample.mp3")],
+  tags: ["retro", "80s"]
+)
+client.music.compose(prompt: "lofi beat", finetune_id: "ft_123", finetune_strength: 0.7)
 
 # pronunciation_dictionaries
 client.pronunciation_dictionaries.list
@@ -445,6 +462,33 @@ gem "elevenlabs", path: "/path/to/elevenlabs-ruby"
 ```
 
 ## Recent Updates
+
+### 2026-07-23: v0.9.0 — Updated API Spec from elevenlabs-python v2.59.0 + JSON-encoded field fixes
+
+Refreshed `lib/elevenlabs/spec.json` (and the `types.json` / `docs/types.md` artifacts) against elevenlabs-python v2.59.0 (up from v2.56.0). 24 new operations across 5 new sub-resources; one operation removed.
+
+**New sub-resources:**
+- `dubbing.project` — full dubbing-project CRUD (`create`, `list`, `get`, `delete`), plus nested `language`, `language.transcript`, and `transcript` resources for per-language transcripts and segment editing
+- `music.finetunes` — music fine-tune CRUD (`create`, `list`, `get`, `update`, `delete`)
+
+**New operations on existing namespaces:**
+- `conversational_ai.conversations.resolve` — resolve a conversation by agent + external reference (`GET v1/convai/conversations/resolve`)
+- `music.compose_detailed_stream` — streaming variant of `compose_detailed`
+- `service_accounts.create` — create a service account (`POST v1/service-accounts`)
+- `workspace.members.list` — list workspace members (`GET v1/workspace/members`)
+
+**New parameters on existing operations:** `finetune_id` / `finetune_strength` on `music.compose`, `music.compose_detailed` and `music.stream`; `environment` on several `conversational_ai.mcp_servers` operations and `conversational_ai.tools.get`; `interruption_mode` on `mcp_servers.update` and its tool configs; `events` on `webhooks.update`; `usage_limit` on `workspace.invites.create` / `create_batch`; `include_archived` on `pronunciation_dictionaries.list`; `token` on `speech_to_text.convert`; `sort_direction` on `conversational_ai.users.list`; `enable_typing_indicator` on `conversational_ai.whatsapp_accounts.update`.
+
+**Removed:** the root-level `save_a_voice_preview` operation (dropped upstream).
+
+**Bug fixes — parameters the upstream SDK wraps in `json.dumps`.** Upstream now JSON-encodes a number of multipart/form fields. The spec extractor evaluated those expressions literally, so the internal `__param__<name>__` placeholder was baked into the spec as a constant and shipped to the API on every call, with the caller's actual value dropped. This affected 14 fields across 9 operations, including `speech_to_text.convert` (`keyterms`, `entity_detection`, `entity_redaction`, `webhook_metadata`, `additional_formats`), `dubbing.project.create` (`keyterms`), `music.video_to_music` / `music.finetunes.create` (`tags`), `voices.update` / `voices.ivc.create` (`labels`), `studio.projects.create` (`genres`, `voice_settings`, `pronunciation_dictionary_locators`) and `audio_native.create`. These fields are now sent correctly as JSON text.
+
+Three related fixes ship with it:
+- **Param-driven headers.** `studio.create_podcast`'s `safety-identifier` header is built from an argument; the spec modelled headers as constants, so the placeholder text was sent as the header value on every call. Such headers are now substituted, and omitted when the argument is unset.
+- **`Faraday::Multipart::Param` did not exist.** Any multipart part carrying an explicit content type (i.e. `speech_to_text.convert`'s `additional_formats`) raised `NameError` before reaching the network. Corrected to `ParamPart` with its real signature.
+- **Typed parts are no longer split.** An array value on a part with an explicit content type is serialized as one JSON body, matching upstream, instead of being fanned out into one part per element.
+
+**Note for callers:** fields listed above now go on the wire JSON-encoded. Pass them as native Ruby values — `keyterms: ["a", "b"]`, `entity_redaction: "pii"` — and the gem encodes them. Values previously hand-encoded as JSON strings to work around the bug should be un-wrapped.
 
 ### 2026-07-02: v0.8.1 — Updated API Spec from elevenlabs-python v2.56.0
 
