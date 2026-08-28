@@ -4,13 +4,14 @@ title: HTTP transport
 description: Faraday setup, auth and SDK headers, the manual redirect loop, timeouts, and how multipart uploads are resolved and cleaned up.
 resource: file://lib/elevenlabs/http_client.rb
 tags: [serialization, testing]
-timestamp: 2026-07-23T14:10:00Z
+timestamp: 2026-08-28T12:00:00Z
 ---
 
 # Overview
 
 `ElevenLabs::HTTPClient` wraps one Faraday connection per client, with the
-`multipart` and `url_encoded` request middlewares and a caller-supplied adapter.
+`multipart` (configured `flat_encode: true`) and `url_encoded` request
+middlewares and a caller-supplied adapter.
 The adapter is injectable (`Client.new(adapter:)`), and a whole `http_client:`
 can be substituted — which is how the test suite runs the entire stack without a
 network, via the `FakeHTTP` stub.
@@ -81,7 +82,24 @@ carrying such a part raised `NameError` before reaching the network.
 IOs opened by the gem are closed in an `ensure` block after the request, and
 cleanup errors are swallowed so they cannot mask a real HTTP error.
 
+# Repeated parts keep the bare field name
+
+The multipart middleware runs with **`flat_encode: true`**. Without it Faraday
+names every element of an array `tags[]`, and the ElevenLabs API does not read
+bracketed keys — it expects the field repeated under its plain name, which is
+what upstream's httpx client sends. The option applies to both kinds of fan-out
+above: list-of-primitive form fields (`tags`, `keyterms`, `genres`) and genuine
+multi-file uploads (`files`, `videos`).
+
+This became load-bearing in v0.10.0, when upstream stopped wrapping
+list-of-primitive form fields in `json.dumps` and started sending them as
+repeated parts. Before that the same fields arrived as one JSON string, so the
+bracket bug was invisible. The encoding is pinned by tests that assert on the
+fully-encoded multipart body rather than on the hash handed to Faraday — the
+distinction matters, because everything above the middleware looks identical
+either way.
+
 # Citations
 
 [1] `lib/elevenlabs/http_client.rb` — `build_headers`, `request`, `prepare_file_value`, `run_cleanups`.
-[2] `test/http_client_headers_test.rb`, `test/http_client_test.rb`, `test/upload_test.rb`.
+[2] `test/http_client_headers_test.rb`, `test/http_client_test.rb` (`test_array_form_values_become_repeated_fields_with_bare_name`), `test/upload_test.rb`.

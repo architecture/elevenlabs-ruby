@@ -6,6 +6,21 @@ This document summarizes every top-level namespace generated from `lib/elevenlab
 client = ElevenLabs::Client.new(api_key: ENV.fetch("ELEVENLABS_API_KEY"))
 ```
 
+## assets
+
+Upload and manage reusable workspace assets.
+
+```ruby
+asset = client.assets.create(
+  asset: ElevenLabs::Upload.from_path("intro.mp3"),
+  name: "Intro clip"
+)
+
+client.assets.list(page_size: 20, search: "intro")
+client.assets.get(asset["asset_id"])
+client.assets.delete(asset["asset_id"])
+```
+
 ## audio_isolation
 
 Remove background noise from clips or stream cleaned audio in real time.
@@ -39,6 +54,22 @@ client.conversational_ai.knowledge_base.documents.create(
   title: "FAQ",
   content: "Frequently asked questions..."
 )
+
+# Crawl a site into the knowledge base
+job = client.conversational_ai.knowledge_base.crawl_jobs.create(
+  url: "https://example.com/docs",
+  max_depth: 2
+)
+client.conversational_ai.knowledge_base.crawl_jobs.get(job["crawl_job_id"])
+
+# Branch-scoped agent procedures
+client.conversational_ai.agents.procedures.list("agent_123", "branch_123")
+
+# QA triage tickets
+client.conversational_ai.triage_tickets.create(
+  conversation_id: "conv_123",
+  qa_comment: "Agent missed the refund policy"
+)
 ```
 
 ## dubbing
@@ -68,6 +99,21 @@ client.environment_variables.create(request: {
 
 client.environment_variables.get("env_var_123")
 client.environment_variables.update("env_var_123", request: { "label" => "API_KEY_V2" })
+```
+
+## flows
+
+Run generation flows for text to speech, image, and video. Each flow takes the
+whole request model as its body and returns a generation you poll for by id.
+
+```ruby
+generation = client.flows.text_to_speech.create(
+  request: { "text" => "Hello there", "model_id" => "eleven_v3" }
+)
+
+client.flows.text_to_speech.get(generation["generation_id"])
+client.flows.image.list(page_size: 10, status: "completed")
+client.flows.video.get("gen_123")
 ```
 
 ## forced_alignment
@@ -273,6 +319,9 @@ client.voices.pvc.samples.create(
   files: [ElevenLabs::Upload.from_path("sample.wav")],
   remove_background_noise: true
 )
+
+client.voices.accents.get(language: "en", model_id: "eleven_v3")
+client.voices.replicate_to_isolated_environment("voice_123", target_workspace_id: "ws_456")
 ```
 
 ## webhooks

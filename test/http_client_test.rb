@@ -196,4 +196,69 @@ class HttpClientTest < Minitest::Test
       result
     )
   end
+
+  # Captures the fully-encoded multipart body so the tests below can assert on
+  # what actually goes over the wire, not on the hash handed to Faraday.
+  class CapturingAdapter < Faraday::Adapter
+    class << self
+      attr_accessor :last_body
+    end
+
+    def call(env)
+      super
+      body = env.request_body
+      self.class.last_body = body.respond_to?(:read) ? body.read : body.to_s
+      save_response(env, 200, "{}", {})
+      @app.call(env)
+    end
+  end
+
+  def multipart_field_names(body)
+    body.scan(/(?<!file)name="([^"]*)"/).flatten
+  end
+
+  # Upstream sends list-of-primitive multipart fields as repeated form fields
+  # with the bare field name (elevenlabs-python #819). Faraday's default
+  # encoding would emit "tags[]" twice instead, which the API rejects.
+  def test_array_form_values_become_repeated_fields_with_bare_name
+    client = ElevenLabs::HTTPClient.new(
+      base_url: "https://api.example.com", api_key: "key", headers: {}, timeout: 5, adapter: CapturingAdapter
+    )
+
+    client.request(
+      method: "POST",
+      path: "/v1/music/finetunes",
+      form: { "name" => "retro", "tags" => %w[retro 80s] },
+      files: [{ name: "files", value: ElevenLabs::Upload.from_io(StringIO.new("audio"), filename: "a.mp3") }],
+      headers: {},
+      force_multipart: true
+    )
+
+    names = multipart_field_names(CapturingAdapter.last_body)
+    assert_equal 2, names.count("tags"), "expected two bare `tags` parts, got #{names.inspect}"
+    refute_includes names, "tags[]"
+  end
+
+  # The same bracket-free encoding applies to genuine multi-file uploads.
+  def test_multiple_files_become_repeated_fields_with_bare_name
+    client = ElevenLabs::HTTPClient.new(
+      base_url: "https://api.example.com", api_key: "key", headers: {}, timeout: 5, adapter: CapturingAdapter
+    )
+
+    client.request(
+      method: "POST",
+      path: "/v1/music/finetunes",
+      form: { "name" => "retro" },
+      files: [{ name: "files", value: [
+        ElevenLabs::Upload.from_io(StringIO.new("one"), filename: "one.mp3"),
+        ElevenLabs::Upload.from_io(StringIO.new("two"), filename: "two.mp3")
+      ] }],
+      headers: {},
+      force_multipart: true
+    )
+
+    names = multipart_field_names(CapturingAdapter.last_body)
+    assert_equal 2, names.count("files"), "expected two bare `files` parts, got #{names.inspect}"
+    refute_includes names, "files[]"
+  end
 end

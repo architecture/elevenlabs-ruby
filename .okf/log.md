@@ -1,5 +1,13 @@
 # Update Log
 
+## 2026-08-28
+### v0.10.0 spec refresh (elevenlabs-python v2.65.0)
+* **Update**: [HTTP transport](runtime/http-transport.md) — new section on repeated multipart parts: the middleware now runs `flat_encode: true` so array elements and multi-file uploads keep the bare field name instead of Faraday's `tags[]`.
+* **Update**: [json.dumps-wrapped params leak silently](generation/json-encoded-params.md) — upstream removed the wrapper from every list-of-primitive form field in v2.65.0, so the `encode` marker now survives only on dictionary and enum fields.
+* **Update**: [request serialization](runtime/request-serialization.md) — the `encode: "json"` example is now a dictionary, with a pointer to where list fields went.
+* **Update**: [versioning and publishing](release/versioning-and-publish.md) — current version 0.9.0 → 0.10.0.
+* **Note**: the refresh added 42 operations across 10 new namespaces (`assets`, `flows.*`, `voices.accents`, `conversational_ai.triage_tickets`, `agents.procedures.*`, `knowledge_base.crawl_jobs`) and removed none. No bundle concept enumerates operations, so nothing else needed updating — `docs/namespaces.md` remains the authority.
+
 ## 2026-07-23
 ### v0.9.0 spec refresh (elevenlabs-python v2.59.0)
 * **Creation**: [json.dumps-wrapped params leak silently](generation/json-encoded-params.md) — the silent sibling of the Dummy trap, found during the elevenlabs-python v2.59.0 refresh; 14 fields across 9 operations had been shipping placeholder text to the API.

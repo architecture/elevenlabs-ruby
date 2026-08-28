@@ -4,7 +4,7 @@ title: Request serialization
 description: How OperationExecutor turns a flat params hash into path, query, body, and multipart entries using only the operation spec.
 resource: file://lib/elevenlabs/operation_executor.rb
 tags: [codegen, serialization]
-timestamp: 2026-07-23T14:10:00Z
+timestamp: 2026-08-28T12:00:00Z
 ---
 
 # Overview
@@ -31,9 +31,13 @@ parameter; it is the caller's escape hatch for `additional_headers`,
 | **headers** | Mostly static strings passed straight through. A value of `{ param: "x" }` is built from that argument instead, and the header is omitted when the argument is unset — see [the json.dumps leak](/generation/json-encoded-params.md) for why this shape exists. |
 
 An assignment may also carry `encode: "json"`, meaning the field goes on the
-wire as JSON *text* rather than as a raw value (`keyterms: ["a","b"]` → the
-string `["a","b"]`). Absent values are left alone so compaction still removes
-them instead of sending the text `null`.
+wire as JSON *text* rather than as a raw value (`labels: {"accent" => "us"}` →
+the string `{"accent":"us"}`). Absent values are left alone so compaction still
+removes them instead of sending the text `null`. Upstream narrowed this to
+dictionary and enum fields in v2.65.0; list-of-primitive form fields lost the
+marker and now go out as repeated multipart parts instead — see
+[the json.dumps leak](/generation/json-encoded-params.md) and
+[the HTTP transport](/runtime/http-transport.md).
 
 `additional_body_parameters` is merged **after** compaction, so a caller can
 deliberately send a key the compaction would otherwise have stripped.

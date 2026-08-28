@@ -448,4 +448,112 @@ class ClientIntegrationTest < Minitest::Test
     refute_respond_to @client, :save_a_voice_preview,
                       "expected save_a_voice_preview to be gone after the v2.59.0 spec refresh"
   end
+
+  # --- v2.65.0 spec refresh: new namespaces ---
+
+  def test_assets_namespace_accessible_with_crud
+    assert ElevenLabs::Resources.top_level_resources.key?("assets"),
+           "expected assets to be a top-level namespace"
+
+    klass = ElevenLabs::Resources.class_for(["assets"])
+    assert klass, "expected assets resource class to exist"
+    %i[create list get delete].each do |m|
+      assert klass.method_defined?(m), "expected assets to have #{m} method"
+    end
+  end
+
+  def test_flows_namespace_and_children_accessible
+    assert ElevenLabs::Resources.top_level_resources.key?("flows"),
+           "expected flows to be a top-level namespace"
+
+    instance = ElevenLabs::Resources.class_for(["flows"]).new(Object.new)
+    %i[image text_to_speech video].each do |child|
+      assert_respond_to instance, child
+    end
+
+    %w[image text_to_speech video].each do |child|
+      klass = ElevenLabs::Resources.class_for(["flows", child])
+      assert klass, "expected flows.#{child} resource class to exist"
+      %i[create list get].each do |m|
+        assert klass.method_defined?(m), "expected flows.#{child} to have #{m} method"
+      end
+    end
+  end
+
+  def test_voices_accents_child_accessible
+    instance = ElevenLabs::Resources.class_for(["voices"]).new(Object.new)
+    assert_respond_to instance, :accents
+
+    klass = ElevenLabs::Resources.class_for(["voices", "accents"])
+    assert klass, "expected voices.accents resource class to exist"
+    assert klass.method_defined?(:get), "expected voices.accents to have get method"
+  end
+
+  def test_voices_has_replicate_to_isolated_environment_method
+    klass = ElevenLabs::Resources.class_for(["voices"])
+    assert klass.method_defined?(:replicate_to_isolated_environment),
+           "expected voices to have replicate_to_isolated_environment method"
+  end
+
+  def test_triage_tickets_child_accessible
+    instance = ElevenLabs::Resources.class_for(["conversational_ai"]).new(Object.new)
+    assert_respond_to instance, :triage_tickets
+
+    klass = ElevenLabs::Resources.class_for(["conversational_ai", "triage_tickets"])
+    assert klass, "expected conversational_ai.triage_tickets resource class to exist"
+    %i[create create_manual list get update delete add_comment add_turn_comment
+       list_assignable_users].each do |m|
+      assert klass.method_defined?(m), "expected triage_tickets to have #{m} method"
+    end
+  end
+
+  def test_agents_procedures_and_drafts_accessible
+    instance = ElevenLabs::Resources.class_for(["conversational_ai", "agents"]).new(Object.new)
+    assert_respond_to instance, :procedures
+
+    procedures = ElevenLabs::Resources.class_for(["conversational_ai", "agents", "procedures"])
+    assert procedures, "expected agents.procedures resource class to exist"
+    %i[create list get remove compile].each do |m|
+      assert procedures.method_defined?(m), "expected agents.procedures to have #{m} method"
+    end
+
+    drafts = ElevenLabs::Resources.class_for(["conversational_ai", "agents", "procedures", "drafts"])
+    assert drafts, "expected agents.procedures.drafts resource class to exist"
+    %i[get update delete].each do |m|
+      assert drafts.method_defined?(m), "expected procedures.drafts to have #{m} method"
+    end
+  end
+
+  def test_knowledge_base_crawl_jobs_child_accessible
+    instance = ElevenLabs::Resources.class_for(["conversational_ai", "knowledge_base"]).new(Object.new)
+    assert_respond_to instance, :crawl_jobs
+
+    klass = ElevenLabs::Resources.class_for(["conversational_ai", "knowledge_base", "crawl_jobs"])
+    assert klass, "expected knowledge_base.crawl_jobs resource class to exist"
+    %i[create list get cancel].each do |m|
+      assert klass.method_defined?(m), "expected crawl_jobs to have #{m} method"
+    end
+  end
+
+  def test_new_operations_on_existing_namespaces
+    conversations = ElevenLabs::Resources.class_for(["conversational_ai", "conversations"])
+    assert conversations.method_defined?(:get_summary),
+           "expected conversations to have get_summary method"
+
+    batch_calls = ElevenLabs::Resources.class_for(["conversational_ai", "batch_calls"])
+    assert batch_calls.method_defined?(:export), "expected batch_calls to have export method"
+
+    documents = ElevenLabs::Resources.class_for(["conversational_ai", "knowledge_base", "documents"])
+    %i[bulk_delete get_bulk_agents].each do |m|
+      assert documents.method_defined?(m), "expected knowledge_base.documents to have #{m} method"
+    end
+
+    lang_transcript = ElevenLabs::Resources.class_for(["dubbing", "project", "language", "transcript"])
+    assert lang_transcript.method_defined?(:update_segments),
+           "expected language.transcript to have update_segments method"
+
+    transcript = ElevenLabs::Resources.class_for(["dubbing", "project", "transcript"])
+    assert transcript.method_defined?(:update_segments),
+           "expected project.transcript to have update_segments method"
+  end
 end

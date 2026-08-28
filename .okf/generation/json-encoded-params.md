@@ -3,7 +3,7 @@ type: Gotcha
 title: json.dumps-wrapped params leak silently
 description: Params the upstream SDK wraps in json.dumps are encoded during extraction and baked in as literals — the silent sibling of the Dummy trap, fixed by an encode marker.
 tags: [codegen, upstream-python-sdk, serialization]
-timestamp: 2026-07-23T14:10:00Z
+timestamp: 2026-08-28T12:00:00Z
 ---
 
 # Overview
@@ -69,6 +69,28 @@ For multipart entries the marker is unnecessary: those parts already declare
 `content_type: application/json`, and [the HTTP transport](/runtime/http-transport.md)
 encodes non-String values for that content type — so a plain param reference
 produces the right bytes, and an omitted value drops the part entirely.
+
+# Upstream shrank the pattern in v2.65.0
+
+The set of fields carrying the marker is not stable, and a refresh can *remove*
+it. In elevenlabs-python v2.65.0 the `json.dumps` wrapper came off every
+list-of-primitive form field — `keyterms`, `tags`, `genres`,
+`pronunciation_dictionary_locators`, `voice_settings` — which now go on the wire
+as repeated form parts instead of one JSON string. The extractor needs no change
+for this: with no wrapper to evaluate there is no placeholder to encode, so the
+assignment simply loses its `encode` key.
+
+What it does change is the bytes, and the fix lives in
+[the HTTP transport](/runtime/http-transport.md) rather than here. The marker
+survives only where the value is a dictionary or enum that the server still
+wants as JSON text: `labels` on `voices.update` / `voices.ivc.create`, and
+`webhook_metadata` / `entity_detection` / `entity_redaction` on
+`speech_to_text.convert`.
+
+Worth noting for the next refresh: this class of change is caught by the
+serialization tests only because they assert exact form values. A test that
+asserted merely "the field is present" would have stayed green while the wire
+format flipped.
 
 # Citations
 

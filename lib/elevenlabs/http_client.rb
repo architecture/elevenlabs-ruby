@@ -12,7 +12,10 @@ module ElevenLabs
       @base_headers = headers || {}
       @connection =
         Faraday.new(url: base_url) do |conn|
-          conn.request :multipart
+          # flat_encode keeps repeated fields bare (`tags`, `tags`) instead of
+          # Faraday's default `tags[]` — upstream sends list-of-primitive form
+          # fields and multi-file uploads as repeated parts under the plain name.
+          conn.request :multipart, flat_encode: true
           conn.request :url_encoded
           conn.adapter adapter
         end

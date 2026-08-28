@@ -4,14 +4,14 @@ title: Versioning and publishing
 description: What each version component signals in a spec-generated SDK, and how the CI pipeline publishes to GitHub Packages idempotently.
 resource: file://.github/workflows/gem-push.yml
 tags: [testing, upstream-python-sdk]
-timestamp: 2026-07-23T14:10:00Z
+timestamp: 2026-08-28T12:00:00Z
 ---
 
 # Overview
 
 The gem is published to **GitHub Packages**, not RubyGems.org, by
 `.github/workflows/gem-push.yml` on every push to `main`. Version lives in
-`lib/elevenlabs/version.rb` and is currently `0.9.0`.
+`lib/elevenlabs/version.rb` and is currently `0.10.0`.
 
 # What the components mean here
 

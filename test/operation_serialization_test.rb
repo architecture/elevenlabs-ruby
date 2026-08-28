@@ -412,11 +412,11 @@ class OperationSerializationTest < Minitest::Test
     assert_equal "POST", request[:method]
     assert_equal "v1/music/video-to-music", request[:path]
     assert_equal({ "output_format" => "mp3_44100_128" }, request[:query])
-    # `tags` is sent JSON-encoded (upstream wraps it in json.dumps), so the
-    # list goes on the wire as JSON text rather than a Ruby-inspected array.
+    # `tags` is a list of primitives, so it goes on the wire as repeated form
+    # fields (elevenlabs-python #819) rather than a JSON-encoded string.
     assert_equal({
       "description" => "upbeat background music",
-      "tags" => '["pop","energetic"]',
+      "tags" => ["pop", "energetic"],
       "sign_with_c2pa" => true
     }, request[:form])
     assert_equal 1, request[:files].length
@@ -1040,8 +1040,8 @@ class OperationSerializationTest < Minitest::Test
     assert_equal "v1/dubbing/project", request[:path]
     assert_equal "en", request[:form]["source_language"]
     assert_equal "es", request[:form]["target_language"]
-    # keyterms is JSON-encoded on the wire (upstream wraps it in json.dumps)
-    assert_equal '["ElevenLabs","dubbing"]', request[:form]["keyterms"]
+    # keyterms is a list of primitives, sent as repeated form fields
+    assert_equal ["ElevenLabs", "dubbing"], request[:form]["keyterms"]
     assert_equal 1, request[:files].length
     assert_equal "file", request[:files].first[:name]
   end
@@ -1057,13 +1057,26 @@ class OperationSerializationTest < Minitest::Test
 
   def test_dubbing_project_language_transcript_update_segment
     @client.dubbing.project.language.transcript.update_segment(
-      "proj_1", "es", "seg_7", translation: "Hola mundo"
+      "proj_1", "es", "seg_7", request: { translation: "Hola mundo" }
     )
 
     request = @http.requests.last
     assert_equal "PATCH", request[:method]
     assert_equal "v1/dubbing/project/proj_1/language/es/transcript/segment/seg_7", request[:path]
-    assert_equal({ "translation" => "Hola mundo" }, request[:json])
+    # The whole request model is the body now — it is assigned to the JSON root
+    # rather than to a named field, and passes through verbatim.
+    assert_equal({ translation: "Hola mundo" }, request[:json])
+  end
+
+  def test_dubbing_project_language_transcript_update_segments
+    @client.dubbing.project.language.transcript.update_segments(
+      "proj_1", "es", segments: { "seg_7" => { translation: "Hola mundo" } }
+    )
+
+    request = @http.requests.last
+    assert_equal "PATCH", request[:method]
+    assert_equal "v1/dubbing/project/proj_1/language/es/transcript/segments", request[:path]
+    assert_equal({ "segments" => { "seg_7" => { translation: "Hola mundo" } } }, request[:json])
   end
 
   def test_music_finetunes_create
@@ -1080,16 +1093,17 @@ class OperationSerializationTest < Minitest::Test
     assert_equal "POST", request[:method]
     assert_equal "v1/music/finetunes", request[:path]
     assert_equal "Synthwave", request[:form]["name"]
-    assert_equal '["retro","80s"]', request[:form]["tags"]
+    assert_equal ["retro", "80s"], request[:form]["tags"]
   end
 
   def test_music_compose_with_finetune_params
-    @client.music.compose(prompt: "lofi beat", finetune_id: "ft_1", finetune_strength: 0.7)
+    @client.music.compose(prompt: "lofi beat", finetune_id: "ft_1")
 
     request = @http.requests.last
     assert_equal "POST", request[:method]
     assert_equal "ft_1", request[:json]["finetune_id"]
-    assert_in_delta 0.7, request[:json]["finetune_strength"]
+    # Upstream dropped finetune_strength in elevenlabs-python 2.60.0.
+    refute_includes request[:json].keys, "finetune_strength"
   end
 
   def test_service_accounts_create
@@ -1137,7 +1151,9 @@ class OperationSerializationTest < Minitest::Test
     )
 
     form = @http.requests.last[:form]
-    assert_equal '["ElevenLabs","SDK"]', form["keyterms"]
+    # keyterms is a plain list of primitives — repeated form fields — while
+    # entity_detection and webhook_metadata stay JSON-encoded upstream.
+    assert_equal ["ElevenLabs", "SDK"], form["keyterms"]
     assert_equal '["pii"]', form["entity_detection"]
     assert_equal '{"request_id":"abc"}', form["webhook_metadata"]
     refute_includes form.values.map(&:to_s).join, "__param__",
@@ -1177,5 +1193,224 @@ class OperationSerializationTest < Minitest::Test
     headers = @http.requests.last[:headers]
     refute headers.key?("safety-identifier"),
            "expected safety-identifier to be absent when the param is unset"
+  end
+
+  # --- v2.65.0 spec refresh: new namespaces ---
+
+  def test_assets_create_multipart_serialization
+    asset = ElevenLabs::Upload.from_io(StringIO.new("bytes"), filename: "clip.mp3", content_type: "audio/mpeg")
+
+    @client.assets.create(asset: asset, name: "Intro clip")
+
+    request = @http.requests.last
+    assert_equal "POST", request[:method]
+    assert_equal "v1/assets", request[:path]
+    assert_equal({ "name" => "Intro clip" }, request[:form])
+    assert_equal 1, request[:files].length
+    assert_equal "asset", request[:files].first[:name]
+  end
+
+  def test_assets_list_query_params
+    @client.assets.list(page_size: 20, search: "intro")
+
+    request = @http.requests.last
+    assert_equal "GET", request[:method]
+    assert_equal "v1/assets", request[:path]
+    assert_equal({ "page_size" => 20, "search" => "intro" }, request[:query])
+  end
+
+  def test_assets_get_and_delete_paths
+    @client.assets.get("asset_1")
+    get_request = @http.requests.last
+    assert_equal "GET", get_request[:method]
+    assert_equal "v1/assets/asset_1", get_request[:path]
+
+    @client.assets.delete("asset_1")
+    delete_request = @http.requests.last
+    assert_equal "DELETE", delete_request[:method]
+    assert_equal "v1/assets/asset_1", delete_request[:path]
+  end
+
+  # flows.* take the whole request model as the JSON body.
+  def test_flows_text_to_speech_create_sends_request_as_body_root
+    @client.flows.text_to_speech.create(request: { "text" => "hello", "model_id" => "eleven_v3" })
+
+    request = @http.requests.last
+    assert_equal "POST", request[:method]
+    assert_equal "v1/flows/text-to-speech", request[:path]
+    assert_equal({ "text" => "hello", "model_id" => "eleven_v3" }, request[:json])
+  end
+
+  def test_flows_image_list_query_params
+    @client.flows.image.list(page_size: 5, status: "completed")
+
+    request = @http.requests.last
+    assert_equal "GET", request[:method]
+    assert_equal "v1/flows/image", request[:path]
+    assert_equal({ "page_size" => 5, "status" => "completed" }, request[:query])
+  end
+
+  def test_flows_video_get_path
+    @client.flows.video.get("gen_9")
+
+    request = @http.requests.last
+    assert_equal "GET", request[:method]
+    assert_equal "v1/flows/video/gen_9", request[:path]
+  end
+
+  def test_voices_accents_get_query_params
+    @client.voices.accents.get(language: "en", model_id: "eleven_v3")
+
+    request = @http.requests.last
+    assert_equal "GET", request[:method]
+    assert_equal "v1/voices/accents", request[:path]
+    assert_equal({ "language" => "en", "model_id" => "eleven_v3" }, request[:query])
+  end
+
+  def test_voices_replicate_to_isolated_environment_serialization
+    @client.voices.replicate_to_isolated_environment("voice_1", target_workspace_id: "ws_2", preserve_voice_id: true)
+
+    request = @http.requests.last
+    assert_equal "POST", request[:method]
+    assert_equal "v1/voices/voice_1/replicate-to-isolated-environment", request[:path]
+    assert_equal({ "target_workspace_id" => "ws_2", "preserve_voice_id" => true }, request[:json])
+  end
+
+  def test_triage_tickets_create_serialization
+    @client.conversational_ai.triage_tickets.create(
+      conversation_id: "conv_1",
+      qa_comment: "Agent missed the refund policy"
+    )
+
+    request = @http.requests.last
+    assert_equal "POST", request[:method]
+    assert_equal "v1/convai/triage-tickets", request[:path]
+    assert_equal(
+      { "conversation_id" => "conv_1", "qa_comment" => "Agent missed the refund policy" },
+      request[:json]
+    )
+  end
+
+  def test_triage_tickets_list_is_scoped_to_agent
+    @client.conversational_ai.triage_tickets.list("agent_1", status: "open", page_size: 10)
+
+    request = @http.requests.last
+    assert_equal "GET", request[:method]
+    assert_equal "v1/convai/agents/agent_1/triage-tickets", request[:path]
+    assert_equal({ "status" => "open", "page_size" => 10 }, request[:query])
+  end
+
+  def test_triage_tickets_add_turn_comment_serialization
+    @client.conversational_ai.triage_tickets.add_turn_comment("ticket_1", turn_index: 3, comment: "wrong tool")
+
+    request = @http.requests.last
+    assert_equal "POST", request[:method]
+    assert_equal "v1/convai/triage-tickets/ticket_1/turn-comments", request[:path]
+    assert_equal({ "turn_index" => 3, "comment" => "wrong tool" }, request[:json])
+  end
+
+  def test_agents_procedures_create_and_compile_paths
+    @client.conversational_ai.agents.procedures.create("agent_1", "branch_1", request: { "name" => "refund" })
+
+    create_request = @http.requests.last
+    assert_equal "POST", create_request[:method]
+    assert_equal "v1/convai/agents/agent_1/branches/branch_1/procedures", create_request[:path]
+    assert_equal({ "name" => "refund" }, create_request[:json])
+
+    @client.conversational_ai.agents.procedures.compile("agent_1", "branch_1")
+
+    compile_request = @http.requests.last
+    assert_equal "POST", compile_request[:method]
+    assert_equal "v1/convai/agents/agent_1/branches/branch_1/procedures/compile", compile_request[:path]
+    assert_nil compile_request[:json]
+  end
+
+  def test_agents_procedures_draft_update_serialization
+    @client.conversational_ai.agents.procedures.drafts.update(
+      "agent_1", "branch_1", "proc_1", name: "refund", content: "steps", type: "prompt"
+    )
+
+    request = @http.requests.last
+    assert_equal "PATCH", request[:method]
+    assert_equal "v1/convai/agents/agent_1/branches/branch_1/procedures/proc_1/draft", request[:path]
+    assert_equal({ "name" => "refund", "content" => "steps", "type" => "prompt" }, request[:json])
+  end
+
+  def test_knowledge_base_crawl_jobs_create_serialization
+    @client.conversational_ai.knowledge_base.crawl_jobs.create(
+      url: "https://example.com/docs", max_depth: 2, max_pages: 50
+    )
+
+    request = @http.requests.last
+    assert_equal "POST", request[:method]
+    assert_equal "v1/convai/knowledge-base/crawl", request[:path]
+    assert_equal(
+      { "url" => "https://example.com/docs", "max_depth" => 2, "max_pages" => 50 },
+      request[:json]
+    )
+  end
+
+  def test_knowledge_base_crawl_jobs_cancel_path
+    @client.conversational_ai.knowledge_base.crawl_jobs.cancel("crawl_1")
+
+    request = @http.requests.last
+    assert_equal "POST", request[:method]
+    assert_equal "v1/convai/knowledge-base/crawl/crawl_1/cancel", request[:path]
+  end
+
+  def test_knowledge_base_documents_bulk_delete_serialization
+    @client.conversational_ai.knowledge_base.documents.bulk_delete(document_ids: %w[doc_1 doc_2], force: true)
+
+    request = @http.requests.last
+    assert_equal "POST", request[:method]
+    assert_equal "v1/convai/knowledge-base/bulk-delete", request[:path]
+    assert_equal({ "document_ids" => %w[doc_1 doc_2], "force" => true }, request[:json])
+  end
+
+  # Splits its parameters: document_ids in the body, paging in the query string.
+  def test_knowledge_base_documents_get_bulk_agents_splits_body_and_query
+    @client.conversational_ai.knowledge_base.documents.get_bulk_agents(
+      document_ids: %w[doc_1], dependent_type: "agent", page_size: 30
+    )
+
+    request = @http.requests.last
+    assert_equal "POST", request[:method]
+    assert_equal "v1/convai/knowledge-base/dependent-agents", request[:path]
+    assert_equal({ "document_ids" => %w[doc_1] }, request[:json])
+    assert_equal({ "dependent_type" => "agent", "page_size" => 30 }, request[:query])
+  end
+
+  def test_conversations_get_summary_serialization
+    @client.conversational_ai.conversations.get_summary("conv_1", max_messages: 25)
+
+    request = @http.requests.last
+    assert_equal "GET", request[:method]
+    assert_equal "v1/convai/conversations/conv_1/summary", request[:path]
+    assert_equal({ "max_messages" => 25 }, request[:query])
+  end
+
+  def test_batch_calls_export_path
+    @client.conversational_ai.batch_calls.export("batch_1")
+
+    request = @http.requests.last
+    assert_equal "GET", request[:method]
+    assert_equal "v1/convai/batch-calling/batch_1/export", request[:path]
+  end
+
+  # Upstream types these as List[str] and sends them as repeated form fields
+  # rather than one JSON-encoded string (elevenlabs-python #819).
+  def test_studio_projects_create_sends_list_fields_as_repeated_form_fields
+    @client.studio.projects.create(
+      name: "My Project",
+      default_title_voice_id: "voice_1",
+      default_paragraph_voice_id: "voice_2",
+      default_model_id: "eleven_v3",
+      genres: %w[fiction drama],
+      pronunciation_dictionary_locators: ['{"pronunciation_dictionary_id":"dict_1"}']
+    )
+
+    form = @http.requests.last[:form]
+    assert_equal %w[fiction drama], form["genres"]
+    assert_equal ['{"pronunciation_dictionary_id":"dict_1"}'], form["pronunciation_dictionary_locators"]
   end
 end

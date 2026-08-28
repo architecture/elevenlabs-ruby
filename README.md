@@ -10,7 +10,7 @@ This gem is published to **GitHub Packages** (not RubyGems.org). Add the GitHub 
 
 ```ruby
 source "https://rubygems.pkg.github.com/architecture" do
-  gem "elevenlabs", "0.9.0"
+  gem "elevenlabs", "0.10.0"
 end
 ```
 
@@ -31,7 +31,7 @@ Bundler can pull the gem straight from the git repository. This works for public
 
 ```ruby
 # Pin to a release tag (recommended for production)
-gem "elevenlabs", git: "https://github.com/architecture/elevenlabs-ruby", tag: "v0.9.0"
+gem "elevenlabs", git: "https://github.com/architecture/elevenlabs-ruby", tag: "v0.10.0"
 
 # Or track the latest main branch
 gem "elevenlabs", git: "https://github.com/architecture/elevenlabs-ruby", branch: "main"
@@ -68,11 +68,15 @@ Optional parameters default to the `ElevenLabs::OMIT` sentinel. Pass `nil` to se
 
 Every top-level namespace described in `lib/elevenlabs/spec.json` is available under `client`. That includes:
 
-`audio_isolation`, `audio_native`, `conversational_ai`, `dubbing`, `environment_variables`, `forced_alignment`, `history`, `models`, `music`, `productions`, `pronunciation_dictionaries`, `samples`, `service_accounts`, `speech_engine`, `speech_to_speech`, `speech_to_text`, `studio`, `text_to_dialogue`, `text_to_sound_effects`, `text_to_speech`, `text_to_voice`, `tokens`, `usage`, `user`, `voices`, `webhooks`, `workspace`, `workspaces`.
+`assets`, `audio_isolation`, `audio_native`, `conversational_ai`, `dubbing`, `environment_variables`, `flows`, `forced_alignment`, `history`, `models`, `music`, `productions`, `pronunciation_dictionaries`, `samples`, `service_accounts`, `speech_engine`, `speech_to_speech`, `speech_to_text`, `studio`, `text_to_dialogue`, `text_to_sound_effects`, `text_to_speech`, `text_to_voice`, `tokens`, `usage`, `user`, `voices`, `webhooks`, `workspace`, `workspaces`.
 
 Below are example snippets that demonstrate each namespace. Substitute IDs and payloads with real values from your account.
 
 ```ruby
+# assets
+asset = client.assets.create(asset: ElevenLabs::Upload.from_path("intro.mp3"), name: "Intro clip")
+client.assets.list(page_size: 20, search: "intro")
+
 # audio_isolation
 clean = client.audio_isolation.convert(audio: ElevenLabs::Upload.from_path("noisy.wav"))
 
@@ -81,10 +85,18 @@ client.audio_native.projects.list
 
 # conversational_ai
 client.conversational_ai.agents.list(page_size: 10)
+client.conversational_ai.triage_tickets.create(conversation_id: "conv_123", qa_comment: "Missed the refund policy")
+client.conversational_ai.knowledge_base.crawl_jobs.create(url: "https://example.com/docs", max_depth: 2)
+client.conversational_ai.agents.procedures.list("agent_123", "branch_123")
 
 # environment_variables
 client.environment_variables.list(page_size: 10)
 client.environment_variables.create(request: { "label" => "API_KEY", "type" => "secret", "values" => { "production" => "sk-123" } })
+
+# flows
+client.flows.text_to_speech.create(request: { "text" => "Hello there", "model_id" => "eleven_v3" })
+client.flows.image.list(page_size: 10, status: "completed")
+client.flows.video.get("gen_123")
 
 # dubbing
 client.dubbing.transcript.create(
@@ -100,7 +112,10 @@ client.dubbing.project.create(
 )
 client.dubbing.project.list(page_size: 25)
 client.dubbing.project.language.transcript.update_segment(
-  "proj_123", "es", "seg_7", translation: "Hola mundo"
+  "proj_123", "es", "seg_7", request: { translation: "Hola mundo" }
+)
+client.dubbing.project.language.transcript.update_segments(
+  "proj_123", "es", segments: { "seg_7" => { translation: "Hola mundo" } }
 )
 
 # forced_alignment
@@ -122,7 +137,7 @@ client.music.finetunes.create(
   files: [ElevenLabs::Upload.from_path("sample.mp3")],
   tags: ["retro", "80s"]
 )
-client.music.compose(prompt: "lofi beat", finetune_id: "ft_123", finetune_strength: 0.7)
+client.music.compose(prompt: "lofi beat", finetune_id: "ft_123")
 
 # pronunciation_dictionaries
 client.pronunciation_dictionaries.list
@@ -180,6 +195,7 @@ client.user.get
 
 # voices
 client.voices.get_all
+client.voices.accents.get(language: "en", model_id: "eleven_v3")
 
 # webhooks
 client.webhooks.list
@@ -462,6 +478,36 @@ gem "elevenlabs", path: "/path/to/elevenlabs-ruby"
 ```
 
 ## Recent Updates
+
+### 2026-08-28: v0.10.0 — Updated API Spec from elevenlabs-python v2.65.0 + repeated multipart fields
+
+Refreshed `lib/elevenlabs/spec.json` (and the `types.json` / `docs/types.md` artifacts) against elevenlabs-python v2.65.0 (up from v2.59.0). 42 new operations across 10 new namespaces and sub-resources; nothing removed.
+
+**New namespaces:**
+- `assets` — workspace asset CRUD (`create`, `list`, `get`, `delete`), with `create` taking a multipart upload
+- `flows` — generation flows, with `flows.text_to_speech`, `flows.image` and `flows.video` each exposing `create`, `list` and `get`. `create` takes the whole request model as the body: `client.flows.image.create(request: { ... })`
+
+**New sub-resources:**
+- `voices.accents` — `get` the accents available for a language and model
+- `conversational_ai.triage_tickets` — agent QA tickets (`create`, `create_manual`, `list`, `get`, `update`, `delete`, `add_comment`, `add_turn_comment`, `list_assignable_users`). `list` and `create_manual` are scoped to an agent; the rest address a ticket by id
+- `conversational_ai.agents.procedures` and `conversational_ai.agents.procedures.drafts` — branch-scoped agent procedures (`create`, `list`, `get`, `remove`, `compile`) and their drafts (`get`, `update`, `delete`)
+- `conversational_ai.knowledge_base.crawl_jobs` — site crawls that populate the knowledge base (`create`, `list`, `get`, `cancel`)
+
+**New operations on existing namespaces:**
+- `voices.replicate_to_isolated_environment` — copy a voice into an isolated workspace
+- `conversational_ai.conversations.get_summary` — summarize a conversation (`GET .../conversations/{id}/summary`)
+- `conversational_ai.batch_calls.export` — export a batch call (`GET .../batch-calling/{batch_id}/export`)
+- `conversational_ai.knowledge_base.documents.bulk_delete` and `get_bulk_agents` — bulk document deletion and dependent-agent lookup
+- `dubbing.project.transcript.update_segments` and `dubbing.project.language.transcript.update_segments` — edit several segments in one atomic request
+
+**New parameters on existing operations:** eleven new filters on `conversational_ai.conversations.list` (including `sort_direction`, `version_id`, `parent_conversation_id`, `visited_agent_ids`, `triggered_procedure_ids`, `data_collection_ids`, `evaluation_criteria_ids`, `guardrail_types`); seven on `conversations.messages.text_search`; paging and sorting on `conversations.topics.get`; nine voice filters on `voices.search` (`accent`, `age`, `gender`, `language`, `use_cases`, `high_quality`, and more); `procedures` on `agents.update`; `include_commit_status` on `agents.branches.list`; `agent_ids` on `analytics.live_count.get`; `debug_events_request` on `conversations.get_signed_url` / `get_webrtc_token`; `minimum_frequency_days` on `knowledge_base.documents.create_folder` / `create_from_url`; `request_meta` on `mcp_servers.update`; `transcript` and `webhook_ids` on `dubbing.project.create`; `translations` on `dubbing.project.language.create`.
+
+**Breaking changes from upstream:**
+- `music.compose`, `music.compose_detailed`, `music.compose_detailed_stream` and `music.stream` no longer accept `finetune_strength`. `finetune_id` is unchanged.
+- `dubbing.project.transcript.update_segment` and `dubbing.project.language.transcript.update_segment` now take the whole edit as one `request:` model instead of individual `text:` / `translation:` / `speaker_id:` / `start_s:` / `end_s:` keywords. The `dubbing.project.*.transcript` editing operations are also documented as Enterprise-only now.
+- `dubbing.project.language.create` dropped `model_id`.
+
+**Repeated multipart fields.** Upstream now sends list-of-primitive multipart fields as repeated form parts rather than one JSON-encoded string (elevenlabs-python #819). That covers `keyterms` on `speech_to_text.convert` and `dubbing.project.create`, `tags` on `music.video_to_music` and `music.finetunes.create`, `pronunciation_dictionary_locators` on `audio_native.create`, and `genres` / `voice_settings` / `pronunciation_dictionary_locators` on `studio.projects.create`. Faraday would have encoded those as `tags[]`, so the multipart middleware now runs with `flat_encode: true` and each element goes out under the bare field name. Genuine multi-file uploads (`files`, `videos`) get the same bracket-free treatment. Callers pass native Ruby arrays exactly as before; only the bytes on the wire change. `labels` on `voices.update` / `voices.ivc.create`, and `webhook_metadata` / `entity_detection` / `entity_redaction` on `speech_to_text.convert`, are dictionaries or enums and stay JSON-encoded.
 
 ### 2026-07-23: v0.9.0 — Updated API Spec from elevenlabs-python v2.59.0 + JSON-encoded field fixes
 
