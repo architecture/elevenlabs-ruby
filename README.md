@@ -10,7 +10,7 @@ This gem is published to **GitHub Packages** (not RubyGems.org). Add the GitHub 
 
 ```ruby
 source "https://rubygems.pkg.github.com/architecture" do
-  gem "elevenlabs", "0.11.0"
+  gem "elevenlabs", "0.11.1"
 end
 ```
 
@@ -31,7 +31,7 @@ Bundler can pull the gem straight from the git repository. This works for public
 
 ```ruby
 # Pin to a release tag (recommended for production)
-gem "elevenlabs", git: "https://github.com/architecture/elevenlabs-ruby", tag: "v0.11.0"
+gem "elevenlabs", git: "https://github.com/architecture/elevenlabs-ruby", tag: "v0.11.1"
 
 # Or track the latest main branch
 gem "elevenlabs", git: "https://github.com/architecture/elevenlabs-ruby", branch: "main"
@@ -480,6 +480,12 @@ gem "elevenlabs", path: "/path/to/elevenlabs-ruby"
 ```
 
 ## Recent Updates
+
+### 2026-09-25: v0.11.1 — Ruby 4.0 compatibility and dependency refresh
+
+- `ElevenLabs::Utils` now requires `cgi/escape` instead of `cgi`. Ruby 4.0 removed the CGI library, and loading the gem printed a deprecation warning. Only `CGI.escape` is used, and `cgi/escape` provides it on Ruby 3.3 and 4.0.
+- Tested against json 3.0.2 (the gemspec does not cap `json`, so fresh installs can already resolve to 3.x), faraday 2.14.4 and faraday-net_http 3.4.4.
+- CI now runs the test suite on Ruby 3.3 and 4.0, and uses `actions/checkout@v7` in place of the Node 20 based v4.
 
 ### 2026-09-25: v0.11.0 — Updated API Spec from elevenlabs-python v2.69.0
 

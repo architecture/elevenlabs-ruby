@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    elevenlabs (0.11.0)
+    elevenlabs (0.11.1)
       faraday (>= 2.0)
       faraday-multipart (>= 1.0)
       json
@@ -43,7 +43,7 @@ DEPENDENCIES
 
 CHECKSUMS
   drb (2.2.3) sha256=0b00d6fdb50995fe4a45dea13663493c841112e4068656854646f418fda13373
-  elevenlabs (0.11.0)
+  elevenlabs (0.11.1)
   faraday (2.14.4) sha256=9bb4408c44621b0dbaaaa39e5dbfc4dbe58cc6751b6eb94d16ae9e1f2f2fab6e
   faraday-multipart (1.2.0) sha256=7d89a949693714176f612323ca13746a2ded204031a6ba528adee788694ef757
   faraday-net_http (3.4.4) sha256=0e78af151747ed1b00f33e25973b4bc220d7f16c00c39676817c8b12331eb588
