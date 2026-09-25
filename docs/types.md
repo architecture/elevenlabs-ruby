@@ -2,7 +2,7 @@
 
 Auto-generated from `lib/elevenlabs/types.json` by `scripts/render_types_doc.py`. Describes the nested Hash shapes expected by operation parameters the gem otherwise treats as opaque (`workflow`, `conversation_config`, `platform_settings`, etc.).
 
-Source: `tmp-elevenlabs-python` @ `a33cb6a262897dc7e453f32cd0770dc515b09634` · 2024 types (1224 models, 93 unions, 383 variant classes, 324 enums).
+Source: `tmp-elevenlabs-python` @ `39d7bc9d02023f7a19a7356711832a47facf3aa4` · 2155 types (1286 models, 97 unions, 417 variant classes, 355 enums).
 
 ## Contents
 
@@ -75,15 +75,15 @@ Discriminated union on `type`. Variants:
 
 Discriminated union on `type`. Variants:
 
-- [AlertingSettingsNotifiersItem_Integration](#alertingsettingsnotifiersitem_integration)
 - [AlertingSettingsNotifiersItem_Webhook](#alertingsettingsnotifiersitem_webhook)
+- [AlertingSettingsNotifiersItem_Integration](#alertingsettingsnotifiersitem_integration)
 
 ### AlertingSettingsResponseNotifiersItem
 
 Discriminated union on `type`. Variants:
 
-- [AlertingSettingsResponseNotifiersItem_Integration](#alertingsettingsresponsenotifiersitem_integration)
 - [AlertingSettingsResponseNotifiersItem_Webhook](#alertingsettingsresponsenotifiersitem_webhook)
+- [AlertingSettingsResponseNotifiersItem_Integration](#alertingsettingsresponsenotifiersitem_integration)
 
 ### ApiIntegrationWebhookOverridesSchemaOverridesValue
 
@@ -185,6 +185,21 @@ Discriminated union on `type`. Variants:
 - [ContentGuardrailOutputTriggerAction_EndCall](#contentguardrailoutputtriggeraction_endcall)
 - [ContentGuardrailOutputTriggerAction_Retry](#contentguardrailoutputtriggeraction_retry)
 
+### ContentSchema
+
+Discriminated union on `type`. Variants:
+
+- [ContentSchema_Array](#contentschema_array)
+- [ContentSchema_Audio](#contentschema_audio)
+- [ContentSchema_Boolean](#contentschema_boolean)
+- [ContentSchema_Image](#contentschema_image)
+- [ContentSchema_Integer](#contentschema_integer)
+- [ContentSchema_Number](#contentschema_number)
+- [ContentSchema_Object](#contentschema_object)
+- [ContentSchema_String](#contentschema_string)
+- [ContentSchema_Video](#contentschema_video)
+- [ContentSchema_Voice](#contentschema_voice)
+
 ### ConvAiStoredSecretDependenciesAgentsItem
 
 Discriminated union on `type`. Variants:
@@ -220,12 +235,16 @@ Discriminated union on `result_type`. Variants:
 
 - [ConversationHistoryTranscriptSystemToolResultCommonModelInputResult_Dummy](#conversationhistorytranscriptsystemtoolresultcommonmodelinputresult_dummy)
 - [ConversationHistoryTranscriptSystemToolResultCommonModelInputResult_EndCallSuccess](#conversationhistorytranscriptsystemtoolresultcommonmodelinputresult_endcallsuccess)
+- [ConversationHistoryTranscriptSystemToolResultCommonModelInputResult_EndProcedureError](#conversationhistorytranscriptsystemtoolresultcommonmodelinputresult_endprocedureerror)
+- [ConversationHistoryTranscriptSystemToolResultCommonModelInputResult_EndProcedureSuccess](#conversationhistorytranscriptsystemtoolresultcommonmodelinputresult_endproceduresuccess)
 - [ConversationHistoryTranscriptSystemToolResultCommonModelInputResult_KnowledgeBaseRagSuccess](#conversationhistorytranscriptsystemtoolresultcommonmodelinputresult_knowledgebaseragsuccess)
 - [ConversationHistoryTranscriptSystemToolResultCommonModelInputResult_KnowledgeBaseSuccess](#conversationhistorytranscriptsystemtoolresultcommonmodelinputresult_knowledgebasesuccess)
 - [ConversationHistoryTranscriptSystemToolResultCommonModelInputResult_LanguageDetectionSuccess](#conversationhistorytranscriptsystemtoolresultcommonmodelinputresult_languagedetectionsuccess)
 - [ConversationHistoryTranscriptSystemToolResultCommonModelInputResult_PlayDtmfError](#conversationhistorytranscriptsystemtoolresultcommonmodelinputresult_playdtmferror)
 - [ConversationHistoryTranscriptSystemToolResultCommonModelInputResult_PlayDtmfSuccess](#conversationhistorytranscriptsystemtoolresultcommonmodelinputresult_playdtmfsuccess)
 - [ConversationHistoryTranscriptSystemToolResultCommonModelInputResult_SkipTurnSuccess](#conversationhistorytranscriptsystemtoolresultcommonmodelinputresult_skipturnsuccess)
+- [ConversationHistoryTranscriptSystemToolResultCommonModelInputResult_StartProcedureError](#conversationhistorytranscriptsystemtoolresultcommonmodelinputresult_startprocedureerror)
+- [ConversationHistoryTranscriptSystemToolResultCommonModelInputResult_StartProcedureSuccess](#conversationhistorytranscriptsystemtoolresultcommonmodelinputresult_startproceduresuccess)
 - [ConversationHistoryTranscriptSystemToolResultCommonModelInputResult_TestingToolResult](#conversationhistorytranscriptsystemtoolresultcommonmodelinputresult_testingtoolresult)
 - [ConversationHistoryTranscriptSystemToolResultCommonModelInputResult_TransferToAgentError](#conversationhistorytranscriptsystemtoolresultcommonmodelinputresult_transfertoagenterror)
 - [ConversationHistoryTranscriptSystemToolResultCommonModelInputResult_TransferToAgentSuccess](#conversationhistorytranscriptsystemtoolresultcommonmodelinputresult_transfertoagentsuccess)
@@ -241,12 +260,16 @@ Discriminated union on `result_type`. Variants:
 
 - [ConversationHistoryTranscriptSystemToolResultCommonModelOutputResult_Dummy](#conversationhistorytranscriptsystemtoolresultcommonmodeloutputresult_dummy)
 - [ConversationHistoryTranscriptSystemToolResultCommonModelOutputResult_EndCallSuccess](#conversationhistorytranscriptsystemtoolresultcommonmodeloutputresult_endcallsuccess)
+- [ConversationHistoryTranscriptSystemToolResultCommonModelOutputResult_EndProcedureError](#conversationhistorytranscriptsystemtoolresultcommonmodeloutputresult_endprocedureerror)
+- [ConversationHistoryTranscriptSystemToolResultCommonModelOutputResult_EndProcedureSuccess](#conversationhistorytranscriptsystemtoolresultcommonmodeloutputresult_endproceduresuccess)
 - [ConversationHistoryTranscriptSystemToolResultCommonModelOutputResult_KnowledgeBaseRagSuccess](#conversationhistorytranscriptsystemtoolresultcommonmodeloutputresult_knowledgebaseragsuccess)
 - [ConversationHistoryTranscriptSystemToolResultCommonModelOutputResult_KnowledgeBaseSuccess](#conversationhistorytranscriptsystemtoolresultcommonmodeloutputresult_knowledgebasesuccess)
 - [ConversationHistoryTranscriptSystemToolResultCommonModelOutputResult_LanguageDetectionSuccess](#conversationhistorytranscriptsystemtoolresultcommonmodeloutputresult_languagedetectionsuccess)
 - [ConversationHistoryTranscriptSystemToolResultCommonModelOutputResult_PlayDtmfError](#conversationhistorytranscriptsystemtoolresultcommonmodeloutputresult_playdtmferror)
 - [ConversationHistoryTranscriptSystemToolResultCommonModelOutputResult_PlayDtmfSuccess](#conversationhistorytranscriptsystemtoolresultcommonmodeloutputresult_playdtmfsuccess)
 - [ConversationHistoryTranscriptSystemToolResultCommonModelOutputResult_SkipTurnSuccess](#conversationhistorytranscriptsystemtoolresultcommonmodeloutputresult_skipturnsuccess)
+- [ConversationHistoryTranscriptSystemToolResultCommonModelOutputResult_StartProcedureError](#conversationhistorytranscriptsystemtoolresultcommonmodeloutputresult_startprocedureerror)
+- [ConversationHistoryTranscriptSystemToolResultCommonModelOutputResult_StartProcedureSuccess](#conversationhistorytranscriptsystemtoolresultcommonmodeloutputresult_startproceduresuccess)
 - [ConversationHistoryTranscriptSystemToolResultCommonModelOutputResult_TestingToolResult](#conversationhistorytranscriptsystemtoolresultcommonmodeloutputresult_testingtoolresult)
 - [ConversationHistoryTranscriptSystemToolResultCommonModelOutputResult_TransferToAgentError](#conversationhistorytranscriptsystemtoolresultcommonmodeloutputresult_transfertoagenterror)
 - [ConversationHistoryTranscriptSystemToolResultCommonModelOutputResult_TransferToAgentSuccess](#conversationhistorytranscriptsystemtoolresultcommonmodeloutputresult_transfertoagentsuccess)
@@ -352,6 +375,14 @@ Discriminated union on `type`. Variants:
 - [GetKnowledgeBaseSummaryUrlResponseModelDependentAgentsItem_Available](#getknowledgebasesummaryurlresponsemodeldependentagentsitem_available)
 - [GetKnowledgeBaseSummaryUrlResponseModelDependentAgentsItem_Unknown](#getknowledgebasesummaryurlresponsemodeldependentagentsitem_unknown)
 
+### GetPhoneNumbersPageResponseModelPhoneNumbersItem
+
+Discriminated union on `provider`. Variants:
+
+- [GetPhoneNumbersPageResponseModelPhoneNumbersItem_Exotel](#getphonenumberspageresponsemodelphonenumbersitem_exotel)
+- [GetPhoneNumbersPageResponseModelPhoneNumbersItem_SipTrunk](#getphonenumberspageresponsemodelphonenumbersitem_siptrunk)
+- [GetPhoneNumbersPageResponseModelPhoneNumbersItem_Twilio](#getphonenumberspageresponsemodelphonenumbersitem_twilio)
+
 ### GetPronunciationDictionaryWithRulesResponseModelRulesItem
 
 Discriminated union on `type`. Variants:
@@ -393,6 +424,8 @@ Discriminated union on `model_id`. Variants:
 - [ImageGenerationRequest_GptImage1](#imagegenerationrequest_gptimage1)
 - [ImageGenerationRequest_GptImage15](#imagegenerationrequest_gptimage15)
 - [ImageGenerationRequest_GptImage2](#imagegenerationrequest_gptimage2)
+- [ImageGenerationRequest_GptImage25Flare](#imagegenerationrequest_gptimage25flare)
+- [ImageGenerationRequest_GptImage25Sunburst](#imagegenerationrequest_gptimage25sunburst)
 
 ### ImageReference
 
@@ -612,7 +645,6 @@ Discriminated union on `system_tool_type`. Variants:
 - [SystemToolConfigInputParams_KnowledgeBaseRag](#systemtoolconfiginputparams_knowledgebaserag)
 - [SystemToolConfigInputParams_LanguageDetection](#systemtoolconfiginputparams_languagedetection)
 - [SystemToolConfigInputParams_PlayKeypadTouchTone](#systemtoolconfiginputparams_playkeypadtouchtone)
-- [SystemToolConfigInputParams_RunSubagent](#systemtoolconfiginputparams_runsubagent)
 - [SystemToolConfigInputParams_SkipTurn](#systemtoolconfiginputparams_skipturn)
 - [SystemToolConfigInputParams_StartProcedure](#systemtoolconfiginputparams_startprocedure)
 - [SystemToolConfigInputParams_TransferToAgent](#systemtoolconfiginputparams_transfertoagent)
@@ -629,12 +661,34 @@ Discriminated union on `system_tool_type`. Variants:
 - [SystemToolConfigOutputParams_KnowledgeBaseRag](#systemtoolconfigoutputparams_knowledgebaserag)
 - [SystemToolConfigOutputParams_LanguageDetection](#systemtoolconfigoutputparams_languagedetection)
 - [SystemToolConfigOutputParams_PlayKeypadTouchTone](#systemtoolconfigoutputparams_playkeypadtouchtone)
-- [SystemToolConfigOutputParams_RunSubagent](#systemtoolconfigoutputparams_runsubagent)
 - [SystemToolConfigOutputParams_SkipTurn](#systemtoolconfigoutputparams_skipturn)
 - [SystemToolConfigOutputParams_StartProcedure](#systemtoolconfigoutputparams_startprocedure)
 - [SystemToolConfigOutputParams_TransferToAgent](#systemtoolconfigoutputparams_transfertoagent)
 - [SystemToolConfigOutputParams_TransferToNumber](#systemtoolconfigoutputparams_transfertonumber)
 - [SystemToolConfigOutputParams_VoicemailDetection](#systemtoolconfigoutputparams_voicemaildetection)
+
+### TemplateInputReference
+
+Discriminated union on `type`. Variants:
+
+- [TemplateInputReference_Asset](#templateinputreference_asset)
+- [TemplateInputReference_Generation](#templateinputreference_generation)
+- [TemplateInputReference_InlineBase64](#templateinputreference_inlinebase64)
+- [TemplateInputReference_Voice](#templateinputreference_voice)
+
+### TemplateOutput
+
+Discriminated union on `type`. Variants:
+
+- [TemplateOutput_Array](#templateoutput_array)
+- [TemplateOutput_Audio](#templateoutput_audio)
+- [TemplateOutput_Boolean](#templateoutput_boolean)
+- [TemplateOutput_Image](#templateoutput_image)
+- [TemplateOutput_Integer](#templateoutput_integer)
+- [TemplateOutput_Number](#templateoutput_number)
+- [TemplateOutput_Object](#templateoutput_object)
+- [TemplateOutput_String](#templateoutput_string)
+- [TemplateOutput_Video](#templateoutput_video)
 
 ### TextToSpeechGenerationRequest
 
@@ -1002,6 +1056,8 @@ Discriminated union on `type`. Variants:
 | `current_live_percentage` | Optional<float> | no | `nil` | Percentage of traffic live on the branch |
 | `parent_branch_id` | Optional<str> | no | `nil` | ID of the parent branch |
 | `draft_exists` | Optional<bool> | no | `nil` | Whether a draft exists for the branch |
+| `draft_created_at` | Optional<int> | no | `nil` | Unix seconds when the caller's draft on this branch was first created, or null when they have no draft. A draft created before last_committed_at was written against a config the branch has since moved past, so it may not reflect the current one. |
+| `draft_is_behind_tip` | Optional<bool> | no | `nil` | Whether the caller's draft on this branch was created before the branch's last commit, meaning it was written against a config the branch has since moved past and may not reflect the current one. |
 | `calls_7_d` | Annotated[Optional<int>, FieldMetadata(alias='calls_7d'), pydantic.Field(alias='calls_7d', description='Number of calls in the last 7 days')> | no | `nil` |  |
 | `commits_ahead` | Optional<int> | no | `nil` | Number of commits on this branch not yet on main, relative to their common ancestor. Null if it could not be computed (e.g. no common ancestor, or the branch history exceeds the comparison budget). |
 | `commits_behind` | Optional<int> | no | `nil` | Number of commits on main not yet incorporated into this branch, relative to their common ancestor. Null if it could not be computed (e.g. no common ancestor, or the branch history exceeds the comparison budget). |
@@ -1141,7 +1197,7 @@ Discriminated union on `type`. Variants:
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `audio_path` | str | **yes** | **required** | Bucket-relative path of the uploaded clip, used for deletion |
+| `audio_path` | str | **yes** | **required** | Storage path of the uploaded clip |
 | `audio_url` | str | **yes** | **required** | Public CDN URL of the uploaded clip |
 | `original_filename` | str | **yes** | **required** | Filename of the uploaded clip as provided by the user |
 | `duration_secs` | float | **yes** | **required** | Duration of the uploaded clip in seconds |
@@ -1153,6 +1209,7 @@ Discriminated union on `type`. Variants:
 | --- | --- | --- | --- | --- |
 | `document_id` | str | **yes** | **required** | ID of the source knowledge base document. |
 | `document_name` | str | **yes** | **required** | Name of the source knowledge base document. |
+| `source_url` | Optional<str> | no | `nil` | Tracked source URL for URL documents, or null for other document types. |
 | `chunk_id` | str | **yes** | **required** | ID of the retrieved chunk. |
 | `text` | str | **yes** | **required** | Text content of the retrieved chunk. |
 | `vector_distance` | Optional<float> | no | `nil` | Similarity distance when exposed by the retrieval strategy. |
@@ -1165,6 +1222,8 @@ Discriminated union on `type`. Variants:
 | --- | --- | --- | --- | --- |
 | `query` | str | **yes** | **required** | Query to run against the agent's knowledge base RAG index. |
 | `use_agent_defaults` | Optional<bool> | no | `nil` | When true (the default), retrieval uses the agent's own RAG settings, reproducing exactly what the agent would retrieve. Set to false to retrieve with neutral default RAG settings instead (the agent's embedding model is always kept, since it determines which vector index exists). Useful for auditing the knowledge base independently of how a particular agent is tuned. |
+| `max_documents_length` | Optional<int> | no | `nil` | Optional maximum total character length of document chunks returned. Overrides the selected RAG settings for this query only. |
+| `max_retrieved_rag_chunks_count` | Optional<int> | no | `nil` | Optional maximum number of document chunks retrieved. Overrides the selected RAG settings for this query only. |
 
 ### AgentKnowledgeBaseRagQueryResponseModel
 
@@ -1216,6 +1275,7 @@ Discriminated union on `type`. Variants:
 | `auto_translate_transcript_to_app_language` | Optional<bool> | no | `nil` | When enabled, a conversation transcript is automatically translated to the viewer's application language when they open the transcript page. If not set or false, transcripts are shown in their original language unless the viewer manually selects a translation. |
 | `auth` | Optional<[AuthSettings](#authsettings)> | no | `nil` | Settings for authentication |
 | `call_limits` | Optional<[AgentCallLimits](#agentcalllimits)> | no | `nil` | Call limits for the agent |
+| `queueing_config` | Optional<[AgentQueueingConfig](#agentqueueingconfig)> | no | `nil` | Concurrency wait-queue config for the agent |
 | `privacy` | Optional<[PrivacyConfigInput](#privacyconfiginput)> | no | `nil` | Privacy settings for the agent |
 | `trust_context` | Optional<[AgentTrustContext](#agenttrustcontext)> | no | `nil` | The trust context in which the agent operates. |
 | `analysis_llm` | Optional<[Llm](#llm)> | no | `nil` | Default LLM model for post-call analysis (evaluation and data collection) |
@@ -1241,6 +1301,7 @@ Discriminated union on `type`. Variants:
 | `auto_translate_transcript_to_app_language` | Optional<bool> | no | `nil` | When enabled, a conversation transcript is automatically translated to the viewer's application language when they open the transcript page. If not set or false, transcripts are shown in their original language unless the viewer manually selects a translation. |
 | `auth` | Optional<[AuthSettings](#authsettings)> | no | `nil` | Settings for authentication |
 | `call_limits` | Optional<[AgentCallLimits](#agentcalllimits)> | no | `nil` | Call limits for the agent |
+| `queueing_config` | Optional<[AgentQueueingConfig](#agentqueueingconfig)> | no | `nil` | Concurrency wait-queue config for the agent |
 | `privacy` | Optional<[PrivacyConfigOutput](#privacyconfigoutput)> | no | `nil` | Privacy settings for the agent |
 | `trust_context` | Optional<[AgentTrustContext](#agenttrustcontext)> | no | `nil` | The trust context in which the agent operates. |
 | `analysis_llm` | Optional<[Llm](#llm)> | no | `nil` | Default LLM model for post-call analysis (evaluation and data collection) |
@@ -1255,7 +1316,7 @@ Discriminated union on `type`. Variants:
 | --- | --- | --- | --- | --- |
 | `enabled` | Optional<bool> | no | `nil` | Hold callers in a wait queue when the agent is at its concurrency limit, instead of rejecting them immediately |
 | `wait_timeout_seconds` | Optional<int> | no | `nil` | Maximum time a caller can wait in the queue before being rejected |
-| `hold_audio` | Optional<[AgentHoldAudioConfig](#agentholdaudioconfig)> | no | `nil` | Custom hold audio played to queued callers; when unset, callers hear the default hold tone. Set via the hold-audio upload route, not writable through agent PATCH. |
+| `hold_audio` | Optional<[AgentHoldAudioConfig](#agentholdaudioconfig)> | no | `nil` | Custom hold audio played to queued callers; when unset, callers hear the default hold tone. Read-only: set it by uploading a file through the agent hold-audio endpoint. |
 
 ### AgentResponsePayload
 
@@ -1272,6 +1333,14 @@ Discriminated union on `type`. Variants:
 | --- | --- | --- | --- | --- |
 | `simulated_conversation` | Array<[ConversationHistoryTranscriptResponseModel](#conversationhistorytranscriptresponsemodel)> | **yes** | **required** |  |
 | `analysis` | [ConversationHistoryAnalysisCommonModel](#conversationhistoryanalysiscommonmodel) | **yes** | **required** |  |
+
+### AgentSmbMetadata
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `agent_type` | [SmbAgentType](#smbagenttype) | **yes** | **required** | Distinguishes between the customer-facing voice agent and the internal assistant agent. |
+| `is_ephemeral` | Optional<bool> | no | `nil` | True for pre-signup onboarding agents that have not yet been transferred to a user workspace. |
+| `source_fingerprint` | Optional<str> | no | `nil` | Hash of the SMB data+code inputs this agent was last regenerated against; the conversation-start drift gate. None (unstamped) regenerates once on the next conversation. |
 
 ### AgentSuccessfulResponseExample
 
@@ -1292,6 +1361,7 @@ Discriminated union on `type`. Variants:
 | --- | --- | --- | --- | --- |
 | `agent_id` | str | **yes** | **required** | The ID of the agent |
 | `name` | str | **yes** | **required** | The name of the agent |
+| `voice_id` | str | **yes** | **required** | Voice ID assigned to this agent |
 | `tags` | Array<str> | **yes** | **required** | Agent tags used to categorize the agent |
 | `created_at_unix_secs` | int | **yes** | **required** | The creation time of the agent in unix seconds |
 | `access_info` | [ResourceAccessInfo](#resourceaccessinfo) | **yes** | **required** | The access information of the agent |
@@ -1423,18 +1493,23 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `connection_id` | str | **yes** | **required** | ID of the workspace integration connection (e.g. PagerDuty) to deliver alert lifecycle notifications to. The connection's integration must have the monitoring capability. |
+| `integration_type` | Optional<[AlertingIntegrationNotifierIntegrationType](#alertingintegrationnotifierintegrationtype)> | no | `nil` | Integration to deliver to. The server treats an omitted value as ``pagerduty``. |
+| `connection_id` | str | **yes** | **required** | ID of the workspace integration connection to deliver alert lifecycle notifications to. The connection's integration must have the monitoring capability and match ``integration_type``. |
+| `channel_id` | Optional<str> | no | `nil` | ID of the Slack channel to post alert notifications to, e.g. ``C0123456789``. Required when ``integration_type`` is ``slack``. The Slack app must be a member of the channel and have the ``chat:write`` scope, or ``chat:write.public`` for public channels it has not joined. |
 
 ### AlertingIntegrationNotifierResponse
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
+| `integration_type` | Optional<[AlertingIntegrationNotifierResponseIntegrationType](#alertingintegrationnotifierresponseintegrationtype)> | no | `nil` |  |
 | `connection_id` | str | **yes** | **required** |  |
+| `channel_id` | Optional<str> | no | `nil` |  |
 
 ### AlertingMonitorConfig
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
+| `enabled` | Optional<bool> | no | `nil` | Whether this monitor is enabled and can notify |
 | `threshold` | Optional<float> | no | `nil` | Failure rate threshold at which this monitor can notify. |
 | `relative_increase_threshold` | Optional<float> | no | `nil` | Relative increase over the trailing baseline at which this monitor can notify (0.2 = 20% above baseline, 0 = any failure). |
 | `min_failure_count` | Optional<int> | no | `nil` | Minimum failures in the window before this monitor can fire. |
@@ -1443,13 +1518,29 @@ _(no fields)_
 | `suspect_trigger_threshold` | Optional<int> | no | `nil` | How many suspect buckets within the lookback window are required to promote a suspect to an alert. |
 | `auto_resolve_after_inactive_minutes` | Optional<int> | no | `nil` | How many minutes an alert can stay inactive before it is auto-resolved. |
 
+### AlertingPagerDutyNotifier
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `type` | Optional<Literal<'integration'>> | no | `nil` |  |
+| `integration_type` | Optional<Literal<'pagerduty'>> | no | `nil` |  |
+| `connection_id` | str | **yes** | **required** | ID of the workspace integration connection to deliver alert lifecycle notifications to. The connection's integration must have the monitoring capability and match ``integration_type``. |
+
+### AlertingPagerDutyNotifierResponse
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `type` | Optional<Literal<'integration'>> | no | `nil` |  |
+| `integration_type` | Optional<Literal<'pagerduty'>> | no | `nil` |  |
+| `connection_id` | str | **yes** | **required** |  |
+
 ### AlertingSettings
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `monitor_configs` | Optional<Hash<str, [AlertingMonitorConfig](#alertingmonitorconfig)>> | no | `nil` | Alerting configuration keyed by monitor name. |
 | `auto_resolve_after_inactive_minutes` | Optional<int> | no | `nil` | How many minutes an alert can stay inactive before it is auto-resolved. Unset values fall through to the next layer. |
-| `notifiers` | Optional<Array<[AlertingSettingsNotifiersItem](#alertingsettingsnotifiersitem)>> | no | `nil` | Delivery channels for alert lifecycle notifications. Stacked and deduped by ``webhook_id`` / ``connection_id`` with other layers. |
+| `notifiers` | Optional<Array<[AlertingSettingsNotifiersItem](#alertingsettingsnotifiersitem)>> | no | `nil` | Delivery channels for alert lifecycle notifications. Stacked with other layers and deduped by ``webhook_id``, PagerDuty ``connection_id``, or Slack ``(connection_id, channel_id)``. |
 
 ### AlertingSettingsResponse
 
@@ -1458,6 +1549,24 @@ _(no fields)_
 | `monitor_configs` | Optional<Hash<str, [AlertingMonitorConfig](#alertingmonitorconfig)>> | no | `nil` |  |
 | `auto_resolve_after_inactive_minutes` | Optional<int> | no | `nil` |  |
 | `notifiers` | Optional<Array<[AlertingSettingsResponseNotifiersItem](#alertingsettingsresponsenotifiersitem)>> | no | `nil` |  |
+
+### AlertingSlackNotifier
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `type` | Optional<Literal<'integration'>> | no | `nil` |  |
+| `integration_type` | Optional<Literal<'slack'>> | no | `nil` |  |
+| `connection_id` | str | **yes** | **required** | ID of the workspace integration connection to deliver alert lifecycle notifications to. The connection's integration must have the monitoring capability and match ``integration_type``. |
+| `channel_id` | str | **yes** | **required** | ID of the Slack channel to post alert notifications to, e.g. ``C0123456789``. The Slack app must be a member of the channel and have the ``chat:write`` scope, or ``chat:write.public`` for public channels it has not joined. |
+
+### AlertingSlackNotifierResponse
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `type` | Optional<Literal<'integration'>> | no | `nil` |  |
+| `integration_type` | Optional<Literal<'slack'>> | no | `nil` |  |
+| `connection_id` | str | **yes** | **required** |  |
+| `channel_id` | str | **yes** | **required** |  |
 
 ### AlertingWebhookHeader
 
@@ -1479,6 +1588,13 @@ _(no fields)_
 | --- | --- | --- | --- | --- |
 | `webhook_id` | str | **yes** | **required** |  |
 
+### AlertingWebhookSecretHeaderValue
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `encrypted_value` | str | **yes** | **required** |  |
+| `nonce` | str | **yes** | **required** |  |
+
 ### Alignment
 
 | Field | Type | Required | Default | Notes |
@@ -1486,6 +1602,12 @@ _(no fields)_
 | `char_start_times_ms` | Annotated[Optional<Array<int>>, FieldMetadata(alias='charStartTimesMs'), pydantic.Field(alias='charStartTimesMs', description="A list of starting times (in milliseconds) for each character in the text as it\ncorresponds to the audio. For instance, the character 'H' starts at time 0 ms in the audio.\nNote these times are relative to the returned chunk from the model, and not the\nfull audio response.")> | no | `nil` |  |
 | `char_durations_ms` | Annotated[Optional<Array<int>>, FieldMetadata(alias='charDurationsMs'), pydantic.Field(alias='charDurationsMs', description="A list of durations (in milliseconds) for each character in the text as it\ncorresponds to the audio. For instance, the character 'H' lasts for 3 ms in the audio.\nNote these times are relative to the returned chunk from the model, and not the\nfull audio response.")> | no | `nil` |  |
 | `chars` | Optional<Array<str>> | no | `nil` | A list of characters in the text sequence. For instance, the first character is 'H'.     Note that this list may contain spaces, punctuation, and other special characters.     The length of this list should be the same as the lengths of `charStartTimesMs` and `charDurationsMs`. |
+
+### AllowedValues
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `dynamic_variable` | str | **yes** | **required** | Name of a dynamic variable that must resolve to a JSON array of permitted values, e.g. ["ws_alpha", "ws_beta"]. System variables work only if they resolve to a list. |
 
 ### AllowlistItem
 
@@ -1509,9 +1631,11 @@ _(no fields)_
 | `enum` | Optional<Array<str>> | no | `nil` | List of allowed string values for string type parameters |
 | `is_system_provided` | Optional<bool> | no | `nil` | If true, the value will be populated by the system at runtime. Used by API Integration Webhook tools for templating. Mutually exclusive with description, dynamic_variable, constant_value, and is_omitted. |
 | `dynamic_variable` | Optional<str> | no | `nil` | The name of the dynamic variable to use for this property's value. Mutually exclusive with description, is_system_provided, constant_value, and is_omitted. |
-| `allowed_values_dynamic_variable` | Optional<str> | no | `nil` | When set, the LLM provides the value but the runtime rejects any value not present in the list held by this dynamic variable. Use to let the LLM pick from a server-verified set (e.g. the IDs the current user is allowed to access). Requires description; mutually exclusive with dynamic_variable, is_system_provided, constant_value, and is_omitted. |
+| `allowed_values` | Optional<[AllowedValues](#allowedvalues)> | no | `nil` | Server-side rejection guard for an LLM-provided value: the runtime rejects any value outside the permitted set this object names, and the set is not advertised to the LLM as an enum. Only supported when the value source is `description`; combining it with dynamic_variable, is_system_provided, constant_value, or is_omitted is rejected. |
+| `allowed_values_dynamic_variable` | Optional<str> | no | `nil` | DEPRECATED: use `allowed_values` instead. When set, the LLM provides the value but the runtime rejects any value not present in the list held by this dynamic variable (must be a JSON array such as ["ws_alpha", "ws_beta"]). Use to let the LLM pick from a server-verified set (e.g. the IDs the current user is allowed to access). Requires description; mutually exclusive with dynamic_variable, is_system_provided, constant_value, and is_omitted. |
 | `constant_value` | Optional<AnalysisPropertyConstantValue> | no | `nil` | A constant value to use for this property. Mutually exclusive with description, dynamic_variable, is_system_provided, and is_omitted. |
 | `is_omitted` | Optional<bool> | no | `nil` | If true, this parameter will be completely omitted from the request. Only valid for optional parameters. Mutually exclusive with description, dynamic_variable, is_system_provided, and constant_value. |
+| `name` | Optional<str> | no | `nil` | The name of this data collection item. |
 | `llm` | Optional<[Llm](#llm)> | no | `nil` | LLM model to use for this analysis item. If not set, uses agent's analysis_llm default. |
 
 ### AnalysisRunSnapshot
@@ -1645,6 +1769,14 @@ _(no fields)_
 | `is_omitted` | Optional<bool> | no | `nil` | If true, this parameter will be completely omitted from the request. Only valid for optional parameters. Mutually exclusive with description, dynamic_variable, and constant_value. |
 | `type` | Optional<Literal<'array'>> | no | `nil` |  |
 | `items` | Optional<'ArrayJsonSchemaPropertyOutputItems'> | no | `nil` | Schema for array elements. |
+
+### ArraySchema
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `title` | Optional<str> | no | `nil` |  |
+| `description` | Optional<str> | no | `nil` |  |
+| `items` | '[ContentSchema](#contentschema)' | **yes** | **required** |  |
 
 ### AsrConversationalConfig
 
@@ -2005,14 +2137,14 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `analysis_item_id` | Literal<'__system_data_collection_topic'> | no | `'__system_data_collection_topic'` | Id of the referenced built-in system data-collection item. |
+| `analysis_item_id` | SystemDataCollectionId | no | `'__system_data_collection_topic'` | Id of the referenced built-in system data-collection item. |
 | `scope` | Optional<[AnalysisScope](#analysisscope)> | no | `nil` | Transcript context ('conversation' or 'agent') used when running this item. |
 
 ### AttachedSystemEvaluationRef
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `analysis_item_id` | [AttachedSystemEvaluationRefAnalysisItemId](#attachedsystemevaluationrefanalysisitemid) | **yes** | **required** | Id of the referenced built-in system evaluation. |
+| `analysis_item_id` | [SystemEvaluationId](#systemevaluationid) | **yes** | **required** | Id of the referenced built-in system evaluation. |
 | `scope` | Optional<[AnalysisScope](#analysisscope)> | no | `nil` | Transcript context ('conversation' or 'agent') used when running this item. |
 | `weight` | Optional<float> | no | `nil` | Optional relative weight for aggregate scoring. |
 
@@ -2141,6 +2273,13 @@ _(no fields)_
 | `song_id` | str | **yes** | **required** | The ID of the song to source the chunk from. You can find the song ID in the response headers when you generate a song. |
 | `range` | [TimeRange](#timerange) | **yes** | **required** | The time range to extract from the song. |
 
+### AudioSchema
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `title` | Optional<str> | no | `nil` |  |
+| `description` | Optional<str> | no | `nil` |  |
+
 ### AudioSegment
 
 | Field | Type | Required | Default | Notes |
@@ -2212,6 +2351,15 @@ _(no fields)_
 | `auto_remove` | Optional<bool> | no | `nil` | Whether to remove the document if the URL becomes unavailable |
 | `consec_failures` | Optional<int> | no | `nil` | Number of consecutive sync failures |
 | `next_refresh_by` | Optional<int> | no | `nil` | Unix timestamp for the next scheduled sync or None (in case of folders) |
+
+### AvatarContextResponseModel
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `avatar_id` | Optional<str> | no | `nil` | The ID of the avatar. |
+| `avatar_style_id` | Optional<str> | no | `nil` | The ID of the avatar style. |
+| `avatar_name` | Optional<str> | no | `nil` | The name of the avatar. |
+| `avatar_style_name` | Optional<str> | no | `nil` | The name of the avatar style. |
 
 ### BackgroundSoundConfig
 
@@ -2308,7 +2456,7 @@ _(no fields)_
 | `last_updated_at_unix` | int | **yes** | **required** |  |
 | `status` | [BatchCallStatus](#batchcallstatus) | **yes** | **required** |  |
 | `retry_count` | int | **yes** | **required** |  |
-| `telephony_call_config` | [TelephonyCallConfig](#telephonycallconfig) | **yes** | **required** |  |
+| `telephony_call_config` | [TelephonyCallConfigOutput](#telephonycallconfigoutput) | **yes** | **required** |  |
 | `target_concurrency_limit` | Optional<int> | no | `nil` | Maximum number of simultaneous calls for this batch. When set, dispatch is governed by this limit rather than workspace/agent capacity percentages. |
 | `agent_name` | str | **yes** | **required** |  |
 | `branch_name` | Optional<str> | no | `nil` |  |
@@ -2335,7 +2483,7 @@ _(no fields)_
 | `last_updated_at_unix` | int | **yes** | **required** |  |
 | `status` | [BatchCallStatus](#batchcallstatus) | **yes** | **required** |  |
 | `retry_count` | int | **yes** | **required** |  |
-| `telephony_call_config` | [TelephonyCallConfig](#telephonycallconfig) | **yes** | **required** |  |
+| `telephony_call_config` | [TelephonyCallConfigOutput](#telephonycallconfigoutput) | **yes** | **required** |  |
 | `target_concurrency_limit` | Optional<int> | no | `nil` | Maximum number of simultaneous calls for this batch. When set, dispatch is governed by this limit rather than workspace/agent capacity percentages. |
 | `agent_name` | str | **yes** | **required** |  |
 | `branch_name` | Optional<str> | no | `nil` |  |
@@ -2347,6 +2495,13 @@ _(no fields)_
 | `whatsapp_phone_number_id` | Optional<str> | no | `nil` |  |
 | `whatsapp_call_permission_request_template_name` | str | **yes** | **required** |  |
 | `whatsapp_call_permission_request_template_language_code` | str | **yes** | **required** |  |
+
+### BatchCallingCampaignInformation
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `campaign_id` | str | **yes** | **required** |  |
+| `campaign_lead_id` | str | **yes** | **required** |  |
 
 ### BatchFailureResponseModel
 
@@ -2375,6 +2530,13 @@ _(no fields)_
 | `verbosity` | Optional<[Verbosity](#verbosity)> | no | `nil` | Verbosity override. Underlying default applies when unset. |
 | `output_format` | Optional<[OutputFormat](#outputformat)> | no | `nil` | Output format override. Underlying default applies when unset. |
 | `interaction_budget` | Optional<[InteractionBudget](#interactionbudget)> | no | `nil` | Interaction budget override. Underlying default applies when unset. |
+
+### BooleanSchema
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `title` | Optional<str> | no | `nil` |  |
+| `description` | Optional<str> | no | `nil` |  |
 
 ### BuiltInToolsInput
 
@@ -2903,6 +3065,15 @@ _(no fields)_
 | `language_code` | Optional<str> | no | `nil` | Detected or specified language code. |
 | `words` | Optional<Array<[TranscriptionWord](#transcriptionword)>> | no | `nil` | Word-level information with timestamps. |
 
+### CompactionSettingsWorkflowOverride
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `enabled` | Optional<bool> | no | `nil` | Whether context compaction is enabled for this agent. |
+| `soft_trigger_fraction` | Optional<float> | no | `nil` | Context window fraction at which compaction is triggered. |
+| `tail_size` | Optional<int> | no | `nil` | Number of recent messages kept verbatim after compaction. |
+| `min_reclaimable_tokens` | Optional<int> | no | `nil` | Minimum number of tokens that compaction must reclaim. |
+
 ### CompileProceduresResponseModel
 
 | Field | Type | Required | Default | Notes |
@@ -2920,6 +3091,12 @@ _(no fields)_
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `chunks` | Array<CompositionPlanChunksItem> | **yes** | **required** | The chunks that make up the generation. |
+
+### ComputedUsagePlatformLimit
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `limit` | Optional<int> | no | `nil` |  |
 
 ### ConstantSchemaOverride
 
@@ -3029,7 +3206,7 @@ _(no fields)_
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `post_call_webhook_id` | Optional<str> | no | `nil` |  |
-| `events` | Optional<Array<[WebhookEventType](#webhookeventtype)>> | no | `nil` | List of event types to send via webhook. Options: transcript, audio, call_initiation_failure, unredacted_transcript, unredacted_audio. |
+| `events` | Optional<Array<[WebhookEventType](#webhookeventtype)>> | no | `nil` | List of event types to send via webhook. Options: transcript, audio, call_initiation_failure, answering_machine_detection, unredacted_transcript, unredacted_audio. |
 | `transcript_format` | Optional<[WebhookTranscriptFormat](#webhooktranscriptformat)> | no | `nil` | Format for transcript webhooks. |
 | `send_audio` | Optional<bool> | no | `nil` | DEPRECATED: Use 'events' field instead. Whether to send audio data with post-call webhooks for ConvAI conversations |
 
@@ -3120,6 +3297,7 @@ _(no fields)_
 | `file_input` | Optional<[FileInputConfig](#fileinputconfig)> | no | `nil` | Configuration for file input (image/PDF uploads) during conversations. |
 | `monitoring_enabled` | Optional<bool> | no | `nil` | Enable real-time monitoring of conversations via WebSocket |
 | `monitoring_events` | Optional<Array<[ClientEvent](#clientevent)>> | no | `nil` | The events that will be sent to monitoring connections. |
+| `dtmf_input_settings` | Optional<[DtmfInputConfig](#dtmfinputconfig)> | no | `nil` | Configure DTMF (keypad) input collection during phone calls |
 | `background_sound` | Optional<[BackgroundSoundConfig](#backgroundsoundconfig)> | no | `nil` | Configuration for background sound during conversations. |
 | `source_attribution` | Optional<bool> | no | `nil` | When enabled and knowledge base content is present, the LLM is instructed to report which sources it used. |
 
@@ -3133,6 +3311,7 @@ _(no fields)_
 | `file_input` | Optional<[FileInputConfig](#fileinputconfig)> | no | `nil` | Configuration for file input (image/PDF uploads) during conversations. |
 | `monitoring_enabled` | Optional<bool> | no | `nil` | Enable real-time monitoring of conversations via WebSocket |
 | `monitoring_events` | Optional<Array<[ClientEvent](#clientevent)>> | no | `nil` | The events that will be sent to monitoring connections. |
+| `dtmf_input_settings` | Optional<[DtmfInputConfig](#dtmfinputconfig)> | no | `nil` | Configure DTMF (keypad) input collection during phone calls |
 | `background_sound` | Optional<[BackgroundSoundConfig](#backgroundsoundconfig)> | no | `nil` | Configuration for background sound during conversations. |
 | `source_attribution` | Optional<bool> | no | `nil` | When enabled and knowledge base content is present, the LLM is instructed to report which sources it used. |
 
@@ -3160,6 +3339,7 @@ _(no fields)_
 | `file_input` | Optional<[FileInputConfigWorkflowOverride](#fileinputconfigworkflowoverride)> | no | `nil` | Configuration for file input (image/PDF uploads) during conversations. |
 | `monitoring_enabled` | Optional<bool> | no | `nil` | Enable real-time monitoring of conversations via WebSocket |
 | `monitoring_events` | Optional<Array<[ClientEvent](#clientevent)>> | no | `nil` | The events that will be sent to monitoring connections. |
+| `dtmf_input_settings` | Optional<[DtmfInputConfig](#dtmfinputconfig)> | no | `nil` | Configure DTMF (keypad) input collection during phone calls |
 | `background_sound` | Optional<[BackgroundSoundConfigWorkflowOverride](#backgroundsoundconfigworkflowoverride)> | no | `nil` | Configuration for background sound during conversations. |
 | `source_attribution` | Optional<bool> | no | `nil` | When enabled and knowledge base content is present, the LLM is instructed to report which sources it used. |
 
@@ -3173,6 +3353,7 @@ _(no fields)_
 | `file_input` | Optional<[FileInputConfigWorkflowOverride](#fileinputconfigworkflowoverride)> | no | `nil` | Configuration for file input (image/PDF uploads) during conversations. |
 | `monitoring_enabled` | Optional<bool> | no | `nil` | Enable real-time monitoring of conversations via WebSocket |
 | `monitoring_events` | Optional<Array<[ClientEvent](#clientevent)>> | no | `nil` | The events that will be sent to monitoring connections. |
+| `dtmf_input_settings` | Optional<[DtmfInputConfig](#dtmfinputconfig)> | no | `nil` | Configure DTMF (keypad) input collection during phone calls |
 | `background_sound` | Optional<[BackgroundSoundConfigWorkflowOverride](#backgroundsoundconfigworkflowoverride)> | no | `nil` | Configuration for background sound during conversations. |
 | `source_attribution` | Optional<bool> | no | `nil` | When enabled and knowledge base content is present, the LLM is instructed to report which sources it used. |
 
@@ -3207,6 +3388,7 @@ _(no fields)_
 | --- | --- | --- | --- | --- |
 | `batch_call_id` | str | **yes** | **required** |  |
 | `batch_call_recipient_id` | str | **yes** | **required** |  |
+| `campaign` | Optional<[BatchCallingCampaignInformation](#batchcallingcampaigninformation)> | no | `nil` |  |
 
 ### ConversationHistoryElevenAssistantCommonModel
 
@@ -3261,6 +3443,7 @@ _(no fields)_
 | `start_time_unix_secs` | int | **yes** | **required** |  |
 | `accepted_time_unix_secs` | Optional<int> | no | `nil` |  |
 | `call_duration_secs` | int | **yes** | **required** |  |
+| `queue_wait_secs` | Optional<float> | no | `nil` | Seconds the caller was held in the concurrency wait queue. Excluded from call_duration_secs and from billed time. None when the conversation was never queued. |
 | `cost` | Optional<int> | no | `nil` |  |
 | `deletion_settings` | Optional<[ConversationDeletionSettings](#conversationdeletionsettings)> | no | `nil` |  |
 | `feedback` | Optional<[ConversationHistoryFeedbackCommonModel](#conversationhistoryfeedbackcommonmodel)> | no | `nil` |  |
@@ -3474,7 +3657,8 @@ _(no fields)_
 | `user_identifier` | Optional<str> | no | `nil` |  |
 | `id` | Optional<str> | no | `nil` |  |
 | `triggered_guardrails` | Optional<Array<[TriggeredGuardrailCommonModel](#triggeredguardrailcommonmodel)>> | no | `nil` |  |
-| `file_input` | Optional<[ConversationHistoryTranscriptFileInputResponseModel](#conversationhistorytranscriptfileinputresponsemodel)> | no | `nil` |  |
+| `file_input` | Optional<[ConversationHistoryTranscriptFileInputResponseModel](#conversationhistorytranscriptfileinputresponsemodel)> | no | `nil` | Deprecated: the first attachment on this turn. Use `file_inputs` to see every attachment. |
+| `file_inputs` | Optional<Array<[ConversationHistoryTranscriptFileInputResponseModel](#conversationhistorytranscriptfileinputresponsemodel)>> | no | `nil` | All files attached to this turn, in the order the user attached them. |
 | `contextual_update_info` | Optional<[ContextualUpdateInfo](#contextualupdateinfo)> | no | `nil` |  |
 | `reasoned` | Optional<bool> | no | `nil` |  |
 
@@ -3660,7 +3844,7 @@ _(no fields)_
 | `environment` | Optional<str> | no | `nil` | Environment to use for resolving environment variables |
 | `starting_workflow_node_id` | Optional<str> | no | `nil` | If set, start the workflow at this node id instead of the default entry |
 | `procedure_ids` | Optional<Array<str>> | no | `nil` | If set, only these procedures are available to the starting agent. Each ID must be attached to that agent; unknown IDs fail conversation start. An empty list disables all of that agent's procedures. Not applied after an agent transfer. Requires enable_procedure_ids_from_client. |
-| `dynamic_variables` | Optional<Hash<str, Any>> | no | `nil` |  |
+| `dynamic_variables` | Optional<Hash<str, DynamicVariableInternalValueType>> | no | `nil` |  |
 | `tool_mock_config` | Optional<[OrchestratorToolMockBehaviorConfig](#orchestratortoolmockbehaviorconfig)> | no | `nil` | Configuration for which tools to mock and fallback behavior |
 | `tool_mock_overrides` | Optional<Hash<str, Array<[ToolResponseMockConfigOutput](#toolresponsemockconfigoutput)>>> | no | `nil` | Per-tool response mock overrides keyed by resolved tool name, applied ahead of the tool's shared mocks. Used for test-specific mocks. |
 
@@ -4122,6 +4306,7 @@ _(no fields)_
 | `content` | Optional<str> | no | `nil` | Initial procedure content |
 | `type` | Optional<[ProcedureType](#proceduretype)> | no | `nil` | Procedure type |
 | `trigger` | Optional<str> | no | `nil` | When the agent should use this procedure. Empty string means this is a sub-procedure that should only start when another procedure references it. If omitted or null, the trigger is derived from the content instead. Also accepts `description` as an alias. |
+| `folder_parent_id` | Optional<str> | no | `nil` | Procedure ID of the folder to create this procedure in, or null for root. |
 
 ### CreateProcedureResponseModel
 
@@ -4134,6 +4319,12 @@ _(no fields)_
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `smb_tool_type` | Optional<Literal<'create_product'>> | no | `nil` |  |
+
+### CreateProductQuoteRequestParams
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `smb_tool_type` | Optional<Literal<'create_product_quote_request'>> | no | `nil` |  |
 
 ### CreatePronunciationDictionaryResponseModel
 
@@ -4168,6 +4359,12 @@ _(no fields)_
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `smb_tool_type` | Optional<Literal<'create_service'>> | no | `nil` |  |
+
+### CreateServiceQuoteRequestParams
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `smb_tool_type` | Optional<Literal<'create_service_quote_request'>> | no | `nil` |  |
 
 ### CreateSimulationTestRequest
 
@@ -4245,8 +4442,9 @@ _(no fields)_
 | `supports_inbound` | Optional<bool> | no | `nil` | This field is deprecated and will be removed in the future. Whether this phone number supports inbound calls |
 | `supports_outbound` | Optional<bool> | no | `nil` | This field is deprecated and will be removed in the future. Whether this phone number supports outbound calls |
 | `agent_id` | Optional<str> | no | `nil` | Agent ID to assign the phone number to |
-| `sid` | str | **yes** | **required** | Twilio Account SID |
-| `token` | str | **yes** | **required** | Twilio Auth Token |
+| `sid` | str | **yes** | **required** | Twilio Account SID (starts with `AC`) or API Key SID (starts with `SK`) |
+| `token` | str | **yes** | **required** | Secret paired with `sid`: the Account Auth Token for an Account SID, or the API Key Secret for an API Key SID |
+| `account_auth_token` | Optional<str> | no | `nil` | Twilio Account Auth Token, required for API Key imports to validate inbound webhook signatures |
 | `region_config` | Optional<[RegionConfigRequest](#regionconfigrequest)> | no | `nil` | Twilio Additional Region Configuration |
 | `enable_sms` | Optional<bool> | no | `nil` | Route inbound SMS to ElevenLabs. On by default; set to false to skip SMS configuration for numbers that don't support it. |
 
@@ -4373,6 +4571,7 @@ _(no fields)_
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `data_collection_id` | str | **yes** | **required** |  |
+| `name` | Optional<str> | no | `nil` |  |
 | `value` | Optional<Any> | no | `nil` |  |
 | `json_schema` | Optional<[LiteralJsonSchemaProperty](#literaljsonschemaproperty)> | no | `nil` |  |
 | `rationale` | str | **yes** | **required** |  |
@@ -4390,6 +4589,12 @@ _(no fields)_
 | --- | --- | --- | --- | --- |
 | `group` | [WorkspaceGroupResponseModel](#workspacegroupresponsemodel) | **yes** | **required** | The group to share with by default |
 | `permission_level` | [DefaultSharingGroupResponseModelPermissionLevel](#defaultsharinggroupresponsemodelpermissionlevel) | **yes** | **required** | The permission level to grant to the group |
+
+### DeleteAgentHoldAudioResponseModel
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `agent_id` | str | **yes** | **required** |  |
 
 ### DeleteAgentProcedureParams
 
@@ -4618,6 +4823,7 @@ _(no fields)_
 | `composition_plan` | DetailedMusicResponseCompositionPlan | **yes** | **required** | The composition plan used to generate the song |
 | `song_metadata` | [SongMetadata](#songmetadata) | **yes** | **required** | The metadata of the generated song |
 | `words_timestamps` | Optional<Array<[WordTimestamp](#wordtimestamp)>> | no | `nil` | The timestamps of the words in the generated song |
+| `waveform_visual` | Optional<Array<int>> | no | `nil` | A low-resolution waveform of the generated song, for showing a preview of it. Holds 4 values per second of audio, from -1000 to 1000. Stereo is mixed down to a single channel. Only present if `with_waveform_visual` was True in the request body. |
 
 ### DetectedEntity
 
@@ -4858,13 +5064,13 @@ _(no fields)_
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `languages` | Array<[DubbingLanguageResponse](#dubbinglanguageresponse)> | **yes** | **required** | The page of language targets for the project. |
-| `next_cursor` | Optional<str> | no | `nil` | Cursor for the next page, or null when there are no more results. |
+| `next_cursor` | Optional<str> | no | `nil` | Opaque cursor to pass back as `cursor` for the next page, or null when there are no more results. |
 
 ### DubbingLanguageOutputs
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `lossless_audio` | Optional<str> | no | `nil` | Signed URL of the dubbed lossless audio track. |
+| `lossless_audio` | Optional<str> | no | `nil` | Signed URL for the dubbed lossless audio track, in FLAC. The link expires one hour after it is issued; re-read the language target for a fresh one. |
 
 ### DubbingLanguageResponse
 
@@ -4873,13 +5079,13 @@ _(no fields)_
 | `language_id` | str | **yes** | **required** | Unique identifier of the language target. |
 | `project_id` | str | **yes** | **required** | Identifier of the parent dubbing project. |
 | `target_language` | str | **yes** | **required** | BCP-47 language tag this target is dubbed into. |
-| `status` | [DubbingLanguageResponseStatus](#dubbinglanguageresponsestatus) | **yes** | **required** | Lifecycle status: 'queued' (waiting on the project), 'processing', 'completed', 'stale' (source/transcript changed), or 'failed'. |
-| `model_id` | Optional<str> | no | `nil` | Effective dubbing model id (target override or project default). |
-| `voice_settings` | Optional<[VoiceSettings](#voicesettings)> | no | `nil` | Voice settings applied to the whole language, or null if unset. |
-| `outputs` | Optional<[DubbingLanguageOutputs](#dubbinglanguageoutputs)> | no | `nil` | Signed output URLs; null until the target has produced an output (present once 'completed', and kept while 'stale' -- compare `output_revision` against `revision` to tell whether the output is up to date). |
+| `status` | [DubbingLanguageResponseStatus](#dubbinglanguageresponsestatus) | **yes** | **required** | Lifecycle status: `queued` (waiting on the project to be ready, or on a worker), `processing` while it is being dubbed, `completed` once its output is available, `stale` when the transcript changed after the output was produced, or `failed`. |
+| `model_id` | Optional<str> | no | `nil` | Dubbing model this target is dubbed with, inherited from the project and not selectable per language. |
+| `voice_settings` | Optional<[VoiceSettings](#voicesettings)> | no | `nil` | Voice settings applied to every speaker in this language, or null if the defaults apply. |
+| `outputs` | Optional<[DubbingLanguageOutputs](#dubbinglanguageoutputs)> | no | `nil` | Signed output URLs; null until the target has produced an output (present once `completed`, and kept while `stale` — compare `output_revision` against `revision` to tell whether the output is up to date). |
 | `revision` | int | **yes** | **required** | Monotonic counter incremented whenever this target's transcript changes (a source edit affecting it, or an edit to its translation). |
-| `output_revision` | Optional<int> | no | `nil` | The `revision` the current dubbed output was generated from; equal to `revision` when up to date, less than it when 'stale'. Null until a generation has completed. |
-| `error` | Optional<[DubbingError](#dubbingerror)> | no | `nil` | Why this language failed; null unless `status` is 'failed', and also null for the few languages that failed before failure reporting was introduced. A code of 'project_failed' means the parent project failed, so read the project for the underlying cause. |
+| `output_revision` | Optional<int> | no | `nil` | The `revision` the current dubbed output was generated from; equal to `revision` when up to date, and lower when `stale`. This is null until a generation has completed. |
+| `error` | Optional<[DubbingError](#dubbingerror)> | no | `nil` | Why this language failed; null unless `status` is `failed`, and also null for the few languages that failed before failure reporting was introduced. A code of `project_failed` means the parent project failed, so read the project for the underlying cause. |
 | `warnings` | Optional<Array<[VoicesNotPermittedWarning](#voicesnotpermittedwarning)>> | no | `nil` | Non-fatal conditions raised while dubbing this language, empty when there are none. Reflects the latest generation. Conditions raised while preparing the source are reported on the project instead. |
 | `created_at` | dt.datetime | **yes** | **required** | When the language target was created. |
 | `updated_at` | dt.datetime | **yes** | **required** | When the language target was last updated. |
@@ -4937,22 +5143,22 @@ _(no fields)_
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `projects` | Array<[DubbingProjectResponse](#dubbingprojectresponse)> | **yes** | **required** | The page of dubbing projects the caller can access. |
-| `next_cursor` | Optional<str> | no | `nil` | Cursor for the next page, or null when there are no more results. |
+| `next_cursor` | Optional<str> | no | `nil` | Opaque cursor to pass back as `cursor` for the next page, or null when there are no more results. |
 
 ### DubbingProjectResponse
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `project_id` | str | **yes** | **required** | Unique identifier of the dubbing project. |
-| `status` | [DubbingProjectResponseStatus](#dubbingprojectresponsestatus) | **yes** | **required** | Lifecycle status of the project: 'preparing'/'processing' while it transcribes, 'ready' once transcription is done, or 'failed'. |
-| `reference` | Optional<str> | no | `nil` | Optional free-form string the customer can provide to identify the project on their end. |
+| `status` | [DubbingProjectResponseStatus](#dubbingprojectresponsestatus) | **yes** | **required** | Lifecycle status of the project: `queued` before the source is picked up, `preparing` while it is transcribed, `ready` once transcription is done and language targets can start, or `failed`. A project is never reported as `processing` — that value belongs to language targets. |
+| `reference` | Optional<str> | no | `nil` | The free-form string you supplied as `reference` when creating the project, or null if you supplied none. |
 | `source_language` | Optional<str> | no | `nil` | BCP-47 language tag of the source media (null if auto-detected). |
-| `model_id` | Optional<str> | no | `nil` | Default dubbing model id applied to this project's language targets. |
-| `media` | Optional<[DubbingSourceMediaInfo](#dubbingsourcemediainfo)> | no | `nil` | Source media metadata; null until the project is ready. |
-| `language_ids` | Optional<Array<str>> | no | `nil` | Identifiers of the language targets created under this project. |
-| `webhook_ids` | Optional<Array<str>> | no | `nil` | Workspace webhooks notified when this project becomes ready or fails, and when any of its languages completes or fails. |
+| `model_id` | Optional<str> | no | `nil` | Dubbing model every language target of this project is dubbed with. Fixed at create time and not selectable per language. |
+| `media` | Optional<[DubbingSourceMediaInfo](#dubbingsourcemediainfo)> | no | `nil` | Source media metadata, populated once the source has been fetched and decoded (shortly after create, before the project is `ready`); null until then. |
+| `language_ids` | Optional<Array<str>> | no | `nil` | Identifiers of the language targets under this project. Populated when a single project is fetched, and on create when `target_language` creates one. Always empty in list responses — list the project's language targets instead. |
+| `webhook_ids` | Optional<Array<str>> | no | `nil` | IDs of the workspace webhooks notified as this project and its languages reach `ready`, `completed`, or `failed`. |
 | `revision` | int | **yes** | **required** | Monotonic counter incremented whenever the source transcript is edited (segment add/edit/delete). |
-| `error` | Optional<[DubbingError](#dubbingerror)> | no | `nil` | Why the project failed; null unless `status` is 'failed'. Also null for the few projects that failed before failure reporting was introduced. |
+| `error` | Optional<[DubbingError](#dubbingerror)> | no | `nil` | Why the project failed; null unless `status` is `failed`. Also null for the few projects that failed before failure reporting was introduced. |
 | `warnings` | Optional<Array<[VoicesNotPermittedWarning](#voicesnotpermittedwarning)>> | no | `nil` | Non-fatal conditions raised while preparing the source, empty when there are none. Reflects the latest preparation. Conditions raised while dubbing a particular language are reported on that language instead. |
 | `created_at` | dt.datetime | **yes** | **required** | When the project was created. |
 | `updated_at` | dt.datetime | **yes** | **required** | When the project was last updated. |
@@ -4976,8 +5182,8 @@ _(no fields)_
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `regenerated_segment_ids` | Array<str> | **yes** | **required** | The segments this re-dub re-synthesizes: those with edits to apply. |
-| `regenerated_seconds` | float | **yes** | **required** | Seconds of audio this re-dub covers -- the edited regions only, never the whole target. `charged_seconds` is the part of it that was billed. |
-| `charged_seconds` | float | **yes** | **required** | Seconds actually billed, after the free-regeneration allowance. Zero when the re-dub cost nothing -- the allowance covered all of it, or the project's included generation did. |
+| `regenerated_seconds` | float | **yes** | **required** | Seconds of audio this re-dub covers — the edited regions only, never the whole target. `charged_seconds` is the part of it that was billed. |
+| `charged_seconds` | float | **yes** | **required** | Seconds actually billed, after the free-regeneration allowance. Zero when the re-dub cost nothing — either the allowance covered all of it, or the project's included generation did. |
 | `free_regeneration_seconds_remaining` | float | **yes** | **required** | Free-regeneration seconds left for this language target after this re-dub. The allowance is the source's own duration. |
 
 ### DubbingRenderResponseModel
@@ -5007,7 +5213,7 @@ _(no fields)_
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `text` | Optional<str> | no | `nil` | New text for the segment. |
-| `speaker_id` | Optional<str> | no | `nil` | New speaker id for the segment. |
+| `speaker_id` | Optional<str> | no | `nil` | New speaker ID for the segment. |
 | `start_s` | Optional<float> | no | `nil` | New start time, in seconds. |
 | `end_s` | Optional<float> | no | `nil` | New end time, in seconds. |
 
@@ -5024,9 +5230,9 @@ _(no fields)_
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `filename` | Optional<str> | no | `nil` | Original filename of the uploaded source media (null for URL sources). |
-| `duration_s` | Optional<float> | no | `nil` | Duration of the source media in seconds. |
+| `duration_s` | Optional<float> | no | `nil` | Duration of the source media, in seconds. |
 | `has_video` | Optional<bool> | no | `nil` | Whether the source media contains a video stream. |
-| `mime_type` | Optional<str> | no | `nil` | MIME type of the uploaded source media. |
+| `mime_type` | Optional<str> | no | `nil` | MIME type of the uploaded source media (null for URL sources). |
 
 ### DubbingSourceSegmentUpdateResponse
 
@@ -5122,12 +5328,12 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `id` | str | **yes** | **required** | Stable identifier of the segment. |
+| `id` | str | **yes** | **required** | Stable identifier of the segment, used to address it in edit requests. |
 | `text` | str | **yes** | **required** | The transcribed text of the segment. |
 | `speaker_id` | str | **yes** | **required** | Identifier of the segment's speaker. |
 | `start_s` | float | **yes** | **required** | Start time of the segment, in seconds. |
 | `end_s` | float | **yes** | **required** | End time of the segment, in seconds. |
-| `external_id` | Optional<str> | no | `nil` | The caller-supplied external id for this segment, if one was provided. |
+| `external_id` | Optional<str> | no | `nil` | The caller-supplied external ID for this segment, if one was provided. |
 
 ### DubbingTranscriptUtterance
 
@@ -5243,6 +5449,28 @@ _(no fields)_
 | --- | --- | --- | --- | --- |
 | `status` | str | **yes** | **required** | The status of the voice settings edit request. If the request was successful, the status will be 'ok'. Otherwise an error message with status 500 will be returned. |
 
+### EffectsSpecInput
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `filter_preset_id` | Optional<str> | no | `nil` |  |
+| `distance` | Optional<float> | no | `nil` |  |
+| `environment_id` | Optional<str> | no | `nil` |  |
+| `background_noise_id` | Optional<str> | no | `nil` |  |
+| `send_level` | Optional<float> | no | `nil` |  |
+| `seed` | Optional<int> | no | `nil` |  |
+
+### EffectsSpecOutput
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `filter_preset_id` | Optional<str> | no | `nil` |  |
+| `distance` | float | **yes** | **required** |  |
+| `environment_id` | Optional<str> | no | `nil` |  |
+| `background_noise_id` | Optional<str> | no | `nil` |  |
+| `send_level` | float | **yes** | **required** |  |
+| `seed` | Optional<int> | no | `nil` |  |
+
 ### ElevenFlashV25Request
 
 | Field | Type | Required | Default | Notes |
@@ -5308,17 +5536,28 @@ _(no fields)_
 
 _(no fields)_
 
-### EndProcedureToolConfigInput
+### EndProcedureToolConfig
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `procedures` | Optional<Hash<str, [ProcedureAtVersionInput](#procedureatversioninput)>> | no | `nil` |  |
+| `procedures` | Optional<Hash<str, EndProcedureToolConfigProceduresValue>> | no | `nil` |  |
 
-### EndProcedureToolConfigOutput
+### EndProcedureToolResultErrorModel
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `procedures` | Optional<Hash<str, [ProcedureAtVersionOutput](#procedureatversionoutput)>> | no | `nil` |  |
+| `status` | [EndProcedureToolErrorStatus](#endproceduretoolerrorstatus) | **yes** | **required** |  |
+| `procedure_id` | Optional<str> | no | `nil` |  |
+| `message` | str | **yes** | **required** |  |
+
+### EndProcedureToolResultSuccessModel
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `status` | Optional<Literal<'success'>> | no | `nil` |  |
+| `procedure_id` | str | **yes** | **required** |  |
+| `procedure_name` | str | **yes** | **required** |  |
+| `message` | Optional<str> | no | `nil` |  |
 
 ### EnvironmentAuthConnectionLocator
 
@@ -5413,6 +5652,15 @@ _(no fields)_
 | `conversation_id` | Optional<str> | no | `nil` |  |
 | `call_sid` | Annotated[Optional<str>, FieldMetadata(alias='callSid'), pydantic.Field(alias='callSid', description='Exotel CallSid for the originated call')> | no | `nil` |  |
 
+### ExperimentAssignment
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `key` | str | **yes** | **required** | Experiment key. |
+| `variant` | str | **yes** | **required** | Variant identifier: the branch id for server_branch, or the client-supplied variant for client_declared. |
+| `source` | [ExperimentAssignmentSource](#experimentassignmentsource) | **yes** | **required** |  |
+| `experiment_id` | Optional<str> | no | `nil` | The AgentExperiment id, when the assignment maps to a registered experiment. |
+
 ### ExternalFileSyncInfo
 
 | Field | Type | Required | Default | Notes |
@@ -5463,6 +5711,8 @@ _(no fields)_
 | `agent_testing` | Optional<[TestsFeatureUsageCommonModel](#testsfeatureusagecommonmodel)> | no | `nil` |  |
 | `versioning` | Optional<[FeatureStatusCommonModel](#featurestatuscommonmodel)> | no | `nil` |  |
 | `file_input` | Optional<[FeatureStatusCommonModel](#featurestatuscommonmodel)> | no | `nil` |  |
+| `freeform_procedure` | Optional<[FeatureStatusCommonModel](#featurestatuscommonmodel)> | no | `nil` |  |
+| `structured_procedure` | Optional<[FeatureStatusCommonModel](#featurestatuscommonmodel)> | no | `nil` |  |
 
 ### FieldConflict
 
@@ -5627,7 +5877,7 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `text` | str | **yes** | **required** | The text config to be generated for this chunk. Can contain section name in square brackets, e.g. [Verse 1], lyrics lines, and inline directions in curly braces, e.g. {scratching}. |
+| `text` | str | **yes** | **required** | The text config to be generated for this chunk. Can contain an optional section name in square brackets at the beginning, e.g. [Verse 1], lyrics lines, and inline directions in curly braces, e.g. {scratching}. Section names must be between 1 and 100 characters. At most 30 lines are allowed, each at most 200 characters. |
 | `duration_ms` | int | **yes** | **required** | The duration of the chunk in milliseconds. Must be between 3000ms and 120000ms. |
 | `positive_styles` | Array<str> | **yes** | **required** | The styles and musical directions that should be present in this chunk. Use English language for best results. The styles for the first chunk are the most important as they set the overall tone and genre. Styles for subsequent chunks can be used to add nuance, progression, emphasis, or change the direction of the song. Aim to have at least 6-7 styles in early chunks until the direction is established. Generic styles like 'great production quality' are good default styles to append to the list. |
 | `negative_styles` | Optional<Array<str>> | no | `nil` | The styles and musical directions that should not be present in this chunk. Use English language for best results. Leaving empty is a good default, only use this field if you want to explicitly avoid a particular style or direction. |
@@ -5639,7 +5889,7 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `text` | str | **yes** | **required** | The text config to be generated for this chunk. Can contain section name in square brackets, e.g. [Verse 1], lyrics lines, and inline directions in curly braces, e.g. {scratching}. |
+| `text` | str | **yes** | **required** | The text config to be generated for this chunk. Can contain an optional section name in square brackets at the beginning, e.g. [Verse 1], lyrics lines, and inline directions in curly braces, e.g. {scratching}. Section names must be between 1 and 100 characters. At most 30 lines are allowed, each at most 200 characters. |
 | `duration_ms` | int | **yes** | **required** | The duration of the chunk in milliseconds. Must be between 3000ms and 120000ms. |
 | `positive_styles` | Array<str> | **yes** | **required** | The styles and musical directions that should be present in this chunk. Use English language for best results. The styles for the first chunk are the most important as they set the overall tone and genre. Styles for subsequent chunks can be used to add nuance, progression, emphasis, or change the direction of the song. Aim to have at least 6-7 styles in early chunks until the direction is established. Generic styles like 'great production quality' are good default styles to append to the list. |
 | `negative_styles` | Optional<Array<str>> | no | `nil` | The styles and musical directions that should not be present in this chunk. Use English language for best results. Leaving empty is a good default, only use this field if you want to explicitly avoid a particular style or direction. |
@@ -5718,6 +5968,8 @@ _(no fields)_
 | `version_id` | Optional<str> | no | `nil` | The ID of the version the agent is on |
 | `branch_id` | Optional<str> | no | `nil` | The ID of the branch the agent is on |
 | `main_branch_id` | Optional<str> | no | `nil` | The ID of the main branch for this agent |
+| `procedures` | Optional<Hash<str, [ProcedureRefResponseModel](#procedurerefresponsemodel)>> | no | `nil` | Procedures keyed by procedure_id. |
+| `default_hold_audio_url` | Optional<str> | no | `nil` | URL of the default hold tone played to queued callers when no custom hold audio is uploaded, so the dashboard can preview it. |
 
 ### GetAgentTestFolderResponseModel
 
@@ -5900,8 +6152,9 @@ _(no fields)_
 | `type` | Optional<[CrawlType](#crawltype)> | no | `nil` |  |
 | `seed_url` | str | **yes** | **required** |  |
 | `pattern` | Optional<str> | no | `nil` |  |
-| `max_depth` | int | **yes** | **required** |  |
+| `max_depth` | Optional<int> | no | `nil` | Deprecated - this field is a no-op and will be removed in a future version. |
 | `max_pages` | int | **yes** | **required** |  |
+| `auto_discover` | Optional<bool> | no | `nil` | Whether to automatically discover and enqueue additional pages found while crawling. |
 | `status` | Optional<[CrawlStatus](#crawlstatus)> | no | `nil` |  |
 | `pages_identified` | Optional<int> | no | `nil` |  |
 | `pages_scraped` | Optional<int> | no | `nil` |  |
@@ -6152,6 +6405,14 @@ _(no fields)_
 | `phone_number_id` | str | **yes** | **required** | The ID of the phone number |
 | `assigned_agent` | Optional<[PhoneNumberAgentInfo](#phonenumberagentinfo)> | no | `nil` | The agent that is assigned to the phone number |
 
+### GetPhoneNumbersPageResponseModel
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `phone_numbers` | Array<[GetPhoneNumbersPageResponseModelPhoneNumbersItem](#getphonenumberspageresponsemodelphonenumbersitem)> | **yes** | **required** | The phone numbers on this page |
+| `next_cursor` | Optional<str> | no | `nil` | Pass this value as `cursor` to fetch the next page. Null when there are no more results. |
+| `has_more` | Optional<bool> | no | `nil` | Whether there are more results available |
+
 ### GetProjectsResponse
 
 | Field | Type | Required | Default | Notes |
@@ -6278,6 +6539,8 @@ _(no fields)_
 | `id` | str | **yes** | **required** |  |
 | `agent_id` | Optional<str> | no | `nil` |  |
 | `branch_id` | Optional<str> | no | `nil` |  |
+| `version_id` | Optional<str> | no | `nil` |  |
+| `ran_against_draft` | Optional<bool> | no | `nil` |  |
 | `created_at` | Optional<int> | no | `nil` |  |
 | `folder_id` | Optional<str> | no | `nil` |  |
 | `repeat_count` | Optional<int> | no | `nil` |  |
@@ -6360,6 +6623,7 @@ _(no fields)_
 | `business_account_name` | str | **yes** | **required** |  |
 | `phone_number_name` | str | **yes** | **required** |  |
 | `phone_number` | str | **yes** | **required** |  |
+| `account_type` | Optional<[WhatsAppAccountType](#whatsappaccounttype)> | no | `nil` | Which Embedded Signup flow produced this account. |
 | `assigned_agent_id` | Optional<str> | no | `nil` |  |
 | `enable_messaging` | Optional<bool> | no | `nil` |  |
 | `enable_audio_message_response` | Optional<bool> | no | `nil` |  |
@@ -6398,6 +6662,30 @@ _(no fields)_
 | `background` | Optional<[GptImage1RequestBackground](#gptimage1requestbackground)> | no | `nil` | The background of the output image. With `auto`, the model picks the background that suits the image. |
 | `aspect_ratio` | Optional<[GptImage1RequestAspectRatio](#gptimage1requestaspectratio)> | no | `nil` | The aspect ratio of the output image. |
 
+### GptImage25FlareRequest
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `webhook` | Optional<[WebhookTarget](#webhooktarget)> | no | `nil` | Include to send the generation's result to the workspace's configured flows webhooks once it completes or fails. The webhook payload matches the terminal response of the corresponding GET endpoint. |
+| `prompt` | str | **yes** | **required** | A text description of the image to generate. |
+| `images` | Optional<Array<[ImageReference](#imagereference)>> | no | `nil` | Up to 10 reference images to edit or draw from. |
+| `mask` | Optional<[ImageReference](#imagereference)> | no | `nil` | An image whose fully transparent areas mark where the first reference image may be edited; requires `images`. |
+| `quality` | Optional<[GptImage25FlareRequestQuality](#gptimage25flarerequestquality)> | no | `nil` | The quality of the output image. |
+| `aspect_ratio` | Optional<[GptImage25FlareRequestAspectRatio](#gptimage25flarerequestaspectratio)> | no | `nil` | The aspect ratio of the output image. With `auto`, the model picks an aspect ratio based on the inputs. |
+| `resolution` | Optional<[GptImage25FlareRequestResolution](#gptimage25flarerequestresolution)> | no | `nil` | The resolution of the output image. |
+
+### GptImage25SunburstRequest
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `webhook` | Optional<[WebhookTarget](#webhooktarget)> | no | `nil` | Include to send the generation's result to the workspace's configured flows webhooks once it completes or fails. The webhook payload matches the terminal response of the corresponding GET endpoint. |
+| `prompt` | str | **yes** | **required** | A text description of the image to generate. |
+| `images` | Optional<Array<[ImageReference](#imagereference)>> | no | `nil` | Up to 10 reference images to edit or draw from. |
+| `mask` | Optional<[ImageReference](#imagereference)> | no | `nil` | An image whose fully transparent areas mark where the first reference image may be edited; requires `images`. |
+| `quality` | Optional<[GptImage25SunburstRequestQuality](#gptimage25sunburstrequestquality)> | no | `nil` | The quality of the output image. |
+| `aspect_ratio` | Optional<[GptImage25SunburstRequestAspectRatio](#gptimage25sunburstrequestaspectratio)> | no | `nil` | The aspect ratio of the output image. With `auto`, the model picks an aspect ratio based on the inputs. |
+| `resolution` | Optional<[GptImage25SunburstRequestResolution](#gptimage25sunburstrequestresolution)> | no | `nil` | The resolution of the output image. |
+
 ### GptImage2Request
 
 | Field | Type | Required | Default | Notes |
@@ -6409,6 +6697,12 @@ _(no fields)_
 | `quality` | Optional<[GptImage2RequestQuality](#gptimage2requestquality)> | no | `nil` | The quality of the output image. |
 | `aspect_ratio` | Optional<[GptImage2RequestAspectRatio](#gptimage2requestaspectratio)> | no | `nil` | The aspect ratio of the output image. With `auto`, the model picks an aspect ratio based on the inputs. |
 | `resolution` | Optional<[GptImage2RequestResolution](#gptimage2requestresolution)> | no | `nil` | The resolution of the output image. |
+
+### GuardrailsResult
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `triggered` | Optional<bool> | no | `nil` |  |
 
 ### GuardrailsV1Input
 
@@ -6484,6 +6778,7 @@ _(no fields)_
 | `src` | str | **yes** | **required** |  |
 | `mime_type` | Annotated[Optional<str>, FieldMetadata(alias='mimeType'), pydantic.Field(alias='mimeType')> | no | `nil` |  |
 | `sizes` | Optional<Array<str>> | no | `nil` |  |
+| `theme` | Optional<[IconTheme](#icontheme)> | no | `nil` |  |
 
 ### ImageAnalysis
 
@@ -6510,6 +6805,13 @@ _(no fields)_
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `url` | Optional<str> | no | `nil` | The URL of the avatar |
+
+### ImageSchema
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `title` | Optional<str> | no | `nil` |  |
+| `description` | Optional<str> | no | `nil` |  |
 
 ### ImageSubject
 
@@ -6578,6 +6880,13 @@ _(no fields)_
 | `content_base_64` | Annotated[str, FieldMetadata(alias='content_base64'), pydantic.Field(alias='content_base64', description="The media file's bytes, base64-encoded (standard alphabet). Up to 25MB decoded.")> | **yes** | **required** |  |
 | `mime_type` | [InlineAudioReferenceMimeType](#inlineaudioreferencemimetype) | **yes** | **required** | The MIME type of the encoded audio. |
 
+### InlineBase64Reference
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `content_base_64` | Annotated[str, FieldMetadata(alias='content_base64'), pydantic.Field(alias='content_base64', description="The media file's bytes, base64-encoded (standard alphabet). Up to 25MB decoded.")> | **yes** | **required** |  |
+| `mime_type` | [InlineBase64ReferenceMimeType](#inlinebase64referencemimetype) | **yes** | **required** | The MIME type of the encoded media. |
+
 ### InlineImageReference
 
 | Field | Type | Required | Default | Notes |
@@ -6602,6 +6911,13 @@ _(no fields)_
 | `sample_rate` | int | **yes** | **required** | Sample rate of the audio in Hz. |
 | `previous_text` | Optional<str> | no | `nil` | Send text context to the model. Can only be sent alongside the first audio chunk. If sent in a subsequent chunk, an error will be returned. |
 
+### IntegerSchema
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `title` | Optional<str> | no | `nil` |  |
+| `description` | Optional<str> | no | `nil` |  |
+
 ### InternalAlertingWebhookNotifier
 
 | Field | Type | Required | Default | Notes |
@@ -6610,6 +6926,14 @@ _(no fields)_
 | `url` | str | **yes** | **required** | The URL to send alert lifecycle notifications to. |
 | `method` | Optional<[AlertingWebhookMethod](#alertingwebhookmethod)> | no | `nil` | HTTP method used when calling the webhook URL. |
 | `headers` | Optional<Array<[AlertingWebhookHeader](#alertingwebhookheader)>> | no | `nil` | Custom request headers sent with every notification. Secret header values are encrypted at rest and never returned by the API. |
+
+### InternalSamplingConfigResponseModel
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `focus` | Optional<float> | no | `nil` |  |
+| `similarity` | Optional<float> | no | `nil` |  |
+| `stability` | Optional<float> | no | `nil` |  |
 
 ### InvoiceResponse
 
@@ -6970,6 +7294,7 @@ _(no fields)_
 | --- | --- | --- | --- | --- |
 | `success` | bool | **yes** | **required** | Indicates if the operation was successful. |
 | `tools` | Array<[Tool](#tool)> | **yes** | **required** | A list of tools available on the MCP server. |
+| `tool_approval_statuses` | Optional<Array<[McpToolApprovalStatus](#mcptoolapprovalstatus)>> | no | `nil` | Derived approval states for currently discovered tools. Populated only for persisted MCP servers using per-tool approval; otherwise empty. |
 | `error_message` | Optional<str> | no | `nil` | Error message if the operation was not successful. |
 
 ### ListOrdersResponse
@@ -7049,7 +7374,8 @@ _(no fields)_
 | `enum` | Optional<Array<str>> | no | `nil` | List of allowed string values for string type parameters |
 | `is_system_provided` | Optional<bool> | no | `nil` | If true, the value will be populated by the system at runtime. Used by API Integration Webhook tools for templating. Mutually exclusive with description, dynamic_variable, constant_value, and is_omitted. |
 | `dynamic_variable` | Optional<str> | no | `nil` | The name of the dynamic variable to use for this property's value. Mutually exclusive with description, is_system_provided, constant_value, and is_omitted. |
-| `allowed_values_dynamic_variable` | Optional<str> | no | `nil` | When set, the LLM provides the value but the runtime rejects any value not present in the list held by this dynamic variable. Use to let the LLM pick from a server-verified set (e.g. the IDs the current user is allowed to access). Requires description; mutually exclusive with dynamic_variable, is_system_provided, constant_value, and is_omitted. |
+| `allowed_values` | Optional<[AllowedValues](#allowedvalues)> | no | `nil` | Server-side rejection guard for an LLM-provided value: the runtime rejects any value outside the permitted set this object names, and the set is not advertised to the LLM as an enum. Only supported when the value source is `description`; combining it with dynamic_variable, is_system_provided, constant_value, or is_omitted is rejected. |
+| `allowed_values_dynamic_variable` | Optional<str> | no | `nil` | DEPRECATED: use `allowed_values` instead. When set, the LLM provides the value but the runtime rejects any value not present in the list held by this dynamic variable (must be a JSON array such as ["ws_alpha", "ws_beta"]). Use to let the LLM pick from a server-verified set (e.g. the IDs the current user is allowed to access). Requires description; mutually exclusive with dynamic_variable, is_system_provided, constant_value, and is_omitted. |
 | `constant_value` | Optional<LiteralJsonSchemaPropertyConstantValue> | no | `nil` | A constant value to use for this property. Mutually exclusive with description, dynamic_variable, is_system_provided, and is_omitted. |
 | `is_omitted` | Optional<bool> | no | `nil` | If true, this parameter will be completely omitted from the request. Only valid for optional parameters. Mutually exclusive with description, dynamic_variable, is_system_provided, and constant_value. |
 
@@ -7083,22 +7409,7 @@ _(no fields)_
 | `replacement_model` | Optional<[Llm](#llm)> | no | `nil` | The model that replaces this deprecated model. Traffic will be automatically routed to this model. |
 | `deprecation_config` | Optional<[LlmDeprecationConfigModel](#llmdeprecationconfigmodel)> | no | `nil` | Custom deprecation timing configuration for this model. Null if using the default configuration. |
 
-### LlmInfoModelInput
-
-| Field | Type | Required | Default | Notes |
-| --- | --- | --- | --- | --- |
-| `llm` | [Llm](#llm) | **yes** | **required** | The model identifier. |
-| `is_checkpoint` | bool | **yes** | **required** | Whether this is a pinned checkpoint version of a model rather than a top-level alias. |
-| `max_tokens_limit` | int | **yes** | **required** | Maximum number of output tokens the model can generate. |
-| `max_context_limit` | int | **yes** | **required** | Maximum number of input context tokens the model supports. |
-| `supports_image_input` | bool | **yes** | **required** | Whether the model supports image file inputs during conversations. |
-| `supports_document_input` | bool | **yes** | **required** | Whether the model supports document (PDF) file inputs during conversations. |
-| `supports_parallel_tool_calls` | bool | **yes** | **required** | Whether the model supports calling multiple tools in parallel. |
-| `available_reasoning_efforts` | Optional<Array<[LlmReasoningEffort](#llmreasoningeffort)>> | no | `nil` | Available reasoning effort levels for this model. Null if the model does not support configurable reasoning. |
-| `deprecation_info` | Optional<[LlmDeprecationInfoModel](#llmdeprecationinfomodel)> | no | `nil` | Deprecation information if this model is deprecated or scheduled for deprecation. Null if the model is not affected. |
-| `regional_processing_surcharge` | Optional<[RegionalProcessingSurchargeInfo](#regionalprocessingsurchargeinfo)> | no | `nil` | Regional processing surcharge details if this model has additional costs in the current deployment region. Null if no surcharge applies. |
-
-### LlmInfoModelOutput
+### LlmInfoModel
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
@@ -7122,18 +7433,11 @@ _(no fields)_
 | `input_cache_write` | Optional<[LlmTokensCategoryUsage](#llmtokenscategoryusage)> | no | `nil` |  |
 | `output_total` | Optional<[LlmTokensCategoryUsage](#llmtokenscategoryusage)> | no | `nil` |  |
 
-### LlmListResponseModelInput
+### LlmListResponseModel
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `llms` | Array<[LlmInfoModelInput](#llminfomodelinput)> | **yes** | **required** | List of all available LLM models that can be used with agents. |
-| `default_deprecation_config` | [LlmDeprecationConfigModel](#llmdeprecationconfigmodel) | **yes** | **required** | The default deprecation timing configuration used for models without a custom override. |
-
-### LlmListResponseModelOutput
-
-| Field | Type | Required | Default | Notes |
-| --- | --- | --- | --- | --- |
-| `llms` | Array<[LlmInfoModelOutput](#llminfomodeloutput)> | **yes** | **required** | List of all available LLM models that can be used with agents. |
+| `llms` | Array<[LlmInfoModel](#llminfomodel)> | **yes** | **required** | List of all available LLM models that can be used with agents. |
 | `default_deprecation_config` | [LlmDeprecationConfigModel](#llmdeprecationconfigmodel) | **yes** | **required** | The default deprecation timing configuration used for models without a custom override. |
 
 ### LlmLiteralJsonSchemaProperty
@@ -7169,6 +7473,7 @@ _(no fields)_
 | --- | --- | --- | --- | --- |
 | `llm` | [Llm](#llm) | **yes** | **required** |  |
 | `price_per_minute` | float | **yes** | **required** |  |
+| `price_per_message` | float | **yes** | **required** |  |
 
 ### LlmUsageCalculatorResponseModel
 
@@ -7225,6 +7530,13 @@ _(no fields)_
 ### MatchAnythingParameterEvaluationStrategy
 
 _(no fields)_
+
+### McpApprovedToolDefinition
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `description` | Optional<str> | no | `nil` | The MCP server-provided tool description at approval time |
+| `input_schema` | Optional<Hash<str, Any>> | no | `nil` | The MCP server-provided JSON input schema at approval time |
 
 ### McpServerConfigInput
 
@@ -7306,6 +7618,15 @@ _(no fields)_
 | `tool_name` | str | **yes** | **required** | The name of the MCP tool |
 | `tool_hash` | str | **yes** | **required** | SHA256 hash of the tool's parameters and description |
 | `approval_policy` | Optional<[McpToolApprovalPolicy](#mcptoolapprovalpolicy)> | no | `nil` | The approval policy for this tool |
+
+### McpToolApprovalStatus
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `tool_id` | str | **yes** | **required** | Canonical MCP tool identifier in the form mcp:<server_id>:<tool_name> |
+| `state` | [McpToolApprovalState](#mcptoolapprovalstate) | **yes** | **required** | Whether a stored approval exists and still matches the live tool definition |
+| `approval_policy` | Optional<[McpToolApprovalPolicy](#mcptoolapprovalpolicy)> | no | `nil` | Stored execution policy. Set when the tool has an approval. |
+| `approved_definition` | Optional<[McpApprovedToolDefinition](#mcpapprovedtooldefinition)> | no | `nil` | Previously approved definition, included when the tool needs review and a snapshot exists. |
 
 ### McpToolConfigOverrideInput
 
@@ -7405,6 +7726,8 @@ _(no fields)_
 | `version_id` | Optional<str> | no | `nil` | The ID of the version the agent is on |
 | `branch_id` | Optional<str> | no | `nil` | The ID of the branch the agent is on |
 | `main_branch_id` | Optional<str> | no | `nil` | The ID of the main branch for this agent |
+| `procedures` | Optional<Hash<str, [ProcedureRefResponseModel](#procedurerefresponsemodel)>> | no | `nil` | Procedures keyed by procedure_id. |
+| `default_hold_audio_url` | Optional<str> | no | `nil` | URL of the default hold tone played to queued callers when no custom hold audio is uploaded, so the dashboard can preview it. |
 | `overridden_fields` | Optional<Array<str>> | no | `nil` | Dot-paths of config fields where both branches modified the same field relative to their common ancestor (conflicts). Present regardless of which side wins the conflict. |
 | `conflicts` | Optional<Array<[FieldConflict](#fieldconflict)>> | no | `nil` | Structured view of the same conflicts as overridden_fields, each carrying the value on the base (common ancestor), source branch, and target branch so the divergence can be presented and resolved field-by-field. |
 | `source_identical_to_target` | Optional<bool> | no | `nil` | True when the merge/rebase would be a no-op, i.e. the merged result is identical to the source branch tip. The rebase endpoint rejects in this case. |
@@ -7452,9 +7775,9 @@ _(no fields)_
 | `token_cost_factor` | Optional<float> | no | `nil` | The cost factor for the model. |
 | `description` | Optional<str> | no | `nil` | The description of the model. |
 | `requires_alpha_access` | Optional<bool> | no | `nil` | Whether the model requires alpha access. |
-| `max_characters_request_free_user` | Optional<int> | no | `nil` | The maximum number of characters that can be requested by a free user. |
-| `max_characters_request_subscribed_user` | Optional<int> | no | `nil` | The maximum number of characters that can be requested by a subscribed user. |
-| `maximum_text_length_per_request` | Optional<int> | no | `nil` | The maximum length of text that can be requested for this model. |
+| `max_characters_request_free_user` | Optional<int> | no | `nil` | Deprecated. Not enforced; use `maximum_text_length_per_request` instead. |
+| `max_characters_request_subscribed_user` | Optional<int> | no | `nil` | Deprecated. Not enforced; use `maximum_text_length_per_request` instead. |
+| `maximum_text_length_per_request` | Optional<int> | no | `nil` | The maximum number of input text characters accepted per request for this model. Longer requests are rejected. |
 | `languages` | Optional<Array<[LanguageResponse](#languageresponse)>> | no | `nil` | The languages supported by the model. |
 | `model_rates` | Optional<[ModelRatesResponseModel](#modelratesresponsemodel)> | no | `nil` | The rates for the model. |
 | `concurrency_group` | Optional<str> | no | `nil` | The concurrency group for the model. |
@@ -7465,12 +7788,6 @@ _(no fields)_
 | --- | --- | --- | --- | --- |
 | `character_cost_multiplier` | float | **yes** | **required** | The cost multiplier for characters. |
 | `cost_discount_multiplier` | Optional<float> | no | `nil` | Discount multiplier applied to cost estimates. Defaults to 1.0 (no discount). |
-
-### ModelSettingsResponseModel
-
-| Field | Type | Required | Default | Notes |
-| --- | --- | --- | --- | --- |
-| `stability` | Optional<float> | no | `nil` | Determines how stable the voice is and the randomness between each generation. Lower values introduce broader emotional range for the voice. Higher values can result in a monotonous voice with limited emotion. |
 
 ### ModerationConfig
 
@@ -7501,6 +7818,21 @@ _(no fields)_
 | --- | --- | --- | --- | --- |
 | `execution_mode` | Optional<[GuardrailExecutionMode](#guardrailexecutionmode)> | no | `nil` |  |
 | `config` | Optional<[ModerationConfig](#moderationconfig)> | no | `nil` |  |
+
+### ModerationStatusResponseModel
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `is_in_probation` | bool | **yes** | **required** | Whether the user is in probation. |
+| `enterprise_check_nogo_voice` | bool | **yes** | **required** | Whether the user's enterprise check nogo voice is enabled. |
+| `enterprise_check_block_nogo_voice` | bool | **yes** | **required** | Whether the user's enterprise check block nogo voice is enabled. |
+| `never_live_moderate` | bool | **yes** | **required** | Whether the user's never live moderate is enabled. |
+| `nogo_voice_similar_voice_upload_count` | int | **yes** | **required** | The number of similar voice uploads that have been blocked. |
+| `enterprise_background_moderation_enabled` | bool | **yes** | **required** | Whether the user's enterprise background moderation is enabled. |
+| `is_ivc_captcha_required` | bool | **yes** | **required** | Whether captcha is required when creating IVCs. |
+| `safety_status` | Optional<[ModerationStatusResponseModelSafetyStatus](#moderationstatusresponsemodelsafetystatus)> | no | `nil` | The safety status of the user. |
+| `warning_status` | Optional<[ModerationStatusResponseModelWarningStatus](#moderationstatusresponsemodelwarningstatus)> | no | `nil` | The warning status of the user. |
+| `on_watchlist` | bool | **yes** | **required** | Whether the user is on the watchlist. |
 
 ### MtlsAuthResponse
 
@@ -7579,6 +7911,7 @@ _(no fields)_
 | `song_id` | str | **yes** | **required** | Unique identifier for the uploaded song |
 | `composition_plan` | Optional<MusicUploadResponseCompositionPlan> | no | `nil` | The composition plan extracted from the uploaded song. Only present if `extract_composition_plan` was provided in the request body. |
 | `words_timestamps` | Optional<Array<[WordTimestamp](#wordtimestamp)>> | no | `nil` | Word-level timestamps transcribed from the uploaded song. Only present if `with_timestamps` was True in the request body |
+| `waveform_visual` | Optional<Array<int>> | no | `nil` | A low-resolution waveform of the uploaded song, for showing a preview of it. Holds 4 values per second of audio, from -1000 to 1000. Stereo is mixed down to a single channel. Only present if `with_waveform_visual` was True in the request body. |
 
 ### NormalizedAlignment
 
@@ -7587,6 +7920,14 @@ _(no fields)_
 | `char_start_times_ms` | Annotated[Optional<Array<int>>, FieldMetadata(alias='charStartTimesMs'), pydantic.Field(alias='charStartTimesMs', description="A list of starting times (in milliseconds) for each character in the normalized text as it\ncorresponds to the audio. For instance, the character 'H' starts at time 0 ms in the audio.\nNote these times are relative to the returned chunk from the model, and not the\nfull audio response.")> | no | `nil` |  |
 | `char_durations_ms` | Annotated[Optional<Array<int>>, FieldMetadata(alias='charDurationsMs'), pydantic.Field(alias='charDurationsMs', description="A list of durations (in milliseconds) for each character in the normalized text as it\ncorresponds to the audio. For instance, the character 'H' lasts for 3 ms in the audio.\nNote these times are relative to the returned chunk from the model, and not the\nfull audio response.")> | no | `nil` |  |
 | `chars` | Optional<Array<str>> | no | `nil` | A list of characters in the normalized text sequence. For instance, the first character is 'H'.     Note that this list may contain spaces, punctuation, and other special characters.     The length of this list should be the same as the lengths of `charStartTimesMs` and `charDurationsMs`. |
+
+### NumberSchema
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `title` | Optional<str> | no | `nil` |  |
+| `description` | Optional<str> | no | `nil` |  |
+| `enum` | Optional<Array<float>> | no | `nil` |  |
 
 ### NumericDistributionAggregate
 
@@ -7637,6 +7978,67 @@ _(no fields)_
 | `status_detail` | Optional<str> | no | `nil` |  |
 | `status_updated_at` | Optional<str> | no | `nil` |  |
 
+### OTelAttribute
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `key` | str | **yes** | **required** |  |
+| `value` | Hash<str, OTelAttributeValueValue> | **yes** | **required** |  |
+
+### OTelResource
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `attributes` | Array<[OTelAttribute](#otelattribute)> | **yes** | **required** |  |
+
+### OTelResourceSpans
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `resource` | [OTelResource](#otelresource) | **yes** | **required** |  |
+| `scope_spans` | Annotated[Array<[OTelScopeSpans](#otelscopespans)>, FieldMetadata(alias='scopeSpans'), pydantic.Field(alias='scopeSpans')> | **yes** | **required** |  |
+
+### OTelScope
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `name` | str | **yes** | **required** |  |
+| `version` | str | **yes** | **required** |  |
+
+### OTelScopeSpans
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `scope` | [OTelScope](#otelscope) | **yes** | **required** |  |
+| `spans` | Array<[OTelSpan](#otelspan)> | **yes** | **required** |  |
+
+### OTelSpan
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `trace_id` | Annotated[str, FieldMetadata(alias='traceId'), pydantic.Field(alias='traceId')> | **yes** | **required** |  |
+| `span_id` | Annotated[str, FieldMetadata(alias='spanId'), pydantic.Field(alias='spanId')> | **yes** | **required** |  |
+| `parent_span_id` | Annotated[Optional<str>, FieldMetadata(alias='parentSpanId'), pydantic.Field(alias='parentSpanId')> | no | `nil` |  |
+| `name` | str | **yes** | **required** |  |
+| `kind` | int | **yes** | **required** |  |
+| `start_time_unix_nano` | Annotated[str, FieldMetadata(alias='startTimeUnixNano'), pydantic.Field(alias='startTimeUnixNano')> | **yes** | **required** |  |
+| `end_time_unix_nano` | Annotated[str, FieldMetadata(alias='endTimeUnixNano'), pydantic.Field(alias='endTimeUnixNano')> | **yes** | **required** |  |
+| `attributes` | Array<[OTelAttribute](#otelattribute)> | **yes** | **required** |  |
+| `status` | [OTelStatus](#otelstatus) | **yes** | **required** |  |
+
+### OTelStatus
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `code` | int | **yes** | **required** |  |
+| `message` | Optional<str> | no | `nil` |  |
+
+### OTelTracePayload
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `resource_spans` | Annotated[Array<[OTelResourceSpans](#otelresourcespans)>, FieldMetadata(alias='resourceSpans'), pydantic.Field(alias='resourceSpans')> | **yes** | **required** |  |
+
 ### ObjectJsonSchemaPropertyInput
 
 | Field | Type | Required | Default | Notes |
@@ -7663,6 +8065,15 @@ _(no fields)_
 | `required` | Optional<Array<str>> | no | `nil` |  |
 | `properties` | Optional<Hash<str, 'ObjectJsonSchemaPropertyOutputPropertiesValue'>> | no | `nil` |  |
 | `required_constraints` | Optional<[RequiredConstraints](#requiredconstraints)> | no | `nil` |  |
+
+### ObjectSchema
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `title` | Optional<str> | no | `nil` |  |
+| `description` | Optional<str> | no | `nil` |  |
+| `properties` | Optional<Hash<str, '[ContentSchema](#contentschema)'>> | no | `nil` |  |
+| `required` | Optional<Array<str>> | no | `nil` |  |
 
 ### OmitSchemaOverride
 
@@ -7880,6 +8291,7 @@ _(no fields)_
 | `custom_sip_headers` | Optional<Array<[PhoneNumberTransferCustomSipHeadersItem](#phonenumbertransfercustomsipheadersitem)>> | no | `nil` | Custom SIP headers to include when transferring the call. Each header can be either a static value or a dynamic variable reference. |
 | `transfer_destination` | [PhoneNumberTransferTransferDestination](#phonenumbertransfertransferdestination) | **yes** | **required** |  |
 | `transfer_type` | Optional<[TransferTypeEnum](#transfertypeenum)> | no | `nil` |  |
+| `sip_refer_play_dialtone` | Optional<bool> | no | `nil` | When True, a ringing tone is played on the original call leg while a SIP REFER transfer completes. The tone is carried over RTP to the SIP peer executing the REFER, so disable this if the receiving system (e.g. an SBC or contact center) should not hear it. When disabled the caller hears silence until the transfer completes. SIP REFER transfers only. |
 | `uui` | Optional<[UuiTransferConfig](#uuitransferconfig)> | no | `nil` | User-to-User Information (RFC 7433) to attach to SIP REFER transfers. Carries call context such as CRM identifiers or escalation reason across the transfer boundary. |
 | `post_dial_digits` | Optional<[PhoneNumberTransferPostDialDigits](#phonenumbertransferpostdialdigits)> | no | `nil` | DTMF digits to send after call connects (e.g., 'ww1234' for extension). Can be either a static value or a dynamic variable reference. Use 'w' for 0.5s pause. Only supported for Twilio transfers. |
 | `phone_number` | Optional<str> | no | `nil` |  |
@@ -7904,6 +8316,16 @@ _(no fields)_
 | `credits` | Optional<int> | no | `nil` |  |
 | `price` | Optional<float> | no | `nil` |  |
 | `quantity` | Optional<float> | no | `nil` |  |
+
+### PlatformLimits
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `credits` | Optional<[StoredUsagePlatformLimit](#storedusageplatformlimit)> | no | `nil` | Credit usage limit (limit=None means unlimited) |
+| `pvc` | Optional<[ComputedUsagePlatformLimit](#computedusageplatformlimit)> | no | `nil` | Professional Voice Clone count limit (limit=None means unlimited) |
+| `concurrency` | Optional<[ComputedUsagePlatformLimit](#computedusageplatformlimit)> | no | `nil` | TTS concurrency limit (limit=None means unlimited) |
+| `dubbing_concurrency` | Optional<[ComputedUsagePlatformLimit](#computedusageplatformlimit)> | no | `nil` | Dubbing concurrency limit (limit=None means unlimited) |
+| `music_concurrency` | Optional<[ComputedUsagePlatformLimit](#computedusageplatformlimit)> | no | `nil` | Music generation concurrency limit (limit=None means unlimited) |
 
 ### PlatformUsage
 
@@ -8006,6 +8428,13 @@ _(no fields)_
 | `agent_id` | str | **yes** | **required** |  |
 | `avatar_url` | Optional<str> | no | `nil` |  |
 
+### PostAgentHoldAudioResponseModel
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `agent_id` | str | **yes** | **required** |  |
+| `hold_audio` | [AgentHoldAudioConfig](#agentholdaudioconfig) | **yes** | **required** |  |
+
 ### PostDialDigitsDynamicVariable
 
 | Field | Type | Required | Default | Notes |
@@ -8088,40 +8517,6 @@ _(no fields)_
 | `status_detail` | Optional<str> | no | `nil` |  |
 | `status_updated_at` | Optional<str> | no | `nil` |  |
 
-### ProcedureAtVersionInput
-
-| Field | Type | Required | Default | Notes |
-| --- | --- | --- | --- | --- |
-| `procedure_id` | str | **yes** | **required** | Procedure ID |
-| `name` | str | **yes** | **required** | Procedure name |
-| `type` | Optional<[ProcedureType](#proceduretype)> | no | `nil` |  |
-| `trigger` | Optional<str> | no | `nil` | When the agent should use this procedure. Empty string means this is a sub-procedure that should only start when another procedure references it. |
-| `referenced_tool_ids` | Optional<Array<str>> | no | `nil` | Tool IDs referenced in the procedure content |
-| `referenced_kb_ids` | Optional<Array<str>> | no | `nil` | Knowledge base IDs referenced in the procedure content |
-| `referenced_procedure_ids` | Optional<Array<str>> | no | `nil` | Procedure IDs referenced in the procedure content |
-| `referenced_dynamic_variables` | Optional<Array<str>> | no | `nil` | Dynamic variable names used in the procedure content |
-| `content` | str | **yes** | **required** | Procedure content |
-| `guardrails` | Optional<Array<[CustomGuardrailConfig](#customguardrailconfig)>> | no | `nil` |  |
-| `agent_id` | str | **yes** | **required** | Agent ID of the procedure |
-| `version_id` | Optional<str> | no | `nil` | Version ID of a version of the procedure. None for a procedure never versioned. |
-
-### ProcedureAtVersionOutput
-
-| Field | Type | Required | Default | Notes |
-| --- | --- | --- | --- | --- |
-| `procedure_id` | str | **yes** | **required** | Procedure ID |
-| `name` | str | **yes** | **required** | Procedure name |
-| `type` | Optional<[ProcedureType](#proceduretype)> | no | `nil` |  |
-| `trigger` | Optional<str> | no | `nil` | When the agent should use this procedure. Empty string means this is a sub-procedure that should only start when another procedure references it. |
-| `referenced_tool_ids` | Optional<Array<str>> | no | `nil` | Tool IDs referenced in the procedure content |
-| `referenced_kb_ids` | Optional<Array<str>> | no | `nil` | Knowledge base IDs referenced in the procedure content |
-| `referenced_procedure_ids` | Optional<Array<str>> | no | `nil` | Procedure IDs referenced in the procedure content |
-| `referenced_dynamic_variables` | Optional<Array<str>> | no | `nil` | Dynamic variable names used in the procedure content |
-| `content` | str | **yes** | **required** | Procedure content |
-| `guardrails` | Optional<Array<[CustomGuardrailConfig](#customguardrailconfig)>> | no | `nil` |  |
-| `agent_id` | str | **yes** | **required** | Agent ID of the procedure |
-| `version_id` | Optional<str> | no | `nil` | Version ID of a version of the procedure. None for a procedure never versioned. |
-
 ### ProcedureAtVersionResponseModel
 
 | Field | Type | Required | Default | Notes |
@@ -8132,6 +8527,14 @@ _(no fields)_
 | `content` | str | **yes** | **required** | Procedure content |
 | `type` | Optional<[ProcedureType](#proceduretype)> | no | `nil` | Procedure type |
 | `trigger` | Optional<str> | no | `nil` | When the agent should use this procedure. Empty string means this is a sub-procedure that should only start when another procedure references it. |
+| `folder_parent_id` | Optional<str> | no | `nil` | Procedure ID of the folder this procedure is placed in. None means root. |
+
+### ProcedureDraftRef
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `procedure_id` | str | **yes** | **required** | Procedure ID |
+| `version_id` | Optional<Any> | no | `nil` |  |
 
 ### ProcedureDraftResponseModel
 
@@ -8142,6 +8545,7 @@ _(no fields)_
 | `content` | str | **yes** | **required** | Procedure content |
 | `type` | Optional<[ProcedureType](#proceduretype)> | no | `nil` | Procedure type |
 | `trigger` | Optional<str> | no | `nil` | When the agent should use this procedure. Empty string means this is a sub-procedure that should only start when another procedure references it. |
+| `folder_parent_id` | Optional<str> | no | `nil` | Procedure ID of the folder this procedure is placed in. None means root. |
 
 ### ProcedureListItemResponseModel
 
@@ -8153,6 +8557,11 @@ _(no fields)_
 | `type` | Optional<[ProcedureType](#proceduretype)> | no | `nil` | Procedure type |
 | `trigger` | Optional<str> | no | `nil` | When the agent should use this procedure. Empty string means this is a sub-procedure that should only start when another procedure references it. |
 | `has_draft` | bool | **yes** | **required** | True when the procedure has unpublished draft changes on this branch (a newly created or edited procedure not yet published). When true, the name, type, and trigger reflect that draft. |
+| `referenced_tool_ids` | Optional<Array<str>> | no | `nil` | Tool IDs referenced in the procedure content |
+| `referenced_kb_ids` | Optional<Array<str>> | no | `nil` | Knowledge base IDs referenced in the procedure content |
+| `referenced_procedure_ids` | Optional<Array<str>> | no | `nil` | Procedure IDs referenced in the procedure content |
+| `referenced_dynamic_variables` | Optional<Array<str>> | no | `nil` | Dynamic variable names used in the procedure content |
+| `folder_parent_id` | Optional<str> | no | `nil` | Procedure ID of the folder this procedure is placed in. None means root. |
 
 ### ProcedureRefResponseModel
 
@@ -8167,6 +8576,7 @@ _(no fields)_
 | `referenced_kb_ids` | Optional<Array<str>> | no | `nil` | Knowledge base IDs referenced in the procedure content |
 | `referenced_procedure_ids` | Optional<Array<str>> | no | `nil` | Procedure IDs referenced in the procedure content |
 | `referenced_dynamic_variables` | Optional<Array<str>> | no | `nil` | Dynamic variable names used in the procedure content |
+| `folder_parent_id` | Optional<str> | no | `nil` | Procedure ID of the folder this procedure is placed in. None means root. |
 
 ### ProcedureValidationError
 
@@ -8465,6 +8875,7 @@ _(no fields)_
 | `max_tokens` | Optional<int> | no | `nil` | If greater than 0, maximum number of tokens the LLM can predict |
 | `tool_ids` | Optional<Array<str>> | no | `nil` | A list of IDs of tools used by the agent |
 | `built_in_tools` | Optional<[BuiltInToolsInput](#builtintoolsinput)> | no | `nil` | Built-in system tools to be used by the agent |
+| `enable_parallel_tool_calls` | Optional<bool> | no | `nil` | Enable parallel tool calling. When enabled, the agent can execute multiple tools in parallel within a single turn. Not supported by all models. |
 | `mcp_server_ids` | Optional<Array<str>> | no | `nil` | A list of MCP server ids to be used by the agent |
 | `native_mcp_server_ids` | Optional<Array<str>> | no | `nil` | A list of Native MCP server ids to be used by the agent |
 | `knowledge_base` | Optional<Array<[KnowledgeBaseLocator](#knowledgebaselocator)>> | no | `nil` | A list of knowledge bases to be used by the agent |
@@ -8489,6 +8900,7 @@ _(no fields)_
 | `max_tokens` | Optional<int> | no | `nil` | If greater than 0, maximum number of tokens the LLM can predict |
 | `tool_ids` | Optional<Array<str>> | no | `nil` | A list of IDs of tools used by the agent |
 | `built_in_tools` | Optional<[BuiltInToolsOutput](#builtintoolsoutput)> | no | `nil` | Built-in system tools to be used by the agent |
+| `enable_parallel_tool_calls` | Optional<bool> | no | `nil` | Enable parallel tool calling. When enabled, the agent can execute multiple tools in parallel within a single turn. Not supported by all models. |
 | `mcp_server_ids` | Optional<Array<str>> | no | `nil` | A list of MCP server ids to be used by the agent |
 | `native_mcp_server_ids` | Optional<Array<str>> | no | `nil` | A list of Native MCP server ids to be used by the agent |
 | `knowledge_base` | Optional<Array<[KnowledgeBaseLocator](#knowledgebaselocator)>> | no | `nil` | A list of knowledge bases to be used by the agent |
@@ -8543,6 +8955,7 @@ _(no fields)_
 | `max_tokens` | Optional<int> | no | `nil` | If greater than 0, maximum number of tokens the LLM can predict |
 | `tool_ids` | Optional<Array<str>> | no | `nil` | A list of IDs of tools used by the agent |
 | `built_in_tools` | Optional<[BuiltInToolsWorkflowOverrideInput](#builtintoolsworkflowoverrideinput)> | no | `nil` | Built-in system tools to be used by the agent |
+| `enable_parallel_tool_calls` | Optional<bool> | no | `nil` | Enable parallel tool calling. When enabled, the agent can execute multiple tools in parallel within a single turn. Not supported by all models. |
 | `mcp_server_ids` | Optional<Array<str>> | no | `nil` | A list of MCP server ids to be used by the agent |
 | `native_mcp_server_ids` | Optional<Array<str>> | no | `nil` | A list of Native MCP server ids to be used by the agent |
 | `knowledge_base` | Optional<Array<[KnowledgeBaseLocator](#knowledgebaselocator)>> | no | `nil` | A list of knowledge bases to be used by the agent |
@@ -8567,6 +8980,7 @@ _(no fields)_
 | `max_tokens` | Optional<int> | no | `nil` | If greater than 0, maximum number of tokens the LLM can predict |
 | `tool_ids` | Optional<Array<str>> | no | `nil` | A list of IDs of tools used by the agent |
 | `built_in_tools` | Optional<[BuiltInToolsWorkflowOverrideOutput](#builtintoolsworkflowoverrideoutput)> | no | `nil` | Built-in system tools to be used by the agent |
+| `enable_parallel_tool_calls` | Optional<bool> | no | `nil` | Enable parallel tool calling. When enabled, the agent can execute multiple tools in parallel within a single turn. Not supported by all models. |
 | `mcp_server_ids` | Optional<Array<str>> | no | `nil` | A list of MCP server ids to be used by the agent |
 | `native_mcp_server_ids` | Optional<Array<str>> | no | `nil` | A list of Native MCP server ids to be used by the agent |
 | `knowledge_base` | Optional<Array<[KnowledgeBaseLocator](#knowledgebaselocator)>> | no | `nil` | A list of knowledge bases to be used by the agent |
@@ -8693,7 +9107,14 @@ _(no fields)_
 | `pronunciation_dictionary_id` | str | **yes** | **required** | The ID of the pronunciation dictionary |
 | `version_id` | Optional<str> | no | `nil` | The ID of the version of the pronunciation dictionary |
 
-### QueryParamsJsonSchema
+### QueryParamsJsonSchemaInput
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `properties` | Hash<str, [LiteralJsonSchemaProperty](#literaljsonschemaproperty)> | **yes** | **required** |  |
+| `required` | Optional<Array<str>> | no | `nil` |  |
+
+### QueryParamsJsonSchemaOutput
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
@@ -8725,6 +9146,7 @@ _(no fields)_
 | `max_retrieved_rag_chunks_count` | Optional<int> | no | `nil` | Maximum number of RAG document chunks to initially retrieve from the vector store. These are then further filtered by vector distance and total length. |
 | `num_candidates` | Optional<int> | no | `nil` | Number of candidates evaluated in ANN vector search. Higher number means better results, but higher latency. Minimum recommended value is 100. If disabled, the default value is used. |
 | `query_rewrite_prompt_override` | Optional<str> | no | `nil` | Custom prompt for rewriting user queries before RAG retrieval. The conversation history will be automatically appended at the end. If not set, the default prompt will be used. |
+| `knowledge_base_tool_info` | Optional<[KnowledgeBaseToolInfo](#knowledgebasetoolinfo)> | no | `nil` | When set, the agent uses the knowledge_base tool instead of the legacy knowledge_base_rag tool. None means the agent is not opted in. |
 
 ### RagConfigOutput
 
@@ -8737,6 +9159,7 @@ _(no fields)_
 | `max_retrieved_rag_chunks_count` | Optional<int> | no | `nil` | Maximum number of RAG document chunks to initially retrieve from the vector store. These are then further filtered by vector distance and total length. |
 | `num_candidates` | Optional<int> | no | `nil` | Number of candidates evaluated in ANN vector search. Higher number means better results, but higher latency. Minimum recommended value is 100. If disabled, the default value is used. |
 | `query_rewrite_prompt_override` | Optional<str> | no | `nil` | Custom prompt for rewriting user queries before RAG retrieval. The conversation history will be automatically appended at the end. If not set, the default prompt will be used. |
+| `knowledge_base_tool_info` | Optional<[KnowledgeBaseToolInfo](#knowledgebasetoolinfo)> | no | `nil` | When set, the agent uses the knowledge_base tool instead of the legacy knowledge_base_rag tool. None means the agent is not opted in. |
 
 ### RagConfigWorkflowOverrideInput
 
@@ -8749,6 +9172,7 @@ _(no fields)_
 | `max_retrieved_rag_chunks_count` | Optional<int> | no | `nil` | Maximum number of RAG document chunks to initially retrieve from the vector store. These are then further filtered by vector distance and total length. |
 | `num_candidates` | Optional<int> | no | `nil` | Number of candidates evaluated in ANN vector search. Higher number means better results, but higher latency. Minimum recommended value is 100. If disabled, the default value is used. |
 | `query_rewrite_prompt_override` | Optional<str> | no | `nil` | Custom prompt for rewriting user queries before RAG retrieval. The conversation history will be automatically appended at the end. If not set, the default prompt will be used. |
+| `knowledge_base_tool_info` | Optional<[KnowledgeBaseToolInfo](#knowledgebasetoolinfo)> | no | `nil` | When set, the agent uses the knowledge_base tool instead of the legacy knowledge_base_rag tool. None means the agent is not opted in. |
 
 ### RagConfigWorkflowOverrideOutput
 
@@ -8761,6 +9185,7 @@ _(no fields)_
 | `max_retrieved_rag_chunks_count` | Optional<int> | no | `nil` | Maximum number of RAG document chunks to initially retrieve from the vector store. These are then further filtered by vector distance and total length. |
 | `num_candidates` | Optional<int> | no | `nil` | Number of candidates evaluated in ANN vector search. Higher number means better results, but higher latency. Minimum recommended value is 100. If disabled, the default value is used. |
 | `query_rewrite_prompt_override` | Optional<str> | no | `nil` | Custom prompt for rewriting user queries before RAG retrieval. The conversation history will be automatically appended at the end. If not set, the default prompt will be used. |
+| `knowledge_base_tool_info` | Optional<[KnowledgeBaseToolInfo](#knowledgebasetoolinfo)> | no | `nil` | When set, the agent uses the knowledge_base tool instead of the legacy knowledge_base_rag tool. None means the agent is not opted in. |
 
 ### RagDocumentIndexResponseModel
 
@@ -8872,7 +9297,7 @@ _(no fields)_
 | `generation_id` | Optional<str> | no | `nil` |  |
 | `content_asset_id` | Optional<str> | no | `nil` |  |
 | `template_node_id` | Optional<str> | no | `nil` |  |
-| `studio_clip` | Optional<[StudioClipReference](#studioclipreference)> | no | `nil` |  |
+| `studio_clip` | Optional<[StudioClipLocator](#studiocliplocator)> | no | `nil` |  |
 
 ### ReferencedToolCommonModel
 
@@ -9044,18 +9469,6 @@ _(no fields)_
 | `scores_breakdown` | Optional<Hash<str, Optional<int>>> | no | `nil` |  |
 | `rejected_details` | Optional<str> | no | `nil` |  |
 | `explanation` | Optional<str> | no | `nil` |  |
-
-### RunSubagentToolConfigInput
-
-| Field | Type | Required | Default | Notes |
-| --- | --- | --- | --- | --- |
-| `agents` | Array<[SubAgentInput](#subagentinput)> | **yes** | **required** |  |
-
-### RunSubagentToolConfigOutput
-
-| Field | Type | Required | Default | Notes |
-| --- | --- | --- | --- | --- |
-| `agents` | Array<[SubAgentOutput](#subagentoutput)> | **yes** | **required** |  |
 
 ### SafetyCommonModelInput
 
@@ -9341,6 +9754,12 @@ _(no fields)_
 | `segment_on_silence_longer_than_s` | Optional<float> | no | `nil` |  |
 | `max_segment_duration_s` | Optional<float> | no | `nil` |  |
 | `max_segment_chars` | Optional<int> | no | `nil` |  |
+
+### SendCustomEmailParams
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `smb_tool_type` | Optional<Literal<'send_custom_email'>> | no | `nil` |  |
 
 ### SendText
 
@@ -9744,6 +10163,7 @@ _(no fields)_
 | `privacy` | [PrivacyConfigOutput](#privacyconfigoutput) | **yes** | **required** | Privacy settings controlling recording, retention, and PII handling |
 | `call_limits` | [AgentCallLimits](#agentcalllimits) | **yes** | **required** | Concurrency and daily conversation limits for this speech engine |
 | `language` | str | **yes** | **required** | ISO language code used by the speech engine (e.g. 'en') |
+| `cascade_timeout_seconds` | float | **yes** | **required** | Time in seconds to wait for the upstream speech engine endpoint to respond before the attempt is abandoned and retried. Must be between 2 and 15 seconds. |
 | `tags` | Array<str> | **yes** | **required** | Arbitrary tags for categorization and filtering |
 | `overrides` | [SpeechEngineConversationInitiationClientDataConfig](#speechengineconversationinitiationclientdataconfig) | **yes** | **required** | Override settings the client may set during conversation initiation |
 | `metadata` | [AgentMetadataDbModel](#agentmetadatadbmodel) | **yes** | **required** | Creation and update timestamps with source information |
@@ -9755,6 +10175,7 @@ _(no fields)_
 | --- | --- | --- | --- | --- |
 | `speech_engine_id` | str | **yes** | **required** | The speech engine resource ID |
 | `name` | str | **yes** | **required** | Human-readable name for the speech engine |
+| `voice_id` | str | **yes** | **required** | Voice ID assigned to this speech engine |
 | `created_at_unix_secs` | int | **yes** | **required** | Creation time in Unix seconds |
 | `tags` | Array<str> | **yes** | **required** | Arbitrary tags for categorization and filtering |
 | `access_info` | [ResourceAccessInfo](#resourceaccessinfo) | **yes** | **required** | The access information of the speech engine for the user |
@@ -9836,17 +10257,30 @@ _(no fields)_
 | `max_segment_duration_s` | Optional<float> | no | `nil` |  |
 | `max_segment_chars` | Optional<int> | no | `nil` |  |
 
-### StartProcedureToolConfigInput
+### StartProcedureToolConfig
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `procedures` | Optional<Hash<str, [ProcedureAtVersionInput](#procedureatversioninput)>> | no | `nil` |  |
+| `procedures` | Optional<Hash<str, StartProcedureToolConfigProceduresValue>> | no | `nil` |  |
 
-### StartProcedureToolConfigOutput
+### StartProcedureToolResultErrorModel
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `procedures` | Optional<Hash<str, [ProcedureAtVersionOutput](#procedureatversionoutput)>> | no | `nil` |  |
+| `status` | [StartProcedureToolErrorStatus](#startproceduretoolerrorstatus) | **yes** | **required** |  |
+| `procedure_id` | Optional<str> | no | `nil` |  |
+| `message` | str | **yes** | **required** |  |
+
+### StartProcedureToolResultSuccessModel
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `status` | Optional<Literal<'success'>> | no | `nil` |  |
+| `procedure_id` | str | **yes** | **required** |  |
+| `procedure_name` | str | **yes** | **required** |  |
+| `procedure_entry_workflow_node` | Optional<str> | no | `nil` |  |
+| `procedure_return_workflow_node` | Optional<str> | no | `nil` |  |
+| `message` | Optional<str> | no | `nil` |  |
 
 ### StartPvcVoiceTrainingResponseModel
 
@@ -9866,6 +10300,13 @@ _(no fields)_
 | --- | --- | --- | --- | --- |
 | `asset_id` | str | **yes** | **required** | The ID of an asset uploaded via the assets API (`POST /v1/assets`), as returned in that response's `asset_id`. |
 
+### StoredUsagePlatformLimit
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `limit` | Optional<int> | no | `nil` |  |
+| `usage` | Optional<int> | no | `nil` | Current usage |
+
 ### StreamingAudioChunkWithTimestampsAndVoiceSegmentsResponseModel
 
 | Field | Type | Required | Default | Notes |
@@ -9883,6 +10324,14 @@ _(no fields)_
 | `alignment` | Optional<[CharacterAlignmentResponseModel](#characteralignmentresponsemodel)> | no | `nil` | Timestamp information for each character in the original text |
 | `normalized_alignment` | Optional<[CharacterAlignmentResponseModel](#characteralignmentresponsemodel)> | no | `nil` | Timestamp information for each character in the normalized text |
 
+### StringSchema
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `title` | Optional<str> | no | `nil` |  |
+| `description` | Optional<str> | no | `nil` |  |
+| `enum` | Optional<Array<str>> | no | `nil` |  |
+
 ### StudioAgentSettingsModel
 
 | Field | Type | Required | Default | Notes |
@@ -9895,13 +10344,13 @@ _(no fields)_
 | --- | --- | --- | --- | --- |
 | `skip_confirmation` | Optional<bool> | no | `nil` |  |
 
-### StudioClipReference
+### StudioClipLocator
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `project_id` | str | **yes** | **required** |  |
 | `chapter_id` | str | **yes** | **required** |  |
-| `clip_type` | [StudioClipReferenceClipType](#studioclipreferencecliptype) | **yes** | **required** |  |
+| `clip_type` | [StudioClipLocatorClipType](#studiocliplocatorcliptype) | **yes** | **required** |  |
 | `clip_id` | str | **yes** | **required** |  |
 | `block_id` | Optional<str> | no | `nil` |  |
 | `preview_url` | Optional<str> | no | `nil` |  |
@@ -9925,31 +10374,6 @@ _(no fields)_
 | `blur` | float | **yes** | **required** |  |
 | `offset_x` | float | **yes** | **required** |  |
 | `offset_y` | float | **yes** | **required** |  |
-
-### SubAgentInput
-
-| Field | Type | Required | Default | Notes |
-| --- | --- | --- | --- | --- |
-| `agent_id` | str | **yes** | **required** |  |
-| `branch_id` | Optional<str> | no | `nil` |  |
-| `description` | str | **yes** | **required** |  |
-| `parameters` | Optional<'[ObjectJsonSchemaPropertyInput](#objectjsonschemapropertyinput)'> | no | `nil` |  |
-
-### SubAgentOutput
-
-| Field | Type | Required | Default | Notes |
-| --- | --- | --- | --- | --- |
-| `agent_id` | str | **yes** | **required** |  |
-| `branch_id` | Optional<str> | no | `nil` |  |
-| `description` | str | **yes** | **required** |  |
-| `parameters` | Optional<'[ObjectJsonSchemaPropertyOutput](#objectjsonschemapropertyoutput)'> | no | `nil` |  |
-
-### SubagentRunResultDetails
-
-| Field | Type | Required | Default | Notes |
-| --- | --- | --- | --- | --- |
-| `sub_conversation_id` | Optional<str> | no | `nil` |  |
-| `agent_id` | Optional<str> | no | `nil` |  |
 
 ### SubmitBusinessInfoParams
 
@@ -9999,6 +10423,26 @@ _(no fields)_
 | `has_used_starter_coupon_on_account` | Optional<bool> | no | `nil` | True if any workspace owned by this user's auth account has redeemed the starter first-month discount coupon. |
 | `has_used_creator_coupon_on_account` | Optional<bool> | no | `nil` | True if any workspace owned by this user's auth account has redeemed the creator first-month discount coupon. |
 
+### SubscriptionExtrasResponseModel
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `concurrency` | int | **yes** | **required** | The concurrency of the user. |
+| `convai_concurrency` | int | **yes** | **required** | The Convai concurrency of the user. |
+| `enterprise_music_concurrency` | Optional<int> | no | `nil` | The Music concurrency of the user on enterprise plan. |
+| `music_finetunes_total_limit` | Optional<int> | no | `nil` | Custom total finetunes limit for the user. |
+| `music_finetunes_monthly_limit` | Optional<int> | no | `nil` | Custom monthly finetunes limit for the user. |
+| `music_finetunes_concurrency_limit` | Optional<int> | no | `nil` | Custom finetunes concurrency limit for the user. |
+| `convai_chars_per_minute` | Optional<int> | no | `nil` | The Convai characters per minute of the user. This field is deprecated and will always return None. |
+| `convai_asr_chars_per_minute` | Optional<int> | no | `nil` | The Convai ASR characters per minute of the user. This field is deprecated and will always return None. |
+| `force_logging_disabled` | bool | **yes** | **required** | Whether the user's logging is disabled. |
+| `can_request_manual_pro_voice_verification` | bool | **yes** | **required** | Whether the user can request manual pro voice verification. |
+| `can_bypass_voice_captcha` | bool | **yes** | **required** | Whether the user can bypass the voice captcha. |
+| `moderation` | [ModerationStatusResponseModel](#moderationstatusresponsemodel) | **yes** | **required** | The moderation status of the user. |
+| `unused_characters_rolled_over_from_previous_period` | Optional<int> | no | `nil` | The unused characters rolled over from the previous period. |
+| `overused_characters_rolled_over_from_previous_period` | Optional<int> | no | `nil` | The overused characters rolled over from the previous period. |
+| `usage` | Optional<[SubscriptionUsageResponseModel](#subscriptionusageresponsemodel)> | no | `nil` | Data on how the subscription is being used. |
+
 ### SubscriptionResponse
 
 | Field | Type | Required | Default | Notes |
@@ -10026,6 +10470,21 @@ _(no fields)_
 | `status` | [SubscriptionStatusType](#subscriptionstatustype) | **yes** | **required** | The status of the user's subscription. |
 | `billing_period` | Optional<[BillingPeriod](#billingperiod)> | no | `nil` | The billing period of the user's subscription. |
 | `character_refresh_period` | Optional<[CharacterRefreshPeriod](#characterrefreshperiod)> | no | `nil` | The character refresh period of the user's subscription. |
+
+### SubscriptionUsageResponseModel
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `rollover_credits_quota` | int | **yes** | **required** | The rollover credits quota. |
+| `subscription_cycle_credits_quota` | int | **yes** | **required** | The subscription cycle credits quota. |
+| `manually_gifted_credits_quota` | int | **yes** | **required** | The manually gifted credits quota. |
+| `payg_credits_quota` | Optional<int> | no | `nil` | The payg credits quota. |
+| `rollover_credits_used` | int | **yes** | **required** | The rollover credits used. |
+| `subscription_cycle_credits_used` | int | **yes** | **required** | The subscription cycle credits used. |
+| `manually_gifted_credits_used` | int | **yes** | **required** | The manually gifted credits used. |
+| `payg_credits_used` | Optional<int> | no | `nil` | The payg credits used. |
+| `paid_usage_based_credits_used` | int | **yes** | **required** | The paid usage based credits used. |
+| `actual_reported_credits` | int | **yes** | **required** | The actual reported credits. |
 
 ### SubtitleOrderItemRequest
 
@@ -10102,12 +10561,169 @@ _(no fields)_
 | `tool_error_handling_mode` | Optional<[ToolErrorHandlingMode](#toolerrorhandlingmode)> | no | `nil` | Controls how tool errors are processed before being shared with the agent. 'auto' determines handling based on tool type (summarized for native integrations, hide for others), 'summarized' sends an LLM-generated summary, 'passthrough' sends the raw error, 'hide' does not share the error with the agent. |
 | `params` | [SystemToolConfigOutputParams](#systemtoolconfigoutputparams) | **yes** | **required** |  |
 
-### TelephonyCallConfig
+### TelephonyCallConfigInput
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `ringing_timeout_secs` | Optional<int> | no | `nil` | How long to ring the recipient before giving up, in seconds. Note that this will also be limited by the provider's own constraints. |
 | `twilio_call_recording_enabled` | Optional<bool> | no | `nil` | Whether to record the call using Twilio call recording. Ignored for non-Twilio providers. Recordings are stored in your Twilio account. |
+| `twilio_machine_detection` | Optional<[TwilioMachineDetectionConfig](#twiliomachinedetectionconfig)> | no | `nil` | Configuration for Twilio's carrier-level answering machine detection (AMD). Omit or set to null to disable it. Ignored for non-Twilio providers and for inbound calls. The resulting verdict is delivered as its own `answering_machine_detection` webhook event, which requires that event to be enabled on the workspace or agent webhook settings; it is not part of the conversation or the post-call webhook. Detection runs asynchronously so it never delays the start of the conversation, and the verdict can arrive at any point during the call -- with `detect_message_end`, even after it has ended. Twilio bills separately for AMD. |
+
+### TelephonyCallConfigOutput
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `ringing_timeout_secs` | Optional<int> | no | `nil` | How long to ring the recipient before giving up, in seconds. Note that this will also be limited by the provider's own constraints. |
+| `twilio_call_recording_enabled` | Optional<bool> | no | `nil` | Whether to record the call using Twilio call recording. Ignored for non-Twilio providers. Recordings are stored in your Twilio account. |
+| `twilio_machine_detection` | Optional<[TwilioMachineDetectionConfig](#twiliomachinedetectionconfig)> | no | `nil` | Configuration for Twilio's carrier-level answering machine detection (AMD). Omit or set to null to disable it. Ignored for non-Twilio providers and for inbound calls. The resulting verdict is delivered as its own `answering_machine_detection` webhook event, which requires that event to be enabled on the workspace or agent webhook settings; it is not part of the conversation or the post-call webhook. Detection runs asynchronously so it never delays the start of the conversation, and the verdict can arrive at any point during the call -- with `detect_message_end`, even after it has ended. Twilio bills separately for AMD. |
+
+### TemplateArrayOutput
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `id` | str | **yes** | **required** | The id of the generation behind this output. Pass it as a `generation` reference to use the output as an input elsewhere. |
+| `status` | [TemplateRunStatus](#templaterunstatus) | **yes** | **required** | The lifecycle status of the output. It ends at `completed`, when the output's content fields are set, or `failed`, when `failure_reason` and `error_message` are set. |
+| `failure_reason` | Optional<[TemplateArrayOutputFailureReason](#templatearrayoutputfailurereason)> | no | `nil` | The category of failure. Present only when `status` is `failed`. |
+| `error_message` | Optional<str> | no | `nil` | A human-readable description of the failure. Present only when `status` is `failed`. Failed generations are not charged. |
+| `content` | Optional<Array<'[TemplateOutput](#templateoutput)'>> | no | `nil` | The first elements of the list, in order, each following the shape of the schema's `items`. Present only when `status` is `completed`. When `has_more` is true this is not the whole list. Reserved: no template produces this kind of output yet; it is published so that templates which do can be run with the same client. |
+| `next_cursor` | Optional<str> | no | `nil` | Pass as `cursor` to a later endpoint to fetch the elements after `content`. `null` when `content` holds the whole list, or before the output completes. Reserved: no template produces this kind of output yet; it is published so that templates which do can be run with the same client. |
+| `has_more` | Optional<bool> | no | `nil` | Whether the list has elements beyond `content`. |
+
+### TemplateAudioOutput
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `id` | str | **yes** | **required** | The id of the generation behind this output. Pass it as a `generation` reference to use the output as an input elsewhere. |
+| `status` | [TemplateRunStatus](#templaterunstatus) | **yes** | **required** | The lifecycle status of the output. It ends at `completed`, when the output's content fields are set, or `failed`, when `failure_reason` and `error_message` are set. |
+| `failure_reason` | Optional<[TemplateAudioOutputFailureReason](#templateaudiooutputfailurereason)> | no | `nil` | The category of failure. Present only when `status` is `failed`. |
+| `error_message` | Optional<str> | no | `nil` | A human-readable description of the failure. Present only when `status` is `failed`. Failed generations are not charged. |
+| `content_url` | Optional<str> | no | `nil` | A signed URL to download the generated media from. Present only when `status` is `completed`. It expires about an hour after this response is returned; fetch the run again for a fresh URL. |
+| `content_mime_type` | Optional<str> | no | `nil` | The MIME type of the generated media. Present only when `status` is `completed`. |
+
+### TemplateBooleanOutput
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `id` | str | **yes** | **required** | The id of the generation behind this output. Pass it as a `generation` reference to use the output as an input elsewhere. |
+| `status` | [TemplateRunStatus](#templaterunstatus) | **yes** | **required** | The lifecycle status of the output. It ends at `completed`, when the output's content fields are set, or `failed`, when `failure_reason` and `error_message` are set. |
+| `failure_reason` | Optional<[TemplateBooleanOutputFailureReason](#templatebooleanoutputfailurereason)> | no | `nil` | The category of failure. Present only when `status` is `failed`. |
+| `error_message` | Optional<str> | no | `nil` | A human-readable description of the failure. Present only when `status` is `failed`. Failed generations are not charged. |
+| `content` | Optional<bool> | no | `nil` | The generated boolean. Present only when `status` is `completed`. Reserved: no template produces this kind of output yet; it is published so that templates which do can be run with the same client. |
+
+### TemplateImageOutput
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `id` | str | **yes** | **required** | The id of the generation behind this output. Pass it as a `generation` reference to use the output as an input elsewhere. |
+| `status` | [TemplateRunStatus](#templaterunstatus) | **yes** | **required** | The lifecycle status of the output. It ends at `completed`, when the output's content fields are set, or `failed`, when `failure_reason` and `error_message` are set. |
+| `failure_reason` | Optional<[TemplateImageOutputFailureReason](#templateimageoutputfailurereason)> | no | `nil` | The category of failure. Present only when `status` is `failed`. |
+| `error_message` | Optional<str> | no | `nil` | A human-readable description of the failure. Present only when `status` is `failed`. Failed generations are not charged. |
+| `content_url` | Optional<str> | no | `nil` | A signed URL to download the generated media from. Present only when `status` is `completed`. It expires about an hour after this response is returned; fetch the run again for a fresh URL. |
+| `content_mime_type` | Optional<str> | no | `nil` | The MIME type of the generated media. Present only when `status` is `completed`. |
+
+### TemplateIntegerOutput
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `id` | str | **yes** | **required** | The id of the generation behind this output. Pass it as a `generation` reference to use the output as an input elsewhere. |
+| `status` | [TemplateRunStatus](#templaterunstatus) | **yes** | **required** | The lifecycle status of the output. It ends at `completed`, when the output's content fields are set, or `failed`, when `failure_reason` and `error_message` are set. |
+| `failure_reason` | Optional<[TemplateIntegerOutputFailureReason](#templateintegeroutputfailurereason)> | no | `nil` | The category of failure. Present only when `status` is `failed`. |
+| `error_message` | Optional<str> | no | `nil` | A human-readable description of the failure. Present only when `status` is `failed`. Failed generations are not charged. |
+| `content` | Optional<int> | no | `nil` | The generated integer. Present only when `status` is `completed`. Reserved: no template produces this kind of output yet; it is published so that templates which do can be run with the same client. |
+
+### TemplateListResponse
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `templates` | Array<[TemplateSummary](#templatesummary)> | **yes** | **required** | The templates on this page, most recently updated first. A page can hold fewer than `page_size` templates, or none at all, because templates you cannot run are filtered out after the page is read — keep paging while `has_more` is true. |
+| `next_cursor` | Optional<str> | no | `nil` | Pass as `cursor` to fetch the next page. `null` when there is no further page. |
+| `has_more` | Optional<bool> | no | `nil` | Whether more templates exist beyond this page. |
+
+### TemplateNumberOutput
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `id` | str | **yes** | **required** | The id of the generation behind this output. Pass it as a `generation` reference to use the output as an input elsewhere. |
+| `status` | [TemplateRunStatus](#templaterunstatus) | **yes** | **required** | The lifecycle status of the output. It ends at `completed`, when the output's content fields are set, or `failed`, when `failure_reason` and `error_message` are set. |
+| `failure_reason` | Optional<[TemplateNumberOutputFailureReason](#templatenumberoutputfailurereason)> | no | `nil` | The category of failure. Present only when `status` is `failed`. |
+| `error_message` | Optional<str> | no | `nil` | A human-readable description of the failure. Present only when `status` is `failed`. Failed generations are not charged. |
+| `content` | Optional<float> | no | `nil` | The generated number. Present only when `status` is `completed`. Reserved: no template produces this kind of output yet; it is published so that templates which do can be run with the same client. |
+
+### TemplateObjectOutput
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `id` | str | **yes** | **required** | The id of the generation behind this output. Pass it as a `generation` reference to use the output as an input elsewhere. |
+| `status` | [TemplateRunStatus](#templaterunstatus) | **yes** | **required** | The lifecycle status of the output. It ends at `completed`, when the output's content fields are set, or `failed`, when `failure_reason` and `error_message` are set. |
+| `failure_reason` | Optional<[TemplateObjectOutputFailureReason](#templateobjectoutputfailurereason)> | no | `nil` | The category of failure. Present only when `status` is `failed`. |
+| `error_message` | Optional<str> | no | `nil` | A human-readable description of the failure. Present only when `status` is `failed`. Failed generations are not charged. |
+| `content` | Optional<Hash<str, Optional<'[TemplateOutput](#templateoutput)'>>> | no | `nil` | One output per field, keyed by field name, each following the shape of that field's schema. Present only when `status` is `completed`. Reserved: no template produces this kind of output yet; it is published so that templates which do can be run with the same client. |
+
+### TemplatePort
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `id` | str | **yes** | **required** | The port id. Input ids are the keys of the `inputs` map on `POST /v1/flows/templates/{template_id}/runs`; output ids are the keys of the `outputs` map on the run response. |
+| `content_schema` | '[ContentSchema](#contentschema)' | **yes** | **required** | What this port accepts or produces, as a `ContentSchema`. Its `title` is the port's display name and its `description` is the help text the template author wrote. For an input, its `type` decides what value is accepted: `string` takes a bare string or a `generation` reference, `voice` takes a `voice` reference, and `image`/`video`/`audio` take an `asset`, `generation` or `inline_base64` reference. `number`, `integer` and `boolean` take a JSON value of that type. An `array` input takes a JSON array with one value per element, each admissible for its `items`. `object` inputs cannot be bound through this API yet. A `string` schema may carry an `enum` of the only values accepted. For an output, its `type` decides which `Template<Kind>Output` shape the run response holds under the port id. |
+
+### TemplateRunListResponse
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `runs` | Array<[TemplateRunResponse](#templaterunresponse)> | **yes** | **required** | The runs on this page, newest first. Each item has the same shape as `GET /v1/flows/templates/{template_id}/runs/{run_id}`. |
+| `next_cursor` | Optional<str> | no | `nil` | Pass as `cursor` to fetch the next page. `null` when there is no further page. |
+| `has_more` | Optional<bool> | no | `nil` | Whether more runs exist beyond this page. |
+
+### TemplateRunResponse
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `id` | str | **yes** | **required** | The unique identifier of the run. |
+| `template_id` | str | **yes** | **required** | The template this run executed, so a webhook consumer running several templates can tell their runs apart without keeping a run-to-template map. |
+| `version_id` | str | **yes** | **required** | The template version this run executed. Resolved when the run is created, so a run started with `latest` records the concrete version it ran. |
+| `status` | [TemplateRunStatus](#templaterunstatus) | **yes** | **required** | The run's status, rolled up from its outputs: `pending` until an output starts, `generating` while any output is unfinished, `completed` once every output has completed, and `failed` once every output has finished and at least one failed. `completed` and `failed` are terminal: the `flows_template_run` webhook fires once the run reaches either. |
+| `outputs` | Hash<str, '[TemplateOutput](#templateoutput)'> | **yes** | **required** | The run's outputs, keyed by output port id. Each is a `TemplateOutput` discriminated on `type`, the `type` of its port's `content_schema`. |
+
+### TemplateStringOutput
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `id` | str | **yes** | **required** | The id of the generation behind this output. Pass it as a `generation` reference to use the output as an input elsewhere. |
+| `status` | [TemplateRunStatus](#templaterunstatus) | **yes** | **required** | The lifecycle status of the output. It ends at `completed`, when the output's content fields are set, or `failed`, when `failure_reason` and `error_message` are set. |
+| `failure_reason` | Optional<[TemplateStringOutputFailureReason](#templatestringoutputfailurereason)> | no | `nil` | The category of failure. Present only when `status` is `failed`. |
+| `error_message` | Optional<str> | no | `nil` | A human-readable description of the failure. Present only when `status` is `failed`. Failed generations are not charged. |
+| `content` | Optional<str> | no | `nil` | The generated text. Present only when `status` is `completed`. |
+
+### TemplateSummary
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `id` | str | **yes** | **required** | Pass as `template_id` on `POST /v1/flows/templates/{template_id}/runs`. |
+| `name` | str | **yes** | **required** | The template's name. |
+| `description` | Optional<str> | no | `nil` | The template's description, if it has one. |
+| `versions` | Array<[TemplateVersion](#templateversion)> | **yes** | **required** | The published versions this caller can run, newest first. A version whose graph uses a model that is not available to you through the API is left out, as is one whose stored snapshot is gone; either way the list can be empty while the template still has versions the ElevenLabs app can run. |
+| `has_more_versions` | bool | **yes** | **required** | Whether this template has further published versions beyond the `versions_per_template` returned here. Fetch `GET /v1/flows/templates/{template_id}` with a larger `versions_per_template` to see more of them. |
+
+### TemplateVersion
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `version_id` | str | **yes** | **required** | Pass as `version_id` on `POST /v1/flows/templates/{template_id}/runs` to pin a run to this snapshot. |
+| `published_at_unix` | int | **yes** | **required** | When this version was published, as a Unix timestamp in seconds. |
+| `is_latest` | bool | **yes** | **required** | Whether this is the version a run gets when `version_id` is omitted or set to `latest`. |
+| `inputs` | Array<[TemplatePort](#templateport)> | **yes** | **required** | The inputs this version accepts, in canvas order. Every input is required on a run. |
+| `outputs` | Array<[TemplatePort](#templateport)> | **yes** | **required** | The outputs this version produces, in canvas order. |
+
+### TemplateVideoOutput
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `id` | str | **yes** | **required** | The id of the generation behind this output. Pass it as a `generation` reference to use the output as an input elsewhere. |
+| `status` | [TemplateRunStatus](#templaterunstatus) | **yes** | **required** | The lifecycle status of the output. It ends at `completed`, when the output's content fields are set, or `failed`, when `failure_reason` and `error_message` are set. |
+| `failure_reason` | Optional<[TemplateVideoOutputFailureReason](#templatevideooutputfailurereason)> | no | `nil` | The category of failure. Present only when `status` is `failed`. |
+| `error_message` | Optional<str> | no | `nil` | A human-readable description of the failure. Present only when `status` is `failed`. Failed generations are not charged. |
+| `content_url` | Optional<str> | no | `nil` | A signed URL to download the generated media from. Present only when `status` is `completed`. It expires about an hour after this response is returned; fetch the run again for a fresh URL. |
+| `content_mime_type` | Optional<str> | no | `nil` | The MIME type of the generated media. Present only when `status` is `completed`. |
 
 ### TestConditionRationaleCommonModel
 
@@ -10150,6 +10766,9 @@ _(no fields)_
 | `id` | str | **yes** | **required** | The ID of the test invocation |
 | `agent_id` | Optional<str> | no | `nil` | The ID of the agent this test invocation belongs to |
 | `branch_id` | Optional<str> | no | `nil` | The ID of the branch this test invocation was run on |
+| `version_id` | Optional<str> | no | `nil` | The ID of the agent version this test invocation ran against. For draft or config-override runs this is the version those uncommitted changes were applied on top of. None only for runs recorded before this field existed. |
+| `ran_against_draft` | Optional<bool> | no | `nil` | Whether the run included uncommitted changes (a saved draft or an ad-hoc config override) layered on top of version_id. |
+| `runs_diverged_from_version` | Optional<bool> | no | `nil` | Whether the test runs in this invocation did not all execute against the same version, which happens when a subset of runs was resubmitted after the original run. When true, version_id describes the most recent resubmit rather than every run. |
 | `created_at_unix_secs` | int | **yes** | **required** | Creation time of the test invocation in unix seconds |
 | `test_run_count` | int | **yes** | **required** | Number of test runs in this invocation |
 | `passed_count` | int | **yes** | **required** | Number of test runs that passed |
@@ -10326,7 +10945,7 @@ _(no fields)_
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `stability` | Optional<float> | no | `nil` | Determines how stable the voice is and the randomness between each generation. Lower values introduce broader emotional range for the voice. Higher values can result in a monotonous voice with limited emotion. |
-| `speed` | Optional<float> | no | `nil` |  |
+| `similarity` | Optional<float> | no | `nil` | Determines how strongly the model is guided while generating. Higher values make the model adhere more closely to the voice, at the cost of variation. Not supported by every model. |
 
 ### TokenResponseModel
 
@@ -10343,11 +10962,11 @@ _(no fields)_
 | `title` | Optional<str> | no | `nil` |  |
 | `description` | Optional<str> | no | `nil` |  |
 | `input_schema` | Annotated[Hash<str, Any>, FieldMetadata(alias='inputSchema'), pydantic.Field(alias='inputSchema')> | **yes** | **required** |  |
+| `execution` | Optional<[ToolExecution](#toolexecution)> | no | `nil` |  |
 | `output_schema` | Annotated[Optional<Hash<str, Any>>, FieldMetadata(alias='outputSchema'), pydantic.Field(alias='outputSchema')> | no | `nil` |  |
 | `icons` | Optional<Array<[Icon](#icon)>> | no | `nil` |  |
 | `annotations` | Optional<[ToolAnnotations](#toolannotations)> | no | `nil` |  |
 | `meta` | Annotated[Optional<Hash<str, Any>>, FieldMetadata(alias='_meta'), pydantic.Field(alias='_meta')> | no | `nil` |  |
-| `execution` | Optional<[ToolExecution](#toolexecution)> | no | `nil` |  |
 
 ### ToolAnnotations
 
@@ -10776,6 +11395,7 @@ _(no fields)_
 | `text_normalisation_type` | Optional<[TextNormalisationType](#textnormalisationtype)> | no | `nil` | Method for converting numbers to words before converting text to speech. If set to SYSTEM_PROMPT, the system prompt will be updated to include normalization instructions. If set to ELEVENLABS, the text will be normalized after generation, incurring slight additional latency. |
 | `pronunciation_dictionary_locators` | Optional<Array<[PydanticPronunciationDictionaryVersionLocator](#pydanticpronunciationdictionaryversionlocator)>> | no | `nil` | The pronunciation dictionary locators |
 | `enable_phoneme_tags` | Optional<bool> | no | `nil` | Opt-in to SSML phoneme tag handling for V3 models. When enabled, phoneme tags (inline and from pronunciation dictionaries) are parsed into inline IPA before being sent to the model. |
+| `audio_effects` | Optional<[EffectsSpecInput](#effectsspecinput)> | no | `nil` | Optional TTS effects spec: filter preset, distance (proximity EQ), and environment (convolution reverb). |
 
 ### TtsConversationalConfigOutput
 
@@ -10794,6 +11414,7 @@ _(no fields)_
 | `text_normalisation_type` | Optional<[TextNormalisationType](#textnormalisationtype)> | no | `nil` | Method for converting numbers to words before converting text to speech. If set to SYSTEM_PROMPT, the system prompt will be updated to include normalization instructions. If set to ELEVENLABS, the text will be normalized after generation, incurring slight additional latency. |
 | `pronunciation_dictionary_locators` | Optional<Array<[PydanticPronunciationDictionaryVersionLocator](#pydanticpronunciationdictionaryversionlocator)>> | no | `nil` | The pronunciation dictionary locators |
 | `enable_phoneme_tags` | Optional<bool> | no | `nil` | Opt-in to SSML phoneme tag handling for V3 models. When enabled, phoneme tags (inline and from pronunciation dictionaries) are parsed into inline IPA before being sent to the model. |
+| `audio_effects` | Optional<[EffectsSpecOutput](#effectsspecoutput)> | no | `nil` | Optional TTS effects spec: filter preset, distance (proximity EQ), and environment (convolution reverb). |
 
 ### TtsConversationalConfigOverride
 
@@ -10836,6 +11457,7 @@ _(no fields)_
 | `text_normalisation_type` | Optional<[TextNormalisationType](#textnormalisationtype)> | no | `nil` | Method for converting numbers to words before converting text to speech. If set to SYSTEM_PROMPT, the system prompt will be updated to include normalization instructions. If set to ELEVENLABS, the text will be normalized after generation, incurring slight additional latency. |
 | `pronunciation_dictionary_locators` | Optional<Array<[PydanticPronunciationDictionaryVersionLocator](#pydanticpronunciationdictionaryversionlocator)>> | no | `nil` | The pronunciation dictionary locators |
 | `enable_phoneme_tags` | Optional<bool> | no | `nil` | Opt-in to SSML phoneme tag handling for V3 models. When enabled, phoneme tags (inline and from pronunciation dictionaries) are parsed into inline IPA before being sent to the model. |
+| `audio_effects` | Optional<[EffectsSpecInput](#effectsspecinput)> | no | `nil` | Optional TTS effects spec: filter preset, distance (proximity EQ), and environment (convolution reverb). |
 
 ### TtsConversationalConfigWorkflowOverrideOutput
 
@@ -10854,6 +11476,7 @@ _(no fields)_
 | `text_normalisation_type` | Optional<[TextNormalisationType](#textnormalisationtype)> | no | `nil` | Method for converting numbers to words before converting text to speech. If set to SYSTEM_PROMPT, the system prompt will be updated to include normalization instructions. If set to ELEVENLABS, the text will be normalized after generation, incurring slight additional latency. |
 | `pronunciation_dictionary_locators` | Optional<Array<[PydanticPronunciationDictionaryVersionLocator](#pydanticpronunciationdictionaryversionlocator)>> | no | `nil` | The pronunciation dictionary locators |
 | `enable_phoneme_tags` | Optional<bool> | no | `nil` | Opt-in to SSML phoneme tag handling for V3 models. When enabled, phoneme tags (inline and from pronunciation dictionaries) are parsed into inline IPA before being sent to the model. |
+| `audio_effects` | Optional<[EffectsSpecOutput](#effectsspecoutput)> | no | `nil` | Optional TTS effects spec: filter preset, distance (proximity EQ), and environment (convolution reverb). |
 
 ### TtsVoiceSettings
 
@@ -10929,6 +11552,12 @@ _(no fields)_
 | `transcribe_on_disabled_interruptions` | Optional<bool> | no | `nil` | When interruptions are disabled, still transcribe what the user says so it can carry into the next turn. When off, user speech during a non-interruptible turn is ignored and won't trigger a turn. |
 | `soft_timeout_config` | Optional<[SoftTimeoutConfigWorkflowOverride](#softtimeoutconfigworkflowoverride)> | no | `nil` | Configuration for soft timeout functionality. Provides immediate feedback during longer LLM responses. |
 
+### TwilioMachineDetectionConfig
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `mode` | Optional<[TwilioMachineDetectionMode](#twiliomachinedetectionmode)> | no | `nil` | How thorough the detection should be. `enable` returns a verdict as soon as Twilio can tell a human from a machine. `detect_message_end` also waits for the voicemail greeting to finish, which is what produces the `machine_end_*` verdicts, but returns a result later. |
+
 ### TwilioOutboundCallResponse
 
 | Field | Type | Required | Default | Notes |
@@ -10958,6 +11587,8 @@ _(no fields)_
 | `test_invocation_id` | str | **yes** | **required** |  |
 | `agent_id` | str | **yes** | **required** |  |
 | `branch_id` | Optional<str> | no | `nil` |  |
+| `version_id` | Optional<str> | no | `nil` |  |
+| `ran_against_draft` | Optional<bool> | no | `nil` |  |
 | `workflow_node_id` | Optional<str> | no | `nil` |  |
 | `status` | [TestRunStatus](#testrunstatus) | **yes** | **required** |  |
 | `agent_responses` | Optional<Array<[ConversationHistoryTranscriptCommonModelOutput](#conversationhistorytranscriptcommonmodeloutput)>> | no | `nil` |  |
@@ -10969,6 +11600,8 @@ _(no fields)_
 | `root_folder_id` | Optional<str> | no | `nil` |  |
 | `root_folder_name` | Optional<str> | no | `nil` |  |
 | `environment` | Optional<str> | no | `nil` |  |
+| `credits_used` | Optional<int> | no | `nil` | Credits billed for this test run. None for runs created before cost tracking. |
+| `charging` | Optional<[ConversationChargingCommonModel](#conversationchargingcommonmodel)> | no | `nil` | Finalized billing and provider-usage breakdown for this test run. |
 
 ### UnitTestSummaryResponseModel
 
@@ -11462,6 +12095,13 @@ _(no fields)_
 | `type` | str | **yes** | **required** |  |
 | `description` | str | **yes** | **required** |  |
 
+### VideoSchema
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `title` | Optional<str> | no | `nil` |  |
+| `description` | Optional<str> | no | `nil` |  |
+
 ### VideoSegment
 
 | Field | Type | Required | Default | Notes |
@@ -11556,6 +12196,12 @@ _(no fields)_
 | `duration_secs` | float | **yes** | **required** | The duration of the preview in seconds. |
 | `language` | Optional<str> | no | `nil` | The language of the preview. |
 
+### VoiceReference
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `voice_id` | str | **yes** | **required** | The ID of a voice in this workspace. |
+
 ### VoiceSample
 
 | Field | Type | Required | Default | Notes |
@@ -11589,6 +12235,13 @@ _(no fields)_
 | --- | --- | --- | --- | --- |
 | `sample_id` | str | **yes** | **required** | The ID of the sample. |
 | `visual_waveform` | Array<float> | **yes** | **required** | The visual waveform of the sample, represented as a list of floats. |
+
+### VoiceSchema
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `title` | Optional<str> | no | `nil` |  |
+| `description` | Optional<str> | no | `nil` |  |
 
 ### VoiceSegment
 
@@ -11694,9 +12347,9 @@ _(no fields)_
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `type` | Literal<'voices_not_permitted'> | no | `'voices_not_permitted'` | Identifies this warning; branch on it to read the fields below. |
-| `speaker_ids` | Array<str> | **yes** | **required** | Speakers whose voices were not permitted for cloning. The dub used a replacement voice for each of them; the rest of the speakers are unaffected. |
-| `message` | str | **yes** | **required** | Human-readable description of the warning, for display. The wording may change at any time; branch on `type` instead. |
+| `type` | Literal<'voices_not_permitted'> | no | `'voices_not_permitted'` | Identifies this warning; branch on it to read the other fields. |
+| `speaker_ids` | Array<str> | **yes** | **required** | Speakers whose voices were not permitted for cloning. The dub used a replacement voice for each of them; all other speakers are unaffected. |
+| `message` | str | **yes** | **required** | Human-readable description of the warning, for display. The wording may change at any time, so we recommend branching on `type` instead. |
 
 ### WebhookHmacSettings
 
@@ -11725,7 +12378,7 @@ _(no fields)_
 | `url` | str | **yes** | **required** | The URL that the webhook will be sent to. May include path parameters, e.g. https://example.com/agents/{agent_id} |
 | `method` | Optional<[WebhookToolApiSchemaConfigInputMethod](#webhooktoolapischemaconfiginputmethod)> | no | `nil` | The HTTP method to use for the webhook |
 | `path_params_schema` | Optional<Hash<str, [LiteralJsonSchemaProperty](#literaljsonschemaproperty)>> | no | `nil` | Schema for path parameters, if any. The keys should match the placeholders in the URL. |
-| `query_params_schema` | Optional<[QueryParamsJsonSchema](#queryparamsjsonschema)> | no | `nil` | Schema for any query params, if any. These will be added to end of the URL as query params. Note: properties in a query param must all be literal types |
+| `query_params_schema` | Optional<[QueryParamsJsonSchemaInput](#queryparamsjsonschemainput)> | no | `nil` | Schema for any query params, if any. These will be added to end of the URL as query params. Note: properties in a query param must all be literal types |
 | `request_body_schema` | Optional<'[ObjectJsonSchemaPropertyInput](#objectjsonschemapropertyinput)'> | no | `nil` | Schema for the body parameters, if any. Used for POST/PATCH/PUT requests. The schema should be an object which will be sent as the json body |
 | `response_body_schema` | Optional<'[ObjectJsonSchemaPropertyInput](#objectjsonschemapropertyinput)'> | no | `nil` | Schema describing the expected response body structure. For documentation only; not surfaced to the LLM. |
 | `response_filter` | Optional<[ResponseFilter](#responsefilter)> | no | `nil` | Optional allow-list filter applied to the response before the LLM sees it, so large responses don't pollute the context. Defaults to the full response. |
@@ -11741,7 +12394,7 @@ _(no fields)_
 | `url` | str | **yes** | **required** | The URL that the webhook will be sent to. May include path parameters, e.g. https://example.com/agents/{agent_id} |
 | `method` | Optional<[WebhookToolApiSchemaConfigOutputMethod](#webhooktoolapischemaconfigoutputmethod)> | no | `nil` | The HTTP method to use for the webhook |
 | `path_params_schema` | Optional<Hash<str, [LiteralJsonSchemaProperty](#literaljsonschemaproperty)>> | no | `nil` | Schema for path parameters, if any. The keys should match the placeholders in the URL. |
-| `query_params_schema` | Optional<[QueryParamsJsonSchema](#queryparamsjsonschema)> | no | `nil` | Schema for any query params, if any. These will be added to end of the URL as query params. Note: properties in a query param must all be literal types |
+| `query_params_schema` | Optional<[QueryParamsJsonSchemaOutput](#queryparamsjsonschemaoutput)> | no | `nil` | Schema for any query params, if any. These will be added to end of the URL as query params. Note: properties in a query param must all be literal types |
 | `request_body_schema` | Optional<'[ObjectJsonSchemaPropertyOutput](#objectjsonschemapropertyoutput)'> | no | `nil` | Schema for the body parameters, if any. Used for POST/PATCH/PUT requests. The schema should be an object which will be sent as the json body |
 | `response_body_schema` | Optional<'[ObjectJsonSchemaPropertyOutput](#objectjsonschemapropertyoutput)'> | no | `nil` | Schema describing the expected response body structure. For documentation only; not surfaced to the LLM. |
 | `response_filter` | Optional<[ResponseFilter](#responsefilter)> | no | `nil` | Optional allow-list filter applied to the response before the LLM sees it, so large responses don't pollute the context. Defaults to the full response. |
@@ -11767,6 +12420,8 @@ _(no fields)_
 | `dynamic_variables` | Optional<[DynamicVariablesConfig](#dynamicvariablesconfig)> | no | `nil` | Configuration for dynamic variables |
 | `execution_mode` | Optional<[ToolExecutionMode](#toolexecutionmode)> | no | `nil` | Determines when and how the tool executes: 'immediate' executes the tool right away when requested by the LLM, 'post_tool_speech' waits for the agent to finish speaking before executing, 'async' runs the tool in the background without blocking - best for long-running operations. |
 | `api_schema` | [WebhookToolApiSchemaConfigInput](#webhooktoolapischemaconfiginput) | **yes** | **required** | The schema for the outgoing webhoook, including parameters and URL specification |
+| `follow_redirects` | Optional<bool> | no | `nil` | Whether to resolve a redirect from the endpoint and return the final response. One redirect is followed, as a GET without the request body; nothing configured on this tool (headers, authentication, client certificate) is sent to the redirect target. Both the endpoint and the redirect target must use HTTPS. Not supported for API integration tools. |
+| `follow_redirects_allowed_domains` | Optional<Array<str>> | no | `nil` | Domains a redirect may point at, e.g. 'test.example.com'. Required when following redirects, and a target outside the list is refused. |
 
 ### WebhookToolConfigOutput
 
@@ -11786,6 +12441,8 @@ _(no fields)_
 | `dynamic_variables` | Optional<[DynamicVariablesConfig](#dynamicvariablesconfig)> | no | `nil` | Configuration for dynamic variables |
 | `execution_mode` | Optional<[ToolExecutionMode](#toolexecutionmode)> | no | `nil` | Determines when and how the tool executes: 'immediate' executes the tool right away when requested by the LLM, 'post_tool_speech' waits for the agent to finish speaking before executing, 'async' runs the tool in the background without blocking - best for long-running operations. |
 | `api_schema` | [WebhookToolApiSchemaConfigOutput](#webhooktoolapischemaconfigoutput) | **yes** | **required** | The schema for the outgoing webhoook, including parameters and URL specification |
+| `follow_redirects` | Optional<bool> | no | `nil` | Whether to resolve a redirect from the endpoint and return the final response. One redirect is followed, as a GET without the request body; nothing configured on this tool (headers, authentication, client certificate) is sent to the redirect target. Both the endpoint and the redirect target must use HTTPS. Not supported for API integration tools. |
+| `follow_redirects_allowed_domains` | Optional<Array<str>> | no | `nil` | Domains a redirect may point at, e.g. 'test.example.com'. Required when following redirects, and a target outside the list is refused. |
 
 ### WebsocketTtsClientMessageMulti
 
@@ -12260,6 +12917,7 @@ _(no fields)_
 | `custom_sip_headers` | Optional<Array<[WorkflowPhoneNumberNodeModelInputCustomSipHeadersItem](#workflowphonenumbernodemodelinputcustomsipheadersitem)>> | no | `nil` | Custom SIP headers to include when transferring the call. Each header can be either a static value or a dynamic variable reference. |
 | `transfer_destination` | [WorkflowPhoneNumberNodeModelInputTransferDestination](#workflowphonenumbernodemodelinputtransferdestination) | **yes** | **required** |  |
 | `transfer_type` | Optional<[TransferTypeEnum](#transfertypeenum)> | no | `nil` |  |
+| `sip_refer_play_dialtone` | Optional<bool> | no | `nil` | When True, a ringing tone is played on the original call leg while a SIP REFER transfer completes. The tone is carried over RTP to the SIP peer executing the REFER, so disable this if the receiving system (e.g. an SBC or contact center) should not hear it. When disabled the caller hears silence until the transfer completes. SIP REFER transfers only. |
 | `uui` | Optional<[UuiTransferConfig](#uuitransferconfig)> | no | `nil` | User-to-User Information (RFC 7433) to attach to SIP REFER transfers. Carries call context such as CRM identifiers or escalation reason across the transfer boundary. |
 | `post_dial_digits` | Optional<[WorkflowPhoneNumberNodeModelInputPostDialDigits](#workflowphonenumbernodemodelinputpostdialdigits)> | no | `nil` | DTMF digits to send after call connects (e.g., 'ww1234' for extension). Can be either a static value or a dynamic variable reference. Use 'w' for 0.5s pause. Only supported for Twilio transfers. |
 | `position` | Optional<[PositionInput](#positioninput)> | no | `nil` | Position of the node in the workflow. |
@@ -12272,6 +12930,7 @@ _(no fields)_
 | `custom_sip_headers` | Array<[WorkflowPhoneNumberNodeModelOutputCustomSipHeadersItem](#workflowphonenumbernodemodeloutputcustomsipheadersitem)> | **yes** | **required** | Custom SIP headers to include when transferring the call. Each header can be either a static value or a dynamic variable reference. |
 | `transfer_destination` | [WorkflowPhoneNumberNodeModelOutputTransferDestination](#workflowphonenumbernodemodeloutputtransferdestination) | **yes** | **required** |  |
 | `transfer_type` | [TransferTypeEnum](#transfertypeenum) | **yes** | **required** |  |
+| `sip_refer_play_dialtone` | bool | **yes** | **required** | When True, a ringing tone is played on the original call leg while a SIP REFER transfer completes. The tone is carried over RTP to the SIP peer executing the REFER, so disable this if the receiving system (e.g. an SBC or contact center) should not hear it. When disabled the caller hears silence until the transfer completes. SIP REFER transfers only. |
 | `uui` | Optional<[UuiTransferConfig](#uuitransferconfig)> | no | `nil` | User-to-User Information (RFC 7433) to attach to SIP REFER transfers. Carries call context such as CRM identifiers or escalation reason across the transfer boundary. |
 | `post_dial_digits` | Optional<[WorkflowPhoneNumberNodeModelOutputPostDialDigits](#workflowphonenumbernodemodeloutputpostdialdigits)> | no | `nil` | DTMF digits to send after call connects (e.g., 'ww1234' for extension). Can be either a static value or a dynamic variable reference. Use 'w' for 0.5s pause. Only supported for Twilio transfers. |
 | `position` | [PositionOutput](#positionoutput) | **yes** | **required** | Position of the node in the workflow. |
@@ -12445,6 +13104,7 @@ _(no fields)_
 | `hashed_xi_api_key` | str | **yes** | **required** |  |
 | `allowed_ips` | Optional<Array<str>> | no | `nil` |  |
 | `third_party_disable_allowed` | Optional<bool> | no | `nil` |  |
+| `platform_limits` | Optional<[PlatformLimits](#platformlimits)> | no | `nil` | Per-API-key concurrency limits (TTS/dubbing/music). Enterprise-only. |
 
 ### WorkspaceAuditLogEntryResponse
 
@@ -12595,7 +13255,7 @@ Variant of [AgentAnalysisItemsInputDataCollectionItem](#agentanalysisitemsinputd
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `source` | Literal<'system'> | no | `'system'` |  |
-| `analysis_item_id` | Literal<'__system_data_collection_topic'> | no | `'__system_data_collection_topic'` |  |
+| `analysis_item_id` | SystemDataCollectionId | no | `'__system_data_collection_topic'` |  |
 | `scope` | Optional<[AnalysisScope](#analysisscope)> | no | `nil` |  |
 
 ### AgentAnalysisItemsInputDataCollectionItem_User
@@ -12616,7 +13276,7 @@ Variant of [AgentAnalysisItemsInputEvaluationCriteriaItem](#agentanalysisitemsin
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `source` | Literal<'system'> | no | `'system'` |  |
-| `analysis_item_id` | [AttachedSystemEvaluationRefAnalysisItemId](#attachedsystemevaluationrefanalysisitemid) | **yes** | **required** |  |
+| `analysis_item_id` | [SystemEvaluationId](#systemevaluationid) | **yes** | **required** |  |
 | `scope` | Optional<[AnalysisScope](#analysisscope)> | no | `nil` |  |
 | `weight` | Optional<float> | no | `nil` |  |
 
@@ -12640,7 +13300,7 @@ Variant of [AgentAnalysisItemsOutputDataCollectionItem](#agentanalysisitemsoutpu
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `source` | Literal<'system'> | no | `'system'` |  |
-| `analysis_item_id` | Literal<'__system_data_collection_topic'> | no | `'__system_data_collection_topic'` |  |
+| `analysis_item_id` | SystemDataCollectionId | no | `'__system_data_collection_topic'` |  |
 | `scope` | Optional<[AnalysisScope](#analysisscope)> | no | `nil` |  |
 
 ### AgentAnalysisItemsOutputDataCollectionItem_User
@@ -12661,7 +13321,7 @@ Variant of [AgentAnalysisItemsOutputEvaluationCriteriaItem](#agentanalysisitemso
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `source` | Literal<'system'> | no | `'system'` |  |
-| `analysis_item_id` | [AttachedSystemEvaluationRefAnalysisItemId](#attachedsystemevaluationrefanalysisitemid) | **yes** | **required** |  |
+| `analysis_item_id` | [SystemEvaluationId](#systemevaluationid) | **yes** | **required** |  |
 | `scope` | Optional<[AnalysisScope](#analysisscope)> | no | `nil` |  |
 | `weight` | Optional<float> | no | `nil` |  |
 
@@ -12739,6 +13399,7 @@ Variant of [AgentWorkflowRequestModelNodesValue](#agentworkflowrequestmodelnodes
 | `custom_sip_headers` | Optional<Array<[WorkflowPhoneNumberNodeModelInputCustomSipHeadersItem](#workflowphonenumbernodemodelinputcustomsipheadersitem)>> | no | `nil` |  |
 | `transfer_destination` | [WorkflowPhoneNumberNodeModelInputTransferDestination](#workflowphonenumbernodemodelinputtransferdestination) | **yes** | **required** |  |
 | `transfer_type` | Optional<[TransferTypeEnum](#transfertypeenum)> | no | `nil` |  |
+| `sip_refer_play_dialtone` | Optional<bool> | no | `nil` |  |
 | `uui` | Optional<[UuiTransferConfig](#uuitransferconfig)> | no | `nil` |  |
 | `post_dial_digits` | Optional<[WorkflowPhoneNumberNodeModelInputPostDialDigits](#workflowphonenumbernodemodelinputpostdialdigits)> | no | `nil` |  |
 | `position` | Optional<[PositionInput](#positioninput)> | no | `nil` |  |
@@ -12817,6 +13478,7 @@ Variant of [AgentWorkflowResponseModelNodesValue](#agentworkflowresponsemodelnod
 | `custom_sip_headers` | Array<[WorkflowPhoneNumberNodeModelOutputCustomSipHeadersItem](#workflowphonenumbernodemodeloutputcustomsipheadersitem)> | **yes** | **required** |  |
 | `transfer_destination` | [WorkflowPhoneNumberNodeModelOutputTransferDestination](#workflowphonenumbernodemodeloutputtransferdestination) | **yes** | **required** |  |
 | `transfer_type` | [TransferTypeEnum](#transfertypeenum) | **yes** | **required** |  |
+| `sip_refer_play_dialtone` | bool | **yes** | **required** |  |
 | `uui` | Optional<[UuiTransferConfig](#uuitransferconfig)> | no | `nil` |  |
 | `post_dial_digits` | Optional<[WorkflowPhoneNumberNodeModelOutputPostDialDigits](#workflowphonenumbernodemodeloutputpostdialdigits)> | no | `nil` |  |
 | `position` | [PositionOutput](#positionoutput) | **yes** | **required** |  |
@@ -12866,7 +13528,9 @@ Variant of [AlertingSettingsNotifiersItem](#alertingsettingsnotifiersitem) with 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `type` | Literal<'integration'> | no | `'integration'` |  |
+| `integration_type` | Optional<[AlertingIntegrationNotifierIntegrationType](#alertingintegrationnotifierintegrationtype)> | no | `nil` |  |
 | `connection_id` | str | **yes** | **required** |  |
+| `channel_id` | Optional<str> | no | `nil` |  |
 
 ### AlertingSettingsNotifiersItem_Webhook
 
@@ -12884,7 +13548,9 @@ Variant of [AlertingSettingsResponseNotifiersItem](#alertingsettingsresponsenoti
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `type` | Literal<'integration'> | no | `'integration'` |  |
+| `integration_type` | Optional<[AlertingIntegrationNotifierResponseIntegrationType](#alertingintegrationnotifierresponseintegrationtype)> | no | `nil` |  |
 | `connection_id` | str | **yes** | **required** |  |
+| `channel_id` | Optional<str> | no | `nil` |  |
 
 ### AlertingSettingsResponseNotifiersItem_Webhook
 
@@ -13419,6 +14085,111 @@ Variant of [ContentGuardrailOutputTriggerAction](#contentguardrailoutputtriggera
 | `type` | Literal<'retry'> | no | `'retry'` |  |
 | `feedback` | Optional<str> | no | `nil` |  |
 
+### ContentSchema_Array
+
+Variant of [ContentSchema](#contentschema) with `type: 'array'`.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `type` | Literal<'array'> | no | `'array'` |  |
+| `title` | Optional<str> | no | `nil` |  |
+| `description` | Optional<str> | no | `nil` |  |
+| `items` | '[ContentSchema](#contentschema)' | **yes** | **required** |  |
+
+### ContentSchema_Audio
+
+Variant of [ContentSchema](#contentschema) with `type: 'audio'`.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `type` | Literal<'audio'> | no | `'audio'` |  |
+| `title` | Optional<str> | no | `nil` |  |
+| `description` | Optional<str> | no | `nil` |  |
+
+### ContentSchema_Boolean
+
+Variant of [ContentSchema](#contentschema) with `type: 'boolean'`.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `type` | Literal<'boolean'> | no | `'boolean'` |  |
+| `title` | Optional<str> | no | `nil` |  |
+| `description` | Optional<str> | no | `nil` |  |
+
+### ContentSchema_Image
+
+Variant of [ContentSchema](#contentschema) with `type: 'image'`.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `type` | Literal<'image'> | no | `'image'` |  |
+| `title` | Optional<str> | no | `nil` |  |
+| `description` | Optional<str> | no | `nil` |  |
+
+### ContentSchema_Integer
+
+Variant of [ContentSchema](#contentschema) with `type: 'integer'`.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `type` | Literal<'integer'> | no | `'integer'` |  |
+| `title` | Optional<str> | no | `nil` |  |
+| `description` | Optional<str> | no | `nil` |  |
+
+### ContentSchema_Number
+
+Variant of [ContentSchema](#contentschema) with `type: 'number'`.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `type` | Literal<'number'> | no | `'number'` |  |
+| `title` | Optional<str> | no | `nil` |  |
+| `description` | Optional<str> | no | `nil` |  |
+| `enum` | Optional<Array<float>> | no | `nil` |  |
+
+### ContentSchema_Object
+
+Variant of [ContentSchema](#contentschema) with `type: 'object'`.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `type` | Literal<'object'> | no | `'object'` |  |
+| `title` | Optional<str> | no | `nil` |  |
+| `description` | Optional<str> | no | `nil` |  |
+| `properties` | Optional<Hash<str, '[ContentSchema](#contentschema)'>> | no | `nil` |  |
+| `required` | Optional<Array<str>> | no | `nil` |  |
+
+### ContentSchema_String
+
+Variant of [ContentSchema](#contentschema) with `type: 'string'`.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `type` | Literal<'string'> | no | `'string'` |  |
+| `title` | Optional<str> | no | `nil` |  |
+| `description` | Optional<str> | no | `nil` |  |
+| `enum` | Optional<Array<str>> | no | `nil` |  |
+
+### ContentSchema_Video
+
+Variant of [ContentSchema](#contentschema) with `type: 'video'`.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `type` | Literal<'video'> | no | `'video'` |  |
+| `title` | Optional<str> | no | `nil` |  |
+| `description` | Optional<str> | no | `nil` |  |
+
+### ContentSchema_Voice
+
+Variant of [ContentSchema](#contentschema) with `type: 'voice'`.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `type` | Literal<'voice'> | no | `'voice'` |  |
+| `title` | Optional<str> | no | `nil` |  |
+| `description` | Optional<str> | no | `nil` |  |
+
 ### ConvAiStoredSecretDependenciesAgentsItem_Available
 
 Variant of [ConvAiStoredSecretDependenciesAgentsItem](#convaistoredsecretdependenciesagentsitem) with `type: 'available'`.
@@ -13546,6 +14317,29 @@ Variant of [ConversationHistoryTranscriptSystemToolResultCommonModelInputResult]
 | `reason` | Optional<str> | no | `nil` |  |
 | `message` | Optional<str> | no | `nil` |  |
 
+### ConversationHistoryTranscriptSystemToolResultCommonModelInputResult_EndProcedureError
+
+Variant of [ConversationHistoryTranscriptSystemToolResultCommonModelInputResult](#conversationhistorytranscriptsystemtoolresultcommonmodelinputresult) with `type: 'None'`.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `result_type` | Literal<'end_procedure_error'> | no | `'end_procedure_error'` |  |
+| `status` | [EndProcedureToolErrorStatus](#endproceduretoolerrorstatus) | **yes** | **required** |  |
+| `procedure_id` | Optional<str> | no | `nil` |  |
+| `message` | str | **yes** | **required** |  |
+
+### ConversationHistoryTranscriptSystemToolResultCommonModelInputResult_EndProcedureSuccess
+
+Variant of [ConversationHistoryTranscriptSystemToolResultCommonModelInputResult](#conversationhistorytranscriptsystemtoolresultcommonmodelinputresult) with `type: 'None'`.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `result_type` | Literal<'end_procedure_success'> | no | `'end_procedure_success'` |  |
+| `status` | Optional<Literal<'success'>> | no | `nil` |  |
+| `procedure_id` | str | **yes** | **required** |  |
+| `procedure_name` | str | **yes** | **required** |  |
+| `message` | Optional<str> | no | `nil` |  |
+
 ### ConversationHistoryTranscriptSystemToolResultCommonModelInputResult_KnowledgeBaseRagSuccess
 
 Variant of [ConversationHistoryTranscriptSystemToolResultCommonModelInputResult](#conversationhistorytranscriptsystemtoolresultcommonmodelinputresult) with `type: 'None'`.
@@ -13611,6 +14405,31 @@ Variant of [ConversationHistoryTranscriptSystemToolResultCommonModelInputResult]
 | `result_type` | Literal<'skip_turn_success'> | no | `'skip_turn_success'` |  |
 | `status` | Optional<Literal<'success'>> | no | `nil` |  |
 | `reason` | Optional<str> | no | `nil` |  |
+
+### ConversationHistoryTranscriptSystemToolResultCommonModelInputResult_StartProcedureError
+
+Variant of [ConversationHistoryTranscriptSystemToolResultCommonModelInputResult](#conversationhistorytranscriptsystemtoolresultcommonmodelinputresult) with `type: 'None'`.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `result_type` | Literal<'start_procedure_error'> | no | `'start_procedure_error'` |  |
+| `status` | [StartProcedureToolErrorStatus](#startproceduretoolerrorstatus) | **yes** | **required** |  |
+| `procedure_id` | Optional<str> | no | `nil` |  |
+| `message` | str | **yes** | **required** |  |
+
+### ConversationHistoryTranscriptSystemToolResultCommonModelInputResult_StartProcedureSuccess
+
+Variant of [ConversationHistoryTranscriptSystemToolResultCommonModelInputResult](#conversationhistorytranscriptsystemtoolresultcommonmodelinputresult) with `type: 'None'`.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `result_type` | Literal<'start_procedure_success'> | no | `'start_procedure_success'` |  |
+| `status` | Optional<Literal<'success'>> | no | `nil` |  |
+| `procedure_id` | str | **yes** | **required** |  |
+| `procedure_name` | str | **yes** | **required** |  |
+| `procedure_entry_workflow_node` | Optional<str> | no | `nil` |  |
+| `procedure_return_workflow_node` | Optional<str> | no | `nil` |  |
+| `message` | Optional<str> | no | `nil` |  |
 
 ### ConversationHistoryTranscriptSystemToolResultCommonModelInputResult_TestingToolResult
 
@@ -13733,6 +14552,29 @@ Variant of [ConversationHistoryTranscriptSystemToolResultCommonModelOutputResult
 | `reason` | Optional<str> | no | `nil` |  |
 | `message` | Optional<str> | no | `nil` |  |
 
+### ConversationHistoryTranscriptSystemToolResultCommonModelOutputResult_EndProcedureError
+
+Variant of [ConversationHistoryTranscriptSystemToolResultCommonModelOutputResult](#conversationhistorytranscriptsystemtoolresultcommonmodeloutputresult) with `type: 'None'`.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `result_type` | Literal<'end_procedure_error'> | no | `'end_procedure_error'` |  |
+| `status` | [EndProcedureToolErrorStatus](#endproceduretoolerrorstatus) | **yes** | **required** |  |
+| `procedure_id` | Optional<str> | no | `nil` |  |
+| `message` | str | **yes** | **required** |  |
+
+### ConversationHistoryTranscriptSystemToolResultCommonModelOutputResult_EndProcedureSuccess
+
+Variant of [ConversationHistoryTranscriptSystemToolResultCommonModelOutputResult](#conversationhistorytranscriptsystemtoolresultcommonmodeloutputresult) with `type: 'None'`.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `result_type` | Literal<'end_procedure_success'> | no | `'end_procedure_success'` |  |
+| `status` | Optional<Literal<'success'>> | no | `nil` |  |
+| `procedure_id` | str | **yes** | **required** |  |
+| `procedure_name` | str | **yes** | **required** |  |
+| `message` | Optional<str> | no | `nil` |  |
+
 ### ConversationHistoryTranscriptSystemToolResultCommonModelOutputResult_KnowledgeBaseRagSuccess
 
 Variant of [ConversationHistoryTranscriptSystemToolResultCommonModelOutputResult](#conversationhistorytranscriptsystemtoolresultcommonmodeloutputresult) with `type: 'None'`.
@@ -13798,6 +14640,31 @@ Variant of [ConversationHistoryTranscriptSystemToolResultCommonModelOutputResult
 | `result_type` | Literal<'skip_turn_success'> | no | `'skip_turn_success'` |  |
 | `status` | Optional<Literal<'success'>> | no | `nil` |  |
 | `reason` | Optional<str> | no | `nil` |  |
+
+### ConversationHistoryTranscriptSystemToolResultCommonModelOutputResult_StartProcedureError
+
+Variant of [ConversationHistoryTranscriptSystemToolResultCommonModelOutputResult](#conversationhistorytranscriptsystemtoolresultcommonmodeloutputresult) with `type: 'None'`.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `result_type` | Literal<'start_procedure_error'> | no | `'start_procedure_error'` |  |
+| `status` | [StartProcedureToolErrorStatus](#startproceduretoolerrorstatus) | **yes** | **required** |  |
+| `procedure_id` | Optional<str> | no | `nil` |  |
+| `message` | str | **yes** | **required** |  |
+
+### ConversationHistoryTranscriptSystemToolResultCommonModelOutputResult_StartProcedureSuccess
+
+Variant of [ConversationHistoryTranscriptSystemToolResultCommonModelOutputResult](#conversationhistorytranscriptsystemtoolresultcommonmodeloutputresult) with `type: 'None'`.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `result_type` | Literal<'start_procedure_success'> | no | `'start_procedure_success'` |  |
+| `status` | Optional<Literal<'success'>> | no | `nil` |  |
+| `procedure_id` | str | **yes** | **required** |  |
+| `procedure_name` | str | **yes** | **required** |  |
+| `procedure_entry_workflow_node` | Optional<str> | no | `nil` |  |
+| `procedure_return_workflow_node` | Optional<str> | no | `nil` |  |
+| `message` | Optional<str> | no | `nil` |  |
 
 ### ConversationHistoryTranscriptSystemToolResultCommonModelOutputResult_TestingToolResult
 
@@ -14366,6 +15233,53 @@ Variant of [GetKnowledgeBaseSummaryUrlResponseModelDependentAgentsItem](#getknow
 | `referenced_resource_ids` | Optional<Array<str>> | no | `nil` |  |
 | `id` | str | **yes** | **required** |  |
 
+### GetPhoneNumbersPageResponseModelPhoneNumbersItem_Exotel
+
+Variant of [GetPhoneNumbersPageResponseModelPhoneNumbersItem](#getphonenumberspageresponsemodelphonenumbersitem) with `type: 'None'`.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `provider` | Literal<'exotel'> | no | `'exotel'` |  |
+| `phone_number` | str | **yes** | **required** |  |
+| `label` | str | **yes** | **required** |  |
+| `supports_inbound` | Optional<bool> | no | `nil` |  |
+| `supports_outbound` | Optional<bool> | no | `nil` |  |
+| `phone_number_id` | str | **yes** | **required** |  |
+| `assigned_agent` | Optional<[PhoneNumberAgentInfo](#phonenumberagentinfo)> | no | `nil` |  |
+
+### GetPhoneNumbersPageResponseModelPhoneNumbersItem_SipTrunk
+
+Variant of [GetPhoneNumbersPageResponseModelPhoneNumbersItem](#getphonenumberspageresponsemodelphonenumbersitem) with `type: 'None'`.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `provider` | Literal<'sip_trunk'> | no | `'sip_trunk'` |  |
+| `phone_number` | str | **yes** | **required** |  |
+| `label` | str | **yes** | **required** |  |
+| `supports_inbound` | Optional<bool> | no | `nil` |  |
+| `supports_outbound` | Optional<bool> | no | `nil` |  |
+| `phone_number_id` | str | **yes** | **required** |  |
+| `assigned_agent` | Optional<[PhoneNumberAgentInfo](#phonenumberagentinfo)> | no | `nil` |  |
+| `provider_config` | Optional<[GetPhoneNumberOutboundSipTrunkConfigResponseModel](#getphonenumberoutboundsiptrunkconfigresponsemodel)> | no | `nil` |  |
+| `outbound_trunk` | Optional<[GetPhoneNumberOutboundSipTrunkConfigResponseModel](#getphonenumberoutboundsiptrunkconfigresponsemodel)> | no | `nil` |  |
+| `inbound_trunk` | Optional<[GetPhoneNumberInboundSipTrunkConfigResponseModel](#getphonenumberinboundsiptrunkconfigresponsemodel)> | no | `nil` |  |
+| `livekit_stack` | [LivekitStackType](#livekitstacktype) | **yes** | **required** |  |
+| `store_sip_messages` | Optional<bool> | no | `nil` |  |
+
+### GetPhoneNumbersPageResponseModelPhoneNumbersItem_Twilio
+
+Variant of [GetPhoneNumbersPageResponseModelPhoneNumbersItem](#getphonenumberspageresponsemodelphonenumbersitem) with `type: 'None'`.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `provider` | Literal<'twilio'> | no | `'twilio'` |  |
+| `phone_number` | str | **yes** | **required** |  |
+| `label` | str | **yes** | **required** |  |
+| `supports_inbound` | Optional<bool> | no | `nil` |  |
+| `supports_outbound` | Optional<bool> | no | `nil` |  |
+| `phone_number_id` | str | **yes** | **required** |  |
+| `assigned_agent` | Optional<[PhoneNumberAgentInfo](#phonenumberagentinfo)> | no | `nil` |  |
+
 ### GetPronunciationDictionaryWithRulesResponseModelRulesItem_Alias
 
 Variant of [GetPronunciationDictionaryWithRulesResponseModelRulesItem](#getpronunciationdictionarywithrulesresponsemodelrulesitem) with `type: 'alias'`.
@@ -14581,6 +15495,36 @@ Variant of [ImageGenerationRequest](#imagegenerationrequest) with `type: 'None'`
 | `quality` | Optional<[GptImage2RequestQuality](#gptimage2requestquality)> | no | `nil` |  |
 | `aspect_ratio` | Optional<[GptImage2RequestAspectRatio](#gptimage2requestaspectratio)> | no | `nil` |  |
 | `resolution` | Optional<[GptImage2RequestResolution](#gptimage2requestresolution)> | no | `nil` |  |
+
+### ImageGenerationRequest_GptImage25Flare
+
+Variant of [ImageGenerationRequest](#imagegenerationrequest) with `type: 'None'`.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `model_id` | Literal<'gpt-image-2.5-flare'> | no | `'gpt-image-2.5-flare'` |  |
+| `webhook` | Optional<[WebhookTarget](#webhooktarget)> | no | `nil` |  |
+| `prompt` | str | **yes** | **required** |  |
+| `images` | Optional<Array<[ImageReference](#imagereference)>> | no | `nil` |  |
+| `mask` | Optional<[ImageReference](#imagereference)> | no | `nil` |  |
+| `quality` | Optional<[GptImage25FlareRequestQuality](#gptimage25flarerequestquality)> | no | `nil` |  |
+| `aspect_ratio` | Optional<[GptImage25FlareRequestAspectRatio](#gptimage25flarerequestaspectratio)> | no | `nil` |  |
+| `resolution` | Optional<[GptImage25FlareRequestResolution](#gptimage25flarerequestresolution)> | no | `nil` |  |
+
+### ImageGenerationRequest_GptImage25Sunburst
+
+Variant of [ImageGenerationRequest](#imagegenerationrequest) with `type: 'None'`.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `model_id` | Literal<'gpt-image-2.5-sunburst'> | no | `'gpt-image-2.5-sunburst'` |  |
+| `webhook` | Optional<[WebhookTarget](#webhooktarget)> | no | `nil` |  |
+| `prompt` | str | **yes** | **required** |  |
+| `images` | Optional<Array<[ImageReference](#imagereference)>> | no | `nil` |  |
+| `mask` | Optional<[ImageReference](#imagereference)> | no | `nil` |  |
+| `quality` | Optional<[GptImage25SunburstRequestQuality](#gptimage25sunburstrequestquality)> | no | `nil` |  |
+| `aspect_ratio` | Optional<[GptImage25SunburstRequestAspectRatio](#gptimage25sunburstrequestaspectratio)> | no | `nil` |  |
+| `resolution` | Optional<[GptImage25SunburstRequestResolution](#gptimage25sunburstrequestresolution)> | no | `nil` |  |
 
 ### ImageReference_Asset
 
@@ -15644,6 +16588,8 @@ Variant of [PromptAgentApiModelInputToolsItem](#promptagentapimodelinputtoolsite
 | `dynamic_variables` | Optional<[DynamicVariablesConfig](#dynamicvariablesconfig)> | no | `nil` |  |
 | `execution_mode` | Optional<[ToolExecutionMode](#toolexecutionmode)> | no | `nil` |  |
 | `api_schema` | [WebhookToolApiSchemaConfigInput](#webhooktoolapischemaconfiginput) | **yes** | **required** |  |
+| `follow_redirects` | Optional<bool> | no | `nil` |  |
+| `follow_redirects_allowed_domains` | Optional<Array<str>> | no | `nil` |  |
 
 ### PromptAgentApiModelOutputBackupLlmConfig_Default
 
@@ -15777,6 +16723,8 @@ Variant of [PromptAgentApiModelOutputToolsItem](#promptagentapimodeloutputtoolsi
 | `dynamic_variables` | Optional<[DynamicVariablesConfig](#dynamicvariablesconfig)> | no | `nil` |  |
 | `execution_mode` | Optional<[ToolExecutionMode](#toolexecutionmode)> | no | `nil` |  |
 | `api_schema` | [WebhookToolApiSchemaConfigOutput](#webhooktoolapischemaconfigoutput) | **yes** | **required** |  |
+| `follow_redirects` | Optional<bool> | no | `nil` |  |
+| `follow_redirects_allowed_domains` | Optional<Array<str>> | no | `nil` |  |
 
 ### PromptAgentApiModelWorkflowOverrideInputToolsItem_ApiIntegrationWebhook
 
@@ -15885,6 +16833,8 @@ Variant of [PromptAgentApiModelWorkflowOverrideInputToolsItem](#promptagentapimo
 | `dynamic_variables` | Optional<[DynamicVariablesConfig](#dynamicvariablesconfig)> | no | `nil` |  |
 | `execution_mode` | Optional<[ToolExecutionMode](#toolexecutionmode)> | no | `nil` |  |
 | `api_schema` | [WebhookToolApiSchemaConfigInput](#webhooktoolapischemaconfiginput) | **yes** | **required** |  |
+| `follow_redirects` | Optional<bool> | no | `nil` |  |
+| `follow_redirects_allowed_domains` | Optional<Array<str>> | no | `nil` |  |
 
 ### PromptAgentApiModelWorkflowOverrideOutputToolsItem_ApiIntegrationWebhook
 
@@ -15993,6 +16943,8 @@ Variant of [PromptAgentApiModelWorkflowOverrideOutputToolsItem](#promptagentapim
 | `dynamic_variables` | Optional<[DynamicVariablesConfig](#dynamicvariablesconfig)> | no | `nil` |  |
 | `execution_mode` | Optional<[ToolExecutionMode](#toolexecutionmode)> | no | `nil` |  |
 | `api_schema` | [WebhookToolApiSchemaConfigOutput](#webhooktoolapischemaconfigoutput) | **yes** | **required** |  |
+| `follow_redirects` | Optional<bool> | no | `nil` |  |
+| `follow_redirects_allowed_domains` | Optional<Array<str>> | no | `nil` |  |
 
 ### SystemToolConfigInputParams_EndCall
 
@@ -16009,7 +16961,7 @@ Variant of [SystemToolConfigInputParams](#systemtoolconfiginputparams) with `typ
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `system_tool_type` | Literal<'end_procedure'> | no | `'end_procedure'` |  |
-| `procedures` | Optional<Hash<str, [ProcedureAtVersionInput](#procedureatversioninput)>> | no | `nil` |  |
+| `procedures` | Optional<Hash<str, EndProcedureToolConfigProceduresValue>> | no | `nil` |  |
 
 ### SystemToolConfigInputParams_KnowledgeBase
 
@@ -16047,15 +16999,6 @@ Variant of [SystemToolConfigInputParams](#systemtoolconfiginputparams) with `typ
 | `use_out_of_band_dtmf` | Optional<bool> | no | `nil` |  |
 | `suppress_turn_after_dtmf` | Optional<bool> | no | `nil` |  |
 
-### SystemToolConfigInputParams_RunSubagent
-
-Variant of [SystemToolConfigInputParams](#systemtoolconfiginputparams) with `type: 'None'`.
-
-| Field | Type | Required | Default | Notes |
-| --- | --- | --- | --- | --- |
-| `system_tool_type` | Literal<'run_subagent'> | no | `'run_subagent'` |  |
-| `agents` | Array<[SubAgentInput](#subagentinput)> | **yes** | **required** |  |
-
 ### SystemToolConfigInputParams_SkipTurn
 
 Variant of [SystemToolConfigInputParams](#systemtoolconfiginputparams) with `type: 'None'`.
@@ -16071,7 +17014,7 @@ Variant of [SystemToolConfigInputParams](#systemtoolconfiginputparams) with `typ
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `system_tool_type` | Literal<'start_procedure'> | no | `'start_procedure'` |  |
-| `procedures` | Optional<Hash<str, [ProcedureAtVersionInput](#procedureatversioninput)>> | no | `nil` |  |
+| `procedures` | Optional<Hash<str, StartProcedureToolConfigProceduresValue>> | no | `nil` |  |
 
 ### SystemToolConfigInputParams_TransferToAgent
 
@@ -16116,7 +17059,7 @@ Variant of [SystemToolConfigOutputParams](#systemtoolconfigoutputparams) with `t
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `system_tool_type` | Literal<'end_procedure'> | no | `'end_procedure'` |  |
-| `procedures` | Optional<Hash<str, [ProcedureAtVersionOutput](#procedureatversionoutput)>> | no | `nil` |  |
+| `procedures` | Optional<Hash<str, EndProcedureToolConfigProceduresValue>> | no | `nil` |  |
 
 ### SystemToolConfigOutputParams_KnowledgeBase
 
@@ -16154,15 +17097,6 @@ Variant of [SystemToolConfigOutputParams](#systemtoolconfigoutputparams) with `t
 | `use_out_of_band_dtmf` | Optional<bool> | no | `nil` |  |
 | `suppress_turn_after_dtmf` | Optional<bool> | no | `nil` |  |
 
-### SystemToolConfigOutputParams_RunSubagent
-
-Variant of [SystemToolConfigOutputParams](#systemtoolconfigoutputparams) with `type: 'None'`.
-
-| Field | Type | Required | Default | Notes |
-| --- | --- | --- | --- | --- |
-| `system_tool_type` | Literal<'run_subagent'> | no | `'run_subagent'` |  |
-| `agents` | Array<[SubAgentOutput](#subagentoutput)> | **yes** | **required** |  |
-
 ### SystemToolConfigOutputParams_SkipTurn
 
 Variant of [SystemToolConfigOutputParams](#systemtoolconfigoutputparams) with `type: 'None'`.
@@ -16178,7 +17112,7 @@ Variant of [SystemToolConfigOutputParams](#systemtoolconfigoutputparams) with `t
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
 | `system_tool_type` | Literal<'start_procedure'> | no | `'start_procedure'` |  |
-| `procedures` | Optional<Hash<str, [ProcedureAtVersionOutput](#procedureatversionoutput)>> | no | `nil` |  |
+| `procedures` | Optional<Hash<str, StartProcedureToolConfigProceduresValue>> | no | `nil` |  |
 
 ### SystemToolConfigOutputParams_TransferToAgent
 
@@ -16207,6 +17141,165 @@ Variant of [SystemToolConfigOutputParams](#systemtoolconfigoutputparams) with `t
 | --- | --- | --- | --- | --- |
 | `system_tool_type` | Literal<'voicemail_detection'> | no | `'voicemail_detection'` |  |
 | `voicemail_message` | Optional<str> | no | `nil` |  |
+
+### TemplateInputReference_Asset
+
+Variant of [TemplateInputReference](#templateinputreference) with `type: 'asset'`.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `type` | Literal<'asset'> | no | `'asset'` |  |
+| `asset_id` | str | **yes** | **required** |  |
+
+### TemplateInputReference_Generation
+
+Variant of [TemplateInputReference](#templateinputreference) with `type: 'generation'`.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `type` | Literal<'generation'> | no | `'generation'` |  |
+| `generation_id` | str | **yes** | **required** |  |
+
+### TemplateInputReference_InlineBase64
+
+Variant of [TemplateInputReference](#templateinputreference) with `type: 'inline_base64'`.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `type` | Literal<'inline_base64'> | no | `'inline_base64'` |  |
+| `content_base_64` | Annotated[str, FieldMetadata(alias='content_base64'), pydantic.Field(alias='content_base64')> | **yes** | **required** |  |
+| `mime_type` | [InlineBase64ReferenceMimeType](#inlinebase64referencemimetype) | **yes** | **required** |  |
+
+### TemplateInputReference_Voice
+
+Variant of [TemplateInputReference](#templateinputreference) with `type: 'voice'`.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `type` | Literal<'voice'> | no | `'voice'` |  |
+| `voice_id` | str | **yes** | **required** |  |
+
+### TemplateOutput_Array
+
+Variant of [TemplateOutput](#templateoutput) with `type: 'array'`.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `type` | Literal<'array'> | no | `'array'` |  |
+| `id` | str | **yes** | **required** |  |
+| `status` | [TemplateRunStatus](#templaterunstatus) | **yes** | **required** |  |
+| `failure_reason` | Optional<[TemplateArrayOutputFailureReason](#templatearrayoutputfailurereason)> | no | `nil` |  |
+| `error_message` | Optional<str> | no | `nil` |  |
+| `content` | Optional<Array<'[TemplateOutput](#templateoutput)'>> | no | `nil` |  |
+| `next_cursor` | Optional<str> | no | `nil` |  |
+| `has_more` | Optional<bool> | no | `nil` |  |
+
+### TemplateOutput_Audio
+
+Variant of [TemplateOutput](#templateoutput) with `type: 'audio'`.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `type` | Literal<'audio'> | no | `'audio'` |  |
+| `id` | str | **yes** | **required** |  |
+| `status` | [TemplateRunStatus](#templaterunstatus) | **yes** | **required** |  |
+| `failure_reason` | Optional<[TemplateAudioOutputFailureReason](#templateaudiooutputfailurereason)> | no | `nil` |  |
+| `error_message` | Optional<str> | no | `nil` |  |
+| `content_url` | Optional<str> | no | `nil` |  |
+| `content_mime_type` | Optional<str> | no | `nil` |  |
+
+### TemplateOutput_Boolean
+
+Variant of [TemplateOutput](#templateoutput) with `type: 'boolean'`.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `type` | Literal<'boolean'> | no | `'boolean'` |  |
+| `id` | str | **yes** | **required** |  |
+| `status` | [TemplateRunStatus](#templaterunstatus) | **yes** | **required** |  |
+| `failure_reason` | Optional<[TemplateBooleanOutputFailureReason](#templatebooleanoutputfailurereason)> | no | `nil` |  |
+| `error_message` | Optional<str> | no | `nil` |  |
+| `content` | Optional<bool> | no | `nil` |  |
+
+### TemplateOutput_Image
+
+Variant of [TemplateOutput](#templateoutput) with `type: 'image'`.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `type` | Literal<'image'> | no | `'image'` |  |
+| `id` | str | **yes** | **required** |  |
+| `status` | [TemplateRunStatus](#templaterunstatus) | **yes** | **required** |  |
+| `failure_reason` | Optional<[TemplateImageOutputFailureReason](#templateimageoutputfailurereason)> | no | `nil` |  |
+| `error_message` | Optional<str> | no | `nil` |  |
+| `content_url` | Optional<str> | no | `nil` |  |
+| `content_mime_type` | Optional<str> | no | `nil` |  |
+
+### TemplateOutput_Integer
+
+Variant of [TemplateOutput](#templateoutput) with `type: 'integer'`.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `type` | Literal<'integer'> | no | `'integer'` |  |
+| `id` | str | **yes** | **required** |  |
+| `status` | [TemplateRunStatus](#templaterunstatus) | **yes** | **required** |  |
+| `failure_reason` | Optional<[TemplateIntegerOutputFailureReason](#templateintegeroutputfailurereason)> | no | `nil` |  |
+| `error_message` | Optional<str> | no | `nil` |  |
+| `content` | Optional<int> | no | `nil` |  |
+
+### TemplateOutput_Number
+
+Variant of [TemplateOutput](#templateoutput) with `type: 'number'`.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `type` | Literal<'number'> | no | `'number'` |  |
+| `id` | str | **yes** | **required** |  |
+| `status` | [TemplateRunStatus](#templaterunstatus) | **yes** | **required** |  |
+| `failure_reason` | Optional<[TemplateNumberOutputFailureReason](#templatenumberoutputfailurereason)> | no | `nil` |  |
+| `error_message` | Optional<str> | no | `nil` |  |
+| `content` | Optional<float> | no | `nil` |  |
+
+### TemplateOutput_Object
+
+Variant of [TemplateOutput](#templateoutput) with `type: 'object'`.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `type` | Literal<'object'> | no | `'object'` |  |
+| `id` | str | **yes** | **required** |  |
+| `status` | [TemplateRunStatus](#templaterunstatus) | **yes** | **required** |  |
+| `failure_reason` | Optional<[TemplateObjectOutputFailureReason](#templateobjectoutputfailurereason)> | no | `nil` |  |
+| `error_message` | Optional<str> | no | `nil` |  |
+| `content` | Optional<Hash<str, Optional<'[TemplateOutput](#templateoutput)'>>> | no | `nil` |  |
+
+### TemplateOutput_String
+
+Variant of [TemplateOutput](#templateoutput) with `type: 'string'`.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `type` | Literal<'string'> | no | `'string'` |  |
+| `id` | str | **yes** | **required** |  |
+| `status` | [TemplateRunStatus](#templaterunstatus) | **yes** | **required** |  |
+| `failure_reason` | Optional<[TemplateStringOutputFailureReason](#templatestringoutputfailurereason)> | no | `nil` |  |
+| `error_message` | Optional<str> | no | `nil` |  |
+| `content` | Optional<str> | no | `nil` |  |
+
+### TemplateOutput_Video
+
+Variant of [TemplateOutput](#templateoutput) with `type: 'video'`.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `type` | Literal<'video'> | no | `'video'` |  |
+| `id` | str | **yes** | **required** |  |
+| `status` | [TemplateRunStatus](#templaterunstatus) | **yes** | **required** |  |
+| `failure_reason` | Optional<[TemplateVideoOutputFailureReason](#templatevideooutputfailurereason)> | no | `nil` |  |
+| `error_message` | Optional<str> | no | `nil` |  |
+| `content_url` | Optional<str> | no | `nil` |  |
+| `content_mime_type` | Optional<str> | no | `nil` |  |
 
 ### TextToSpeechGenerationRequest_ElevenFlashV25
 
@@ -16376,6 +17469,8 @@ Variant of [ToolRequestModelToolConfig](#toolrequestmodeltoolconfig) with `type:
 | `dynamic_variables` | Optional<[DynamicVariablesConfig](#dynamicvariablesconfig)> | no | `nil` |  |
 | `execution_mode` | Optional<[ToolExecutionMode](#toolexecutionmode)> | no | `nil` |  |
 | `api_schema` | [WebhookToolApiSchemaConfigInput](#webhooktoolapischemaconfiginput) | **yes** | **required** |  |
+| `follow_redirects` | Optional<bool> | no | `nil` |  |
+| `follow_redirects_allowed_domains` | Optional<Array<str>> | no | `nil` |  |
 
 ### ToolResponseModelToolConfig_Client
 
@@ -16450,6 +17545,8 @@ Variant of [ToolResponseModelToolConfig](#toolresponsemodeltoolconfig) with `typ
 | `dynamic_variables` | Optional<[DynamicVariablesConfig](#dynamicvariablesconfig)> | no | `nil` |  |
 | `execution_mode` | Optional<[ToolExecutionMode](#toolexecutionmode)> | no | `nil` |  |
 | `api_schema` | [WebhookToolApiSchemaConfigOutput](#webhooktoolapischemaconfigoutput) | **yes** | **required** |  |
+| `follow_redirects` | Optional<bool> | no | `nil` |  |
+| `follow_redirects_allowed_domains` | Optional<Array<str>> | no | `nil` |  |
 
 ### TransferToAgentToolResultSuccessModelInputBranchInfo_DefaultingToMain
 
@@ -17271,10 +18368,14 @@ One of:
 One of:
 
 - `'knowledge_gap'`
+- `'incorrect_information'`
+- `'documentation_gap'`
 - `'product_feedback'`
+- `'platform_bug'`
 - `'tool_issue'`
 - `'missing_tool'`
 - `'unnecessary_escalation'`
+- `'wrong_action'`
 
 ### AgentConversationTicketSource
 
@@ -17325,6 +18426,20 @@ One of:
 - `'unknown'`
 - `'low'`
 - `'high'`
+
+### AlertingIntegrationNotifierIntegrationType
+
+One of:
+
+- `'pagerduty'`
+- `'slack'`
+
+### AlertingIntegrationNotifierResponseIntegrationType
+
+One of:
+
+- `'pagerduty'`
+- `'slack'`
 
 ### AlertingWebhookMethod
 
@@ -17438,13 +18553,6 @@ One of:
 - `'success'`
 - `'failed'`
 
-### AttachedSystemEvaluationRefAnalysisItemId
-
-One of:
-
-- `'__system_eval_criteria_sentiment'`
-- `'__system_eval_criteria_frustration'`
-
 ### AudioAnalysisStatus
 
 One of:
@@ -17511,6 +18619,13 @@ One of:
 - `'elevator2'`
 - `'elevator3'`
 - `'elevator4'`
+
+### BanReasonType
+
+One of:
+
+- `'safety'`
+- `'manual'`
 
 ### BatchCallRecipientStatus
 
@@ -17882,6 +18997,7 @@ One of:
 One of:
 
 - `'audio'`
+- `'dtmf'`
 - `'text'`
 - `'image'`
 - `'file'`
@@ -17980,6 +19096,7 @@ One of:
 - `'eur'`
 - `'inr'`
 - `'pln'`
+- `'gbp'`
 - `'ratio'`
 - `'rating'`
 
@@ -18058,6 +19175,32 @@ One of:
 
 - `'html'`
 - `'markdown'`
+
+### ConversationErrorType
+
+One of:
+
+- `'unknown'`
+- `'call_initialization_error'`
+- `'line_busy'`
+- `'no_answer'`
+- `'call_rejected'`
+- `'blocked_by_user'`
+- `'agent_configuration_error'`
+- `'invalid_client_request'`
+- `'permission_error'`
+- `'entitlement_exceeded'`
+- `'client_disconnected'`
+- `'llm_error'`
+- `'speech_error'`
+- `'tool_error'`
+- `'integration_error'`
+- `'dependency_error'`
+- `'guardrail_triggered'`
+- `'safety_violation'`
+- `'max_duration_exceeded'`
+- `'internal_error'`
+- `'post_processing_error'`
 
 ### ConversationFeedbackType
 
@@ -18236,6 +19379,7 @@ One of:
 - `'eur'`
 - `'inr'`
 - `'pln'`
+- `'gbp'`
 
 ### CustomGuardrailConfigModel
 
@@ -18390,6 +19534,14 @@ One of:
 - `'ready'`
 - `'failed'`
 
+### DubbingReleaseChannel
+
+One of:
+
+- `'stable'`
+- `'release'`
+- `'experimental'`
+
 ### DubbingStatusStatus
 
 One of:
@@ -18503,6 +19655,13 @@ One of:
 
 - `'api.in.exotel.com'`
 - `'api.exotel.com'`
+
+### ExperimentAssignmentSource
+
+One of:
+
+- `'server_branch'`
+- `'client_declared'`
 
 ### ExternalSyncJobTrigger
 
@@ -18788,6 +19947,82 @@ One of:
 - `'medium'`
 - `'high'`
 
+### GptImage25FlareRequestAspectRatio
+
+One of:
+
+- `'auto'`
+- `'1:1'`
+- `'4:5'`
+- `'5:4'`
+- `'3:4'`
+- `'4:3'`
+- `'2:3'`
+- `'3:2'`
+- `'1:2'`
+- `'2:1'`
+- `'9:16'`
+- `'16:9'`
+- `'21:9'`
+- `'1:3'`
+- `'3:1'`
+
+### GptImage25FlareRequestQuality
+
+One of:
+
+- `'low'`
+- `'medium'`
+- `'high'`
+- `'xhigh'`
+- `'max'`
+
+### GptImage25FlareRequestResolution
+
+One of:
+
+- `'1K'`
+- `'2K'`
+- `'4K'`
+
+### GptImage25SunburstRequestAspectRatio
+
+One of:
+
+- `'auto'`
+- `'1:1'`
+- `'4:5'`
+- `'5:4'`
+- `'3:4'`
+- `'4:3'`
+- `'2:3'`
+- `'3:2'`
+- `'1:2'`
+- `'2:1'`
+- `'9:16'`
+- `'16:9'`
+- `'21:9'`
+- `'1:3'`
+- `'3:1'`
+
+### GptImage25SunburstRequestQuality
+
+One of:
+
+- `'low'`
+- `'medium'`
+- `'high'`
+- `'xhigh'`
+- `'max'`
+
+### GptImage25SunburstRequestResolution
+
+One of:
+
+- `'1K'`
+- `'2K'`
+- `'4K'`
+
 ### GptImage2RequestAspectRatio
 
 One of:
@@ -18853,6 +20088,13 @@ One of:
 - `'medical_and_legal'`
 - `'guardrail'`
 
+### IconTheme
+
+One of:
+
+- `'light'`
+- `'dark'`
+
 ### ImageAnalysisStatus
 
 One of:
@@ -18867,6 +20109,21 @@ One of:
 
 - `'audio/mpeg'`
 - `'audio/wav'`
+
+### InlineBase64ReferenceMimeType
+
+One of:
+
+- `'image/jpeg'`
+- `'image/png'`
+- `'image/webp'`
+- `'image/heic'`
+- `'image/heif'`
+- `'audio/mpeg'`
+- `'audio/wav'`
+- `'video/mp4'`
+- `'video/quicktime'`
+- `'video/webm'`
 
 ### InlineImageReferenceMimeType
 
@@ -19014,6 +20271,9 @@ One of:
 - `'gpt-5.6-sol'`
 - `'gpt-5.6-terra'`
 - `'gpt-5.6-luna'`
+- `'gpt-6-astra'`
+- `'gpt-6-sol'`
+- `'gpt-6-luna'`
 - `'gpt-5-mini'`
 - `'gpt-5-nano'`
 - `'gpt-3.5-turbo'`
@@ -19032,9 +20292,12 @@ One of:
 - `'gemini-3.5-flash-lite'`
 - `'gemini-3.6-flash'`
 - `'gemini-3.7-flash'`
+- `'gemini-3.8-flash'`
 - `'claude-sonnet-4-5'`
 - `'claude-opus-4-7'`
 - `'claude-opus-4-8'`
+- `'claude-opus-5'`
+- `'claude-opus-5-5'`
 - `'claude-sonnet-4-6'`
 - `'claude-sonnet-5'`
 - `'claude-sonnet-4'`
@@ -19052,6 +20315,7 @@ One of:
 - `'gpt-oss-20b'`
 - `'gpt-oss-120b'`
 - `'glm-45-air-fp8'`
+- `'glm-52'`
 - `'gemini-2.5-flash-preview-09-2025'`
 - `'gemini-2.5-flash-lite-preview-09-2025'`
 - `'gemini-2.5-flash-preview-05-20'`
@@ -19150,6 +20414,14 @@ One of:
 - `'auto_approved'`
 - `'requires_approval'`
 
+### McpToolApprovalState
+
+One of:
+
+- `'up_to_date'`
+- `'needs_review'`
+- `'not_approved'`
+
 ### MediaCodec
 
 One of:
@@ -19206,6 +20478,21 @@ One of:
 - `'selected'`
 - `'none'`
 
+### ModerationStatusResponseModelSafetyStatus
+
+One of:
+
+- `'appeal_approved'`
+- `'appeal_denied'`
+- `'false_positive'`
+
+### ModerationStatusResponseModelWarningStatus
+
+One of:
+
+- `'warning'`
+- `'warning_cleared'`
+
 ### MusicFinetuneFailureReason
 
 One of:
@@ -19239,6 +20526,7 @@ One of:
 
 - `'music_v1'`
 - `'music_v2'`
+- `'music_v2_5'`
 
 ### MusicOnlyOutputFormats
 
@@ -19307,6 +20595,7 @@ One of:
 - `'cancelling'`
 - `'cancelled'`
 - `'expired'`
+- `'merged'`
 
 ### OutputFormat
 
@@ -19347,6 +20636,7 @@ One of:
 - `'scale_2024_08_10'`
 - `'grant_tier_1_2025_07_23'`
 - `'grant_tier_2_2025_07_23'`
+- `'grant'`
 - `'trial'`
 - `'enterprise'`
 
@@ -19404,6 +20694,13 @@ One of:
 - `'copy_resources_cross_workspace'`
 - `'synthid_detector'`
 
+### PhoneNumberSortBy
+
+One of:
+
+- `'label'`
+- `'phone_number'`
+
 ### PlatformCategory
 
 One of:
@@ -19441,6 +20738,7 @@ One of:
 
 - `'free_form'`
 - `'deterministic'`
+- `'folder'`
 
 ### ProjectCreationMetaResponseModelStatus
 
@@ -19843,6 +21141,13 @@ One of:
 - `'tcp'`
 - `'tls'`
 
+### SmbAgentType
+
+One of:
+
+- `'customer_facing'`
+- `'assistant'`
+
 ### SmsConversationInfoDirection
 
 One of:
@@ -19914,7 +21219,7 @@ One of:
 - `'invalid_name'`
 - `'already_active'`
 
-### StudioClipReferenceClipType
+### StudioClipLocatorClipType
 
 One of:
 
@@ -19934,6 +21239,13 @@ One of:
 - `'free'`
 - `'free_disabled'`
 
+### SystemEvaluationId
+
+One of:
+
+- `'__system_eval_criteria_sentiment'`
+- `'__system_eval_criteria_frustration'`
+
 ### TelephonyDirection
 
 One of:
@@ -19948,6 +21260,123 @@ One of:
 - `'twilio'`
 - `'sip_trunk'`
 - `'exotel'`
+
+### TemplateArrayOutputFailureReason
+
+One of:
+
+- `'timeout'`
+- `'model_error'`
+- `'moderated'`
+- `'invalid_parameters'`
+- `'dependency_failed'`
+- `'charging_failed'`
+- `'internal_error'`
+
+### TemplateAudioOutputFailureReason
+
+One of:
+
+- `'timeout'`
+- `'model_error'`
+- `'moderated'`
+- `'invalid_parameters'`
+- `'dependency_failed'`
+- `'charging_failed'`
+- `'internal_error'`
+
+### TemplateBooleanOutputFailureReason
+
+One of:
+
+- `'timeout'`
+- `'model_error'`
+- `'moderated'`
+- `'invalid_parameters'`
+- `'dependency_failed'`
+- `'charging_failed'`
+- `'internal_error'`
+
+### TemplateImageOutputFailureReason
+
+One of:
+
+- `'timeout'`
+- `'model_error'`
+- `'moderated'`
+- `'invalid_parameters'`
+- `'dependency_failed'`
+- `'charging_failed'`
+- `'internal_error'`
+
+### TemplateIntegerOutputFailureReason
+
+One of:
+
+- `'timeout'`
+- `'model_error'`
+- `'moderated'`
+- `'invalid_parameters'`
+- `'dependency_failed'`
+- `'charging_failed'`
+- `'internal_error'`
+
+### TemplateNumberOutputFailureReason
+
+One of:
+
+- `'timeout'`
+- `'model_error'`
+- `'moderated'`
+- `'invalid_parameters'`
+- `'dependency_failed'`
+- `'charging_failed'`
+- `'internal_error'`
+
+### TemplateObjectOutputFailureReason
+
+One of:
+
+- `'timeout'`
+- `'model_error'`
+- `'moderated'`
+- `'invalid_parameters'`
+- `'dependency_failed'`
+- `'charging_failed'`
+- `'internal_error'`
+
+### TemplateRunStatus
+
+One of:
+
+- `'pending'`
+- `'generating'`
+- `'completed'`
+- `'failed'`
+
+### TemplateStringOutputFailureReason
+
+One of:
+
+- `'timeout'`
+- `'model_error'`
+- `'moderated'`
+- `'invalid_parameters'`
+- `'dependency_failed'`
+- `'charging_failed'`
+- `'internal_error'`
+
+### TemplateVideoOutputFailureReason
+
+One of:
+
+- `'timeout'`
+- `'model_error'`
+- `'moderated'`
+- `'invalid_parameters'`
+- `'dependency_failed'`
+- `'charging_failed'`
+- `'internal_error'`
 
 ### TestRunMetadataTestType
 
@@ -20257,6 +21686,13 @@ One of:
 - `'umatilla'`
 - `'roaming'`
 
+### TwilioMachineDetectionMode
+
+One of:
+
+- `'enable'`
+- `'detect_message_end'`
+
 ### TwilioRegionId
 
 One of:
@@ -20441,6 +21877,7 @@ One of:
 - `'transcript'`
 - `'audio'`
 - `'call_initiation_failure'`
+- `'answering_machine_detection'`
 - `'unredacted_transcript'`
 - `'unredacted_audio'`
 
@@ -20497,6 +21934,13 @@ One of:
 - `'ConvAI Alerting'`
 - `'Flows'`
 - `'Dubbing'`
+
+### WhatsAppAccountType
+
+One of:
+
+- `'cloud_api'`
+- `'coexistence'`
 
 ### WhatsAppConversationInfoDirection
 
@@ -20611,6 +22055,7 @@ One of:
 - `'voice_collection'`
 - `'pronunciation_dictionary'`
 - `'dubbing'`
+- `'dubbing_project'`
 - `'project'`
 - `'convai_agents'`
 - `'convai_knowledge_base_documents'`
@@ -20634,7 +22079,6 @@ One of:
 - `'convai_agent_versions_deployments'`
 - `'convai_agent_experiments'`
 - `'convai_memory_entries'`
-- `'convai_coaching_proposals'`
 - `'convai_templates'`
 - `'dashboard'`
 - `'dashboard_configuration'`

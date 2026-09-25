@@ -556,4 +556,42 @@ class ClientIntegrationTest < Minitest::Test
     assert transcript.method_defined?(:update_segments),
            "expected project.transcript to have update_segments method"
   end
+
+  def test_flows_templates_and_runs_accessible
+    instance = ElevenLabs::Resources.class_for(["flows"]).new(Object.new)
+    assert_respond_to instance, :templates
+
+    templates = ElevenLabs::Resources.class_for(["flows", "templates"])
+    assert templates, "expected flows.templates resource class to exist"
+    %i[list get].each do |m|
+      assert templates.method_defined?(m), "expected flows.templates to have #{m} method"
+    end
+    assert_respond_to templates.new(Object.new), :runs
+
+    runs = ElevenLabs::Resources.class_for(["flows", "templates", "runs"])
+    assert runs, "expected flows.templates.runs resource class to exist"
+    %i[create list get].each do |m|
+      assert runs.method_defined?(m), "expected flows.templates.runs to have #{m} method"
+    end
+  end
+
+  def test_agents_hold_audio_accessible
+    instance = ElevenLabs::Resources.class_for(["conversational_ai", "agents"]).new(Object.new)
+    assert_respond_to instance, :hold_audio
+
+    klass = ElevenLabs::Resources.class_for(["conversational_ai", "agents", "hold_audio"])
+    assert klass, "expected agents.hold_audio resource class to exist"
+    %i[create delete].each do |m|
+      assert klass.method_defined?(m), "expected agents.hold_audio to have #{m} method"
+    end
+  end
+
+  def test_v2_69_new_operations_on_existing_namespaces
+    phone_numbers = ElevenLabs::Resources.class_for(["conversational_ai", "phone_numbers"])
+    assert phone_numbers.method_defined?(:list_v_2), "expected phone_numbers to have list_v_2 method"
+
+    triage = ElevenLabs::Resources.class_for(["conversational_ai", "triage_tickets"])
+    assert triage.method_defined?(:list_for_workspace),
+           "expected triage_tickets to have list_for_workspace method"
+  end
 end

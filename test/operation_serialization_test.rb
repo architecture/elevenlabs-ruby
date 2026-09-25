@@ -1413,4 +1413,136 @@ class OperationSerializationTest < Minitest::Test
     assert_equal %w[fiction drama], form["genres"]
     assert_equal ['{"pronunciation_dictionary_id":"dict_1"}'], form["pronunciation_dictionary_locators"]
   end
+
+  # --- v2.69.0 spec refresh ---
+
+  def test_flows_templates_list_and_get_query_params
+    @client.flows.templates.list(page_size: 10, search: "promo", versions_per_template: 2)
+    list_request = @http.requests.last
+    assert_equal "GET", list_request[:method]
+    assert_equal "v1/flows/templates", list_request[:path]
+    assert_equal({ "page_size" => 10, "search" => "promo", "versions_per_template" => 2 }, list_request[:query])
+
+    @client.flows.templates.get("tpl_1", versions_per_template: 3)
+    get_request = @http.requests.last
+    assert_equal "GET", get_request[:method]
+    assert_equal "v1/flows/templates/tpl_1", get_request[:path]
+    assert_equal({ "versions_per_template" => 3 }, get_request[:query])
+  end
+
+  def test_flows_templates_runs_create_serialization
+    @client.flows.templates.runs.create(
+      "tpl_1",
+      inputs: { "prompt" => "hello" },
+      version_id: "ver_2",
+      webhook: { "url" => "https://example.com/hook" }
+    )
+
+    request = @http.requests.last
+    assert_equal "POST", request[:method]
+    assert_equal "v1/flows/templates/tpl_1/runs", request[:path]
+    assert_equal(
+      {
+        "inputs" => { "prompt" => "hello" },
+        "version_id" => "ver_2",
+        "webhook" => { "url" => "https://example.com/hook" }
+      },
+      request[:json]
+    )
+  end
+
+  def test_flows_templates_runs_list_and_get_paths
+    @client.flows.templates.runs.list("tpl_1", page_size: 5, version_id: "ver_2")
+    list_request = @http.requests.last
+    assert_equal "GET", list_request[:method]
+    assert_equal "v1/flows/templates/tpl_1/runs", list_request[:path]
+    assert_equal({ "page_size" => 5, "version_id" => "ver_2" }, list_request[:query])
+
+    @client.flows.templates.runs.get("tpl_1", "run_9")
+    get_request = @http.requests.last
+    assert_equal "GET", get_request[:method]
+    assert_equal "v1/flows/templates/tpl_1/runs/run_9", get_request[:path]
+  end
+
+  def test_agents_hold_audio_create_multipart_and_delete
+    audio = ElevenLabs::Upload.from_io(StringIO.new("bytes"), filename: "hold.mp3", content_type: "audio/mpeg")
+
+    @client.conversational_ai.agents.hold_audio.create("agent_1", hold_audio_file: audio)
+    create_request = @http.requests.last
+    assert_equal "POST", create_request[:method]
+    assert_equal "v1/convai/agents/agent_1/hold-audio", create_request[:path]
+    assert_equal 1, create_request[:files].length
+    assert_equal "hold_audio_file", create_request[:files].first[:name]
+
+    @client.conversational_ai.agents.hold_audio.delete("agent_1")
+    delete_request = @http.requests.last
+    assert_equal "DELETE", delete_request[:method]
+    assert_equal "v1/convai/agents/agent_1/hold-audio", delete_request[:path]
+  end
+
+  def test_phone_numbers_list_v_2_query_params
+    @client.conversational_ai.phone_numbers.list_v_2(page_size: 25, provider: "twilio", supports_outbound: true)
+
+    request = @http.requests.last
+    assert_equal "GET", request[:method]
+    assert_equal "v1/convai/v2/phone-numbers", request[:path]
+    assert_equal({ "page_size" => 25, "provider" => "twilio", "supports_outbound" => true }, request[:query])
+  end
+
+  def test_triage_tickets_list_for_workspace_is_not_agent_scoped
+    @client.conversational_ai.triage_tickets.list_for_workspace(status: "open", assignee_user_id: "user_1")
+
+    request = @http.requests.last
+    assert_equal "GET", request[:method]
+    assert_equal "v1/convai/triage-tickets", request[:path]
+    assert_equal({ "status" => "open", "assignee_user_id" => "user_1" }, request[:query])
+  end
+
+  def test_music_compose_enable_logging_goes_in_query
+    @client.music.compose(prompt: "lofi beat", enable_logging: false)
+
+    request = @http.requests.last
+    assert_equal "v1/music", request[:path]
+    assert_equal({ "enable_logging" => false }, request[:query])
+    assert_equal({ "prompt" => "lofi beat" }, request[:json])
+  end
+
+  def test_text_to_dialogue_convert_context_params
+    @client.text_to_dialogue.convert(
+      inputs: [{ "text" => "Hi", "voice_id" => "v1" }],
+      previous_text: "Before.",
+      future_text: "After.",
+      previous_request_ids: %w[req_1],
+      next_request_ids: %w[req_2]
+    )
+
+    json = @http.requests.last[:json]
+    assert_equal "Before.", json["previous_text"]
+    assert_equal "After.", json["future_text"]
+    assert_equal %w[req_1], json["previous_request_ids"]
+    assert_equal %w[req_2], json["next_request_ids"]
+  end
+
+  def test_service_accounts_api_keys_create_concurrency_limits
+    @client.service_accounts.api_keys.create(
+      "sa_1", name: "ci", permissions: "all", tts_concurrency_limit: 4, music_concurrency_limit: 2
+    )
+
+    request = @http.requests.last
+    assert_equal "POST", request[:method]
+    assert_equal "v1/service-accounts/sa_1/api-keys", request[:path]
+    assert_equal 4, request[:json]["tts_concurrency_limit"]
+    assert_equal 2, request[:json]["music_concurrency_limit"]
+    refute request[:json].key?("dubbing_concurrency_limit")
+  end
+
+  def test_agents_list_tags_and_conversation_token_version_id
+    @client.conversational_ai.agents.list(tags: %w[support])
+    assert_equal %w[support], @http.requests.last[:query]["tags"]
+
+    @client.conversational_ai.conversations.get_webrtc_token(agent_id: "agent_1", version_id: "ver_1")
+    request = @http.requests.last
+    assert_equal "v1/convai/conversation/token", request[:path]
+    assert_equal "ver_1", request[:query]["version_id"]
+  end
 end

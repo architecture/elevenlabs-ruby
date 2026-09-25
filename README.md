@@ -10,7 +10,7 @@ This gem is published to **GitHub Packages** (not RubyGems.org). Add the GitHub 
 
 ```ruby
 source "https://rubygems.pkg.github.com/architecture" do
-  gem "elevenlabs", "0.10.0"
+  gem "elevenlabs", "0.11.0"
 end
 ```
 
@@ -31,7 +31,7 @@ Bundler can pull the gem straight from the git repository. This works for public
 
 ```ruby
 # Pin to a release tag (recommended for production)
-gem "elevenlabs", git: "https://github.com/architecture/elevenlabs-ruby", tag: "v0.10.0"
+gem "elevenlabs", git: "https://github.com/architecture/elevenlabs-ruby", tag: "v0.11.0"
 
 # Or track the latest main branch
 gem "elevenlabs", git: "https://github.com/architecture/elevenlabs-ruby", branch: "main"
@@ -97,6 +97,8 @@ client.environment_variables.create(request: { "label" => "API_KEY", "type" => "
 client.flows.text_to_speech.create(request: { "text" => "Hello there", "model_id" => "eleven_v3" })
 client.flows.image.list(page_size: 10, status: "completed")
 client.flows.video.get("gen_123")
+client.flows.templates.list(search: "promo")
+client.flows.templates.runs.create("tpl_123", inputs: { "prompt" => "Hello" })
 
 # dubbing
 client.dubbing.transcript.create(
@@ -478,6 +480,21 @@ gem "elevenlabs", path: "/path/to/elevenlabs-ruby"
 ```
 
 ## Recent Updates
+
+### 2026-09-25: v0.11.0 — Updated API Spec from elevenlabs-python v2.69.0
+
+Refreshed `lib/elevenlabs/spec.json` (and the `types.json` / `docs/types.md` artifacts) against elevenlabs-python v2.69.0 (up from v2.65.0). 9 new operations across 3 new sub-resources; nothing removed and no parameters dropped.
+
+**New sub-resources:**
+- `flows.templates` — reusable flow templates (`list`, `get`), with `versions_per_template` to control how many versions come back
+- `flows.templates.runs` — run a template and track the result (`create`, `list`, `get`). `create` takes `inputs`, an optional `version_id` and an optional `webhook`
+- `conversational_ai.agents.hold_audio` — upload (`create`, multipart `hold_audio_file`) or `delete` the audio an agent plays while a caller is on hold
+
+**New operations on existing namespaces:**
+- `conversational_ai.phone_numbers.list_v_2` — cursor-paginated phone number listing (`GET v1/convai/v2/phone-numbers`) with search, provider, agent and outbound-support filters
+- `conversational_ai.triage_tickets.list_for_workspace` — list triage tickets across the whole workspace rather than one agent, filterable by `status` and `assignee_user_id`
+
+**New parameters on existing operations:** `previous_text`, `future_text`, `previous_request_ids` and `next_request_ids` on all four `text_to_dialogue` operations; `enable_logging` (query) on `music.compose`, `compose_detailed`, `compose_detailed_stream`, `stream`, `separate_stems` and `music.composition_plan.create`; `with_waveform_visual` on `music.compose_detailed`, `compose_detailed_stream` and `upload`; `tts_concurrency_limit`, `dubbing_concurrency_limit` and `music_concurrency_limit` on `service_accounts.api_keys.create` / `update`; `tags` on `conversational_ai.agents.list`; `include_draft` on `agents.branches.create`; `version_id` on `conversations.get_signed_url` / `get_webrtc_token`; `dynamic_variable_params` on `conversations.list` and `conversations.messages.text_search`; `branch_id` on `conversations.messages.search`; `auto_discover` on `knowledge_base.crawl_jobs.create`; `search` on `tests.invocations.list`.
 
 ### 2026-08-28: v0.10.0 — Updated API Spec from elevenlabs-python v2.65.0 + repeated multipart fields
 
