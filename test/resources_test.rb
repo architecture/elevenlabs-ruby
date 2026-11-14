@@ -154,8 +154,8 @@ class ClientIntegrationTest < Minitest::Test
 
   def test_all_top_level_namespaces_accessible
     expected = %w[
-      audio_isolation audio_native conversational_ai dubbing
-      environment_variables forced_alignment history models music
+      assets audio_effects audio_isolation audio_native conversational_ai dubbing
+      environment_variables environments flows forced_alignment history models music
       productions pronunciation_dictionaries samples service_accounts
       speech_engine speech_to_speech speech_to_text studio text_to_dialogue
       text_to_sound_effects text_to_speech text_to_voice tokens usage user
@@ -593,5 +593,59 @@ class ClientIntegrationTest < Minitest::Test
     triage = ElevenLabs::Resources.class_for(["conversational_ai", "triage_tickets"])
     assert triage.method_defined?(:list_for_workspace),
            "expected triage_tickets to have list_for_workspace method"
+  end
+
+  # --- New in elevenlabs-python v2.78.0 ---
+
+  def test_v2_78_new_namespaces_and_operations
+    {
+      ["audio_effects"] => %i[get_catalog],
+      ["environments"] => %i[create list delete],
+      ["voices", "collections"] => %i[list create get update delete add_voice remove_voice],
+      ["conversational_ai", "agents", "merge_proposals"] => %i[list create get update add_comment submit_review merge],
+      ["conversational_ai", "analysis_items"] => %i[list create get update delete copy list_versions update_attachments],
+      ["conversational_ai", "analysis_items", "dependent_agents"] => %i[get],
+      ["conversational_ai", "outbound_campaigns"] => %i[list create get get_progress get_follow_up_requests pause resume stop pause_all stop_all],
+      ["conversational_ai", "outbound_campaigns", "attention"] => %i[list resolve retry],
+      ["conversational_ai", "outbound_campaigns", "calls"] => %i[list export],
+      ["conversational_ai", "outbound_campaigns", "config"] => %i[get update],
+      ["conversational_ai", "outbound_campaigns", "leads"] => %i[list get delete],
+      ["conversational_ai", "realtime"] => %i[create_client_secret list_conversation_groups create_conversation_group
+                                               get_conversation_group update_conversation_group delete_conversation_group
+                                               set_conversation_group clear_conversation_group]
+    }.each do |path, methods|
+      klass = ElevenLabs::Resources.class_for(path)
+      assert klass, "expected #{path.join(".")} resource class to exist"
+      methods.each do |m|
+        assert klass.method_defined?(m), "expected #{path.join(".")} to have #{m} method"
+      end
+    end
+  end
+
+  def test_v2_78_child_accessors
+    assert_respond_to ElevenLabs::Resources.class_for(["voices"]).new(Object.new), :collections
+    assert_respond_to ElevenLabs::Resources.class_for(["conversational_ai", "agents"]).new(Object.new), :merge_proposals
+
+    convai = ElevenLabs::Resources.class_for(["conversational_ai"]).new(Object.new)
+    %i[analysis_items outbound_campaigns realtime].each { |c| assert_respond_to convai, c }
+
+    campaigns = ElevenLabs::Resources.class_for(["conversational_ai", "outbound_campaigns"]).new(Object.new)
+    %i[attention calls config leads].each { |c| assert_respond_to campaigns, c }
+  end
+
+  def test_v2_78_new_operations_on_existing_namespaces
+    {
+      ["conversational_ai", "agents", "deployments"] => :list,
+      ["conversational_ai", "conversations", "files"] => :get,
+      ["conversational_ai", "tests", "invocations"] => :cancel,
+      ["conversational_ai", "triage_tickets"] => :merge,
+      ["environment_variables"] => :delete,
+      ["service_accounts", "api_keys"] => :disable,
+      ["workspace", "members"] => :update_usage_limit,
+      ["workspace", "usage"] => :get_usage
+    }.each do |path, m|
+      klass = ElevenLabs::Resources.class_for(path)
+      assert klass.method_defined?(m), "expected #{path.join(".")} to have #{m} method"
+    end
   end
 end

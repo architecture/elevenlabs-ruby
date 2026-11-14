@@ -21,6 +21,16 @@ client.assets.get(asset["asset_id"])
 client.assets.delete(asset["asset_id"])
 ```
 
+## audio_effects
+
+List the audio effects that `text_to_speech` and `text_to_dialogue` accept through their `audio_effects` parameter.
+
+```ruby
+catalog = client.audio_effects.get_catalog
+
+client.text_to_speech.convert("voice_123", text: "Hello", audio_effects: { "reverb" => { "mix" => 0.2 } })
+```
+
 ## audio_isolation
 
 Remove background noise from clips or stream cleaned audio in real time.
@@ -70,6 +80,27 @@ client.conversational_ai.triage_tickets.create(
   conversation_id: "conv_123",
   qa_comment: "Agent missed the refund policy"
 )
+
+# Outbound calling campaigns
+campaign = client.conversational_ai.outbound_campaigns.create(
+  call_name: "Renewals",
+  agent_id: "agent_123",
+  recipients: [{ "phone_number" => "+15550100" }],
+  channel_config: { "type" => "phone", "agent_phone_number_id" => "pn_123" }
+)
+client.conversational_ai.outbound_campaigns.get_progress("campaign_123")
+client.conversational_ai.outbound_campaigns.leads.list("campaign_123", page_size: 50)
+
+# Review-gated branch merges
+client.conversational_ai.agents.merge_proposals.create(
+  "agent_123",
+  source_branch_id: "branch_feature",
+  target_branch_id: "branch_main",
+  title: "Tighten the greeting"
+)
+
+# Short-lived client secret for a browser realtime session
+client.conversational_ai.realtime.create_client_secret(request: { "agent_id" => "agent_123" })
 ```
 
 ## dubbing
@@ -99,6 +130,17 @@ client.environment_variables.create(request: {
 
 client.environment_variables.get("env_var_123")
 client.environment_variables.update("env_var_123", request: { "label" => "API_KEY_V2" })
+client.environment_variables.delete("env_var_123")
+```
+
+## environments
+
+Create, list, and delete the ConvAI deployment environments that environment variables and outbound campaigns are scoped to.
+
+```ruby
+client.environments.create(name: "staging")
+client.environments.list
+client.environments.delete("staging")
 ```
 
 ## flows
@@ -322,6 +364,9 @@ client.voices.pvc.samples.create(
 
 client.voices.accents.get(language: "en", model_id: "eleven_v3")
 client.voices.replicate_to_isolated_environment("voice_123", target_workspace_id: "ws_456")
+
+collection = client.voices.collections.create(title: "Narrators", icon: "mic")
+client.voices.collections.add_voice("col_123", "voice_123")
 ```
 
 ## webhooks

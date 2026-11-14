@@ -3,7 +3,7 @@ type: Playbook
 title: Tracking upstream elevenlabs-python
 description: The invariants behind the spec-refresh procedure — what must move together, what tests must be written, and what the steps will not tell you.
 tags: [upstream-python-sdk, codegen, testing]
-timestamp: 2026-07-23T14:10:00Z
+timestamp: 2026-11-13T12:00:00Z
 ---
 
 # Overview
@@ -31,6 +31,17 @@ output is wrong, the extractor is wrong — see
 **`docs/workflow-gotchas.md` is the exception.** It is hand-maintained and
 records server behaviour no extractor can see, so a refresh neither updates nor
 validates it — see [the workflow rules](/api-contract/workflow-validators.md).
+
+**`docs/namespaces.md` and the README are hand-maintained too.** Each has one
+example per top-level namespace, and the README also lists every namespace
+inline. No script regenerates either, so a refresh that adds a top-level
+namespace must add it to both by hand. Nothing fails if you forget.
+
+**Upstream helpers don't carry over.** The extractor reads `raw_client.py` only.
+Hand-written Python conveniences (the v2.78.0 agent tool and workflow builders,
+Flows `create_and_wait`) live outside it and have no Ruby equivalent. The
+endpoints they call are still extracted. Say so in the changelog so callers
+don't go looking for them.
 
 **Green tests do not mean full coverage.** The suite is written against the
 *previous* spec. A new namespace with no tests passes trivially: nothing

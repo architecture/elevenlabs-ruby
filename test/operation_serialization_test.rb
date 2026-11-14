@@ -1545,4 +1545,226 @@ class OperationSerializationTest < Minitest::Test
     assert_equal "v1/convai/conversation/token", request[:path]
     assert_equal "ver_1", request[:query]["version_id"]
   end
+
+  # --- New in elevenlabs-python v2.78.0 ---
+
+  def test_speech_to_speech_uses_voice_changer_path
+    audio = ElevenLabs::Upload.from_io(StringIO.new("bytes"), filename: "in.wav", content_type: "audio/wav")
+
+    @client.speech_to_speech.convert("voice_1", audio: audio, model_id: "eleven_multilingual_sts_v2")
+    request = @http.requests.last
+    assert_equal :stream, request[:kind]
+    assert_equal "POST", request[:method]
+    assert_equal "v1/voice-changer/voice_1", request[:path]
+    assert_equal({ "model_id" => "eleven_multilingual_sts_v2" }, request[:form])
+    assert_equal "audio", request[:files].first[:name]
+  end
+
+  def test_audio_effects_get_catalog
+    @client.audio_effects.get_catalog
+
+    request = @http.requests.last
+    assert_equal "GET", request[:method]
+    assert_equal "v1/audio-effects/catalog", request[:path]
+  end
+
+  def test_text_to_speech_sends_audio_effects_in_json_body
+    effects = { "reverb" => { "mix" => 0.2 } }
+    @client.text_to_speech.convert("voice_1", text: "hi", audio_effects: effects)
+
+    request = @http.requests.last
+    assert_equal "v1/text-to-speech/voice_1", request[:path]
+    assert_equal({ "text" => "hi", "audio_effects" => effects }, request[:json])
+  end
+
+  def test_text_to_dialogue_sends_audio_effects_and_use_pvc_as_ivc
+    @client.text_to_dialogue.convert(
+      inputs: [{ "text" => "hi", "voice_id" => "v1" }],
+      use_pvc_as_ivc: true,
+      audio_effects: { "eq" => { "low_gain_db" => 2 } }
+    )
+
+    request = @http.requests.last
+    assert_equal "v1/text-to-dialogue", request[:path]
+    assert_equal true, request[:json]["use_pvc_as_ivc"]
+    assert_equal({ "eq" => { "low_gain_db" => 2 } }, request[:json]["audio_effects"])
+  end
+
+  def test_environments_create_list_delete
+    @client.environments.create(name: "staging")
+    create_request = @http.requests.last
+    assert_equal "POST", create_request[:method]
+    assert_equal "v1/convai/environments", create_request[:path]
+    assert_equal({ "name" => "staging" }, create_request[:json])
+
+    @client.environments.list
+    assert_equal "GET", @http.requests.last[:method]
+    assert_equal "v1/convai/environments", @http.requests.last[:path]
+
+    @client.environments.delete("staging")
+    assert_equal "DELETE", @http.requests.last[:method]
+    assert_equal "v1/convai/environments/staging", @http.requests.last[:path]
+  end
+
+  def test_voices_collections_create_and_add_voice
+    @client.voices.collections.create(title: "Narrators", icon: "mic")
+    create_request = @http.requests.last
+    assert_equal "POST", create_request[:method]
+    assert_equal "v1/voices/collections", create_request[:path]
+    assert_equal({ "title" => "Narrators", "icon" => "mic" }, create_request[:json])
+
+    @client.voices.collections.add_voice("col_1", "voice_1")
+    add_request = @http.requests.last
+    assert_equal "POST", add_request[:method]
+    assert_equal "v1/voices/collections/col_1/voice/voice_1", add_request[:path]
+
+    @client.voices.collections.remove_voice("col_1", "voice_1")
+    assert_equal "DELETE", @http.requests.last[:method]
+    assert_equal "v1/voices/collections/col_1/voice/voice_1", @http.requests.last[:path]
+  end
+
+  def test_outbound_campaigns_create_serialization
+    @client.conversational_ai.outbound_campaigns.create(
+      call_name: "Renewals",
+      agent_id: "agent_1",
+      recipients: [{ "phone_number" => "+15550100" }],
+      channel_config: { "type" => "phone", "agent_phone_number_id" => "pn_1" },
+      timezone: "America/New_York"
+    )
+
+    request = @http.requests.last
+    assert_equal "POST", request[:method]
+    assert_equal "v1/convai/outbound-campaigns/campaigns/submit", request[:path]
+    assert_equal(
+      {
+        "call_name" => "Renewals",
+        "agent_id" => "agent_1",
+        "recipients" => [{ "phone_number" => "+15550100" }],
+        "timezone" => "America/New_York",
+        "channel_config" => { "type" => "phone", "agent_phone_number_id" => "pn_1" }
+      },
+      request[:json]
+    )
+  end
+
+  def test_outbound_campaigns_list_pause_and_leads
+    @client.conversational_ai.outbound_campaigns.list(page_size: 20, status: "running")
+    list_request = @http.requests.last
+    assert_equal "GET", list_request[:method]
+    assert_equal "v1/convai/outbound-campaigns/campaigns", list_request[:path]
+    assert_equal({ "page_size" => 20, "status" => "running" }, list_request[:query])
+
+    @client.conversational_ai.outbound_campaigns.pause("camp_1")
+    assert_equal "POST", @http.requests.last[:method]
+    assert_equal "v1/convai/outbound-campaigns/campaigns/camp_1/pause", @http.requests.last[:path]
+
+    @client.conversational_ai.outbound_campaigns.leads.list("camp_1", disposition: "answered")
+    leads_request = @http.requests.last
+    assert_equal "v1/convai/outbound-campaigns/campaigns/camp_1/leads", leads_request[:path]
+    assert_equal({ "disposition" => "answered" }, leads_request[:query])
+  end
+
+  def test_outbound_campaigns_config_update_uses_put
+    @client.conversational_ai.outbound_campaigns.config.update(config: { "max_attempts" => 3 }, expected_version: 7)
+
+    request = @http.requests.last
+    assert_equal "PUT", request[:method]
+    assert_equal "v1/convai/outbound-campaigns/config", request[:path]
+    assert_equal({ "expected_version" => 7, "config" => { "max_attempts" => 3 } }, request[:json])
+  end
+
+  def test_agents_merge_proposals_create_and_review
+    @client.conversational_ai.agents.merge_proposals.create(
+      "agent_1",
+      source_branch_id: "br_feature",
+      target_branch_id: "br_main",
+      title: "Tighten greeting"
+    )
+    create_request = @http.requests.last
+    assert_equal "POST", create_request[:method]
+    assert_equal "v1/convai/agents/agent_1/merge-proposals", create_request[:path]
+    assert_equal(
+      { "source_branch_id" => "br_feature", "target_branch_id" => "br_main", "title" => "Tighten greeting" },
+      create_request[:json]
+    )
+
+    @client.conversational_ai.agents.merge_proposals.submit_review("agent_1", "mp_1", state: "approved", comment: "LGTM")
+    review_request = @http.requests.last
+    assert_equal "v1/convai/agents/agent_1/merge-proposals/mp_1/reviews", review_request[:path]
+    assert_equal({ "state" => "approved", "comment" => "LGTM" }, review_request[:json])
+  end
+
+  def test_whole_body_request_param_becomes_json_body
+    item = { "type" => "evaluation_criterion", "name" => "resolved" }
+    @client.conversational_ai.analysis_items.create(request: item)
+    analysis_request = @http.requests.last
+    assert_equal "POST", analysis_request[:method]
+    assert_equal "v1/convai/analysis-items", analysis_request[:path]
+    assert_equal item, analysis_request[:json]
+
+    @client.conversational_ai.realtime.create_client_secret(request: { "agent_id" => "agent_1" })
+    secret_request = @http.requests.last
+    assert_equal "v1/convai/realtime/client_secrets", secret_request[:path]
+    assert_equal({ "agent_id" => "agent_1" }, secret_request[:json])
+  end
+
+  def test_analysis_items_update_attachments
+    @client.conversational_ai.analysis_items.update_attachments("ai_1", source: "agent", attach: ["agent_1"])
+
+    request = @http.requests.last
+    assert_equal "PATCH", request[:method]
+    assert_equal "v1/convai/analysis-items/ai_1/attachments", request[:path]
+    assert_equal({ "source" => "agent", "attach" => ["agent_1"] }, request[:json])
+  end
+
+  def test_realtime_set_conversation_group_uses_put
+    @client.conversational_ai.realtime.set_conversation_group("conv_1", conversation_group_id: "grp_1")
+
+    request = @http.requests.last
+    assert_equal "PUT", request[:method]
+    assert_equal "v1/convai/realtime/conversations/conv_1/conversation-group", request[:path]
+    assert_equal({ "conversation_group_id" => "grp_1" }, request[:json])
+  end
+
+  def test_speech_engine_create_sends_auth
+    @client.speech_engine.create(speech_engine: { "url" => "wss://example.com" }, auth: { "type" => "public" })
+
+    request = @http.requests.last
+    assert_equal "v1/speech-engine", request[:path]
+    assert_equal({ "speech_engine" => { "url" => "wss://example.com" }, "auth" => { "type" => "public" } }, request[:json])
+  end
+
+  def test_agents_delete_force_query_param
+    @client.conversational_ai.agents.delete("agent_1", force: true)
+
+    request = @http.requests.last
+    assert_equal "DELETE", request[:method]
+    assert_equal "v1/convai/agents/agent_1", request[:path]
+    assert_equal({ "force" => true }, request[:query])
+  end
+
+  def test_workspace_usage_get_usage_and_member_usage_limit
+    @client.workspace.usage.get_usage(start_time: 1_700_000_000, end_time: 1_700_086_400, interval_seconds: 3600)
+    usage_request = @http.requests.last
+    assert_equal "POST", usage_request[:method]
+    assert_equal "v1/workspace/analytics/usage", usage_request[:path]
+    assert_equal(
+      { "start_time" => 1_700_000_000, "end_time" => 1_700_086_400, "interval_seconds" => 3600 },
+      usage_request[:json]
+    )
+
+    @client.workspace.members.update_usage_limit("user_1", usage_limit: 5000)
+    limit_request = @http.requests.last
+    assert_equal "PUT", limit_request[:method]
+    assert_equal "v1/workspace/members/user_1/usage-limit", limit_request[:path]
+    assert_equal({ "usage_limit" => 5000 }, limit_request[:json])
+  end
+
+  def test_service_accounts_api_keys_disable
+    @client.service_accounts.api_keys.disable("sa_1", "key_1")
+
+    request = @http.requests.last
+    assert_equal "POST", request[:method]
+    assert_equal "v1/service-accounts/sa_1/api-keys/key_1/disable", request[:path]
+  end
 end

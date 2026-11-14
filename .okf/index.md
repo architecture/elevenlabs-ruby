@@ -12,10 +12,11 @@ knowledge has to be recorded by hand because no extractor can see it.
 
 This bundle captures the non-obvious: pipeline mechanics and their failure
 modes, runtime behaviours that surprise callers, API rules that exist only on
-the server, and the release invariants. It does **not** restate the generated
-reference material — `docs/types.md` and `docs/namespaces.md` remain the
-authority for what operations exist, and are linked from the concepts that
-depend on them.
+the server, and the release invariants. It does **not** restate the reference
+material: `lib/elevenlabs/spec.json` is the authority for what operations exist,
+`docs/types.md` renders its type shapes, and `docs/namespaces.md` gives a usage
+example per namespace. All three are linked from the concepts that depend on
+them.
 
 # Areas
 
@@ -35,4 +36,4 @@ depend on them.
 * `docs/update-procedure.md` - the runnable step-by-step refresh runbook.
 * `docs/workflow-gotchas.md` - hand-maintained workflow 422 reference.
 * `docs/types.md` - generated Pydantic type reference (~900KB).
-* `docs/namespaces.md` - generated namespace reference.
+* `docs/namespaces.md` - hand-maintained namespace reference, one example section per top-level namespace.

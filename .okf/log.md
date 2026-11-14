@@ -1,5 +1,16 @@
 # Update Log
 
+## 2026-11-13
+### v0.12.0 spec refresh (elevenlabs-python v2.78.0)
+* **Update**: [tracking upstream](release/update-procedure.md) — two new invariants: `docs/namespaces.md` and the README namespace list are hand-maintained and need a section per new top-level namespace; upstream's hand-written helpers outside `raw_client.py` are never extracted.
+* **Update**: [versioning and publishing](release/versioning-and-publish.md) — current version 0.11.1 → 0.12.0.
+* **Update**: root `index.md` — `docs/namespaces.md` was described as generated; it is hand-maintained, and `spec.json` is the authority for which operations exist.
+* **Note**: the refresh added 64 operations across 2 new top-level namespaces (`audio_effects`, `environments`) and 10 new sub-resources (`voices.collections`, `conversational_ai.outbound_campaigns.*`, `agents.merge_proposals`, `analysis_items.*`, `realtime`) and removed none. Upstream moved `speech_to_speech` from `v1/speech-to-speech/` to `v1/voice-changer/`; the regenerated spec picks that up with no Ruby change.
+
+### v0.11.0 / v0.11.1 catch-up (elevenlabs-python v2.69.0, Ruby 4.0)
+* **Update**: [versioning and publishing](release/versioning-and-publish.md) — current version 0.10.0 → 0.11.1; the `test` job is now a Ruby 3.3 + 4.0 matrix, with the two Ruby 4.0 breaks it exists to catch (`ostruct` now a bundled gem, `cgi` removed in favour of `cgi/escape`).
+* **Note**: v0.11.0 added 9 operations across 3 new sub-resources (`flows.templates`, `flows.templates.runs`, `conversational_ai.agents.hold_audio`) and removed none. No concept enumerates operations, so `docs/namespaces.md` remains the authority.
+
 ## 2026-08-28
 ### v0.10.0 spec refresh (elevenlabs-python v2.65.0)
 * **Update**: [HTTP transport](runtime/http-transport.md) — new section on repeated multipart parts: the middleware now runs `flat_encode: true` so array elements and multi-file uploads keep the bare field name instead of Faraday's `tags[]`.

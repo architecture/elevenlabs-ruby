@@ -10,7 +10,7 @@ This gem is published to **GitHub Packages** (not RubyGems.org). Add the GitHub 
 
 ```ruby
 source "https://rubygems.pkg.github.com/architecture" do
-  gem "elevenlabs", "0.11.1"
+  gem "elevenlabs", "0.12.0"
 end
 ```
 
@@ -31,7 +31,7 @@ Bundler can pull the gem straight from the git repository. This works for public
 
 ```ruby
 # Pin to a release tag (recommended for production)
-gem "elevenlabs", git: "https://github.com/architecture/elevenlabs-ruby", tag: "v0.11.1"
+gem "elevenlabs", git: "https://github.com/architecture/elevenlabs-ruby", tag: "v0.12.0"
 
 # Or track the latest main branch
 gem "elevenlabs", git: "https://github.com/architecture/elevenlabs-ruby", branch: "main"
@@ -68,7 +68,7 @@ Optional parameters default to the `ElevenLabs::OMIT` sentinel. Pass `nil` to se
 
 Every top-level namespace described in `lib/elevenlabs/spec.json` is available under `client`. That includes:
 
-`assets`, `audio_isolation`, `audio_native`, `conversational_ai`, `dubbing`, `environment_variables`, `flows`, `forced_alignment`, `history`, `models`, `music`, `productions`, `pronunciation_dictionaries`, `samples`, `service_accounts`, `speech_engine`, `speech_to_speech`, `speech_to_text`, `studio`, `text_to_dialogue`, `text_to_sound_effects`, `text_to_speech`, `text_to_voice`, `tokens`, `usage`, `user`, `voices`, `webhooks`, `workspace`, `workspaces`.
+`assets`, `audio_effects`, `audio_isolation`, `audio_native`, `conversational_ai`, `dubbing`, `environment_variables`, `environments`, `flows`, `forced_alignment`, `history`, `models`, `music`, `productions`, `pronunciation_dictionaries`, `samples`, `service_accounts`, `speech_engine`, `speech_to_speech`, `speech_to_text`, `studio`, `text_to_dialogue`, `text_to_sound_effects`, `text_to_speech`, `text_to_voice`, `tokens`, `usage`, `user`, `voices`, `webhooks`, `workspace`, `workspaces`.
 
 Below are example snippets that demonstrate each namespace. Substitute IDs and payloads with real values from your account.
 
@@ -76,6 +76,9 @@ Below are example snippets that demonstrate each namespace. Substitute IDs and p
 # assets
 asset = client.assets.create(asset: ElevenLabs::Upload.from_path("intro.mp3"), name: "Intro clip")
 client.assets.list(page_size: 20, search: "intro")
+
+# audio_effects
+client.audio_effects.get_catalog
 
 # audio_isolation
 clean = client.audio_isolation.convert(audio: ElevenLabs::Upload.from_path("noisy.wav"))
@@ -92,6 +95,10 @@ client.conversational_ai.agents.procedures.list("agent_123", "branch_123")
 # environment_variables
 client.environment_variables.list(page_size: 10)
 client.environment_variables.create(request: { "label" => "API_KEY", "type" => "secret", "values" => { "production" => "sk-123" } })
+
+# environments
+client.environments.create(name: "staging")
+client.environments.list
 
 # flows
 client.flows.text_to_speech.create(request: { "text" => "Hello there", "model_id" => "eleven_v3" })
@@ -198,6 +205,7 @@ client.user.get
 # voices
 client.voices.get_all
 client.voices.accents.get(language: "en", model_id: "eleven_v3")
+client.voices.collections.create(title: "Narrators", icon: "mic")
 
 # webhooks
 client.webhooks.list
@@ -480,6 +488,29 @@ gem "elevenlabs", path: "/path/to/elevenlabs-ruby"
 ```
 
 ## Recent Updates
+
+### 2026-11-13: v0.12.0 — Updated API Spec from elevenlabs-python v2.78.0
+
+Refreshed `lib/elevenlabs/spec.json` (and the `types.json` / `docs/types.md` artifacts) against elevenlabs-python v2.78.0 (up from v2.69.0). 64 new operations across 2 new top-level namespaces and 10 new sub-resources; no operations or parameters removed.
+
+**New namespaces:**
+- `audio_effects` — `get_catalog` lists the effects that the new `audio_effects` parameter on text-to-speech and text-to-dialogue accepts
+- `environments` — conversational AI deployment environments (`create`, `list`, `delete`)
+
+**New sub-resources:**
+- `voices.collections` — named voice collections (`list`, `create`, `get`, `update`, `delete`, `add_voice`, `remove_voice`)
+- `conversational_ai.outbound_campaigns` — outbound calling campaigns (`create`, `list`, `get`, `get_progress`, `get_follow_up_requests`, `pause`, `resume`, `stop`, `pause_all`, `stop_all`), with child resources `attention` (`list`, `resolve`, `retry`), `calls` (`list`, `export`), `config` (`get`, `update`) and `leads` (`list`, `get`, `delete`)
+- `conversational_ai.agents.merge_proposals` — review-gated branch merges (`create`, `list`, `get`, `update`, `add_comment`, `submit_review`, `merge`)
+- `conversational_ai.analysis_items` — reusable analysis items (`create`, `list`, `get`, `update`, `delete`, `copy`, `list_versions`, `update_attachments`) and `analysis_items.dependent_agents.get`. `create` takes the whole request model as the body: `client.conversational_ai.analysis_items.create(request: { ... })`
+- `conversational_ai.realtime` — `create_client_secret` (whole-body `request:`) and conversation groups (`list_conversation_groups`, `create_conversation_group`, `get_conversation_group`, `update_conversation_group`, `delete_conversation_group`, `set_conversation_group`, `clear_conversation_group`)
+
+**New operations on existing namespaces:** `conversational_ai.agents.deployments.list`, `conversational_ai.conversations.files.get`, `conversational_ai.tests.invocations.cancel` / `update`, `conversational_ai.triage_tickets.merge`, `environment_variables.delete`, `service_accounts.api_keys.disable`, `workspace.members.update_usage_limit` and `workspace.usage.get_usage` (`POST v1/workspace/analytics/usage`).
+
+**New parameters on existing operations:** `audio_effects` on all four `text_to_speech` and all four `text_to_dialogue` operations, plus `use_pvc_as_ivc` on `text_to_dialogue`; `auth` on `speech_engine.create` / `update`; `secondary_language_codes`, `numbers_format` and `transcript_edit` on `speech_to_text.convert`; `enable_logging`, `add_sfx`, `separate_tracks` and `use_audio_as_reference` on `music.video_to_music`; `enable_logging` on `text_to_sound_effects.convert`; `force` on `conversational_ai.agents.delete`; `include_procedure_generated_workflow_elements` on `agents.get`, `agents.update` and `branches.preview_merge` / `preview_rebase`; `source_branch_id` on `branches.rebase` / `preview_rebase`; `description` and `auto_rebase` on `branches.update`; `service_tier` on both `llm_usage.calculate` operations; `title` and `priority` on triage ticket create/update, with new sorting, priority, search and merge filters on both triage ticket lists; `data_collection_filter`, `dynamic_variable_filter`, tool-id and phone-number filters on `conversations.list` (the tool and phone filters also on `conversations.messages.text_search`); `evaluated_agent_id` / `evaluated_branch_id` on `conversations.analysis.run_evaluation`; `exclude_patterns` on `knowledge_base.crawl_jobs.create`; auto-sync options on `knowledge_base.documents.update`; `expires_at_unix` on `service_accounts.api_keys.create` / `update`; `allow_downgrade_to_basic_seat` on `workspace.members.update`; new filters on `tests.list`, `tests.invocations.list` and `tools.list`; `limit` on `batch_calls.export`.
+
+**Endpoint move from upstream:** `speech_to_speech.convert` and `speech_to_speech.stream` now call `v1/voice-changer/{voice_id}` instead of `v1/speech-to-speech/{voice_id}`. The Ruby call is unchanged.
+
+**Not carried over:** the Python SDK's new hand-written helpers (agent tool and workflow builders, Flows `create_and_wait`) are client-side conveniences outside `raw_client.py`, so the generated Ruby surface does not include them. The underlying endpoints they call are all available.
 
 ### 2026-09-25: v0.11.1 — Ruby 4.0 compatibility and dependency refresh
 

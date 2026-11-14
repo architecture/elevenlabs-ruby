@@ -4,14 +4,14 @@ title: Versioning and publishing
 description: What each version component signals in a spec-generated SDK, and how the CI pipeline publishes to GitHub Packages idempotently.
 resource: file://.github/workflows/gem-push.yml
 tags: [testing, upstream-python-sdk]
-timestamp: 2026-08-28T12:00:00Z
+timestamp: 2026-11-13T12:00:00Z
 ---
 
 # Overview
 
 The gem is published to **GitHub Packages**, not RubyGems.org, by
 `.github/workflows/gem-push.yml` on every push to `main`. Version lives in
-`lib/elevenlabs/version.rb` and is currently `0.10.0`.
+`lib/elevenlabs/version.rb` and is currently `0.12.0`.
 
 # What the components mean here
 
@@ -35,9 +35,16 @@ to the API server.
 
 # The publish pipeline
 
-Two jobs. `test` runs on pushes *and* pull requests, loading every
-`test/*_test.rb` in one Ruby process. `publish` runs only on a push to `main`,
-`needs: test`, with `packages: write`.
+Two jobs. `test` runs on pushes *and* pull requests as a matrix over Ruby
+**3.3 and 4.0**, loading every `test/*_test.rb` in one Ruby process per version.
+`publish` runs only on a push to `main`, `needs: test` (every matrix leg), with
+`packages: write`, and builds on Ruby 3.3.
+
+The 4.0 leg exists because Ruby 4.0 demoted stdlib pieces the gem leaned on:
+`ostruct` became a bundled gem (so the `Gemfile` test group declares it), and
+the `cgi` library was removed (so `lib/elevenlabs/utils.rb` requires
+`cgi/escape`, which provides `CGI.escape` on both versions). Neither break shows
+up on 3.3, so a single-version CI would ship them.
 
 The publish step is **idempotent by string-matching**: it runs `gem push`, and if
 the output contains `"already been pushed"` it exits 0 instead of failing. This
